@@ -55,8 +55,8 @@ motifsMelt <- melt(motifs)
 colnames(motifsMelt) <- c("V1","V2","value")
 gexpAWithTFs <- rbind(gexpA,tfExpA)
 gexpBWithTFs <- rbind(gexpB,tfExpB)
-bereResA <- bereFull(motifsMelt, gexpAWithTFs)[,paste0("Gene",1:numGenes)]
-bereResB <- bereFull(motifsMelt, gexpBWithTFs)[,paste0("Gene",1:numGenes)]
+bereResA <- bereFull(motifsMelt, gexpAWithTFs, alpha=1.0, score="notincluded")[,paste0("Gene",1:numGenes)]
+bereResB <- bereFull(motifsMelt, gexpBWithTFs, alpha=1.0, score="notincluded")[,paste0("Gene",1:numGenes)]
 pandaResA <- panda(motifsMelt, gexpAWithTFs)@regNet[,paste0("Gene",1:numGenes)]
 pandaResB <- panda(motifsMelt, gexpBWithTFs)@regNet[,paste0("Gene",1:numGenes)]
 tm.bere <- transformation.matrix(bereResA, bereResB, remove.diagonal=T, standardize=F, method="ols")
@@ -74,7 +74,7 @@ networkAUCROC <- function(netA, netB){
 networkAUCROC(pearsonAdjMatA, pearsonAdjMatB)
 networkAUCROC(bereResA, bereResB)
 networkAUCROC(pandaResA, pandaResA)
-networkAUCROC(motifs, motifs)
+networkAUCROC(pearsonAdjMatA+motifs, pearsonAdjMatA+motifs)
 
 tm.gs <- transformation.matrix(matrixA_GS, matrixB_GS, remove.diagonal=T, standardize=F, method="ols")
 tm.noisy <- transformation.matrix(pearsonAdjMatA, pearsonAdjMatB, remove.diagonal=T, standardize=F, method="ols")
@@ -82,18 +82,21 @@ heatmap.2(tm.gs, col=colorRampPalette(c("blue", "white", "red"))(n = 1000), dens
 heatmap.2(tm.noisy, col=colorRampPalette(c("blue", "white", "red"))(n = 1000), density.info="none", trace="none", dendrogram="none", Colv=FALSE, Rowv=FALSE)
 
 ################## Penalized matrix
-net1 <- t(pearsonAdjMatA)
-net2 <- t(pearsonAdjMatB)
-net2.star <- sapply(1:numTFs, function(i,x,y){
-    lm(y[,i]~x[,i])$resid
-}, net1, net2)
-tm.penL1 <- sapply(1:numTFs, function(i){
-#     z <- optL1(net2.star[,i], net1, fold=5, minlambda1=.1, maxlambda1=2, model="linear", standardize=T)
-#     coefficients(z$fullfit, "penalized")
-    z <- penalized(net2.star[,i], net1, lambda1=1, model="linear", standardize=T)
-    coefficients(z, "penalized")
-})
-diag(tm.penL1)<-0
+penalizedTM <- function(net1, net2){
+    net2.star <- sapply(1:numTFs, function(i,x,y){
+        lm(y[,i]~x[,i])$resid
+    }, net1, net2)
+    tm.penL1 <- sapply(1:numTFs, function(i){
+        #     z <- optL1(net2.star[,i], net1, fold=5, minlambda1=.1, maxlambda1=2, model="linear", standardize=T)
+        #     coefficients(z$fullfit, "penalized")
+        z <- penalized(net2.star[,i], net1, lambda1=1, model="linear", standardize=T)
+        coefficients(z, "penalized")
+    })
+    diag(tm.penL1)<-0
+    tm.penL1
+}
+tm.penL1 <- penalizedTM(t(pearsonAdjMatA),t(pearsonAdjMatB))
+
 heatmap.2(tm.penL1, col=colorRampPalette(c("blue", "white", "red"))(n = 1000), density.info="none", trace="none", dendrogram="none", Colv=FALSE, Rowv=FALSE)
 
 #######################################
@@ -119,17 +122,23 @@ summary(lm(dtfi_true ~ dtfi_obs))
 
 
 # ROC for transitions
-TM_GS <- matrix(0,nrow=numTFs,ncol=numTFs)
-for(i in 1:numTransitions){
-    TM_GS[TFAs[i],TFBs[i]]<-1
+ROCforTransitions <- function(tm){
+    TM_GS <- matrix(0,nrow=numTFs,ncol=numTFs)
+    for(i in 1:numTransitions){
+        TM_GS[TFAs[i],TFBs[i]]<-1
+    }
+    
+    methodPred  <- prediction(abs(c(tm)), c(TM_GS)>=1)
+    roc.methodPred  <- performance(methodPred, measure = c("tpr","auc"), x.measure = "fpr")
+    auc.methodPred  <- performance(methodPred, "auc")@y.values[[1]]
+    plot(roc.methodPred, main="ROC for transitions", col = 1, lwd=3)
+    legend(.5,.2, paste("AUCROC =",round(auc.methodPred,4)), lty=1,lwd=5,col=1)
+    abline(0,1)
 }
-
-methodPred  <- prediction(abs(c(tm.penL1)), c(TM_GS)>=1)
-roc.methodPred  <- performance(methodPred, measure = c("tpr","auc"), x.measure = "fpr")
-auc.methodPred  <- performance(methodPred, "auc")@y.values[[1]]
-plot(roc.methodPred, main="ROC for transitions", col = 1, lwd=3)
-legend(.5,.2, paste("AUCROC =",round(auc.methodPred,4)), lty=1,lwd=5,col=1)
-abline(0,1)
+ROCforTransitions(tm.gs)
+ROCforTransitions(tm.noisy)
+ROCforTransitions(tm.panda)
+ROCforTransitions(tm.bere)
 
 combinedGEXP <- cbind(gexpA, gexpB)
 combinedTFEXP <- cbind(tfExpA,tfExpB) 
