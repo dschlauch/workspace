@@ -1,0 +1,5 @@
+"x"
+"" "Average within TF ROC, weighted by gold standard hits - DREAM5d all"
+"Degree-only" "0.550284685021406"
+"PANDA" "0.722075265396015"
+"Motifs" "0.695576721286251"

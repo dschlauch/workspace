@@ -1,0 +1,6 @@
+"x"
+"" "Average within TF ROC, weighted by gold standard hits - Yeast nonmotif"
+"PANDA" "0.500247937056809"
+"BERE" "0.561997390653242"
+"Full BERE 10" "0.536524893545948"
+"Motifs" "0.5"
