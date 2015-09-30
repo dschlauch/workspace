@@ -6,13 +6,14 @@ library(ROCR)
 library(penalized)
 library(tidyr)
 library(bereR)
+library(corpcor)
 
 numTFs <- 100
-numGenes <- 5000
+numGenes <- 2000
 numTransitions <- 100
 numSamples <- 500
 
-true_edges <- runif(numGenes*numTFs)
+true_edges <- runif(numGenes*numTFs)*rbinom(numGenes*numTFs,1,prob=.2)
 matrixA_GS <- matrix(true_edges,nrow=numTFs)
 matrixB_GS <- matrixA_GS# + matrix(rnorm(10000)/10,nrow=10)
 probs <- rexp(numTFs)
@@ -30,12 +31,18 @@ for(i in 1:numTransitions){
 
 varcovA <- t(matrixA_GS)%*%matrixA_GS
 varcovB <- t(matrixB_GS)%*%matrixB_GS
+# Increase the noise
+diag(varcovA) <- 4*diag(varcovA)
+diag(varcovB) <- 4*diag(varcovB)
 gexpA <- t(mvrnorm(n=numSamples, mu=rep(0,numGenes), Sigma=varcovA))
 gexpB <- t(mvrnorm(n=numSamples, mu=rep(0,numGenes), Sigma=varcovB))
 rownames(gexpA) <- paste0("Gene",1:numGenes)
 rownames(gexpB) <- paste0("Gene",1:numGenes)
 tfExpA <- matrixA_GS %*% gexpA
 tfExpB <- matrixB_GS %*% gexpB
+# Add a bunch of noise to the TF expressions
+tfExpA <- t(scale(t(tfExpA))) + 2*matrix(rnorm(length(c(tfExpA))),nrow=nrow(tfExpA))
+tfExpB <- t(scale(t(tfExpB))) + 2*matrix(rnorm(length(c(tfExpB))),nrow=nrow(tfExpB))
 rownames(tfExpA) <- paste0("TF",1:numTFs)
 rownames(tfExpB) <- paste0("TF",1:numTFs)
 pearsonAdjMatA <- cor(t(tfExpA), t(gexpA))
@@ -44,7 +51,7 @@ pearsonAdjMatB <- cor(t(tfExpB), t(gexpB))
 
 # 9/28/15
 # Adding simulated motif data
-motifs <- matrix(rbinom(length(true_edges), 1, true_edges/4), nrow=numTFs)
+motifs <- matrix(rbinom(length(true_edges), 1, .05+true_edges/4), nrow=numTFs)
 rownames(motifs) <- paste0("TF",1:numTFs)
 colnames(motifs) <- paste0("Gene",1:numGenes)
 TFsZeros <- matrix(0,nrow=numTFs,ncol=numTFs)
@@ -55,27 +62,39 @@ motifsMelt <- melt(motifs)
 colnames(motifsMelt) <- c("V1","V2","value")
 gexpAWithTFs <- rbind(gexpA,tfExpA)
 gexpBWithTFs <- rbind(gexpB,tfExpB)
-bereResA <- bereFull(motifsMelt, gexpAWithTFs, alpha=1.0, score="notincluded")[,paste0("Gene",1:numGenes)]
-bereResB <- bereFull(motifsMelt, gexpBWithTFs, alpha=1.0, score="notincluded")[,paste0("Gene",1:numGenes)]
-pandaResA <- panda(motifsMelt, gexpAWithTFs)@regNet[,paste0("Gene",1:numGenes)]
-pandaResB <- panda(motifsMelt, gexpBWithTFs)@regNet[,paste0("Gene",1:numGenes)]
+# bereResA <- bereFull(motifsMelt, gexpAWithTFs, alpha=1.0, score="notincluded")[,paste0("Gene",1:numGenes)]
+# bereResB <- bereFull(motifsMelt, gexpBWithTFs, alpha=1.0, score="notincluded")[,paste0("Gene",1:numGenes)]
+pandaResA <- panda(motifsMelt, gexpAWithTFs, hamming = 1e-02)@regNet[,paste0("Gene",1:numGenes)]
+pandaResB <- panda(motifsMelt, gexpBWithTFs, hamming = 1e-02)@regNet[,paste0("Gene",1:numGenes)]
 tm.bere <- transformation.matrix(bereResA, bereResB, remove.diagonal=T, standardize=F, method="ols")
 heatmap.2(tm.bere, col=colorRampPalette(c("blue", "white", "red"))(n = 1000), density.info="none", trace="none", dendrogram="none", Colv=FALSE, Rowv=FALSE)
 tm.panda <- transformation.matrix(pandaResA, pandaResB, remove.diagonal=T, standardize=F, method="ols")
 heatmap.2(tm.panda, col=colorRampPalette(c("blue", "white", "red"))(n = 1000), density.info="none", trace="none", dendrogram="none", Colv=FALSE, Rowv=FALSE)
 
-networkAUCROC <- function(netA, netB){
+##  GGM network 9/30/15
+partialCorA <- cor2pcor(pearsonAdjMatA)
+partialCorB <- cor2pcor(pearsonAdjMatB)
+
+networkAUCROC <- function(netA, netB, title=""){
     methodPred  <- prediction(c(netA,netB), c(matrixA_GS,matrixB_GS)>.5)
     roc.methodPred  <- performance(methodPred, measure = c("tpr","auc"), x.measure = "fpr")
     auc.methodPred  <- performance(methodPred, "auc")@y.values[[1]]
-    plot(roc.methodPred, main="ROC for networks", col = 1, lwd=3)
-    legend(.5,.6, paste("AUCROC =",round(auc.methodPred,4)), lty=1,lwd=5,col=1)
+    plot(roc.methodPred, main=paste0("ROC for ",title," networks"), col = 1, lwd=3)
+    
+    p.value <- t.test(c(pearsonAdjMatA,pearsonAdjMatB), c(matrixA_GS,matrixB_GS)>.5)$p.value
+    if(p.value<2e-16){
+        p.value <- "p < 2e-16"
+    } else {
+        p.value <- paste0("p = ", p.value)
+    }
+    abline(0,1)
+    legend(.5,.6, paste0("AUCROC = ",round(auc.methodPred,4)," \n(",p.value,")"), lty=1,lwd=5,col=1)
 }
-networkAUCROC(pearsonAdjMatA, pearsonAdjMatB)
-networkAUCROC(bereResA, bereResB)
-networkAUCROC(pandaResA, pandaResA)
-networkAUCROC(pearsonAdjMatA+motifs, pearsonAdjMatA+motifs)
-
+networkAUCROC(pearsonAdjMatA, pearsonAdjMatB, "WGCNA")
+# networkAUCROC(bereResA, bereResB, "BERE")
+networkAUCROC(pandaResA, pandaResB, "PANDA")
+# networkAUCROC(pearsonAdjMatA+motifs, pearsonAdjMatB+motifs, "WGCNA w/motif")
+networkAUCROC(motifs[,1:numGenes],motifs[,1:numGenes])
 tm.gs <- transformation.matrix(matrixA_GS, matrixB_GS, remove.diagonal=T, standardize=F, method="ols")
 tm.noisy <- transformation.matrix(pearsonAdjMatA, pearsonAdjMatB, remove.diagonal=T, standardize=F, method="ols")
 heatmap.2(tm.gs, col=colorRampPalette(c("blue", "white", "red"))(n = 1000), density.info="none", trace="none", dendrogram="none", Colv=FALSE, Rowv=FALSE)
