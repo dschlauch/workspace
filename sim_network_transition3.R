@@ -6,10 +6,12 @@ library(ROCR)
 library(penalized)
 library(tidyr)
 library(bereR)
+library(pandaR)
 library(corpcor)
+library(nettools)
 
 numTFs <- 100
-numGenes <- 2000
+numGenes <- 5000
 numTransitions <- 100
 numSamples <- 500
 
@@ -45,13 +47,21 @@ tfExpA <- t(scale(t(tfExpA))) + 2*matrix(rnorm(length(c(tfExpA))),nrow=nrow(tfEx
 tfExpB <- t(scale(t(tfExpB))) + 2*matrix(rnorm(length(c(tfExpB))),nrow=nrow(tfExpB))
 rownames(tfExpA) <- paste0("TF",1:numTFs)
 rownames(tfExpB) <- paste0("TF",1:numTFs)
-pearsonAdjMatA <- cor(t(tfExpA), t(gexpA))
-pearsonAdjMatB <- cor(t(tfExpB), t(gexpB))
+pearsonAdjMatA <- abs(cor(t(tfExpA), t(gexpA)))
+pearsonAdjMatB <- abs(cor(t(tfExpB), t(gexpB)))
+wgcnaA <- mat2adj(cbind(t(tfExpA), t(gexpA)), method="WGCNA")[1:numTFs,-(1:numTFs)]
+wgcnaB <- mat2adj(cbind(t(tfExpB), t(gexpB)), method="WGCNA")[1:numTFs,-(1:numTFs)]
+aracneA <- mat2adj(cbind(t(tfExpA), t(gexpA)), method="ARACNE")[1:numTFs,-(1:numTFs)]
+aracneB <- mat2adj(cbind(t(tfExpB), t(gexpB)), method="ARACNE")[1:numTFs,-(1:numTFs)]
+clrA <- mat2adj(cbind(t(tfExpA), t(gexpA)), method="CLR")[1:numTFs,-(1:numTFs)]
+clrB <- mat2adj(cbind(t(tfExpB), t(gexpB)), method="CLR")[1:numTFs,-(1:numTFs)]
+# mineA <- mat2adj(cbind(t(tfExpA), t(gexpA)), method="MINE", measure="MIC")[1:numTFs,-(1:numTFs)]
+# mineB <- mat2adj(cbind(t(tfExpB), t(gexpB)), method="MINE", measure="MIC")[1:numTFs,-(1:numTFs)]
 
 
 # 9/28/15
 # Adding simulated motif data
-motifs <- matrix(rbinom(length(true_edges), 1, .05+true_edges/4), nrow=numTFs)
+motifs <- matrix(rbinom(length(true_edges), 1, .1+true_edges/4), nrow=numTFs)
 rownames(motifs) <- paste0("TF",1:numTFs)
 colnames(motifs) <- paste0("Gene",1:numGenes)
 TFsZeros <- matrix(0,nrow=numTFs,ncol=numTFs)
@@ -66,14 +76,21 @@ gexpBWithTFs <- rbind(gexpB,tfExpB)
 # bereResB <- bereFull(motifsMelt, gexpBWithTFs, alpha=1.0, score="notincluded")[,paste0("Gene",1:numGenes)]
 pandaResA <- panda(motifsMelt, gexpAWithTFs, hamming = 1e-02)@regNet[,paste0("Gene",1:numGenes)]
 pandaResB <- panda(motifsMelt, gexpBWithTFs, hamming = 1e-02)@regNet[,paste0("Gene",1:numGenes)]
-tm.bere <- transformation.matrix(bereResA, bereResB, remove.diagonal=T, standardize=F, method="ols")
-heatmap.2(tm.bere, col=colorRampPalette(c("blue", "white", "red"))(n = 1000), density.info="none", trace="none", dendrogram="none", Colv=FALSE, Rowv=FALSE)
-tm.panda <- transformation.matrix(pandaResA, pandaResB, remove.diagonal=T, standardize=F, method="ols")
-heatmap.2(tm.panda, col=colorRampPalette(c("blue", "white", "red"))(n = 1000), density.info="none", trace="none", dendrogram="none", Colv=FALSE, Rowv=FALSE)
 
-##  GGM network 9/30/15
-partialCorA <- cor2pcor(pearsonAdjMatA)
-partialCorB <- cor2pcor(pearsonAdjMatB)
+## Compare to default strategy of pairwise results
+
+corTFA <- mat2adj(t(tfExpA))
+corTFB <- mat2adj(t(tfExpB))
+directTMcor <- corTFA-corTFB
+wgcnaTFA <- mat2adj(t(tfExpA), method="WGCNA")
+wgcnaTFB <- mat2adj(t(tfExpB), method="WGCNA")
+directTMwgcna <- wgcnaTFA-wgcnaTFB
+aracneTFA <- mat2adj(t(tfExpA), method="ARACNE")
+aracneTFB <- mat2adj(t(tfExpB), method="ARACNE")
+directTMaracne <- aracneTFA-aracneTFB
+clrTFA <- mat2adj(t(tfExpA), method="CLR")
+clrTFB <- mat2adj(t(tfExpB), method="CLR")
+directTMclr <- clrTFA-clrTFB
 
 networkAUCROC <- function(netA, netB, title=""){
     methodPred  <- prediction(c(netA,netB), c(matrixA_GS,matrixB_GS)>.5)
@@ -90,15 +107,29 @@ networkAUCROC <- function(netA, netB, title=""){
     abline(0,1)
     legend(.5,.6, paste0("AUCROC = ",round(auc.methodPred,4)," \n(",p.value,")"), lty=1,lwd=5,col=1)
 }
-networkAUCROC(pearsonAdjMatA, pearsonAdjMatB, "WGCNA")
-# networkAUCROC(bereResA, bereResB, "BERE")
+networkAUCROC(pearsonAdjMatA, pearsonAdjMatB, "Cor")
+networkAUCROC(wgcnaA, wgcnaB, "WGCNA")
+networkAUCROC(aracneA, aracneB, "ARACNE")
+networkAUCROC(clrA, clrB, "CLR")
 networkAUCROC(pandaResA, pandaResB, "PANDA")
-# networkAUCROC(pearsonAdjMatA+motifs, pearsonAdjMatB+motifs, "WGCNA w/motif")
 networkAUCROC(motifs[,1:numGenes],motifs[,1:numGenes])
-tm.gs <- transformation.matrix(matrixA_GS, matrixB_GS, remove.diagonal=T, standardize=F, method="ols")
-tm.noisy <- transformation.matrix(pearsonAdjMatA, pearsonAdjMatB, remove.diagonal=T, standardize=F, method="ols")
+
+# networkAUCROC(bereResA, bereResB, "BERE")
+# networkAUCROC(pearsonAdjMatA+motifs, pearsonAdjMatB+motifs, "WGCNA w/motif")
+
+tm.gs      <- transformation.matrix(matrixA_GS, matrixB_GS, remove.diagonal=T, standardize=F, method="ols")
+tm.pearson <- transformation.matrix(pearsonAdjMatA, pearsonAdjMatB, remove.diagonal=T, standardize=F, method="ols")
+tm.wgcna   <- transformation.matrix(wgcnaA, wgcnaB, remove.diagonal=T, standardize=F, method="ols")
+tm.aracne  <- transformation.matrix(aracneA, aracneB, remove.diagonal=T, standardize=F, method="ols")
+tm.clr     <- transformation.matrix(clrA, clrB, remove.diagonal=T, standardize=F, method="ols")
+tm.panda   <- transformation.matrix(pandaResA, pandaResB, remove.diagonal=T, standardize=F, method="ols")
+# tm.bere <- transformation.matrix(bereResA, bereResB, remove.diagonal=T, standardize=F, method="ols")
+
 heatmap.2(tm.gs, col=colorRampPalette(c("blue", "white", "red"))(n = 1000), density.info="none", trace="none", dendrogram="none", Colv=FALSE, Rowv=FALSE)
-heatmap.2(tm.noisy, col=colorRampPalette(c("blue", "white", "red"))(n = 1000), density.info="none", trace="none", dendrogram="none", Colv=FALSE, Rowv=FALSE)
+heatmap.2(tm.pearson, col=colorRampPalette(c("blue", "white", "red"))(n = 1000), density.info="none", trace="none", dendrogram="none", Colv=FALSE, Rowv=FALSE)
+heatmap.2(tm.wgcna, col=colorRampPalette(c("blue", "white", "red"))(n = 1000), density.info="none", trace="none", dendrogram="none", Colv=FALSE, Rowv=FALSE)
+heatmap.2(tm.panda, col=colorRampPalette(c("blue", "white", "red"))(n = 1000), density.info="none", trace="none", dendrogram="none", Colv=FALSE, Rowv=FALSE)
+# heatmap.2(tm.bere, col=colorRampPalette(c("blue", "white", "red"))(n = 1000), density.info="none", trace="none", dendrogram="none", Colv=FALSE, Rowv=FALSE)
 
 ################## Penalized matrix
 penalizedTM <- function(net1, net2){
@@ -130,9 +161,12 @@ plotStrengthVsTransitionRank <- function(tm){
 }
 
 plotStrengthVsTransitionRank(tm.penL1)
-plotStrengthVsTransitionRank(tm.noisy)
-plotStrengthVsTransitionRank(tm.bere)
+plotStrengthVsTransitionRank(tm.pearson)
+plotStrengthVsTransitionRank(tm.wgcna)
+plotStrengthVsTransitionRank(tm.aracne)
+plotStrengthVsTransitionRank(tm.clr)
 plotStrengthVsTransitionRank(tm.panda)
+# plotStrengthVsTransitionRank(tm.bere)
 
 dtfi_true <- apply(tm.gs, 1, function(x){sum(abs(x))})
 dtfi_obs <- apply(tm.panda, 1, function(x){sum(abs(x))})
@@ -141,23 +175,41 @@ summary(lm(dtfi_true ~ dtfi_obs))
 
 
 # ROC for transitions
-ROCforTransitions <- function(tm){
-    TM_GS <- matrix(0,nrow=numTFs,ncol=numTFs)
-    for(i in 1:numTransitions){
-        TM_GS[TFAs[i],TFBs[i]]<-1
-    }
-    
-    methodPred  <- prediction(abs(c(tm)), c(TM_GS)>=1)
+ROCforTransitions <- function(tm, alpha=.001,method=""){
+#     TM_GS <- matrix(0,nrow=numTFs,ncol=numTFs)
+#     for(i in 1:numTransitions){
+#         TM_GS[TFAs[i],TFBs[i]]<-1
+#     }
+#     goldStandard <- c(TM_GS)>=1
+    goldStandard <- abs(c(tm.gs))>alpha
+    methodPred  <- prediction(abs(c(tm)), goldStandard)
     roc.methodPred  <- performance(methodPred, measure = c("tpr","auc"), x.measure = "fpr")
     auc.methodPred  <- performance(methodPred, "auc")@y.values[[1]]
-    plot(roc.methodPred, main="ROC for transitions", col = 1, lwd=3)
-    legend(.5,.2, paste("AUCROC =",round(auc.methodPred,4)), lty=1,lwd=5,col=1)
+    
+    p.value <- round(t.test(abs(c(tm))[goldStandard], abs(c(tm))[!goldStandard])$p.value,4)
+    if(p.value<2e-16){
+        p.value <- "p < 2e-16"
+    } else {
+        p.value <- paste0("p = ", p.value)
+    }
+    plot(roc.methodPred, main=paste0("ROC for transitions (",method,")"), col = 1, lwd=3)
+    #     legend(.5,.2, paste("AUCROC =",round(auc.methodPred,4)), lty=1,lwd=5,col=1)
     abline(0,1)
+    legend(.5,.2, paste0("AUCROC = ",round(auc.methodPred,4)," \n(",p.value,")"), lty=1,lwd=5,col=1)
 }
-ROCforTransitions(tm.gs)
-ROCforTransitions(tm.noisy)
-ROCforTransitions(tm.panda)
-ROCforTransitions(tm.bere)
+ROCforTransitions(tm.gs,method="Gold Standard")
+ROCforTransitions(tm.pearson, .5, method="Correlation Network")
+ROCforTransitions(tm.wgcna, .5, method="WGCNA")
+ROCforTransitions(tm.aracne, .5, method="ARACNE")
+ROCforTransitions(tm.clr, .5, method="CLR")
+ROCforTransitions(tm.panda, .5, method="PANDA")
+# ROCforTransitions(tm.bere, method="BERE")
+
+
+ROCforTransitions(directTMcor, .5, method="Correlation Network")
+ROCforTransitions(directTMwgcna, .5, method="Correlation Network")
+ROCforTransitions(directTMaracne, .5, method="Correlation Network")
+ROCforTransitions(directTMclr, .5, method="Correlation Network")
 
 combinedGEXP <- cbind(gexpA, gexpB)
 combinedTFEXP <- cbind(tfExpA,tfExpB) 
