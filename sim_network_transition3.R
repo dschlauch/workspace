@@ -49,8 +49,13 @@ rownames(tfExpA) <- paste0("TF",1:numTFs)
 rownames(tfExpB) <- paste0("TF",1:numTFs)
 pearsonAdjMatA <- abs(cor(t(tfExpA), t(gexpA)))
 pearsonAdjMatB <- abs(cor(t(tfExpB), t(gexpB)))
-wgcnaA <- mat2adj(cbind(t(tfExpA), t(gexpA)), method="WGCNA")[1:numTFs,-(1:numTFs)]
-wgcnaB <- mat2adj(cbind(t(tfExpB), t(gexpB)), method="WGCNA")[1:numTFs,-(1:numTFs)]
+wgcnaA6 <- mat2adj(cbind(t(tfExpA), t(gexpA)), method="WGCNA")[1:numTFs,-(1:numTFs)]
+wgcnaB6 <- mat2adj(cbind(t(tfExpB), t(gexpB)), method="WGCNA")[1:numTFs,-(1:numTFs)]
+wgcnaA12 <- mat2adj(cbind(t(tfExpA), t(gexpA)), method="WGCNA", P=12)[1:numTFs,-(1:numTFs)]
+wgcnaB12 <- mat2adj(cbind(t(tfExpB), t(gexpB)), method="WGCNA", P=12)[1:numTFs,-(1:numTFs)]
+tomA <- mat2adj(cbind(t(tfExpA), t(gexpA)), method="TOM")[1:numTFs,-(1:numTFs)]
+tomB <- mat2adj(cbind(t(tfExpB), t(gexpB)), method="TOM")[1:numTFs,-(1:numTFs)]
+
 aracneA <- mat2adj(cbind(t(tfExpA), t(gexpA)), method="ARACNE")[1:numTFs,-(1:numTFs)]
 aracneB <- mat2adj(cbind(t(tfExpB), t(gexpB)), method="ARACNE")[1:numTFs,-(1:numTFs)]
 clrA <- mat2adj(cbind(t(tfExpA), t(gexpA)), method="CLR")[1:numTFs,-(1:numTFs)]
@@ -61,10 +66,10 @@ clrB <- mat2adj(cbind(t(tfExpB), t(gexpB)), method="CLR")[1:numTFs,-(1:numTFs)]
 
 # 9/28/15
 # Adding simulated motif data
-motifs <- matrix(rbinom(length(true_edges), 1, .1+true_edges/4), nrow=numTFs)
+motifs <- matrix(rbinom(length(true_edges), 1, .1+true_edges/5), nrow=numTFs)
 rownames(motifs) <- paste0("TF",1:numTFs)
 colnames(motifs) <- paste0("Gene",1:numGenes)
-TFsZeros <- matrix(0,nrow=numTFs,ncol=numTFs)
+TFsZeros <- diag(numTFs)
 rownames(TFsZeros) <- paste0("TF",1:numTFs)
 colnames(TFsZeros) <- paste0("TF",1:numTFs)
 motifs <- cbind(motifs,TFsZeros)
@@ -74,8 +79,10 @@ gexpAWithTFs <- rbind(gexpA,tfExpA)
 gexpBWithTFs <- rbind(gexpB,tfExpB)
 # bereResA <- bereFull(motifsMelt, gexpAWithTFs, alpha=1.0, score="notincluded")[,paste0("Gene",1:numGenes)]
 # bereResB <- bereFull(motifsMelt, gexpBWithTFs, alpha=1.0, score="notincluded")[,paste0("Gene",1:numGenes)]
-pandaResA <- panda(motifsMelt, gexpAWithTFs, hamming = 1e-02)@regNet[,paste0("Gene",1:numGenes)]
-pandaResB <- panda(motifsMelt, gexpBWithTFs, hamming = 1e-02)@regNet[,paste0("Gene",1:numGenes)]
+pandaAllA <- panda(motifsMelt, gexpAWithTFs, hamming = 1e-02)@regNet
+pandaAllB <- panda(motifsMelt, gexpBWithTFs, hamming = 1e-02)@regNet
+pandaResA <- pandaAllA[,paste0("Gene",1:numGenes)]
+pandaResB <- pandaAllB[,paste0("Gene",1:numGenes)]
 
 ## Compare to default strategy of pairwise results
 
@@ -85,20 +92,28 @@ directTMcor <- corTFA-corTFB
 wgcnaTFA <- mat2adj(t(tfExpA), method="WGCNA")
 wgcnaTFB <- mat2adj(t(tfExpB), method="WGCNA")
 directTMwgcna <- wgcnaTFA-wgcnaTFB
+tomTFA <- mat2adj(t(tfExpA), method="TOM")
+tomTFB <- mat2adj(t(tfExpB), method="TOM")
+directTMTOM <- tomTFA-tomTFB
+wgcna12TFA <- mat2adj(t(tfExpA), method="WGCNA",P=12)
+wgcna12TFB <- mat2adj(t(tfExpB), method="WGCNA",P=12)
+directTMwgcna12 <- wgcna12TFA-wgcna12TFB
 aracneTFA <- mat2adj(t(tfExpA), method="ARACNE")
 aracneTFB <- mat2adj(t(tfExpB), method="ARACNE")
 directTMaracne <- aracneTFA-aracneTFB
 clrTFA <- mat2adj(t(tfExpA), method="CLR")
 clrTFB <- mat2adj(t(tfExpB), method="CLR")
 directTMclr <- clrTFA-clrTFB
+directTMpanda <- pandaAllA[,-1:-numGenes]-pandaAllB[,-1:-numGenes]
+directTMpanda <- directTMpanda[,rownames(directTMpanda)]
 
-networkAUCROC <- function(netA, netB, title=""){
-    methodPred  <- prediction(c(netA,netB), c(matrixA_GS,matrixB_GS)>.5)
+networkAUCROC <- function(netA, title=""){
+    methodPred  <- prediction(c(netA), c(matrixA_GS)>.5)
     roc.methodPred  <- performance(methodPred, measure = c("tpr","auc"), x.measure = "fpr")
     auc.methodPred  <- performance(methodPred, "auc")@y.values[[1]]
     plot(roc.methodPred, main=paste0("ROC for ",title," networks"), col = 1, lwd=3)
     
-    p.value <- t.test(c(pearsonAdjMatA,pearsonAdjMatB), c(matrixA_GS,matrixB_GS)>.5)$p.value
+    p.value <- t.test(c(netA), c(matrixB_GS)>.5)$p.value
     if(p.value<2e-16){
         p.value <- "p < 2e-16"
     } else {
@@ -107,12 +122,19 @@ networkAUCROC <- function(netA, netB, title=""){
     abline(0,1)
     legend(.5,.6, paste0("AUCROC = ",round(auc.methodPred,4)," \n(",p.value,")"), lty=1,lwd=5,col=1)
 }
-networkAUCROC(pearsonAdjMatA, pearsonAdjMatB, "Cor")
-networkAUCROC(wgcnaA, wgcnaB, "WGCNA")
-networkAUCROC(aracneA, aracneB, "ARACNE")
-networkAUCROC(clrA, clrB, "CLR")
-networkAUCROC(pandaResA, pandaResB, "PANDA")
-networkAUCROC(motifs[,1:numGenes],motifs[,1:numGenes])
+getAUCROC <- function(netA){
+    methodPred  <- prediction(c(netA), c(matrixA_GS)>.5)
+    roc.methodPred  <- performance(methodPred, measure = c("tpr","auc"), x.measure = "fpr")
+    c(performance(methodPred, "auc")@y.values[[1]]
+}
+networkAUCROC(pearsonAdjMatA, "Cor")
+networkAUCROC(wgcnaA, "WGCNA")
+networkAUCROC(aracneA, "ARACNE")
+networkAUCROC(clrA, "CLR")
+networkAUCROC(tomA, "TOM")
+networkAUCROC(pandaResA, "PANDA")
+# networkAUCROC(pandaResANULL, "PANDA NULL")
+networkAUCROC(motifs[,1:numGenes], "Motifs")
 
 # networkAUCROC(bereResA, bereResB, "BERE")
 # networkAUCROC(pearsonAdjMatA+motifs, pearsonAdjMatB+motifs, "WGCNA w/motif")
@@ -206,10 +228,13 @@ ROCforTransitions(tm.panda, .5, method="PANDA")
 # ROCforTransitions(tm.bere, method="BERE")
 
 
-ROCforTransitions(directTMcor, .5, method="Correlation Network")
-ROCforTransitions(directTMwgcna, .5, method="Correlation Network")
-ROCforTransitions(directTMaracne, .5, method="Correlation Network")
-ROCforTransitions(directTMclr, .5, method="Correlation Network")
+ROCforTransitions(directTMcor, .5, method="Correlation Network (direct)")
+ROCforTransitions(directTMwgcna, .5, method="WGCNA Network (direct)")
+ROCforTransitions(directTMwgcna12, .5, method="WGCNA Network, P=12 (direct)")
+ROCforTransitions(directTMTOM, .5, method="TOM Network (direct)")
+ROCforTransitions(directTMaracne, .5, method="ARACNE Network (direct)")
+ROCforTransitions(directTMclr, .5, method="CLR Network (direct)")
+ROCforTransitions(directTMpanda, .5, method="PANDA Network (direct)")
 
 combinedGEXP <- cbind(gexpA, gexpB)
 combinedTFEXP <- cbind(tfExpA,tfExpB) 
