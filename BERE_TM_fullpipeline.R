@@ -3,6 +3,7 @@ library(pandaR)
 library(bptools)
 library(reshape2)
 library(penalized)
+library(Biobase)
 
 analysisCode <- sample(100000,1)
 
@@ -21,6 +22,14 @@ clinicalFile <- "~/gd/Harvard/Research/data/GTEx/GTEx_clinical.txt"
 #clinicalFile <- "~/gd/Harvard/Research/data/COPDGene/COPDGene_clinical.txt"
 #clinicalFile <- "~/gd/Harvard/Research/data/Eclipse/ECLIPSE_blood.txt"
 #clinicalFile <- "~/gd/Harvard/Research/data/LGRC/lgrc.merged.clinical.data.clean.txt"
+
+exprFile <- "./gd/Harvard/Research/data/GTEx/gtex_cell.rdata"
+motifFile <- "./gd/Harvard/Research/data/GTEx/KG_cisbp_652.txt"
+phenotypeName <- "our_subtypes"
+casesString <- "cells_ebv-transformed_lymphocytes"
+controlsString <- "skin"
+filterType <- NA
+
 # casesString <- "COPD Subjects"
 # controlsString <- "Smoker Controls"
 # phenotypeName <- "Subject.type"
@@ -53,7 +62,7 @@ if(length(args)!=0){
         filterType <- args[11]
         filterBy <- args[12]
         if(filterType=="NA"){
-          filterType <- NA
+            filterType <- NA
         }
     } else {
         filterType <- NA
@@ -70,15 +79,44 @@ write.csv(args,file=file.path(outputDir,paste("arguments_",analysisCode,".txt",s
 
 # Set the network inference method
 if(networkInferenceName=="bere"){
-  networkInferenceMethod <- bere  
+    networkInferenceMethod <- bere  
 }
 if(networkInferenceName=="bereFull"){
-  networkInferenceMethod <- bereFull
+    networkInferenceMethod <- bereFull
 }
 if(networkInferenceName=="panda"){
-  networkInferenceMethod <- function(motifs, exp){
-      panda(motifs, exp)@regNet
-  }
+    networkInferenceMethod <- function(motifs, exp){
+        panda(motifs, exp)@regNet
+    }
+}
+if(networkInferenceName=="pandaC"){
+    networkInferenceMethod <- function(motifs, exp){
+        randindex <- sample(10000000000,1)
+        # write the files to disk
+        motifFile <- file.path("~/tmp", paste0("_motifs_tmp",randindex,".txt"))
+        expFile   <- file.path("~/tmp", paste0("_exp_tmp",randindex,".txt"))
+        outFile   <- paste0("output", randindex)
+        write.table(motifs, motifFile, sep="\t", quote=F, col.names = F,  row.names = F)
+        write.table(exp, expFile, sep="\t", quote=F, col.names = F)
+        
+        system(paste0("./gd/Harvard/Research/panda/Version2/PANDA ",
+                      "-e ", expFile, " ",
+                      "-m ", motifFile, " ",
+                      "-o ", outFile, " ",
+                      "-k 4"
+        ))
+        
+        # read in results
+        regnet <- read.table(paste0(outFile, "_FinalNetwork.pairs"), header=F)
+        regnet <- dcast(regnet, V1 ~ V2, value.var='V4')
+        rownames(regnet) <- regnet[,1]
+        regnet <- regnet[,-1]
+        
+        # clean up
+        system(paste0('rm ',motifFile))
+        system(paste0('rm ',expFile))
+        system(paste0('rm ',outFile, "_FinalNetwork.pairs"))
+    }
 }
 if(networkInferenceName=="pandaMatlab"){
     networkInferenceMethod <- function(motifs, exp){
@@ -113,10 +151,28 @@ if(networkInferenceName=="pandaMatlab"){
 ##                                                 ###
 ######################################################
 dataset <- list()
-dataset$motif    <- read.table(motifFile,header=F)
-dataset$exp      <- read.table(exprFile,row.names=1,header=T)
+if (grepl(".txt", exprFile)){
+    dataset$motif    <- read.table(motifFile,header=F)
+    dataset$exp      <- read.table(exprFile,row.names=1,header=T)
+    dataset$clinical <- read.table(clinicalFile,header=T,fill = TRUE, sep="\t",row.names=1)
+} else if (grepl(".rdata", exprFile)){
+    #GTEx analysis
+    load(exprFile)
+    dataset$motif    <- cbind(read.table(motifFile,header=F),1)
+    dataset$exp      <- exprs(both)
+    dataset$clinical <- pData(both)
+    
+    # Remove ensembl decimal and value after
+    rownames(dataset$exp) <- substring(rownames(dataset$exp),1,15)
+    
+    #Get top 20,000 variable genes
+    rowsds <- sort(apply(dataset$exp, 1, sd), decreasing=T)
+    genesIncluded <- names(rowsds[1:19000])
+    dataset$exp <- dataset$exp[genesIncluded,]
+    dataset$motif <- dataset$motif[dataset$motif[,2]%in%genesIncluded,]
+    
+}
 dataset$ppi      <- read.table(ppiFile,header=F)
-dataset$clinical <- read.table(clinicalFile,header=T,fill = TRUE, sep="\t",row.names=1)
 dataset$exp      <- dataset$exp[,order(colnames(dataset$exp))]  # Make sure expression and clinical is in same order
 
 # Removed this substring line for GTEx data (may need to reinsert for some other dataset)
@@ -128,10 +184,10 @@ dataset$clinical <- dataset$clinical[matches,]    # Make sure clinical only cont
 dataset$exp <- dataset$exp[,matches]    # Make sure expression only contains patients with clinical data
 
 if(permuteGeneLabels){
-  print("Permuting gene labels once")
-  rownames(dataset$exp) <- sample(rownames(dataset$exp))
+    print("Permuting gene labels once")
+    rownames(dataset$exp) <- sample(rownames(dataset$exp))
 } else {
-  print("No gene label permutation (default)")
+    print("No gene label permutation (default)")
 }
 
 # Specify the group partition
@@ -189,6 +245,8 @@ if(!is.na(num_cores)){
 strt<-Sys.time()
 iters <- nullPerms
 #loop
+print("Running null permutations in parallel")
+print(paste0(num_cores," cores used"))
 null.networks<-foreach(icount(iters),.packages=c("bereR","pandaR","reshape2","penalized")) %dopar% {
     print("creating a coupla null networks")
     
@@ -209,10 +267,10 @@ if(!is.na(num_cores)){
 }
 
 
-  
-  
-  # Add new null permutations to existing list if any
-  # This step is to allow for skipping the above step and starting with a stored null set
+
+
+# Add new null permutations to existing list if any
+# This step is to allow for skipping the above step and starting with a stored null set
 # if (file.exists(copd.filename)){
 # null.networks <- append(null.networks, readRDS("null.networks_all.rds"))
 # }
@@ -238,7 +296,7 @@ tm.observed <- transformation.matrix(dataset$casesNetwork, dataset$controlsNetwo
 
 # Calculate the transformation matrix for the null data
 tm.null <- lapply(null.networks, function(x){
-  transformation.matrix(x[[1]],x[[2]],method="ols",remove.diagonal = T)
+    transformation.matrix(x[[1]],x[[2]],method="ols",remove.diagonal = T)
 })
 
 # This object will be in the many GB range

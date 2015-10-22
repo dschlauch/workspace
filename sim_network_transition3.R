@@ -128,7 +128,7 @@ getAUCROC <- function(netA){
     c(performance(methodPred, "auc")@y.values[[1]]
 }
 networkAUCROC(pearsonAdjMatA, "Cor")
-networkAUCROC(wgcnaA, "WGCNA")
+networkAUCROC(wgcnaA6, "WGCNA")
 networkAUCROC(aracneA, "ARACNE")
 networkAUCROC(clrA, "CLR")
 networkAUCROC(tomA, "TOM")
@@ -139,12 +139,14 @@ networkAUCROC(motifs[,1:numGenes], "Motifs")
 # networkAUCROC(bereResA, bereResB, "BERE")
 # networkAUCROC(pearsonAdjMatA+motifs, pearsonAdjMatB+motifs, "WGCNA w/motif")
 
-tm.gs      <- transformation.matrix(matrixA_GS, matrixB_GS, remove.diagonal=T, standardize=F, method="ols")
-tm.pearson <- transformation.matrix(pearsonAdjMatA, pearsonAdjMatB, remove.diagonal=T, standardize=F, method="ols")
-tm.wgcna   <- transformation.matrix(wgcnaA, wgcnaB, remove.diagonal=T, standardize=F, method="ols")
-tm.aracne  <- transformation.matrix(aracneA, aracneB, remove.diagonal=T, standardize=F, method="ols")
-tm.clr     <- transformation.matrix(clrA, clrB, remove.diagonal=T, standardize=F, method="ols")
-tm.panda   <- transformation.matrix(pandaResA, pandaResB, remove.diagonal=T, standardize=F, method="ols")
+tm.gs        <- transformation.matrix(matrixA_GS, matrixB_GS, remove.diagonal=T, standardize=F, method="ols")
+tm.pearson   <- transformation.matrix(pearsonAdjMatA, pearsonAdjMatB, remove.diagonal=T, standardize=F, method="ols")
+tm.wgcna6    <- transformation.matrix(wgcnaA6, wgcnaB6, remove.diagonal=T, standardize=F, method="ols")
+tm.wgcna12   <- transformation.matrix(wgcnaA12, wgcnaB12, remove.diagonal=T, standardize=F, method="ols")
+tm.aracne    <- transformation.matrix(aracneA, aracneB, remove.diagonal=T, standardize=F, method="ols")
+tm.clr       <- transformation.matrix(clrA, clrB, remove.diagonal=T, standardize=F, method="ols")
+tm.tom       <- transformation.matrix(tomA, tomB, remove.diagonal=T, standardize=F, method="ols")
+tm.panda     <- transformation.matrix(pandaResA, pandaResB, remove.diagonal=T, standardize=F, method="ols")
 # tm.bere <- transformation.matrix(bereResA, bereResB, remove.diagonal=T, standardize=F, method="ols")
 
 heatmap.2(tm.gs, col=colorRampPalette(c("blue", "white", "red"))(n = 1000), density.info="none", trace="none", dendrogram="none", Colv=FALSE, Rowv=FALSE)
@@ -184,9 +186,11 @@ plotStrengthVsTransitionRank <- function(tm){
 
 plotStrengthVsTransitionRank(tm.penL1)
 plotStrengthVsTransitionRank(tm.pearson)
-plotStrengthVsTransitionRank(tm.wgcna)
+plotStrengthVsTransitionRank(tm.wgcna6)
+plotStrengthVsTransitionRank(tm.wgcna12)
 plotStrengthVsTransitionRank(tm.aracne)
 plotStrengthVsTransitionRank(tm.clr)
+plotStrengthVsTransitionRank(tm.tom)
 plotStrengthVsTransitionRank(tm.panda)
 # plotStrengthVsTransitionRank(tm.bere)
 
@@ -197,16 +201,16 @@ summary(lm(dtfi_true ~ dtfi_obs))
 
 
 # ROC for transitions
-ROCforTransitions <- function(tm, alpha=.001,method=""){
-#     TM_GS <- matrix(0,nrow=numTFs,ncol=numTFs)
-#     for(i in 1:numTransitions){
-#         TM_GS[TFAs[i],TFBs[i]]<-1
-#     }
-#     goldStandard <- c(TM_GS)>=1
+ROCforTransitions <- function(tm, tm2, alpha=.001,method=""){
+    
     goldStandard <- abs(c(tm.gs))>alpha
     methodPred  <- prediction(abs(c(tm)), goldStandard)
     roc.methodPred  <- performance(methodPred, measure = c("tpr","auc"), x.measure = "fpr")
     auc.methodPred  <- performance(methodPred, "auc")@y.values[[1]]
+    methodPred2  <- prediction(abs(c(tm2)), goldStandard)
+    roc.methodPred2  <- performance(methodPred2, measure = c("tpr","auc"), x.measure = "fpr")
+    auc.methodPred2  <- performance(methodPred2, "auc")@y.values[[1]]
+    
     
     p.value <- round(t.test(abs(c(tm))[goldStandard], abs(c(tm))[!goldStandard])$p.value,4)
     if(p.value<2e-16){
@@ -214,17 +218,26 @@ ROCforTransitions <- function(tm, alpha=.001,method=""){
     } else {
         p.value <- paste0("p = ", p.value)
     }
+    p.value2 <- round(t.test(abs(c(tm2))[goldStandard], abs(c(tm2))[!goldStandard])$p.value,4)
+    if(p.value2<2e-16){
+        p.value2 <- "p < 2e-16"
+    } else {
+        p.value2 <- paste0("p = ", p.value2)
+    }
     plot(roc.methodPred, main=paste0("ROC for transitions (",method,")"), col = 1, lwd=3)
-    #     legend(.5,.2, paste("AUCROC =",round(auc.methodPred,4)), lty=1,lwd=5,col=1)
+    lines(roc.methodPred2@x.values[[1]], roc.methodPred2@y.values[[1]], col = 2, lwd=3)
     abline(0,1)
-    legend(.5,.2, paste0("AUCROC = ",round(auc.methodPred,4)," \n(",p.value,")"), lty=1,lwd=5,col=1)
+    legend(.5,.2, c(paste0("AUCROC = ",round(auc.methodPred,4)," \n(",p.value,")"),paste0("AUCROC = ",round(auc.methodPred2,4)," \n(",p.value2,")")), 
+           lty=1,lwd=5,col=c(1,2))
 }
 ROCforTransitions(tm.gs,method="Gold Standard")
-ROCforTransitions(tm.pearson, .5, method="Correlation Network")
-ROCforTransitions(tm.wgcna, .5, method="WGCNA")
-ROCforTransitions(tm.aracne, .5, method="ARACNE")
-ROCforTransitions(tm.clr, .5, method="CLR")
-ROCforTransitions(tm.panda, .5, method="PANDA")
+ROCforTransitions(tm.pearson, directTMcor, .5, method="Correlation Network")
+ROCforTransitions(tm.wgcna6, directTMwgcna, .5, method="WGCNA (6)")
+ROCforTransitions(tm.wgcna12, directTMwgcna12, .5, method="WGCNA (12)")
+ROCforTransitions(tm.aracne, directTMaracne, .4, method="ARACNE")
+ROCforTransitions(tm.clr, directTMclr, .5, method="CLR")
+ROCforTransitions(tm.tom, directTMTOM, .5, method="TOM")
+ROCforTransitions(tm.panda, directTMpanda, .5, method="PANDA")
 # ROCforTransitions(tm.bere, method="BERE")
 
 

@@ -680,3 +680,55 @@ legend(-2,7,       c("Null COPD","Null SMC"),       lty=c(1,1,1),lwd=c(2.5,2.5,2
 
 #8/10/15 Plot for comparison of two TM TF-TF transitions
 qplot(c(tm.observed.COPGene[highlight.tfs,highlight.tfs]),c(tm.observed.ECLIPSE[highlight.tfs,highlight.tfs]), size=20, color=c(sapply(highlight.tfs, rep, 9)))
+
+
+# 10/9/15 exploring properties of extreme p-values
+library(MASS)
+library(pcalg)
+
+numPerms <- 10000
+numSamples <- 10000
+probGenos <- c(rep(.02,numSamples/2),rep(.01,numSamples/2))
+probPhenos <- c(rep(.1,numSamples/2),rep(.02,numSamples/2))
+
+suspectLoci <- rbinom(numSamples, size=1, prob=probGenos)
+correctionVec <- c(rep(0,numSamples/2),rep(1,numSamples/2))
+x <- cbind(1, correctionVec)
+correctionHat  <- x %*% ginv(t(x)%*%x) %*% t(x)
+suspectFitted <- correctionHat %*% suspectLoci
+correctedSuspect <- suspectLoci - suspectFitted
+suspectPheno <- replicate(numPerms, rbinom(numSamples, size=1, prob=probPhenos))
+suspectPhenoFitted <- correctionHat %*% suspectPheno
+correctedsuspectPheno <- suspectPheno - suspectPhenoFitted
+correlations <- cor(correctedSuspect, correctedsuspectPheno)
+uncorrectedCorrelations <- cor(suspectLoci, suspectPheno)
+
+xProb <- suspectFitted/2
+xVariances <- 2*xProb*(1-xProb) #variance of Binomial(2,xProb)
+ yVariances <- suspectPhenoFitted*(1-suspectPhenoFitted)
+# yVariances <- rbind(matrix(.02*.98,nrow=numSamples/2,ncol=numPerms),matrix(.09,nrow=numSamples/2,ncol=numPerms))
+#yVariances <- matrix(probPhenos*(1-probPhenos),nrow=numSamples,ncol=numPerms)
+
+zvar <- t(yVariances)%*%xVariances
+numerator <- zvar
+denominator <- colSums(yVariances)%*%t(colSums(xVariances))
+varRsq <- numerator/denominator
+varianceFactor <- 1/varRsq
+which(is.nan(c(varianceFactor)))
+
+nullnegLogPValue <- -log((1:numPerms)/numPerms)
+negLogPValueUncorrected <- -log(1-pt(uncorrectedCorrelations*sqrt(c(numSamples-2)/c(1-uncorrectedCorrelations^2)), numSamples))
+negLogPValue <- -log(1-pt(correlations*sqrt(c(varianceFactor-2)/c(1-correlations^2)), varianceFactor))
+negLogPValueN <- -log(1-pt(correlations*sqrt(c(numSamples-2)/c(1-correlations^2)), numSamples))
+plot(sort(c(nullnegLogPValue)), sort(c(negLogPValueN),na.last=F), col="red")
+points(sort(c(nullnegLogPValue)), sort(c(negLogPValue),na.last=F), col="blue")
+points(sort(c(nullnegLogPValue)), sort(c(negLogPValueUncorrected),na.last=F), col="black")
+legend(4,2, c("Uncorrected","Corrected by pop","Corrected by pop and variance"), lty=1,lwd=5,col=c("black","red","blue"))
+abline(0,1)
+
+
+combinedMat<- cbind(suspectLoci, correctionVec, suspectPheno)
+g.pvalue <- sapply(which(negLogPValueN>5 & negLogPValueN<5.3), function(i){
+    -log(gSquareBin(1,i+2,2,combinedMat))
+    })
+g.pvalue
