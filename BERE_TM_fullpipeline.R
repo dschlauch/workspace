@@ -116,34 +116,44 @@ if(networkInferenceName=="pandaC"){
         system(paste0('rm ',motifFile))
         system(paste0('rm ',expFile))
         system(paste0('rm ',outFile, "_FinalNetwork.pairs"))
+        regnet
     }
 }
-if(networkInferenceName=="pandaMatlab"){
+if(networkInferenceName=="pandaM"){
     networkInferenceMethod <- function(motifs, exp){
         randindex <- sample(10000000000,1)
         
         # write the files to disk
         motifFilename <- paste("_motifs_tmp",randindex,".txt",sep="")
         expFilename <- paste("_exp_tmp",randindex,".txt",sep="")
-        write.table(motifs, file.path("~/panda_matlab","tmp_files",motifFilename), sep="\t", quote=F, col.names = F,  row.names = F)
-        write.table(exp, file.path("~/panda_matlab","tmp_files",expFilename), sep="\t", quote=F, col.names = F)
+        outFile   <- paste0("output", randindex)
+        write.table(motifs, file.path("/scratch/",motifFilename), sep="\t", quote=F, col.names = F,  row.names = F)
+        write.table(exp, file.path("/scratch/",expFilename), sep="\t", quote=F, col.names = F)
         
         # Copy master panda script
         system(paste('cp ','~/panda_matlab/RunPANDA.m ','~/panda_matlab/RunPANDA', randindex,'.m',sep=""))
         
         # Set file pointers
-        system(paste("sed -i 's/motifPlaceholder.txt/", motifFilename, "/g' ~/panda_matlab/RunPANDA", randindex,".m", sep=""))
-        system(paste("sed -i 's/expPlaceholder.txt/", expFilename, "/g' ~/panda_matlab/RunPANDA", randindex,".m", sep=""))
+        system(paste0("sed -i 's/motifPlaceholder.txt/", motifFilename, "/g' ~/panda_matlab/RunPANDA", randindex,".m"))
+        system(paste0("sed -i 's/expPlaceholder.txt/", expFilename, "/g' ~/panda_matlab/RunPANDA", randindex,".m"))
+        system(paste0("sed -i 's/PANDAOutputPlaceholder/", outFile, "/g' ~/panda_matlab/RunPANDA", randindex,".m"))
         
         # Run matlab script
-        system(paste("matlab -nojvm -nodesktop -r 'run  ~/panda_matlab/RunPANDA", randindex,".m;quit'",sep=""))
+        system(paste0("matlab -nojvm -nodesktop -r 'run  ~/panda_matlab/RunPANDA", randindex,".m;quit'"))
         
         # clean up
-        system(paste('rm ',file.path("~/panda_matlab","tmp_files", motifFilename)))
-        system(paste('rm ',file.path("~/panda_matlab","tmp_files", expFilename)))
+        system(paste0('rm ',file.path("/scratch", motifFilename)))
+        system(paste0('rm ',file.path("/scratch", expFilename)))
+        system(paste0('rm ',file.path("~/panda_matlab", paste0("RunPANDA",randindex,".m"))))
         
         # load results back into R
-        # TODO 8/20/15
+        # read in results
+        regnet <- read.table(paste0(outFile, "_FinalNetwork.pairs"), header=F)
+        system(paste0('rm ',file.path("~/panda_matlab", paste0(outFile, "_FinalNetwork.pairs"))))
+        regnet <- dcast(regnet, TF ~ gene, value.var='PANDA.prediction')
+        rownames(regnet) <- regnet[,1]
+        regnet <- regnet[,-1]
+        regnet
     }
 }
 ######################################################
@@ -219,11 +229,11 @@ controlsFilter <- dataset$clinical[,phenotypeName]==controlsString
 ##                 2/25/15    START                ###
 ######################################################
 
-dataset$casesNetwork <- networkInferenceMethod(dataset$motif,dataset$exp[,casesFilter])
-dataset$controlsNetwork <- networkInferenceMethod(dataset$motif,dataset$exp[,controlsFilter])
-
-# periodically save workspace
-save.image(file=file.path(outputDir,paste("activeImage",analysisCode,".RData",sep="")))
+# dataset$casesNetwork <- networkInferenceMethod(dataset$motif,dataset$exp[,casesFilter])
+# dataset$controlsNetwork <- networkInferenceMethod(dataset$motif,dataset$exp[,controlsFilter])
+# 
+# # periodically save workspace
+# save.image(file=file.path(outputDir,paste("activeImage",analysisCode,".RData",sep="")))
 
 # Copy expression data for null network generation
 null.exp <- dataset$exp
@@ -243,22 +253,27 @@ if(!is.na(num_cores)){
 
 #start time
 strt<-Sys.time()
-iters <- nullPerms
+iters <- nullPerms*2+2 # Two networks for each partition, plus observed partition
 #loop
 print("Running null permutations in parallel")
 print(paste0(num_cores," cores used"))
-null.networks<-foreach(icount(iters),.packages=c("bereR","pandaR","reshape2","penalized")) %dopar% {
-    print("creating a coupla null networks")
-    
-    ## This line scrambles the gene names (toggle this) 8/18/15
-    rownames(null.exp) <- rownames(null.exp)[sample(1:nrow(null.exp))]
-    
-    ## resample case-control
-    null.exp <- null.exp[,sample(1:ncol(null.exp))]
-    
-    res1 <- networkInferenceMethod(dataset$motif,null.exp[,casesFilter])
-    res2 <- networkInferenceMethod(dataset$motif,null.exp[,controlsFilter])
-    list(res1,res2) 
+null.networks<-foreach(i=1:iters,.packages=c("bereR","pandaR","reshape2","penalized")) %dopar% {
+    if(i%%2==0){
+        selectedSamples <- casesFilter
+    } else {
+        selectedSamples <- controlsFilter
+    }
+    if(i<=2){
+        # Observed partition : Don't reorder anything
+        null.exp <- dataset$exp
+    } else {
+        # Null partition, randomly reorder
+        ## resample case-control
+        null.exp <- dataset$exp[,sample(1:ncol(dataset$exp))]
+        ## This line scrambles the gene names (toggle this) 8/18/15
+        #     rownames(null.exp) <- rownames(null.exp)[sample(1:nrow(null.exp))]
+    }
+    networkInferenceMethod(dataset$motif,null.exp[,selectedSamples])
 }
 
 print(Sys.time()-strt)
@@ -291,13 +306,16 @@ if(!is.na(num_cores)){
 #####################################################
 
 # Calculate the transformation matrix for the observed data
-tm.observed <- transformation.matrix(dataset$casesNetwork, dataset$controlsNetwork,remove.diagonal=T,method="ols")
+tm.observed <- transformation.matrix(null.networks[2], null.networks[1],remove.diagonal=T,method="ols")
 
 
 # Calculate the transformation matrix for the null data
-tm.null <- lapply(null.networks, function(x){
-    transformation.matrix(x[[1]],x[[2]],method="ols",remove.diagonal = T)
+tm.null <- lapply(1:nullPerms, function(x){
+    transformation.matrix(null.networks[[2*x+1]],x[[2*x+2]],method="ols",remove.diagonal = T)
 })
+
+dataset$controlsNetwork <- null.networks[1]
+dataset$casesNetwork <- null.networks[2]
 
 # This object will be in the many GB range
 rm(null.networks)
