@@ -116,7 +116,7 @@ if(networkInferenceName=="pandaC"){
         system(paste0('rm ',motifFile))
         system(paste0('rm ',expFile))
         system(paste0('rm ',outFile, "_FinalNetwork.pairs"))
-        regnet
+        as.matrix(regnet)
     }
 }
 if(networkInferenceName=="pandaM"){
@@ -141,19 +141,23 @@ if(networkInferenceName=="pandaM"){
         # Run matlab script
         system(paste0("matlab -nojvm -nodesktop -r 'run  ~/panda_matlab/RunPANDA", randindex,".m;quit'"))
         
-        # clean up
-        system(paste0('rm ',file.path("/scratch", motifFilename)))
-        system(paste0('rm ',file.path("/scratch", expFilename)))
-        system(paste0('rm ',file.path("~/panda_matlab", paste0("RunPANDA",randindex,".m"))))
+        # clean up (removed after switching to scrarch space)
+#         system(paste0('rm ',file.path("/scratch", motifFilename)))
+#         system(paste0('rm ',file.path("/scratch", expFilename)))
+        system(paste0('rm ',file.path("~/panda_matlab/", paste0("RunPANDA",randindex,".m"))))
         
         # load results back into R
         # read in results
-        regnet <- read.table(paste0(outFile, "_FinalNetwork.pairs"), header=F)
-        system(paste0('rm ',file.path("~/panda_matlab", paste0(outFile, "_FinalNetwork.pairs"))))
+        regnet <- read.table(paste0("/scratch/", outFile, "_FinalNetwork.pairs"), header=T)
+#         system(paste0('rm ',file.path("~/panda_matlab", paste0(outFile, "_FinalNetwork.pairs"))))
         regnet <- dcast(regnet, TF ~ gene, value.var='PANDA.prediction')
         rownames(regnet) <- regnet[,1]
         regnet <- regnet[,-1]
-        regnet
+        res <- as.matrix(regnet)
+        if(sum(is.na(res))>0){
+            saveRDS(list(exp,res,motifs),paste0("FailedNetwork",randindex,".rda"))
+        }
+        res
     }
 }
 ######################################################
@@ -244,6 +248,7 @@ library(doParallel)
 
 # Calculate the number of cores
 num_cores <- detectCores() - 4
+num_cores <- min(num_cores, 20)
 
 # Initiate cluster
 if(!is.na(num_cores)){
@@ -252,12 +257,14 @@ if(!is.na(num_cores)){
 }
 
 #start time
-strt<-Sys.time()
+strt  <- Sys.time()
 iters <- nullPerms*2+2 # Two networks for each partition, plus observed partition
 #loop
 print("Running null permutations in parallel")
 print(paste0(num_cores," cores used"))
+print(paste0(iters," networks to be estimated"))
 null.networks<-foreach(i=1:iters,.packages=c("bereR","pandaR","reshape2","penalized")) %dopar% {
+    print(paste0("Running iteration ", i))
     if(i%%2==0){
         selectedSamples <- casesFilter
     } else {
@@ -273,7 +280,17 @@ null.networks<-foreach(i=1:iters,.packages=c("bereR","pandaR","reshape2","penali
         ## This line scrambles the gene names (toggle this) 8/18/15
         #     rownames(null.exp) <- rownames(null.exp)[sample(1:nrow(null.exp))]
     }
-    networkInferenceMethod(dataset$motif,null.exp[,selectedSamples])
+    #     null.exp <- null.exp + matrix(rnorm(length(null.exp))/10,nrow=nrow(null.exp),ncol=ncol(null.exp))
+    null.exp <- null.exp[,selectedSamples]
+    if (sum(rowSums(null.exp)==0)>0){
+        zeroGenes <- which(rowSums(null.exp)==0)
+        for(gene in zeroGenes){
+            null.exp[gene,] <- rnorm(ncol(null.exp))
+        }
+    }
+    tmpNet <- networkInferenceMethod(dataset$motif, null.exp)
+    print(paste0("Finished running iteration", i))
+    tmpNet
 }
 
 print(Sys.time()-strt)
@@ -305,17 +322,37 @@ if(!is.na(num_cores)){
 ###  TF analysis
 #####################################################
 
-# Calculate the transformation matrix for the observed data
-tm.observed <- transformation.matrix(null.networks[2], null.networks[1],remove.diagonal=T,method="ols")
+if(!is.na(num_cores)){
+    cl <- makeCluster(num_cores)
+    registerDoParallel(cl)
+}
 
+strt  <- Sys.time()
+#loop
+print("Running transition calculations in parallel")
+print(paste0(num_cores," cores used"))
+print(paste0(length(null.networks)/2," transitions to be estimated"))
+transMatrices <- foreach(i=1:(length(null.networks)/2),.packages=c("bptools","reshape2","penalized")) %dopar% {
+    transformation.matrix(null.networks[[2*i]], null.networks[[2*i-1]],remove.diagonal=T,method="ols")    
+}
 
-# Calculate the transformation matrix for the null data
-tm.null <- lapply(1:nullPerms, function(x){
-    transformation.matrix(null.networks[[2*x+1]],x[[2*x+2]],method="ols",remove.diagonal = T)
-})
+print(Sys.time()-strt)
+if(!is.na(num_cores)){
+    stopCluster(cl)
+}
 
-dataset$controlsNetwork <- null.networks[1]
-dataset$casesNetwork <- null.networks[2]
+# Parallelized this part on 10/30/15
+# # Calculate the transformation matrix for the observed data
+# tm.observed <- transformation.matrix(null.networks[[2]], null.networks[[1]],remove.diagonal=T,method="ols")
+# 
+# 
+# # Calculate the transformation matrix for the null data
+# tm.null <- lapply(1:nullPerms, function(x){
+#     transformation.matrix(null.networks[[2*x+2]],null.networks[[2*x+1]],method="ols",remove.diagonal = T)
+# })
+
+# dataset$controlsNetwork <- null.networks[1]
+# dataset$casesNetwork <- null.networks[2]
 
 # This object will be in the many GB range
 rm(null.networks)
@@ -326,11 +363,11 @@ save.image(file=file.path(outputDir,paste("activeImage",analysisCode,".RData",se
 
 
 # Do the sum of sq ODM plot versus null
-png(file.path(outputDir,paste('SSODMplot_unscaled',analysisCode,'.png', sep="")), width=1600)
-ssodm.plot(tm.observed, tm.null,plot.title=paste("SSODM observed and null, ",casesString," vs ",controlsString,' : ', networkInferenceName, ' : ', analysisName, sep=""))
+png(file.path(outputDir,paste('SSODMplot_unscaled',analysisCode,'.png', sep="")), width=4800)
+ssodm.plot(transMatrices[[1]], transMatrices[-1],plot.title=paste("SSODM observed and null, ",casesString," vs ",controlsString,' : ', networkInferenceName, ' : ', analysisName, sep=""))
 dev.off()
-png(file.path(outputDir,paste('SSODMplot_scaled',analysisCode,'.png', sep="")), width=1600)
-ssodm.plot(tm.observed, tm.null, rescale=T, plot.title=paste("SSODM observed and null, ",casesString," vs ",controlsString,' : ', networkInferenceName, ' : ', analysisName, sep=""))
+png(file.path(outputDir,paste('SSODMplot_scaled',analysisCode,'.png', sep="")), width=4800)
+ssodm.plot(transMatrices[[1]], transMatrices[-1], rescale=T, plot.title=paste("SSODM observed and null, ",casesString," vs ",controlsString,' : ', networkInferenceName, ' : ', analysisName, sep=""))
 dev.off()
 
 # Top TFs
@@ -400,7 +437,7 @@ diff.exp.res <- ebayes(diff.exp.res)
 # 7/28/15 
 # create results table
 
-dTFI_pVals <- 1-calculate.tm.p.values(tm.observed, tm.null)
+dTFI_pVals <- 1-calculate.tm.p.values(transMatrices[[1]], transMatrices[-1])
 dTFI_pVals <- dTFI_pVals[names(dTFI_pVals)%in%rownames(diff.exp.res$p.value)]
 dTFI_fdr   <- p.adjust(dTFI_pVals, method = 'fdr')
 #includedTFs <- intersect(names(dTFI_pVals),rownames(diff.exp.res$p.value))
