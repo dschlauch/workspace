@@ -436,16 +436,25 @@ diff.exp.res <- ebayes(diff.exp.res)
 
 # 7/28/15 
 # create results table
-
+# 10/30/15 updates for GTEx, which does not (or I'm not using) expression values for TFs
+obsSsodm <- apply(transMatrices[[1]],1,function(x){t(x)%*%x})
 dTFI_pVals <- 1-calculate.tm.p.values(transMatrices[[1]], transMatrices[-1])
-dTFI_pVals <- dTFI_pVals[names(dTFI_pVals)%in%rownames(diff.exp.res$p.value)]
+negLogPValues <- -log(dTFI_pVals)
+labels <- names(obsSsodm)
+labels[negLogPValues<20&(negLogPValues!=Inf)]<-""
+plotDF <- data.frame(obsSsodm, negLogPValues, "labels"=labels)
+png(file.path(outputDir,paste('Volcano plot',analysisCode,'.png', sep="")), width=1200)
+ggplot(data=plotDF,aes(x=obsSsodm, y=negLogPValues, label=labels)) + geom_point() + geom_text(vjust=0)
+dev.off()
+# dTFI_pVals <- dTFI_pVals[names(dTFI_pVals)%in%rownames(diff.exp.res$p.value)]
 dTFI_fdr   <- p.adjust(dTFI_pVals, method = 'fdr')
 #includedTFs <- intersect(names(dTFI_pVals),rownames(diff.exp.res$p.value))
 limma_pVals <- diff.exp.res$p.value[names(dTFI_pVals),2]
 limma_fdr <- p.adjust(limma_pVals, method = 'fdr')
-resultTable <- cbind(dTFI_pVals,dTFI_fdr,limma_pVals,limma_fdr)
+resultTable <- cbind(obsSsodm,dTFI_pVals,dTFI_fdr)
 resultTable <- resultTable[order(dTFI_pVals),]
-write.csv(resultTable,file=file.path(outputDir,paste("resultTable",analysisCode,".txt", sep="")))
+colnames(resultTable) <- c("Magnitude","dTFI uncorrected p-value","dTFI FDR")
+write.csv(resultTable,file=file.path(outputDir,paste("resultTable",analysisCode,".csv", sep="")))
 # periodically save workspace
 save.image(file=file.path(outputDir,paste("activeImage",analysisCode,".RData",sep="")))
 
