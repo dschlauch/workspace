@@ -323,7 +323,7 @@ if(!is.na(num_cores)){
 #####################################################
 
 if(!is.na(num_cores)){
-    cl <- makeCluster(num_cores)
+    cl <- makeCluster(4)
     registerDoParallel(cl)
 }
 
