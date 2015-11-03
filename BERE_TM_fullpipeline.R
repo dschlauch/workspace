@@ -142,14 +142,14 @@ if(networkInferenceName=="pandaM"){
         system(paste0("matlab -nojvm -nodesktop -r 'run  ~/panda_matlab/RunPANDA", randindex,".m;quit'"))
         
         # clean up (removed after switching to scrarch space)
-#         system(paste0('rm ',file.path("/scratch", motifFilename)))
-#         system(paste0('rm ',file.path("/scratch", expFilename)))
+        #         system(paste0('rm ',file.path("/scratch", motifFilename)))
+        #         system(paste0('rm ',file.path("/scratch", expFilename)))
         system(paste0('rm ',file.path("~/panda_matlab/", paste0("RunPANDA",randindex,".m"))))
         
         # load results back into R
         # read in results
         regnet <- read.table(paste0("/scratch/", outFile, "_FinalNetwork.pairs"), header=T)
-#         system(paste0('rm ',file.path("~/panda_matlab", paste0(outFile, "_FinalNetwork.pairs"))))
+        #         system(paste0('rm ',file.path("~/panda_matlab", paste0(outFile, "_FinalNetwork.pairs"))))
         regnet <- dcast(regnet, TF ~ gene, value.var='PANDA.prediction')
         rownames(regnet) <- regnet[,1]
         regnet <- regnet[,-1]
@@ -184,6 +184,11 @@ if (grepl(".txt", exprFile)){
     genesIncluded <- names(rowsds[1:19000])
     dataset$exp <- dataset$exp[genesIncluded,]
     dataset$motif <- dataset$motif[dataset$motif[,2]%in%genesIncluded,]
+    
+    mappingFile <- "~/gd/Harvard/Research/data/GTEx/cisbpall_motinf.txt"
+    mappings <- read.table(mappingFile, header=T)
+    mappings[,1] <- substring(mappings[,1],0,5) 
+    dataset$motif[,1] <- mappings[match(dataset$motif[,1], mappings[,1]),2]
     
 }
 dataset$ppi      <- read.table(ppiFile,header=F)
@@ -370,6 +375,12 @@ png(file.path(outputDir,paste('SSODMplot_scaled',analysisCode,'.png', sep="")), 
 ssodm.plot(transMatrices[[1]], transMatrices[-1], rescale=T, plot.title=paste("SSODM observed and null, ",casesString," vs ",controlsString,' : ', networkInferenceName, ' : ', analysisName, sep=""))
 dev.off()
 
+transMatrices <- lapply(transMatrices, function(x){
+    rownames(x) <- mappings[match(rownames(x), mappings[,1]),2]
+    colnames(x) <- mappings[match(colnames(x), mappings[,1]),2]
+    x
+})
+
 # Top TFs
 #highlight.tfs <- c("E2F4","NRF1","GABPA","ELK1","ELK4","E2F1","ZBTB33","ELF1","ZFX")
 
@@ -440,15 +451,18 @@ diff.exp.res <- ebayes(diff.exp.res)
 obsSsodm <- apply(transMatrices[[1]],1,function(x){t(x)%*%x})
 dTFI_pVals <- 1-calculate.tm.p.values(transMatrices[[1]], transMatrices[-1])
 negLogPValues <- -log(dTFI_pVals)
+# replace Inf values with max values
+negLogPValues[negLogPValues==Inf] <- 35
 labels <- names(obsSsodm)
-labels[negLogPValues<20&(negLogPValues!=Inf)]<-""
+labels[rank(-negLogPValues)>20 & rank(-obsSsodm)>20]<-""
 plotDF <- data.frame(obsSsodm, negLogPValues, "labels"=labels)
 png(file.path(outputDir,paste('Volcano plot',analysisCode,'.png', sep="")), width=1200)
-ggplot(data=plotDF,aes(x=obsSsodm, y=negLogPValues, label=labels)) + geom_point() + geom_text(vjust=0)
+ggplot(data=plotDF,aes(x=obsSsodm, y=negLogPValues, label=labels)) + geom_point() + geom_text(vjust=0) + 
+    ylab("-log(p-value)") + xlab("SSODM") + ggtitle("Signal vs significance")
 dev.off()
-# dTFI_pVals <- dTFI_pVals[names(dTFI_pVals)%in%rownames(diff.exp.res$p.value)]
+dTFI_pVals <- dTFI_pVals[names(dTFI_pVals)%in%rownames(diff.exp.res$p.value)]
 dTFI_fdr   <- p.adjust(dTFI_pVals, method = 'fdr')
-#includedTFs <- intersect(names(dTFI_pVals),rownames(diff.exp.res$p.value))
+includedTFs <- intersect(names(dTFI_pVals),rownames(diff.exp.res$p.value))
 limma_pVals <- diff.exp.res$p.value[names(dTFI_pVals),2]
 limma_fdr <- p.adjust(limma_pVals, method = 'fdr')
 resultTable <- cbind(obsSsodm,dTFI_pVals,dTFI_fdr)
