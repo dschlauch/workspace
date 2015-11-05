@@ -1,0 +1,479 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1in
+\topmargin 1in
+\rightmargin 1in
+\bottommargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Transition matrix
+\end_layout
+
+\begin_layout Standard
+For two matrices describing bipartite networks, 
+\begin_inset Formula $\mathbf{A}$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathbf{B}$
+\end_inset
+
+, of identical dimensions 
+\begin_inset Formula $n\times m$
+\end_inset
+
+, we want some 
+\begin_inset Formula $m\times m$
+\end_inset
+
+ matrix, 
+\begin_inset Formula $\mathbf{T}$
+\end_inset
+
+ with columns 
+\begin_inset Formula $\tau_{i}$
+\end_inset
+
+, such that 
+\begin_inset Formula $D\left(\mathbf{A}\mathbf{T}-\mathbf{B}\right)$
+\end_inset
+
+ is minimized 
+\begin_inset Quotes eld
+\end_inset
+
+in some way
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+We may frame this as a set of 
+\begin_inset Formula $m$
+\end_inset
+
+ independent regression problems, where 
+\begin_inset Formula $m$
+\end_inset
+
+ is the number of transcription factors and also the column rank of 
+\begin_inset Formula $\mathbf{A},\mathbf{B},\mathbf{T}$
+\end_inset
+
+.
+ For a column in 
+\begin_inset Formula $\mathbf{B}$
+\end_inset
+
+, 
+\begin_inset Formula $\mathbf{b}_{i}$
+\end_inset
+
+, we note that a corresponding column in 
+\begin_inset Formula $\mathbf{T}$
+\end_inset
+
+, 
+\begin_inset Formula $\mathbf{\tau}_{i}$
+\end_inset
+
+ represents the solution to
+\begin_inset Formula 
+\[
+E\left[\mathbf{b}_{i}\right]=\tau_{i1}\mathbf{a}_{1i}+\tau_{i2}\mathbf{a}_{2i}
+\]
+
+\end_inset
+
+or alternatively expressed 
+\begin_inset Formula 
+\[
+\left[\begin{array}{c}
+\mathbf{b}_{i1}\\
+\mathbf{b}_{i2}\\
+\vdots\\
+\mathbf{b}_{in}
+\end{array}\right]=\mathbf{\tau}_{i1}\left[\begin{array}{c}
+\mathbf{a}_{11}\\
+\mathbf{a}_{21}\\
+\vdots\\
+\mathbf{a}_{n1}
+\end{array}\right]+\mathbf{\tau}_{i2}\left[\begin{array}{c}
+\mathbf{a}_{12}\\
+\mathbf{a}_{22}\\
+\vdots\\
+\mathbf{a}_{n2}
+\end{array}\right]+\dots\mathbf{\tau}_{in}\left[\begin{array}{c}
+\mathbf{a}_{1n}\\
+\mathbf{a}_{2n}\\
+\vdots\\
+\mathbf{a}_{nn}
+\end{array}\right]+\left[\begin{array}{c}
+e_{i1}\\
+e_{i2}\\
+\vdots\\
+e_{in}
+\end{array}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $E\left[e_{ij}\right]=0$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+This can be solved with the normal equations, 
+\begin_inset Formula 
+\begin{eqnarray*}
+\mathbf{\tau}_{i} & = & \left(\mathbf{A}^{T}\mathbf{A}\right)^{-1}\mathbf{A}^{T}\mathbf{b}_{i}\\
+\mathbf{T} & = & \left[\tau_{1},\tau_{2},\dots,\tau_{n}\right]
+\end{eqnarray*}
+
+\end_inset
+
+Which produces the least square estimate.
+ I.e.
+ loss function
+\begin_inset Formula 
+\[
+L\left(\mathbf{T}\right)=\sum_{gene=1}^{N}||\mathbf{B}_{gene}-\mathbf{A}_{gene}\mathbf{T}||^{2}
+\]
+
+\end_inset
+
+is minimized.
+\end_layout
+
+\begin_layout Standard
+This is unbiased and minimizes mean squared error, which is great, but,
+ maybe we can do better.
+ We have many coefficients to measure, most of which are probably not important
+ and there is high colinearity.
+ Perhaps we would rather select a small subset of important off-diagonal
+ points and set all others to zero (or otherwise penalize them).
+ A number of methods are available to explore this.
+ We can express the transition matrix 
+\begin_inset Formula $\mathbf{T}$
+\end_inset
+
+ as the set of results of 
+\begin_inset Formula $m$
+\end_inset
+
+ coefficients from 
+\begin_inset Formula $m$
+\end_inset
+
+ independent LASSO calculations.
+\end_layout
+
+\begin_layout Part*
+Efficiency of estimation
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $\mathbf{x}_{p}$
+\end_inset
+
+ be a Gaussian 
+\begin_inset Formula $p$
+\end_inset
+
+-vector representing a sample of gene expression data containing 
+\begin_inset Formula $q$
+\end_inset
+
+ transcription factors and 
+\begin_inset Formula $p-q$
+\end_inset
+
+ non-transcription factor genes.
+ 
+\begin_inset Formula 
+\[
+\mathbf{x}_{p}\sim N\left(\mathbf{\mu},\Sigma\right)
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\mathbf{\mu}$
+\end_inset
+
+ is the 
+\begin_inset Formula $p$
+\end_inset
+
+-vector of mean gene expression values and 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+ is the 
+\begin_inset Formula $p\times p$
+\end_inset
+
+ variance-covariance matrix.
+ In this scenario,
+\begin_inset Formula $\Sigma$
+\end_inset
+
+ may be regarded as a combination of two variance-covariance sources- (1)
+ biological signal, (2) biological noise and (2) technical noise.
+\end_layout
+
+\begin_layout Standard
+In investigating gene regulation, many network inference methods are constructed
+ for the estimation of the 
+\begin_inset Formula $p\times q$
+\end_inset
+
+ subset of 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+ pertaining to the effect of the 
+\begin_inset Formula $q$
+\end_inset
+
+ TFs on the 
+\begin_inset Formula $p$
+\end_inset
+
+ genes.
+ In identifying drivers of state transitions, we seek to focus on the 
+\begin_inset Formula $q\times q$
+\end_inset
+
+ matrix of TF-TF effects.
+ We show that our method vastly ourperforms commonly used network inference
+ methods in estimating these specific effects.
+\end_layout
+
+\begin_layout Standard
+Consider a state change between two experimental conditions, A and B, characteri
+zed by an alteration of size 
+\begin_inset Formula $\delta$
+\end_inset
+
+ to the biological signal component of the TF-TF variance-covariance matrix
+ at point 
+\begin_inset Formula $\Sigma_{i,j}$
+\end_inset
+
+ where 
+\begin_inset Formula $i$
+\end_inset
+
+ and 
+\begin_inset Formula $j$
+\end_inset
+
+ are indices for two TFs in 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Using a univariate coexpression calculation (the basis for Pearson and WGCNA
+ estimates), the estimated variance of our estimate of 
+\begin_inset Formula $\delta$
+\end_inset
+
+ can be calculated:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+for\,-\rho_{A}<\delta<\rho_{A},\delta+\rho_{A}\le1
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+Var\left(\hat{\rho}_{i,j,A}-\hat{\rho}_{i,j,B}\right) & = & Var\left(\hat{\delta}_{cor}\right)\\
+ &  & Var\left(\hat{\rho}_{i,j,A}\right)+Var\left(\hat{\rho}_{i,j,B}\right)\\
+ & = & \frac{1-\rho_{i,j,A}^{2}}{n_{A}-2}+\frac{1-\rho_{i,j,B}^{2}}{n_{B}-2}\\
+ & = & \frac{1}{n_{A}-2}+\frac{1}{n_{B}-2}-\frac{\rho_{i,j,A}^{2}}{n_{A}-2}-\frac{\rho_{i,j,B}^{2}}{n_{B}-2}
+\end{eqnarray*}
+
+\end_inset
+
+Meanwhile, in condition B the new correlation of 
+\begin_inset Formula $TF_{i}$
+\end_inset
+
+, denoted 
+\begin_inset Formula $cor^{*}$
+\end_inset
+
+ with some gene, 
+\begin_inset Formula $gene_{k}$
+\end_inset
+
+ 
+\begin_inset Formula $k\in1,2\dots p$
+\end_inset
+
+ becomes
+\begin_inset Formula 
+\[
+cor^{*}\left(TF_{i},gene_{k}\right)=cor\left(TF_{i},gene_{k}\right)+\delta cor\left(TF_{j},gene_{k}\right)
+\]
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+The variance of our estimate using the transition matrix can be expressed
+ as follows:
+\begin_inset Formula 
+\begin{eqnarray*}
+Var\left(TM_{i,j}\right) & = & Var\left(\hat{\delta}_{TM}\right)\\
+ & = & \frac{\left(\frac{1}{p}\right)\sum_{k=1}^{p}vVar\left(\hat{\rho}_{i,k,A}-\hat{\rho}_{i,k,B}\right)}{\sum_{k=1}^{p}\left(\rho_{j,k}-\bar{\rho_{j}}\right)^{2}}\\
+\\
+ & = & \frac{\left(\frac{1}{p}\right)\sum_{k=1}^{p}\left[Var\left(\hat{\rho}_{i,k,A}\right)+Var\left(\hat{\rho}_{i,k,B}\right)\right]}{\sum_{k=1}^{p}\left(\rho_{j,k}-\bar{\rho_{i}}\right)^{2}}\\
+ & \le & \frac{\left(\frac{1}{p}\right)\sum_{k=1}^{p}\left[\frac{1}{n_{A}-2}+\frac{1}{n_{B}-2}\right]}{\sum_{k=1}^{p}\left(\rho_{j,k}-\bar{\rho_{i}}\right)^{2}}\\
+ & \le & \frac{\frac{1}{n_{A}-2}+\frac{1}{n_{B}-2}}{\sum_{k=1}^{p}\left(\rho_{j,k}-\bar{\rho_{i}}\right)^{2}}\\
+ & \le & \frac{Var\left(\hat{\delta}_{cor}\right)+\frac{\rho_{i,j,A}^{2}}{n_{A}-2}+\frac{\rho_{i,j,B}^{2}}{n_{B}-2}}{\sum_{k=1}^{p}\left(\rho_{j,k}-\bar{\rho_{i}}\right)^{2}}\\
+ & \le & Var\left(\hat{\delta}_{cor}\right)+\frac{Var\left(\hat{\delta}_{cor}\right)\left(1-\sum_{k=1}^{p}\left(\rho_{j,k}-\bar{\rho_{i}}\right)^{2}\right)+\frac{\rho_{i,j,A}^{2}}{n_{A}-2}+\frac{\rho_{i,j,B}^{2}}{n_{B}-2}}{\sum_{k=1}^{p}\left(\rho_{j,k}-\bar{\rho_{i}}\right)^{2}}
+\end{eqnarray*}
+
+\end_inset
+
+So we have that 
+\begin_inset Formula $Var\left(TM_{i,j}\right)<Var\left(\hat{\delta}_{cor}\right)$
+\end_inset
+
+ when
+\begin_inset Formula 
+\[
+Var\left(\hat{\delta}_{cor}\right)\left(1-\sum_{k=1}^{p}\left(\rho_{j,k}-\bar{\rho_{i}}\right)^{2}\right)<\frac{\rho_{i,j,A}^{2}}{n_{A}-2}+\frac{\rho_{i,j,B}^{2}}{n_{B}-2}
+\]
+
+\end_inset
+
+Since each term except 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\left(1-\sum_{k=1}^{p}\left(\rho_{j,k}-\bar{\rho_{i}}\right)^{2}\right)$
+\end_inset
+
+ is strictly non-negative, we see that this inequality holds when 
+\begin_inset Formula 
+\[
+\sum_{k=1}^{p}\left(\rho_{j,k}-\bar{\rho_{i}}\right)^{2}<1
+\]
+
+\end_inset
+
+Thus, we have a more efficient estimator of 
+\begin_inset Formula $\delta$
+\end_inset
+
+ when 
+\begin_inset Formula 
+\[
+p>\frac{1}{Var\left(\rho_{j,k}\right)}
+\]
+
+\end_inset
+
+In practice, we typically have a large number of genes, 
+\begin_inset Formula $p$
+\end_inset
+
+, so that our transition matrix estimator will expected to be dramatically
+ more efficient than the commonly used Pearson or WGCNA estimators.
+\end_layout
+
+\end_body
+\end_document

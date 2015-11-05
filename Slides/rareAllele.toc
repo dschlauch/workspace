@@ -1,0 +1,16 @@
+\beamer@endinputifotherversion {3.24pt}
+\select@language {english}
+\beamer@sectionintoc {1}{Differential confounding for rare alleles}{3}{0}{1}
+\beamer@subsectionintoc {1}{1}{Inflation due to stratification}{3}{0}{1}
+\beamer@subsectionintoc {1}{2}{Problems with stratification correction}{5}{0}{1}
+\select@language {english}
+\select@language {english}
+\beamer@sectionintoc {2}{Why do we observe inflation?}{6}{0}{2}
+\beamer@subsectionintoc {2}{1}{Problems with the current methods of using NCS}{9}{0}{2}
+\beamer@subsectionintoc {2}{2}{Design goals for a new approach to using NCS}{11}{0}{2}
+\beamer@sectionintoc {3}{Introduction to Brainlab}{21}{0}{3}
+\beamer@subsectionintoc {3}{1}{Design issues}{21}{0}{3}
+\beamer@sectionintoc {4}{More complex examples}{28}{0}{4}
+\beamer@subsectionintoc {4}{1}{My Ph.D. research}{28}{0}{4}
+\beamer@subsectionintoc {4}{2}{An investigation into self-sustaining firing}{33}{0}{4}
+\beamer@sectionintoc {5}{Prospects}{35}{0}{5}
