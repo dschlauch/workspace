@@ -23,8 +23,9 @@ clinicalFile <- "~/gd/Harvard/Research/data/GTEx/GTEx_clinical.txt"
 #clinicalFile <- "~/gd/Harvard/Research/data/Eclipse/ECLIPSE_blood.txt"
 #clinicalFile <- "~/gd/Harvard/Research/data/LGRC/lgrc.merged.clinical.data.clean.txt"
 
-exprFile <- "./gd/Harvard/Research/data/GTEx/gtex_cell.rdata"
-motifFile <- "./gd/Harvard/Research/data/GTEx/KG_cisbp_652.txt"
+# exprFile <- "~/gd/Harvard/Research/data/GTEx/gtex_cell.rdata"
+exprFile <- "~/gd/Harvard/Research/data/GTEx/gtex_sub_noxymt_qsmooth_cell.rdata"
+motifFile <- "~/gd/Harvard/Research/data/GTEx/KG_cisbp_652.txt"
 phenotypeName <- "our_subtypes"
 casesString <- "cells_ebv-transformed_lymphocytes"
 controlsString <- "skin"
@@ -173,8 +174,9 @@ if (grepl(".txt", exprFile)){
     #GTEx analysis
     load(exprFile)
     dataset$motif    <- cbind(read.table(motifFile,header=F),1)
-    dataset$exp      <- exprs(both)
-    dataset$clinical <- pData(both)
+    # 11/14/15 changed "both" to "obj" for camilla dataset
+    dataset$exp      <- exprs(obj)
+    dataset$clinical <- pData(obj)
     
     # Remove ensembl decimal and value after
     rownames(dataset$exp) <- substring(rownames(dataset$exp),1,15)
@@ -189,6 +191,12 @@ if (grepl(".txt", exprFile)){
     mappings <- read.table(mappingFile, header=T)
     mappings[,1] <- substring(mappings[,1],0,5) 
     dataset$motif[,1] <- mappings[match(dataset$motif[,1], mappings[,1]),2]
+    dataset$motif <- dataset$motif[!is.na(dataset$motif[,1]),]
+    
+    library(org.Hs.eg.db)
+    symbols <- mapIds(org.Hs.eg.db, keys=row.names(dataset$exp),column="SYMBOL", keytype="ENSEMBL", multiVals="first")
+    dataset$exp <- dataset$exp[!is.na(symbols) & !duplicated(symbols),]    
+    rownames(dataset$exp) <- symbols[!is.na(symbols) & !duplicated(symbols)]
     
 }
 dataset$ppi      <- read.table(ppiFile,header=F)
@@ -443,36 +451,97 @@ library(limma)
 design <- model.matrix(~factor(casesFilter))
 diff.exp.res <- lmFit(dataset$exp, design)
 diff.exp.res <- ebayes(diff.exp.res)
+logfoldchange <- log(rowMeans(dataset$exp[,casesFilter])/rowMeans(dataset$exp[,controlsFilter]))
 
 
 # 7/28/15 
 # create results table
 # 10/30/15 updates for GTEx, which does not (or I'm not using) expression values for TFs
 obsSsodm <- apply(transMatrices[[1]],1,function(x){t(x)%*%x})
-dTFI_pVals <- 1-calculate.tm.p.values(transMatrices[[1]], transMatrices[-1])
+includedTFs <- intersect(names(obsSsodm),rownames(diff.exp.res$p.value))
+obsSsodm <- obsSsodm[includedTFs]
+dTFI_pVals_All <- 2*abs(.5-(1-calculate.tm.p.values(transMatrices[[1]], transMatrices[-1])))
+dTFI_pVals <- dTFI_pVals_All[includedTFs]
 negLogPValues <- -log(dTFI_pVals)
 # replace Inf values with max values
 negLogPValues[negLogPValues==Inf] <- 35
 labels <- names(obsSsodm)
 labels[rank(-negLogPValues)>20 & rank(-obsSsodm)>20]<-""
-plotDF <- data.frame(obsSsodm, negLogPValues, "labels"=labels)
-png(file.path(outputDir,paste('Volcano plot',analysisCode,'.png', sep="")), width=1200)
-ggplot(data=plotDF,aes(x=obsSsodm, y=negLogPValues, label=labels)) + geom_point() + geom_text(vjust=0) + 
-    ylab("-log(p-value)") + xlab("SSODM") + ggtitle("Signal vs significance")
-dev.off()
-dTFI_pVals <- dTFI_pVals[names(dTFI_pVals)%in%rownames(diff.exp.res$p.value)]
+
 dTFI_fdr   <- p.adjust(dTFI_pVals, method = 'fdr')
-includedTFs <- intersect(names(dTFI_pVals),rownames(diff.exp.res$p.value))
+logfoldchangeTF <- logfoldchange[names(dTFI_pVals)]
 limma_pVals <- diff.exp.res$p.value[names(dTFI_pVals),2]
 limma_fdr <- p.adjust(limma_pVals, method = 'fdr')
-resultTable <- cbind(obsSsodm,dTFI_pVals,dTFI_fdr)
+limmanegLogPValues <- -log(limma_pVals)
+limmanegLogPValues[limmanegLogPValues>10]<-10 # for visual purposes
+resultTable <- cbind(obsSsodm,dTFI_pVals,dTFI_fdr,logfoldchangeTF,limmanegLogPValues)
 resultTable <- resultTable[order(dTFI_pVals),]
-colnames(resultTable) <- c("Magnitude","dTFI uncorrected p-value","dTFI FDR")
+
+plotDF <- data.frame(obsSsodm, negLogPValues, limmanegLogPValues, logfoldchangeTF, "labels"=labels)
+
+colnames(resultTable) <- c("Magnitude","dTFI uncorrected p-value","dTFI FDR", "log FC", "limma -logp")
 write.csv(resultTable,file=file.path(outputDir,paste("resultTable",analysisCode,".csv", sep="")))
+
+png(file.path(outputDir,paste('Volcano plot',analysisCode,'.png', sep="")), width=1800)
+ggplot(data=plotDF,aes(x=obsSsodm, y=negLogPValues, label=labels, size=100)) + geom_point(aes(col=limmanegLogPValues), alpha=.5) + geom_text(vjust=0) + 
+    ylab("-log(dTFI p-value)") + xlab("SSODM") + ggtitle("Signal vs significance") + scale_size_continuous(range = c(0, 12),guide=FALSE) +
+    scale_colour_gradientn("LIMMA sig",colours=c("blue","white","red"))
+dev.off()
+
+png(file.path(outputDir,paste('dTFI vs LIMMA',analysisCode,'.png', sep="")), width=1800)
+ggplot(data=plotDF,aes(x=logfoldchangeTF, y=negLogPValues, label=labels, size=100)) + geom_point(aes(col=limmanegLogPValues), alpha=.75) + geom_text(vjust=0) + 
+    ylab("significance of dTFI") + xlab("-log(FC)") + ggtitle("Transition vs Fold Change") +
+    scale_size_continuous(range = c(0, 12),guide=FALSE) +
+    scale_colour_gradientn("LIMMA sig",colours=c("blue","white","red"))
+dev.off()
+
 # periodically save workspace
 save.image(file=file.path(outputDir,paste("activeImage",analysisCode,".RData",sep="")))
 
-# library(igraph)
+require(igraph)
+## Calculate p-values for off-diagonals
+transitionSigmas <- function(tm.observed, tm.null){
+    tm.null.mean <- apply(simplify2array(tm.null), 1:2, mean)
+    tm.null.sd <- apply(simplify2array(tm.null), 1:2, sd)
+    sigmas <- (tm.observed - tm.null.mean)/tm.null.sd
+}
+
+tm.sigmas <- transitionSigmas(transMatrices[[1]], transMatrices[-1])
+diag(tm.sigmas) <- 0
+tm.sigmas.melt <- melt(tm.sigmas)
+
+adjMat <- transMatrices[[1]]
+diag(adjMat) <- 0
+adjMat.melt <- melt(adjMat)
+
+adj.combined <- merge(tm.sigmas.melt,adjMat.melt, by=c("Var1","Var2"))
+
+# adj.combined[,1] <- mappings[match(adj.combined[,1], mappings[,1]),2]
+# adj.combined[,2] <- mappings[match(adj.combined[,2], mappings[,1]),2]
+
+numEdges  <- 100
+numTopTFs <- 10
+topTFsIncluded <- names(sort(dTFI_pVals_All)[1:numTopTFs])
+topTFIndices <- 2>(is.na(match(adj.combined[,1],topTFsIncluded))+is.na(match(adj.combined[,2],topTFsIncluded)))
+adj.combined <- adj.combined[topTFIndices,]
+adj.combined <- adj.combined[abs(adj.combined[,4])>=sort(abs(adj.combined[,4]),decreasing=T)[numEdges],]
+tfNet <- graph.data.frame(adj.combined, directed=T)
+vSize <- -log(dTFI_pVals_All)
+vSize[vSize<0] <- 0
+vSize[vSize>3] <- 3
+
+V(tfNet)$size <- vSize[V(tfNet)$name]*5
+E(tfNet)$width <- (abs(E(tfNet)$value.x))*20/max(abs(E(tfNet)$value.x))
+E(tfNet)$color<-ifelse(E(tfNet)$value.x>0, "blue", "red")
+
+png(file.path(outputDir,paste('Transition plot',analysisCode,'.png', sep="")), width=1500, height=1500)
+plot.igraph(tfNet, edge.arrow.size=2, vertex.label.cex= 1.5, vertex.label.color= "black",main=paste0("Transition: ",controlsString," to ",casesString))
+legend("bottomleft", c("Gained features","Lost features"), lty=c(1,1),lwd=c(2.5,2.5),col=c("blue","red"))
+dev.off()
+
+saveRDS(list(obsSsodm,dTFI_pVals_All),'dTFI.rdata')
+
+#library(igraph)
 # # Visualize networks
 # net.triple <- dataset$ppi
 # net.triple <- melt(top.binary)

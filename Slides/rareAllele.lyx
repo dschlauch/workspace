@@ -102,7 +102,7 @@
 \begin_body
 
 \begin_layout Title
-Preserving Type I error in rare allele GWAS
+Fine-scale population stratification with rare alleles
 \end_layout
 
 \begin_layout Author
@@ -513,7 +513,6 @@ begin{center}
 \series bold
 Mathieson, Nature Genetics 2012
 \series default
-\lang english
 
 \begin_inset ERT
 status open
@@ -625,7 +624,8 @@ end{itemize}
 
 	
 \backslash
-item Finite sample sizes yield overdispersion of association statistic.
+item Finite sample sizes lead to overdispersion of the association test
+ statistic.
 \end_layout
 
 \begin_layout Plain Layout
@@ -665,8 +665,12 @@ end{enumerate}
 
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Section
 Estimating population structure
+\end_layout
+
+\begin_layout Subsection
+Addressing fine-scale stratification
 \end_layout
 
 \begin_layout BeginFrame
@@ -799,6 +803,218 @@ Addressing fine-scale stratification
 \end_layout
 
 \begin_layout Standard
+Consider the following haplotype matrix, with columns as samples and rows
+ as variants:
+\end_layout
+
+\begin_layout Standard
+01110001010101101011 - .5
+\end_layout
+
+\begin_layout Standard
+11100010111001100110 - .5
+\end_layout
+
+\begin_layout Standard
+00000001010110001000 - .25
+\end_layout
+
+\begin_layout Standard
+01010010101000000000 - .25
+\end_layout
+
+\begin_layout Standard
+00010100010101000010 - .25
+\end_layout
+
+\begin_layout Standard
+00000000000000000000 - 0
+\end_layout
+
+\begin_layout Standard
+00000000000011000000 - .1
+\end_layout
+
+\begin_layout Standard
+01100000000000001010 - .2
+\end_layout
+
+\begin_layout Standard
+00000100010010001000 - .2
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Addressing fine-scale stratification
+\end_layout
+
+\begin_layout Standard
+Consider the following haplotype matrix:
+\end_layout
+
+\begin_layout Standard
+011100010101
+\series bold
+01
+\series default
+101011 - .5
+\end_layout
+
+\begin_layout Standard
+111000101110
+\series bold
+01
+\series default
+100110 - .5
+\end_layout
+
+\begin_layout Standard
+000000010101
+\series bold
+10
+\series default
+001000 - .25
+\end_layout
+
+\begin_layout Standard
+010100101010
+\series bold
+00
+\series default
+000000 - .25
+\end_layout
+
+\begin_layout Standard
+000101000101
+\series bold
+01
+\series default
+000010 - .25
+\end_layout
+
+\begin_layout Standard
+000000000000
+\series bold
+00
+\series default
+000000 - 0
+\end_layout
+
+\begin_layout Standard
+000000000000
+\series bold
+11
+\series default
+000000 - .1
+\end_layout
+
+\begin_layout Standard
+011000000000
+\series bold
+00
+\series default
+001010 - .2
+\end_layout
+
+\begin_layout Standard
+000001000100
+\series bold
+10
+\series default
+001000 - .2
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+cov\left(\mathbf{G}_{i},\mathbf{G}_{j}\right) & =.28\\
+cov\left(\mathbf{G}_{i}^{\left(-6\right)},\mathbf{G}_{j}^{\left(-6\right)}\right) & =0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Addressing fine-scale stratification
+\end_layout
+
+\begin_layout Standard
+Rare variants are recent variants.
+\end_layout
+
+\begin_layout Standard
+In the absense of selection, rare variants become fixed at 0% with high
+ probability over a relatively short timeframe.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{center}Starting MAF: .01 vs .1
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename pasted8.png
+	width 40page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename pasted12.png
+	width 40page%
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+P[Fixation]=.678 vs P[Fixation]=.017 
+\backslash
+end{center}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Addressing fine-scale stratification
+\end_layout
+
+\begin_layout Standard
 \begin_inset ERT
 status open
 
@@ -813,15 +1029,23 @@ begin{block}{A simple proposed approach}
 
 
 \backslash
-begin{itemize}   
+begin{itemize}
 \end_layout
 
 \begin_layout Plain Layout
 
 
 \backslash
-item Build a genetic similarity matrix based on the Jaccard Index using
- only rare alleles (MAF<.01) and perform eigendecomposition.
+item Utilize the intuition that rare variants are more informative than
+ common variants.
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+item Build a genetic similarity matrix based on a weighted variation of
+ the Jaccard Index and perform eigendecomposition.
 \end_layout
 
 \begin_layout Plain Layout
@@ -847,10 +1071,6 @@ end{block}
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
 Jaccard Index:
 \end_layout
 
@@ -858,6 +1078,148 @@ Jaccard Index:
 \begin_inset Formula 
 \[
 J=\frac{\left|A\cap B\right|}{\left|A\cup B\right|}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Genetic Similarity Measure
+\end_layout
+
+\begin_layout Standard
+For a matrix of 
+\begin_inset Formula $n$
+\end_inset
+
+ individuals (
+\begin_inset Formula $2n$
+\end_inset
+
+ haploid genomes), with 
+\begin_inset Formula $N$
+\end_inset
+
+ variants described by the genotype matrix 
+\begin_inset Formula $\mathbf{G}_{2n\times N}$
+\end_inset
+
+, we define the weighted Jaccard similarity between two haploid genomes,
+ 
+\begin_inset Formula $d_{i,j}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+d_{i,j}=\frac{\sum_{k=1}^{N}w_{k}\mathbf{G}_{i,k}\mathbf{G}_{j,k}}{\sum_{k=1}^{N}\mathbf{G}_{i,k}+\sum_{k=1}^{N}\mathbf{G}_{j,k}-\sum_{k=1}^{N}\mathbf{G}_{i,k}\mathbf{G}_{j,k}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula 
+\[
+w_{k,i,j}=\begin{cases}
+\frac{2\left(N-1\right)}{\sum_{l=1}^{2n}\mathbf{G}_{l,k}-1}-1 & \sum_{l=1}^{2n}\mathbf{G}_{l,k}>1\\
+0 & \sum_{l=1}^{2n}\mathbf{G}_{l,k}\le1
+\end{cases}
+\]
+
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+
+\begin_inset Formula 
+\begin{align*}
+E\left(d_{i,j}|\mbox{No structure}\right) & =1\\
+\hat{Var}\left(d_{i,j}|\mbox{No structure}\right) & \approx\frac{\sum_{k=1}^{N}\hat{p}_{k}\left(1-\hat{p}_{k}\right)\left(w_{k,i,j}\right)^{2}}{\left(\sum_{k=1}^{N}\mathbf{G}_{i,k}+\sum_{k=1}^{N}\mathbf{G}_{j,k}-\sum_{k=1}^{N}\mathbf{G}_{i,k}\mathbf{G}_{j,k}\right)^{2}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Genetic Similarity Measure
+\end_layout
+
+\begin_layout Standard
+This measure is particularly sensitive for measuring kinship.
+ 
+\end_layout
+
+\begin_layout Standard
+Given a Coefficient of relatedness, 
+\begin_inset Formula $r>0$
+\end_inset
+
+,
+\begin_inset Formula 
+\begin{align*}
+E\left(d_{i,j}|r,\mbox{No other structure}\right) & =
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+= & \frac{\left(1-r\right)\sum_{i=1}^{N}\left(2p_{i}-p_{i}^{2}\right)+r\sum_{i=1}^{N}\left(\frac{2p_{i}}{p_{i}\left(N-2\right)+1}\right)}{\left(1-r\right)\sum_{i=1}^{N}\left(2p_{i}-p_{i}^{2}\right)+r\sum_{i=1}^{N}p_{i}}\\
+> & 1
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+e.g.
+\begin_inset Formula 
+\[
+E\left(d_{i,j}|r=.125,\mbox{No other structure}\right)\approx2.9
 \]
 
 \end_inset
@@ -975,10 +1337,6 @@ Separation of all individuals
 \end_layout
 
 \begin_layout Standard
-All individuals
-\end_layout
-
-\begin_layout Standard
 Hierachical clustering of all 2504 samples by jaccard similarity vs covariance
 \begin_inset ERT
 status open
@@ -1003,12 +1361,49 @@ begin{center}
 \end_inset
 
 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{center}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Separation of all individuals
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{center}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \begin_inset Graphics
-	filename hcl_all1000.jpg
-	width 60page%
+	filename pasted14.png
+	width 80page%
 
 \end_inset
 
@@ -1028,8 +1423,103 @@ end{center}
 
 \end_layout
 
+\begin_layout EndFrame
+
+\end_layout
+
 \begin_layout BeginFrame
-Separation of recently related individuals
+Separation of all individuals
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{center}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename pasted15.png
+	width 80page%
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{center}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Separation of all individuals
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{center}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename pasted5.png
+	width 80page%
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{center}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Separation of recent shared ancestries
 \end_layout
 
 \begin_layout Standard
@@ -1054,996 +1544,518 @@ Sri Lankan Tamil from the UK
 
 \end_layout
 
-\begin_layout Standard
-Separation of Sri Lankan and Indian populations using the Jaccard Similarity
- and based on a global allele frequency of <0.4% (top) compared to a global
- allele frequency of ~15% (bottom)
-\end_layout
-
 \begin_layout EndFrame
 
 \end_layout
 
 \begin_layout BeginFrame
-Efficiency of separation by MAF
+Separation of recent shared ancestries
 \end_layout
 
 \begin_layout Standard
-The Jaccard Index separate used only on rare variants
+Example:
 \end_layout
 
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout Block
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-\begin_inset Quotes eld
-\end_inset
-
-printf
-\begin_inset Quotes erd
-\end_inset
-
- style model building is limited
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Easy to make errors
-\end_layout
-
-\begin_layout Itemize
-Small changes to model can require many changes
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-Saving models and then executing them is limiting
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Prevents strategies like GA search for models
-\end_layout
-
-\begin_layout Itemize
-Prevents encapsulation of an 
-\begin_inset Quotes eld
-\end_inset
-
-experiment as a script
-\begin_inset Quotes erd
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-There is typically very little code reuse
-\end_layout
-
-\begin_layout Itemize
-MATLAB is not a particularly elegant text processing language
-\end_layout
-
-\begin_layout Itemize
-MATLAB support for general purpose libraries is weak
-\begin_inset Note Note
-status open
-
-\begin_layout Itemize
-No convenient place for library
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout Subsection
-Design goals for a new approach to using NCS
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Block
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-Design goals
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout BeginFrame
-Design goals for a new approach to using NCS
-\end_layout
-
-\begin_layout Block
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-<1->
-\end_layout
-
-\end_inset
-
-Allow very complex experiments with maximum clarity and minimum effort
-\end_layout
-
-\begin_layout Itemize
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-<2->
-\end_layout
-
-\end_inset
-
-Allow very simple experiments with minimum overhead
-\end_layout
-
-\begin_layout Itemize
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-<3->
-\end_layout
-
-\end_inset
-
-A model is a script (there is no other reasonable way)
-\end_layout
-
-\begin_layout Itemize
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-<4->
-\end_layout
-
-\end_inset
-
-Object oriented neural model design
-\end_layout
-
-\begin_layout Itemize
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-<5->
-\end_layout
-
-\end_inset
-
-Integrated modeling, experimentation, analysis
-\end_layout
-
-\begin_layout Itemize
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-<6->
-\end_layout
-
-\end_inset
-
-Container for standard, reusable component libraries.
-\end_layout
-
-\begin_layout Itemize
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-<7->
-\end_layout
-
-\end_inset
-
-Free, and open source, from top to bottom
-\end_layout
-
-\begin_layout Itemize
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-<8->
-\end_layout
-
-\end_inset
-
-Based on a language that is clean, good at text processing as well as math,
- with extensive general purpose libraries
-\end_layout
-
-\begin_layout Itemize
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-<9->
-\end_layout
-
-\end_inset
-
-Remote or local operation; make remote operation transparent
-\end_layout
-
-\begin_layout Itemize
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-<10->
-\end_layout
-
-\end_inset
-
-Possible interactive use
-\end_layout
-
-\end_deeper
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout Section
-Introduction to Brainlab
-\end_layout
-
-\begin_layout Subsection
-Design issues
-\end_layout
-
-\begin_layout BeginFrame
-Why Python?
-\end_layout
-
-\begin_layout Block
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Open source, free
-\end_layout
-
-\begin_layout Itemize
-Widely used and growing, active scientific community
-\end_layout
-
-\begin_layout Itemize
-Competitive array math package and plotting packages
+\begin_layout Standard
+Iberian Population in Spain
 \end_layout
 
-\begin_layout Itemize
-Clean language design
+\begin_layout Standard
+Toscani in Italia
 \end_layout
-
-\begin_layout Itemize
-Object oriented, dynamically typed, garbage collected, bytecode compiled
-\end_layout
-
-\begin_layout Itemize
-Efficient
-\end_layout
-
-\begin_layout Itemize
-Enforced indentation!
-\end_layout
-
-\end_deeper
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout BeginFrame
-Brainlab implementation
-\end_layout
-
-\begin_layout Block
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-<1->
-\end_layout
-
-\end_inset
-
-
-\family typewriter
-COLUMN
-\family default
-, 
-\family typewriter
-LAYER
-\family default
-, 
-\family typewriter
-CELL
-\family default
-, 
-\family typewriter
-SYNAPSE
-\family default
- are Python object classes
-\end_layout
-
-\begin_layout Itemize
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-<2->
-\end_layout
-
-\end_inset
-
-These are 
-\emph on
-nested
-\emph default
- classes of 
-\family typewriter
-BRAIN
-\family default
- class
-\end_layout
-
-\begin_layout Itemize
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-<3->
-\end_layout
-
-\end_inset
-
-
-\family typewriter
-__repr__()
-\family default
- is overridden to output the 
-\family typewriter
-.in
-\family default
- file representation
-\end_layout
-
-\begin_layout Itemize
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-<4->
-\end_layout
-
-\end_inset
-
-NCS parameter names are dictionary keys
-\end_layout
-
-\begin_layout Itemize
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-<5->
-\end_layout
-
-\end_inset
-
-Three modules:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-<5->
-\end_layout
-
-\end_inset
-
-brainlab.py: simulation environment, data analysis, graphing
-\end_layout
-
-\begin_layout Itemize
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-<5->
-\end_layout
-
-\end_inset
-
-brain.py: model construction
-\end_layout
-
-\begin_layout Itemize
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-<5->
-\end_layout
-
-\end_inset
-
-netplot.py: three dimensional display
-\end_layout
-
-\end_deeper
-\end_deeper
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout BeginFrame
-netplot 3D module
-\end_layout
-
-\begin_layout EndFrame
-\begin_inset Note Note
-status collapsed
-
-\begin_layout BeginFrame
-Data access and report generation functions
-\end_layout
-
-\begin_layout Block
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{This is the title of another block}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-one
-\end_layout
-
-\begin_layout Itemize
-two
-\end_layout
-
-\begin_layout Itemize
-three
-\end_layout
-
-\end_deeper
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section
-More complex examples
-\end_layout
-
-\begin_layout Subsection
-My Ph.D.
- research
-\end_layout
-
-\begin_layout BeginFrame
-My Ph.D.
- research
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Block
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-<1->
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Untitled block.
-\end_layout
-
-\begin_layout Itemize
-Shown on all slides.
-\end_layout
-
-\end_deeper
-\begin_layout ExampleBlock
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-<2->
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-Some Example Block Title
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-\begin_inset Formula $e^{i\pi}=-1$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Formula $e^{i\pi/2}=i$
-\end_inset
-
-.
-\end_layout
-
-\end_deeper
-\end_inset
-
-
-\end_layout
-
-\begin_layout FrameSubtitle
-Could a cortical microcircuit act as a functional unit for the memorization
- of correlations of spatio-temporal spike trains?
-\begin_inset Note Note
-status collapsed
 
-\begin_layout Plain Layout
-\align center
+\begin_layout Standard
 \begin_inset Graphics
-	filename connect.eps
-	display false
-	width 2.5in
-	clip
-
-\end_inset
-
-need to fix triangle direction at least!
-\end_layout
+	filename /home/dan/1000GP/plots/hcl_ IBS vs TSI/0-20.png
+	width 80page%
 
 \end_inset
 
 
 \end_layout
 
-\begin_layout ColumnsCenterAligned
+\begin_layout EndFrame
 
 \end_layout
 
-\begin_deeper
-\begin_layout Column
-6cm
+\begin_layout BeginFrame
+Separation of recent shared ancestries
 \end_layout
 
-\begin_layout Block
+\begin_layout Standard
+Example: ITU vs STU
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename pasted6.png
+	width 80page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Ratio of within-group mean distance to out-of group mean distance:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="6">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+TSI-IBS
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ITU-STU
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+CHB-CHS
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+LWK-ESN
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+GIH-ITU
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+wJaccard
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+.417
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+.836
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+.605
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+.178
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+.513
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Variance
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+.504
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+.889
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+.681
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+.197
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+.552
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Separation as a function of allele frequency
+\end_layout
+
+\begin_layout Standard
 \begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Layer structured cortical microcircuit model
-\end_layout
-
-\begin_layout Itemize
-Two input cell groups
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Key
-\end_layout
-
-\begin_layout Itemize
-Data
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-Output cell group
-\end_layout
-
-\begin_layout Itemize
-Spatio-temporal spike trains as fundamental unit of information
-\end_layout
-
-\end_deeper
-\begin_layout Column
-6cm
-\end_layout
-
-\end_deeper
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout BeginFrame
-Stimulus patterns
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\align center
-
-\end_layout
-
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout BeginFrame
-My Ph.D.
- research: genetic model search
-\end_layout
-
-\begin_layout Standard
-
-\family typewriter
-\size tiny
-\begin_inset CommandInset include
-LatexCommand verbatiminput
-filename "bigdemoga1.py"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout BeginFrame
-My Ph.D.
- research: genetic model search
-\end_layout
-
-\begin_layout Standard
-
-\family typewriter
-\size footnotesize
-\begin_inset CommandInset include
-LatexCommand verbatiminput
-filename "bigdemoga2.py"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout BeginFrame
-My Ph.D.
- research: automated pattern matching
-\end_layout
-
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout Subsection
-An investigation into self-sustaining firing
-\end_layout
-
-\begin_layout BeginFrame
-Phase space transitions in a recurrent network
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-Dr.
- Doursat had done some runs with a manually edited .in file.
- He was looking for a quick way to automate the creation of many .in files
- with varying parameters and examine the results.
- 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Block
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-Dr.
- Doursat:
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-\begin_inset Quotes eld
-\end_inset
-
-My goal is to explore bistability and other firing modes of the network
- through a survey of parameter space (especially E/I to E/I connections)
- and, from there, reveal what difference synaptic augmentation (SA) and/or
- reciprocal connections can make (changes in phase space landscape; easiness
- of phase transitions) when they are added to the model.
-\begin_inset Quotes erd
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout BeginFrame
-Setting up the experiment in Brainlab
-\end_layout
-
-\begin_layout Block
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Convert plain .in file into a script
-\end_layout
-
-\begin_layout Itemize
-Create experiment script
-\end_layout
-
-\begin_layout Itemize
-Create data analysis/graphing
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-\begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-This is something that could have been done in (for example) MATLAB, but
- as the experiment grows in complexity it would become less and less convenient.
+
+
+\backslash
+begin{center}
 \end_layout
 
 \end_inset
 
 
+\begin_inset Graphics
+	filename pasted13.png
+	width 80page%
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{center}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Separation as a function of allele frequency
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{center}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename pasted7.png
+	width 80page%
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{center}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Simulated non-genetic phenotypes with 1000GP genotypes
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{block}{Phenotype simulation}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{itemize}
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+item Phenotypes were simulated as Bernouli or exponential RV
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+item Risk was assigned based on 3 separate risk models:
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+begin{itemize}
+\end_layout
+
+\begin_layout Plain Layout
+
+			
+\backslash
+item Uniform risk
+\end_layout
+
+\begin_layout Plain Layout
+
+			
+\backslash
+item Super and sub-population differentiated risk (gradual risk)
+\end_layout
+
+\begin_layout Plain Layout
+
+			
+\backslash
+item Sub-population alone differentiated risk (sharp risk)
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+end{itemize}
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+item 100 phenotypes generated per model (300 total per distribution type)
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+item GWAS performed on each phenotype for "LD sampled" set of 100k variants
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+item Mean rank-ordered p-value taken for each simulated phenotype.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{itemize}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{block}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Does use of weighted Jaccard preserve type I error?
+\end_layout
+
+\begin_layout Standard
+Weighted-Jaccard-corrected association Q-Q plot
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename pasted10.png
+	width 80page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+No, inflation is still present.
+\end_layout
+
+\begin_layout Standard
+Does perfect population stratification identification control the type I
+ error?
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Use of population labels to control for stratification
+\end_layout
+
+\begin_layout Standard
+Subpopulation-corrected association Q-Q plot
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename pasted11.png
+	width 80page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Type I error inflation 
+\begin_inset Formula $still$
+\end_inset
+
+ occurs when controlling for groups which define disease risk.
 \end_layout
 
 \begin_layout EndFrame
@@ -2051,188 +2063,216 @@ This is something that could have been done in (for example) MATLAB, but
 \end_layout
 
 \begin_layout Section
-Prospects
+Corrected association test statistic
+\end_layout
+
+\begin_layout Subsection
+Bias of stratification adjusted tests
 \end_layout
 
 \begin_layout BeginFrame
-Tighter integration with NCS
+Differential genotype/phenotype variances
 \end_layout
 
-\begin_layout Block
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
+\begin_layout Standard
+Consider the stratification-adjusted test statistic
+\begin_inset Formula 
+\[
+t_{k}=n\times\left(\frac{\mathbf{r}_{P}\mathbf{r}_{G}^{T}}{\sqrt{\sum_{i}^{n}\mathbf{r}_{P,k,i}^{2}\sum_{i}^{n}\mathbf{r}_{G,k,i}^{2}}}\right)^{2}\sim\chi_{1}^{2}
+\]
 
 \end_inset
 
-Idea: eliminate NCS parsing module, and most of NCS' biological knowledge
-\begin_inset ERT
-status collapsed
+Where 
+\begin_inset Formula $\mathbf{r}_{P}$
+\end_inset
 
-\begin_layout Plain Layout
+ and 
+\begin_inset Formula $\mathbf{r}_{G}$
+\end_inset
 
-}
+ are the residuals for the phenotype and genotype, respectively.
 \end_layout
+
+\begin_layout Standard
+Now consider 
+\begin_inset Formula $P$
+\end_inset
+
+, a binary phenotype with 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $p_{P,i}$
+\end_inset
+
+ and 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+
+\begin_inset Formula $p_{G,i}$
+\end_inset
+
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ as the mean phenotypes and genotypes given stratification, and 
+\begin_inset Formula $k$
+\end_inset
+
+ be the index of a variant
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $t_{k}$
+\end_inset
+
+ is 
+\bar under
+biased
+\bar default
+
+\begin_inset Formula 
+\begin{align*}
+E\left(t_{k}|H_{0}\right) & =n\frac{\sum_{i=1}^{n}\left[2p_{G,k,i}\left(1-p_{G,k,i}\right)p_{P,i}\left(1-p_{P,i}\right)\right]}{\sum_{i=1}^{n}2p_{G,k,i}\left(1-p_{G,k,i}\right)\sum_{i=1}^{n}p_{P,i}\left(1-p_{P,i}\right)}\\
+ & \ne1
+\end{align*}
 
 \end_inset
 
 
 \end_layout
 
-\begin_deeper
-\begin_layout Itemize
-Simpler code; just a 
-\begin_inset Quotes eld
-\end_inset
-
-flat
-\begin_inset Quotes erd
-\end_inset
-
- simulation engine that accepts GCList
-\end_layout
-
-\begin_layout Itemize
-Less redundancy of code and documentation
-\end_layout
-
-\begin_layout Itemize
-NCS would be more easily used with unstructured networks
-\end_layout
-
-\begin_layout Itemize
-Easier to add new features
-\end_layout
-
-\end_deeper
 \begin_layout EndFrame
 
 \end_layout
 
 \begin_layout BeginFrame
-Short-term enhancements to Brainlab
+Differential genotype/phenotype variances
 \end_layout
 
-\begin_layout Block
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
+\begin_layout Standard
+The residual correlation estimate of association is biased when there is
+ a mean-variance relationship for phenotype (there is always a mean-variance
+ relationship for genotype)
 \end_layout
 
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+cor\left(var\left(\mathbf{r}_{G,k}\right),var\left(\mathbf{r}_{P}\right)\right) & >0\rightarrow E\left(t_{k}\right)>1\\
+cor\left(var\left(\mathbf{r}_{G,k}\right),var\left(\mathbf{r}_{P}\right)\right) & <0\rightarrow E\left(t_{k}\right)<1
+\end{align*}
 
 \end_inset
 
 
 \end_layout
 
-\begin_deeper
-\begin_layout Itemize
-Some BRAIN.methods become brainlab functions
-\end_layout
-
-\begin_layout Itemize
-Data loading and report plotting standardized, expanded
-\end_layout
-
-\begin_layout Itemize
-Subdirectories for job execution (at least as an option)
-\end_layout
-
-\begin_layout Itemize
-Support for new queueing environments
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Itemize
-Retest AREA and enumerated column features
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Convenience functions for executing multiple jobs
-\end_layout
-
-\begin_layout Itemize
-Automated installation, configuration, testing
-\end_layout
-
-\begin_layout Itemize
-Expanded examples library
-\end_layout
-
-\end_deeper
 \begin_layout EndFrame
 
 \end_layout
 
 \begin_layout BeginFrame
-Use, so far
+Correcting biased estimator
 \end_layout
 
-\begin_layout Block
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
+\begin_layout Standard
+Consistent estimator for stratification adjusted association with mean-variance:
+\begin_inset Formula 
+\begin{align*}
+s_{k} & =w\times n\times\left(\frac{\mathbf{r}_{P}\mathbf{r}_{G}^{T}}{\sqrt{\sum_{i}^{n}\mathbf{r}_{P,k,i}^{2}\sum_{i}^{n}\mathbf{r}_{G,k,i}^{2}}}\right)^{2}\sim\chi_{1}^{2}
+\end{align*}
 
 \end_inset
 
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
+Where
+\begin_inset Formula 
+\begin{align*}
+w & =\left(\frac{\sum_{i=1}^{n}\hat{\sigma}_{P,k,i}^{2}\sum_{i=1}^{n}\hat{\sigma}_{G,k,i}^{2}}{\sum_{i=1}^{n}\left[\hat{\sigma}_{P,k,i}^{2}\hat{\sigma}_{G,k,i}^{2}\right]}\right)\\
+E\left[s_{k}|H_{0}\right] & =1
+\end{align*}
 
 \end_inset
 
 
 \end_layout
 
-\begin_deeper
-\begin_layout Itemize
-A colleague in our lab used an earlier version of Brainlab
+\begin_layout EndFrame
+
 \end_layout
 
-\begin_layout Itemize
-I have made very extensive use of Brainlab in my own experiments
+\begin_layout Subsection
+Applying corrected estimator to 1000GP data
 \end_layout
 
-\begin_layout Itemize
-A colleague in our lab has recently begun using Brainlab in his experiments
+\begin_layout BeginFrame
+Applying corrected estimator to 1000GP data
 \end_layout
 
-\begin_layout Itemize
-Another lab is beginning to use NCS, and expressed interest in Brainlab
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{center}
 \end_layout
 
-\end_deeper
+\end_inset
+
+
+\begin_inset Graphics
+	filename pasted16.png
+	width 80page%
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{center}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout EndFrame
 
 \end_layout
@@ -2268,21 +2308,11 @@ status collapsed
 
 \begin_deeper
 \begin_layout Itemize
-My committee
+Christoph Lange
 \end_layout
 
 \begin_layout Itemize
-Dr.
- Harris, chair
-\end_layout
-
-\begin_layout Itemize
-Dr.
- Goodman, for the Brain Lab
-\end_layout
-
-\begin_layout Itemize
-Brain Lab colleagues
+Matt Goodman
 \end_layout
 
 \end_deeper

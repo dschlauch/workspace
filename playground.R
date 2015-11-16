@@ -532,36 +532,7 @@ removeZeroRowsColumns <- function(x){
 ###### 5/9/15
 ## Generating TM network
 
-require(igraph)
 
-tm.sigmas <- transitionPValues(tm.observed, tm.null)
-diag(tm.sigmas) <- 0
-tm.sigmas.melt <- melt(tm.sigmas)
-
-adjMat <- tm.observed
-diag(adjMat) <- 0
-adjMat.melt <- melt(adjMat)
-
-adj.combined <- merge(tm.sigmas.melt,adjMat.melt, by=c("Var1","Var2"))
-# adjMat.melt <- cbind(adjMat.melt,abs(adjMat.melt[,3])>25)
-adj.combined <- adj.combined[abs(adj.combined[,4])>.012,]
-tfNet <- graph.data.frame(adj.combined, directed=T)
-vSize <- t.values
-vSize[vSize<0] <- 0
-vSize <- sapply(vSize*3, min, 50)
-
-V(tfNet)$size <- vSize[V(tfNet)$name]
-E(tfNet)$width <- (abs(E(tfNet)$value.x)-2)*2
-E(tfNet)$color<-ifelse(E(tfNet)$value.x>0, "blue", "red")
-plot.igraph(tfNet, edge.arrow.size=1, vertex.label.cex= 1.5, vertex.label.color= "black",main="Transition: SMC -> COPD")
-legend(-1.7,1.3, c("Gained features","Lost features"), lty=c(1,1),lwd=c(2.5,2.5),col=c("blue","red"))
-
-## Calculate p-values for off-diagonals
-transitionPValues <- function(tm.observed, tm.null){
-    tm.null.mean <- apply(simplify2array(tm.null), 1:2, mean)
-    tm.null.sd <- apply(simplify2array(tm.null), 1:2, sd)
-    sigmas <- (tm.observed - tm.null.mean)/tm.null.sd
-}
 
 
 plottm(melt(tm.observed), title="Transition matrix: COPD vs Smoker-control (SMC) observed")
@@ -732,3 +703,24 @@ g.pvalue <- sapply(which(negLogPValueN>5 & negLogPValueN<5.3), function(i){
     -log(gSquareBin(1,i+2,2,combinedMat))
     })
 g.pvalue
+
+## jaccard vs cov
+x <- rbinom(1000,1,.5)
+y <- rbinom(1000,1,.5)
+cor(x,y)
+sum(x*y)/(1000-sum((1-x)*(1-y)))
+x2 <- c(x,rep(0,1000)) 
+y2 <- c(y,rep(0,1000))
+cor(x2,y2)
+sum(x2*y2)/(2000-sum((1-x2)*(1-y2)))
+
+numVariants <- 1000000
+maf <- runif(numVariants)/4
+mafDelta1 <- runif(numVariants)/10
+mafDelta2 <- runif(numVariants)/10
+
+p1 <- rbinom(numVariants,1,maf+mafDelta1)
+p2 <- rbinom(numVariants,1,maf+mafDelta1)
+p3 <- rbinom(numVariants,1,maf+mafDelta2)
+p4 <- rbinom(numVariants,1,maf+mafDelta2)
+cor(cbind(p1,p2,p3,p4))
