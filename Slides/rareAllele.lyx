@@ -69,7 +69,7 @@
 \spacing single
 \use_hyperref false
 \papersize default
-\use_geometry false
+\use_geometry true
 \use_amsmath 2
 \use_esint 0
 \use_mhchem 0
@@ -102,7 +102,7 @@
 \begin_body
 
 \begin_layout Title
-Fine-scale population stratification with rare alleles
+Identifying fine-scale population stratification with rare alleles
 \end_layout
 
 \begin_layout Author
@@ -181,7 +181,7 @@ status open
 
 
 \backslash
-pgfdeclareimage[height=0.5cm]{institution-logo}{institution-logo-filenameO}
+pgfdeclareimage[height=0.5cm]{institution-logo}{institution-logo-filename}
 \end_layout
 
 \begin_layout Plain Layout
@@ -355,11 +355,196 @@ LatexCommand tableofcontents
 \end_layout
 
 \begin_layout Section
-Differential confounding for rare alleles
+Population stratification
 \end_layout
 
 \begin_layout Subsection
-Inflation due to stratification
+What is population stratification?
+\end_layout
+
+\begin_layout BeginFrame
+What is population stratification?
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+noindent
+\backslash
+begin{minipage}{.75
+\backslash
+textwidth}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{itemize}   
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+item Population stratification is the existence of allele frequency differences
+ across population groups due to differing ancestries.
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+item PS is typically caused by geographical isolation, leading to non-random
+ mating patterns.
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+item Direct associations between a genetic variant and a phenotype may be
+ confounded by ancestry.
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{itemize}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{minipage}%
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{minipage}{.25
+\backslash
+textwidth}
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+centering
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+includegraphics[height=3cm]{population-clipart-k0309836.jpg}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{minipage}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Confounding due to population stratification
+\end_layout
+
+\begin_layout Standard
+For example, in a case-control GWAS we are typically interested in how genetic
+ variants contribute to disease:
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+If ancestry is associated with disease and population stratification exists
+\begin_inset Formula 
+\[
+cor\left(Disease,\mathbf{G}\right)\ne cor\left(Disease,\mathbf{G}|\mathbf{C}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+An uncontrolled test will lead to spurious associations and inflation of
+ type I error.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{center} 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename pasted20.png
+	width 60col%
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{center} 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Subsection
+Differential confounding by allele frequency
 \end_layout
 
 \begin_layout BeginFrame
@@ -390,17 +575,26 @@ begin{center}
 \end_inset
 
 
-\begin_inset Newline newline
-\end_inset
-
-QQ plots of p-values separated by allele frequency.
- Comparing two types of non-genetic risk distributions.
- 
-\series bold
-Mathieson, Nature Genetics 2012
 \end_layout
 
 \begin_layout Standard
+
+\series bold
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tiny Mathieson, Nature Genetics 2012}
+\end_layout
+
+\end_inset
+
+
+\series default
+
 \begin_inset ERT
 status open
 
@@ -414,6 +608,11 @@ end{center}
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+QQ plots of p-values separated by allele frequency.
+ Comparing two types of non-genetic risk distributions.
 \end_layout
 
 \begin_layout EndFrame
@@ -511,7 +710,19 @@ begin{center}
 \begin_layout Standard
 
 \series bold
-Mathieson, Nature Genetics 2012
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tiny Mathieson, Nature Genetics 2012}
+\end_layout
+
+\end_inset
+
+
 \series default
 
 \begin_inset ERT
@@ -538,10 +749,6 @@ Existing methods for correction for population stratification do not work
 
 \end_layout
 
-\begin_layout Section
-Why do we observe inflation?
-\end_layout
-
 \begin_layout BeginFrame
 Why do we observe inflation?
 \end_layout
@@ -566,8 +773,8 @@ begin{enumerate}
 
 	
 \backslash
-item Common stratification correction methods use linear functions to define
- risk and do not distinguish a tree-like ancestry particularly well.
+item Common stratification correction methods inadequately distinguish the
+ tree-like ancestry.
 \end_layout
 
 \begin_layout Plain Layout
@@ -610,7 +817,7 @@ begin{itemize}
 
 		
 \backslash
-item Need better estimates of test statistic overdispersion.
+item Need better estimates of test statistic distribution.
 \end_layout
 
 \begin_layout Plain Layout
@@ -852,7 +1059,8 @@ Addressing fine-scale stratification
 \end_layout
 
 \begin_layout Standard
-Consider the following haplotype matrix:
+Consider the following haplotype matrix, with columns as samples and rows
+ as variants:
 \end_layout
 
 \begin_layout Standard
@@ -925,18 +1133,6 @@ Consider the following haplotype matrix:
 10
 \series default
 001000 - .2
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{align*}
-cov\left(\mathbf{G}_{i},\mathbf{G}_{j}\right) & =.28\\
-cov\left(\mathbf{G}_{i}^{\left(-6\right)},\mathbf{G}_{j}^{\left(-6\right)}\right) & =0
-\end{align*}
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout EndFrame
@@ -1112,7 +1308,7 @@ For a matrix of
 
 , we define the weighted Jaccard similarity between two haploid genomes,
  
-\begin_inset Formula $d_{i,j}$
+\begin_inset Formula $s_{i,j}$
 \end_inset
 
 
@@ -1121,7 +1317,7 @@ For a matrix of
 \begin_layout Standard
 \begin_inset Formula 
 \[
-d_{i,j}=\frac{\sum_{k=1}^{N}w_{k}\mathbf{G}_{i,k}\mathbf{G}_{j,k}}{\sum_{k=1}^{N}\mathbf{G}_{i,k}+\sum_{k=1}^{N}\mathbf{G}_{j,k}-\sum_{k=1}^{N}\mathbf{G}_{i,k}\mathbf{G}_{j,k}}
+s_{i,j}=\frac{\sum_{k=1}^{N}w_{k}\mathbf{G}_{i,k}\mathbf{G}_{j,k}}{\sum_{k=1}^{N}\mathbf{G}_{i,k}+\sum_{k=1}^{N}\mathbf{G}_{j,k}-\sum_{k=1}^{N}\mathbf{G}_{i,k}\mathbf{G}_{j,k}}
 \]
 
 \end_inset
@@ -1146,7 +1342,7 @@ where
 \begin_inset Formula 
 \[
 w_{k,i,j}=\begin{cases}
-\frac{2\left(N-1\right)}{\sum_{l=1}^{2n}\mathbf{G}_{l,k}-1}-1 & \sum_{l=1}^{2n}\mathbf{G}_{l,k}>1\\
+\frac{2\left(2n-1\right)}{\sum_{l=1}^{2n}\mathbf{G}_{l,k}-1}-1 & \sum_{l=1}^{2n}\mathbf{G}_{l,k}>1\\
 0 & \sum_{l=1}^{2n}\mathbf{G}_{l,k}\le1
 \end{cases}
 \]
@@ -1168,8 +1364,8 @@ w_{k,i,j}=\begin{cases}
 
 \begin_inset Formula 
 \begin{align*}
-E\left(d_{i,j}|\mbox{No structure}\right) & =1\\
-\hat{Var}\left(d_{i,j}|\mbox{No structure}\right) & \approx\frac{\sum_{k=1}^{N}\hat{p}_{k}\left(1-\hat{p}_{k}\right)\left(w_{k,i,j}\right)^{2}}{\left(\sum_{k=1}^{N}\mathbf{G}_{i,k}+\sum_{k=1}^{N}\mathbf{G}_{j,k}-\sum_{k=1}^{N}\mathbf{G}_{i,k}\mathbf{G}_{j,k}\right)^{2}}
+E\left(s_{i,j}|\mbox{No structure}\right) & =1\\
+\hat{Var}\left(s_{i,j}|\mbox{No structure}\right) & \approx\frac{\sum_{k=1}^{N}\hat{p}_{k}^{2}\left(1-\hat{p}_{k}^{2}\right)w_{k,i,j}^{2}}{\left(\sum_{k=1}^{N}\mathbf{G}_{i,k}+\sum_{k=1}^{N}\mathbf{G}_{j,k}-\sum_{k=1}^{N}\mathbf{G}_{i,k}\mathbf{G}_{j,k}\right)^{2}}
 \end{align*}
 
 \end_inset
@@ -1198,7 +1394,7 @@ Given a Coefficient of relatedness,
 ,
 \begin_inset Formula 
 \begin{align*}
-E\left(d_{i,j}|r,\mbox{No other structure}\right) & =
+E\left(s_{i,j}|r,\mbox{No other structure}\right) & =
 \end{align*}
 
 \end_inset
@@ -1206,7 +1402,7 @@ E\left(d_{i,j}|r,\mbox{No other structure}\right) & =
 
 \begin_inset Formula 
 \begin{align*}
-= & \frac{\left(1-r\right)\sum_{i=1}^{N}\left(2p_{i}-p_{i}^{2}\right)+r\sum_{i=1}^{N}\left(\frac{2p_{i}}{p_{i}\left(N-2\right)+1}\right)}{\left(1-r\right)\sum_{i=1}^{N}\left(2p_{i}-p_{i}^{2}\right)+r\sum_{i=1}^{N}p_{i}}\\
+= & \frac{\left(1-r\right)\sum_{i=1}^{N}\left(2p_{i}-p_{i}^{2}\right)+rN}{\left(1-r\right)\sum_{i=1}^{N}\left(2p_{i}-p_{i}^{2}\right)+r\sum_{i=1}^{N}p_{i}}\\
 > & 1
 \end{align*}
 
@@ -1217,9 +1413,14 @@ E\left(d_{i,j}|r,\mbox{No other structure}\right) & =
 
 \begin_layout Standard
 e.g.
+ with 
+\begin_inset Formula $MAF\sim Uniform\left(.01,.1\right)$
+\end_inset
+
+ 
 \begin_inset Formula 
 \[
-E\left(d_{i,j}|r=.125,\mbox{No other structure}\right)\approx2.9
+E\left(s_{i,j}|r=.125,\mbox{No other structure}\right)\approx2.9
 \]
 
 \end_inset
@@ -1232,7 +1433,7 @@ E\left(d_{i,j}|r=.125,\mbox{No other structure}\right)\approx2.9
 \end_layout
 
 \begin_layout Subsection
-Applying method to 1000 Genomes Project
+Identifying structure in 1000 Genomes Project
 \end_layout
 
 \begin_layout BeginFrame
@@ -1259,7 +1460,14 @@ begin{itemize}
 
 \begin_layout Plain Layout
 
+	
+\backslash
+item 2504 individuals
+\end_layout
 
+\begin_layout Plain Layout
+
+	
 \backslash
 item 6 superpopulations (African, Ad-Mixed American, East Asian, European,
  South Asian)
@@ -1267,16 +1475,16 @@ item 6 superpopulations (African, Ad-Mixed American, East Asian, European,
 
 \begin_layout Plain Layout
 
-
+	
 \backslash
 item 26 populations
 \end_layout
 
 \begin_layout Plain Layout
 
-
+	
 \backslash
-item 2504 individuals
+item 60 million variants
 \end_layout
 
 \begin_layout Plain Layout
@@ -1337,7 +1545,6 @@ Separation of all individuals
 \end_layout
 
 \begin_layout Standard
-Hierachical clustering of all 2504 samples by jaccard similarity vs covariance
 \begin_inset ERT
 status open
 
@@ -1350,54 +1557,7 @@ begin{center}
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Graphics
-	filename pasted4.png
-	width 80page%
-
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{center}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout BeginFrame
-Separation of all individuals
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{center}
-\end_layout
-
-\end_inset
-
-
+Clustered heatmap of GSM based on our method.
 \end_layout
 
 \begin_layout Standard
@@ -1408,12 +1568,17 @@ begin{center}
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
 \begin_inset ERT
 status open
 
 \begin_layout Plain Layout
 
-
+{
+\backslash
+tiny Clustered heatmap of genetic similarity using our method.} 
 \backslash
 end{center}
 \end_layout
@@ -1444,7 +1609,10 @@ begin{center}
 
 \end_inset
 
+Clustered heatmap of GSM based on variance-covariance matrix.
+\end_layout
 
+\begin_layout Standard
 \begin_inset Graphics
 	filename pasted15.png
 	width 80page%
@@ -1452,12 +1620,17 @@ begin{center}
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
 \begin_inset ERT
 status open
 
 \begin_layout Plain Layout
 
-
+{
+\backslash
+tiny Clustered heatmap of genetic similarity using PCA.} 
 \backslash
 end{center}
 \end_layout
@@ -1473,6 +1646,15 @@ end{center}
 
 \begin_layout BeginFrame
 Separation of all individuals
+\end_layout
+
+\begin_layout Standard
+First two principal components using our method vs Var-Cov yield very similar
+ results.
+\end_layout
+
+\begin_layout Standard
+Continental level population structure is not meaningfully affected.
 \end_layout
 
 \begin_layout Standard
@@ -1508,278 +1690,6 @@ status open
 \backslash
 end{center}
 \end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout BeginFrame
-Separation of recent shared ancestries
-\end_layout
-
-\begin_layout Standard
-Example:
-\end_layout
-
-\begin_layout Standard
-Indian Telugu from the UK
-\end_layout
-
-\begin_layout Standard
-Sri Lankan Tamil from the UK
-\end_layout
-
-\begin_layout Standard
-\begin_inset Graphics
-	filename /home/dan/1000GP/plots/hcl_ ITU vs STU/20-50.png
-	width 80page%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout BeginFrame
-Separation of recent shared ancestries
-\end_layout
-
-\begin_layout Standard
-Example:
-\end_layout
-
-\begin_layout Standard
-Iberian Population in Spain
-\end_layout
-
-\begin_layout Standard
-Toscani in Italia
-\end_layout
-
-\begin_layout Standard
-\begin_inset Graphics
-	filename /home/dan/1000GP/plots/hcl_ IBS vs TSI/0-20.png
-	width 80page%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout BeginFrame
-Separation of recent shared ancestries
-\end_layout
-
-\begin_layout Standard
-Example: ITU vs STU
-\end_layout
-
-\begin_layout Standard
-\begin_inset Graphics
-	filename pasted6.png
-	width 80page%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Ratio of within-group mean distance to out-of group mean distance:
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Tabular
-<lyxtabular version="3" rows="3" columns="6">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-TSI-IBS
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-ITU-STU
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-CHB-CHS
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-LWK-ESN
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-GIH-ITU
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-wJaccard
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-.417
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-.836
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-.605
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-.178
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-.513
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Variance
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-.504
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-.889
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-.681
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-.197
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-.552
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
 
 \end_inset
 
@@ -1876,6 +1786,560 @@ end{center}
 
 \begin_layout EndFrame
 
+\end_layout
+
+\begin_layout BeginFrame
+Separation of recent shared ancestries
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tiny Example:
+\end_layout
+
+\begin_layout Plain Layout
+
+Indian Telugu from the UK (ITU) 
+\end_layout
+
+\begin_layout Plain Layout
+
+Sri Lankan Tamil from the UK (STU)}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename /home/dan/1000GP/plots/hcl_ ITU vs STU/P0-0.4.png
+	width 80page%
+	height 20pheight%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename /home/dan/1000GP/plots/hcl_ ITU vs STU/F9-10.png
+	width 80page%
+	height 20pheight%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename pasted30.png
+	width 80page%
+	height 20pheight%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Separation of recent shared ancestries
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tiny Example:
+\end_layout
+
+\begin_layout Plain Layout
+
+Iberian Population in Spain (IBS)
+\end_layout
+
+\begin_layout Plain Layout
+
+Toscani in Italia (TSI)}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename /home/dan/1000GP/plots/hcl_ IBS vs TSI/P0-0.4.png
+	width 80page%
+	height 20pheight%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename /home/dan/1000GP/plots/hcl_ IBS vs TSI/F9-10.png
+	width 80page%
+	height 20pheight%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename pasted32.png
+	width 80page%
+	height 20pheight%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Separation of recent shared ancestries
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tiny Example: ITU vs STU}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{center}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename pasted23.png
+	width 60page%
+	height 30pheight%
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{center}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tiny Example: IBS vs TSI}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{center}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename pasted21.png
+	width 60page%
+	height 30pheight%
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{center}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Separation of recent shared ancestries
+\end_layout
+
+\begin_layout Standard
+Ratio of within-group mean distance to out-of group mean distance:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="9" columns="3">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Populations
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Our method
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+PCA
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+TSI-IBS
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+.417
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+.504
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+BEB-PJL
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+.748
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+.794
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ITU-STU
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+.836
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+.889
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ITU-BEB
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+.905
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+.951
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+CHB-CHS
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+.605
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+.681
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+LWK-ESN
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+.178
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+.197
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+GIH-ITU
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+.513
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+.552
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+CEU-YRI
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+.025
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+.022
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Our method outperformed standard PCA in differentiating groups for 
+\emph on
+\bar under
+every
+\emph default
+\bar default
+ same-continent subpopulation pairing across all continents.
+ (
+\begin_inset Formula $\approx50$
+\end_inset
+
+ comparisons)
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Subsection
+Controlling confounding in 1000 Genomes Project
 \end_layout
 
 \begin_layout BeginFrame
@@ -2002,17 +2466,37 @@ end{block}
 \end_layout
 
 \begin_layout BeginFrame
-Does use of weighted Jaccard preserve type I error?
+Does use our method preserve type I error?
 \end_layout
 
 \begin_layout Standard
-Weighted-Jaccard-corrected association Q-Q plot
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{center}{
+\backslash
+tiny QQ-plots of p-values for variant association with a non-genetic binary
+ phenotype
+\backslash
+
+\backslash
+Uncorrected}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \begin_inset Graphics
-	filename pasted10.png
+	filename pasted28.png
 	width 80page%
+	height 30pheight%
 
 \end_inset
 
@@ -2020,30 +2504,26 @@ Weighted-Jaccard-corrected association Q-Q plot
 \end_layout
 
 \begin_layout Standard
-No, inflation is still present.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tiny Our method (20 components) association Q-Q plot}
 \end_layout
 
-\begin_layout Standard
-Does perfect population stratification identification control the type I
- error?
-\end_layout
+\end_inset
 
-\begin_layout EndFrame
 
-\end_layout
-
-\begin_layout BeginFrame
-Use of population labels to control for stratification
-\end_layout
-
-\begin_layout Standard
-Subpopulation-corrected association Q-Q plot
 \end_layout
 
 \begin_layout Standard
 \begin_inset Graphics
-	filename pasted11.png
+	filename pasted29.png
 	width 80page%
+	height 30pheight%
 
 \end_inset
 
@@ -2051,11 +2531,19 @@ Subpopulation-corrected association Q-Q plot
 \end_layout
 
 \begin_layout Standard
-Type I error inflation 
-\begin_inset Formula $still$
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{center}
+\end_layout
+
 \end_inset
 
- occurs when controlling for groups which define disease risk.
+
 \end_layout
 
 \begin_layout EndFrame
@@ -2245,19 +2733,78 @@ status open
 
 
 \backslash
-begin{center}
+begin{center}{
+\backslash
+tiny QQ-plots of p-values for variant association with a non-genetic binary
+ phenotype across TSI-IBS
+\backslash
+
+\backslash
+PCA (2 components)}
 \end_layout
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
 \begin_inset Graphics
-	filename pasted16.png
+	filename pasted27.png
 	width 80page%
+	height 30theight%
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{center}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{center}{
+\backslash
+tiny Our method (2 components)}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename pasted26.png
+	width 80page%
+	height 30pheight%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset ERT
 status open
 
@@ -2308,7 +2855,8 @@ status collapsed
 
 \begin_deeper
 \begin_layout Itemize
-Christoph Lange
+Prof.
+ Christoph Lange
 \end_layout
 
 \begin_layout Itemize
