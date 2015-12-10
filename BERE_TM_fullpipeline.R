@@ -69,7 +69,7 @@ if(length(args)!=0){
         filterType <- NA
     }
     if(length(args)>12){
-        permuteGeneLabels <- args[13]
+        permuteGeneLabels <- (args[13]=="T")
     } else {
         permuteGeneLabels <- F
     }
@@ -170,6 +170,10 @@ if (grepl(".txt", exprFile)){
     dataset$motif    <- read.table(motifFile,header=F)
     dataset$exp      <- read.table(exprFile,row.names=1,header=T)
     dataset$clinical <- read.table(clinicalFile,header=T,fill = TRUE, sep="\t",row.names=1)
+    
+    # Removed this substring line for GTEx data (may need to reinsert for some other dataset)
+    colnames(dataset$exp) <- substr(colnames(dataset$exp), 1, 10)
+    rownames(dataset$clinical) <- substr(rownames(dataset$clinical), 1, 10)
 } else if (grepl(".rdata", exprFile)){
     #GTEx analysis
     load(exprFile)
@@ -202,9 +206,6 @@ if (grepl(".txt", exprFile)){
 dataset$ppi      <- read.table(ppiFile,header=F)
 dataset$exp      <- dataset$exp[,order(colnames(dataset$exp))]  # Make sure expression and clinical is in same order
 
-# Removed this substring line for GTEx data (may need to reinsert for some other dataset)
-# colnames(dataset$exp) <- substr(colnames(dataset$exp), 1, 10)
-# rownames(dataset$clinical) <- substr(rownames(dataset$clinical), 1, 10)
 
 matches <- sort(unique(intersect(rownames(dataset$clinical),colnames(dataset$exp))))
 dataset$clinical <- dataset$clinical[matches,]    # Make sure clinical only contains patients with expression data
@@ -212,7 +213,7 @@ dataset$exp <- dataset$exp[,matches]    # Make sure expression only contains pat
 
 if(permuteGeneLabels){
     print("Permuting gene labels once")
-    rownames(dataset$exp) <- sample(rownames(dataset$exp))
+    rownames(dataset$exp) <- sample(rownames(dataset$exp))d
 } else {
     print("No gene label permutation (default)")
 }
@@ -261,7 +262,7 @@ library(doParallel)
 
 # Calculate the number of cores
 num_cores <- detectCores() - 4
-num_cores <- min(num_cores, 20)
+num_cores <- min(num_cores, 40)
 
 # Initiate cluster
 if(!is.na(num_cores)){
@@ -291,7 +292,7 @@ null.networks<-foreach(i=1:iters,.packages=c("bereR","pandaR","reshape2","penali
         ## resample case-control
         null.exp <- dataset$exp[,sample(1:ncol(dataset$exp))]
         ## This line scrambles the gene names (toggle this) 8/18/15
-        #     rownames(null.exp) <- rownames(null.exp)[sample(1:nrow(null.exp))]
+        rownames(null.exp) <- rownames(null.exp)[sample(1:nrow(null.exp))]
     }
     #     null.exp <- null.exp + matrix(rnorm(length(null.exp))/10,nrow=nrow(null.exp),ncol=ncol(null.exp))
     null.exp <- null.exp[,selectedSamples]
@@ -383,11 +384,13 @@ png(file.path(outputDir,paste('SSODMplot_scaled',analysisCode,'.png', sep="")), 
 ssodm.plot(transMatrices[[1]], transMatrices[-1], rescale=T, plot.title=paste("SSODM observed and null, ",casesString," vs ",controlsString,' : ', networkInferenceName, ' : ', analysisName, sep=""))
 dev.off()
 
-transMatrices <- lapply(transMatrices, function(x){
-    rownames(x) <- mappings[match(rownames(x), mappings[,1]),2]
-    colnames(x) <- mappings[match(colnames(x), mappings[,1]),2]
-    x
-})
+# This is for converting TF IDs to their gene names
+
+# transMatrices <- lapply(transMatrices, function(x){
+#     rownames(x) <- mappings[match(rownames(x), mappings[,1]),2]
+#     colnames(x) <- mappings[match(colnames(x), mappings[,1]),2]
+#     x
+# })
 
 # Top TFs
 #highlight.tfs <- c("E2F4","NRF1","GABPA","ELK1","ELK4","E2F1","ZBTB33","ELF1","ZFX")
@@ -460,7 +463,7 @@ logfoldchange <- log(rowMeans(dataset$exp[,casesFilter])/rowMeans(dataset$exp[,c
 obsSsodm <- apply(transMatrices[[1]],1,function(x){t(x)%*%x})
 includedTFs <- intersect(names(obsSsodm),rownames(diff.exp.res$p.value))
 obsSsodm <- obsSsodm[includedTFs]
-dTFI_pVals_All <- 2*abs(.5-(1-calculate.tm.p.values(transMatrices[[1]], transMatrices[-1])))
+dTFI_pVals_All <- 1-2*abs(.5-calculate.tm.p.values(transMatrices[[1]], transMatrices[-1]))
 dTFI_pVals <- dTFI_pVals_All[includedTFs]
 negLogPValues <- -log(dTFI_pVals)
 # replace Inf values with max values
@@ -519,7 +522,7 @@ adj.combined <- merge(tm.sigmas.melt,adjMat.melt, by=c("Var1","Var2"))
 # adj.combined[,1] <- mappings[match(adj.combined[,1], mappings[,1]),2]
 # adj.combined[,2] <- mappings[match(adj.combined[,2], mappings[,1]),2]
 
-numEdges  <- 100
+numEdges  <- 40
 numTopTFs <- 10
 topTFsIncluded <- names(sort(dTFI_pVals_All)[1:numTopTFs])
 topTFIndices <- 2>(is.na(match(adj.combined[,1],topTFsIncluded))+is.na(match(adj.combined[,2],topTFsIncluded)))
@@ -540,6 +543,15 @@ legend("bottomleft", c("Gained features","Lost features"), lty=c(1,1),lwd=c(2.5,
 dev.off()
 
 saveRDS(list(obsSsodm,dTFI_pVals_All),'dTFI.rdata')
+
+
+# ############# Some methylation investigation 11/25/15
+# # diffGeneMethPValues <- readRDS("./diffGeneMethPValues.rdata")
+# meanTransition <- rowMeans(transMatrices[[1]])
+# methDifferences <- diffGeneMethPValues[1,]-diffGeneMethPValues[2,] 
+# matched_TF_Meth <- intersect(colnames(diffGeneMethPValues),names(obsSsodm))
+# plot(methDifferences[matched_TF_Meth],meanTransition[matched_TF_Meth])
+# summary(lm(methDifferences[matched_TF_Meth]~meanTransition[matched_TF_Meth]))
 
 #library(igraph)
 # # Visualize networks
