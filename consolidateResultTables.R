@@ -21,6 +21,7 @@ resultTables <- lapply(resultTables, function(x){
     x$rankSig <- 1:nrow(x)
     x <- x[order(-x$Magnitude),]
     x$rankMag <- 1:nrow(x)
+    x$limma <- exp(-(x$limma))
     colnames(x) <- paste(analysisNames[parent.frame()$i], colnames(x), sep="_")
     x
 })
@@ -30,7 +31,7 @@ merged.data.frame = Reduce(function(...) merge(..., by=1,all=T), resultTables)
 merged.data.frame <- merged.data.frame[order(merged.data.frame[,2]),]
 
 # Function for generation of a plot based on an index pair
-makeComparisonPlot <- function(pair, plotTopNTFs=15, filterColIndices = c(8,15,22)){
+makeComparisonPlot <- function(pair, plotTopNTFs=15, filterColIndices = c(8,16,24)){
   # Include labels for any TFs that are in the top 15 of any list
   includedLabels <- apply(merged.data.frame[,filterColIndices[pair]],1,function(...) suppressWarnings(min(...,na.rm=T))) < plotTopNTFs
   merged.data.frame$labels <- as.character(merged.data.frame[,1])
@@ -51,3 +52,12 @@ suppressWarnings(grid.arrange(plot1, plot2, plot3, ncol=3, top="Comparison of Di
 png('eclipse_copdgene_lgrc_comparison.png', width=1800)
 suppressWarnings(grid.arrange(plot1, plot2, plot3, ncol=3, top="Comparison of Differential TF Involvement Across Studies"))
 dev.off()
+
+# Create table
+keepColnames <- c(t(outer(analysisNames,c("Magnitude","rankMag","dTFI.FDR","limma..logp"), paste, sep="_")))
+displayColnames <- rep(c("Magnitude","rank","FDR","LIMMA"), 3)
+publicationTable <- cbind(merged.data.frame[,1], round(merged.data.frame[,keepColnames],4))
+colnames(publicationTable) <- c('TF',displayColnames)
+publicationTable <- publicationTable[order(-publicationTable[,2]),]
+publicationTable[publicationTable==0] <- "<.0001"
+head(publicationTable)
