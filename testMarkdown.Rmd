@@ -9,6 +9,7 @@ When you click the **Knit** button a document will be generated that includes bo
 
 ```{r}
 summary(cars)
+source('~/gd/Harvard/Research/R_workspace/consolidateResultTables.R')
 ```
 
 You can also embed plots, for example:

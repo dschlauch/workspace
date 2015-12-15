@@ -74,6 +74,35 @@ negLogQQ <- function(x){
 diffCpGMethPValues <- readRDS("./diffCpGMethPValues.rdata")
 negLogQQ(diffCpGMethPValues[3,])
 diffCpGMethPValues[,order(-abs(diffCpGMethPValues[1,]-diffCpGMethPValues[2,]))[1:10]]
+aggregate(diffCpGMethPValues,)
+
+hm450 <- get450k()
+probenames <- colnames(diffCpGMethPValues)
+probes <- hm450[probenames]
+
+genes <- getNearestGene(probes)$nearestGeneSymbol
+
+# Get dTFI results
+library(ggplot2)
+library(gridExtra)
+library(ggExtra)
+
+load("~/gd/Harvard/Research/TM_outputs/ECLIPSE_bere_bare_55557/activeImage55557.RData")
+TFValues1 <- sort(obsSsodm)
+cpgs_for_TFs <- diffCpGMethPValues[,genes %in% names(TFValues1)]
+tfs1 <- factor(genes[genes %in% names(TFValues1)], levels=names(TFValues1))
+negLogPval <- -log(cpgs_for_TFs[3,])
+plot1 <- qplot(tfs1, negLogPval) + theme(axis.text.x = element_text(angle = 90, hjust = 1)) + geom_point(aes(colour = negLogPval)) + ggtitle("ordered by effect size")
+
+TFValues2 <- sort(dTFI_pVals, decreasing=T)
+cpgs_for_TFs <- diffCpGMethPValues[,genes %in% names(TFValues2)]
+tfs2 <- factor(genes[genes %in% names(TFValues2)], levels=names(TFValues2))
+negLogPval <- -log(cpgs_for_TFs[3,])
+plot2 <- qplot(tfs2, negLogPval) + theme(axis.text.x = element_text(angle = 90, hjust = 1)) + geom_point(aes(colour = negLogPval)) + ggtitle("ordered by significance")
+
+png('diffMethylCpG', width=1800)
+grid.arrange(plot1, plot2, nrow=2, top="differentially methylated CpG sites near TFs")
+dev.off()
 
 diffGeneMethPValues <- readRDS("./diffGeneMethPValues.rdata")
 negLogQQ(diffGeneMethPValues[3,matched_TF_Meth])

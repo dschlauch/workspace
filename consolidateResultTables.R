@@ -8,13 +8,15 @@ library(ggExtra)
 ##################################################################################################################
 
 # Specify the analysis folders and display names for the analyses
-analysisNames <- c("ECLIPSE_bere_bare_55557","LGRC_bere_38678","COPDGene_bere_70856")
-displayNames <- c("ECLIPSE","LGRC","COPDGene")
+analysisNames <- c("ECLIPSE_bere_bare_55557","COPDGene_bere_70856", "LGRC_bere_38678")
+displayNames <- c("ECLIPSE","COPDGene","LGRC")
 
 # Find the files for comparison
 # Read them in.
 # Add within-study rank order for magnitude and significance
-filenames <- dir(paste0("~/gd/Harvard/Research/TM_outputs/",analysisNames), full.names = T, recursive = TRUE, all.files = TRUE, pattern="resultTable*") 
+filenames <- sapply(analysisNames, function(aname){
+  dir(paste0("~/gd/Harvard/Research/TM_outputs/",aname), full.names = T, recursive = TRUE, all.files = TRUE, pattern="resultTable*") 
+})
 resultTables <- lapply(filenames, read.csv)
 names(resultTables) <- analysisNames
 resultTables <- lapply(resultTables, function(x){
@@ -43,9 +45,9 @@ makeComparisonPlot <- function(pair, plotTopNTFs=15, filterColIndices = c(8,16,2
 }
 
 # Create the 3 comparison plots for ECLIPSE, LGRC, COPDGene and combine them
-plot1 <- makeComparisonPlot(c(1,2))
-plot2 <- makeComparisonPlot(c(2,3))
-plot3 <- makeComparisonPlot(c(3,1))
+plot1 <- suppressWarnings(makeComparisonPlot(c(1,2)))
+plot2 <- suppressWarnings(makeComparisonPlot(c(2,3)))
+plot3 <- suppressWarnings(makeComparisonPlot(c(3,1)))
 suppressWarnings(grid.arrange(plot1, plot2, plot3, ncol=3, top="Comparison of Differential TF Involvement Across Studies"))
 
 # Generate the png for the above plots
