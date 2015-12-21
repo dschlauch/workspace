@@ -56,10 +56,16 @@ suppressWarnings(grid.arrange(plot1, plot2, plot3, ncol=3, top="Comparison of Di
 dev.off()
 
 # Create table
-keepColnames <- c(t(outer(analysisNames,c("Magnitude","rankMag","dTFI.FDR","limma..logp"), paste, sep="_")))
-displayColnames <- rep(c("Magnitude","rank","FDR","LIMMA"), 3)
+keepColnames <- c(t(outer(analysisNames,c("Magnitude","rankMag","dTFI.FDR","limma"), paste, sep="_")))
+displayColnames <- rep(c("dTFI","rank","FDR","LIMMA"), 3)
 publicationTable <- cbind(merged.data.frame[,1], round(merged.data.frame[,keepColnames],4))
 colnames(publicationTable) <- c('TF',displayColnames)
+options(scipen=999)
 publicationTable <- publicationTable[order(-publicationTable[,2]),]
+publicationTable <- publicationTable[which(apply(publicationTable[,c(3,7,11)],1,min)<11),]
 publicationTable[publicationTable==0] <- "<.0001"
-head(publicationTable)
+# Table is now a character table (not numeric)
+publicationTable <- data.frame(gsub("0.", ".", as.matrix(publicationTable),fixed=T),check.names=FALSE)
+dim(publicationTable)
+write.table(publicationTable, file="study_comparison_table.txt", row.names=F, sep="\t", quote=F)
+options(scipen=0)

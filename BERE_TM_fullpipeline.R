@@ -213,7 +213,7 @@ dataset$exp <- dataset$exp[,matches]    # Make sure expression only contains pat
 
 if(permuteGeneLabels){
     print("Permuting gene labels once")
-    rownames(dataset$exp) <- sample(rownames(dataset$exp))d
+    rownames(dataset$exp) <- sample(rownames(dataset$exp))
 } else {
     print("No gene label permutation (default)")
 }
@@ -225,6 +225,7 @@ if(is.na(filterType)){
     subsetFilter <- dataset$clinical[,filterType]==filterBy
 }
 phenoFilter <- (dataset$clinical[,phenotypeName]==casesString)|(dataset$clinical[,phenotypeName]==controlsString)
+phenoFilter <- phenoFilter & !is.na(phenoFilter)
 allFilter <- subsetFilter&phenoFilter
 
 dataset$exp <- dataset$exp[,allFilter]
@@ -463,7 +464,8 @@ logfoldchange <- log(rowMeans(dataset$exp[,casesFilter])/rowMeans(dataset$exp[,c
 obsSsodm <- apply(transMatrices[[1]],1,function(x){t(x)%*%x})
 includedTFs <- intersect(names(obsSsodm),rownames(diff.exp.res$p.value))
 obsSsodm <- obsSsodm[includedTFs]
-dTFI_pVals_All <- 1-2*abs(.5-calculate.tm.p.values(transMatrices[[1]], transMatrices[-1]))
+dTFI_pVals_All <- 1-2*abs(.5-calculate.tm.p.values(transMatrices[[1]], transMatrices[-1],method="non-parametric"))
+names(dTFI_pVals_All) <- colnames(transMatrices[[1]])
 dTFI_pVals <- dTFI_pVals_All[includedTFs]
 negLogPValues <- -log(dTFI_pVals)
 # replace Inf values with max values

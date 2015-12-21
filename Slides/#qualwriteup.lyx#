@@ -1,0 +1,2345 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+\usepackage[font={small,it}]{caption}
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement h
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Oral Qualifying Exam - Methods in case-control gene regulatory networks
+\end_layout
+
+\begin_layout Date
+Daniel Schlauch
+\end_layout
+
+\begin_layout Section
+Abstract
+\end_layout
+
+\begin_layout Standard
+The development of high-throughput technologies over the last two decades
+ has brought significant promise towards understanding biology and shed
+ light on the progression of human disease.
+ As our ability to collect data has increased, so too have the statistical
+ and computational challenges along with our appreciation for the complexity
+ of molecular pathways and the biological processes they govern.
+ It is due to this complexity that determining the targets of transcription
+ factors (TFs) in a gene regulatory network (GRN) is challenging.
+ This problem is further exacerbated when attempting to uncover context
+ specific network structure.
+ Our goals can be divided into two distinct parts, (1) the construction
+ of gene regulatory networks and (2) the analysis of the structural changes
+ between those networks.
+ Due to the complexity of the underlying networks and the high dimensionality
+ of typical datasets, these challenges remain open problems.
+ In this paper we the explore novel methods developed for gaining insight
+ into network transformations between cases and controls in a complex disease.
+ 
+\end_layout
+
+\begin_layout Section
+Introduction
+\end_layout
+
+\begin_layout Standard
+The use of the use of high-throughput assays, such as gene expression microarray
+s, for the inference of biological networks is an active field of study.
+ Of common interest is the estimation of the set of interactions between
+ the set nodes of a graph, referred to as edges and vertices, respectively.
+ Typically, these vertices represent the measured genes or a subset thereof
+ in an organism.
+ The interpretation of the edges covers a wide range of possible biological
+ and statistical interactions.
+ A widely used model is the Gaussian Graphical Model, which seeks to fit
+ the gene expression data as independent samples from a multivariate normal
+ distribution with the standardized variance-covariance matrix derived from
+ the network adjacency matrix, which defines the edges between each pairwise
+ combination of 
+\begin_inset Formula $p$
+\end_inset
+
+ genes.
+ We can then interpret the presence or absence of an edge as the dependence
+ or indepenence of the two genes conditional on all others.
+ This adjacency matrix may be estimated in many ways, such as with a direct
+ maximum likelihood estimation or fitting a regression model.
+ However, a significant impediment to inferring network structure is the
+ high-dimensionality of the data such that the number of edges for each
+ vertex is larger (much larger!) than the number of samples.
+ Many methods have been developed to address this issue, often by introducing
+ a prior belief that the overwhelming majority of possible edges do not
+ exist
+\begin_inset CommandInset citation
+LatexCommand cite
+key "tibshirani1996regression"
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "haury2012tigress"
+
+\end_inset
+
+.
+ This sparsity constraint has been exploited by employing a number of statistica
+l tools such as feature selection methods and penalized regression.
+ Often for interpretive and visual purposes, these results are dichotomized
+ to yield a present/absent indication of interaction between nodes potentially
+ losing valuable information for the strength in information and degree
+ of uncertainty for inferred edges.
+\end_layout
+
+\begin_layout Standard
+The growth of complementary data sources has allowed for the bolstering
+ of numerous published network inference methods.
+ A semi-supervised learning method, SEREND, was developed to incorporate
+ Transcription factor-DNA information, including sequence binding motifs
+ in network reconstruction
+\begin_inset CommandInset citation
+LatexCommand cite
+key "ernst2008semi"
+
+\end_inset
+
+.
+ This method dramatically improved prediction of TF regulatory targets as
+ measured by ChIP-chip data in E.
+ coli.
+ Another approach to inferring networks was presented by Glass et al, PANDA,
+ by modelling the regulatory network as a bipartite graph with pairwise
+ connections existing in three distinct sets, (1) within the set of known
+ TFs, (2) within the set of genes, and (3) between TFs and genes
+\begin_inset CommandInset citation
+LatexCommand cite
+key "glass2013passing"
+
+\end_inset
+
+.
+ The algorithm finds convergence in the flow of information from the TF
+ layer of the network through the gene layer via concepts of responsibility
+ and availability.
+ This method was a demonstrated to be an additional improvement over SEREND
+ in predicting gene regulatory networks in Yeast and has been used to infer
+ networks in ovarian cancer 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "glass2015network"
+
+\end_inset
+
+ and COPD
+\begin_inset CommandInset citation
+LatexCommand cite
+key "glass2014sexually"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Methods
+\end_layout
+
+\begin_layout Subsection
+Regulatory network reconstruction
+\end_layout
+
+\begin_layout Standard
+Consider a gene expression matrix consisting of 
+\begin_inset Formula $p$
+\end_inset
+
+ rows of genes across 
+\begin_inset Formula $n$
+\end_inset
+
+ samples.
+ Additionally, consider a set of regulatory priors consisting of a mapping
+ between 
+\begin_inset Formula $m$
+\end_inset
+
+ known TFs and the variable set of genes for which they are suspected of
+ targeting.
+ Our method builds on the PANDA algorithm by using the same bipartite network
+ modelling framework.
+ We have developed a novel approach, 
+\series bold
+B
+\series default
+ipartite 
+\series bold
+E
+\series default
+dge 
+\series bold
+R
+\series default
+econstruction from 
+\series bold
+E
+\series default
+xpression data (BERE, pronounced 
+\begin_inset Quotes eld
+\end_inset
+
+bear
+\begin_inset Quotes erd
+\end_inset
+
+), for inferring transcription factor to gene interactions.
+\end_layout
+
+\begin_layout Standard
+Like PANDA, the primary focus of BERE is in learning the regulatory network.
+ But while PANDA generates three networks with a clear distinction, BERE
+ does not attempt to infer edges within the TF node set and within the gene
+ node set, instead focusing exclusively on edges between TFs and genes.
+ Effectively, this reduces the number of edges to be estimated to only 
+\begin_inset Formula $m$
+\end_inset
+
+ per gene instead of approximately 
+\begin_inset Formula $p$
+\end_inset
+
+ per gene.
+ This alone substantially reduces the dimensionality of the problem and
+ allows for the use of analyses that may have been unfeasible in a high
+ dimensional setting.
+ 
+\end_layout
+
+\begin_layout Standard
+BERE approaches the network inference problem by considering the available
+ evidence of an edge for each possible TF-gene pair.
+ This evidence can be divided into two components, referred to here as 
+\emph on
+direct
+\emph default
+ and 
+\emph on
+indirect
+\emph default
+.
+ Consider the edge between a TF and a gene, referred to here as 
+\begin_inset Formula $TF_{j}$
+\end_inset
+
+ and 
+\begin_inset Formula $g_{i}$
+\end_inset
+
+, respectively.
+ The direct evidence, 
+\begin_inset Formula $d_{i,j}$
+\end_inset
+
+, consists of the squared conditional correlation of the 
+\begin_inset Formula $g_{i}$
+\end_inset
+
+ and 
+\begin_inset Formula $g_{j}$
+\end_inset
+
+, given all other regulators of 
+\begin_inset Formula $g_{i}$
+\end_inset
+
+.
+ Where 
+\begin_inset Formula $g_{j}$
+\end_inset
+
+ is the gene which encodes 
+\begin_inset Formula $TF_{j}$
+\end_inset
+
+.
+ With 
+\begin_inset Formula $\mathbf{TF}$
+\end_inset
+
+ as the set of genes that are also TFs we have,
+\begin_inset Formula 
+\[
+d_{i,j}=cor\left(g_{i},g_{j}|\left\{ g_{k,-j}:k\ne j,k\in\mathbf{TF}\right\} \right)^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This calculation conditions only on the other regulators of 
+\begin_inset Formula $g_{i}$
+\end_inset
+
+, so it may be permissible to perform with ordinary linear regression as
+ is implemented by default in the BERE software, but may also require a
+ penalization adjustment for analysis with a small number of samples relative
+ to the number of transcription factors.
+\end_layout
+
+\begin_layout Standard
+Use of direct evidence inadequately captures regulatory relationships due
+ to the impacts of technical noise and numerous biological external factors
+ such as stable or transient protein-protein interactions, post-translational
+ modifications, etc.
+ which may confound or modify a regulatory effect.
+ These sources of confounding and variability in the expression pattern
+ of a TF gene may obscure the effects it has on all of its target genes.
+ Therefore it is of value if we can complement our estimate of the likelihood
+ of a regulatory mechanism by aggregating the information from the gene
+ expression patterns of all suspected targets of transcription factors.
+ PANDA achieves its superior performance in part by convergence towards
+ 
+\begin_inset Quotes eld
+\end_inset
+
+agreement
+\begin_inset Quotes erd
+\end_inset
+
+, whereby large collections of gene expression patterns must agree with
+ the proposed regulatory structure in order to claim an interaction.
+ Similarly, BERE looks for agreement between the gene expression patterns
+ of large sets of co-targeted genes.
+ We refer to this feature as 
+\emph on
+indirect 
+\emph default
+evidence and can achieve this by again utilizing our set of regulatory priors.
+ In this portion of the analysis we suspend the recognition of a TF as a
+ member of the gene list and instead consider each of the 
+\begin_inset Formula $m$
+\end_inset
+
+ TFs to be binary classifications across the entire gene list.
+ Class labels are determined by the presence or absence of a sequence binding
+ motif for that TF in the vicinity of the gene.
+\end_layout
+
+\begin_layout Standard
+The indirect evidence between the two nodes, 
+\begin_inset Formula $e_{ij}$
+\end_inset
+
+, represents the fitted probability that 
+\begin_inset Formula $g{}_{i}$
+\end_inset
+
+ belongs to the class of genes targeted by 
+\begin_inset Formula $TF_{j}$
+\end_inset
+
+.
+ 
+\begin_inset Formula $g{}_{i}$
+\end_inset
+
+ is considered to be a new observation placed into the 
+\begin_inset Formula $n-dimensional$
+\end_inset
+
+ space separated by transcription factor targets and non-targets.
+ To divide up the space, BERE uses a regularized logistic regression on
+ the gene expression data with the training set taken to be all genes except
+ 
+\begin_inset Formula $g_{i}$
+\end_inset
+
+ and the training labels taken to be the existence or non-existence of a
+ known sequence motif for 
+\begin_inset Formula $TF_{j}$
+\end_inset
+
+ upstream of 
+\begin_inset Formula $g_{i}$
+\end_inset
+
+.
+ The penalized model matrix comes from the recognition that correlations
+ between co-regulated genes will be most strong when the 
+\begin_inset Formula $TF_{j}$
+\end_inset
+
+ is most prevalent.
+ We therefore use the abundance of 
+\begin_inset Formula $TF_{j}$
+\end_inset
+
+ to weight the penalized model matrix, providing increased sensitivity for
+ detecting coexpression for those samples in which we most expect it to
+ occur.
+\end_layout
+
+\begin_layout Standard
+To build each of our classifiers we use the 
+\begin_inset Formula $L_{2}$
+\end_inset
+
+ regularization with the penalized model matrix, 
+\begin_inset Formula $\mathbf{Q}$
+\end_inset
+
+, a diagonal matrix with weights equal to the the inverse expression value
+ of the transcription factor.
+ Effectively, we maximize the penalized logistic likelihood function
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\sum_{i=1}^{n}log\left[exp\left(\mathbf{\beta^{\prime}x_{i}}\right)^{Y_{i}}\left\{ 1-exp\left(\mathbf{\beta^{\prime}x_{i}}\right)\right\} ^{1-Y_{i}}\right]-\lambda\mathbf{\beta^{\prime}Q\beta}
+\]
+
+\end_inset
+
+This computation is run using the R package 
+\begin_inset Quotes eld
+\end_inset
+
+penalized
+\begin_inset Quotes erd
+\end_inset
+
+, with the penalty term
+\begin_inset Formula $\lambda$
+\end_inset
+
+ estimated via 5 fold cross validation.
+\end_layout
+
+\begin_layout Standard
+By scoring each gene according to the strength of indirect evidence for
+ a regulatory response to each of the TFs, we can combine this with the
+ direct evidence of regulation (squared conditional correlation of expression
+ for 
+\begin_inset Formula $gene_{i}$
+\end_inset
+
+ and 
+\begin_inset Formula $TF_{i}$
+\end_inset
+
+).
+ The appropriate manner in which to combine direct and indirect evidence
+ remains an open question.
+ Though both measures are bounded by 
+\begin_inset Formula $\left[0,1\right]$
+\end_inset
+
+ their interpretation is quite different.
+ The direct evidence can be considered in terms of it's conditional gene
+ expression 
+\begin_inset Formula $R^{2}$
+\end_inset
+
+ between nodes, while the indirect evidence is interpreted as a probability.
+ For example, under the null hypotheses of no interaction between 
+\begin_inset Formula $TF_{j}$
+\end_inset
+
+ and 
+\begin_inset Formula $g_{i}$
+\end_inset
+
+, we have the known distribution 
+\begin_inset Formula $d_{i,j}\sim Beta\left(\frac{1}{2},\frac{n-m}{2}\right)$
+\end_inset
+
+, but the distribution of 
+\begin_inset Formula $e_{i,j}$
+\end_inset
+
+ remains a function of the classification partition formed between expression
+ patterns of targets and non-targets.
+ It is therefore appropriate to use a non-parametric approach to combine
+ evidence.
+ The targets of each TF are then ranked and combined as a weighted sum,
+ 
+\begin_inset Formula $w_{i}=\left(1-\alpha\right)\left[rank\left(d_{i}\right)\right]+\alpha\left[rank\left(e_{i}\right)\right]$
+\end_inset
+
+,
+\begin_inset Formula $i\in\left\{ 1,\dots,n\right\} $
+\end_inset
+
+.
+ Our choice of the weight 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ here is based on empirical evaluation and perhaps not surprisingly is loosely
+ correlated with organism complexity.
+ In validation sets from Yeast, the optimal 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ was observed near 
+\begin_inset Formula $\alpha=.9$
+\end_inset
+
+ while simpler E.
+ coli datasets saw an optimal value of 
+\begin_inset Formula $\alpha=.6$
+\end_inset
+
+ and in silico data optimality was achieved at 
+\begin_inset Formula $\alpha<.5$
+\end_inset
+
+.
+ This naturally reflects the fact that the increased complexity of the network
+ necessitates the use of larger scale agreement between genes, rather than
+ a reliance on pairwise correlations between potentially noisier and more
+ complex expression patterns.
+\end_layout
+
+\begin_layout Standard
+A development version of the BERE method is available from github at http://www.g
+ithub.com/dschlauch/bere
+\end_layout
+
+\begin_layout Subsection
+Transition analysis
+\end_layout
+
+\begin_layout Standard
+A primary purpose of reconstructing GRNs is the understanding of the biological
+ mechanisms which characterize disease.
+ Identifying differential TF targeting may suggest a therapeutic target,
+ uncover a disease substructure or identify biomarkers for early detection.
+ However, significant limitations exist with respect to generating reliable
+ context-specific GRNs.
+ Substantial advances have been made in this area with algorithms like SEREND
+ and PANDA, but these methods rely more heavily on the static sequence motif
+ data rather than gene expression data collected across groups, such as
+ in a case-control study.
+ Both methods, along with BERE, use gene expression data as a refinement
+ of the more accurate motif priors.
+ It is therefore a side effect that any GRN inference method that relies
+ on motifs directly for edgeweight calculation will be susceptible to having
+ the bulk of its predictive power stripped when making comparisons between
+ networks.
+ Consequently, it is of critical importance to choose a network inference
+ method that uses the context-specific data to most accurately refine above
+ what information is gleaned from our static data.
+\end_layout
+
+\begin_layout Standard
+The task of identifying meaningful network transitions then becomes an evaluatio
+n of the relative refinement of edgeweights.
+ Since the majority of the predictive power for each edge is contained in
+ the motif contribution, we are left with relative edgeweight refinement
+ that have a low signal, high noise.
+ In other words, we have a very large number of individually unreliable
+ edgeweights.
+ In effort to extract the maximum effect, we seek to combine the information
+ contained in each edge via a novel dimension reduction approach.
+\end_layout
+
+\begin_layout Standard
+Consider two adjacency matrices, 
+\begin_inset Formula $\mathbf{A},\mathbf{B}$
+\end_inset
+
+ representing the two GRNs estimated from a case-control study.
+ Each matrix has dimensions 
+\begin_inset Formula $\left(p\times m\right)$
+\end_inset
+
+ representing the set of 
+\begin_inset Formula $p$
+\end_inset
+
+ genes targeted by 
+\begin_inset Formula $m$
+\end_inset
+
+ TFs.
+ We seek a matrix, 
+\begin_inset Formula $\mathbf{T}$
+\end_inset
+
+, such that 
+\begin_inset Formula 
+\[
+\mathbf{B}=\mathbf{AT}+\mathbf{E}
+\]
+
+\end_inset
+
+Where 
+\begin_inset Formula $\mathbf{E}$
+\end_inset
+
+ is our error matrix, which we want to minimize.
+ Intuitively, we may frame this as a set of 
+\begin_inset Formula $m$
+\end_inset
+
+ independent regression problems, where 
+\begin_inset Formula $m$
+\end_inset
+
+ is the number of transcription factors and also the column rank of 
+\begin_inset Formula $\mathbf{A},\mathbf{B},\mathbf{T}\, and\,\mathbf{E}$
+\end_inset
+
+.
+ For a column in 
+\begin_inset Formula $\mathbf{B}$
+\end_inset
+
+, 
+\begin_inset Formula $\mathbf{b}_{i}$
+\end_inset
+
+, we note that a corresponding column in 
+\begin_inset Formula $\mathbf{T}$
+\end_inset
+
+, 
+\begin_inset Formula $\mathbf{\tau}_{i}$
+\end_inset
+
+, represents the OLS solution to
+\begin_inset Formula 
+\[
+E\left[\mathbf{b}_{i}\right]=\tau_{i1}\mathbf{a}_{1i}+\tau_{i2}\mathbf{a}_{2i}+\dots+\tau_{im}\mathbf{a}_{mi}
+\]
+
+\end_inset
+
+or alternatively expressed 
+\begin_inset Formula 
+\[
+\left[\begin{array}{c}
+\mathbf{b}_{i1}\\
+\mathbf{b}_{i2}\\
+\vdots\\
+\mathbf{b}_{ip}
+\end{array}\right]=\mathbf{\tau}_{1,i}\left[\begin{array}{c}
+\mathbf{a}_{11}\\
+\mathbf{a}_{21}\\
+\vdots\\
+\mathbf{a}_{p1}
+\end{array}\right]+\mathbf{\tau}_{2,i}\left[\begin{array}{c}
+\mathbf{a}_{12}\\
+\mathbf{a}_{22}\\
+\vdots\\
+\mathbf{a}_{p2}
+\end{array}\right]+\dots+\mathbf{\tau}_{p,i}\left[\begin{array}{c}
+\mathbf{a}_{1p}\\
+\mathbf{a}_{2p}\\
+\vdots\\
+\mathbf{a}_{pp}
+\end{array}\right]+\left[\begin{array}{c}
+e_{i1}\\
+e_{i2}\\
+\vdots\\
+e_{ip}
+\end{array}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $E\left[e_{ij}\right]=0$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+This can be solved with normal equations, 
+\begin_inset Formula 
+\begin{eqnarray*}
+\mathbf{\tau}_{i} & = & \left(\mathbf{A}^{T}\mathbf{A}\right)^{-1}\mathbf{A}^{T}\mathbf{b}_{i}\\
+\mathbf{T} & = & \left[\tau_{1},\tau_{2},\dots,\tau_{n}\right]
+\end{eqnarray*}
+
+\end_inset
+
+Which produces the least square estimate.
+ I.e.
+ loss function 
+\begin_inset Formula $L\left(\mathbf{T}\right)=\sum_{gene=1}^{N}||\mathbf{B}_{gene}-\mathbf{A}_{gene}\mathbf{T}||^{2}$
+\end_inset
+
+ is minimized.
+ We further extend this method to include a penalty term
+\begin_inset CommandInset citation
+LatexCommand cite
+key "tibshirani1996regression"
+
+\end_inset
+
+.
+ An 
+\begin_inset Formula $L_{1}$
+\end_inset
+
+ regularization is used by creating an identity penalty model matrix for
+ each column regression such that only the 
+\begin_inset Formula $k^{th}$
+\end_inset
+
+ diagonal element is 0 and all other diagonals are 1.
+ This gives priority for the 
+\begin_inset Formula $k^{th}$
+\end_inset
+
+ regression coefficient in the 
+\begin_inset Formula $k^{th}$
+\end_inset
+
+ regression model.
+ 
+\begin_inset Formula 
+\[
+\mathbf{Q}_{i,j}=\begin{cases}
+1 & for\, i=j\ne k\\
+0 & elsewhere
+\end{cases}
+\]
+
+\end_inset
+
+This solution is obtained using the 
+\begin_inset Quotes eld
+\end_inset
+
+penalized
+\begin_inset Quotes erd
+\end_inset
+
+ library in R as the minimization of the penalized squared loss function
+\begin_inset Formula 
+\[
+\sum_{i=1}^{p}\left(\mathbf{B}_{i,k}-\sum_{j=1}^{m}A_{i,j}\mathbf{T}_{j,k}\right)^{2}+\lambda\mathbf{\sqrt{\beta^{\prime}Q\beta}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This example illustrates a key feature of this method.
+ Specifically, 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+that the transition matrix is a data reduction method that reduces the case-cont
+rol network transformation from a set of 
+\begin_inset Formula $2\times p\times m$
+\end_inset
+
+ estimates to a set of 
+\begin_inset Formula $m\times m$
+\end_inset
+
+ estimates that are easily interpreted.
+ We can think of a column, 
+\begin_inset Formula $\tau_{i}$
+\end_inset
+
+, on the matrix 
+\begin_inset Formula $\mathbf{T}$
+\end_inset
+
+ as containing the linear combination of regulatory targets of 
+\begin_inset Formula $TF_{i}$
+\end_inset
+
+ in 
+\begin_inset Formula $\mathbf{A}$
+\end_inset
+
+ that best approximates the regulatory targets of 
+\begin_inset Formula $TF_{i}$
+\end_inset
+
+ in 
+\begin_inset Formula $\mathbf{B}$
+\end_inset
+
+.
+ As one would expect, a large proportion of the matrix 
+\begin_inset Quotes eld
+\end_inset
+
+mass
+\begin_inset Quotes erd
+\end_inset
+
+ would be on the diagonal for those TFs which do not change regulatory behavior
+ between case and control.
+ It is therefore of interest to evaluate values off of the diagonal as indicatio
+ns of a network transition.
+\end_layout
+
+\begin_layout Standard
+Here we introduce a new concept, differential
+\emph on
+ transcription factor involvement
+\emph default
+ (TFI), measured as the standardized sum of squared off-diagonal mass for
+ a particular transcription factor.
+ For 
+\begin_inset Formula $TF_{j}$
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+s_{j}=\frac{\sum_{i=1}^{m}I\left(i\ne j\right)\tau_{i,j}^{2}}{\sum_{i=1}^{m}\tau_{i,j}^{2}}
+\]
+
+\end_inset
+
+This can be equivalently interpreted as the proportion of the changes in
+ edgeweight which is explained by the targeting patterns of all other transcript
+ion factors.
+ This interpretation highlights a key benefit of this analysis.
+ Namely that we are seeking to measure the variability seen in the transition
+ in an informative, non-arbitrary manner.
+ Essentially, we are focusing only on changes for which there is an attributable
+ regulatory pattern.
+\end_layout
+
+\begin_layout Standard
+The distribution of this statistic under the null has a mean and standard
+ deviation that varies according to the motif structure.
+ In particular, both mean and sd are increased for TFs which have fewer
+ prior regulatory targets.
+ From a statistical perspective, TFs with relatively more targets are able
+ to generate more stable targeted expression patterns, which leads to more
+ consistent estimates in 
+\begin_inset Quotes eld
+\end_inset
+
+agreement
+\begin_inset Quotes erd
+\end_inset
+
+ algorithms such as PANDA and BERE.
+ From a biological perspective, increased motif presence may indicate that
+ the TFs are more likely to be ubiquitous housekeeping proteins that do
+ not meaningfully alter their involvement between cases and controls.
+\end_layout
+
+\begin_layout Standard
+The dependence of the null distribution on the motif structure is addressed
+ via resampling.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Gene expression samples are randomly assigned to case and control forming
+ the null-case and null-control with group sizes preserved.
+\end_layout
+
+\begin_layout Enumerate
+GRNs are reconstructed for the null-case and null-control with the same
+ prior regulatory structure.
+ 
+\end_layout
+
+\begin_layout Enumerate
+The transition matrix algorithm is applied for the two null networks.
+\end_layout
+
+\begin_layout Enumerate
+The differential TFI is calculated for each TF.
+\end_layout
+
+\begin_layout Enumerate
+Repeat 1-4 1000 times.
+\end_layout
+
+\begin_layout Standard
+Through this process we obtain an estimate of the distribution of differential
+ TFI under the null.
+ By comparing our observed statistic to the null distribution we obtain
+ a level of significance attributable to the case-control sample partition.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename pasted1.png
+	scale 40
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Plot of the observed differential TFI statistics (red) for TFs in a case-control
+ study of Chronic Obstructive Pulmonary Disease relative to those obtained
+ under null partitions (blue) of the expression matrix.
+ The widely variable null distributions are attributable to the structure
+ of the prior regulatory targets used for each TF.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Results
+\end_layout
+
+\begin_layout Standard
+A common challenge in gene regulatory network inference is the difficulty
+ of validating identified networks against a known, reliable gold standard.
+ A number of validation methods have been used for in vivo samples, including
+ ChIP-seq, ChIP-chip.
+ Knockdowns have also been used in cell lines and have been shown to be
+ effective at predicting in vivo responses 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "olsen2014inference"
+
+\end_inset
+
+.
+ Additionally, in silico methods have been used which simulate gene expression
+ datasets based on a predefined set of regulatory mechanisms.
+\end_layout
+
+\begin_layout Standard
+Since BERE is designed to most accurately refine edges using motif priors,
+ it is necessary to combine the edgeweights with the motif priors when comparing
+ results with PANDA or SEREND, which use the regulatory prior directly in
+ their edgeweight.
+ So we generate an 
+\emph on
+adjusted-BERE
+\emph default
+ (aBERE), where the priors are added to the edgeweight results to level
+ the playing field.
+\end_layout
+
+\begin_layout Standard
+To test our methods, we used four test datasets of increasing biological
+ complexity- (1) in silico, (2) E.
+ coli, (3) Yeast, and (4) human.
+ Data from the first three sources was obtained from the publicly available
+ DREAM5 challenge
+\begin_inset CommandInset citation
+LatexCommand cite
+key "marbach2012wisdom"
+
+\end_inset
+
+.
+ This challenge asked contestants to infer gene networks from expression
+ data alone, using a gold standard for evalution.
+ Instead, we started with the gold standard and swapped a number of edges
+ to create the type I and type II error rates consistent with Yeast motif
+ priors and evaluated the performance of BERE to refine its predictions
+ of the true gold standard.
+ The predictive accuracy of aBERE was comparable to PANDA for each of the
+ three smaller organism datasets.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename pasted2.png
+	scale 20
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename pasted3.png
+	scale 20
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename pasted5.png
+	scale 20
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+ROC curves for (1) in silico, (2) E.
+ coli, (3) Yeast, demonstrating at least comparable prediction performance
+ for both BERE and PANDA in refining edges beyond what is obtained using
+ sequence motif priors.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The BERE algorithm offers a computation time orders of magnitudes less than
+ PANDA, so we argue its utility particularly for large datasets of analyses
+ requiring iterative approaches - such our transition matrix analysis.
+ For example, using a standard laptop computer with 4 cores, 8GB RAM and
+ 2.4 Ghz processor, network construction of 2555 genes, 53 TFs and 106 samples
+ took 125 seconds using the R package pandaR.
+ Comparatively, an R implementation of BERE run on the same data completes
+ in 9 seconds.
+\end_layout
+
+\begin_layout Standard
+Next we ran our complete analysis on data from the ECLIPSE study on Chronic
+ Obstructive Pulmonary Disease
+\begin_inset CommandInset citation
+LatexCommand cite
+key "agusti2010characterisation"
+
+\end_inset
+
+.
+ This dataset consisted of blood sample gene expression assays of 136 COPD
+ (case) patients and 84 smoker non-COPD (control) patients.
+ Our analysis yielded a list of TFs suspected of differential involvement
+ which had high statistical significance.
+ Many of the top TFs implicated in the case-control study have also been
+ identified independently in different analyses studying the same disease.
+ There is growing evidence of a mitochondrial role in COPD which is supported
+ by our results.
+ In the gene list below, NRF1 and GABPA are both primarily involved in mitochond
+rial transcription.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="12" columns="5">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Top TF by differential TFI significance
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+TF
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+dTFI
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+p values
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+FDR
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+gexp
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+E2F4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.0083
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+<.001
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+<.001
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.337
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+NRF1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.0063
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+<.001
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+<.001
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.215
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+GABPA
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.0054
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+<.001
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+<.001
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.816
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+ELK1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.0051
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+<.001
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+<.001
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.08
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+ELK4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.0052
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+<.001
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+<.001
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+<.001
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+E2F1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.0046
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+<.001
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+<.001
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.714
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+ZBTB33
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.0037
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+<.001
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+<.001
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.602
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+ELF1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.0025
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.001
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.0242
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.301
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+ZFX
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.004
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.0014
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.0285
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.987
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+TCF3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.0023
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.0017
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.0313
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.001
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+It is of particular interest here to note that only 2 of the 10 TFs listed
+ above are significantly differentially expressed (column 
+\series bold
+gexp
+\series default
+) between cases and controls at the 
+\begin_inset Formula $\alpha=.05$
+\end_inset
+
+ level.
+ This demonstrates that this approach towards identifying changes in TF
+ behavior may not be identifiable using conventional microarray analysis
+ techniques.
+ The transition matrix has the power to observe changes in regulatory behavior
+ even if the gene encoding the TF is not measurably changing it's expression
+ level.
+\end_layout
+
+\begin_layout Standard
+The nature of the transition matrix approach allows us to further investigate
+ our results by exposing the details of the TF shift in involvement.
+ We can identify a potential interaction between a 
+\begin_inset Formula $TF_{i}$
+\end_inset
+
+ and a 
+\begin_inset Formula $TF_{j}$
+\end_inset
+
+ based on acquisition of regulatory targeting behavior of 
+\begin_inset Formula $TF_{j}$
+\end_inset
+
+ by 
+\begin_inset Formula $TF_{i}$
+\end_inset
+
+ in transitioning from control to case.
+ The plot below is an estimate of the behavioral interactions that we observed
+ in COPD.
+ We can clearly see that many TFs become involved with other TFs even if
+ one of the TFs does not have statistically significant differential TFI.
+ This suggests that many regulatory mechanisms may be at play which dictate
+ the way in which these proteins interact with each other and the DNA to
+ regulate genes.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename pasted4.png
+	scale 50
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+This graph indicates the manner in which TF gain or lose regulatory features.
+ Each visible edge indicates that the parent has gained/lost the features
+ of the child in transitioning from Smoker Control to COPD.
+ The size of the node indicates the statistical significance of the differential
+ TFI, with all visible nodes significant at FDR<.05.
+ The width of the edge is also an indication of the strength of significance
+ for that interaction.
+ Here we see that the TF E2F4 loses the characteristics of FOXD1, HOXC9,
+ HLF, SP2 and JUNB as it transitionf from smoker control to COPD.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Future Work
+\end_layout
+
+\begin_layout Standard
+A critical point of interest in the problem of differentiating GRNs is confoundi
+ng due to measured clinical variables.
+ Numerous potential confounders exist in the study of COPD, such as the
+ usual covariates age, sex, race, location, socioeconomic level, etc.
+ in addition to study-specific confounders such as pack-years and diagnosing
+ hospital/physician.
+ One approach to account for these variables is to address them at the study
+ design level.
+ Matching along these covariates would be a sufficient conventional approach.
+ However, many data analysis problems do not have the luxury of altering
+ study design or practical considerations make it unfeasible to perform
+ appropriate matching.
+\end_layout
+
+\begin_layout Standard
+The challenge in of clinical/demographic variable confounding in network
+ inference is not straightforward.
+ In the case of Gaussian Graphical Models, for example, our observed statistics
+ are not individualized measurements which can be adjusted.
+ Rather, it is the relative change in conditional gene-gene correlation
+ that we are most interested in.
+ Thus, we may not simply introduce our confounder into a regression model,
+ for example.
+\end_layout
+
+\begin_layout Standard
+Identifying the impact of confounding and properly addressing it would vastly
+ increase the utility of the above methods into observational studies.
+ The ability to identify the nodes which characterize network transitions
+ in the presence of confounding would be a significant step in understanding
+ gene regulatory networks.
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "dissertation_research"
+options "plain"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

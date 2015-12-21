@@ -1,0 +1,40 @@
+\begin{thebibliography}{1}
+
+\bibitem{frey2007clustering}
+Brendan~J Frey and Delbert Dueck.
+\newblock Clustering by passing messages between data points.
+\newblock {\em science}, 315(5814):972--976, 2007.
+
+\bibitem{glass2013passing}
+Kimberly Glass, Curtis Huttenhower, John Quackenbush, and Guo-Cheng Yuan.
+\newblock Passing messages between biological networks to refine predicted
+  interactions.
+\newblock {\em PloS one}, 8(5):e64832, 2013.
+
+\bibitem{glass2014sexually}
+Kimberly Glass, John Quackenbush, Edwin~K Silverman, Bartolome Celli, Stephen~I
+  Rennard, Guo-Cheng Yuan, and Dawn~L DeMeo.
+\newblock Sexually-dimorphic targeting of functionally-related genes in copd.
+\newblock {\em BMC systems biology}, 8(1):118, 2014.
+
+\bibitem{glass2015network}
+Kimberly Glass, John Quackenbush, Dimitrios Spentzos, Benjamin Haibe-Kains, and
+  Guo-Cheng Yuan.
+\newblock A network model for angiogenesis in ovarian cancer.
+\newblock {\em BMC bioinformatics}, 16(1):115, 2015.
+
+\bibitem{lao2015genome}
+Taotao Lao, Kimberly Glass, Weiliang Qiu, Francesca Polverino, Kushagra Gupta,
+  Jarrett Morrow, John~Dominic Mancini, Linh Vuong, Mark~A Perrella, Craig~P
+  Hersh, et~al.
+\newblock Genome medicine.
+\newblock 2015.
+
+\bibitem{olsen2014inference}
+Catharina Olsen, Kathleen Fleming, Niall Prendergast, Renee Rubio, Frank
+  Emmert-Streib, Gianluca Bontempi, Benjamin Haibe-Kains, and John Quackenbush.
+\newblock Inference and validation of predictive gene networks from biomedical
+  literature and gene expression data.
+\newblock {\em Genomics}, 103(5):329--336, 2014.
+
+\end{thebibliography}
