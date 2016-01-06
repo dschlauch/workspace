@@ -123,9 +123,9 @@ affil[3]{Department of Medicine, Harvard Medical School, Boston, MA 20015}
 \end_layout
 
 \begin_layout Abstract
-Abstract In the language of systems biology, the state of a cell can be
- represented by a gene regulatory network that characterizes the gene transcript
-ional processes that are active in that cell type.
+In the language of systems biology, the state of a cell can be represented
+ by a gene regulatory network that characterizes the gene transcriptional
+ processes that are active in that cell type.
  And transitions that occur in a wide range of biological processes, ranging
  from development to disease, can be thought of as transformation of the
  gene regulatory network from its initial state to its final state.
@@ -167,8 +167,8 @@ One of the fundamental problems is biology is modeling the transition between
 As our ability to generate large-scale, integrative multi-omic datasets
  has grown, there has been an increased interest in using those data to
  infer gene regulatory networks to model fundamental biological processes.
- While there have been many network inference methods published, each of
- which uses a different approach to estimating the “strength” of interactions
+ While there have been many network inference (NI) methods published, each
+ of which uses a different approach to estimating the “strength” of interactions
  between genes (or between transcription factors and their targets), they
  all suffer from the same fundamental limitation.
  Every method relies on estimating weights that represent the likelihood
@@ -630,6 +630,428 @@ d to solving , where E is an
 \end_layout
 
 \begin_layout Section*
+Transition Analysis
+\end_layout
+
+\begin_layout Standard
+A primary purpose of reconstructing GRNs is the understanding of the biological
+ mechanisms which characterize disease.
+ Identifying differential TF targeting may suggest a therapeutic target,
+ uncover a disease substructure or identify biomarkers for early detection.
+ However, significant limitations exist with respect to generating reliable
+ context-specific GRNs.
+ Substantial advances have been made in this area with algorithms like SEREND
+ and PANDA, but these methods rely more heavily on the static sequence motif
+ data rather than gene expression data collected across groups, such as
+ in a case-control study.
+ Both methods, along with BERE, use gene expression data as a refinement
+ of the more accurate motif priors.
+ It is therefore a side effect that any GRN inference method that relies
+ on motifs directly for edgeweight calculation will be susceptible to having
+ the bulk of its predictive power stripped when making comparisons between
+ networks.
+ Consequently, it is of critical importance to choose a network inference
+ method that uses the context-specific data to most accurately refine above
+ what information is gleaned from our static data.
+\end_layout
+
+\begin_layout Standard
+The task of identifying meaningful network transitions then becomes an evaluatio
+n of the relative refinement of edgeweights.
+ Since the majority of the predictive power for each edge is contained in
+ the motif contribution, we are left with relative edgeweight refinement
+ that have a low signal, high noise.
+ In other words, we have a very large number of individually unreliable
+ edgeweights.
+ In effort to extract the maximum effect, we seek to combine the information
+ contained in each edge via a novel dimension reduction approach.
+\end_layout
+
+\begin_layout Standard
+Consider two adjacency matrices, 
+\begin_inset Formula $\mathbf{A},\mathbf{B}$
+\end_inset
+
+ representing the two GRNs estimated from a case-control study.
+ Each matrix has dimensions 
+\begin_inset Formula $\left(p\times m\right)$
+\end_inset
+
+ representing the set of 
+\begin_inset Formula $p$
+\end_inset
+
+ genes targeted by 
+\begin_inset Formula $m$
+\end_inset
+
+ TFs.
+ We seek a matrix, 
+\begin_inset Formula $\mathbf{T}$
+\end_inset
+
+, such that 
+\begin_inset Formula 
+\[
+\mathbf{B}=\mathbf{AT}+\mathbf{E}
+\]
+
+\end_inset
+
+Where 
+\begin_inset Formula $\mathbf{E}$
+\end_inset
+
+ is our error matrix, which we want to minimize.
+ Intuitively, we may frame this as a set of 
+\begin_inset Formula $m$
+\end_inset
+
+ independent regression problems, where 
+\begin_inset Formula $m$
+\end_inset
+
+ is the number of transcription factors and also the column rank of 
+\begin_inset Formula $\mathbf{A},\mathbf{B},\mathbf{T}\, and\,\mathbf{E}$
+\end_inset
+
+.
+ For a column in 
+\begin_inset Formula $\mathbf{B}$
+\end_inset
+
+, 
+\begin_inset Formula $\mathbf{b}_{i}$
+\end_inset
+
+, we note that a corresponding column in 
+\begin_inset Formula $\mathbf{T}$
+\end_inset
+
+, 
+\begin_inset Formula $\mathbf{\tau}_{i}$
+\end_inset
+
+, represents the OLS solution to
+\begin_inset Formula 
+\[
+E\left[\mathbf{b}_{i}\right]=\tau_{i1}\mathbf{a}_{1i}+\tau_{i2}\mathbf{a}_{2i}+\dots+\tau_{im}\mathbf{a}_{mi}
+\]
+
+\end_inset
+
+or alternatively expressed 
+\begin_inset Formula 
+\[
+\left[\begin{array}{c}
+\mathbf{b}_{i1}\\
+\mathbf{b}_{i2}\\
+\vdots\\
+\mathbf{b}_{ip}
+\end{array}\right]=\mathbf{\tau}_{1,i}\left[\begin{array}{c}
+\mathbf{a}_{11}\\
+\mathbf{a}_{21}\\
+\vdots\\
+\mathbf{a}_{p1}
+\end{array}\right]+\mathbf{\tau}_{2,i}\left[\begin{array}{c}
+\mathbf{a}_{12}\\
+\mathbf{a}_{22}\\
+\vdots\\
+\mathbf{a}_{p2}
+\end{array}\right]+\dots+\mathbf{\tau}_{p,i}\left[\begin{array}{c}
+\mathbf{a}_{1p}\\
+\mathbf{a}_{2p}\\
+\vdots\\
+\mathbf{a}_{pp}
+\end{array}\right]+\left[\begin{array}{c}
+e_{i1}\\
+e_{i2}\\
+\vdots\\
+e_{ip}
+\end{array}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $E\left[e_{ij}\right]=0$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+This can be solved with normal equations, 
+\begin_inset Formula 
+\begin{eqnarray*}
+\mathbf{\tau}_{i} & = & \left(\mathbf{A}^{T}\mathbf{A}\right)^{-1}\mathbf{A}^{T}\mathbf{b}_{i}\\
+\mathbf{T} & = & \left[\tau_{1},\tau_{2},\dots,\tau_{n}\right]
+\end{eqnarray*}
+
+\end_inset
+
+Which produces the least square estimate.
+ I.e.
+ loss function 
+\begin_inset Formula $L\left(\mathbf{T}\right)=\sum_{gene=1}^{N}||\mathbf{B}_{gene}-\mathbf{A}_{gene}\mathbf{T}||^{2}$
+\end_inset
+
+ is minimized.
+ We further extend this method to include a penalty term
+\begin_inset CommandInset citation
+LatexCommand cite
+key "tibshirani1996regression"
+
+\end_inset
+
+.
+ An 
+\begin_inset Formula $L_{1}$
+\end_inset
+
+ regularization is used by creating an identity penalty model matrix for
+ each column regression such that only the 
+\begin_inset Formula $k^{th}$
+\end_inset
+
+ diagonal element is 0 and all other diagonals are 1.
+ This gives priority for the 
+\begin_inset Formula $k^{th}$
+\end_inset
+
+ regression coefficient in the 
+\begin_inset Formula $k^{th}$
+\end_inset
+
+ regression model.
+ 
+\begin_inset Formula 
+\[
+\mathbf{Q}_{i,j}=\begin{cases}
+1 & for\, i=j\ne k\\
+0 & elsewhere
+\end{cases}
+\]
+
+\end_inset
+
+This solution is obtained using the 
+\begin_inset Quotes eld
+\end_inset
+
+penalized
+\begin_inset Quotes erd
+\end_inset
+
+ library in R as the minimization of the penalized squared loss function
+\begin_inset Formula 
+\[
+\sum_{i=1}^{p}\left(\mathbf{B}_{i,k}-\sum_{j=1}^{m}A_{i,j}\mathbf{T}_{j,k}\right)^{2}+\lambda\mathbf{\sqrt{\beta^{\prime}Q\beta}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This example illustrates a key feature of this method.
+ Specifically, 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+that the transition matrix is a data reduction method that reduces the case-cont
+rol network transformation from a set of 
+\begin_inset Formula $2\times p\times m$
+\end_inset
+
+ estimates to a set of 
+\begin_inset Formula $m\times m$
+\end_inset
+
+ estimates that are easily interpreted.
+ We can think of a column, 
+\begin_inset Formula $\tau_{i}$
+\end_inset
+
+, on the matrix 
+\begin_inset Formula $\mathbf{T}$
+\end_inset
+
+ as containing the linear combination of regulatory targets of 
+\begin_inset Formula $TF_{i}$
+\end_inset
+
+ in 
+\begin_inset Formula $\mathbf{A}$
+\end_inset
+
+ that best approximates the regulatory targets of 
+\begin_inset Formula $TF_{i}$
+\end_inset
+
+ in 
+\begin_inset Formula $\mathbf{B}$
+\end_inset
+
+.
+ As one would expect, a large proportion of the matrix 
+\begin_inset Quotes eld
+\end_inset
+
+mass
+\begin_inset Quotes erd
+\end_inset
+
+ would be on the diagonal for those TFs which do not change regulatory behavior
+ between case and control.
+ It is therefore of interest to evaluate values off of the diagonal as indicatio
+ns of a network transition.
+\end_layout
+
+\begin_layout Section*
+Transition Matrix Analysis
+\end_layout
+
+\begin_layout Standard
+Many mechanisms which may be differentially present, such as RNA degredation,
+ post-translational modification, protein-level interactions and epigenetic
+ alterations have the ability to impact downstream targeting without impacting
+ the expression level of the TF itself.
+ It may be of particular scientific or therapeutic interest to identify
+ those TFs which have undergone significant overall changes in behavior
+ between controls and cases.
+ With that objective in mind, we express the statistic- differential Transcripti
+on Factor Involvement (DTFI), as a measure for quantifying this property.
+ 
+\begin_inset Formula 
+\[
+s_{j}=\frac{\sum_{i=1}^{m}I\left(i\ne j\right)\tau_{i,j}^{2}}{\sum_{i=1}^{m}\tau_{i,j}^{2}}
+\]
+
+\end_inset
+
+ DTFI can be loosely interpreted as the proportion of TF targeting patterns
+ which is explained by the targeting patterns of other available TFs.
+ This measure, a statistic on the interval 
+\begin_inset Formula $[0,1]$
+\end_inset
+
+ seeks to elucidate transitions which are systematic, informative, and non-arbit
+rary in nature by capturing only the edgeweight signal for which there is
+ an attributable regulatory pattern.
+ The distribution of this statistic under the null has a mean and standard
+ deviation which depend on the motif structure.
+ In particular, both mean and standard deviation are increased for TFs which
+ have fewer prior regulatory targets.
+ From a statistical perspective, TFs with relatively more targets are able
+ to generate more stable targeted expression patterns, which leads to more
+ consistent estimates in “agreement” algorithms such as PANDA and BERE.
+ From a biological perspective, increased motif presence may indicate that
+ the TFs are more likely to be ubiquitous housekeeping proteins that do
+ not meaningfully alter their involvement between cases and controls.
+ The dependence of the null distribution on the motif structure is addressed
+ via the following resampling procedure.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Gene expression samples are randomly assigned to case and control forming
+ the null-case and null-control with group sizes preserved.
+ 
+\end_layout
+
+\begin_layout Enumerate
+GRNs are reconstructed for the null-case and null-control with the same
+ prior regulatory structure.
+ 
+\end_layout
+
+\begin_layout Enumerate
+The transition matrix algorithm is applied for the two null networks.
+ 
+\end_layout
+
+\begin_layout Enumerate
+The differential TFI is calculated for each TF.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Repeat 1-4 1000 times.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename workflow_diagram.png
+	lyxscale 20
+	width 80col%
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+
+\series bold
+Overview of Transition Matrix analysis workflow.
+
+\series default
+ (1) BERE is applied separately to subsets of the gene expression data including
+ the cases group, the controls group and 1000 permutations of the cases
+ and controls labels.
+ (2) Transition matrix is estimated between the cases and controls and each
+ of the pair or permuted 
+\begin_inset Quotes eld
+\end_inset
+
+cases
+\begin_inset Quotes erd
+\end_inset
+
+ and 
+\begin_inset Quotes eld
+\end_inset
+
+controls
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
 TM significantly improves TF-TF edge estimation from simulated gene expression
  data 
 \end_layout
@@ -690,7 +1112,10 @@ cite{glass2013passing}
 \end_inset
 
 .
- 
+ We note that the two simulated regulatory priors have AUC-ROC of .570 and
+ .547, which feeds the BERE and PANDA algorithms with priors which are substantia
+lly less predictive than sequence motif priors commonly used for network
+ inference methods.
 \end_layout
 
 \begin_layout Standard
@@ -836,7 +1261,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Tabular
-<lyxtabular version="3" rows="11" columns="4">
+<lyxtabular version="3" rows="13" columns="4">
 <features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
@@ -847,7 +1272,7 @@ status open
 \begin_inset Text
 
 \begin_layout Plain Layout
-AUC-ROC for Eedgeweight differences vs Transition Matrix using various NI
+AUC-ROC for Edgeweight differences vs Transition Matrix using various NI
  methods
 \end_layout
 
@@ -899,7 +1324,7 @@ NI Method
 \begin_layout Plain Layout
 
 \series bold
-Networks
+Network AUC
 \end_layout
 
 \end_inset
@@ -1007,7 +1432,7 @@ Pearson
 \uwave off
 \noun off
 \color none
-.701 (p<.0001)
+.704 (p<.0001)
 \end_layout
 
 \end_inset
@@ -1093,7 +1518,7 @@ WGCNA(6)
 \uwave off
 \noun off
 \color none
-.701 (p<.0001)
+.704 (p<.0001)
 \end_layout
 
 \end_inset
@@ -1179,7 +1604,7 @@ WGCNA(12)
 \uwave off
 \noun off
 \color none
-.701 (p<.0001)
+.704 (p<.0001)
 \end_layout
 
 \end_inset
@@ -1351,7 +1776,7 @@ CLR
 \uwave off
 \noun off
 \color none
-.691 (p<.0001)
+.694 (p<.0001)
 \end_layout
 
 \end_inset
@@ -1437,7 +1862,7 @@ TOM
 \uwave off
 \noun off
 \color none
-.700 (p<.0001)
+.703 (p<.0001)
 \end_layout
 
 \end_inset
@@ -1502,7 +1927,7 @@ TOM
 \uwave off
 \noun off
 \color none
-PANDA*(Motif=.570)
+PANDA*
 \end_layout
 
 \end_inset
@@ -1523,7 +1948,7 @@ PANDA*(Motif=.570)
 \uwave off
 \noun off
 \color none
-.740 (p<.0001)
+.747 (p<.0001)
 \end_layout
 
 \end_inset
@@ -1572,7 +1997,7 @@ PANDA*(Motif=.570)
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1588,12 +2013,12 @@ PANDA*(Motif=.570)
 \uwave off
 \noun off
 \color none
-PANDA** (Motif=.547)
+PANDA**
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1609,12 +2034,12 @@ PANDA** (Motif=.547)
 \uwave off
 \noun off
 \color none
-.676 (p<.0001)
+.652 (p<.0001)
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1635,7 +2060,7 @@ PANDA** (Motif=.547)
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1652,6 +2077,106 @@ PANDA** (Motif=.547)
 \noun off
 \color none
 .66 (p<.0001) 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+BERE*
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+.813 (p<.0001)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+BERE**
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+.697 (p<.0001)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
@@ -1704,140 +2229,6 @@ status open
 \begin_layout Plain Layout
 
 }
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section*
-Transition Matrix Analysis
-\end_layout
-
-\begin_layout Standard
-Many mechanisms which may be differentially present, such as RNA degredation,
- post-translational modification, protein-level interactions and epigenetic
- alterations have the ability to impact downstream targeting without impacting
- the expression level of the TF itself.
- It may be of particular scientific or therapeutic interest to identify
- those TFs which have undergone significant overall changes in behavior
- between controls and cases.
- With that objective in mind, we express the statistic- differential Transcripti
-on Factor Involvement (DTFI), as a measure for quantifying this property.
- 
-\begin_inset Formula 
-\[
-s_{j}=\frac{\sum_{i=1}^{m}I\left(i\ne j\right)\tau_{i,j}^{2}}{\sum_{i=1}^{m}\tau_{i,j}^{2}}
-\]
-
-\end_inset
-
- DTFI can be loosely interpreted as the proportion of TF targeting patterns
- which is explained by the targeting patterns of other available TFs.
- This measure, a statistic on the interval 
-\begin_inset Formula $[0,1]$
-\end_inset
-
- seeks to elucidate transitions which are systematic, informative, and non-arbit
-rary in nature by capturing only the edgeweight signal for which there is
- an attributable regulatory pattern.
- The distribution of this statistic under the null has a mean and standard
- deviation which depend on the motif structure.
- In particular, both mean and standard deviation are increased for TFs which
- have fewer prior regulatory targets.
- From a statistical perspective, TFs with relatively more targets are able
- to generate more stable targeted expression patterns, which leads to more
- consistent estimates in “agreement” algorithms such as PANDA and BERE.
- From a biological perspective, increased motif presence may indicate that
- the TFs are more likely to be ubiquitous housekeeping proteins that do
- not meaningfully alter their involvement between cases and controls.
- The dependence of the null distribution on the motif structure is addressed
- via the following resampling procedure.
- 
-\end_layout
-
-\begin_layout Enumerate
-Gene expression samples are randomly assigned to case and control forming
- the null-case and null-control with group sizes preserved.
- 
-\end_layout
-
-\begin_layout Enumerate
-GRNs are reconstructed for the null-case and null-control with the same
- prior regulatory structure.
- 
-\end_layout
-
-\begin_layout Enumerate
-The transition matrix algorithm is applied for the two null networks.
- 
-\end_layout
-
-\begin_layout Enumerate
-The differential TFI is calculated for each TF.
- 
-\end_layout
-
-\begin_layout Enumerate
-Repeat 1-4 1000 times.
- 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename workflow_diagram.png
-	lyxscale 20
-	width 80col%
-
-\end_inset
-
-
-\begin_inset Caption
-
-\begin_layout Plain Layout
-
-\series bold
-Overview of Transition Matrix analysis workflow.
-
-\series default
- (1) BERE is applied separately to subsets of the gene expression data including
- the cases group, the controls group and 1000 permutations of the cases
- and controls labels.
- (2) Transition matrix is estimated between the cases and controls and each
- of the pair or permuted 
-\begin_inset Quotes eld
-\end_inset
-
-cases
-\begin_inset Quotes erd
-\end_inset
-
- and 
-\begin_inset Quotes eld
-\end_inset
-
-controls
-\begin_inset Quotes erd
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
 \end_layout
 
 \end_inset
@@ -7989,7 +8380,7 @@ Combined list of TFs which were among the top 10 hits (out of 166 available
 placement h
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -8092,7 +8483,7 @@ lly affected at a post-transcription stage.
 \end_layout
 
 \begin_layout Part*
-Supplement
+Supplemental Methods
 \end_layout
 
 \begin_layout Standard
@@ -8198,6 +8589,65 @@ ROC curve for prediction of PPI based on a transition from Smoker control
 \end_inset
 
 
+\end_layout
+
+\begin_layout Section*
+Impact of homogeneity of cases and controls on statistical inference
+\end_layout
+
+\begin_layout Standard
+Many network inference methods use a measurement of pairwise co-expression
+ as a sufficient statistic for building gene networks based on gene expression
+ data.
+ The ability to detect coexpression in a sample is a function of both the
+ level of extraneous noise and the biological variability within the sample.
+ In our analysis, we compared the transition from the observed controls
+ to observed cases and compared it to the null distribution estimated from
+ a randomly sampled partition of mixed phenotypes.
+ It is therefore of interest to consider the impact of generating gene regulator
+y networks from samples with heterogeneous versus homogeneous phenotypes.
+ We consider whether transitions between 
+\emph on
+any
+\emph default
+ two homogeneous networks yields increased variance of test statistics and
+ inflation of type I error when using heterogeneous populations for estimating
+ the null distribution of these test statistics.
+\end_layout
+
+\begin_layout Standard
+To explore, we sampled 100 cases and 100 controls.
+ Within both cases and controls, we split each into two groups, denoted
+ Cases_A, Cases_B, Controls_A, Controls_B, each of size 50.
+ We performed BERE network inference on each group and ran the transition
+ matrix for each pairwise network transition.
+ The null networks were generated via a heterogeneous sampling without replaceme
+nt of 50 samples for the null cases and null controls.
+\end_layout
+
+\begin_layout Standard
+Of interest is the relative distribution of test statistics in transitions
+ across-phenotypes compared to within-phenotype, relative to the null (heterogen
+eous) transitions.
+\end_layout
+
+\begin_layout Standard
+We find that the distribution of dTFI for homogeneous within-phenotype transitio
+ns (Cases_A 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+Cases_B, Controls_A 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ Controls_B) closely matched the distribution of dTFI under the heterogeneous
+ null.
+ Comparatively, across-phenotype transitions showed strongly significant
+ results compared to the heterogeneous null.
+ We view these results as strong evidence that our findings in this manuscript
+ are not inflated due to the comparison of homogeneous observed networks
+ relative to heterogeneous null networks.
 \end_layout
 
 \begin_layout Section*

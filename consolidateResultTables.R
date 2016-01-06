@@ -8,8 +8,8 @@ library(ggExtra)
 ##################################################################################################################
 
 # Specify the analysis folders and display names for the analyses
-analysisNames <- c("ECLIPSE_bere_bare_55557","COPDGene_bere_70856", "LGRC_bere_38678")
-displayNames <- c("ECLIPSE","COPDGene","LGRC")
+analysisNames <- c("ECLIPSE_bere_bare_55557","COPDGene_bere_70856", "LGRC_bere_56432","LTCOPD_bere_bare_92540")
+displayNames <- c("ECLIPSE","COPDGene","LGRC","LTCOPD")
 
 # Find the files for comparison
 # Read them in.
@@ -33,7 +33,7 @@ merged.data.frame = Reduce(function(...) merge(..., by=1,all=T), resultTables)
 merged.data.frame <- merged.data.frame[order(merged.data.frame[,2]),]
 
 # Function for generation of a plot based on an index pair
-makeComparisonPlot <- function(pair, plotTopNTFs=15, filterColIndices = c(8,16,24)){
+makeComparisonPlot <- function(pair, plotTopNTFs=15, filterColIndices = c(8,16,24,32)){
   # Include labels for any TFs that are in the top 15 of any list
   includedLabels <- apply(merged.data.frame[,filterColIndices[pair]],1,function(...) suppressWarnings(min(...,na.rm=T))) < plotTopNTFs
   merged.data.frame$labels <- as.character(merged.data.frame[,1])
@@ -44,11 +44,12 @@ makeComparisonPlot <- function(pair, plotTopNTFs=15, filterColIndices = c(8,16,2
   ggMarginal(plot1)
 }
 
-# Create the 3 comparison plots for ECLIPSE, LGRC, COPDGene and combine them
+# Create the 4 comparison plots for ECLIPSE, LGRC, COPDGene, LTCOPD and combine them
 plot1 <- suppressWarnings(makeComparisonPlot(c(1,2)))
 plot2 <- suppressWarnings(makeComparisonPlot(c(2,3)))
-plot3 <- suppressWarnings(makeComparisonPlot(c(3,1)))
-suppressWarnings(grid.arrange(plot1, plot2, plot3, ncol=3, top="Comparison of Differential TF Involvement Across Studies"))
+plot3 <- suppressWarnings(makeComparisonPlot(c(3,4)))
+plot4 <- suppressWarnings(makeComparisonPlot(c(4,1)))
+suppressWarnings(grid.arrange(plot1, plot2, plot3,plot4, ncol=2, top="Comparison of Differential TF Involvement Across Studies"))
 
 # Generate the png for the above plots
 png('eclipse_copdgene_lgrc_comparison.png', width=1800)
