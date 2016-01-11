@@ -1,6 +1,7 @@
 library(ggplot2)
 library(gridExtra)
 library(ggExtra)
+library(gtable)
 
 ##################################################################################################################
 #  This script takes transition matrix results from multiple datasets and creates tables and plots comparing them.
@@ -38,7 +39,7 @@ makeComparisonPlot <- function(pair, plotTopNTFs=15, filterColIndices = c(8,16,2
   includedLabels <- apply(merged.data.frame[,filterColIndices[pair]],1,function(...) suppressWarnings(min(...,na.rm=T))) < plotTopNTFs
   merged.data.frame$labels <- as.character(merged.data.frame[,1])
   merged.data.frame$labels[!includedLabels] <- ""
-  corText <- paste0("R^{2}==",round(cor(merged.data.frame[[paste(analysisNames[pair[1]], "Magnitude", sep="_")]], merged.data.frame[[paste(analysisNames[pair[2]], "Magnitude", sep="_")]], use="complete.obs"),4)) 
+  corText <- paste0("r[s]==",round(cor(merged.data.frame[[paste(analysisNames[pair[1]], "Magnitude", sep="_")]], merged.data.frame[[paste(analysisNames[pair[2]], "Magnitude", sep="_")]], use="complete.obs", method="spearman"),3)) 
   plot1 <- ggplot(merged.data.frame, aes_string(paste(analysisNames[pair[1]], "Magnitude", sep="_"),paste(analysisNames[pair[2]], "Magnitude", sep="_"), label="labels"))
   plot1 <- plot1 + geom_point(colour="blue",alpha=.5, size=4) + xlab(displayNames[pair[1]]) + ylab(displayNames[pair[2]]) + geom_text(vjust=0)  + expand_limits(x=c(0,.025)) + annotate("text", x = .02, y = 0, label = corText, parse = TRUE)
   ggMarginal(plot1)
@@ -46,14 +47,23 @@ makeComparisonPlot <- function(pair, plotTopNTFs=15, filterColIndices = c(8,16,2
 
 # Create the 4 comparison plots for ECLIPSE, LGRC, COPDGene, LTCOPD and combine them
 plot1 <- suppressWarnings(makeComparisonPlot(c(1,2)))
-plot2 <- suppressWarnings(makeComparisonPlot(c(2,3)))
-plot3 <- suppressWarnings(makeComparisonPlot(c(3,4)))
-plot4 <- suppressWarnings(makeComparisonPlot(c(4,1)))
-suppressWarnings(grid.arrange(plot1, plot2, plot3,plot4, ncol=2, top="Comparison of Differential TF Involvement Across Studies"))
+plot2 <- suppressWarnings(makeComparisonPlot(c(3,4)))
+plot3 <- suppressWarnings(makeComparisonPlot(c(1,3)))
+plot4 <- suppressWarnings(makeComparisonPlot(c(2,3)))
+plot5 <- suppressWarnings(makeComparisonPlot(c(1,4)))
+plot6 <- suppressWarnings(makeComparisonPlot(c(2,4)))
 
-# Generate the png for the above plots
-png('eclipse_copdgene_lgrc_comparison.png', width=1800)
-suppressWarnings(grid.arrange(plot1, plot2, plot3, ncol=3, top="Comparison of Differential TF Involvement Across Studies"))
+suppressWarnings(grid.arrange(plot1, plot2, ncol=2, top="Comparison of Differential TF Involvement Across Studies of Same Tissue"))
+suppressWarnings(grid.arrange(plot3, plot4, plot5, plot6, ncol=2, top="Comparison of Differential TF Involvement Across Studies of Different Tissues",
+                              left = textGrob("Lung Tissue", rot = 90, vjust = 1), bottom = textGrob("Blood")))
+
+# Generate the tiffs for the above plots
+tiff('./TM_manuscript/eclipse_copdgene_lgrc_comparison_same_tissue.tiff', width=900, height=450)
+suppressWarnings(grid.arrange(plot1, plot2, ncol=2, top="Comparison of Differential TF Involvement Across Studies of Same Tissue"))
+dev.off()
+tiff('./TM_manuscript/eclipse_copdgene_lgrc_comparison_diff_tissue.tiff', width=900,height=750)
+suppressWarnings(grid.arrange(plot3, plot4, plot5, plot6, ncol=2, top="Comparison of Differential TF Involvement Across Studies of Different Tissues",
+                              left = textGrob("Lung Tissue", rot = 90, vjust = 1), bottom = textGrob("Blood")))
 dev.off()
 
 # Create table

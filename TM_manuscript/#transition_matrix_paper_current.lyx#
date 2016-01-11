@@ -630,7 +630,7 @@ d to solving , where E is an
 \end_layout
 
 \begin_layout Section*
-COPY HERE
+Transition Analysis
 \end_layout
 
 \begin_layout Standard
@@ -921,7 +921,133 @@ mass
 ns of a network transition.
 \end_layout
 
+\begin_layout Section*
+Transition Matrix Analysis
+\end_layout
+
 \begin_layout Standard
+Many mechanisms which may be differentially present, such as RNA degredation,
+ post-translational modification, protein-level interactions and epigenetic
+ alterations have the ability to impact downstream targeting without impacting
+ the expression level of the TF itself.
+ It may be of particular scientific or therapeutic interest to identify
+ those TFs which have undergone significant overall changes in behavior
+ between controls and cases.
+ With that objective in mind, we express the statistic- differential Transcripti
+on Factor Involvement (DTFI), as a measure for quantifying this property.
+ 
+\begin_inset Formula 
+\[
+s_{j}=\frac{\sum_{i=1}^{m}I\left(i\ne j\right)\tau_{i,j}^{2}}{\sum_{i=1}^{m}\tau_{i,j}^{2}}
+\]
+
+\end_inset
+
+ DTFI can be loosely interpreted as the proportion of TF targeting patterns
+ which is explained by the targeting patterns of other available TFs.
+ This measure, a statistic on the interval 
+\begin_inset Formula $[0,1]$
+\end_inset
+
+ seeks to elucidate transitions which are systematic, informative, and non-arbit
+rary in nature by capturing only the edgeweight signal for which there is
+ an attributable regulatory pattern.
+ The distribution of this statistic under the null has a mean and standard
+ deviation which depend on the motif structure.
+ In particular, both mean and standard deviation are increased for TFs which
+ have fewer prior regulatory targets.
+ From a statistical perspective, TFs with relatively more targets are able
+ to generate more stable targeted expression patterns, which leads to more
+ consistent estimates in “agreement” algorithms such as PANDA and BERE.
+ From a biological perspective, increased motif presence may indicate that
+ the TFs are more likely to be ubiquitous housekeeping proteins that do
+ not meaningfully alter their involvement between cases and controls.
+ The dependence of the null distribution on the motif structure is addressed
+ via the following resampling procedure.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Gene expression samples are randomly assigned to case and control forming
+ the null-case and null-control with group sizes preserved.
+ 
+\end_layout
+
+\begin_layout Enumerate
+GRNs are reconstructed for the null-case and null-control with the same
+ prior regulatory structure.
+ 
+\end_layout
+
+\begin_layout Enumerate
+The transition matrix algorithm is applied for the two null networks.
+ 
+\end_layout
+
+\begin_layout Enumerate
+The differential TFI is calculated for each TF.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Repeat 1-4 1000 times.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename workflow_diagram.png
+	lyxscale 20
+	width 80col%
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+
+\series bold
+Overview of Transition Matrix analysis workflow.
+
+\series default
+ (1) BERE is applied separately to subsets of the gene expression data including
+ the cases group, the controls group and 1000 permutations of the cases
+ and controls labels.
+ (2) Transition matrix is estimated between the cases and controls and each
+ of the pair or permuted 
+\begin_inset Quotes eld
+\end_inset
+
+cases
+\begin_inset Quotes erd
+\end_inset
+
+ and 
+\begin_inset Quotes eld
+\end_inset
+
+controls
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
 
 \end_layout
 
@@ -1198,7 +1324,7 @@ NI Method
 \begin_layout Plain Layout
 
 \series bold
-Networks
+Network AUC
 \end_layout
 
 \end_inset
@@ -1306,7 +1432,7 @@ Pearson
 \uwave off
 \noun off
 \color none
-.704 (p<.0001)
+.704
 \end_layout
 
 \end_inset
@@ -1392,7 +1518,7 @@ WGCNA(6)
 \uwave off
 \noun off
 \color none
-.704 (p<.0001)
+.704
 \end_layout
 
 \end_inset
@@ -1478,7 +1604,7 @@ WGCNA(12)
 \uwave off
 \noun off
 \color none
-.704 (p<.0001)
+.704
 \end_layout
 
 \end_inset
@@ -1564,7 +1690,7 @@ ARACNE
 \uwave off
 \noun off
 \color none
-.515 (p<.0001)
+.515
 \end_layout
 
 \end_inset
@@ -1650,7 +1776,7 @@ CLR
 \uwave off
 \noun off
 \color none
-.694 (p<.0001)
+.694
 \end_layout
 
 \end_inset
@@ -1736,7 +1862,7 @@ TOM
 \uwave off
 \noun off
 \color none
-.703 (p<.0001)
+.703
 \end_layout
 
 \end_inset
@@ -1822,7 +1948,7 @@ PANDA*
 \uwave off
 \noun off
 \color none
-.747 (p<.0001)
+.747
 \end_layout
 
 \end_inset
@@ -1908,7 +2034,7 @@ PANDA**
 \uwave off
 \noun off
 \color none
-.652 (p<.0001)
+.652
 \end_layout
 
 \end_inset
@@ -1982,7 +2108,7 @@ BERE*
 \uwave off
 \noun off
 \color none
-.813 (p<.0001)
+.813
 \end_layout
 
 \end_inset
@@ -2032,7 +2158,7 @@ BERE**
 \uwave off
 \noun off
 \color none
-.697 (p<.0001)
+.697
 \end_layout
 
 \end_inset
@@ -2111,154 +2237,23 @@ status open
 \end_layout
 
 \begin_layout Section*
-Transition Matrix Analysis
-\end_layout
-
-\begin_layout Standard
-Many mechanisms which may be differentially present, such as RNA degredation,
- post-translational modification, protein-level interactions and epigenetic
- alterations have the ability to impact downstream targeting without impacting
- the expression level of the TF itself.
- It may be of particular scientific or therapeutic interest to identify
- those TFs which have undergone significant overall changes in behavior
- between controls and cases.
- With that objective in mind, we express the statistic- differential Transcripti
-on Factor Involvement (DTFI), as a measure for quantifying this property.
- 
-\begin_inset Formula 
-\[
-s_{j}=\frac{\sum_{i=1}^{m}I\left(i\ne j\right)\tau_{i,j}^{2}}{\sum_{i=1}^{m}\tau_{i,j}^{2}}
-\]
-
-\end_inset
-
- DTFI can be loosely interpreted as the proportion of TF targeting patterns
- which is explained by the targeting patterns of other available TFs.
- This measure, a statistic on the interval 
-\begin_inset Formula $[0,1]$
-\end_inset
-
- seeks to elucidate transitions which are systematic, informative, and non-arbit
-rary in nature by capturing only the edgeweight signal for which there is
- an attributable regulatory pattern.
- The distribution of this statistic under the null has a mean and standard
- deviation which depend on the motif structure.
- In particular, both mean and standard deviation are increased for TFs which
- have fewer prior regulatory targets.
- From a statistical perspective, TFs with relatively more targets are able
- to generate more stable targeted expression patterns, which leads to more
- consistent estimates in “agreement” algorithms such as PANDA and BERE.
- From a biological perspective, increased motif presence may indicate that
- the TFs are more likely to be ubiquitous housekeeping proteins that do
- not meaningfully alter their involvement between cases and controls.
- The dependence of the null distribution on the motif structure is addressed
- via the following resampling procedure.
- 
-\end_layout
-
-\begin_layout Enumerate
-Gene expression samples are randomly assigned to case and control forming
- the null-case and null-control with group sizes preserved.
- 
-\end_layout
-
-\begin_layout Enumerate
-GRNs are reconstructed for the null-case and null-control with the same
- prior regulatory structure.
- 
-\end_layout
-
-\begin_layout Enumerate
-The transition matrix algorithm is applied for the two null networks.
- 
-\end_layout
-
-\begin_layout Enumerate
-The differential TFI is calculated for each TF.
- 
-\end_layout
-
-\begin_layout Enumerate
-Repeat 1-4 1000 times.
- 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename workflow_diagram.png
-	lyxscale 20
-	width 80col%
-
-\end_inset
-
-
-\begin_inset Caption
-
-\begin_layout Plain Layout
-
-\series bold
-Overview of Transition Matrix analysis workflow.
-
-\series default
- (1) BERE is applied separately to subsets of the gene expression data including
- the cases group, the controls group and 1000 permutations of the cases
- and controls labels.
- (2) Transition matrix is estimated between the cases and controls and each
- of the pair or permuted 
-\begin_inset Quotes eld
-\end_inset
-
-cases
-\begin_inset Quotes erd
-\end_inset
-
- and 
-\begin_inset Quotes eld
-\end_inset
-
-controls
-\begin_inset Quotes erd
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section*
 Transition Matrix finds concordance in independent datasets for COPD 
 \end_layout
 
 \begin_layout Standard
-We applied our method to three case-control datasets for Chronic Obstructive
+We applied our method to four case-control datasets for Chronic Obstructive
  Pulmonary Disease (COPD)- Evaluation of COPD Longitudinally to Identify
- Predictive Surrogate Endpoints (ECLIPSE), the COPDGene study, and Lung
- Genomics Research Consortium (LGRC).
+ Predictive Surrogate Endpoints (ECLIPSE), the COPDGene study, Lung Genomics
+ Research Consortium (LGRC) and Lung Tissue Chronic Obstructive Pulmonary
+ Disease (LTCOPD).
  Each of these studies consisted of gene expression assays obtained from
  patients with COPD and a set of smoker controls.
  The tissue used in the ECLIPSE and COPDGene study was peripheral blood
- mononuclear cell (PBMC), while lung tissue was sampled for LGRC.
- It is therefore unsurprising that agreement is more strongly achieved in
- the former studies compared to the latter.
+ mononuclear cell (PBMC), while lung tissue was sampled for LGRC and LTCOPD.
+ It is therefore reassuring that agreement is more strongly achieved between
+ studies of the same tissue origin than acros tissues.
+ Each of the four studies was most closely correlated with studies of the
+ same tissue.
  However it is quite notable that the we do see much of the same dTFI signal
  across studies involving different tissue types.
 \end_layout
@@ -2321,10 +2316,31 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+
+\series bold
+A
+\series default
+
 \begin_inset Graphics
-	filename pasted12a.png
+	filename eclipse_copdgene_lgrc_comparison_same_tissue.tiff
 	lyxscale 40
-	width 100col%
+	width 60col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+B
+\series default
+
+\begin_inset Graphics
+	filename eclipse_copdgene_lgrc_comparison_diff_tissue.tiff
+	lyxscale 40
+	width 60col%
 
 \end_inset
 
@@ -2335,12 +2351,25 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Comparison of dTFI for 166 TFs across three independent studies.
- Results for two studies with gene expression data obtained from PBMC (ECLIPSE
- and COPGene) show strong concordance with a high degree of agreement, particula
-rly for top hits.
- Both of these studies are less consistent with the LGRC, but contain several
- significant TFs in agreement with the other studies.
+Comparison of dTFI for 166 TFs across four independent studies in two tissues.
+ ECLIPSE and COPGene data were obtained via PBMC and LGRC and LTCOPD were
+ obtained via lung tissue.
+ Results for two studies with gene expression data obtained from the same
+ source (A), PBMC (left) and lung tissue (right) show strong concordance
+ with a high degree of agreement, particularly for top hits.
+ Spearman correlation for each of these tissue types was 
+\begin_inset Formula $r_{s}=.87$
+\end_inset
+
+ and 
+\begin_inset Formula $r_{s}=.71$
+\end_inset
+
+, respectively.
+ Correlations for across tissue study comparisons demonstrated a weaker,
+ but still measureable agreement.
+ Each of the four studies was most consistent with the study of the same
+ tissue type as its own.
 \end_layout
 
 \end_inset

@@ -1324,7 +1324,7 @@ NI Method
 \begin_layout Plain Layout
 
 \series bold
-Networks
+Network AUC
 \end_layout
 
 \end_inset
@@ -1432,7 +1432,7 @@ Pearson
 \uwave off
 \noun off
 \color none
-.704 (p<.0001)
+.704
 \end_layout
 
 \end_inset
@@ -1518,7 +1518,7 @@ WGCNA(6)
 \uwave off
 \noun off
 \color none
-.704 (p<.0001)
+.704
 \end_layout
 
 \end_inset
@@ -1604,7 +1604,7 @@ WGCNA(12)
 \uwave off
 \noun off
 \color none
-.704 (p<.0001)
+.704
 \end_layout
 
 \end_inset
@@ -1690,7 +1690,7 @@ ARACNE
 \uwave off
 \noun off
 \color none
-.515 (p<.0001)
+.515
 \end_layout
 
 \end_inset
@@ -1776,7 +1776,7 @@ CLR
 \uwave off
 \noun off
 \color none
-.694 (p<.0001)
+.694
 \end_layout
 
 \end_inset
@@ -1862,7 +1862,7 @@ TOM
 \uwave off
 \noun off
 \color none
-.703 (p<.0001)
+.703
 \end_layout
 
 \end_inset
@@ -1948,7 +1948,7 @@ PANDA*
 \uwave off
 \noun off
 \color none
-.747 (p<.0001)
+.747
 \end_layout
 
 \end_inset
@@ -2034,7 +2034,7 @@ PANDA**
 \uwave off
 \noun off
 \color none
-.652 (p<.0001)
+.652
 \end_layout
 
 \end_inset
@@ -2108,7 +2108,7 @@ BERE*
 \uwave off
 \noun off
 \color none
-.813 (p<.0001)
+.813
 \end_layout
 
 \end_inset
@@ -2158,7 +2158,7 @@ BERE**
 \uwave off
 \noun off
 \color none
-.697 (p<.0001)
+.697
 \end_layout
 
 \end_inset
@@ -2241,16 +2241,19 @@ Transition Matrix finds concordance in independent datasets for COPD
 \end_layout
 
 \begin_layout Standard
-We applied our method to three case-control datasets for Chronic Obstructive
+We applied our method to four case-control datasets for Chronic Obstructive
  Pulmonary Disease (COPD)- Evaluation of COPD Longitudinally to Identify
- Predictive Surrogate Endpoints (ECLIPSE), the COPDGene study, and Lung
- Genomics Research Consortium (LGRC).
+ Predictive Surrogate Endpoints (ECLIPSE), the COPDGene study, Lung Genomics
+ Research Consortium (LGRC) and Lung Tissue Chronic Obstructive Pulmonary
+ Disease (LTCOPD).
  Each of these studies consisted of gene expression assays obtained from
  patients with COPD and a set of smoker controls.
  The tissue used in the ECLIPSE and COPDGene study was peripheral blood
- mononuclear cell (PBMC), while lung tissue was sampled for LGRC.
- It is therefore unsurprising that agreement is more strongly achieved in
- the former studies compared to the latter.
+ mononuclear cell (PBMC), while lung tissue was sampled for LGRC and LTCOPD.
+ It is therefore reassuring that agreement is more strongly achieved between
+ studies of the same tissue origin than acros tissues.
+ Each of the four studies was most closely correlated with studies of the
+ same tissue.
  However it is quite notable that the we do see much of the same dTFI signal
  across studies involving different tissue types.
 \end_layout
@@ -2270,42 +2273,21 @@ We separately applied our BERE network inference approach on cases and controls
 \begin_layout Standard
 Overall, there was a strong correlation between results in the two PBMC
  studies 
-\begin_inset Formula $\left(R^{2}=0.82\right)$
+\begin_inset Formula $\left(r_{s}=0.87\right)$
 \end_inset
 
-, and a weak correlation between cross-tissue results for LGRC-ECLIPSE
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
- 
-\begin_inset Formula $\left(R^{2}=0.33\right)$
+ and the two lung tissue studies 
+\begin_inset Formula $\left(r_{s}=0.71\right)$
 \end_inset
 
-
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\strikeout default
-\uuline default
-\uwave default
-\noun default
-\color inherit
- and LGRC-COPDGene
-\begin_inset Formula $\left(R^{2}=0.39\right)$
+ , and a weaker correlation between cross-tissue results 
+\begin_inset Formula $\left(\bar{r}_{s}=0.63\right)$
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Standard
 \begin_inset Float figure
 placement h
 wide false
@@ -2313,10 +2295,31 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+
+\series bold
+A
+\series default
+
 \begin_inset Graphics
-	filename pasted12a.png
+	filename eclipse_copdgene_lgrc_comparison_same_tissue.tiff
 	lyxscale 40
-	width 100col%
+	width 60col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+B
+\series default
+
+\begin_inset Graphics
+	filename eclipse_copdgene_lgrc_comparison_diff_tissue.tiff
+	lyxscale 40
+	width 60col%
 
 \end_inset
 
@@ -2327,12 +2330,25 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Comparison of dTFI for 166 TFs across three independent studies.
- Results for two studies with gene expression data obtained from PBMC (ECLIPSE
- and COPGene) show strong concordance with a high degree of agreement, particula
-rly for top hits.
- Both of these studies are less consistent with the LGRC, but contain several
- significant TFs in agreement with the other studies.
+Comparison of dTFI for 166 TFs across four independent studies in two tissues.
+ ECLIPSE and COPGene data were obtained via PBMC and LGRC and LTCOPD were
+ obtained via lung tissue.
+ Results for two studies with gene expression data obtained from the same
+ source (A), PBMC (left) and lung tissue (right) show strong concordance
+ with a high degree of agreement, particularly for top hits.
+ Spearman correlation for each of these tissue types was 
+\begin_inset Formula $r_{s}=.87$
+\end_inset
+
+ and 
+\begin_inset Formula $r_{s}=.71$
+\end_inset
+
+, respectively.
+ Correlations for across tissue study comparisons demonstrated a weaker,
+ but still measureable agreement.
+ Each of the four studies was most consistent with the study of the same
+ tissue type as its own.
 \end_layout
 
 \end_inset

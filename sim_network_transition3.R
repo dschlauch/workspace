@@ -20,7 +20,7 @@ library(nettools)
 set.seed(123)
 
 numTFs <- 100
-numGenes <- 6000
+numGenes <- 5000
 numTransitions <- 1000
 numSamples <- 500
 geneNames <- paste0("Gene",1:numGenes)
@@ -128,35 +128,37 @@ panda_motif2_AllB <- panda(motifs_2Melt, gexpBWithTFs, hamming = 1e-02)@regNet
 pandaRes_motif2_A <- panda_motif2_AllA[,geneNames]
 pandaRes_motif2_B <- panda_motif2_AllB[,geneNames]
 
-
+#######################################################
+## Calculating the direct results
 ## Compare to default strategy of pairwise results
+#######################################################
 
 corTFA <- mat2adj(t(tfExpA))
 corTFB <- mat2adj(t(tfExpB))
-directTMcor <- corTFA-corTFB
+directTMcor <- corTFB-corTFA
 wgcnaTFA <- mat2adj(t(tfExpA), method="WGCNA")
 wgcnaTFB <- mat2adj(t(tfExpB), method="WGCNA")
-directTMwgcna <- wgcnaTFA-wgcnaTFB
+directTMwgcna <- wgcnaTFB-wgcnaTFA
 tomTFA <- mat2adj(t(tfExpA), method="TOM")
 tomTFB <- mat2adj(t(tfExpB), method="TOM")
-directTMTOM <- tomTFA-tomTFB
+directTMTOM <- tomTFB-tomTFA
 wgcna12TFA <- mat2adj(t(tfExpA), method="WGCNA",P=12)
 wgcna12TFB <- mat2adj(t(tfExpB), method="WGCNA",P=12)
-directTMwgcna12 <- wgcna12TFA-wgcna12TFB
+directTMwgcna12 <- wgcna12TFB-wgcna12TFA
 aracneTFA <- mat2adj(t(tfExpA), method="ARACNE")
 aracneTFB <- mat2adj(t(tfExpB), method="ARACNE")
-directTMaracne <- aracneTFA-aracneTFB
+directTMaracne <- aracneTFB-aracneTFA
 clrTFA <- mat2adj(t(tfExpA), method="CLR")
 clrTFB <- mat2adj(t(tfExpB), method="CLR")
-directTMclr <- clrTFA-clrTFB
-directTMpanda_motif1 <- panda_motif1_AllA[,-1:-numGenes]-panda_motif1_AllB[,-1:-numGenes]
+directTMclr <- clrTFB-clrTFA
+directTMpanda_motif1 <- panda_motif1_AllB[,-1:-numGenes]-panda_motif1_AllA[,-1:-numGenes]
 directTMpanda_motif1 <- directTMpanda_motif1[,rownames(directTMpanda_motif1)]
-directTMpanda_motif2 <- panda_motif2_AllA[,-1:-numGenes]-panda_motif2_AllB[,-1:-numGenes]
+directTMpanda_motif2 <- panda_motif2_AllB[,-1:-numGenes]-panda_motif2_AllA[,-1:-numGenes]
 directTMpanda_motif2 <- directTMpanda_motif2[,rownames(directTMpanda_motif2)]
 # Issue is here: Bere does not have TFs in results
-directbereRes_motif1 <- bere_motif1_AllA[,TFNames]-bere_motif1_AllB[,TFNames]
+directbereRes_motif1 <- bere_motif1_AllB[,TFNames]-bere_motif1_AllA[,TFNames]
 directbereRes_motif1 <- directbereRes_motif1[TFNames,TFNames]
-directbereRes_motif2 <- bere_motif2_AllA[,TFNames]-bere_motif2_AllB[,TFNames]
+directbereRes_motif2 <- bere_motif2_AllB[,TFNames]-bere_motif2_AllA[,TFNames]
 directbereRes_motif2 <- directbereRes_motif2[TFNames,TFNames]
 
 networkAUCROC <- function(netA, title=""){
