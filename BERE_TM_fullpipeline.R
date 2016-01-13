@@ -11,6 +11,7 @@ analysisCode <- sample(100000,1)
 # dataset.filename <- "~/gd/Harvard/Research/data/Eclipse/eclipse.networks.rds"
 
 motifFile <- "~/gd/Harvard/Research/data/Eclipse/ECLIPSE_Blood_Motif.txt"
+motifFile <- "~/gd/Harvard/Research/data/motifs695.txt"
 # exprFile <- "~/gd/Harvard/Research/data/Ovarian/CombinedOV.txt"
 exprFile <- "~/gd/Harvard/Research/data/GTEx/GTEx_expr.txt"
 # exprFile <- "~/gd/Harvard/Research/data/COPDGene/COPDGene_GSExpressionData.txt"
@@ -19,6 +20,7 @@ exprFile <- "~/gd/Harvard/Research/data/GTEx/GTEx_expr.txt"
 ppiFile <- "~/gd/Harvard/Research/data/Eclipse/OV_PPI.txt"
 #clinicalFile <- "~/gd/Harvard/Research/data/Ovarian/Clinical.txt"
 clinicalFile <- "~/gd/Harvard/Research/data/GTEx/GTEx_clinical.txt"
+clinicalFile <- "~/gd/Harvard/Research/data/LTCOPD/LTCOPD_clinical.txt"
 #clinicalFile <- "~/gd/Harvard/Research/data/COPDGene/COPDGene_clinical.txt"
 #clinicalFile <- "~/gd/Harvard/Research/data/Eclipse/ECLIPSE_blood.txt"
 #clinicalFile <- "~/gd/Harvard/Research/data/LGRC/lgrc.merged.clinical.data.clean.txt"
@@ -31,15 +33,15 @@ casesString <- "cells_ebv-transformed_lymphocytes"
 controlsString <- "skin"
 filterType <- NA
 
-# casesString <- "COPD Subjects"
-# controlsString <- "Smoker Controls"
-# phenotypeName <- "Subject.type"
+casesString <- "COPD Subjects"
+controlsString <- "Smoker Controls"
+phenotypeName <- "Subject.type"
 
 casesString <- "Lung"
 controlsString <- "Colon"
 phenotypeName <- "SMTS"
 
-analysisName <- "ECLIPSE_matchMF"
+analysisName <- "ECLIPSE_new_motif"
 nullPerms <- 500
 networkInferenceName <- "bere"
 filterType <- "Gender"
@@ -70,8 +72,10 @@ if(length(args)!=0){
     }
     if(length(args)>12){
         permuteGeneLabels <- (args[13]=="T")
+        numMaxCores <- as.numeric(args[14])
     } else {
         permuteGeneLabels <- F
+        numMaxCores <- 40
     }
 }
 outputDir <- file.path("~",paste(analysisName, analysisCode ,sep="_"))
@@ -206,6 +210,7 @@ if (grepl(".txt", exprFile)){
 dataset$ppi      <- read.table(ppiFile,header=F)
 dataset$exp      <- dataset$exp[,order(colnames(dataset$exp))]  # Make sure expression and clinical is in same order
 
+dataset$motif <- dataset$motif[!duplicated(dataset$motif),]
 
 matches <- sort(unique(intersect(rownames(dataset$clinical),colnames(dataset$exp))))
 dataset$clinical <- dataset$clinical[matches,]    # Make sure clinical only contains patients with expression data
@@ -263,7 +268,7 @@ library(doParallel)
 
 # Calculate the number of cores
 num_cores <- detectCores() - 4
-num_cores <- min(num_cores, 40)
+num_cores <- min(num_cores, numMaxCores)
 
 # Initiate cluster
 if(!is.na(num_cores)){
@@ -273,19 +278,16 @@ if(!is.na(num_cores)){
 
 #start time
 strt  <- Sys.time()
-iters <- nullPerms*2+2 # Two networks for each partition, plus observed partition
+iters <- nullPerms+1 # Two networks for each partition, plus observed partition
 #loop
 print("Running null permutations in parallel")
 print(paste0(num_cores," cores used"))
-print(paste0(iters," networks to be estimated"))
-null.networks<-foreach(i=1:iters,.packages=c("bereR","pandaR","reshape2","penalized")) %dopar% {
+print(paste0(iters," network transitions to be estimated"))
+dir.create(file.path(outputDir,"nullNets"))
+# Changed to run two Networks and calculate transition on each iteration 1/13/16
+transMatrices <- foreach(i=1:iters,.packages=c("bereR","pandaR","reshape2","penalized")) %dopar% {
     print(paste0("Running iteration ", i))
-    if(i%%2==0){
-        selectedSamples <- casesFilter
-    } else {
-        selectedSamples <- controlsFilter
-    }
-    if(i<=2){
+    if(i==1){
         # Observed partition : Don't reorder anything
         null.exp <- dataset$exp
     } else {
@@ -296,16 +298,21 @@ null.networks<-foreach(i=1:iters,.packages=c("bereR","pandaR","reshape2","penali
         rownames(null.exp) <- rownames(null.exp)[sample(1:nrow(null.exp))]
     }
     #     null.exp <- null.exp + matrix(rnorm(length(null.exp))/10,nrow=nrow(null.exp),ncol=ncol(null.exp))
-    null.exp <- null.exp[,selectedSamples]
+    null.exp.cases <- null.exp[,casesFilter]
+    null.exp.controls <- null.exp[,controlsFilter]
+    # Some QC for sparse data
     if (sum(rowSums(null.exp)==0)>0){
         zeroGenes <- which(rowSums(null.exp)==0)
         for(gene in zeroGenes){
             null.exp[gene,] <- rnorm(ncol(null.exp))
         }
     }
-    tmpNet <- networkInferenceMethod(dataset$motif, null.exp)
+    tmpNetCases <- networkInferenceMethod(dataset$motif, null.exp.cases)
+    tmpNetControls <- networkInferenceMethod(dataset$motif, null.exp.controls)
+    transition.matrix <- transformation.matrix(tmpNetControls, tmpNetCases, remove.diagonal=T,method="ols")    
     print(paste0("Finished running iteration", i))
-    tmpNet
+    saveRDS(transition.matrix,file.path(outputDir,'tm',paste0('nullNet_',i,'.rds')))
+    transition.matrix
 }
 
 print(Sys.time()-strt)
@@ -337,24 +344,26 @@ if(!is.na(num_cores)){
 ###  TF analysis
 #####################################################
 
-if(!is.na(num_cores)){
-    cl <- makeCluster(4)
-    registerDoParallel(cl)
-}
 
-strt  <- Sys.time()
-#loop
-print("Running transition calculations in parallel")
-print(paste0(num_cores," cores used"))
-print(paste0(length(null.networks)/2," transitions to be estimated"))
-transMatrices <- foreach(i=1:(length(null.networks)/2),.packages=c("bptools","reshape2","penalized")) %dopar% {
-    transformation.matrix(null.networks[[2*i]], null.networks[[2*i-1]],remove.diagonal=T,method="ols")    
-}
-
-print(Sys.time()-strt)
-if(!is.na(num_cores)){
-    stopCluster(cl)
-}
+####### Moved this code into the main parallelization 1/13/16
+# if(!is.na(num_cores)){
+#     cl <- makeCluster(4)
+#     registerDoParallel(cl)
+# }
+# 
+# strt  <- Sys.time()
+# #loop
+# print("Running transition calculations in parallel")
+# print(paste0(num_cores," cores used"))
+# print(paste0(length(null.networks)/2," transitions to be estimated"))
+# transMatrices <- foreach(i=1:(length(null.networks)/2),.packages=c("bptools","reshape2","penalized")) %dopar% {
+#     transformation.matrix(null.networks[[2*i]], null.networks[[2*i-1]],remove.diagonal=T,method="ols")    
+# }
+# 
+# print(Sys.time()-strt)
+# if(!is.na(num_cores)){
+#     stopCluster(cl)
+# }
 
 # Parallelized this part on 10/30/15
 # # Calculate the transformation matrix for the observed data
@@ -370,7 +379,7 @@ if(!is.na(num_cores)){
 # dataset$casesNetwork <- null.networks[2]
 
 # This object will be in the many GB range
-rm(null.networks)
+# rm(null.networks)
 gc()
 
 # periodically save workspace
@@ -378,10 +387,10 @@ save.image(file=file.path(outputDir,paste("activeImage",analysisCode,".RData",se
 
 
 # Do the sum of sq ODM plot versus null
-png(file.path(outputDir,paste('SSODMplot_unscaled',analysisCode,'.png', sep="")), width=4800)
+tiff(file.path(outputDir,paste('SSODMplot_unscaled',analysisCode,'.tiff', sep="")), width=4800)
 ssodm.plot(transMatrices[[1]], transMatrices[-1],plot.title=paste("SSODM observed and null, ",casesString," vs ",controlsString,' : ', networkInferenceName, ' : ', analysisName, sep=""))
 dev.off()
-png(file.path(outputDir,paste('SSODMplot_scaled',analysisCode,'.png', sep="")), width=4800)
+tiff(file.path(outputDir,paste('SSODMplot_scaled',analysisCode,'.tiff', sep="")), width=4800)
 ssodm.plot(transMatrices[[1]], transMatrices[-1], rescale=T, plot.title=paste("SSODM observed and null, ",casesString," vs ",controlsString,' : ', networkInferenceName, ' : ', analysisName, sep=""))
 dev.off()
 
@@ -487,13 +496,13 @@ plotDF <- data.frame(obsSsodm, negLogPValues, limmanegLogPValues, logfoldchangeT
 colnames(resultTable) <- c("Magnitude","dTFI uncorrected p-value","dTFI FDR", "log FC", "limma -logp")
 write.csv(resultTable,file=file.path(outputDir,paste("resultTable",analysisCode,".csv", sep="")))
 
-png(file.path(outputDir,paste('Volcano plot',analysisCode,'.png', sep="")), width=1800)
+tiff(file.path(outputDir,paste('Volcano plot',analysisCode,'.tiff', sep="")), width=1800)
 ggplot(data=plotDF,aes(x=obsSsodm, y=negLogPValues, label=labels, size=100)) + geom_point(aes(col=limmanegLogPValues), alpha=.5) + geom_text(vjust=0) + 
     ylab("-log(dTFI p-value)") + xlab("SSODM") + ggtitle("Signal vs significance") + scale_size_continuous(range = c(0, 12),guide=FALSE) +
     scale_colour_gradientn("LIMMA sig",colours=c("blue","white","red"))
 dev.off()
 
-png(file.path(outputDir,paste('dTFI vs LIMMA',analysisCode,'.png', sep="")), width=1800)
+tiff(file.path(outputDir,paste('dTFI vs LIMMA',analysisCode,'.tiff', sep="")), width=1800)
 ggplot(data=plotDF,aes(x=logfoldchangeTF, y=negLogPValues, label=labels, size=100)) + geom_point(aes(col=limmanegLogPValues), alpha=.75) + geom_text(vjust=0) + 
     ylab("significance of dTFI") + xlab("-log(FC)") + ggtitle("Transition vs Fold Change") +
     scale_size_continuous(range = c(0, 12),guide=FALSE) +
@@ -539,7 +548,7 @@ V(tfNet)$size <- vSize[V(tfNet)$name]*5
 E(tfNet)$width <- (abs(E(tfNet)$value.x))*20/max(abs(E(tfNet)$value.x))
 E(tfNet)$color<-ifelse(E(tfNet)$value.x>0, "blue", "red")
 
-png(file.path(outputDir,paste('Transition plot',analysisCode,'.png', sep="")), width=1500, height=1500)
+tiff(file.path(outputDir,paste('Transition plot',analysisCode,'.tiff', sep="")), width=1500, height=1500)
 plot.igraph(tfNet, edge.arrow.size=2, vertex.label.cex= 1.5, vertex.label.color= "black",main=paste0("Transition: ",controlsString," to ",casesString))
 legend("bottomleft", c("Gained features","Lost features"), lty=c(1,1),lwd=c(2.5,2.5),col=c("blue","red"))
 dev.off()

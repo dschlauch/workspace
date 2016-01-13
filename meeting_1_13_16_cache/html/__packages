@@ -1,0 +1,13 @@
+base
+data.table
+ggplot2
+knitr
+BiocGenerics
+Biobase
+S4Vectors
+IRanges
+GenomeInfoDb
+AnnotationDbi
+DBI
+RSQLite
+org.Hs.eg.db
