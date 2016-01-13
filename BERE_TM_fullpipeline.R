@@ -283,7 +283,7 @@ iters <- nullPerms+1 # Two networks for each partition, plus observed partition
 print("Running null permutations in parallel")
 print(paste0(num_cores," cores used"))
 print(paste0(iters," network transitions to be estimated"))
-dir.create(file.path(outputDir,"nullNets"))
+dir.create(file.path(outputDir,"tms"))
 # Changed to run two Networks and calculate transition on each iteration 1/13/16
 transMatrices <- foreach(i=1:iters,.packages=c("bereR","pandaR","reshape2","penalized")) %dopar% {
     print(paste0("Running iteration ", i))
@@ -311,7 +311,7 @@ transMatrices <- foreach(i=1:iters,.packages=c("bereR","pandaR","reshape2","pena
     tmpNetControls <- networkInferenceMethod(dataset$motif, null.exp.controls)
     transition.matrix <- transformation.matrix(tmpNetControls, tmpNetCases, remove.diagonal=T,method="ols")    
     print(paste0("Finished running iteration", i))
-    saveRDS(transition.matrix,file.path(outputDir,'tm',paste0('nullNet_',i,'.rds')))
+    saveRDS(transition.matrix,file.path(outputDir,'tms',paste0('tm_',i,'.rds')))
     transition.matrix
 }
 
