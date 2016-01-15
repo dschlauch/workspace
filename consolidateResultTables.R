@@ -10,6 +10,7 @@ library(gtable)
 
 # Specify the analysis folders and display names for the analyses
 analysisNames <- c("ECLIPSE_bere_bare_55557","COPDGene_bere_70856", "LGRC_bere_56432","LTCOPD_bere_bare_92540")
+analysisNames <- c("ECLIPSE_combined_runs","COPDGene_combined_runs", "LGRC_combined_runs","LTCOPD_combined_runs")
 displayNames <- c("ECLIPSE","COPDGene","LGRC","LTCOPD")
 
 # Find the files for comparison
