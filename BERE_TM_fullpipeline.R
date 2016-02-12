@@ -13,11 +13,11 @@ library(igraph)
 analysisCode <- sample(100000,1)
 
 # Prepares analysis including data loading, cleaning, algorithm generation...
-source("./load_TM_data.R")
+source("~/gd/Harvard/Research/R_workspace/load_TM_data.R")
 
 # Runs the analysis- Includes network inference, transition analysis, etc.  Main computation.
-source("./run_TM")
+source("~/gd/Harvard/Research/R_workspace/run_TM.R")
 
 # Process Results- Generates tables, images, etc...
-source("./process_TM")
+source("~/gd/Harvard/Research/R_workspace/process_TM.R")
 

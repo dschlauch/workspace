@@ -24,30 +24,30 @@ validateMethodsOnDataset <- function(dataset){
     # Run algorithms -  PANDA, BERE (with Corr method, LDA, and weighted correlation diff), straight up corellation
     
     ########## PANDA
-    pandaMelt <- panda(motifs, exprData, progress=F)@regNet %>% melt %>% meltToCharacter %>% removeDiagonal %>% sortMelt
+#     pandaMelt <- panda(motifs, exprData, progress=F)@regNet %>% melt %>% meltToCharacter %>% removeDiagonal %>% sortMelt
 
     ########## Degree only approach
-    degreeMelt <- degreeApproach(motifs) %>% melt %>% meltToCharacter %>% removeDiagonal %>% sortMelt
+#     degreeMelt <- degreeApproach(motifs) %>% melt %>% meltToCharacter %>% removeDiagonal %>% sortMelt
     
     ##########  BERE
     bereMelt <- bere(motifs, exprData, cpp=F, verbose=F) %>% melt %>% meltToCharacter %>% removeDiagonal %>% sortMelt
     
     ##########  LDA BERE
-    ldabereMelt <- ldaBERE(motifs, exprData) %>% melt %>% meltToCharacter %>% removeDiagonal %>% sortMelt
+#     ldabereMelt <- ldaBERE(motifs, exprData) %>% melt %>% meltToCharacter %>% removeDiagonal %>% sortMelt
 
     ##########  FULL BERE
-    fullbereMelt1 <- bereFull(motifs, exprData, alpha=1, lambda=1) %>% melt %>% meltToCharacter %>% removeDiagonal %>% sortMelt
-    fullbereMelt2 <- bereFull(motifs, exprData, alpha=1, lambda=2) %>% melt %>% meltToCharacter %>% removeDiagonal %>% sortMelt
-    fullbereMelt5 <- bereFull(motifs, exprData, alpha=1, lambda=5) %>% melt %>% meltToCharacter %>% removeDiagonal %>% sortMelt
-    fullbereMelt10 <- bereFull(motifs, exprData, alpha=1, lambda=10) %>% melt %>% meltToCharacter %>% removeDiagonal %>% sortMelt
-    fullbereMelt15 <- bereFull(motifs, exprData, alpha=1, lambda=15) %>% melt %>% meltToCharacter %>% removeDiagonal %>% sortMelt
-    fullbereMelt25 <- bereFull(motifs, exprData, alpha=1, lambda=25) %>% melt %>% meltToCharacter %>% removeDiagonal %>% sortMelt
-    fullbereMelt40 <- bereFull(motifs, exprData, alpha=1, lambda=40) %>% melt %>% meltToCharacter %>% removeDiagonal %>% sortMelt
-    fullbereMelt1000 <- bereFull(motifs, exprData, alpha=1, lambda=1000) %>% melt %>% meltToCharacter %>% removeDiagonal %>% sortMelt
+#     fullbereMelt1 <- bereFull(motifs, exprData, alpha=1, lambda=1) %>% melt %>% meltToCharacter %>% removeDiagonal %>% sortMelt
+#     fullbereMelt2 <- bereFull(motifs, exprData, alpha=1, lambda=2) %>% melt %>% meltToCharacter %>% removeDiagonal %>% sortMelt
+#     fullbereMelt5 <- bereFull(motifs, exprData, alpha=1, lambda=5) %>% melt %>% meltToCharacter %>% removeDiagonal %>% sortMelt
+#     fullbereMelt10 <- bereFull(motifs, exprData, alpha=1, lambda=10) %>% melt %>% meltToCharacter %>% removeDiagonal %>% sortMelt
+#     fullbereMelt15 <- bereFull(motifs, exprData, alpha=1, lambda=15) %>% melt %>% meltToCharacter %>% removeDiagonal %>% sortMelt
+#     fullbereMelt25 <- bereFull(motifs, exprData, alpha=1, lambda=25) %>% melt %>% meltToCharacter %>% removeDiagonal %>% sortMelt
+#     fullbereMelt40 <- bereFull(motifs, exprData, alpha=1, lambda=40) %>% melt %>% meltToCharacter %>% removeDiagonal %>% sortMelt
+#     fullbereMelt1000 <- bereFull(motifs, exprData, alpha=1, lambda=1000) %>% melt %>% meltToCharacter %>% removeDiagonal %>% sortMelt
 
     
     ##########  Straight TF correlation
-    tfCorMelt <- abs(cor(x=t(exprData[rownames(exprData) %in% transFactors,]), y=t(exprData))) %>% melt %>% meltToCharacter %>% removeDiagonal %>% sortMelt
+#     tfCorMelt <- abs(cor(x=t(exprData[rownames(exprData) %in% transFactors,]), y=t(exprData))) %>% melt %>% meltToCharacter %>% removeDiagonal %>% sortMelt
     
     ##########  Weighted Cor diff
 #    weightedCorDiffMelt <- t(weightedCorDiff) %>% melt %>% meltToCharacter %>% removeDiagonal %>% sortMelt
@@ -62,29 +62,29 @@ validateMethodsOnDataset <- function(dataset){
     ##########  Plot Results against gold standard
     ###################################################
     datalist <- list("Gold Standard"=goldStandard[,3],
-                     "Degree-only"=degreeMelt[,3],
-                     "PANDA"=pandaMelt[,3],
+#                      "Degree-only"=degreeMelt[,3],
+#                      "PANDA"=pandaMelt[,3],
                     "BERE"=bereMelt[,3],
-                    "LDA BERE"=ldabereMelt[,3],
-                    "Full BERE 1"=fullbereMelt1[,3],
-                    "Full BERE 2"=fullbereMelt2[,3],
-                    "Full BERE 5"=fullbereMelt5[,3],
-                    "Full BERE 10"=fullbereMelt10[,3],
-                    "Full BERE 15"=fullbereMelt15[,3],
-                    "Full BERE 25"=fullbereMelt25[,3],
-                    "Full BERE 40"=fullbereMelt40[,3],
-                    "Full BERE 1000"=fullbereMelt1000[,3],
-                    "TF Corr"=tfCorMelt[,3],#+motifs[,3],
+#                     "LDA BERE"=ldabereMelt[,3],
+#                     "Full BERE 1"=fullbereMelt1[,3],
+#                     "Full BERE 2"=fullbereMelt2[,3],
+#                     "Full BERE 5"=fullbereMelt5[,3],
+#                     "Full BERE 10"=fullbereMelt10[,3],
+#                     "Full BERE 15"=fullbereMelt15[,3],
+#                     "Full BERE 25"=fullbereMelt25[,3],
+#                     "Full BERE 40"=fullbereMelt40[,3],
+#                     "Full BERE 1000"=fullbereMelt1000[,3],
+#                     "TF Corr"=tfCorMelt[,3],#+motifs[,3],
                     "Motifs"=motifs[,3])
     TFsubset <- goldStandard[,1] %in% unique(goldStandard[,1])[6]
     
-    png(filename=paste("./output/",dataset,"_all.png",sep=""))
+    png(filename=paste("./TM_manuscript/figures/",dataset,"_all.png",sep=""))
     plotROC(datalist, "all", organism=dataset, goldStandard)
     dev.off()
-    png(filename=paste("./output/",dataset,"_motif.png",sep=""))
+    png(filename=paste("./TM_manuscript/figures/",dataset,"_motif.png",sep=""))
     plotROC(datalist, "motif", organism=dataset, goldStandard)
     dev.off()
-    png(filename=paste("./output/",dataset,"_nonmotif.png",sep=""))
+    png(filename=paste("./TM_manuscript/figures/",dataset,"_nonmotif.png",sep=""))
     plotROC(datalist, "nonmotif", organism=dataset, goldStandard)
     dev.off()
 }
@@ -113,7 +113,7 @@ plotROC <- function(datalist, includeSubset="all", organism="", goldStandard=NA,
         list("roc.methodPred"=roc.methodPred, "auc.methodPred"=auc.methodPred)
     })
     names(plotList) <- methods
-    plot(plotList[["PANDA"]][["roc.methodPred"]], main=paste(organism, includeSubset,"ROC"), col = 1, lwd=3)
+    plot(plotList[["BERE"]][["roc.methodPred"]], main=paste(organism, "-", includeSubset, "motifs","ROC"), col = 1, lwd=3)
     mapply(function(x,index){
         lines(plotList[[x]][["roc.methodPred"]]@x.values[[1]], plotList[[x]][["roc.methodPred"]]@y.values[[1]], col = (index), lwd=3)
     }, methods, 1:length(methods))
@@ -122,7 +122,7 @@ plotROC <- function(datalist, includeSubset="all", organism="", goldStandard=NA,
     }))
     
 
-    legend(.5,.6, legendLabels, lty=rep(1,length(methods)),lwd=rep(5,length(methods)),col=1:length(methods))
+    legend(.5,.6, legendLabels, lty=rep(1,length(methods)),lwd=rep(5,length(methods)),col=1:length(methods),title="Area under ROC curve")
     rocPerTFResults <- c()
     if(!all(is.na(goldStandard))){
         # Calculate average ROC per TF

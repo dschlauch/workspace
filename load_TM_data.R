@@ -7,6 +7,7 @@ motifFile <- "~/gd/Harvard/Research/data/motifs695.txt"
 exprFile <- "~/gd/Harvard/Research/data/GTEx/GTEx_expr.txt"
 # exprFile <- "~/gd/Harvard/Research/data/COPDGene/COPDGene_GSExpressionData.txt"
 #exprFile <- "~/gd/Harvard/Research/data/Eclipse/ECLIPSE_Blood_Exp.txt"
+#exprFile <- "~/gd/Harvard/Research/data/LTCOPD/LTCOPD_exp.txt"
 #exprFile <- "~/gd/Harvard/Research/data/LGRC/LGRC_expression.txt"
 ppiFile <- "~/gd/Harvard/Research/data/Eclipse/OV_PPI.txt"
 #clinicalFile <- "~/gd/Harvard/Research/data/Ovarian/Clinical.txt"
@@ -24,15 +25,27 @@ casesString <- "cells_ebv-transformed_lymphocytes"
 controlsString <- "skin"
 filterType <- NA
 
+#COPDGene labels
 casesString <- "COPD Subjects"
 controlsString <- "Smoker Controls"
 phenotypeName <- "Subject.type"
+
+#ECLIPSE labels
+casesString <- "COPD"
+controlsString <- "Smoker Control"
+phenotypeName <- "Subject.type"
+
+#LTCOPD labels
+casesString <- "COPD"
+controlsString <- "Control"
+phenotypeName <- "diagnosis"
+
 
 casesString <- "Lung"
 controlsString <- "Colon"
 phenotypeName <- "SMTS"
 
-analysisName <- "ECLIPSE_new_motif"
+analysisName <- "LTCOPD_pandaM"
 nullPerms <- 500
 networkInferenceName <- "bere"
 filterType <- "Gender"
@@ -118,7 +131,8 @@ if(networkInferenceName=="pandaC"){
 if(networkInferenceName=="pandaM"){
   networkInferenceMethod <- function(motifs, exp){
     randindex <- sample(10000000000,1)
-    
+    # remove genes that do not appear in exp dataset, excluding header
+    motifs <- motifs[motifs[,2] %in% rownames(exp[-1,]),]
     # write the files to disk
     motifFilename <- paste("_motifs_tmp",randindex,".txt",sep="")
     expFilename <- paste("_exp_tmp",randindex,".txt",sep="")
@@ -140,7 +154,7 @@ if(networkInferenceName=="pandaM"){
     # clean up (removed after switching to scrarch space)
     #         system(paste0('rm ',file.path("/scratch", motifFilename)))
     #         system(paste0('rm ',file.path("/scratch", expFilename)))
-    system(paste0('rm ',file.path("~/panda_matlab/", paste0("RunPANDA",randindex,".m"))))
+#     system(paste0('rm ',file.path("~/panda_matlab/", paste0("RunPANDA",randindex,".m"))))
     
     # load results back into R
     # read in results
@@ -227,3 +241,5 @@ dataset$exp <- dataset$exp[,allFilter]
 dataset$clinical <- dataset$clinical[allFilter,]
 casesFilter <- dataset$clinical[,phenotypeName]==casesString
 controlsFilter <- dataset$clinical[,phenotypeName]==controlsString
+
+save.image(file=file.path(outputDir,paste("activeImage",analysisCode,".RData",sep="")))

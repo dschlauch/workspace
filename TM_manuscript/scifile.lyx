@@ -1,0 +1,2166 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+% Use only LaTeX2e, calling the article.cls class and 12-point type.
+
+
+
+% Users of the {thebibliography} environment or BibTeX should use the
+% scicite.sty package, downloadable from *Science* at
+% www.sciencemag.org/about/authors/prep/TeX_help/ .
+% This package should properly format in-text
+% reference calls and reference-list numbers.
+
+\usepackage{scicite}
+
+% Use times if you have the font installed; otherwise, comment out the
+% following line.
+
+\usepackage{times}
+
+% The preamble here sets up a lot of new/revised commands and
+% environments.  It's annoying, but please do *not* try to strip these
+% out into a separate .sty file (which could lead to the loss of some
+% information when we convert the file to other formats).  Instead, keep
+% them in the preamble of your main LaTeX source file.
+
+
+% The following parameters seem to provide a reasonable page setup.
+
+\topmargin 0.0cm
+\oddsidemargin 0.2cm
+\textwidth 16cm 
+\textheight 21cm
+\footskip 1.0cm
+
+
+%The next command sets up an environment for the abstract to your paper.
+
+\newenvironment{sciabstract}{%
+\begin{quote} \bf}{\end{quote}}
+
+
+% If your reference list includes text notes as well as references,
+% include the following line; otherwise, comment it out.
+
+\renewcommand{\refname}{References and Notes}
+
+% The following lines set up an environment for the last note in the
+% reference list, which commonly includes acknowledgments of funding,
+% help, etc.  It's intended for users of BibTeX or the {thebibliography}
+% environment.  Users who are hand-coding their references at the end
+% using a list environment such as {enumerate} can simply add another
+% item at the end, and it will be numbered automatically.
+
+\newcounter{lastnote}
+\newenvironment{scilastnote}{%
+\setcounter{lastnote}{\value{enumiv}}%
+\addtocounter{lastnote}{+1}%
+\begin{list}%
+{\arabic{lastnote}.}
+{\setlength{\leftmargin}{.22in}}
+{\setlength{\labelsep}{.5em}}}{\end{list}}
+
+
+% Include your paper's title here
+
+\title{Estimating Drivers Cell State Transitions using Gene Regulatory Network Models} 
+
+
+% Place the author information here.  Please hand-code the contact
+% information and notecalls; do *not* use \footnote commands.  Let the
+% author contact information appear immediately below the author names
+% as shown.  We would also prefer that you don't change the type-size
+% settings shown here.
+
+\author
+{Daniel Schlauch,$^{1\ast}$ Kimberly Glass,$^{2,3}$ John Quackenbush$^{1,3}$\\
+\\
+\normalsize{$^{1}$Department of Biostatistics and Computational Biology, 
+ Dana-Farber Cancer Institute and Department of Biostatistics, 
+Harvard TH Chan School of Public Health}\\
+\normalsize{Boston, MA 02215}\\
+\normalsize{$^{2}$Channing Division of Network Medicine, Brigham and Women's Hospital}\\
+\normalsize{Boston, MA 02215}\\
+\normalsize{$^{3}$Department of Medicine, Harvard Medical School}\\
+\normalsize{Boston, MA 02215}\\
+\\
+\normalsize{$^\ast$To whom correspondence should be addressed; E-mail:  dschlauch@fas.harvard.edu.}
+}
+
+% Include the date command, but leave its argument blank.
+
+
+
+
+
+%%%%%%%%%%%%%%%%% END OF PREAMBLE %%%%%%%%%%%%%%%%
+\end_preamble
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package none
+\inputencoding auto
+\fontencoding default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 0
+\use_mathdots 0
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+% Double-space the manuscript.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+baselineskip
+\end_layout
+
+\end_inset
+
+24pt
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+% Make the title.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+maketitle
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+% Place your abstract within the special {sciabstract} environment.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{sciabstract}
+\end_layout
+
+\end_inset
+
+ This document presents a number of hints about how to set up your 
+\shape italic
+Science
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+/
+\end_layout
+
+\end_inset
+
+
+\shape default
+ paper in LaTeX
+\begin_inset space \space{}
+\end_inset
+
+.
+ We provide a template file, 
+\family typewriter
+scifile.tex
+\family default
+, that you can use to set up the LaTeX
+\begin_inset space \space{}
+\end_inset
+
+source for your article.
+ An example of the style is the special 
+\family typewriter
+{sciabstract}
+\family default
+ environment used to set up the abstract you see here.
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{sciabstract}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+% In setting up this template for *Science* papers, we've used both
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+% the 
+\backslash
+section* command and the 
+\backslash
+paragraph* command for topical
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+% divisions.
+  Which you use will of course depend on the type of paper
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+% you're writing.
+  Review Articles tend to have displayed headings, for
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+% which 
+\backslash
+section* is more appropriate; Research Articles, when they have
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+% formal topical divisions at all, tend to signal them with bold text
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+% that runs into the paragraph, for which 
+\backslash
+paragraph* is the right
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+% choice.
+  Either way, use the asterisk (*) modifier, as shown, to
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+% suppress numbering.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Introduction
+\end_layout
+
+\begin_layout Standard
+In this file, we present some tips and sample mark-up to assure your LaTeX
+\begin_inset space \space{}
+\end_inset
+
+file of the smoothest possible journey from review manuscript to published
+ 
+\shape italic
+Science
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+/
+\end_layout
+
+\end_inset
+
+
+\shape default
+ paper.
+ We focus here particularly on issues related to style files, citation,
+ and math, tables, and figures, as those tend to be the biggest sticking
+ points.
+ Please use the source file for this document, 
+\family typewriter
+scifile.tex
+\family default
+, as a template for your manuscript, cutting and pasting your content into
+ the file at the appropriate places.
+\end_layout
+
+\begin_layout Standard
+
+\shape italic
+Science
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+/
+\end_layout
+
+\end_inset
+
+
+\shape default
+'s publication workflow relies on Microsoft Word.
+ To translate LaTeX
+\begin_inset space \space{}
+\end_inset
+
+files into Word, we use an intermediate MS-DOS routine 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "tth"
+
+\end_inset
+
+ that converts the TeX
+\begin_inset space \space{}
+\end_inset
+
+source into HTML\SpecialChar \@.
+ The routine is generally robust, but it works best if the
+ source document is clean LaTeX
+\begin_inset space \space{}
+\end_inset
+
+without a significant freight of local macros or 
+\family typewriter
+.sty
+\family default
+ files.
+ Use of the source file 
+\family typewriter
+scifile.tex
+\family default
+ as a template, and calling 
+\shape italic
+only
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+/
+\end_layout
+
+\end_inset
+
+
+\shape default
+ the 
+\family typewriter
+.sty
+\family default
+ and 
+\family typewriter
+.bst
+\family default
+ files specifically mentioned here, will generate a manuscript that should
+ be eminently reviewable, and yet will allow your paper to proceed quickly
+ into our production flow upon acceptance 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "use2e"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section*
+Formatting Citations
+\end_layout
+
+\begin_layout Standard
+Citations can be handled in one of three ways.
+ The most straightforward (albeit labor-intensive) would be to hardwire
+ your citations into your LaTeX
+\begin_inset space \space{}
+\end_inset
+
+source, as you would if you were using an ordinary word processor.
+ Thus, your code might look something like this:
+\end_layout
+
+\begin_layout Quote
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{verbatim}
+\end_layout
+
+\end_inset
+
+ However, this record of the solar nebula may have been partly erased by
+ the complex history of the meteorite parent bodies, which includes collision-in
+duced shock, thermal metamorphism, and aqueous alteration (
+\shape italic
+1, 2, 5--7
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+/
+\end_layout
+
+\end_inset
+
+
+\shape default
+).
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{verbatim}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\noindent
+Compiled, the last two lines of the code above, of course, would give notecalls
+ in 
+\shape italic
+Science
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+/
+\end_layout
+
+\end_inset
+
+
+\shape default
+ style:
+\end_layout
+
+\begin_layout Quote
+\SpecialChar \ldots{}
+thermal metamorphism, and aqueous alteration (
+\shape italic
+1, 2, 5--7
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+/
+\end_layout
+
+\end_inset
+
+
+\shape default
+).
+ 
+\end_layout
+
+\begin_layout Standard
+Under the same logic, the author could set up his or her reference list
+ as a simple enumeration,
+\end_layout
+
+\begin_layout Quote
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{verbatim}
+\end_layout
+
+\end_inset
+
+ 
+\series bold
+References and Notes
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+G.
+ Gamow, 
+\shape italic
+The Constitution of Atomic Nuclei and Radioactivity
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+/
+\end_layout
+
+\end_inset
+
+
+\shape default
+ (Oxford Univ.
+ Press, New York, 1931).
+ 
+\end_layout
+
+\begin_layout Enumerate
+W.
+ Heisenberg and W.
+ Pauli, 
+\shape italic
+Zeitschr.
+\begin_inset space \space{}
+\end_inset
+
+f.
+\begin_inset space \space{}
+\end_inset
+
+Physik
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+/
+\end_layout
+
+\end_inset
+
+
+\shape default
+ 
+\series bold
+56
+\series default
+, 1 (1929).
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Quote
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{verbatim}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\noindent
+yielding
+\end_layout
+
+\begin_layout Quote
+
+\series bold
+References and Notes
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+G.
+ Gamow, 
+\shape italic
+The Constitution of Atomic Nuclei and Radioactivity
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+/
+\end_layout
+
+\end_inset
+
+
+\shape default
+ (Oxford Univ.
+ Press, New York, 1931).
+ 
+\end_layout
+
+\begin_layout Enumerate
+W.
+ Heisenberg and W.
+ Pauli, 
+\shape italic
+Zeitschr.
+\begin_inset space \space{}
+\end_inset
+
+f.
+\begin_inset space \space{}
+\end_inset
+
+Physik
+\shape default
+ 
+\series bold
+56
+\series default
+, 1 (1929).
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+That's not a solution that's likely to appeal to everyone, however --- especiall
+y not to users of B
+\size small
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+IB
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\size default
+TeX
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "inclme"
+
+\end_inset
+
+.
+ If you are a B
+\size small
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+IB
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\size default
+TeX
+\begin_inset space \space{}
+\end_inset
+
+user, we suggest that you use the 
+\family typewriter
+Science.bst
+\family default
+ bibliography style file and the 
+\family typewriter
+scicite.sty
+\family default
+ package, both of which we are downloadable from our author help site (http://ww
+w.sciencemag.org/about/authors/prep/
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+TeX
+\end_layout
+
+\end_inset
+
+help/).
+ You can also generate your reference lists by using the list environment
+ 
+\family typewriter
+{thebibliography}
+\family default
+ at the end of your source document; here again, you may find the 
+\family typewriter
+scicite.sty
+\family default
+ file useful.
+\end_layout
+
+\begin_layout Standard
+Whether you use B
+\size small
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+IB
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\size default
+TeX
+\begin_inset space \space{}
+\end_inset
+
+or 
+\family typewriter
+{thebibliography}
+\family default
+, be very careful about how you set up your in-text reference calls and
+ notecalls.
+ In particular, observe the following requirements:
+\end_layout
+
+\begin_layout Enumerate
+Please follow the style for references outlined at our author help site
+ and embodied in recent issues of 
+\shape italic
+Science
+\shape default
+.
+ Each citation number should refer to a single reference; please do not
+ concatenate several references under a single number.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Please cite your references and notes in text 
+\shape italic
+only
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+/
+\end_layout
+
+\end_inset
+
+
+\shape default
+ using the standard LaTeX
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+verb+
+\backslash
+cite+
+\end_layout
+
+\end_inset
+
+ command, not another command driven by outside macros.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Please separate multiple citations within a single 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+verb+
+\backslash
+cite+
+\end_layout
+
+\end_inset
+
+ command using commas only; there should be 
+\shape italic
+no space
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+/
+\end_layout
+
+\end_inset
+
+
+\shape default
+ between reference keynames.
+ That is, if you are citing two papers whose bibliography keys are 
+\family typewriter
+keyname1
+\family default
+ and 
+\family typewriter
+keyname2
+\family default
+, the in-text cite should read 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+verb+
+\backslash
+cite{keyname1,keyname2}+
+\end_layout
+
+\end_inset
+
+, 
+\shape italic
+not
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+/
+\end_layout
+
+\end_inset
+
+
+\shape default
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+verb+
+\backslash
+cite{keyname1, keyname2}+
+\end_layout
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+\noindent
+Failure to follow these guidelines could lead to the omission of the references
+ in an accepted paper when the source file is translated to Word via HTML.
+\end_layout
+
+\begin_layout Section*
+Handling Math, Tables, and Figures
+\end_layout
+
+\begin_layout Standard
+Following are a few things to keep in mind in coding equations, tables,
+ and figures for submission to 
+\shape italic
+Science
+\shape default
+.
+\end_layout
+
+\begin_layout Paragraph*
+In-line math.
+\end_layout
+
+\begin_layout Standard
+The utility that we use for converting from LaTeX
+\begin_inset space \space{}
+\end_inset
+
+to HTML handles in-line math relatively well.
+ It is best to avoid using built-up fractions in in-line equations, and
+ going for the more boring 
+\begin_inset Quotes eld
+\end_inset
+
+slash
+\begin_inset Quotes erd
+\end_inset
+
+ presentation whenever possible --- that is, for 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+verb+$a/b$+
+\end_layout
+
+\end_inset
+
+ (which comes out as 
+\begin_inset Formula $a/b$
+\end_inset
+
+) rather than 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+verb+$
+\backslash
+frac{a}{b}$+
+\end_layout
+
+\end_inset
+
+ (which compiles as 
+\begin_inset Formula $\frac{a}{b}$
+\end_inset
+
+).
+ Likewise, HTML isn't tooled to handle certain overaccented special characters
+ in-line; for 
+\begin_inset Formula $\hat{\alpha}$
+\end_inset
+
+ (coded 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+verb+$
+\backslash
+hat{
+\backslash
+alpha}$+
+\end_layout
+
+\end_inset
+
+), for example, the HTML translation code will return [‸
+\begin_inset Formula $(\alpha)$
+\end_inset
+
+].
+ Don't drive yourself crazy --- but if it's possible to avoid such constructs,
+ please do so.
+ Please do not code arrays or matrices as in-line math; display them instead.
+ And please keep your coding as TeX-y as possible --- avoid using specialized
+ math macro packages like 
+\family typewriter
+amstex.sty
+\family default
+.
+\end_layout
+
+\begin_layout Paragraph*
+Displayed math.
+\end_layout
+
+\begin_layout Standard
+Our HTML converter sets up TeX
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+displayed equations using nested HTML tables.
+ That works well for an HTML presentation, but Word chokes when it comes
+ across a nested table in an HTML file.
+ We surmount that problem by simply cutting the displayed equations out
+ of the HTML before it's imported into Word, and then replacing them in
+ the Word document using either images or equations generated by a Word
+ equation editor.
+ Strictly speaking, this procedure doesn't bear on how you should prepare
+ your manuscript --- although, for reasons best consigned to a note 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "nattex"
+
+\end_inset
+
+, we'd prefer that you use native TeX
+\begin_inset space \space{}
+\end_inset
+
+commands within displayed-math environments, rather than LaTeX
+\begin_inset space \space{}
+\end_inset
+
+sub-environments.
+\end_layout
+
+\begin_layout Paragraph*
+Tables.
+\end_layout
+
+\begin_layout Standard
+The HTML converter that we use seems to handle reasonably well simple tables
+ generated using the LaTeX
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\family typewriter
+{tabular}
+\family default
+ environment.
+ For very complicated tables, you may want to consider generating them in
+ a word processing program and including them as a separate file.
+\end_layout
+
+\begin_layout Paragraph*
+Figures.
+\end_layout
+
+\begin_layout Standard
+Figure callouts within the text should not be in the form of LaTeX
+\begin_inset space \space{}
+\end_inset
+
+references, but should simply be typed in --- that is, 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+verb+(Fig.
+ 1)+
+\end_layout
+
+\end_inset
+
+ rather than 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+verb+
+\backslash
+ref{fig1}+
+\end_layout
+
+\end_inset
+
+.
+ For the figures themselves, treatment can differ depending on whether the
+ manuscript is an initial submission or a final revision for acceptance
+ and publication.
+ For an initial submission and review copy, you can use the LaTeX
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+verb+{figure}+
+\end_layout
+
+\end_inset
+
+ environment and the 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+verb+
+\backslash
+includegraphics+
+\end_layout
+
+\end_inset
+
+ command to include your PostScript figures at the end of the compiled PostScrip
+t file.
+ For the final revision, however, the 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+verb+{figure}+
+\end_layout
+
+\end_inset
+
+ environment should 
+\shape italic
+not
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+/
+\end_layout
+
+\end_inset
+
+
+\shape default
+ be used; instead, the figure captions themselves should be typed in as
+ regular text at the end of the source file (an example is included here),
+ and the figures should be uploaded separately according to the Art Department's
+ instructions.
+\end_layout
+
+\begin_layout Section*
+What to Send In
+\end_layout
+
+\begin_layout Standard
+What you should send to 
+\shape italic
+Science
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+/
+\end_layout
+
+\end_inset
+
+
+\shape default
+ will depend on the stage your manuscript is in:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Important:
+\series default
+ If you're sending in the initial submission of your manuscript (that is,
+ the copy for evaluation and peer review), please send in 
+\shape italic
+only
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+/
+\end_layout
+
+\end_inset
+
+
+\shape default
+ a PostScript or PDF version of the compiled file (including figures).
+ Please do not send in the TeX
+\begin_inset space \space{}
+\end_inset
+
+source, 
+\family typewriter
+.sty
+\family default
+, 
+\family typewriter
+.bbl
+\family default
+, or other associated files with your initial submission.
+ (For more information, please see the instructions at our Web submission
+ site, http://www.submit2science.org/ .) 
+\end_layout
+
+\begin_layout Itemize
+When the time comes for you to send in your revised final manuscript (i.e.,
+ after peer review), we require that you include all source files and generated
+ files in your upload.
+ Thus, if the name of your main source document is 
+\family typewriter
+ltxfile.tex
+\family default
+, you need to include: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\family typewriter
+ltxfile.tex
+\family default
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+ltxfile.aux
+\family default
+, the auxilliary file generated by the compilation.
+ 
+\end_layout
+
+\begin_layout Itemize
+A PostScript file (compiled using 
+\family typewriter
+dvips
+\family default
+ or some other driver) of the 
+\family typewriter
+.dvi
+\family default
+ file generated from 
+\family typewriter
+ltxfile.tex
+\family default
+, or a PDF file distilled from that PostScript.
+ You do not need to include the actual 
+\family typewriter
+.dvi
+\family default
+ file in your upload.
+ 
+\end_layout
+
+\begin_layout Itemize
+From B
+\size small
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+IB
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\size default
+TeX
+\begin_inset space \space{}
+\end_inset
+
+users, your bibliography (
+\family typewriter
+.bib
+\family default
+) file, 
+\shape italic
+and
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+/
+\end_layout
+
+\end_inset
+
+
+\shape default
+ the generated file 
+\family typewriter
+ltxfile.bbl
+\family default
+ created when you run B
+\size small
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+IB
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\size default
+TeX.
+ 
+\end_layout
+
+\begin_layout Itemize
+Any additional 
+\family typewriter
+.sty
+\family default
+ and 
+\family typewriter
+.bst
+\family default
+ files called by the source code (though, for reasons noted earlier, we
+ 
+\shape italic
+strongly
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+/
+\end_layout
+
+\end_inset
+
+
+\shape default
+ discourage the use of such files beyond those mentioned in this document).
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% Your references go at the end of the main text, and before the
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% figures.
+  For this document we've used BibTeX, the .bib file
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% scibib.bib, and the .bst file Science.bst.
+  The package scicite.sty
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% was included to format the reference numbers according to *Science*
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% style.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "scibib"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+bibliographystyle{Science}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% Following is a new environment, {scilastnote}, that's defined in the
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% preamble and that allows authors to add a reference at the end of the
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% list that's not signaled in the text; such references are used in
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% *Science* for acknowledgments of funding, help, etc.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{scilastnote}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+item 
+\end_layout
+
+\end_inset
+
+We've included in the template file 
+\family typewriter
+scifile.tex
+\family default
+ a new environment, 
+\family typewriter
+{scilastnote}
+\family default
+, that generates a numbered final citation without a corresponding signal
+ in the text.
+ This environment can be used to generate a final numbered reference containing
+ acknowledgments, sources of funding, and the like, per 
+\shape italic
+Science
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+/
+\end_layout
+
+\end_inset
+
+
+\shape default
+ style.
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{scilastnote}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% For your review copy (i.e., the file you initially send in for
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% evaluation), you can use the {figure} environment and the
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+includegraphics command to stream your figures into the text, placing
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% all figures at the end.
+  For the final, revised manuscript for
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% acceptance and production, however, PostScript or other graphics
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% should not be streamed into your compliled file.
+  Instead, set
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% captions as simple paragraphs (with a 
+\backslash
+noindent tag), setting them
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% off from the rest of the text with a 
+\backslash
+clearpage as shown  below, and
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% submit figures as separate files according to the Art Department's
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% instructions.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+
+\series bold
+Fig.
+ 1.
+
+\series default
+ Please do not use figure environments to set up your figures in the final
+ (post-peer-review) draft, do not include graphics in your source code,
+ and do not cite figures in the text using LaTeX
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+verb+
+\backslash
+ref+
+\end_layout
+
+\end_inset
+
+ commands.
+ Instead, simply refer to the figure numbers in the text per 
+\shape italic
+Science
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+/
+\end_layout
+
+\end_inset
+
+
+\shape default
+ style, and include the list of captions at the end of the document, coded
+ as ordinary paragraphs as shown in the 
+\family typewriter
+scifile.tex
+\family default
+ template file.
+ Your actual figure files should be submitted separately.
+\end_layout
+
+\end_body
+\end_document

@@ -1,9 +1,11 @@
 # Do the sum of sq ODM plot versus null
 tiff(file.path(outputDir,paste('SSODMplot_unscaled',analysisCode,'.tiff', sep="")), width=4800)
-ssodm.plot(transMatrices[[1]], transMatrices[-1],plot.title=paste("SSODM observed and null, ",casesString," vs ",controlsString,' : ', networkInferenceName, ' : ', analysisName, sep=""))
+sPlot <- ssodm.plot(transMatrices[[1]], transMatrices[-1],plot.title=paste("SSODM observed and null, ",casesString," vs ",controlsString,' : ', networkInferenceName, ' : ', analysisName, sep=""))
+print(sPlot)
 dev.off()
 tiff(file.path(outputDir,paste('SSODMplot_scaled',analysisCode,'.tiff', sep="")), width=4800)
-ssodm.plot(transMatrices[[1]], transMatrices[-1], rescale=T, plot.title=paste("SSODM observed and null, ",casesString," vs ",controlsString,' : ', networkInferenceName, ' : ', analysisName, sep=""))
+sPlot <- ssodm.plot(transMatrices[[1]], transMatrices[-1], rescale=T, plot.title=paste("SSODM observed and null, ",casesString," vs ",controlsString,' : ', networkInferenceName, ' : ', analysisName, sep=""))
+print(sPlot)
 dev.off()
 
 # This is for converting TF IDs to their gene names
@@ -85,8 +87,11 @@ obsSsodm <- apply(transMatrices[[1]],1,function(x){t(x)%*%x})
 includedTFs <- intersect(names(obsSsodm),rownames(diff.exp.res$p.value))
 obsSsodm <- obsSsodm[includedTFs]
 dTFI_pVals_All <- 1-2*abs(.5-calculate.tm.p.values(transMatrices[[1]], transMatrices[-1],method="non-parametric"))
+dTFI_normalized_scores_All <- 1-2*abs(.5-calculate.tm.p.values(transMatrices[[1]], transMatrices[-1],method="z-score"))
 names(dTFI_pVals_All) <- colnames(transMatrices[[1]])
+names(dTFI_normalized_scores_All) <- colnames(transMatrices[[1]])
 dTFI_pVals <- dTFI_pVals_All[includedTFs]
+dTFI_normalized_scores <- dTFI_normalized_scores_All[includedTFs]
 negLogPValues <- -log(dTFI_pVals)
 # replace Inf values with max values
 negLogPValues[negLogPValues==Inf] <- 35
@@ -99,12 +104,12 @@ limma_pVals <- diff.exp.res$p.value[names(dTFI_pVals),2]
 limma_fdr <- p.adjust(limma_pVals, method = 'fdr')
 limmanegLogPValues <- -log(limma_pVals)
 limmanegLogPValues[limmanegLogPValues>10]<-10 # for visual purposes
-resultTable <- cbind(obsSsodm,dTFI_pVals,dTFI_fdr,logfoldchangeTF,limmanegLogPValues)
+resultTable <- cbind(obsSsodm,dTFI_pVals, dTFI_normalized_scores, dTFI_fdr, logfoldchangeTF, limmanegLogPValues)
 resultTable <- resultTable[order(dTFI_pVals),]
 
 plotDF <- data.frame(obsSsodm, negLogPValues, limmanegLogPValues, logfoldchangeTF, "labels"=labels)
 
-colnames(resultTable) <- c("Magnitude","dTFI uncorrected p-value","dTFI FDR", "log FC", "limma -logp")
+colnames(resultTable) <- c("Magnitude","dTFI uncorrected p-value","dTFI normalized scores","dTFI FDR", "log FC", "limma -logp")
 write.csv(resultTable,file=file.path(outputDir,paste("resultTable",analysisCode,".csv", sep="")))
 
 tiff(file.path(outputDir,paste('Volcano plot',analysisCode,'.tiff', sep="")), width=1800)
@@ -121,7 +126,7 @@ ggplot(data=plotDF,aes(x=logfoldchangeTF, y=negLogPValues, label=labels, size=10
 dev.off()
 
 # periodically save workspace
-save.image(file=file.path(outputDir,paste("activeImage",analysisCode,".RData",sep="")))
+# save.image(file=file.path(outputDir,paste("activeImage",analysisCode,".RData",sep="")))
 
 ## Calculate p-values for off-diagonals
 transitionSigmas <- function(tm.observed, tm.null){
@@ -164,7 +169,7 @@ legend("bottomleft", c("Gained features","Lost features"), lty=c(1,1),lwd=c(2.5,
 dev.off()
 
 saveRDS(list(obsSsodm,dTFI_pVals_All),'dTFI.rdata')
-save.image(file=file.path(outputDir,paste("activeImage",analysisCode,".RData",sep="")))
+# save.image(file=file.path(outputDir,paste("activeImage",analysisCode,".RData",sep="")))
 
 
 # ############# Some methylation investigation 11/25/15

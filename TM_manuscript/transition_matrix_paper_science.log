@@ -1,0 +1,306 @@
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=latex 2015.3.28)  2 FEB 2016 17:44
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**transition_matrix_paper_science.tex
+(./transition_matrix_paper_science.tex
+LaTeX2e <2011/06/27>
+Babel <3.9h> and hyphenation patterns for 4 languages loaded.
+(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/size10.clo
+File: size10.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/t1enc.def
+File: t1enc.def 2005/09/27 v1.99g Standard LaTeX file
+LaTeX Font Info:    Redeclaring font encoding T1 on input line 43.
+))
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
+Package: inputenc 2008/03/30 v1.1d Input encoding file
+\inpenc@prehook=\toks14
+\inpenc@posthook=\toks15
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/latin9.def
+File: latin9.def 2008/03/30 v1.1d Input encoding file
+))
+(/usr/share/texlive/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count87
+\float@exts=\toks16
+\float@box=\box26
+\@float@everytoks=\toks17
+\@floatcapt=\box27
+)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks18
+)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/graphics.cfg
+File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
+)
+Package graphics Info: Driver file: dvips.def on input line 91.
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/dvips.def
+File: dvips.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
+))
+\Gin@req@height=\dimen103
+\Gin@req@width=\dimen104
+)
+(/usr/share/texlive/texmf-dist/tex/latex/preprint/authblk.sty
+Package: authblk 2001/02/27 1.3 (PWD)
+\affilsep=\skip43
+\@affilsep=\skip44
+\c@Maxaffil=\count88
+\c@authors=\count89
+\c@affil=\count90
+)
+(/usr/share/texlive/texmf-dist/tex/latex/cite/cite.sty
+LaTeX Info: Redefining \cite on input line 302.
+LaTeX Info: Redefining \nocite on input line 373.
+Package: cite 2010/09/10  v 5.3
+)
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/times.sty
+Package: times 2005/04/12 PSNFSS-v9.2a (SPQR) 
+)
+\c@lastnote=\count91
+
+(/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty
+Package: babel 2013/12/03 3.9h The Babel package
+
+(/usr/share/texlive/texmf-dist/tex/generic/babel-english/english.ldf
+Language: english 2012/08/20 v3.3p English support from the babel system
+
+(/usr/share/texlive/texmf-dist/tex/generic/babel/babel.def
+File: babel.def 2013/12/03 3.9h Babel common definitions
+\babel@savecnt=\count92
+\U@D=\dimen105
+)
+\l@canadian = a dialect from \language\l@american 
+\l@australian = a dialect from \language\l@british 
+\l@newzealand = a dialect from \language\l@british 
+))
+(./transition_matrix_paper_science.aux)
+\openout1 = `transition_matrix_paper_science.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 81.
+LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 81.
+LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 81.
+LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 81.
+LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 81.
+LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 81.
+LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Try loading font information for T1+ptm on input line 81.
+
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1ptm.fd
+File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
+)
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 90.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 90.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 90.
+LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <9> not available
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 91.
+LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <14.4> not available
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 107.
+LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <10> not available
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 117.
+
+
+LaTeX Warning: Citation `mohanty2014model' on page 1 undefined on input line 12
+0.
+
+
+LaTeX Warning: Citation `hu2013heterogeneity' on page 1 undefined on input line
+ 120.
+
+
+LaTeX Warning: Citation `licatalosi2010rna' on page 1 undefined on input line 1
+33.
+
+
+LaTeX Warning: Citation `margolin2006aracne' on page 1 undefined on input line 
+137.
+
+
+LaTeX Warning: Citation `marbach2012wisdom' on page 1 undefined on input line 1
+37.
+
+
+LaTeX Warning: Citation `wille2004sparse' on page 1 undefined on input line 137
+.
+
+
+LaTeX Warning: Citation `faith2007large' on page 1 undefined on input line 137.
+
+
+
+LaTeX Warning: Citation `zhang2005general' on page 1 undefined on input line 13
+7.
+
+
+LaTeX Warning: Citation `ernst2008semi' on page 1 undefined on input line 138.
+
+
+LaTeX Warning: Citation `glass2013passing' on page 1 undefined on input line 13
+8.
+
+
+LaTeX Warning: Citation `hecker2009gene' on page 1 undefined on input line 138.
+
+
+[1
+
+]
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 192.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 192.
+
+! Dimension too large.
+<to be read again> 
+                   \relax 
+l.212 ...width=0.5\columnwidth]{figures/figure1_a}
+                                                  \caption{\textbf{Overview ...
+
+? 
+! Dimension too large.
+<to be read again> 
+                   \relax 
+l.212 ...width=0.5\columnwidth]{figures/figure1_a}
+                                                  \caption{\textbf{Overview ...
+
+? 
+! Dimension too large.
+<to be read again> 
+                   \advance 
+l.212 ...width=0.5\columnwidth]{figures/figure1_a}
+                                                  \caption{\textbf{Overview ...
+
+? 
+! Dimension too large.
+<to be read again> 
+                   \advance 
+l.212 ...width=0.5\columnwidth]{figures/figure1_a}
+                                                  \caption{\textbf{Overview ...
+
+? 
+File: figures/figure1_a.eps Graphic file (type eps)
+<figures/figure1_a.eps>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[2] [3]
+
+LaTeX Warning: Citation `vestbo2008evaluation' on page 4 undefined on input lin
+e 304.
+
+
+LaTeX Warning: Citation `pillai2009genome' on page 4 undefined on input line 30
+5.
+
+
+LaTeX Warning: Citation `lgrc' on page 4 undefined on input line 306.
+
+
+LaTeX Warning: Citation `ltcopd' on page 4 undefined on input line 308.
+
+
+Overfull \hbox (0.39163pt too wide) in paragraph at lines 302--322
+\T1/ptm/m/n/10 tion of COPD Lon-gi-tu-di-nally to Iden-tify Pre-dic-tive Sur-ro
+-gate End-points (ECLIPSE) [\T1/ptm/b/n/10 ?\T1/ptm/m/n/10 ] (Fig-ure 2[]) , th
+e COPDGene
+ []
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/latin1.def
+File: latin1.def 2008/03/30 v1.1d Input encoding file
+)
+(/usr/share/texlive/texmf-dist/tex/latex/base/latin9.def
+File: latin9.def 2008/03/30 v1.1d Input encoding file
+)
+File: figures/pasted6a.eps Graphic file (type eps)
+
+<figures/pasted6a.eps>
+
+! LaTeX Error: Cannot determine size of graphic in "figures/dTFI vs LIMMA55557"
+.png (no BoundingBox).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.339 ..."figures/dTFI vs LIMMA55557\string".png}}
+                                                  
+? 
+File: "figures/dTFI vs LIMMA55557".png Graphic file (type eps)
+<"figures/dTFI vs LIMMA55557".png>
+
+! LaTeX Error: Cannot determine size of graphic in "figures/Transition plot5555
+7".png (no BoundingBox).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.343 ...figures/Transition plot55557\string".png}
+                                                  
+? 
+File: "figures/Transition plot55557".png Graphic file (type eps)
+<"figures/Transition plot55557".png> [4]
+Overfull \vbox (388.24251pt too high) has occurred while \output is active []
+
+
+[5]
+File: figures/eclipse_copdgene_lgrc_comparison_same_tissue.eps Graphic file (ty
+pe eps)
+ <figures/eclipse_copdgene_lgrc_comparison_same_tissue.eps>
+File: figures/eclipse_copdgene_lgrc_comparison_diff_tissue.eps Graphic file (ty
+pe eps)
+
+<figures/eclipse_copdgene_lgrc_comparison_diff_tissue.eps> [6]
+No file transition_matrix_paper_science.bbl.
+[7] (./transition_matrix_paper_science.aux)
+
+LaTeX Warning: There were undefined references.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 1495 strings out of 494986
+ 18348 string characters out of 6180382
+ 76821 words of memory out of 5000000
+ 4712 multiletter control sequences out of 15000+600000
+ 23018 words of font info for 36 fonts, out of 8000000 for 9000
+ 36 hyphenation exceptions out of 8191
+ 25i,4n,23p,1882b,273s stack positions out of 5000i,500n,10000p,200000b,80000s
+
+Output written on transition_matrix_paper_science.dvi (7 pages, 24680 bytes).

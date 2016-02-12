@@ -1,0 +1,284 @@
+@article{park2009chip,
+  title={ChIP--seq: advantages and challenges of a maturing technology},
+  author={Park, Peter J},
+  journal={Nature Reviews Genetics},
+  volume={10},
+  number={10},
+  pages={669--680},
+  year={2009},
+  publisher={Nature Publishing Group}
+}
+@article{glass2013passing,
+	title={Passing messages between biological networks to refine predicted interactions},
+	author={Glass, Kimberly and Huttenhower, Curtis and Quackenbush, John and Yuan, Guo-Cheng},
+	journal={PloS one},
+	volume={8},
+	number={5},
+	pages={e64832},
+	year={2013},
+	publisher={Public Library of Science}
+}
+@article{frey2007clustering,
+	title={Clustering by passing messages between data points},
+	author={Frey, Brendan J and Dueck, Delbert},
+	journal={science},
+	volume={315},
+	number={5814},
+	pages={972--976},
+	year={2007},
+	publisher={American Association for the Advancement of Science}
+}
+@article{lao2015genome,
+	title={Genome Medicine},
+	author={Lao, Taotao and Glass, Kimberly and Qiu, Weiliang and Polverino, Francesca and Gupta, Kushagra and Morrow, Jarrett and Mancini, John Dominic and Vuong, Linh and Perrella, Mark A and Hersh, Craig P and others},
+	year={2015}
+}
+@article{ernst2008semi,
+	title={A semi-supervised method for predicting transcription factor--gene interactions in Escherichia coli},
+	author={Ernst, Jason and Beg, Qasim K and Kay, Krin A and Bal{\'a}zsi, G{\'a}bor and Oltvai, Zolt{\'a}n N and Bar-Joseph, Ziv},
+	journal={PLoS computational biology},
+	volume={4},
+	number={3},
+	pages={e1000044},
+	year={2008},
+	publisher={Public Library of Science}
+}
+@article{li2013bootstrap,
+	title={Bootstrap inference for network construction with an application to a breast cancer microarray study},
+	author={Li, Shuang and Hsu, Li and Peng, Jie and Wang, Pei},
+	journal={The annals of applied statistics},
+	volume={7},
+	number={1},
+	pages={391},
+	year={2013},
+	publisher={NIH Public Access}
+}
+@article{haury2012tigress,
+	title={TIGRESS: trustful inference of gene regulation using stability selection},
+	author={Haury, Anne-Claire and Mordelet, Fantine and Vera-Licona, Paola and Vert, Jean-Philippe},
+	journal={BMC systems biology},
+	volume={6},
+	number={1},
+	pages={145},
+	year={2012},
+	publisher={BioMed Central Ltd}
+}
+@article{tibshirani1996regression,
+	title={Regression shrinkage and selection via the lasso},
+	author={Tibshirani, Robert},
+	journal={Journal of the Royal Statistical Society. Series B (Methodological)},
+	pages={267--288},
+	year={1996},
+	publisher={JSTOR}
+}
+@article{glass2015network,
+	title={A network model for angiogenesis in ovarian cancer},
+	author={Glass, Kimberly and Quackenbush, John and Spentzos, Dimitrios and Haibe-Kains, Benjamin and Yuan, Guo-Cheng},
+	journal={BMC bioinformatics},
+	volume={16},
+	number={1},
+	pages={115},
+	year={2015},
+	publisher={BioMed Central Ltd}
+}
+@article{glass2014sexually,
+	title={Sexually-dimorphic targeting of functionally-related genes in COPD},
+	author={Glass, Kimberly and Quackenbush, John and Silverman, Edwin K and Celli, Bartolome and Rennard, Stephen I and Yuan, Guo-Cheng and DeMeo, Dawn L},
+	journal={BMC systems biology},
+	volume={8},
+	number={1},
+	pages={118},
+	year={2014},
+	publisher={BioMed Central Ltd}
+}
+@article{olsen2014inference,
+	title={Inference and validation of predictive gene networks from biomedical literature and gene expression data},
+	author={Olsen, Catharina and Fleming, Kathleen and Prendergast, Niall and Rubio, Renee and Emmert-Streib, Frank and Bontempi, Gianluca and Haibe-Kains, Benjamin and Quackenbush, John},
+	journal={Genomics},
+	volume={103},
+	number={5},
+	pages={329--336},
+	year={2014},
+	publisher={Elsevier}
+}
+@article{marbach2012wisdom,
+	title={Wisdom of crowds for robust gene network inference},
+	author={Marbach, Daniel and Costello, James C and K{\"u}ffner, Robert and Vega, Nicole M and Prill, Robert J and Camacho, Diogo M and Allison, Kyle R and Kellis, Manolis and Collins, James J and Stolovitzky, Gustavo and others},
+	journal={Nature methods},
+	volume={9},
+	number={8},
+	pages={796--804},
+	year={2012},
+	publisher={Nature Publishing Group}
+}
+@article{agusti2010characterisation,
+	title={Characterisation of COPD heterogeneity in the ECLIPSE cohort},
+	author={Agusti, Alvar and Calverley, PM and Celli, Bartolome and Coxson, Harvey O and Edwards, Lisa D and Lomas, David A and MacNee, William and Miller, Bruce E and Rennard, Steve and Silverman, Edwin K and others},
+	journal={Respir Res},
+	volume={11},
+	number={1},
+	pages={122},
+	year={2010}
+}
+@article{levine2003transcription,
+	title={Transcription regulation and animal diversity},
+	author={Levine, Michael and Tjian, Robert},
+	journal={Nature},
+	volume={424},
+	number={6945},
+	pages={147--151},
+	year={2003},
+	publisher={Nature Publishing Group}
+}
+@article{ravasi2010atlas,
+	title={An atlas of combinatorial transcriptional regulation in mouse and man},
+	author={Ravasi, Timothy and Suzuki, Harukazu and Cannistraci, Carlo Vittorio and Katayama, Shintaro and Bajic, Vladimir B and Tan, Kai and Akalin, Altuna and Schmeier, Sebastian and Kanamori-Katayama, Mutsumi and Bertin, Nicolas and others},
+	journal={Cell},
+	volume={140},
+	number={5},
+	pages={744--752},
+	year={2010},
+	publisher={Elsevier}
+}
+@Article{Langfelder2008WGCNA,
+	author = {Peter Langfelder and Steve Horvath},
+	title = {WGCNA: an R package for weighted correlation network
+	analysis},
+	journal = {BMC Bioinformatics},
+	year = {2008},
+	number = {1},
+	pages = {559},
+	pubmedid = {19114008},
+}
+@article{ravasz2002hierarchical,
+  title={Hierarchical organization of modularity in metabolic networks},
+  author={Ravasz, Erzs{\'e}bet and Somera, Anna Lisa and Mongru, Dale A and Oltvai, Zolt{\'a}n N and Barab{\'a}si, A-L},
+  journal={science},
+  volume={297},
+  number={5586},
+  pages={1551--1555},
+  year={2002},
+  publisher={American Association for the Advancement of Science}
+}
+@Article{Langfelder2008FastR,
+	title = {Fast {R} Functions for Robust Correlations and
+	Hierarchical Clustering},
+	author = {Peter Langfelder and Steve Horvath},
+	journal = {Journal of Statistical Software},
+	year = {2012},
+	volume = {46},
+	number = {11},
+	pages = {1--17},
+	url = {http://www.jstatsoft.org/v46/i11/},
+}
+@article{margolin2006aracne,
+  title={ARACNE: an algorithm for the reconstruction of gene regulatory networks in a mammalian cellular context},
+  author={Margolin, Adam A and Nemenman, Ilya and Basso, Katia and Wiggins, Chris and Stolovitzky, Gustavo and Favera, Riccardo D and Califano, Andrea},
+  journal={BMC bioinformatics},
+  volume={7},
+  number={Suppl 1},
+  pages={S7},
+  year={2006},
+  publisher={BioMed Central Ltd}
+}
+@article{faith2007large,
+  title={Large-scale mapping and validation of Escherichia coli transcriptional regulation from a compendium of expression profiles},
+  author={Faith, Jeremiah J and Hayete, Boris and Thaden, Joshua T and Mogno, Ilaria and Wierzbowski, Jamey and Cottarel, Guillaume and Kasif, Simon and Collins, James J and Gardner, Timothy S},
+  journal={PLoS Biol},
+  volume={5},
+  number={1},
+  pages={e8},
+  year={2007}
+}
+@article{mohanty2014model,
+  title={A model for cancer tissue heterogeneity},
+  author={Mohanty, Anwoy Kumar and Datta, Aniruddha and Venkatraj, Vijayanagaram},
+  journal={Biomedical Engineering, IEEE Transactions on},
+  volume={61},
+  number={3},
+  pages={966--974},
+  year={2014},
+  publisher={IEEE}
+}
+@article{hu2013heterogeneity,
+  title={Heterogeneity of tumor-induced gene expression changes in the human metabolic network},
+  author={Hu, Jie and Locasale, Jason W and Bielas, Jason H and O'Sullivan, Jacintha and Sheahan, Kieran and Cantley, Lewis C and Vander Heiden, Matthew G and Vitkup, Dennis},
+  journal={Nature biotechnology},
+  volume={31},
+  number={6},
+  pages={522--529},
+  year={2013},
+  publisher={Nature Publishing Group}
+}
+@article{hecker2009gene,
+  title={Gene regulatory network inference: data integration in dynamic models-a review},
+  author={Hecker, Michael and Lambeck, Sandro and Toepfer, Susanne and Van Someren, Eugene and Guthke, Reinhard},
+  journal={Biosystems},
+  volume={96},
+  number={1},
+  pages={86--103},
+  year={2009},
+  publisher={Elsevier}
+}
+@article{wille2004sparse,
+  title={Sparse graphical Gaussian modeling of the isoprenoid gene network in Arabidopsis thaliana},
+  author={Wille, Anja and Zimmermann, Philip and Vranov{\'a}, Eva and F{\"u}rholz, Andreas and Laule, Oliver and Bleuler, Stefan and Hennig, Lars and Prelic, Amela and von Rohr, Peter and Thiele, Lothar and others},
+  journal={Genome Biol},
+  volume={5},
+  number={11},
+  pages={R92},
+  year={2004}
+}
+@article{zhang2005general,
+  title={A general framework for weighted gene co-expression network analysis},
+  author={Zhang, Bin and Horvath, Steve},
+  journal={Statistical applications in genetics and molecular biology},
+  volume={4},
+  number={1},
+  year={2005}
+}
+@article{licatalosi2010rna,
+  title={RNA processing and its regulation: global insights into biological networks},
+  author={Licatalosi, Donny D and Darnell, Robert B},
+  journal={Nature Reviews Genetics},
+  volume={11},
+  number={1},
+  pages={75--87},
+  year={2010},
+  publisher={Nature Publishing Group}
+}
+@article{harbison2004transcriptional,
+  title={Transcriptional regulatory code of a eukaryotic genome},
+  author={Harbison, Christopher T and Gordon, D Benjamin and Lee, Tong Ihn and Rinaldi, Nicola J and Macisaac, Kenzie D and Danford, Timothy W and Hannett, Nancy M and Tagne, Jean-Bosco and Reynolds, David B and Yoo, Jane and others},
+  journal={Nature},
+  volume={431},
+  number={7004},
+  pages={99--104},
+  year={2004},
+  publisher={Nature Publishing Group}
+}
+@article{vestbo2008evaluation,
+  title={Evaluation of COPD longitudinally to identify predictive surrogate end-points (ECLIPSE)},
+  author={Vestbo, J{\o}rgen and Anderson, Wayne and Coxson, Harvey O and Crim, Courtney and Dawber, Ffyona and Edwards, Lisa and Hagan, Gerry and Knobil, Katharine and Lomas, David A and MacNee, William and others},
+  journal={European Respiratory Journal},
+  volume={31},
+  number={4},
+  pages={869--873},
+  year={2008},
+  publisher={Eur Respiratory Soc}
+}
+@article{pillai2009genome,
+  title={A genome-wide association study in chronic obstructive pulmonary disease (COPD): identification of two major susceptibility loci},
+  author={Pillai, Sreekumar G and Ge, Dongliang and Zhu, Guohua and Kong, Xiangyang and Shianna, Kevin V and Need, Anna C and Feng, Sheng and Hersh, Craig P and Bakke, Per and Gulsvik, Amund and others},
+  journal={PLoS Genet},
+  volume={5},
+  number={3},
+  pages={e1000421},
+  year={2009},
+  publisher={Public Library of Science}
+}
+@article{lgrc,
+  title = {Lung Genomics Research Consortium (LGRC)},
+  howpublished = {\url{http://www.lung-genomics.org/}},
+  note = {Accessed: 2016-02-02}
+}

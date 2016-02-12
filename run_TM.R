@@ -142,4 +142,4 @@ if(!is.na(num_cores)){
 gc()
 
 # periodically save workspace
-save.image(file=file.path(outputDir,paste("activeImage",analysisCode,".RData",sep="")))
+# save.image(file=file.path(outputDir,paste("activeImage",analysisCode,".RData",sep="")))

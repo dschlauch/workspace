@@ -1,0 +1,57 @@
+---
+title: "Biweekly update"
+author: Dan
+output: slidy_presentation
+date: "`r Sys.Date()`"
+---
+
+
+```{r, echo=FALSE}
+library(data.table)
+library(ggplot2)
+library(knitr)
+```
+
+
+
+## Agenda
+
+- Choice of motifs
+    - 2014 JASPAR edition
+        - All previous analyses
+    - 2016 JASPAR edition
+        - Need motif scan performed (~1 week?)
+    - CISPB edition
+        - Low agreement with JASPAR motifs
+  
+- Choice of Network Inference Method
+    - BERE
+    - PANDA
+
+* Science paper
+
+
+
+##  BERE with 2014 JASPAR Motif
+
+### Plots of magnitude
+![JASPAR2014](/home/dan/gd/Harvard/Research/TM_outputs/JASPAR2014/BERE/Magnitude_comparison_diff_tissue.png)
+![JASPAR2014](/home/dan/gd/Harvard/Research/TM_outputs/JASPAR2014/BERE/Magnitude_comparison_same_tissue.png)
+
+##  BERE with 2014 JASPAR Motif
+
+### Plots of normalized scores
+![JASPAR2014](/home/dan/gd/Harvard/Research/TM_outputs/JASPAR2014/BERE/negLogPValues_comparison_diff_tissue.png)
+![JASPAR2014](/home/dan/gd/Harvard/Research/TM_outputs/JASPAR2014/BERE/negLogPValues_comparison_same_tissue.png)
+
+***
+
+##  BERE with CISPB Motif
+
+### Plots of magnitud
+![JASPAR2014](/home/dan/gd/Harvard/Research/TM_outputs/CISPB/BERE/Magnitude_comparison_diff_tissue.png)
+![JASPAR2014](/home/dan/gd/Harvard/Research/TM_outputs/CISPB/BERE/Magnitude_comparison_same_tissue.png)
+
+### Plots of normalized scores
+![JASPAR2014](/home/dan/gd/Harvard/Research/TM_outputs/JASPAR2014/BERE/negLogPValues_comparison_diff_tissue.png)
+![JASPAR2014](/home/dan/gd/Harvard/Research/TM_outputs/JASPAR2014/BERE/negLogPValues_comparison_same_tissue.png)

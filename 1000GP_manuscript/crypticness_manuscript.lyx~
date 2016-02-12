@@ -1,0 +1,2738 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+\usepackage{cite}
+\usepackage[T1]{fontenc}
+\usepackage{inputenc}
+\usepackage{authblk}
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+A genetic similarity measure for identifying fine-scale population stratificatio
+n and cryptic relatedness
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+author[1]{Daniel Schlauch} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+author[1]{Christoph Lange}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+affil[1]{Department of Biostatistics and Computational Biology, Dana-Farber
+ Cancer Institute and Department of Biostatistics, Harvard TH Chan School
+ of Public Health, Boston, MA 02115}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Abstract
+The improving quality and falling costs of next-generation sequencing has
+ allowed for vast increases in availability of these data.
+ With this increased abundance comes a new ability to investigate population
+ structure with previously unattainable precision.
+ In addition to the anthroplogical value, properly accounting for confounding
+ in GWAS, particularly for rare variants, is of meaningful importance.
+ [More about rare variants, recent migration, relatedness, etc...]
+\end_layout
+
+\begin_layout Section*
+Introduction
+\end_layout
+
+\begin_layout Standard
+The impact of confounding due to population structure and cryptic relatedness
+ is well established 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cite{ptak2002evidence, pritchard2000association, roeder2009searching}
+\end_layout
+
+\end_inset
+
+.
+ Many approaches are utilized to address this concept at the analysis level,
+ such as PCA
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cite{price2006principal,price2010new}
+\end_layout
+
+\end_inset
+
+, mixed models 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cite{listgarten2012improved,zhou2012genome,yang2014advantages,kang2010variance}
+\end_layout
+
+\end_inset
+
+, etc.
+ or at the data collection level by limiting the scope of the study to homogeneo
+us populations or matching by ancestry.
+ However, as our ability to further detect structure increases with developing
+ methods and technologies we find that even supposedly homogeneous populations
+ contain detectable population structure that may inflate type I error particula
+rly among rare variants 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cite{mathieson2012differential}
+\end_layout
+
+\end_inset
+
+.
+ Additionally, the presence on cryptic relatedness presents further potential
+ for confounding in GWAS, increasing both type I and type II errors 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cite{voight2005confounding, sun2012identifying,li2014relationship}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Much of the structure identifcation improvement can be attributed to our
+ ability to identify rare alleles.
+ Rare alleles may be exploited due to the fact that they are more likely
+ to have arisen recently and thus a superior approach towards separating
+ populations that have recently separated
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cite{mathieson2014demography}
+\end_layout
+
+\end_inset
+
+.
+ Furthermore, very low allele frequencies are more unstable than higher
+ allele frequency, either becoming fixed at zero or becoming more common
+ with high probability.
+ 
+\end_layout
+
+\begin_layout Standard
+In this study we present a genetic similarity measure that is designed to
+ separate individuals with recent common ancestry.
+ Our measure has clearly defined properties which can be used to test for
+ homogeneity in a population and in particular identify individuals who
+ are likely be related in a study population.
+\end_layout
+
+\begin_layout Section*
+Methods
+\end_layout
+
+\begin_layout Standard
+Exploiting the relative value of rare alleles is fundamental to our method,
+ which uses an intuitive, computationally straightforward approach towards
+ identfying similarity between two individuals.
+ Effectively, we give a larger weight to a genotype which is common to two
+ individuals if the allele frequency is low among the rest of the population.
+\end_layout
+
+\begin_layout Standard
+For a matrix of 
+\begin_inset Formula $n$
+\end_inset
+
+ individuals (
+\begin_inset Formula $2n$
+\end_inset
+
+ haploid genomes), with 
+\begin_inset Formula $N$
+\end_inset
+
+ variants described by the genotype matrix 
+\begin_inset Formula $\mathbf{G}_{2n\times N}$
+\end_inset
+
+, we define the weighted Jaccard similarity between two haploid genomes,
+ 
+\begin_inset Formula $s_{i,j}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+s_{i,j}=\frac{\sum_{k=1}^{N}w_{k}\mathbf{G}_{i,k}\mathbf{G}_{j,k}}{\sum_{k=1}^{N}I\left[\sum_{l=1}^{2n}\mathbf{G}_{l,k}>1\right]}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula 
+\[
+w_{k}=\begin{cases}
+\frac{{\sum_{l=1}^{2n}\mathbf{G}_{l,k} \choose 2}}{{2n \choose 2}} & \sum_{l=1}^{2n}\mathbf{G}_{l,k}>1\\
+0 & \sum_{l=1}^{2n}\mathbf{G}_{l,k}\le1
+\end{cases}
+\]
+
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+
+\begin_inset Formula 
+\begin{align*}
+E\left(s_{i,j}|\mbox{No structure}\right) & =1
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+It therefore follows from the central limit theroem that in the absence
+ of populations structure, cryptic relatedness and dependence between loci
+ (such as linkage disequilibrium) the distribution of the test statistic,
+ 
+\begin_inset Formula $s_{i,j}$
+\end_inset
+
+ is Gaussian.
+\begin_inset Formula 
+\[
+s_{i,j}\sim N\left(1,\sigma^{2}\right)
+\]
+
+\end_inset
+
+Where 
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+ is estimated by 
+\begin_inset Formula 
+\[
+\hat{\sigma^{2}}=\hat{Var}\left(s_{i,j}|\mbox{No structure}\right)=\frac{\sum_{k=1}^{N}\hat{p}_{k}^{2}\left(1-\hat{p}_{k}^{2}\right)w_{k,i,j}^{2}}{\left(\sum_{k=1}^{N}I\left[\sum_{l=1}^{2n}\mathbf{G}_{l,k}>1\right]\right)^{2}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This provides an easily interpreted statistical test for evaluating possible
+ relatedness between individuals in a purportedly homogeous dataset of unrelated
+ individuals.
+\end_layout
+
+\begin_layout Standard
+Furthermore, this measure is particularly sensitive for measuring relatedness.
+ Intuitively, we can imagine two subjects which have a kinship coefficient,
+ 
+\begin_inset Formula $\Phi$
+\end_inset
+
+, indicating a probability of a randomly chosen allele in each person being
+ identical by descent (IBD).
+ For an allele which belongs to the one person, the probability of it belonging
+ to the related person is 
+\begin_inset Formula $\Phi+\left(1-\Phi\right)\times p$
+\end_inset
+
+, where 
+\begin_inset Formula $p$
+\end_inset
+
+ is the allele frequency in the population.
+ We can clearly see that for rare alleles, such that 
+\begin_inset Formula $p$
+\end_inset
+
+ is small compared to 
+\begin_inset Formula $\Phi$
+\end_inset
+
+, there will be a much larger relative difference in the probability of
+ shared alleles among related individuals (
+\begin_inset Formula $\Phi>0$
+\end_inset
+
+) compared to unrelated individuals (
+\begin_inset Formula $\Phi=0$
+\end_inset
+
+).
+ Given that our method weights more highly these rarer alleles, there is
+ increased sensitivity to detection of relatedness.
+\end_layout
+
+\begin_layout Standard
+Consider a coefficient of relatedness, 
+\begin_inset Formula $\Phi>0$
+\end_inset
+
+,
+\begin_inset Formula 
+\begin{align*}
+E\left(s_{i,j}|\Phi,\mbox{No other structure}\right) & =\sum_{k=1}^{N}w_{k}\left(\Phi p_{k}+\left(1-\Phi\right)p_{k}^{2}\right)\\
+ & >1
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For example, in an otherwise homogeneous population of unrelated individuals
+ an uncle-nephew relationship (
+\begin_inset Formula $\Phi=.125$
+\end_inset
+
+), with 
+\begin_inset Formula $MAF\sim Uniform\left(.01,.1\right)$
+\end_inset
+
+ we can directly calculate the expectation of their similarity statistic,
+ 
+\begin_inset Formula $s_{i,j}$
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+E\left(s_{i,j}|\Phi=.125,\mbox{No other structure}\right)\approx2.9
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This approach is easily generalized to the diploid scenario.
+ A diploid similarity score, 
+\begin_inset Formula $s_{diploid}$
+\end_inset
+
+, is obtained by averaging each of the four pairwise haploid 
+\begin_inset Formula $s_{haploid}$
+\end_inset
+
+ scores between each person's two haploid genotypes.
+ For 
+\begin_inset Formula $N$
+\end_inset
+
+ individuals, 
+\begin_inset Formula $2N$
+\end_inset
+
+ genotypes per loci, the similarity between individuals 
+\begin_inset Formula $i$
+\end_inset
+
+ and 
+\begin_inset Formula $j$
+\end_inset
+
+ is defined as
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+s_{diploid,i,j}=\frac{\sum_{k=1}^{N}\left[w_{k}\mathbf{G}_{i_{1},k}\mathbf{G}_{j_{1},k}+w_{k}\mathbf{G}_{i_{1},k}\mathbf{G}_{j_{2},k}+w_{k}\mathbf{G}_{i_{2},k}\mathbf{G}_{j_{1},k}+w_{k}\mathbf{G}_{i_{2},k}\mathbf{G}_{j_{2},k}\right]/4}{\sum_{k=1}^{2N}I\left[\sum_{l=1}^{2n}\mathbf{G}_{l,k}>1\right]}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\mathbf{G}_{i_{2},k}$
+\end_inset
+
+ refers to the 
+\begin_inset Formula $2^{nd}$
+\end_inset
+
+ genotype of individual 
+\begin_inset Formula $i$
+\end_inset
+
+ at locus 
+\begin_inset Formula $k$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+This formulation will have the same mean
+\begin_inset Formula 
+\[
+E\left[s_{diploid,i,j}\right]=1
+\]
+
+\end_inset
+
+and assuming independence of each individual's haploid genomes, such as
+ in the absence of inbreeding,
+\begin_inset Formula 
+\[
+\hat{Var}\left(s_{diploid,i,j}|\mbox{No structure}\right)=\frac{\hat{Var}\left(s_{haploid,i,j}|\mbox{No structure}\right)}{4}
+\]
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Section*
+Identification of relatedness in 1000GP data
+\end_layout
+
+\begin_layout Standard
+We applied our method to data from the 1000 Genomes Project 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cite{10002015global, 10002012integrated}
+\end_layout
+
+\end_inset
+
+, a consortium...[].
+\end_layout
+
+\begin_layout Standard
+These populations were not identified to have cryptic relatedness or had
+ cryptic relatedness removed 
+\series bold
+[citation difficult (pptx file posted online KGP website) ftp://ftp.1000genomes.eb
+i.ac.uk/vol1/ftp/phase1/analysis_results/supporting/cryptic_relation_analysis/Neme
+sh_crypticrelatedness_20120213.pptx]
+\series default
+.
+\end_layout
+
+\begin_layout Standard
+Phase 3 of the 1000 Genomes Project contains approximately 2504 individuals
+ with a combined total of 88 million variants.
+ To test our method, we sampled 80,000 variants uniformly spaced in the
+ dataset in order to limit the impact of linkage disequilibrium.
+ Our method was then run on each of the 26 populations in the study as well
+ as on 5 super populations and the study as a whole.
+\end_layout
+
+\begin_layout Standard
+We discovered that there was great variation in the presence of cryptic
+ relatedness and population structure across the 26 populations of the study.
+ Under the assumptions that each study contained a homogeneous population
+ of unrelated individuals, only a handful of groups contained neither large
+ outliers nor heavily inflated numbers of significant results.
+\end_layout
+
+\begin_layout Standard
+We defined the presence of population structure as applying to those populations
+ which had a median 
+\begin_inset Formula $s_{i,j}<.97$
+\end_inset
+
+.
+ Using this criterion, three of the 26 populations met this threshold- MXL
+ (Mexican Ancestry from Los Angeles USA), PUR (Puerto Ricans from Puerto
+ Rico), and PEL (Peruvians from Lima, Peru).
+ Each of these populations are 
+\begin_inset Quotes eld
+\end_inset
+
+new world
+\begin_inset Quotes erd
+\end_inset
+
+ populations which have undergone extensive admixture in the past centuries.
+ It is therefore unsurprising that these groups of individuals would exhibit
+ the greatest amount of heterogeneity among the populations surveyed.
+\end_layout
+
+\begin_layout Standard
+We defined the presence of cryptic relatedness as those individual pairs
+ which exceed the cutoff for a family-wise error rate of 
+\begin_inset Formula $\alpha=.01$
+\end_inset
+
+.
+ Cryptic relatedness was discovered in 12 
+\series bold
+[update this with latest results]
+\series default
+ of the 26 populations using this method.
+ 
+\end_layout
+
+\begin_layout Standard
+The overlap in these two groups may be due to the fact that the variance
+ in similarity is inflated in the presence of population structure.
+ So it is not accurate to identify cryptic relatedness in this manner in
+ popultations which contain structure.
+ However, in populations which do not exhibit detectable structure, we still
+ find many instances of related individuals in this study.
+ For example, two individuals from the ACB population (African Caribbeans
+ in Barbados) had a 
+\begin_inset Formula $s_{i,j}$
+\end_inset
+
+ score of 
+\begin_inset Formula $2.6$
+\end_inset
+
+ 
+\begin_inset Formula $\left(p<10^{-30}\right)$
+\end_inset
+
+, whereas no other pairing exceeded the family-wise cutoff of 1.3 
+\begin_inset Formula $\left(p=.0002\right)$
+\end_inset
+
+.
+ Using the formula above, we estimate this relationship to be 
+\begin_inset Formula $\Phi=X$
+\end_inset
+
+ [Redo this analysis], indicating...
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Distribution of similarity statistic within population subgroups from 1000
+ Genomes Project 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/dan/1000GP/plots/s_distributions/ACBdiploid.tiff
+	lyxscale 20
+	width 10page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename /home/dan/1000GP/plots/s_distributions/ASWdiploid.tiff
+	lyxscale 20
+	width 10page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename /home/dan/1000GP/plots/s_distributions/BEBdiploid.tiff
+	lyxscale 20
+	width 10page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename /home/dan/1000GP/plots/s_distributions/CDXdiploid.tiff
+	lyxscale 20
+	width 10page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/dan/1000GP/plots/s_distributions/CEUdiploid.tiff
+	lyxscale 20
+	width 10page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename /home/dan/1000GP/plots/s_distributions/CHBdiploid.tiff
+	lyxscale 20
+	width 10page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename /home/dan/1000GP/plots/s_distributions/CHSdiploid.tiff
+	lyxscale 20
+	width 10page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename /home/dan/1000GP/plots/s_distributions/CLMdiploid.tiff
+	lyxscale 20
+	width 10page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/dan/1000GP/plots/s_distributions/ESNdiploid.tiff
+	lyxscale 20
+	width 10page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename /home/dan/1000GP/plots/s_distributions/FINdiploid.tiff
+	lyxscale 20
+	width 10page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename /home/dan/1000GP/plots/s_distributions/GBRdiploid.tiff
+	lyxscale 20
+	width 10page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename /home/dan/1000GP/plots/s_distributions/GIHdiploid.tiff
+	lyxscale 20
+	width 10page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/dan/1000GP/plots/s_distributions/GWDdiploid.tiff
+	lyxscale 20
+	width 10page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename /home/dan/1000GP/plots/s_distributions/IBSdiploid.tiff
+	lyxscale 20
+	width 10page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename /home/dan/1000GP/plots/s_distributions/ITUdiploid.tiff
+	lyxscale 20
+	width 10page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename /home/dan/1000GP/plots/s_distributions/JPTdiploid.tiff
+	lyxscale 20
+	width 10page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/dan/1000GP/plots/s_distributions/KHVdiploid.tiff
+	lyxscale 20
+	width 10page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename /home/dan/1000GP/plots/s_distributions/LWKdiploid.tiff
+	lyxscale 20
+	width 10page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename /home/dan/1000GP/plots/s_distributions/MSLdiploid.tiff
+	lyxscale 20
+	width 10page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename /home/dan/1000GP/plots/s_distributions/MXLdiploid.tiff
+	lyxscale 20
+	width 10page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/dan/1000GP/plots/s_distributions/PELdiploid.tiff
+	lyxscale 20
+	width 10page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename /home/dan/1000GP/plots/s_distributions/PJLdiploid.tiff
+	lyxscale 20
+	width 10page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename /home/dan/1000GP/plots/s_distributions/PURdiploid.tiff
+	lyxscale 20
+	width 10page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename /home/dan/1000GP/plots/s_distributions/STUdiploid.tiff
+	lyxscale 20
+	width 10page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/dan/1000GP/plots/s_distributions/TSIdiploid.tiff
+	lyxscale 20
+	width 10page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename /home/dan/1000GP/plots/s_distributions/YRIdiploid.tiff
+	lyxscale 20
+	width 10page%
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Distribution of similarity coefficients for each of the 26 populations in
+ the 1000 Genomes Project.
+ Homogeneous populations lacking cryptic relatedness should be expected
+ to exhibit distributions centered around 1 with no outliers.
+ The red dotted vertical line on each plot indicates the family-wise
+\begin_inset Formula $\alpha=.05$
+\end_inset
+
+ level cutoff for 
+\begin_inset Formula ${n \choose 2}$
+\end_inset
+
+ comparisons.
+ Many of the population groups do demonstrate the null behavior (e.g.
+ JPT, KHV, FIN)- however, a number of populations show the presence of extreme
+ outliers (e.g.
+ STU, PUR) or systematic right skew (e.g.
+ MXL, PEL)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="27" columns="3">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Population
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Structure
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Cryptic Relatedness
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ACB
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+No
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Yes
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ASW
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+No
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Yes
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+BEB
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+CDX
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+No
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Maybe
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+CEU
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+No
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+No
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+CHB
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+No
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+No
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+CHS
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+No
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Yes
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+CLM
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+No
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+No
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ESN
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+No
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Yes
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+FIN
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+No
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+No
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+GBR
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+No
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+No
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+GIH
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+No
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Yes
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+GWD
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+No
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+No
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+IBS
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+No
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+No
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ITU
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+No
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Yes
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+JPT
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+No
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+No
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+KHV
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+No
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+No
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+LWK
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+No
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Yes
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+MSL
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+No
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Yes
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+MXL
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Yes
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Yes
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+PEL
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Yes
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+No
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+PJL
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+No
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Yes
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+PUR
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Yes
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Yes
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+STU
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+No
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Yes
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+TSI
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+No
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+No
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+YRI
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Presence of population structure and cryptic relatedness detected in each
+ of the 26 populations in the 1000 Genomes Project.
+ Population structure, defined as a 
+\begin_inset Formula $median\left(s\right)<.97$
+\end_inset
+
+ was found in three groups- MXL, PEL and PUR.
+ Each of these populations are 
+\begin_inset Quotes eld
+\end_inset
+
+new world
+\begin_inset Quotes erd
+\end_inset
+
+ populations which have undergone extensive admixture in the past centuries.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Population detection in 1000 Genomes Project
+\end_layout
+
+\begin_layout Standard
+There are many methods for detecting population structure.
+ Most commonly, Principal Components Analysis 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cite{price2006principal,price2010new}
+\end_layout
+
+\end_inset
+
+is applied for identifying the components of largest variation which ideally
+ corresponds to the population structure.
+ This procedure first involves the calculation of a genetic similarity matrix
+ (GSM) via the correlation between all samples, which is commonly followed
+ by an eigendecomposition of that matrix.
+ There are a number of limitations to this straightforward approach, one
+ of which is that the calculation of a variance-covariance matrix equally
+ weights the impact of all loci 
+\series bold
+[unless standardized by rows?]
+\series default
+, failing to fully utilize the fact that the overall allele frequency is
+ informative of the value of each variant.
+\end_layout
+
+\begin_layout Standard
+We used the 1000 Genomes Project data to compare the GSMs obtained via the
+ conventional variance-covariance matrix step and the use of our method.
+ We evaluated the ability of each method to separate the same quantity of
+ data into the 5 superpopulations and 26 populations.
+ Using approximately 80,000
+\series bold
+ [Adjust for filtered]
+\series default
+ variants, we generated the two GSMs and plotted the similarity matrices,
+ ordered by hierarchical clustering with average linkage (Figure 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ref{fig:heatmaps}
+\end_layout
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+Both methods performed well at separating the five superpopulations, but
+ the our method outperformed variance covariance in separating populations
+ of the same superpopulation.
+ As expected, the lack of focus on less frequent alleles, which are more
+ important for distinguishing recent ancestry allowed variance-covariance
+ to adequately separate continental origins, but failed to sufficiently
+ partition the samples according to subgroups.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+
+\series bold
+A
+\series default
+
+\begin_inset Graphics
+	filename /home/dan/gd/Harvard/Research/R_workspace/Slides/pasted14.png
+	width 50col%
+
+\end_inset
+
+
+\series bold
+B
+\series default
+
+\begin_inset Graphics
+	filename /home/dan/gd/Harvard/Research/R_workspace/Slides/pasted15.png
+	width 50col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+C
+\series default
+
+\begin_inset Graphics
+	filename /home/dan/gd/Harvard/Research/R_workspace/Slides/pasted5.png
+	width 100col%
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Heatmap of GSM generated by our method (A) and variance-covariance (B) using
+ 80,000 uniformly spaced variants.
+ Samples have been ordered by hierarchical clustering (dendrogram no shown).
+ The vertical colorbar indicates membership in one of the five superpopulations,
+ while the horizontal colorbar indicates membership in one of the 26 populations.
+ (C) Projecting each individual onto the top two eigenvectors resulted in
+ a similar 2-dimensional distribution of global ancestry
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+label{fig:heatmaps}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The first two eigenvectors of the GSMs generated using our method vs variance-co
+variance yield very similar results.
+ Both methods provide a sufficient separation of coarse-scale population
+ structure.
+ But closer examination of fine-scale population structure reveals our method
+ to be an improvement over variance-covariance.
+ We were able to provide a stronger separation of all 26 populations, particular
+ly those of recent ancestry.
+ As an example, we explored two populations- Sri Lankan Tamil and Indian
+ Telugu, which have relatively small geographical separation.
+\end_layout
+
+\begin_layout Standard
+Interestingly, we found a strong case for cryptic relatedness between three
+ pairs of individuals, one pair of which (HG03998 and HG03873) spanned the
+ two populations.
+ Considering that both groups were sampled in the UK, this suggests a distant
+ genetic relationship is possible from members of different population groups.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+A
+\series default
+
+\begin_inset Graphics
+	filename /home/dan/gd/Harvard/Research/R_workspace/Slides/pasted23.png
+	width 60col%
+	height 30pheight%
+	keepAspectRatio
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+B
+\series default
+
+\begin_inset Graphics
+	filename /home/dan/gd/Harvard/Research/R_workspace/Slides/pasted30.png
+	width 40col%
+	height 20pheight%
+	keepAspectRatio
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+C
+\series default
+
+\begin_inset Graphics
+	filename /home/dan/1000GP/plots/hcl_ ITU vs STU/P0-0.4.png
+	width 40col%
+	height 20pheight%
+	keepAspectRatio
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+C
+\series default
+
+\begin_inset Graphics
+	filename /home/dan/1000GP/plots/s_distributions/ITU_STUdiploid.tiff
+	width 60col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+[Rerun this figure on whole dataset]
+\series default
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+
+\series bold
+Example: ITU vs STU
+\series default
+.
+ Two populations of Southern Asian origin, Indian Telugu from the UK (ITU)
+ and Sri Lankan Tamil from the UK (STU) show poor separation using the variance-
+covariance approach.
+ When using our method, we see improved separation of populations when individua
+ls are projected onto the top two eigenvectors (
+\series bold
+A
+\series default
+) despite the fact that our method appears to have expended a greater proportion
+ of the variance explanation on identification of related individuals.
+ Hierarchical clustering using the GSM as a similarity matrix (
+\series bold
+B
+\series default
+) was unable to clearly visually distinguish between ITU and STU, but use
+ of our method provided much clearer results (
+\series bold
+C
+\series default
+).
+ 
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+label{fig:heatmaps}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Rarer alleles are more informative for recent ancestry
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+A
+\series default
+
+\begin_inset Graphics
+	filename /home/dan/gd/Harvard/Research/R_workspace/Slides/pasted13.png
+	width 50col%
+
+\end_inset
+
+
+\series bold
+B
+\series default
+
+\begin_inset Graphics
+	filename /home/dan/gd/Harvard/Research/R_workspace/Slides/pasted7.png
+	width 50col%
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+(
+\series bold
+A
+\series default
+) Ratio for mean within-population jaccard ratio vs mean out-of-population
+ jaccard ratio for Yoruba in Ibadan, Nigeria (YRI) compared to all other
+ populations.
+ We find that in comparising YRI to all other populations, the within-population
+ vs out-of-population ratio increases as the allele frequency decreases.
+ This trend held true for all 26 populations.
+ For the smallest allele frequency bin, 0%-0.4%, the trend is not as clear
+ suggesting that this is the point at which quality control is of concern
+ when considering rare variants.
+ (
+\series bold
+B
+\series default
+) Ratio for mean within-population jaccard ratio vs mean out-of-population
+ jaccard ratio for two populations with a relatively recent common ancestry-
+ Iberian Population in Spain (IBS) and Toscani in Italia (TSI).
+ Although the ratio is unsurprisingly on a smaller scale, we find that the
+ most informative variants are those with the smallest allele frequency.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+More figure and text, not sure where this goes
+\end_layout
+
+\begin_layout BeginFrame
+Separation of recent shared ancestries
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tiny Example:
+\end_layout
+
+\begin_layout Plain Layout
+
+Indian Telugu from the UK (ITU) 
+\end_layout
+
+\begin_layout Plain Layout
+
+Sri Lankan Tamil from the UK (STU)}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/dan/1000GP/plots/hcl_ ITU vs STU/F9-10.png
+	width 80page%
+	height 20pheight%
+	keepAspectRatio
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename /home/dan/1000GP/plots/hcl_ IBS vs TSI/P0-0.4.png
+	width 80page%
+	height 20pheight%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename /home/dan/1000GP/plots/hcl_ IBS vs TSI/F9-10.png
+	width 80page%
+	height 20pheight%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/dan/gd/Harvard/Research/R_workspace/Slides/pasted32.png
+	width 80page%
+	height 20pheight%
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+Separation of recent shared ancestries
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tiny Example:
+\end_layout
+
+\begin_layout Plain Layout
+
+Iberian Population in Spain (IBS)
+\end_layout
+
+\begin_layout Plain Layout
+
+Toscani in Italia (TSI)}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+Separation of recent shared ancestries
+\end_layout
+
+\begin_layout Standard
+Ratio of within-group mean distance to out-of group mean distance:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="9" columns="3">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Populations
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Our method
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+PCA
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+TSI-IBS
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+.417
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+.504
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+BEB-PJL
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+.748
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+.794
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ITU-STU
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+.836
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+.889
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ITU-BEB
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+.905
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+.951
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+CHB-CHS
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+.605
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+.681
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+LWK-ESN
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+.178
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+.197
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+GIH-ITU
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+.513
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+.552
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+CEU-YRI
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+.025
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+.022
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Our method outperformed standard PCA in differentiating groups for 
+\emph on
+\bar under
+every
+\emph default
+\bar default
+ same-continent subpopulation pairing across all continents.
+ (
+\begin_inset Formula $\approx50$
+\end_inset
+
+ comparisons)
+\end_layout
+
+\begin_layout Section*
+dddd
+\end_layout
+
+\begin_layout Standard
+The Mathieson paper (Nature Genetics, 2012) proposed a problem wherein the
+ case of sharply spatially defined phenotypic risk lead to the inflation
+ of association test statistics for rare variants.
+ Moreover, this effect was not resolved using existing methods for controlling
+ for confounding by population stratification.
+ The Listgarten response (Listgarten et al, Nature Genetics 2012) claimed
+ to solve this with their novel method LMM-select.
+ This method effectively uses a linear mixed model approach but rather than
+ use all variants to generate their genetic similarity matrix, selects only
+ those which are correlated with phenotype.
+ A more recent paper on which Listgarten was an author (Widmer, Further
+ Improvements…, Nature 2014), appears to reverse this claim.
+ In this paper, Widmer admits one potential improvement, building a GSM
+ based on selected SNPs that well predict the phenotype failed rather dramatical
+ly.
+ In particular, when population structure, family relatedness, or both were
+ present, this approach failed to control for type I error.
+ Seemingly indicating that their group’s previous claim was premature.
+ However, they claim now that inclusion of principal components as fixed
+ effects does properly control for type I error.
+ [However, I don’t see it demonstrated in the paper and I remain somewhat
+ unclear skeptical about what definition they are using].
+ (For example, we are focusing on extreme events, where inflation is only
+ measurable at 
+\begin_inset Formula $\approx10^{-6}$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Standard
+A possible explanations for the test statistic inflation was suspected to
+ be primarily due to lack of a precise measure of genetic similarity.
+ This was attributed in part due to the fact that linear methods such as
+ PCA would have difficulty expressing sharply defined risk regions.
+\end_layout
+
+\begin_layout Standard
+However, we found that test statistic inflation persisted even when controlling
+ for the exact regions for which we simulated differential phenotypic risk.
+ This demonstrated that although proper estimation of the genetic similarity
+ matrix is necessary, it is not sufficient to control type I error.
+ As we show here, association tests in the presence of properly controlled
+ population stratification exhibit overdispersion due to the existence of
+ high leverage individuals after adjusting for confounding.
+ 
+\end_layout
+
+\begin_layout Standard
+A consistent estimator of rare-allele association in stratified GWAS We
+ developed a statistic which is asymptotically unbiased by calculating the
+ variance of the observed squared correlation statistic in the presence
+ of differential variance for both spatially-adjusted genotypes and spatially-ad
+justed phenotypes.
+ Intuitively, with uniform variance across samples (such as with no population
+ stratification) we expect the variance of the correlation to be asymptotically
+ 
+\begin_inset Formula $\sqrt{\frac{1}{n}}$
+\end_inset
+
+.
+ In this case, we have the Armitage Trend Test statistic- 
+\begin_inset Formula $n\times r^{2}\sim\chi_{1}^{2}$
+\end_inset
+
+.
+ However, in the presence of adjusted population stratification the variance
+ of the observed correlation is not 
+\begin_inset Formula $\sqrt{\frac{1}{n}}$
+\end_inset
+
+.
+ Depending on whether the correlation of the variances of adjusted genotypes
+ and adjusted phenotypes are positive or negative we see that the variance
+ of the observed correlation is greater than or less than sqrt(1/n), respectivel
+y.
+ Insert derivation here
+\end_layout
+
+\begin_layout Standard
+In combination with our estimated test statistic, we propose a method for
+ estimating the GSM by using the Jaccard Similarity Index (JSI) for alleles
+ which are present in less than 2% of the population.
+ Our method is motivated by the plausible expectation that rare alleles
+ are more likely to have emerged most recently in human ancestral history
+ and thus may be superior differentiators for groups which have a more recent
+ ancestral divergence.
+ An eigendecomposition of the JSI-GSM can then be used to to identify linear
+ predictors of ancestry in a manner similar to Principal Components Analysis.
+\end_layout
+
+\begin_layout Standard
+Jaccard Index vs Variance-Covariance approach.
+ Use of Jaccard similarity for rare alleles only in estimating GSM outperformed
+ the standard variance covariance approach.
+\end_layout
+
+\begin_layout Standard
+Computation of the JSI for all pairs is computationally faster than the
+ more commonly used variance-covariance method typically employed for PCA
+ (maybe the same speed?)
+\end_layout
+
+\begin_layout Standard
+Use of JSI provides clearer separation of closely related subpopulations
+ The ability to separate distinct subpopulations with a recent shared ancestry,
+ such as Spanish (IBS) and Italians (TSI), is a desirable goal in GWAS.
+ Even with 
+\begin_inset Formula $F_{ST}$
+\end_inset
+
+ values smaller than 
+\begin_inset Formula $.001$
+\end_inset
+
+, there is a clear bias when performing GWAS on non-genetic outcomes correlated
+ with phenotype.
+ The ability to separate closely related populations was found to be a function
+ of the allele frequency interval.
+\end_layout
+
+\begin_layout Standard
+Separation of Sri Lankan and Indian populations using the Jaccard Similarity
+ and based on a global allele frequency of <0.4% (top) compared to a global
+ allele frequency of ~15% (bottom)
+\end_layout
+
+\begin_layout Standard
+The plot above shows the relative ability to separate two closely related
+ populations based on the allele frequency used.
+ We see a monotonically decreasing separation score as more common alleles
+ are used indicating that the ancestry informativeness peaks when utilizing
+ the rarest loci.
+ We find that the estimated ratio of mean within-group JSI to between group
+ JSI is maximized by excluding all but those alleles with <.04% MAF and that
+ inclusion of higher frequency alleles reduces our ability to differentiate
+ low Fst populations.
+ Additionally, we find that although rare alleles may outperform more common
+ alleles for closely related populations the use of a higher cutoff for
+ more distant populations may be appropriate.
+ This could be attributed to a relatively greater sensitivity to quality
+ control issues for groups which already have a clear genetic separation
+ at higher allele frequencies.
+ The plot below demonstrates the increased efficacy of less common alleles
+ in separating Yoruban persons (YRI) from those populations from other continent
+al origins.
+ The Jaccard ratio drops at the lowest allele frequency interval, possibly
+ due to the presence of randomly miscalled genotypes.
+\end_layout
+
+\begin_layout Section*
+Simulations
+\end_layout
+
+\begin_layout Standard
+We used real genotype data and simulated non-genetic phenotypes based on
+ reported population membership in the 1000 Genomes Project.
+ ...describe details of simulations...
+\end_layout
+
+\begin_layout Standard
+estimator is consistent estimator is biased estimator is superior to rare-PCA
+ -how to quantify?
+\end_layout
+
+\begin_layout Standard
+Argue: is estimator superior to usual PCA? estimator is equivalent to subpopulat
+ion label?
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "publications"
+options "plain"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

@@ -92,7 +92,7 @@ author[1]{Christoph Lange}
 \backslash
 affil[1]{Department of Biostatistics and Computational Biology, Dana-Farber
  Cancer Institute and Department of Biostatistics, Harvard TH Chan School
- of Public Health, Boston, MA 02215}
+ of Public Health, Boston, MA 02115}
 \end_layout
 
 \end_inset
@@ -107,7 +107,7 @@ The improving quality and falling costs of next-generation sequencing has
  structure with previously unattainable precision.
  In addition to the anthroplogical value, properly accounting for confounding
  in GWAS, particularly for rare variants, is of meaningful importance.
- [More about rare variants, recent migration, etc...]
+ [More about rare variants, recent migration, relatedness, etc...]
 \end_layout
 
 \begin_layout Section*
@@ -115,7 +115,8 @@ Introduction
 \end_layout
 
 \begin_layout Standard
-The impact of confounding due to population structure is well established.
+The impact of confounding due to population structure and cryptic relatedness
+ is well established.
  Many approaches are utilized to address this concept at the analysis level,
  such as PCA, mixed models, etc.
  or at the data collection level by limiting the scope of the study to homogeneo
