@@ -320,9 +320,9 @@ Modeling cell state transitions as a problem in gene regulatory network
 \end_layout
 
 \begin_layout Standard
-Cell state transitions—such as those that occur during development, or as
- healthy tissue transforms into a disease phenotype—are fundamental properties
- of biological systems.
+Cell state transitions - such as those that occur during development, or
+ as healthy tissue transforms into a disease phenotype—are fundamental propertie
+s of biological systems.
  Understanding what drives these transitions, and modeling the processes,
  is one of the great open challenges in modern biology.
  One way to conceptualize the state transition problem is to imagine that
@@ -403,7 +403,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename figures/figure1_a.pdf
-	width 50col%
+	width 80col%
 
 \end_inset
 
@@ -425,7 +425,7 @@ Overview of the Transition Matrix problem.
  First, gene expression samples are collected for each group, followed by
  gene regulatory network inference performed on cases and controls in parallel.
  Finally, the transition matrix is calculated, estimating the changes in
- TF targetting which best characterize the state change from the control
+ TF targeting which best characterize the state change from the control
  group to the cases group.
 \end_layout
 
@@ -496,7 +496,7 @@ s for all genes and identifies genes which are coexpressed with the set
 \end_inset
 
  gene regulatory matrices for cases and controls each representing estimates
- of the targetting patterns of the 
+ of the targeting patterns of the 
 \begin_inset Formula $m$
 \end_inset
 
@@ -719,7 +719,7 @@ A
 
 \series bold
 \begin_inset Graphics
-	filename figures/pasted6a.png
+	filename figures/SSODMplot_scaled.pdf
 	lyxscale 40
 	width 100col%
 
@@ -736,7 +736,7 @@ B
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename figures/Transition plot55557.png
+	filename figures/Transition_plot.pdf
 	lyxscale 20
 	width 50col%
 
@@ -766,10 +766,10 @@ Differential transcription factor involvement in ECLIPSE study.
 \series default
 .
  Network transitions are depicted here with arrows indicating the flow of
- targetting patterns from one transcription factor to another.
+ targeting patterns from one transcription factor to another.
  Edges are sized according to the magnitude of the transition and nodes
  (TFs) are sized by the overall dTFI for each TF.
- The gain of targetting features is indicated by the color blue while the
+ The gain of targeting features is indicated by the color blue while the
  loss of features is indicated by red.
 \end_layout
 
@@ -893,7 +893,11 @@ C
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Comparison of dTFI for 166 TFs across four independent studies in two tissues.
+
+\series bold
+Comparison of dTFI for 166 TFs across four independent studies in two tissues
+\series default
+.
  ECLIPSE and COPGene data were obtained via PBMC and LGRC and LTCOPD were
  obtained via lung tissue.
  Results for two studies with gene expression data obtained from the same
@@ -929,8 +933,7 @@ C
 \series default
 ) Differentially involved transcription factors were found in agreement
  across datasets.
- Five TFs were discovered in the top 20 (out of 166) in each of the four
- studies.
+ Five TFs were discovered in the top 20 in each of the four studies.
  An additional 21 TFs were found in the top 20 TFs of at least two studies.
 \end_layout
 
@@ -958,7 +961,7 @@ label{fig:compare}
 \end_layout
 
 \begin_layout Standard
-Notably in the LGRC dataset, we discovered a differential targetting pattern
+Notably in the LGRC dataset, we discovered a differential targeting pattern
  involving the TFs RFX1 and RFX2.
  Both of these transcription factors were highly statistically significant
  (FDR<.0001) and ranked as the top two results in the LGRC study.
@@ -985,7 +988,7 @@ status open
 
 \series bold
 \begin_inset Graphics
-	filename figures/dTFI vs LIMMA.pdf
+	filename figures/dTFIvsLIMMA.pdf
 	lyxscale 40
 	width 50col%
 
@@ -999,16 +1002,16 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-Comparison of TF differential involvement vs differential expression.
+Comparison of significant results for TF differential involvement vs differentia
+l expression in ECLIPSE.
 
 \series default
  TFs which are differentially involved are not necessarily differentially
  expressed, and vice versa.
- Many TFs can be observed which have significantly different targetting
- patterns, but which are not statistically significantly differentially
- expressed.
+ Many TFs can be observed which have significantly different targeting patterns,
+ but which are not statistically significantly differentially expressed.
  This suggests that our method finds transcription factors which are differentia
-lly affected at a post-transcription stage.
+lly affected at a post-transcriptional stage.
  
 \end_layout
 

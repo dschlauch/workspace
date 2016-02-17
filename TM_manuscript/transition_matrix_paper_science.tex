@@ -2,7 +2,7 @@
 %% Do not edit unless you really know what you are doing.
 \documentclass[english]{article}
 \usepackage[T1]{fontenc}
-\usepackage[latin9]{inputenc}
+\usepackage[utf8]{luainputenc}
 \usepackage{float}
 \usepackage{graphicx}
 
@@ -20,7 +20,7 @@
 % This package should properly format in-text
 % reference calls and reference-list numbers.
 
-\usepackage{cite}
+\usepackage{scicite}
 
 % Use times if you have the font installed; otherwise, comment out the
 % following line.
@@ -116,8 +116,8 @@ phenotype is discrete, but each falls into a continuum of states,
 which, on average, captures features of that phenotype \textbf{{[}many
 citations, too general?{]}}. Indeed, within each tissue there are
 many, many cells, each of which is its own particular instance of
-that tissue\textemdash{}with unique patterns of gene expression and
-individual regulatory processes\cite{mohanty2014model,hu2013heterogeneity}.
+that tissue—with unique patterns of gene expression and individual
+regulatory processes\cite{mohanty2014model,hu2013heterogeneity}.
 The same is true when considering individuals as each healthy and
 disease state is unique to each member of a study population. One
 way to conceptualize the state transition problem is to imagine that
@@ -136,39 +136,38 @@ to infer gene regulatory networks to model fundamental biological
 processes. While there have been many network inference (NI) methods
 published utilizing gene expression or a combination of gene expression\cite{margolin2006aracne, marbach2012wisdom, wille2004sparse, faith2007large, zhang2005general}
 and complementary 'Omics data \cite{ernst2008semi,glass2013passing, hecker2009gene},
-each of which uses a different approach to estimating the \textquotedblleft{}strength\textquotedblright{}
+each of which uses a different approach to estimating the “strength”
 of interactions between genes (or between transcription factors and
 their targets), they all suffer from the same fundamental limitation.
 Methods typically rely on estimating weights that represent a measure
 of evidence of an interaction between two genes and then setting a
-threshold to identify \textquotedblleft{}real\textquotedblright{}
-(high confidence) edges. While setting edge confidence thresholds
-allows us to graphically represent networks and allows us to compare
-networks based on the presence or absence of edges, it ultimately
-requires that we discard information regarding those \textquotedblleft{}weak\textquotedblright{}
-edges that fail to reach an arbitrary cutoff. Now, one could argue
-that discarding low significance edges is sensible as one common goal
-in network inference is to deduce a single, high confidence network
-model that represents a particular phenotype under study or, in some
-cases, a transition between phenotypes. An alternative view is that
-these edges contain estimates for gene coexpression that may be muted
-due to the heterogeneity of the biological sample and that networks
-are best described by edgeweights on a continuous scale. Furthermore,
-we argue that the inclusion of all network edgeweights in downstream
-analyses allows for the collection of systematic, though subtle, differences
-in coexpression which may otherwise have been washed out by extraneous
-noise.
+threshold to identify “real” (high confidence) edges. While setting
+edge confidence thresholds allows us to graphically represent networks
+and allows us to compare networks based on the presence or absence
+of edges, it ultimately requires that we discard information regarding
+those “weak” edges that fail to reach an arbitrary cutoff. Now, one
+could argue that discarding low significance edges is sensible as
+one common goal in network inference is to deduce a single, high confidence
+network model that represents a particular phenotype under study or,
+in some cases, a transition between phenotypes. An alternative view
+is that these edges contain estimates for gene coexpression that may
+be muted due to the heterogeneity of the biological sample and that
+networks are best described by edgeweights on a continuous scale.
+Furthermore, we argue that the inclusion of all network edgeweights
+in downstream analyses allows for the collection of systematic, though
+subtle, differences in coexpression which may otherwise have been
+washed out by extraneous noise.
 
 
 \section*{Modeling cell state transitions as a problem in gene regulatory network
 transition}
 
-Cell state transitions\textemdash{}such as those that occur during
-development, or as healthy tissue transforms into a disease phenotype\textemdash{}are
-fundamental properties of biological systems. Understanding what drives
-these transitions, and modeling the processes, is one of the great
-open challenges in modern biology. One way to conceptualize the state
-transition problem is to imagine that each phenotype has its own characteristic
+Cell state transitions - such as those that occur during development,
+or as healthy tissue transforms into a disease phenotype—are fundamental
+properties of biological systems. Understanding what drives these
+transitions, and modeling the processes, is one of the great open
+challenges in modern biology. One way to conceptualize the state transition
+problem is to imagine that each phenotype has its own characteristic
 gene regulatory network, and that there are a set of processes that
 are either activated or inactivated to transform the network in the
 initial state into that which characterizes the final state. Identifying
@@ -178,43 +177,44 @@ intervene to either promote or inhibit such a transition. The starting
 point for modeling cell state transitions is to model the initial
 and final cell states. One might imagine that the initial and final
 cell states consist of characteristic processes, some of which are
-shared (sometimes referred to as \textquotedblleft{}housekeeping\textquotedblright{}
-functions) and others which are unique to the particular state. The
-way we understand these processes is that they are controlled by gene
-regulatory networks in which transcription factors (and other regulators)
-moderate the transcription of individual genes whose expression characterizes
-the state. One way to represent such processes is to draw a directed
-network graph, in which transcription factors and genes are nodes
-network in the network, and edges represent the regulatory interactions
-between transcription factors and their target genes that are active
-in, and characteristic of, a particular cellular state. One way of
-representing such a network, with interactions between m transcription
-factors and n target genes, is as a binary $m\times n$ \textquotedblleft{}adjacency
-matrix,\textquotedblright{} with 1\textquoteright{}s representing
-active transcription factor-target interactions, and 0\textquoteright{}s
-representing the lack of a transcription factor-target gene regulatory
-interaction. One can then think of a cell fate transition as the process
-that transforms the network in its initial state to its final state
-form, adding and deleting edges to remake the network that characterizes
-one phenotype into that which characterizes the other. Using the adjacency
-matrix formalism, one can think of this as a problem in linear algebra
-in which we attempt to find an $m\times m$ \textquotedblleft{}transition
-matrix\textquotedblright{} $\mathbf{T}$, subject to a set of constraints
-that approximates the conversion from the initial network\textquoteright{}s
-adjacency matrix \textbf{$\mathbf{A}$} into the final network\textquoteright{}s
-adjacency matrix $\mathbf{B}$, or 
+shared (sometimes referred to as “housekeeping” functions) and others
+which are unique to the particular state. The way we understand these
+processes is that they are controlled by gene regulatory networks
+in which transcription factors (and other regulators) moderate the
+transcription of individual genes whose expression characterizes the
+state. One way to represent such processes is to draw a directed network
+graph, in which transcription factors and genes are nodes network
+in the network, and edges represent the regulatory interactions between
+transcription factors and their target genes that are active in, and
+characteristic of, a particular cellular state. One way of representing
+such a network, with interactions between m transcription factors
+and n target genes, is as a binary $m\times n$ “adjacency matrix,”
+with 1’s representing active transcription factor-target interactions,
+and 0’s representing the lack of a transcription factor-target gene
+regulatory interaction. One can then think of a cell fate transition
+as the process that transforms the network in its initial state to
+its final state form, adding and deleting edges to remake the network
+that characterizes one phenotype into that which characterizes the
+other. Using the adjacency matrix formalism, one can think of this
+as a problem in linear algebra in which we attempt to find an $m\times m$
+“transition matrix” $\mathbf{T}$, subject to a set of constraints
+that approximates the conversion from the initial network’s adjacency
+matrix \textbf{$\mathbf{A}$} into the final network’s adjacency matrix
+$\mathbf{B}$, or 
 \[
 \mathbf{B}=\mathbf{AT}
 \]
 
 
 \begin{figure}[h]
-\centering{}\includegraphics[width=0.5\columnwidth]{figures/figure1_a}\caption{\textbf{Overview of the Transition Matrix problem.} Our approach seeks
+\centering{}\includegraphics[width=0.8\columnwidth]{figures/figure1_a}\caption{\textbf{Overview of the Transition Matrix problem.} Our approach seeks
 to find the $TF\times TF$ matrix which best characterizes the transition
-in TF targetting between the regulatory networks of cases and controls.
-We can think about this problem as the estimation of the set of TF-TF
-interactions which minimizes edgeweight error in the cases network
-when applied to the controls network.}
+in from controls to cases at the gene regulatory network level. First,
+gene expression samples are collected for each group, followed by
+gene regulatory network inference performed on cases and controls
+in parallel. Finally, the transition matrix is calculated, estimating
+the changes in TF targetting which best characterize the state change
+from the control group to the cases group.}
 \end{figure}
 
 
@@ -224,23 +224,23 @@ truth the situation is much more complex. Neither the initial nor
 the final phenotype is discrete, but each falls into a continuum of
 states, which, on average, captures the features of that phenotype.
 Indeed, within each tissue there are many, many cells, each of which
-is its own particular instance of that tissue\textemdash{}with unique
-patterns of gene expression and individual regulatory processes. In
-the language of adjacency matrices, what this means is that rather
-than representing each state by a matrix with binary entries, what
-one should do is use a representation in which entries are continuous,
-representing the strength of the transcription factor-target gene
-interaction averaged over the collection of samples (or cells) representing
-each state. And consequently, the problem of estimating the transition
-matrix is generalized to solving $\mathbf{B}=\mathbf{AT}+\mathbf{E}$,
-where \textbf{E} is an $m\times n$ error matrix representing unexplained
+is its own particular instance of that tissue—with unique patterns
+of gene expression and individual regulatory processes. In the language
+of adjacency matrices, what this means is that rather than representing
+each state by a matrix with binary entries, what one should do is
+use a representation in which entries are continuous, representing
+the strength of the transcription factor-target gene interaction averaged
+over the collection of samples (or cells) representing each state.
+And consequently, the problem of estimating the transition matrix
+is generalized to solving $\mathbf{B}=\mathbf{AT}+\mathbf{E}$, where
+\textbf{E} is an $m\times n$ error matrix representing unexplained
 by our estimated transition and minimized by our procedure. In this
 formalism, modeling the cell state transition is equivalent to estimating
 the appropriate transition matrix $\mathbf{T}$ that maps how the
-transcription factor-target gene interactions are \textquotedblleft{}rewired\textquotedblright{}
-between states. And one could hypothesize that the drivers of the
-cell state transition are those transcription factors that have the
-greatest change in the targets that they regulate.
+transcription factor-target gene interactions are “rewired” between
+states. And one could hypothesize that the drivers of the cell state
+transition are those transcription factors that have the greatest
+change in the targets that they regulate.
 
 To generate our gene regulatory networks we are commonly faced with
 state-specific gene expression data along with general regulatory
@@ -324,40 +324,29 @@ We separately applied our BERE network inference approach on cases
 and controls and computed the transition matrix. Top significance
 hits for dTFI showed strong concordance between each of the datasets.
 Out of 166 TF used in this study, seven were among top 10 most differentially
-involved in both the ECLIPSE and COPDGene studies (\inputencoding{latin1}{Figure
-}\inputencoding{latin9}\ref{fig:compare}). Furthermore, three of
-these seven TFs (GABPA, ELK4, ELK1) also appeared as significant in
-the LGRC results with FDR<.01.
+involved in both the ECLIPSE and COPDGene studies (Figure \ref{fig:compare}).
+Furthermore, three of these seven TFs (GABPA, ELK4, ELK1) also appeared
+as significant in the LGRC results with FDR<.01.
 
 \begin{figure}[H]
 \textbf{A}
 
-\textbf{\includegraphics[width=1\columnwidth]{figures/pasted6a}}
+\textbf{\includegraphics[width=1\columnwidth]{figures/SSODMplot_scaled}}
 
 \textbf{B}
 
-\textbf{\includegraphics[width=1\columnwidth]{\string"figures/dTFI vs LIMMA55557\string".png}}
-
-\textbf{C}
-
-\includegraphics[width=0.5\columnwidth]{\string"figures/Transition plot55557\string".png}
+\includegraphics[width=0.5\columnwidth]{figures/Transition_plot}
 
 \caption{\textbf{(A)} \textbf{Differential transcription factor involvement
 in ECLIPSE study.} Observed TFs undergoing state transition (red)
 scaled for each TF by the distribution under the randomization of
-case-control labels (blue). \textbf{(B) Comparison of TF differential
-involvement vs differential expression.} TFs which are differentially
-involved are not necessarily differentially expressed and vice versa.
-Many TFs can be observed which have significantly different targetting
-patterns, but which are not statistically significantly differentially
-expressed. This suggests that our method finds transcription factors
-which are differentially affected at a post-transcription stage. \textbf{(C)
-Driver network transitions}. Network transitions are depicted here
-with arrows indicating the flow of targetting patterns from one transcription
-factor to another. Edges are sized according to the magnitude of the
-transition and nodes (TFs) are sized by the overall dTFI for each
-TF. The gain of targetting features is indicated by the color blue
-while the loss of features is indicated by red.}
+case-control labels (blue). \textbf{(B) Driver network transitions}.
+Network transitions are depicted here with arrows indicating the flow
+of targetting patterns from one transcription factor to another. Edges
+are sized according to the magnitude of the transition and nodes (TFs)
+are sized by the overall dTFI for each TF. The gain of targetting
+features is indicated by the color blue while the loss of features
+is indicated by red.}
 \label{fig:ECLIPSE_results}
 \end{figure}
 
@@ -377,21 +366,24 @@ study had a greater gender disparity $\left(\mbox{Odds Ratio}=1.126\right)$
 than the ECLIPSE study $\left(\mbox{Odds Ratio}=1.067\right)$.
 
 \begin{figure}[H]
-\textbf{A}\includegraphics[width=0.6\columnwidth]{figures/eclipse_copdgene_lgrc_comparison_same_tissue}
+\textbf{A}\includegraphics[width=0.6\columnwidth]{figures/Magnitude_comparison_same_tissue}
 
-\textbf{B}\includegraphics[width=0.6\columnwidth]{figures/eclipse_copdgene_lgrc_comparison_diff_tissue}
+\textbf{B}\includegraphics[width=0.6\columnwidth]{figures/Magnitude_comparison_diff_tissue}\textbf{C}\includegraphics[width=0.4\columnwidth]{figures/Venn}
 
-\caption{Comparison of dTFI for 166 TFs across four independent studies in
-two tissues. ECLIPSE and COPGene data were obtained via PBMC and LGRC
-and LTCOPD were obtained via lung tissue. Results for two studies
-with gene expression data obtained from the same source (A), PBMC
-(left) and lung tissue (right) show strong concordance with a high
-degree of agreement, particularly for top hits. Spearman correlation
+\caption{\textbf{Comparison of dTFI for 166 TFs across four independent studies
+in two tissues}. ECLIPSE and COPGene data were obtained via PBMC and
+LGRC and LTCOPD were obtained via lung tissue. Results for two studies
+with gene expression data obtained from the same source (\textbf{A}),
+PBMC (left) and lung tissue (right) show strong concordance with a
+high degree of agreement, particularly for top hits. Spearman correlation
 for each of these tissue types was $r_{s}=.87$ and $r_{s}=.71$,
-respectively. Correlations for across tissue study comparisons demonstrated
-a weaker, but still measureable agreement. Each of the four studies
-was most consistent with the study of the same tissue type as its
-own.}
+respectively. Correlations for across tissue study comparisons (\textbf{B})\textbf{
+}demonstrated a weaker, but still measureable agreement. Each of the
+four studies was most consistent with the study of the same tissue
+type as its own. (\textbf{C}) Differentially involved transcription
+factors were found in agreement across datasets. Five TFs were discovered
+in the top 20 in each of the four studies. An additional 21 TFs were
+found in the top 20 TFs of at least two studies.}
 \label{fig:compare}
 \end{figure}
 
@@ -407,10 +399,25 @@ but it is reasonable to speculate that the dramatically different
 result is due to the fact that the tissue of origin for the LGRC differs
 from the ECLIPSE and COPDGene tissue.
 
+\begin{figure}
+
+
+\textbf{\includegraphics[width=0.5\columnwidth]{figures/dTFIvsLIMMA}}\caption{\textbf{Comparison of significant results for TF differential involvement
+vs differential expression in ECLIPSE.} TFs which are differentially
+involved are not necessarily differentially expressed, and vice versa.
+Many TFs can be observed which have significantly different targetting
+patterns, but which are not statistically significantly differentially
+expressed. This suggests that our method finds transcription factors
+which are differentially affected at a post-transcription stage. }
+
+
+\end{figure}
+
+
 The top hits which are most consistent across studies have been implicated
 in independent studies for the development of COPD. Two of the top
 3 hits, NRF1 and GABPA have been implicated in a mitochondrial mechanism
-for disease progression {[}Cloonan, Suzanne M et al{]}. Interestingly,
+for disease progression \cite{cloonan2016mitochondrial}. Interestingly,
 the majority of the TFs identified as differentially involved do not
 exhibit significant differential gene expression. This suggests that
 for these proteins, their role in the disease may not occur until
@@ -419,6 +426,6 @@ expression analysis is insufficient for identifying many of the TF
 drivers of disease.
 
 \bibliographystyle{plain}
-\bibliography{./dissertation_research}
+\bibliography{dissertation_research}
 
 \end{document}

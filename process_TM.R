@@ -3,8 +3,8 @@ pdf(file.path(outputDir,paste0('SSODMplot_unscaled',analysisCode,'.pdf')), width
 sPlot <- ssodm.plot(transMatrices[[1]], transMatrices[-1],plot.title=paste("SSODM observed and null, ",casesString," vs ",controlsString,' : ', networkInferenceName, ' : ', analysisName, sep=""))
 print(sPlot)
 dev.off()
-pdf(file.path(outputDir,paste0('SSODMplot_scaled',analysisCode,'.pdf')), width=8)
-sPlot <- ssodm.plot(transMatrices[[1]], transMatrices[-1], rescale=T, plot.title=paste("SSODM observed and null, ",casesString," vs ",controlsString,' : ', networkInferenceName, ' : ', analysisName, sep=""))
+pdf(file.path(outputDir,paste0('SSODMplot_scaled',analysisCode,'.pdf')), width=24)
+sPlot <- ssodm.plot(transMatrices[[1]], transMatrices[-1], rescale=T,plot.title="")#, plot.title=paste("SSODM observed and null, ",casesString," vs ",controlsString,' : ', networkInferenceName, ' : ', analysisName, sep=""))
 print(sPlot)
 dev.off()
 
@@ -109,7 +109,7 @@ limmanegLogPValues[limmanegLogPValues>10]<-10 # for visual purposes
 resultTable <- cbind(obsSsodm,dTFI_pVals, dTFI_normalized_scores, dTFI_fdr, logfoldchangeTF, limmanegLogPValues)
 resultTable <- resultTable[order(dTFI_pVals),]
 
-plotDF <- data.frame(obsSsodm, negLogPValues, limmanegLogPValues, logfoldchangeTF, "labels"=labels)
+plotDF <- data.frame(obsSsodm, negLogPValues, limmanegLogPValues, logfoldchangeTF, negLogZPValues, "labels"=labels)
 
 colnames(resultTable) <- c("Magnitude","dTFI uncorrected p-value","dTFI normalized scores","dTFI FDR", "log FC", "limma -logp")
 write.csv(resultTable,file=file.path(outputDir,paste("resultTable",analysisCode,".csv", sep="")))
@@ -120,11 +120,13 @@ ggplot(data=plotDF,aes(x=obsSsodm, y=negLogZPValues, label=labels, size=100)) + 
   scale_colour_gradientn("LIMMA sig",colours=c("blue","white","red"))
 dev.off()
 
-pdf(file.path(outputDir,paste('dTFI vs LIMMA',analysisCode,'.pdf', sep="")), width=8, height=8)
-ggplot(data=plotDF, aes(x=limmanegLogPValues, y=negLogZPValues)) + geom_point(aes(col=logfoldchangeTF), size=5, alpha=.75) +
-  geom_text_repel(aes(limmanegLogPValues, negLogZPValues, label=labels), segment.size =0) + 
-  ylab("Differential TF Involvement, -log(p-value)") + xlab("Differential Expression,  LIMMA -log(p-value)") + ggtitle("Significance of Differential Involvement vs Differential Expression") +
-  theme_classic() + scale_colour_continuous(limits=c(-max(abs(logfoldchangeTF)),max(abs(logfoldchangeTF))), name="log(fold-change)", low = "red", high = "blue") #+ guides(alpha=guide_legend(title=NULL), col=guide_legend(title="log(fold-change)")) #+ theme(legend.position = "none")
+pdf(file.path(outputDir,paste('dTFI vs LIMMA',analysisCode,'.pdf', sep="")), width=9, height=8)
+ggplot(data=plotDF, aes(x=limmanegLogPValues, y=negLogZPValues)) + geom_point(aes(col=logfoldchangeTF), size=5, alpha=.6) +
+  geom_text_repel(data=plotDF[labels!="",], aes(limmanegLogPValues, negLogZPValues, label=labels)) + 
+  ylab("Differential TF Involvement, -log(p-value)") + xlab("Differential Expression,  LIMMA -log(p-value)") + 
+  ggtitle("Differential Involvement vs Differential Expression (ECLIPSE)") +
+  theme_classic() + scale_colour_continuous(limits=c(-max(abs(logfoldchangeTF)),max(abs(logfoldchangeTF))), name="log(fold-change)", low = "red", high = "blue") +
+  theme(plot.title = element_text(size=20,hjust=0))
 dev.off()
 
 # periodically save workspace
@@ -165,8 +167,8 @@ V(tfNet)$size <- vSize[V(tfNet)$name]*5
 E(tfNet)$width <- (abs(E(tfNet)$value.x))*20/max(abs(E(tfNet)$value.x))
 E(tfNet)$color<-ifelse(E(tfNet)$value.x>0, "blue", "red")
 
-tiff(file.path(outputDir,paste('Transition plot',analysisCode,'.tiff', sep="")), width=1500, height=1500)
-plot.igraph(tfNet, edge.arrow.size=2, vertex.label.cex= 1.5, vertex.label.color= "black",main=paste0("Transition: ",controlsString," to ",casesString))
+pdf(file.path(outputDir,paste('Transition plot',analysisCode,'.pdf', sep="")), width=15, height=15)
+plot.igraph(tfNet, edge.arrow.size=2, vertex.label.cex= 1.5, vertex.label.color= "black",main="")
 legend("bottomleft", c("Gained features","Lost features"), lty=c(1,1),lwd=c(2.5,2.5),col=c("blue","red"))
 dev.off()
 

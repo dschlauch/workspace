@@ -320,9 +320,9 @@ Modeling cell state transitions as a problem in gene regulatory network
 \end_layout
 
 \begin_layout Standard
-Cell state transitions—such as those that occur during development, or as
- healthy tissue transforms into a disease phenotype—are fundamental properties
- of biological systems.
+Cell state transitions - such as those that occur during development, or
+ as healthy tissue transforms into a disease phenotype—are fundamental propertie
+s of biological systems.
  Understanding what drives these transitions, and modeling the processes,
  is one of the great open challenges in modern biology.
  One way to conceptualize the state transition problem is to imagine that
@@ -403,7 +403,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename figures/figure1_a.pdf
-	width 50col%
+	width 80col%
 
 \end_inset
 
@@ -719,7 +719,7 @@ A
 
 \series bold
 \begin_inset Graphics
-	filename figures/pasted6a.png
+	filename figures/SSODMplot_scaled.pdf
 	lyxscale 40
 	width 100col%
 
@@ -736,7 +736,7 @@ B
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename figures/Transition plot55557.png
+	filename figures/Transition_plot.pdf
 	lyxscale 20
 	width 50col%
 
@@ -893,7 +893,11 @@ C
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Comparison of dTFI for 166 TFs across four independent studies in two tissues.
+
+\series bold
+Comparison of dTFI for 166 TFs across four independent studies in two tissues
+\series default
+.
  ECLIPSE and COPGene data were obtained via PBMC and LGRC and LTCOPD were
  obtained via lung tissue.
  Results for two studies with gene expression data obtained from the same
@@ -929,8 +933,7 @@ C
 \series default
 ) Differentially involved transcription factors were found in agreement
  across datasets.
- Five TFs were discovered in the top 20 (out of 166) in each of the four
- studies.
+ Five TFs were discovered in the top 20 in each of the four studies.
  An additional 21 TFs were found in the top 20 TFs of at least two studies.
 \end_layout
 
@@ -985,7 +988,7 @@ status open
 
 \series bold
 \begin_inset Graphics
-	filename figures/dTFI vs LIMMA.pdf
+	filename figures/dTFIvsLIMMA.pdf
 	lyxscale 40
 	width 50col%
 
@@ -999,11 +1002,12 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-Comparison of TF differential involvement vs differential expression.
+Comparison of significant results for TF differential involvement vs differentia
+l expression in ECLIPSE.
 
 \series default
  TFs which are differentially involved are not necessarily differentially
- expressed and vice versa.
+ expressed, and vice versa.
  Many TFs can be observed which have significantly different targetting
  patterns, but which are not statistically significantly differentially
  expressed.
