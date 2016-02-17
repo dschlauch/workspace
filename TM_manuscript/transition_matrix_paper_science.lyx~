@@ -402,7 +402,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename figures/figure1_a.tif
+	filename figures/figure1_a.pdf
 	width 50col%
 
 \end_inset
@@ -420,11 +420,13 @@ Overview of the Transition Matrix problem.
 \begin_inset Formula $TF\times TF$
 \end_inset
 
- matrix which best characterizes the transition in TF targetting between
- the regulatory networks of cases and controls.
- We can think about this problem as the estimation of the set of TF-TF interacti
-ons which minimizes edgeweight error in the cases network when applied to
- the controls network.
+ matrix which best characterizes the transition in from controls to cases
+ at the gene regulatory network level.
+ First, gene expression samples are collected for each group, followed by
+ gene regulatory network inference performed on cases and controls in parallel.
+ Finally, the transition matrix is calculated, estimating the changes in
+ TF targetting which best characterize the state change from the control
+ group to the cases group.
 \end_layout
 
 \end_inset
@@ -682,10 +684,7 @@ We separately applied our BERE network inference approach on cases and controls
  Top significance hits for dTFI showed strong concordance between each of
  the datasets.
  Out of 166 TF used in this study, seven were among top 10 most differentially
- involved in both the ECLIPSE and COPDGene studies (
-Figure 
-\lang english
-
+ involved in both the ECLIPSE and COPDGene studies (Figure 
 \begin_inset ERT
 status open
 
@@ -708,7 +707,7 @@ ref{fig:compare}
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -733,25 +732,6 @@ A
 
 \series bold
 B
-\end_layout
-
-\begin_layout Plain Layout
-
-\series bold
-\begin_inset Graphics
-	filename figures/dTFI vs LIMMA55557.png
-	lyxscale 40
-	width 100col%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\series bold
-C
 \end_layout
 
 \begin_layout Plain Layout
@@ -782,19 +762,7 @@ Differential transcription factor involvement in ECLIPSE study.
  distribution under the randomization of case-control labels (blue).
  
 \series bold
-(B) Comparison of TF differential involvement vs differential expression.
-
-\series default
- TFs which are differentially involved are not necessarily differentially
- expressed and vice versa.
- Many TFs can be observed which have significantly different targetting
- patterns, but which are not statistically significantly differentially
- expressed.
- This suggests that our method finds transcription factors which are differentia
-lly affected at a post-transcription stage.
- 
-\series bold
-(C) Driver network transitions
+(B) Driver network transitions
 \series default
 .
  Network transitions are depicted here with arrows indicating the flow of
@@ -884,7 +852,7 @@ A
 \series default
 
 \begin_inset Graphics
-	filename figures/eclipse_copdgene_lgrc_comparison_same_tissue.tiff
+	filename figures/Magnitude_comparison_same_tissue.pdf
 	lyxscale 40
 	width 60col%
 
@@ -900,9 +868,21 @@ B
 \series default
 
 \begin_inset Graphics
-	filename figures/eclipse_copdgene_lgrc_comparison_diff_tissue.tiff
+	filename figures/Magnitude_comparison_diff_tissue.pdf
 	lyxscale 40
 	width 60col%
+
+\end_inset
+
+
+\series bold
+C
+\series default
+
+\begin_inset Graphics
+	filename figures/Venn.tiff
+	lyxscale 10
+	width 40col%
 
 \end_inset
 
@@ -917,8 +897,12 @@ Comparison of dTFI for 166 TFs across four independent studies in two tissues.
  ECLIPSE and COPGene data were obtained via PBMC and LGRC and LTCOPD were
  obtained via lung tissue.
  Results for two studies with gene expression data obtained from the same
- source (A), PBMC (left) and lung tissue (right) show strong concordance
- with a high degree of agreement, particularly for top hits.
+ source (
+\series bold
+A
+\series default
+), PBMC (left) and lung tissue (right) show strong concordance with a high
+ degree of agreement, particularly for top hits.
  Spearman correlation for each of these tissue types was 
 \begin_inset Formula $r_{s}=.87$
 \end_inset
@@ -928,10 +912,26 @@ Comparison of dTFI for 166 TFs across four independent studies in two tissues.
 \end_inset
 
 , respectively.
- Correlations for across tissue study comparisons demonstrated a weaker,
- but still measureable agreement.
+ Correlations for across tissue study comparisons (
+\series bold
+B
+\series default
+)
+\series bold
+ 
+\series default
+demonstrated a weaker, but still measureable agreement.
  Each of the four studies was most consistent with the study of the same
  tissue type as its own.
+ (
+\series bold
+C
+\series default
+) Differentially involved transcription factors were found in agreement
+ across datasets.
+ Five TFs were discovered in the top 20 (out of 166) in each of the four
+ studies.
+ An additional 21 TFs were found in the top 20 TFs of at least two studies.
 \end_layout
 
 \end_inset
@@ -972,10 +972,78 @@ Notably in the LGRC dataset, we discovered a differential targetting pattern
 \end_layout
 
 \begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+\begin_inset Graphics
+	filename figures/dTFI vs LIMMA.pdf
+	lyxscale 40
+	width 50col%
+
+\end_inset
+
+
+\series default
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+
+\series bold
+Comparison of TF differential involvement vs differential expression.
+
+\series default
+ TFs which are differentially involved are not necessarily differentially
+ expressed and vice versa.
+ Many TFs can be observed which have significantly different targetting
+ patterns, but which are not statistically significantly differentially
+ expressed.
+ This suggests that our method finds transcription factors which are differentia
+lly affected at a post-transcription stage.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 The top hits which are most consistent across studies have been implicated
  in independent studies for the development of COPD.
  Two of the top 3 hits, NRF1 and GABPA have been implicated in a mitochondrial
- mechanism for disease progression [Cloonan, Suzanne M et al].
+ mechanism for disease progression 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cite{cloonan2016mitochondrial}
+\end_layout
+
+\end_inset
+
+.
  Interestingly, the majority of the TFs identified as differentially involved
  do not exhibit significant differential gene expression.
  This suggests that for these proteins, their role in the disease may not

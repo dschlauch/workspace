@@ -1,9 +1,9 @@
 # Do the sum of sq ODM plot versus null
-tiff(file.path(outputDir,paste('SSODMplot_unscaled',analysisCode,'.tiff', sep="")), width=4800)
+pdf(file.path(outputDir,paste0('SSODMplot_unscaled',analysisCode,'.pdf')), width=8)
 sPlot <- ssodm.plot(transMatrices[[1]], transMatrices[-1],plot.title=paste("SSODM observed and null, ",casesString," vs ",controlsString,' : ', networkInferenceName, ' : ', analysisName, sep=""))
 print(sPlot)
 dev.off()
-tiff(file.path(outputDir,paste('SSODMplot_scaled',analysisCode,'.tiff', sep="")), width=4800)
+pdf(file.path(outputDir,paste0('SSODMplot_scaled',analysisCode,'.pdf')), width=8)
 sPlot <- ssodm.plot(transMatrices[[1]], transMatrices[-1], rescale=T, plot.title=paste("SSODM observed and null, ",casesString," vs ",controlsString,' : ', networkInferenceName, ' : ', analysisName, sep=""))
 print(sPlot)
 dev.off()
@@ -92,9 +92,11 @@ names(dTFI_pVals_All) <- colnames(transMatrices[[1]])
 names(dTFI_normalized_scores_All) <- colnames(transMatrices[[1]])
 dTFI_pVals <- dTFI_pVals_All[includedTFs]
 dTFI_normalized_scores <- dTFI_normalized_scores_All[includedTFs]
+negLogZPValues <- -log(dTFI_normalized_scores)
 negLogPValues <- -log(dTFI_pVals)
 # replace Inf values with max values
 negLogPValues[negLogPValues==Inf] <- 35
+negLogZPValues[negLogZPValues==Inf] <- 35
 labels <- names(obsSsodm)
 labels[rank(-negLogPValues)>20 & rank(-obsSsodm)>20]<-""
 
@@ -113,16 +115,16 @@ colnames(resultTable) <- c("Magnitude","dTFI uncorrected p-value","dTFI normaliz
 write.csv(resultTable,file=file.path(outputDir,paste("resultTable",analysisCode,".csv", sep="")))
 
 tiff(file.path(outputDir,paste('Volcano plot',analysisCode,'.tiff', sep="")), width=1800)
-ggplot(data=plotDF,aes(x=obsSsodm, y=negLogPValues, label=labels, size=100)) + geom_point(aes(col=limmanegLogPValues), alpha=.5) + geom_text(vjust=0) + 
+ggplot(data=plotDF,aes(x=obsSsodm, y=negLogZPValues, label=labels, size=100)) + geom_point(aes(col=limmanegLogPValues), alpha=.5) + geom_text(vjust=0) + 
   ylab("-log(dTFI p-value)") + xlab("SSODM") + ggtitle("Signal vs significance") + scale_size_continuous(range = c(0, 12),guide=FALSE) +
   scale_colour_gradientn("LIMMA sig",colours=c("blue","white","red"))
 dev.off()
 
-tiff(file.path(outputDir,paste('dTFI vs LIMMA',analysisCode,'.tiff', sep="")), width=1800)
-ggplot(data=plotDF,aes(x=logfoldchangeTF, y=negLogPValues, label=labels, size=100)) + geom_point(aes(col=limmanegLogPValues), alpha=.75) + geom_text(vjust=0) + 
-  ylab("significance of dTFI") + xlab("-log(FC)") + ggtitle("Transition vs Fold Change") +
-  scale_size_continuous(range = c(0, 12),guide=FALSE) +
-  scale_colour_gradientn("LIMMA sig",colours=c("blue","white","red"))
+pdf(file.path(outputDir,paste('dTFI vs LIMMA',analysisCode,'.pdf', sep="")), width=8, height=8)
+ggplot(data=plotDF, aes(x=limmanegLogPValues, y=negLogZPValues)) + geom_point(aes(col=logfoldchangeTF), size=5, alpha=.75) +
+  geom_text_repel(aes(limmanegLogPValues, negLogZPValues, label=labels), segment.size =0) + 
+  ylab("Differential TF Involvement, -log(p-value)") + xlab("Differential Expression,  LIMMA -log(p-value)") + ggtitle("Significance of Differential Involvement vs Differential Expression") +
+  theme_classic() + scale_colour_continuous(limits=c(-max(abs(logfoldchangeTF)),max(abs(logfoldchangeTF))), name="log(fold-change)", low = "red", high = "blue") #+ guides(alpha=guide_legend(title=NULL), col=guide_legend(title="log(fold-change)")) #+ theme(legend.position = "none")
 dev.off()
 
 # periodically save workspace
