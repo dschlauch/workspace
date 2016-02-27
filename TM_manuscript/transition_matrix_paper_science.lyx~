@@ -425,7 +425,7 @@ Overview of the Transition Matrix problem.
  First, gene expression samples are collected for each group, followed by
  gene regulatory network inference performed on cases and controls in parallel.
  Finally, the transition matrix is calculated, estimating the changes in
- TF targetting which best characterize the state change from the control
+ TF targeting which best characterize the state change from the control
  group to the cases group.
 \end_layout
 
@@ -496,7 +496,7 @@ s for all genes and identifies genes which are coexpressed with the set
 \end_inset
 
  gene regulatory matrices for cases and controls each representing estimates
- of the targetting patterns of the 
+ of the targeting patterns of the 
 \begin_inset Formula $m$
 \end_inset
 
@@ -703,6 +703,19 @@ ref{fig:compare}
 \end_layout
 
 \begin_layout Standard
+
+\series bold
+We found relatively weak concordance between studies based solely on the
+ inferred gene regulatory networks.
+ This is a common occurrance in regulatory network inference where edges
+ are typically inferred between two nodes based on a common expression pattern
+ between genes.
+ The inherent technical and biological noise reduces our confidence in the
+ individual estimated edges.
+ 
+\end_layout
+
+\begin_layout Standard
 \begin_inset Float figure
 placement H
 wide false
@@ -766,10 +779,10 @@ Differential transcription factor involvement in ECLIPSE study.
 \series default
 .
  Network transitions are depicted here with arrows indicating the flow of
- targetting patterns from one transcription factor to another.
+ targeting patterns from one transcription factor to another.
  Edges are sized according to the magnitude of the transition and nodes
  (TFs) are sized by the overall dTFI for each TF.
- The gain of targetting features is indicated by the color blue while the
+ The gain of targeting features is indicated by the color blue while the
  loss of features is indicated by red.
 \end_layout
 
@@ -961,7 +974,7 @@ label{fig:compare}
 \end_layout
 
 \begin_layout Standard
-Notably in the LGRC dataset, we discovered a differential targetting pattern
+Notably in the LGRC dataset, we discovered a differential targeting pattern
  involving the TFs RFX1 and RFX2.
  Both of these transcription factors were highly statistically significant
  (FDR<.0001) and ranked as the top two results in the LGRC study.
@@ -1008,11 +1021,10 @@ l expression in ECLIPSE.
 \series default
  TFs which are differentially involved are not necessarily differentially
  expressed, and vice versa.
- Many TFs can be observed which have significantly different targetting
- patterns, but which are not statistically significantly differentially
- expressed.
+ Many TFs can be observed which have significantly different targeting patterns,
+ but which are not statistically significantly differentially expressed.
  This suggests that our method finds transcription factors which are differentia
-lly affected at a post-transcription stage.
+lly affected at a post-transcriptional stage.
  
 \end_layout
 

@@ -658,7 +658,7 @@ Distribution of similarity statistic within population subgroups from 1000
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/dan/1000GP/plots/s_distributions/ACBdiploid.tiff
+	filename /home/dan/1000GP/plots/s_distributions/ACBdiploid.pdf
 	lyxscale 20
 	width 10page%
 
@@ -666,7 +666,7 @@ Distribution of similarity statistic within population subgroups from 1000
 
 
 \begin_inset Graphics
-	filename /home/dan/1000GP/plots/s_distributions/ASWdiploid.tiff
+	filename /home/dan/1000GP/plots/s_distributions/ASWdiploid.pdf
 	lyxscale 20
 	width 10page%
 
@@ -674,7 +674,7 @@ Distribution of similarity statistic within population subgroups from 1000
 
 
 \begin_inset Graphics
-	filename /home/dan/1000GP/plots/s_distributions/BEBdiploid.tiff
+	filename /home/dan/1000GP/plots/s_distributions/BEBdiploid.pdf
 	lyxscale 20
 	width 10page%
 
@@ -682,42 +682,7 @@ Distribution of similarity statistic within population subgroups from 1000
 
 
 \begin_inset Graphics
-	filename /home/dan/1000GP/plots/s_distributions/CDXdiploid.tiff
-	lyxscale 20
-	width 10page%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename /home/dan/1000GP/plots/s_distributions/CEUdiploid.tiff
-	lyxscale 20
-	width 10page%
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename /home/dan/1000GP/plots/s_distributions/CHBdiploid.tiff
-	lyxscale 20
-	width 10page%
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename /home/dan/1000GP/plots/s_distributions/CHSdiploid.tiff
-	lyxscale 20
-	width 10page%
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename /home/dan/1000GP/plots/s_distributions/CLMdiploid.tiff
+	filename /home/dan/1000GP/plots/s_distributions/CDXdiploid.pdf
 	lyxscale 20
 	width 10page%
 
@@ -728,7 +693,7 @@ Distribution of similarity statistic within population subgroups from 1000
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/dan/1000GP/plots/s_distributions/ESNdiploid.tiff
+	filename /home/dan/1000GP/plots/s_distributions/CEUdiploid.pdf
 	lyxscale 20
 	width 10page%
 
@@ -736,7 +701,7 @@ Distribution of similarity statistic within population subgroups from 1000
 
 
 \begin_inset Graphics
-	filename /home/dan/1000GP/plots/s_distributions/FINdiploid.tiff
+	filename /home/dan/1000GP/plots/s_distributions/CHBdiploid.pdf
 	lyxscale 20
 	width 10page%
 
@@ -744,7 +709,7 @@ Distribution of similarity statistic within population subgroups from 1000
 
 
 \begin_inset Graphics
-	filename /home/dan/1000GP/plots/s_distributions/GBRdiploid.tiff
+	filename /home/dan/1000GP/plots/s_distributions/CHSdiploid.pdf
 	lyxscale 20
 	width 10page%
 
@@ -752,42 +717,7 @@ Distribution of similarity statistic within population subgroups from 1000
 
 
 \begin_inset Graphics
-	filename /home/dan/1000GP/plots/s_distributions/GIHdiploid.tiff
-	lyxscale 20
-	width 10page%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename /home/dan/1000GP/plots/s_distributions/GWDdiploid.tiff
-	lyxscale 20
-	width 10page%
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename /home/dan/1000GP/plots/s_distributions/IBSdiploid.tiff
-	lyxscale 20
-	width 10page%
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename /home/dan/1000GP/plots/s_distributions/ITUdiploid.tiff
-	lyxscale 20
-	width 10page%
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename /home/dan/1000GP/plots/s_distributions/JPTdiploid.tiff
+	filename /home/dan/1000GP/plots/s_distributions/CLMdiploid.pdf
 	lyxscale 20
 	width 10page%
 
@@ -798,7 +728,7 @@ Distribution of similarity statistic within population subgroups from 1000
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/dan/1000GP/plots/s_distributions/KHVdiploid.tiff
+	filename /home/dan/1000GP/plots/s_distributions/ESNdiploid.pdf
 	lyxscale 20
 	width 10page%
 
@@ -806,7 +736,7 @@ Distribution of similarity statistic within population subgroups from 1000
 
 
 \begin_inset Graphics
-	filename /home/dan/1000GP/plots/s_distributions/LWKdiploid.tiff
+	filename /home/dan/1000GP/plots/s_distributions/FINdiploid.pdf
 	lyxscale 20
 	width 10page%
 
@@ -814,7 +744,7 @@ Distribution of similarity statistic within population subgroups from 1000
 
 
 \begin_inset Graphics
-	filename /home/dan/1000GP/plots/s_distributions/MSLdiploid.tiff
+	filename /home/dan/1000GP/plots/s_distributions/GBRdiploid.pdf
 	lyxscale 20
 	width 10page%
 
@@ -822,42 +752,7 @@ Distribution of similarity statistic within population subgroups from 1000
 
 
 \begin_inset Graphics
-	filename /home/dan/1000GP/plots/s_distributions/MXLdiploid.tiff
-	lyxscale 20
-	width 10page%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename /home/dan/1000GP/plots/s_distributions/PELdiploid.tiff
-	lyxscale 20
-	width 10page%
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename /home/dan/1000GP/plots/s_distributions/PJLdiploid.tiff
-	lyxscale 20
-	width 10page%
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename /home/dan/1000GP/plots/s_distributions/PURdiploid.tiff
-	lyxscale 20
-	width 10page%
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename /home/dan/1000GP/plots/s_distributions/STUdiploid.tiff
+	filename /home/dan/1000GP/plots/s_distributions/GIHdiploid.pdf
 	lyxscale 20
 	width 10page%
 
@@ -868,7 +763,7 @@ Distribution of similarity statistic within population subgroups from 1000
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/dan/1000GP/plots/s_distributions/TSIdiploid.tiff
+	filename /home/dan/1000GP/plots/s_distributions/GWDdiploid.pdf
 	lyxscale 20
 	width 10page%
 
@@ -876,7 +771,112 @@ Distribution of similarity statistic within population subgroups from 1000
 
 
 \begin_inset Graphics
-	filename /home/dan/1000GP/plots/s_distributions/YRIdiploid.tiff
+	filename /home/dan/1000GP/plots/s_distributions/IBSdiploid.pdf
+	lyxscale 20
+	width 10page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename /home/dan/1000GP/plots/s_distributions/ITUdiploid.pdf
+	lyxscale 20
+	width 10page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename /home/dan/1000GP/plots/s_distributions/JPTdiploid.pdf
+	lyxscale 20
+	width 10page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/dan/1000GP/plots/s_distributions/KHVdiploid.pdf
+	lyxscale 20
+	width 10page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename /home/dan/1000GP/plots/s_distributions/LWKdiploid.pdf
+	lyxscale 20
+	width 10page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename /home/dan/1000GP/plots/s_distributions/MSLdiploid.pdf
+	lyxscale 20
+	width 10page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename /home/dan/1000GP/plots/s_distributions/MXLdiploid.pdf
+	lyxscale 20
+	width 10page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/dan/1000GP/plots/s_distributions/PELdiploid.pdf
+	lyxscale 20
+	width 10page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename /home/dan/1000GP/plots/s_distributions/PJLdiploid.pdf
+	lyxscale 20
+	width 10page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename /home/dan/1000GP/plots/s_distributions/PURdiploid.pdf
+	lyxscale 20
+	width 10page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename /home/dan/1000GP/plots/s_distributions/STUdiploid.pdf
+	lyxscale 20
+	width 10page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/dan/1000GP/plots/s_distributions/TSIdiploid.pdf
+	lyxscale 20
+	width 10page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename /home/dan/1000GP/plots/s_distributions/YRIdiploid.pdf
 	lyxscale 20
 	width 10page%
 
