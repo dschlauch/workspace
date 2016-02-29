@@ -3,6 +3,14 @@ library(nettools)
 library(bereR)
 # ECLIPSE
 
+# load the data, save each study as RData
+studies <- c("ECLIPSE", "COPDGENE", "LGRC","LTCOPD")
+motifVersion <- "JASPAR2014"
+outputDir <- "~/NI_only_0001"
+sapply(studies, function(study){
+  study <<- study
+  source("./load_TM_data.R")
+})
 
 runNImethods <- function(data="~/NI_only_0001/readyToGoCOPDGene0001.RData", dataName="COPDGene", niNames=c("WGCNA","CLR","ARACNE")){
   load(data)
@@ -35,5 +43,24 @@ runNImethods <- function(data="~/NI_only_0001/readyToGoCOPDGene0001.RData", data
     saveRDS(netControls,file.path(outputDir,paste0(dataName,'_controls_',niName,'_network.rds')))
   })
 }
-runNImethods("~/NI_only_0001/readyToGoECLIPSE0001.RData", "ECLIPSE", c("CLR","ARACNE"))
-runNImethods("~/NI_only_0001/readyToGoCOPDGene0001.RData", "COPDGene", c("CLR","ARACNE"))
+
+
+num_cores <- 4
+
+# Initiate cluster
+if(!is.na(num_cores)){
+  cl <- makeCluster(num_cores)
+  registerDoParallel(cl)
+}
+
+#start time
+strt  <- Sys.time()
+# Changed to run two Networks and calculate transition on each iteration 1/13/16
+foreach(i=studies,.packages=c("bereR","nettools")) %dopar% {
+  runNImethods(paste0(outputDir,"/",i,"_JASPAR2014_bere.RData"), i, c("BERE","WGCNA","CLR"))
+}
+
+print(Sys.time()-strt)
+if(!is.na(num_cores)){
+  stopCluster(cl)
+}

@@ -1,56 +1,102 @@
-# copd.filename <- "~/gd/Harvard/Research/data/Eclipse/null.networks_all.rds"
-# dataset.filename <- "~/gd/Harvard/Research/data/Eclipse/eclipse.networks.rds"
+# Specify study and motif in command line or before sourcing
+# study <- "LGRC"
+# study <- "COPDGene"
+# study <- "LTCOPD"
+# study <- "ECLIPSE"
+# 
+# motifVersion <- "JASPAR2016"
+# motifVersion <- "CISBP"
+# motifVersion <- "JASPAR2014"
 
-motifFile <- "~/gd/Harvard/Research/data/Eclipse/ECLIPSE_Blood_Motif.txt"
-motifFile <- "~/gd/Harvard/Research/data/motifs695.txt"
+if (motifVersion=="JASPAR2014"){
+  motifFile <- "~/gd/Harvard/Research/data/Eclipse/ECLIPSE_Blood_Motif.txt"  
+}
+if (motifVersion=="JASPAR2016"){
+  motifFile <- "does not exist yet"  
+}
+if (motifVersion=="CISPB"){
+  motifFile <- "~/gd/Harvard/Research/data/motifs695.txt"
+}
+
+if (study=="ECLIPSE"){
+  exprFile <- "~/gd/Harvard/Research/data/Eclipse/ECLIPSE_Blood_Exp.txt"
+  clinicalFile <- "~/gd/Harvard/Research/data/Eclipse/ECLIPSE_blood.txt"
+  #ECLIPSE labels
+  casesString <- "COPD"
+  controlsString <- "Smoker Control"
+  phenotypeName <- "Subject.type"
+} 
+if (study=="COPDGene"){
+  exprFile <- "~/gd/Harvard/Research/data/COPDGene/COPDGene_GSExpressionData.txt"
+  clinicalFile <- "~/gd/Harvard/Research/data/COPDGene/COPDGene_clinical.txt"
+  #COPDGene labels
+  casesString <- "COPD Subjects"
+  controlsString <- "Smoker Controls"
+  phenotypeName <- "Subject.type"
+} 
+if (study=="LGRC"){
+  exprFile <- "~/gd/Harvard/Research/data/LGRC/LGRC_expression.txt"
+  clinicalFile <- "~/gd/Harvard/Research/data/LGRC/lgrc.merged.clinical.data.clean.txt"
+  #LGRC labels
+  casesString <- "COPD Subjects"
+  controlsString <- "Smoker Controls"
+  phenotypeName <- "Subject.type"
+}
+if (study=="LTCOPD"){
+  exprFile <- "~/gd/Harvard/Research/data/LTCOPD/LTCOPD_exp.txt"
+  clinicalFile <- "~/gd/Harvard/Research/data/LTCOPD/LTCOPD_clinical.txt"
+  #LTCOPD labels
+  casesString <- "COPD"
+  controlsString <- "Control"
+  phenotypeName <- "diagnosis"
+}
+if (study=="GTEX"){
+  exprFile <- "~/gd/Harvard/Research/data/GTEx/GTEx_expr.txt"
+  clinicalFile <- "~/gd/Harvard/Research/data/GTEx/GTEx_clinical.txt"
+  #GTEX labels
+  casesString <- "cells_ebv-transformed_lymphocytes"
+  controlsString <- "skin"
+  phenotypeName <- "our_subtypes"
+}
+
+# motifFile <- "~/gd/Harvard/Research/data/motifs695.txt"
 # exprFile <- "~/gd/Harvard/Research/data/Ovarian/CombinedOV.txt"
-exprFile <- "~/gd/Harvard/Research/data/GTEx/GTEx_expr.txt"
-# exprFile <- "~/gd/Harvard/Research/data/COPDGene/COPDGene_GSExpressionData.txt"
-#exprFile <- "~/gd/Harvard/Research/data/Eclipse/ECLIPSE_Blood_Exp.txt"
-#exprFile <- "~/gd/Harvard/Research/data/LTCOPD/LTCOPD_exp.txt"
-#exprFile <- "~/gd/Harvard/Research/data/LGRC/LGRC_expression.txt"
+# exprFile <- "~/gd/Harvard/Research/data/GTEx/GTEx_expr.txt"
+# 
+#
+#
+#
 ppiFile <- "~/gd/Harvard/Research/data/Eclipse/OV_PPI.txt"
 #clinicalFile <- "~/gd/Harvard/Research/data/Ovarian/Clinical.txt"
-clinicalFile <- "~/gd/Harvard/Research/data/GTEx/GTEx_clinical.txt"
-clinicalFile <- "~/gd/Harvard/Research/data/LTCOPD/LTCOPD_clinical.txt"
-#clinicalFile <- "~/gd/Harvard/Research/data/COPDGene/COPDGene_clinical.txt"
-#clinicalFile <- "~/gd/Harvard/Research/data/Eclipse/ECLIPSE_blood.txt"
+# clinicalFile <- "~/gd/Harvard/Research/data/GTEx/GTEx_clinical.txt"
+
+#
+#
 #clinicalFile <- "~/gd/Harvard/Research/data/LGRC/lgrc.merged.clinical.data.clean.txt"
 
 # exprFile <- "~/gd/Harvard/Research/data/GTEx/gtex_cell.rdata"
-exprFile <- "~/gd/Harvard/Research/data/GTEx/gtex_sub_noxymt_qsmooth_cell.rdata"
-motifFile <- "~/gd/Harvard/Research/data/GTEx/KG_cisbp_652.txt"
-phenotypeName <- "our_subtypes"
-casesString <- "cells_ebv-transformed_lymphocytes"
-controlsString <- "skin"
-filterType <- NA
-
-#COPDGene labels
-casesString <- "COPD Subjects"
-controlsString <- "Smoker Controls"
-phenotypeName <- "Subject.type"
-
-#ECLIPSE labels
-casesString <- "COPD"
-controlsString <- "Smoker Control"
-phenotypeName <- "Subject.type"
-
-#LTCOPD labels
-casesString <- "COPD"
-controlsString <- "Control"
-phenotypeName <- "diagnosis"
+# exprFile <- "~/gd/Harvard/Research/data/GTEx/gtex_sub_noxymt_qsmooth_cell.rdata"
+# motifFile <- "~/gd/Harvard/Research/data/GTEx/KG_cisbp_652.txt"
+# phenotypeName <- "our_subtypes"
+# casesString <- "cells_ebv-transformed_lymphocytes"
+# controlsString <- "skin"
+# filterType <- NA
 
 
-casesString <- "Lung"
-controlsString <- "Colon"
-phenotypeName <- "SMTS"
 
-analysisName <- "LTCOPD_pandaM"
+
+# 
+# casesString <- "Lung"
+# controlsString <- "Colon"
+# phenotypeName <- "SMTS"
+
 nullPerms <- 500
 networkInferenceName <- "bere"
-filterType <- "Gender"
-filterBy <- "M"
+# filterType <- "Gender"
+# filterBy <- "M"
+filterType <- NA
 permuteGeneLabels <- F
+analysisName <- paste(study,motifVersion,networkInferenceName,sep="_")
 
 args<-commandArgs(TRUE)
 if(length(args)!=0){
@@ -81,10 +127,11 @@ if(length(args)!=0){
     permuteGeneLabels <- F
     numMaxCores <- 40
   }
+  # Create new dir if calling from command line
+  outputDir <- file.path("~",paste(analysisName, analysisCode ,sep="_"))
+  dir.create(outputDir, showWarnings=FALSE)
+  write.csv(args,file=file.path(outputDir,paste("arguments_",analysisCode,".txt",sep="")))
 }
-outputDir <- file.path("~",paste(analysisName, analysisCode ,sep="_"))
-dir.create(outputDir, showWarnings=FALSE)
-write.csv(args,file=file.path(outputDir,paste("arguments_",analysisCode,".txt",sep="")))
 
 # Set the network inference method
 if(networkInferenceName=="bere"){
@@ -242,4 +289,4 @@ dataset$clinical <- dataset$clinical[allFilter,]
 casesFilter <- dataset$clinical[,phenotypeName]==casesString
 controlsFilter <- dataset$clinical[,phenotypeName]==controlsString
 
-save.image(file=file.path(outputDir,paste("activeImage",analysisCode,".RData",sep="")))
+save.image(file=file.path(outputDir,paste0(analysisName,".RData")))
