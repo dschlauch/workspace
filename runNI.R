@@ -26,7 +26,7 @@ runNImethods <- function(data="~/NI_only_0001/readyToGoCOPDGene0001.RData", data
     }
   }
   
-  TFs <- unique(dataset$motif[,1])
+  TFs <- as.character(unique(dataset$motif[,1]))
   # BERE
   if ("BERE"%in%niNames){
     netCases <- bere(dataset$motif, exp.cases, score="no-adjust")
@@ -40,8 +40,8 @@ runNImethods <- function(data="~/NI_only_0001/readyToGoCOPDGene0001.RData", data
   sapply(nettoolsNames, function(niName){
     print(niName)
     netCases <- mat2adj(t(exp.cases), method=niName)[TFs,]
-    netControls <- mat2adj(t(exp.controls), method=niName)[TFs,]
     saveRDS(netCases,file.path(outputDir,paste0(dataName,'_cases_',niName,'_network.rds')))
+    netControls <- mat2adj(t(exp.controls), method=niName)[TFs,]
     saveRDS(netControls,file.path(outputDir,paste0(dataName,'_controls_',niName,'_network.rds')))
   })
 }
@@ -49,20 +49,15 @@ runNImethods <- function(data="~/NI_only_0001/readyToGoCOPDGene0001.RData", data
 
 num_cores <- 4
 
-# Initiate cluster
-if(!is.na(num_cores)){
-  cl <- makeCluster(num_cores)
-  registerDoParallel(cl)
-}
+cl <- makeCluster(num_cores)
+registerDoParallel(cl)
 
 #start time
 strt  <- Sys.time()
-# Changed to run two Networks and calculate transition on each iteration 1/13/16
+
 foreach(i=studies,.packages=c("bereR","nettools")) %dopar% {
   runNImethods(paste0(outputDir,"/",i,"_JASPAR2014_bere.RData"), i, c("BERE","WGCNA","CLR"))
 }
 
 print(Sys.time()-strt)
-if(!is.na(num_cores)){
-  stopCluster(cl)
-}
+stopCluster(cl)

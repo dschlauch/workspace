@@ -22,8 +22,8 @@ if (study=="ECLIPSE"){
   exprFile <- "~/gd/Harvard/Research/data/Eclipse/ECLIPSE_Blood_Exp.txt"
   clinicalFile <- "~/gd/Harvard/Research/data/Eclipse/ECLIPSE_blood.txt"
   #ECLIPSE labels
-  casesString <- "COPD"
-  controlsString <- "Smoker Control"
+  casesString <- "COPD Subjects"
+  controlsString <- "Smoker Controls"
   phenotypeName <- "Subject.type"
 } 
 if (study=="COPDGene"){
