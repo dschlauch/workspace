@@ -9,7 +9,7 @@ motifVersion <- "JASPAR2014"
 outputDir <- "~/NI_only_0001"
 sapply(studies, function(study){
   study <<- study
-  source("./load_TM_data.R")
+  source("~/gd/Harvard/Research/R_workspace/load_TM_data.R")
 })
 
 runNImethods <- function(data="~/NI_only_0001/readyToGoCOPDGene0001.RData", dataName="COPDGene", niNames=c("WGCNA","CLR","ARACNE")){
