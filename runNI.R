@@ -1,6 +1,8 @@
 
 library(nettools)
 library(bereR)
+library(foreach)
+library(doParallel)
 # ECLIPSE
 
 # load the data, save each study as RData
