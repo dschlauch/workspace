@@ -19,14 +19,14 @@ generateNIDifferencePlot <- function(datasetA, datasetB, niMethod, imageType=png
   
   df <- data.frame(dataA=c(datasetACases)-c(datasetAControls), dataB=c(datasetBCases)-c(datasetBControls))
   spearCor <- cor(df[,1],df[,2],method="spearman")
+  corText <- paste0("r[s]==",round(spearCor,4))
   print(spearCor)
-  imageType(file.path(outputDir,paste(datasetA, datasetB, niMethod, 'edgeweight_difference_comparison.png', sep="_")))
+  imageType(file.path(outputDir,"plots",paste(datasetA, datasetB, niMethod, 'edgeweight_difference_comparison.png', sep="_")))
   plot <- ggplot(df, aes(x=dataA, y=dataB)) +
-    geom_point(size=.1, alpha=.1) + xlab(datasetA) + ylab(datasetB) + ggtitle(paste0("Edgeweights in Controls (", datasetA, datasetB, ")")) + theme_classic()+
-    annotate("text", x = 0.0, y = -Inf, hjust=0, label = paste0("r=",round(spearCor,4)), parse = TRUE, size = 8)
+    geom_point(size=.1, alpha=.1) + xlab(datasetA) + ylab(datasetB) + ggtitle(paste0(niMethod, " edge weight differences (", datasetA," vs ", datasetB, ")")) + theme_classic()+
+    annotate("text", x=Inf, y=-Inf, hjust=1, , vjust=-1, label=corText, parse=TRUE, size=8)
   print(plot)
   dev.off()
-  
 }
 
 generateNIDifferencePlot("ECLIPSE","COPDGene","bere",png)
@@ -38,6 +38,10 @@ generateNIDifferencePlot("ECLIPSE","LTCOPD","WGCNA",png)
 generateNIDifferencePlot("ECLIPSE","COPDGene","CLR",png)
 generateNIDifferencePlot("ECLIPSE","LGRC","CLR",png)
 generateNIDifferencePlot("ECLIPSE","LTCOPD","CLR",png)
+generateNIDifferencePlot("ECLIPSE","COPDGene","ARACNE",png)
+generateNIDifferencePlot("ECLIPSE","LGRC","ARACNE",png)
+generateNIDifferencePlot("ECLIPSE","LTCOPD","ARACNE",png)
+
 
 # 
 # eclipseBERECases <- readRDS(file.path(outputDir,'ECLIPSE_cases_bere_network.rds'))

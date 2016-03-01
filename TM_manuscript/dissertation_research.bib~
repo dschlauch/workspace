@@ -282,3 +282,10 @@
   howpublished = {\url{http://www.lung-genomics.org/}},
   note = {Accessed: 2016-02-02}
 }
+@article{cloonan2016mitochondrial,
+  title={Mitochondrial iron chelation ameliorates cigarette smoke-induced bronchitis and emphysema in mice},
+  author={Cloonan, Suzanne M and Glass, Kimberly and Laucho-Contreras, Maria E and Bhashyam, Abhiram R and Cervo, Morgan and Pab{\'o}n, Maria A and Konrad, Csaba and Polverino, Francesca and Siempos, Ilias I and Perez, Elizabeth and others},
+  journal={Nature medicine},
+  year={2016},
+  publisher={Nature Publishing Group}
+}

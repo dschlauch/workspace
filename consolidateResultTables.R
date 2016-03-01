@@ -10,7 +10,7 @@ library(VennDiagram)
 ##################################################################################################################
 
 # Specify the analysis folders and display names for the analyses
-analysisNames <- c("ECLIPSE_bere_bare_55557","COPDGene_bere_70856", "LGRC_bere_56432","LTCOPD_bere_bare_92540")
+# analysisNames <- c("ECLIPSE_bere_bare_55557","COPDGene_bere_70856", "LGRC_bere_56432","LTCOPD_bere_bare_92540")
 analysisNames <- c("ECLIPSE_combined_runs","COPDGene_combined_runs", "LGRC_combined_runs","LTCOPD_combined_runs")
 displayNames <- c("ECLIPSE","COPDGene","LGRC","LTCOPD")
 baseDir <- "~/gd/Harvard/Research/TM_outputs/JASPAR2014/BERE/"
@@ -44,10 +44,14 @@ makeComparisonPlot <- function(pair, plotTopNTFs=15, filterColIndices = c(8,18,2
   includedLabels <- apply(merged.data.frame[,filterColIndices[pair]],1,function(...) suppressWarnings(min(...,na.rm=T))) < plotTopNTFs
   merged.data.frame$labels <- as.character(merged.data.frame[,1])
   merged.data.frame$labels[!includedLabels] <- ""
-  corText <- paste0("r[s]==",round(cor(merged.data.frame[[paste(analysisNames[pair[1]], metric, sep="_")]], merged.data.frame[[paste(analysisNames[pair[2]], metric, sep="_")]], use="complete.obs", method="spearman"),3)) 
+  corValue <- cor(merged.data.frame[[paste(analysisNames[pair[1]], metric, sep="_")]], merged.data.frame[[paste(analysisNames[pair[2]], metric, sep="_")]], use="complete.obs", method="spearman")
+  p.value <- cor.test(merged.data.frame[[paste(analysisNames[pair[1]], metric, sep="_")]], merged.data.frame[[paste(analysisNames[pair[2]], metric, sep="_")]], use="complete.obs", method="spearman")$p.value
+  pValueText <- ifelse (p.value<1e-16,"p<1e-16",paste0("p=",as.character(p.value)))
+  
+  corText <- paste0("r[s]==",round(corValue,3),"~\n(",pValueText,")") 
   plot1 <- ggplot(merged.data.frame, aes_string(paste(analysisNames[pair[1]], metric, sep="_"),paste(analysisNames[pair[2]], metric, sep="_"), label="labels"))
   plot1 <- plot1 + geom_point(colour="blue",alpha=.5, size=4) + xlab(displayNames[pair[1]]) + ylab(displayNames[pair[2]]) + 
-    geom_text(vjust=0) + annotate("text", x = .02, y = .002, hjust=0, label = corText, parse = TRUE, size = 8)+    
+    geom_text(vjust=0) + annotate("text", x = Inf, y = -Inf, hjust=1, vjust=-1, label = corText, parse = TRUE, size = 8)+    
     scale_x_continuous(limits=xlimits, expand = c(0, 0)) +
     scale_y_continuous(limits=ylimits, expand = c(0, 0)) + 
     theme_classic()
@@ -97,7 +101,7 @@ generatePlots("Magnitude", filterColIndices = c(9,19,29,39))
 
 # Create table
 keepColnames <- c(t(outer(analysisNames,c("Magnitude","rankMag","dTFI.FDR","limma"), paste, sep="_")))
-displayColnames <- rep(c("dTFI","rank","FDR","LIMMA"), 3)
+displayColnames <- rep(c("dTFI","rank","FDR","LIMMA"), 4)
 publicationTable <- cbind(merged.data.frame[,1], round(merged.data.frame[,keepColnames],4))
 colnames(publicationTable) <- c('TF',displayColnames)
 options(scipen=999)

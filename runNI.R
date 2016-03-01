@@ -34,7 +34,9 @@ runNImethods <- function(data="~/NI_only_0001/readyToGoCOPDGene0001.RData", data
     saveRDS(netCases,file.path(outputDir,paste0(dataName, '_cases_bere_network.rds')))
     saveRDS(netControls,file.path(outputDir,paste0(dataName, '_controls_bere_network.rds')))
   }
-  
+  if("PANDA"%in%niNames){
+    # Possibly implement for PANDA, maybe use matlab script
+  }
   nettoolsNames <- niNames["BERE"!=niNames]
   
   sapply(nettoolsNames, function(niName){
@@ -56,7 +58,7 @@ registerDoParallel(cl)
 strt  <- Sys.time()
 
 foreach(i=studies,.packages=c("bereR","nettools")) %dopar% {
-  runNImethods(paste0(outputDir,"/",i,"_JASPAR2014_bere.RData"), i, c("BERE","WGCNA","CLR"))
+  runNImethods(paste0(outputDir,"/",i,"_JASPAR2014_bere.RData"), i, c("BERE","WGCNA","CLR","ARACNE"))
 }
 
 print(Sys.time()-strt)

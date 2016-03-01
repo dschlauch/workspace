@@ -129,6 +129,20 @@ ggplot(data=plotDF, aes(x=limmanegLogPValues, y=negLogZPValues)) + geom_point(ae
   theme(plot.title = element_text(size=20,hjust=0))
 dev.off()
 
+# Generate heatmap
+x <- transMatrices[[1]]
+mdf <- melt(x)
+
+# Heatmap
+p1 <- ggplot(mdf, aes(x=Var1, y=Var2)) +
+  geom_tile(aes(fill=value)) + scale_fill_gradient2(name = "dTFI") + theme_bw() + 
+  theme(axis.text.y = element_text(size=3), axis.text.x = element_text(size=3,angle = 90, hjust = 1)) + 
+  xlab("Transcription Factors") + ylab("Transcription Factors") + ggtitle("ECLIPSE Transtion Matrix")
+
+pdf(file.path(outputDir,paste('TM_heatmap.pdf', sep="")), width=9, height=8)
+print(p1)
+dev.off()
+
 # periodically save workspace
 # save.image(file=file.path(outputDir,paste("activeImage",analysisCode,".RData",sep="")))
 
