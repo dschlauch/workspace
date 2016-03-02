@@ -124,116 +124,67 @@ Introduction
 \end_layout
 
 \begin_layout Standard
-The impact of confounding due to population structure and cryptic relatedness
- is well established 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-cite{ptak2002evidence, pritchard2000association, roeder2009searching}
-\end_layout
-
-\end_inset
-
-.
- Many approaches are utilized to address this concept at the analysis level,
- such as PCA
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-cite{price2006principal,price2010new}
-\end_layout
-
-\end_inset
-
-, mixed models 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-cite{listgarten2012improved,zhou2012genome,yang2014advantages,kang2010variance}
-\end_layout
-
-\end_inset
-
-, etc.
- or at the data collection level by limiting the scope of the study to homogeneo
-us populations or matching by ancestry.
- However, as our ability to further detect structure increases with developing
- methods and technologies we find that even supposedly homogeneous populations
- contain detectable population structure that may inflate type I error particula
-rly among rare variants 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-cite{mathieson2012differential}
-\end_layout
-
-\end_inset
-
-.
- Additionally, the presence on cryptic relatedness presents further potential
- for confounding in GWAS, increasing both type I and type II errors 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-cite{voight2005confounding, sun2012identifying,li2014relationship}
-\end_layout
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-Much of the structure identifcation improvement can be attributed to our
- ability to identify rare alleles.
- Rare alleles may be exploited due to the fact that they are more likely
- to have arisen recently and thus a superior approach towards separating
- populations that have recently separated
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-cite{mathieson2014demography}
-\end_layout
-
-\end_inset
-
-.
- Furthermore, very low allele frequencies are more unstable than higher
- allele frequency, either becoming fixed at zero or becoming more common
- with high probability.
+The fundamental assumption in standard genetic association analysis is that
+ the study subjects are independent and that, at each locus, the allele
+ frequency is identical across study subjects.
+ In the presence of population heterogeneity, e.g.
+ population substructure or cryptic relatedness, these assumptions are violated.
+ It can introduce confounding into the analysis and lead to biased results,
+ e.g.
+ false positive findings.
+ Given the generality of the problem, it has been the focus of methodology
+ research for a long time.
+ For candidate gene studies and later genome-wide association studies (GWAS),
+ genomic control was developed.
+ The approach adjusts the association test statistics at the loci of interest
+ by an inflation factor that is estimated at a set of known null-loci.
+ With the arrival of GWAS data, it became possible to estimate the genetic
+ dependence between study subjects and the overall genetic variation for
+ each study subject by computing the empirical genetic variance/covariance
+ matrix between study subjects at a whole genome level.
+ The genetic variance/covariance matrix can then be utilized in two ways
+ to minimize the effects of population substructure on the association analysis.
  
 \end_layout
 
 \begin_layout Standard
-In this study we present a genetic similarity measure that is designed to
- separate individuals with recent common ancestry.
+The first method is to compute an Eigenvalue decomposition of the matrix
+ and to include the eigenvectors that explain the most variation as covariates
+ in the association analysis.
+ An alternative approach is to incorporate the estimated dependence structure
+ of the study subjects directly into a generalized linear model and account
+ so directly for the dependence at the model-level.
+ Both approaches have proven to work well in numerous applications.
+ While the first approach is computationally fast and easy to implement,
+ the direct modelling of the dependence structure between study subjects
+ can be more efficient.
+ 
+\end_layout
+
+\begin_layout Standard
+However, both approaches perform benefit if, prior to the analysis, study
+ subjects whose genetic profile is very different from the other study subjects,
+ e.g.
+ “genetic outliers”, are removed from the data set.
+ The standard practice is currently to examine the Eigenvalue plots visually
+ and to identify outliers by personal judgement on how far study subjects
+ are from the “clouds” of study subjects.
+ As typically up to 10 Eigenvectors have to be considered, this process
+ of identifying outliers can become a complicated and subjective procedure.
+ 
+\end_layout
+
+\begin_layout Standard
+In this communication, we propose a formal statistical test that assesses
+ whether two study subjects come from the same population and whether they
+ are unrelated.
+ The test statistic is based on the Jaccard Index and its distribution can
+ be derived under the null-hypothesis which makes computationally fast,
+ enabling the application to whole-genome sequencing data.
  Our measure has clearly defined properties which can be used to test for
  homogeneity in a population and in particular identify individuals who
  are likely be related in a study population.
+ 
 \end_layout
 
 \begin_layout Section*
@@ -261,12 +212,11 @@ For a matrix of
 \begin_inset Formula $N$
 \end_inset
 
- variants described by the genotype matrix 
+ independent variants described by the genotype matrix 
 \begin_inset Formula $\mathbf{G}_{2n\times N}$
 \end_inset
 
-, we define the weighted Jaccard similarity between two haploid genomes,
- 
+, we define the similarity between two haploid genomes, 
 \begin_inset Formula $s_{i,j}$
 \end_inset
 
@@ -342,7 +292,7 @@ It therefore follows from the central limit theroem that in the absence
 \begin_inset Formula $s_{i,j}$
 \end_inset
 
- is approximately Gaussian.
+ is Gaussian.
 \begin_inset Formula 
 \[
 s_{i,j}\sim N\left(1,\sigma^{2}\right)
@@ -413,16 +363,25 @@ Furthermore, this measure is particularly sensitive for measuring relatedness.
 \end_layout
 
 \begin_layout Standard
-Consider a coefficient of relatedness, 
+Consider a coefficient of kinship, 
 \begin_inset Formula $\Phi>0$
 \end_inset
 
 ,
 \begin_inset Formula 
 \begin{align*}
-E\left(s_{i,j}|\Phi,\mbox{No other structure}\right) & =\sum_{k=1}^{N}w_{k}\left(\Phi p_{k}+\left(1-\Phi\right)p_{k}^{2}\right)\\
+E\left(s_{i,j}|\Phi,\mbox{No other structure}\right) & =\frac{\sum_{k=1}^{N}w_{k}\left(\Phi+\left(1-\Phi\right)\frac{1}{w_{k}}\right)}{\sum_{k=1}^{N}I\left[\sum_{l=1}^{2n}\mathbf{G}_{l,k}>1\right]}\\
+ & =1+\Phi\left[\frac{\sum_{k=1}^{N}w_{k}}{\sum_{k=1}^{N}I\left[\sum_{l=1}^{2n}\mathbf{G}_{l,k}>1\right]}-1\right]\\
  & >1
 \end{align*}
+
+\end_inset
+
+And estimating this kinship via the method of moments yields
+\begin_inset Formula 
+\[
+\hat{\Phi}=\frac{s_{i,j}-1}{\left[\frac{\sum_{k=1}^{N}w_{k}}{\sum_{k=1}^{N}I\left[\sum_{l=1}^{2n}\mathbf{G}_{l,k}>1\right]}-1\right]}
+\]
 
 \end_inset
 
@@ -431,11 +390,11 @@ E\left(s_{i,j}|\Phi,\mbox{No other structure}\right) & =\sum_{k=1}^{N}w_{k}\left
 
 \begin_layout Standard
 For example, in an otherwise homogeneous population of unrelated individuals
- an uncle-nephew relationship (
-\begin_inset Formula $\Phi=.125$
+ an uncle-nephew relationship 
+\begin_inset Formula $\left(\Phi=.125\right)$
 \end_inset
 
-), with 
+, with 
 \begin_inset Formula $MAF\sim Uniform\left(.01,.1\right)$
 \end_inset
 

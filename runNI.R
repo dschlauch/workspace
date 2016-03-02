@@ -5,14 +5,6 @@ library(foreach)
 library(doParallel)
 # ECLIPSE
 
-# load the data, save each study as RData
-studies <- c("ECLIPSE", "COPDGENE", "LGRC","LTCOPD")
-motifVersion <- "JASPAR2014"
-outputDir <- "~/NI_only_0001"
-sapply(studies, function(study){
-  study <<- study
-  source("~/gd/Harvard/Research/R_workspace/load_TM_data.R")
-})
 
 runNImethods <- function(data="~/NI_only_0001/readyToGoCOPDGene0001.RData", dataName="COPDGene", niNames=c("WGCNA","CLR","ARACNE")){
   load(data)
@@ -48,18 +40,25 @@ runNImethods <- function(data="~/NI_only_0001/readyToGoCOPDGene0001.RData", data
   })
 }
 
+print("Begin loading data...")
+# load the data, save each study as RData
+studies <- c("ECLIPSE", "COPDGENE", "LGRC","LTCOPD")
+motifVersion <- "JASPAR2014"
+outputDir <- "~/NI_only_0001"
+sapply(studies, function(study){
+  print(study)
+  study <<- study
+  source("~/gd/Harvard/Research/R_workspace/load_TM_data.R")
+})
+print("Finished loading data.")
 
-num_cores <- 4
-
-cl <- makeCluster(num_cores)
+cl <- makeCluster(4)
 registerDoParallel(cl)
 
 #start time
 strt  <- Sys.time()
-
 foreach(i=studies,.packages=c("bereR","nettools")) %dopar% {
-  runNImethods(paste0(outputDir,"/",i,"_JASPAR2014_bere.RData"), i, c("BERE","WGCNA","CLR","ARACNE"))
+  runNImethods(paste0(outputDir,"/",i,"_JASPAR2014_bere.RData"), i, c("WGCNA","CLR","ARACNE"))
 }
-
 print(Sys.time()-strt)
 stopCluster(cl)
