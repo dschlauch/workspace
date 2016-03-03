@@ -1,0 +1,67 @@
+---
+title: "Biweekly update"
+author: Dan
+output: slidy_presentation
+date: "March 7, 2016"
+---
+
+
+```{r, echo=FALSE}
+library(data.table)
+library(ggplot2)
+library(knitr)
+```
+
+
+
+## Agenda
+
+- Objectives for Manuscript
+    - Better communicate the story
+    - a
+    - Biological insight
+        - Send to Ed, Craig when ready for their input.
+
+
+
+##  The story (Part 1)
+- There is a challenge in Network Inference
+    - NI methods can be effective, but are weak at context specific results
+    - Existing NI methods can often perform well when measured against gold standards such as ChIP, but context specific validation is lacking.
+    - Inferring GRNs from expression data and then observing differences do not yield repeatable results (see later slides)
+
+##  The story (Part 2)
+- Our method tackles this problem
+    - Our method produces repeatable results
+        - Strong correlation across independent studies of different tissues.
+        - Strongest correlation across same tissues in independent studies.
+    - Our method's results are biologically relevent.
+        - Mitochondrial function, other biopoetry needed here.
+    - Our method's results are independently verified.
+        - Condor.
+    - These results could not have been obtained via conventional methods.
+        - Differential expression, comparing edges...
+Additionally
+
+## Plots
+### Plots of magnitude
+![JASPAR2014](/home/dan/gd/Harvard/Research/TM_outputs/JASPAR2014/BERE/Magnitude_comparison_diff_tissue.png)
+![JASPAR2014](/home/dan/gd/Harvard/Research/TM_outputs/JASPAR2014/BERE/Magnitude_comparison_same_tissue.png)
+
+##  BERE with 2014 JASPAR Motif
+
+### Plots of normalized scores
+![JASPAR2014](/home/dan/gd/Harvard/Research/TM_outputs/JASPAR2014/BERE/negLogPValues_comparison_diff_tissue.png)
+![JASPAR2014](/home/dan/gd/Harvard/Research/TM_outputs/JASPAR2014/BERE/negLogPValues_comparison_same_tissue.png)
+
+***
+
+##  BERE with CISPB Motif
+
+### Plots of magnitud
+![JASPAR2014](/home/dan/gd/Harvard/Research/TM_outputs/CISPB/BERE/Magnitude_comparison_diff_tissue.png)
+![JASPAR2014](/home/dan/gd/Harvard/Research/TM_outputs/CISPB/BERE/Magnitude_comparison_same_tissue.png)
+
+### Plots of normalized scores
+![JASPAR2014](/home/dan/gd/Harvard/Research/TM_outputs/JASPAR2014/BERE/negLogPValues_comparison_diff_tissue.png)
+![JASPAR2014](/home/dan/gd/Harvard/Research/TM_outputs/JASPAR2014/BERE/negLogPValues_comparison_same_tissue.png)
