@@ -26,7 +26,7 @@ if (study=="ECLIPSE"){
   controlsString <- "Smoker Controls"
   phenotypeName <- "Subject.type"
 } 
-if (study=="COPDGene"){
+if (study=="COPDGENE"){
   exprFile <- "~/gd/Harvard/Research/data/COPDGene/COPDGene_GSExpressionData.txt"
   clinicalFile <- "~/gd/Harvard/Research/data/COPDGene/COPDGene_clinical.txt"
   #COPDGene labels

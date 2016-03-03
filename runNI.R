@@ -43,6 +43,7 @@ runNImethods <- function(data="~/NI_only_0001/COPDGENE_JASPAR2014_bere.RData", d
 print("Begin loading data...")
 # load the data, save each study as RData
 studies <- c("ECLIPSE", "COPDGENE", "LGRC","LTCOPD")
+studies <- c("COPDGENE")
 motifVersion <- "JASPAR2014"
 outputDir <- "~/NI_only_0001"
 sapply(studies, function(study){
@@ -58,7 +59,7 @@ registerDoParallel(cl)
 #start time
 strt  <- Sys.time()
 foreach(i=studies,.packages=c("bereR","nettools")) %dopar% {
-  runNImethods(paste0(outputDir,"/",i,"_JASPAR2014_bere.RData"), i, c("ARACNE"))
+  runNImethods(paste0(outputDir,"/",i,"_JASPAR2014_bere.RData"), i, c("bere","WGCNA","CLR","ARACNE"))
 }
 print(Sys.time()-strt)
 stopCluster(cl)
