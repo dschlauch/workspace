@@ -52,13 +52,13 @@ sapply(studies, function(study){
 })
 print("Finished loading data.")
 
-cl <- makeCluster(4)
+cl <- makeCluster(2)
 registerDoParallel(cl)
 
 #start time
 strt  <- Sys.time()
 foreach(i=studies,.packages=c("bereR","nettools")) %dopar% {
-  runNImethods(paste0(outputDir,"/",i,"_JASPAR2014_bere.RData"), i, c("CLR","ARACNE"))
+  runNImethods(paste0(outputDir,"/",i,"_JASPAR2014_bere.RData"), i, c("ARACNE"))
 }
 print(Sys.time()-strt)
 stopCluster(cl)
