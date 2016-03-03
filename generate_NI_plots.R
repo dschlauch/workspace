@@ -29,18 +29,26 @@ generateNIDifferencePlot <- function(datasetA, datasetB, niMethod, imageType=png
   dev.off()
 }
 
-generateNIDifferencePlot("ECLIPSE","COPDGENE","bere",png)
-generateNIDifferencePlot("ECLIPSE","LGRC","bere",png)
-generateNIDifferencePlot("ECLIPSE","LTCOPD","bere",png)
-generateNIDifferencePlot("ECLIPSE","COPDGENE","WGCNA",png)
-generateNIDifferencePlot("ECLIPSE","LGRC","WGCNA",png)
-generateNIDifferencePlot("ECLIPSE","LTCOPD","WGCNA",png)
-generateNIDifferencePlot("ECLIPSE","COPDGENE","CLR",png)
-generateNIDifferencePlot("ECLIPSE","LGRC","CLR",png)
-generateNIDifferencePlot("ECLIPSE","LTCOPD","CLR",png)
-generateNIDifferencePlot("ECLIPSE","COPDGENE","ARACNE",png)
-generateNIDifferencePlot("ECLIPSE","LGRC","ARACNE",png)
-generateNIDifferencePlot("ECLIPSE","LTCOPD","ARACNE",png)
+studies <- c("ECLIPSE", "COPDGENE", "LGRC","LTCOPD")
+niMethods <- c("bere","WGCNA","CLR","ARACNE")
+apply(combn(studies,2), 2, function(x){
+  print(x)  
+  sapply(niMethods, function(meth) generateNIDifferencePlot(x[1],x[2],meth) )
+  print("done")
+})
+
+# generateNIDifferencePlot("ECLIPSE","COPDGENE","bere",png)
+# generateNIDifferencePlot("ECLIPSE","LGRC","bere",png)
+# generateNIDifferencePlot("ECLIPSE","LTCOPD","bere",png)
+# generateNIDifferencePlot("ECLIPSE","COPDGENE","WGCNA",png)
+# generateNIDifferencePlot("ECLIPSE","LGRC","WGCNA",png)
+# generateNIDifferencePlot("ECLIPSE","LTCOPD","WGCNA",png)
+# generateNIDifferencePlot("ECLIPSE","COPDGENE","CLR",png)
+# generateNIDifferencePlot("ECLIPSE","LGRC","CLR",png)
+# generateNIDifferencePlot("ECLIPSE","LTCOPD","CLR",png)
+# generateNIDifferencePlot("ECLIPSE","COPDGENE","ARACNE",png)
+# generateNIDifferencePlot("ECLIPSE","LGRC","ARACNE",png)
+# generateNIDifferencePlot("ECLIPSE","LTCOPD","ARACNE",png)
 
 
 # 

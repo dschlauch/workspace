@@ -35,10 +35,9 @@ library(knitr)
     1) Our method produces **repeatable results**
         - Strong correlation across independent studies of different tissues.
         - Strongest correlation across same tissues in independent studies.
-    2) Our method's results are **biologically relevent**.
+    2) Our method's results are **biologically relevent** and **independently verified**.
         - Mitochondrial function, other biopoetry needed here.
-    3) Our method's results are **independently verified**.
-        - Condor.
+        - Condor
     4) These results **could not have been obtained** via conventional methods.
         - Differential expression, comparing edges...
         
