@@ -24,25 +24,31 @@ library(knitr)
 
 
 
-##  The story (Part 1)
+##  The story (Part 1: Setup)
 - There is a challenge in Network Inference
     - NI methods can be effective, but are weak at context specific results
     - Existing NI methods can often perform well when measured against gold standards such as ChIP, but context specific validation is lacking.
     - Inferring GRNs from expression data and then observing differences do not yield repeatable results (see later slides)
 
-##  The story (Part 2)
+##  The story (Part 2: Solution)
 - Our method tackles this problem
-    - Our method produces repeatable results
+    1) Our method produces **repeatable results**
         - Strong correlation across independent studies of different tissues.
         - Strongest correlation across same tissues in independent studies.
-    - Our method's results are biologically relevent.
+    2) Our method's results are **biologically relevent**.
         - Mitochondrial function, other biopoetry needed here.
-    - Our method's results are independently verified.
+    3) Our method's results are **independently verified**.
         - Condor.
-    - These results could not have been obtained via conventional methods.
+    4) These results **could not have been obtained** via conventional methods.
         - Differential expression, comparing edges...
-Additionally
+        
+Additionally,
 
+- For supplemental arguments...
+    1) Our method has intuitive theoretical basis.
+    2) Our method works in simulations with known drivers of state transitions.
+    3) Our method is reasonably fast for high throughput scale data.
+    
 ## Plots
 ### Plots of magnitude
 ![JASPAR2014](/home/dan/gd/Harvard/Research/TM_outputs/JASPAR2014/BERE/Magnitude_comparison_diff_tissue.png)
