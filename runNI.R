@@ -6,7 +6,7 @@ library(doParallel)
 # ECLIPSE
 
 
-runNImethods <- function(data="~/NI_only_0001/readyToGoCOPDGene0001.RData", dataName="COPDGene", niNames=c("WGCNA","CLR","ARACNE")){
+runNImethods <- function(data="~/NI_only_0001/COPDGENE_JASPAR2014_bere.RData", dataName="COPDGENE", niNames=c("WGCNA","CLR","ARACNE")){
   load(data)
   exp.cases <- dataset$exp[,casesFilter]
   exp.controls <- dataset$exp[,controlsFilter]
@@ -33,9 +33,9 @@ runNImethods <- function(data="~/NI_only_0001/readyToGoCOPDGene0001.RData", data
   
   sapply(nettoolsNames, function(niName){
     print(niName)
-    netCases <- mat2adj(t(exp.cases), method=niName)[TFs,]
+    netCases <- mat2adj(t(exp.cases), method=niName)[rownames(exp.cases)%in%TFs,]
     saveRDS(netCases,file.path(outputDir,paste0(dataName,'_cases_',niName,'_network.rds')))
-    netControls <- mat2adj(t(exp.controls), method=niName)[TFs,]
+    netControls <- mat2adj(t(exp.controls), method=niName)[rownames(exp.cases)%in%TFs,]
     saveRDS(netControls,file.path(outputDir,paste0(dataName,'_controls_',niName,'_network.rds')))
   })
 }

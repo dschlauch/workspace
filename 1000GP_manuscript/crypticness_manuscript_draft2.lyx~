@@ -225,9 +225,9 @@ For a matrix of
 
 \begin_layout Standard
 \begin_inset Formula 
-\[
-s_{i,j}=\frac{\sum_{k=1}^{N}w_{k}\mathbf{G}_{i,k}\mathbf{G}_{j,k}}{\sum_{k=1}^{N}I\left[\sum_{l=1}^{2n}\mathbf{G}_{l,k}>1\right]}
-\]
+\begin{equation}
+s_{i,j}=\frac{\sum_{k=1}^{N}w_{k}\mathbf{G}_{i,k}\mathbf{G}_{j,k}}{\sum_{k=1}^{N}I\left[\sum_{l=1}^{2n}\mathbf{G}_{l,k}>1\right]}\label{eq:s equation}
+\end{equation}
 
 \end_inset
 
@@ -306,9 +306,9 @@ Where
 
  is estimated by 
 \begin_inset Formula 
-\[
-\hat{\sigma^{2}}=\hat{Var}\left(s_{i,j}|\mbox{No structure}\right)=\frac{\sum_{k=1}^{N}\hat{p}_{k}^{2}\left(1-\hat{p}_{k}^{2}\right)w_{k,i,j}^{2}}{\left(\sum_{k=1}^{N}I\left[\sum_{l=1}^{2n}\mathbf{G}_{l,k}>1\right]\right)^{2}}
-\]
+\begin{equation}
+\hat{\sigma^{2}}=\hat{Var}\left(s_{i,j}|\mbox{No structure}\right)=\frac{\sum_{k=1}^{N}\hat{p}_{k}^{2}\left(1-\hat{p}_{k}^{2}\right)w_{k,i,j}^{2}}{\left(\sum_{k=1}^{N}I\left[\sum_{l=1}^{2n}\mathbf{G}_{l,k}>1\right]\right)^{2}}\label{eq: variance equation}
+\end{equation}
 
 \end_inset
 
@@ -369,19 +369,34 @@ Consider a coefficient of kinship,
 
 ,
 \begin_inset Formula 
-\begin{align*}
-E\left(s_{i,j}|\Phi,\mbox{No other structure}\right) & =\frac{\sum_{k=1}^{N}w_{k}\left(\Phi+\left(1-\Phi\right)\frac{1}{w_{k}}\right)}{\sum_{k=1}^{N}I\left[\sum_{l=1}^{2n}\mathbf{G}_{l,k}>1\right]}\\
- & =1+\Phi\left[\frac{\sum_{k=1}^{N}w_{k}}{\sum_{k=1}^{N}I\left[\sum_{l=1}^{2n}\mathbf{G}_{l,k}>1\right]}-1\right]\\
- & >1
-\end{align*}
+\begin{align}
+E\left(s_{i,j}|\Phi,\mbox{No other structure}\right) & =\frac{\sum_{k=1}^{N}w_{k}\left(\Phi+\left(1-\Phi\right)\frac{1}{w_{k}}\right)}{\sum_{k=1}^{N}I\left[\sum_{l=1}^{2n}\mathbf{G}_{l,k}>1\right]}\nonumber \\
+ & =1+\Phi\left[\frac{\sum_{k=1}^{N}w_{k}}{\sum_{k=1}^{N}I\left[\sum_{l=1}^{2n}\mathbf{G}_{l,k}>1\right]}-1\right]\label{Expected with kinship}
+\end{align}
 
 \end_inset
 
-And estimating this kinship via the method of moments yields
+It can be shown that in the presence of cryptic relatedness, 
+\begin_inset Formula $\Phi>0$
+\end_inset
+
+, 
 \begin_inset Formula 
 \[
-\hat{\Phi}=\frac{s_{i,j}-1}{\left[\frac{\sum_{k=1}^{N}w_{k}}{\sum_{k=1}^{N}I\left[\sum_{l=1}^{2n}\mathbf{G}_{l,k}>1\right]}-1\right]}
+E\left(s_{i,j}|\Phi>0\right)>1
 \]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+And yielding an estimate of this kinship
+\begin_inset Formula 
+\begin{equation}
+\hat{\Phi}=\frac{s_{i,j}-1}{\left[\frac{\sum_{k=1}^{N}w_{k}}{\sum_{k=1}^{N}I\left[\sum_{l=1}^{2n}\mathbf{G}_{l,k}>1\right]}-1\right]}\label{Estimated Kinship}
+\end{equation}
 
 \end_inset
 
@@ -489,7 +504,7 @@ and assuming independence of each individual's haploid genomes, such as
 
 \end_inset
 
- 
+
 \end_layout
 
 \begin_layout Section*
@@ -543,15 +558,48 @@ We discovered that there was great variation in the presence of cryptic
 
 \begin_layout Standard
 We defined the presence of population structure as applying to those populations
- which had a median 
-\begin_inset Formula $s_{i,j}<.97$
+ which had a greater than expected number of similarity scores below the
+ mean.
+ We performed a standard one-sided binomial test with 
+\begin_inset Formula $p=0.5$
+\end_inset
+
+ using 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ cutoffs of 
+\begin_inset Formula $.01$
+\end_inset
+
+ and 
+\begin_inset Formula $.001$
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "population_table"
+
 \end_inset
 
 .
- Using this criterion, three of the 26 populations met this threshold- MXL
- (Mexican Ancestry from Los Angeles USA), PUR (Puerto Ricans from Puerto
- Rico), and PEL (Peruvians from Lima, Peru).
- Each of these populations are 
+ Using this criterion, eight of the 26 populations met this threshold.
+ Using the stricter cutoff- CLM (Colombians from Medellin, Colombia)
+\begin_inset Formula $\left(p=4\times10^{-6}\right)$
+\end_inset
+
+, PUR (Puerto Ricans from Puerto Rico) 
+\begin_inset Formula $\left(p=1\times10^{-11}\right)$
+\end_inset
+
+, and PEL (Peruvians from Lima, Peru) 
+\begin_inset Formula $\left(p=7\times10^{-34}\right)$
+\end_inset
+
+.
+ Each of these populations are part of the Ad Mixed American super population
+ and represent 
 \begin_inset Quotes eld
 \end_inset
 
@@ -559,9 +607,9 @@ new world
 \begin_inset Quotes erd
 \end_inset
 
- populations which have undergone extensive admixture in the past centuries.
- It is therefore unsurprising that these groups of individuals would exhibit
- the greatest amount of heterogeneity among the populations surveyed.
+ groups which have undergone extensive admixture in recent centuries.
+ It is therefore reassuring that these groups of individuals would exhibit
+ the greatest amount of structure among the populations surveyed.
 \end_layout
 
 \begin_layout Standard
@@ -570,20 +618,25 @@ We defined the presence of cryptic relatedness as those individual pairs
 \begin_inset Formula $\alpha=.01$
 \end_inset
 
-.
- Cryptic relatedness was discovered in 12 
-\series bold
-[update this with latest results]
-\series default
- of the 26 populations using this method.
+ and were estimated to have a coefficient of relatedness greater than 
+\begin_inset Formula $.01$
+\end_inset
+
+ (for reference, 
+\begin_inset Formula $\Phi=0.0156$
+\end_inset
+
+ corresponds to second cousins) .
+ By this measure, cryptic relatedness was discovered in 6 of the 26 populations
+ using this method.
  
 \end_layout
 
 \begin_layout Standard
 The overlap in these two groups may be due to the fact that the variance
  in similarity is inflated in the presence of population structure.
- So it is not accurate to identify cryptic relatedness in this manner in
- popultations which contain structure.
+ So it is not necessarily accurate to identify cryptic relatedness in this
+ manner in popultations which contain structure.
  However, in populations which do not exhibit detectable structure, we still
  find many instances of related individuals in this study.
  For example, two individuals from the ACB population (African Caribbeans
@@ -605,10 +658,18 @@ The overlap in these two groups may be due to the fact that the variance
 
 .
  Using the formula above, we estimate this relationship to be 
-\begin_inset Formula $\Phi=X$
+\begin_inset Formula $\hat{\Phi}=.0206$
 \end_inset
 
- [Redo this analysis], indicating...
+, suggesting that those individuals are more closely related than second
+ cousins.
+ The closest two individuals of the same population were found in the STU
+ population.
+ HG03889 and HG03783 were estimated to have a kinship coefficient 
+\begin_inset Formula $\hat{\Phi}=.252$
+\end_inset
+
+, indicating a relatedness substantially closer than second cousins.
 \end_layout
 
 \begin_layout Standard
@@ -889,8 +950,9 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Tabular
-<lyxtabular version="3" rows="27" columns="3">
+<lyxtabular version="3" rows="27" columns="4">
 <features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
@@ -900,6 +962,15 @@ status open
 
 \begin_layout Plain Layout
 Population
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Super Population
 \end_layout
 
 \end_inset
@@ -928,123 +999,16 @@ Cryptic Relatedness
 \begin_inset Text
 
 \begin_layout Plain Layout
-ACB
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-No
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Yes
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-ASW
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-No
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Yes
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-BEB
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
 CDX
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell multirow="3" alignment="left" valignment="middle" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-No
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Maybe
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-CEU
+EAS - East Asian
 \end_layout
 
 \end_inset
@@ -1078,6 +1042,15 @@ CHB
 
 \end_inset
 </cell>
+<cell multirow="4" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
@@ -1107,31 +1080,11 @@ CHS
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-No
-\end_layout
 
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Yes
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-CLM
 \end_layout
 
 \end_inset
@@ -1150,209 +1103,6 @@ No
 
 \begin_layout Plain Layout
 No
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-ESN
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-No
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Yes
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-FIN
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-No
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-No
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-GBR
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-No
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-No
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-GIH
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-No
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Yes
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-GWD
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-No
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-No
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-IBS
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-No
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-No
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-ITU
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-No
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Yes
 \end_layout
 
 \end_inset
@@ -1364,6 +1114,15 @@ Yes
 
 \begin_layout Plain Layout
 JPT
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
@@ -1397,11 +1156,196 @@ KHV
 
 \end_inset
 </cell>
+<cell multirow="4" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 No
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+No
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ACB
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="3" alignment="left" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+AFR - African
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+No
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Yes
+\begin_inset script superscript
+
+\begin_layout Plain Layout
++
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ASW
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+No
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Yes
+\begin_inset script superscript
+
+\begin_layout Plain Layout
++
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ESN
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+No
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+No
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+GWD
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Yes
 \end_layout
 
 \end_inset
@@ -1426,11 +1370,22 @@ LWK
 
 \end_inset
 </cell>
+<cell multirow="4" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-No
+
+\series bold
+Yes
 \end_layout
 
 \end_inset
@@ -1439,6 +1394,8 @@ No
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\series bold
 Yes
 \end_layout
 
@@ -1455,6 +1412,15 @@ MSL
 
 \end_inset
 </cell>
+<cell multirow="4" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
@@ -1468,7 +1434,7 @@ No
 \begin_inset Text
 
 \begin_layout Plain Layout
-Yes
+No
 \end_layout
 
 \end_inset
@@ -1479,7 +1445,16 @@ Yes
 \begin_inset Text
 
 \begin_layout Plain Layout
-MXL
+YRI
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
@@ -1488,6 +1463,84 @@ MXL
 \begin_inset Text
 
 \begin_layout Plain Layout
+No
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+No
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+BEB
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="3" alignment="left" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+SAS - South Asian
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+No
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+No
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+GIH
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
 Yes
 \end_layout
 
@@ -1497,7 +1550,18 @@ Yes
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\series bold
 Yes
+\begin_inset script superscript
+
+\begin_layout Plain Layout
++
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -1508,7 +1572,16 @@ Yes
 \begin_inset Text
 
 \begin_layout Plain Layout
-PEL
+ITU
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
@@ -1517,6 +1590,8 @@ PEL
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\series bold
 Yes
 \end_layout
 
@@ -1542,6 +1617,15 @@ PJL
 
 \end_inset
 </cell>
+<cell multirow="4" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
@@ -1555,36 +1639,7 @@ No
 \begin_inset Text
 
 \begin_layout Plain Layout
-Yes
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-PUR
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Yes
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Yes
+No
 \end_layout
 
 \end_inset
@@ -1600,6 +1655,66 @@ STU
 
 \end_inset
 </cell>
+<cell multirow="4" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Yes
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Yes
+\begin_inset script superscript
+
+\begin_layout Plain Layout
++
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+CEU
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="3" alignment="left" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+EUR - European
+\end_layout
+
+\end_inset
+</cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
@@ -1613,7 +1728,121 @@ No
 \begin_inset Text
 
 \begin_layout Plain Layout
-Yes
+No
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+FIN
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+No
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+No
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+GBR
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+No
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+No
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+IBS
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+No
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+No
 \end_layout
 
 \end_inset
@@ -1629,6 +1858,15 @@ TSI
 
 \end_inset
 </cell>
+<cell multirow="4" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
@@ -1649,11 +1887,158 @@ No
 </cell>
 </row>
 <row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+CLM
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="3" alignment="left" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+AMR - Ad Mixed American
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Yes
+\begin_inset script superscript
+
+\begin_layout Plain Layout
+*
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+No
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+MXL
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+No
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Yes
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+PEL
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Yes
+\begin_inset script superscript
+
+\begin_layout Plain Layout
+*
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+No
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-YRI
+PUR
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
@@ -1662,6 +2047,17 @@ YRI
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\series bold
+Yes
+\begin_inset script superscript
+
+\begin_layout Plain Layout
+*
+\end_layout
+
+\end_inset
+
 
 \end_layout
 
@@ -1672,6 +2068,8 @@ YRI
 
 \begin_layout Plain Layout
 
+\series bold
+Yes
 \end_layout
 
 \end_inset
@@ -1685,30 +2083,71 @@ YRI
 \begin_inset Caption
 
 \begin_layout Plain Layout
+
+\series bold
 Presence of population structure and cryptic relatedness detected in each
  of the 26 populations in the 1000 Genomes Project.
- Population structure, defined as a 
-\begin_inset Formula $median\left(s\right)<.97$
+
+\series default
+ Population structure was defined as a significant 
+\begin_inset Formula $\left(\alpha=.01\right)$
 \end_inset
 
- was found in three groups- MXL, PEL and PUR.
- Each of these populations are 
-\begin_inset Quotes eld
+ number of pairs below the mean.
+ Cryptic relatedness was defined as those populations containing at least
+ one pair of individuals with an estimated kinship coefficient greater than
+ 
+\begin_inset Formula $.01$
 \end_inset
 
-new world
-\begin_inset Quotes erd
+ and statistically significant 
+\begin_inset Formula $\left(\alpha=.01\right)$
 \end_inset
 
- populations which have undergone extensive admixture in the past centuries.
+ at after multiple testing correction.
 \end_layout
 
+\end_inset
+
+
+\begin_inset script superscript
+
+\begin_layout Plain Layout
+*
+\end_layout
+
+\end_inset
+
+- 
+\begin_inset Formula $p<.001$
 \end_inset
 
 
 \end_layout
 
 \begin_layout Plain Layout
+\begin_inset script superscript
+
+\begin_layout Plain Layout
++
+\end_layout
+
+\end_inset
+
+- 
+\begin_inset Formula $p<.001$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "population_table"
+
+\end_inset
+
 
 \end_layout
 
