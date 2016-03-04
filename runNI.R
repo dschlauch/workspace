@@ -59,7 +59,7 @@ registerDoParallel(cl)
 #start time
 strt  <- Sys.time()
 foreach(i=studies,.packages=c("bereR","nettools")) %dopar% {
-  runNImethods(paste0(outputDir,"/",i,"_JASPAR2014_bere.RData"), i, c("bere","WGCNA","CLR","ARACNE"))
+  runNImethods(paste0(outputDir,"/",i,"_JASPAR2014_bere.RData"), i, c("BERE","WGCNA","CLR","ARACNE"))
 }
 print(Sys.time()-strt)
 stopCluster(cl)

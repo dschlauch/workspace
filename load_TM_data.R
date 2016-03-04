@@ -25,32 +25,28 @@ if (study=="ECLIPSE"){
   casesString <- "COPD Subjects"
   controlsString <- "Smoker Controls"
   phenotypeName <- "Subject.type"
-} 
-if (study=="COPDGENE"){
+} else if (study=="COPDGENE"){
   exprFile <- "~/gd/Harvard/Research/data/COPDGene/COPDGene_GSExpressionData.txt"
   clinicalFile <- "~/gd/Harvard/Research/data/COPDGene/COPDGene_clinical.txt"
   #COPDGene labels
   casesString <- "COPD Subjects"
   controlsString <- "Smoker Controls"
   phenotypeName <- "Subject.type"
-} 
-if (study=="LGRC"){
+} else if (study=="LGRC"){
   exprFile <- "~/gd/Harvard/Research/data/LGRC/LGRC_expression.txt"
   clinicalFile <- "~/gd/Harvard/Research/data/LGRC/lgrc.merged.clinical.data.clean.txt"
   #LGRC labels
   casesString <- "COPD Subjects"
   controlsString <- "Smoker Controls"
   phenotypeName <- "Subject.type"
-}
-if (study=="LTCOPD"){
+} else if (study=="LTCOPD"){
   exprFile <- "~/gd/Harvard/Research/data/LTCOPD/LTCOPD_exp.txt"
   clinicalFile <- "~/gd/Harvard/Research/data/LTCOPD/LTCOPD_clinical.txt"
   #LTCOPD labels
   casesString <- "COPD"
   controlsString <- "Control"
   phenotypeName <- "diagnosis"
-}
-if (study=="GTEX"){
+} else if (study=="GTEX"){
   exprFile <- "~/gd/Harvard/Research/data/GTEx/GTEx_expr.txt"
   clinicalFile <- "~/gd/Harvard/Research/data/GTEx/GTEx_clinical.txt"
   #GTEX labels
