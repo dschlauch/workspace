@@ -6,11 +6,11 @@ date: March 7, 2016
 Agenda
 ========================================================
 
-- Objectives for Manuscript
+- Major Objectives for Manuscript
     - Better communicate the story
-    - ??
     - Biological insight
         - Send to Ed, Craig when ready for their input.
+- Address list of concerns with last draft
 
 
 
@@ -98,28 +98,57 @@ BERE<br>
 <img src="plots/LGRC_LTCOPD_bere_edgeweight_difference_comparison.png" width=200 height=200> 
 </div>
 
-Edgeweight differences do not validate across studies!
+Network differences do not validate across studies!
 ========================================================
-So, are NI methods for context-specific networks useless?
+Network differences between cases and controls are **completely uncorrelated** between COPD studies using commonly the used WGCNA, CLR, and ARACNE. (Far less than 1% of the variation in one study is explained by the variation in any other)
 
-Is there any way to observe drivers of state transitions at the network level using this information?
+### So, are NI methods for context-specific networks useless?
 
-Yes! The [TM NAME] method focuses on regulatory patterns rather than individual edges and DOES validate across studies
+Maybe not.  Is there any way to observe drivers of state transitions at the network level using this information?
 
+Yes! Our [NAME] method focuses on regulatory patterns rather than individual edges and DOES validate across studies. This is our "story".
+
+MONSTER validation
+========================================================
+<embed src="TM_manuscript/figures/Magnitude_comparison_same_tissue.pdf" width="450" height="400" type='application/pdf'>
+<embed src="TM_manuscript/figures/Magnitude_comparison_diff_tissue.pdf" width="450" height="400" type='application/pdf'>
+
+Differential expression methods cannot find these TFs
+========================================================
+<embed src="TM_manuscript/figures/dTFIvsLIMMA.pdf" width="800" height="500" type='application/pdf'>
+
+
+Misc. manuscript tasks...
+========================================================
+JQ Comments: Figure for transition heatmap <br>
+<embed src="TM_manuscript/figures/TM_heatmap.pdf" width="450" height="400" type='application/pdf'>
+
+
+Misc. manuscript tasks...
+========================================================
+<img src="TM_manuscript/figures/Venn.png" width=500 height=500> 
+
+Misc. manuscript tasks...
+========================================================
+Name suggestion:
+
+**MO**deling **N**etwork **S**tate **T**ransitions from **E**xpression and **R**egulatory data
+
+(_MONSTER_)
 
 Misc. manuscript tasks...
 ========================================================
 Figure 1.
+
 JQ comments:
-"the matrices should represent the networks"
-<img src="TM_manuscript/figures/figure1_a.pdf" width=300 height=500> 
-<img src="TM_manuscript/figures/figure1.png" width=300 height=500> 
+"the matrices should represent the networks" <br>
+<img src="TM_manuscript/figures/figure1a.png" width=300 height=300> vs
+<img src="TM_manuscript/figures/figure1.png" width=300 height=300> 
 
 
 Misc. manuscript tasks...
 ========================================================
-$$B=AT$$ is now
-$$B=A\Psi$$ 
+Equations here, not rendering
 
 Misc. manuscript tasks...
 ========================================================

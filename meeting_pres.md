@@ -106,29 +106,24 @@ Is there any way to observe drivers of state transitions at the network level us
 
 Yes! The [TM NAME] method focuses on regulatory patterns rather than individual edges and DOES validate across studies
 
-TM validation
-========================================================
-<embed src="TM_manuscript/figures/Magnitude_comparison_same_tissue.pdf" width="450" height="400" type='application/pdf'>
-<embed src="TM_manuscript/figures/Magnitude_comparison_diff_tissue.pdf" width="450" height="400" type='application/pdf'>
-
-Differential expression methods cannot find these TFs
-========================================================
-<embed src="TM_manuscript/figures/dTFIvsLIMMA.pdf" width="800" height="500" type='application/pdf'>
 
 Misc. manuscript tasks...
 ========================================================
-Figure for transition heatmap <br>
-<embed src="TM_manuscript/figures/TM_heatmap.pdf" width="450" height="400" type='application/pdf'>
+Figure 1.
+JQ comments:
+"the matrices should represent the networks"
+<img src="TM_manuscript/figures/figure1_a.pdf" width=300 height=500> 
+<img src="TM_manuscript/figures/figure1.png" width=300 height=500> 
 
-
-Misc. manuscript tasks...
-========================================================
-<img src="TM_manuscript/figures/Venn.png" width=500 height=500> 
 
 Misc. manuscript tasks...
 ========================================================
 $$B=AT$$ is now
 $$B=A\Psi$$ 
+
+Misc. manuscript tasks...
+========================================================
+<img src="TM_manuscript/figures/Venn.png" width=500 height=500> 
 
 Misc. manuscript tasks...
 ========================================================
@@ -144,7 +139,6 @@ Chen et al. (2008)
 Misc. manuscript tasks...
 ========================================================
 ELK1, ELK4 implicated in asthma.
-NE Buroker (2014)
 
 *Emerging role of MAP kinase pathways as therapeutic targets in COPD*
 Mercer (2006)
