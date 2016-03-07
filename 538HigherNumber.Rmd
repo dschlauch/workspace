@@ -1,0 +1,61 @@
+---
+title: "Can You Win This Hot New Game Show?"
+author: "Dan Schlauch"
+date: "03/04/2016"
+output: html_document
+---
+
+```{r, echo=FALSE}
+library(ggplot2)
+library(grid)
+```
+[From The Riddler at fivethirtyeight.com](http://fivethirtyeight.com/features/can-you-win-this-hot-new-game-show/)
+
+Two players go on a hot new game show called “Higher Number Wins.” The two go into separate booths, and each presses a button, and a random number between zero and one appears on a screen. (At this point, neither knows the other’s number, but they do know the numbers are chosen from a standard uniform distribution.) They can choose to keep that first number, or to press the button again to discard the first number and get a second random number, which they must keep. Then, they come out of their booths and see the final number for each player on the wall. The lavish grand prize — a case full of gold bullion — is awarded to the player who kept the higher number. Which number is the optimal cutoff for players to discard their first number and choose another? Put another way, within which range should they choose to keep the first number, and within which range should they reject it and try their luck with a second number?
+
+```{r}
+library(ggplot2)
+library(reshape2)
+
+getAWinner <- function(n, cutoffA, cutoffB){
+    firstA <- runif(n)
+    secondA <- runif(n)
+    firstB <- runif(n)
+    secondB <- runif(n)
+    finalA <- ifelse(firstA>cutoffA,firstA,secondA)
+    finalB <- ifelse(firstB>cutoffB,firstB,secondB)
+    winA <- sum(finalA>finalB)
+    winA/n
+}
+resMat <- sapply(seq(0,1,.01), function(x){
+    sapply(seq(0,1,.01), function(y){
+        getAWinner(100000, x, y)
+    })
+})
+rownames(resMat) <- seq(0,1,.01)
+colnames(resMat) <- seq(0,1,.01)
+resDF <- melt(resMat)
+
+apply(resMat,2,max)
+apply(resMat,1,min)
+
+p <- ggplot(resDF, aes(y=Var1, x=Var2))
+p + geom_tile(aes(fill=value)) + scale_fill_gradient(low="white", high="darkblue") + xlab("Player A cutoff") + ylab("Player B cutoff") +
+    ggtitle("Player A win probability")
+
+
+resMat <- sapply(seq(.5,.75,.0025), function(x){
+    sapply(seq(0,1,.01), function(y){
+        getAWinner(10000, x, y)
+    })
+})
+rownames(resMat) <- seq(0,1,.01)
+colnames(resMat) <- seq(0,1,.01)
+resDF <- melt(resMat)
+
+p <- ggplot(resDF, aes(y=Var1, x=Var2))
+p + geom_tile(aes(fill=value)) + xlab("Player A cutoff") + ylab("Player B cutoff") +
+    ggtitle("Player A win probability") +
+    scale_fill_gradientn(colours=c("navyblue","red"),breaks=.5,labels="Breakeven")
+
+```

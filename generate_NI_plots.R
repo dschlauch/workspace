@@ -30,7 +30,7 @@ generateNIDifferencePlot <- function(datasetA, datasetB, niMethod, imageType=png
 }
 
 studies <- c("ECLIPSE", "COPDGENE", "LGRC","LTCOPD")
-niMethods <- c("bere","WGCNA","CLR")
+niMethods <- c("ARACNE")
 apply(combn(studies,2), 2, function(x){
   print(x)  
   sapply(niMethods, function(meth) generateNIDifferencePlot(x[1],x[2],meth) )
