@@ -152,7 +152,9 @@ Equations here, not rendering
 
 Misc. manuscript tasks...
 ========================================================
-<img src="TM_manuscript/figures/Venn.png" width=500 height=500> 
+<img src="TM_manuscript/figures/Venn.png" width=500 height=500> <br>
+Do we want/need this?  Can table replace it? Or keep table in supplement (it's big).
+
 
 Misc. manuscript tasks...
 ========================================================
