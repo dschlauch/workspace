@@ -129,6 +129,14 @@ ggplot(data=plotDF, aes(x=limmanegLogPValues, y=negLogZPValues)) + geom_point(ae
   theme(plot.title = element_text(size=20,hjust=0))
 dev.off()
 
+png(file.path(outputDir,paste('dTFI vs LIMMA',analysisCode,'.png', sep="")), width=900, height=800)
+ggplot(data=plotDF, aes(x=limmanegLogPValues, y=negLogZPValues)) + geom_point(aes(col=logfoldchangeTF), size=5, alpha=.6) +
+  geom_text_repel(data=plotDF[labels!="",], aes(limmanegLogPValues, negLogZPValues, label=labels)) + 
+  ylab("Differential TF Involvement, -log(p-value)") + xlab("Differential Expression,  LIMMA -log(p-value)") + 
+  ggtitle("Differential Involvement vs Differential Expression (ECLIPSE)") +
+  theme_classic() + scale_colour_continuous(limits=c(-max(abs(logfoldchangeTF)),max(abs(logfoldchangeTF))), name="log(fold-change)", low = "red", high = "blue") +
+  theme(plot.title = element_text(size=20,hjust=0))
+dev.off()
 # Generate heatmap
 x <- transMatrices[[1]]
 mdf <- melt(x)

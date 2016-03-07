@@ -77,7 +77,14 @@ generatePlots <- function(metric, filterColIndices){
   pdf(paste0(outputDir, metric, '_comparison_same_tissue.pdf'), width=16, height=9)
   suppressWarnings(grid.arrange(plot1, plot2, ncol=2, top=textGrob("Comparison of Differential TF Involvement Across Studies of Same Tissue", gp=gpar(fontsize=30))))
   dev.off()
+  png(paste0(outputDir, metric, '_comparison_same_tissue.png'), width=1600, height=900)
+  suppressWarnings(grid.arrange(plot1, plot2, ncol=2, top=textGrob("Comparison of Differential TF Involvement Across Studies of Same Tissue", gp=gpar(fontsize=30))))
+  dev.off()
   pdf(paste0(outputDir, metric, '_comparison_diff_tissue.pdf'), width=16,height=12)
+  suppressWarnings(grid.arrange(plot3, plot4, plot5, plot6, ncol=2, top=textGrob("Comparison of Differential TF Involvement Across Studies of Different Tissues", gp=gpar(fontsize=30)),
+                                left = textGrob("Lung Tissue", rot = 90, vjust = 1, gp=gpar(fontsize=20)), bottom = textGrob("Blood", gp=gpar(fontsize=20))))
+  dev.off()
+  png(paste0(outputDir, metric, '_comparison_diff_tissue.png'), width=1600,height=900)
   suppressWarnings(grid.arrange(plot3, plot4, plot5, plot6, ncol=2, top=textGrob("Comparison of Differential TF Involvement Across Studies of Different Tissues", gp=gpar(fontsize=30)),
                                 left = textGrob("Lung Tissue", rot = 90, vjust = 1, gp=gpar(fontsize=20)), bottom = textGrob("Blood", gp=gpar(fontsize=20))))
   dev.off()
