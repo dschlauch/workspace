@@ -108,26 +108,6 @@ Maybe not.  Is there any way to observe drivers of state transitions at the netw
 
 Yes! Our [NAME] method focuses on regulatory patterns rather than individual edges and DOES validate across studies. This is our "story".
 
-MONSTER validation
-========================================================
-<embed src="TM_manuscript/figures/Magnitude_comparison_same_tissue.pdf" width="450" height="400" type='application/pdf'>
-<embed src="TM_manuscript/figures/Magnitude_comparison_diff_tissue.pdf" width="450" height="400" type='application/pdf'>
-
-Differential expression methods cannot find these TFs
-========================================================
-<embed src="TM_manuscript/figures/dTFIvsLIMMA.pdf" width="800" height="500" type='application/pdf'>
-
-
-Misc. manuscript tasks...
-========================================================
-JQ Comments: Figure for transition heatmap <br>
-<embed src="TM_manuscript/figures/TM_heatmap.pdf" width="450" height="400" type='application/pdf'>
-
-
-Misc. manuscript tasks...
-========================================================
-<img src="TM_manuscript/figures/Venn.png" width=500 height=500> 
-
 Misc. manuscript tasks...
 ========================================================
 Name suggestion:
@@ -135,6 +115,28 @@ Name suggestion:
 **MO**deling **N**etwork **S**tate **T**ransitions from **E**xpression and **R**egulatory data
 
 (_MONSTER_)
+
+MONSTER validation
+========================================================
+<img src="TM_manuscript/figures/Magnitude_comparison_same_tissue.pdf.png" width="450" height="300" >
+<img src="TM_manuscript/figures/Magnitude_comparison_diff_tissue.pdf.png" width="450" height="400" >
+
+Differential expression methods cannot find these TFs
+========================================================
+<img src="TM_manuscript/figures/dTFIvsLIMMA.pdf.png" width="800" height="500" >
+
+
+Misc. manuscript tasks...
+========================================================
+JQ Comments: Figure for transition heatmap <br>
+<img src="TM_manuscript/figures/TM_heatmap.pdf.png" width="800" height="500" >
+
+
+Misc. manuscript tasks...
+========================================================
+<img src="TM_manuscript/figures/Venn.png" width=500 height=500> 
+
+
 
 Misc. manuscript tasks...
 ========================================================
@@ -148,7 +150,8 @@ JQ comments:
 
 Misc. manuscript tasks...
 ========================================================
-Equations here, not rendering
+$$B=AT$$ is now
+$$B=A\Psi$$ 
 
 Misc. manuscript tasks...
 ========================================================
