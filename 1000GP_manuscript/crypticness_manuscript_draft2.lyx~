@@ -254,7 +254,7 @@ where
 \begin_inset Formula 
 \[
 w_{k}=\begin{cases}
-\frac{{\sum_{l=1}^{2n}\mathbf{G}_{l,k} \choose 2}}{{2n \choose 2}} & \sum_{l=1}^{2n}\mathbf{G}_{l,k}>1\\
+\frac{{2n \choose 2}}{{\sum_{l=1}^{2n}\mathbf{G}_{l,k} \choose 2}} & \sum_{l=1}^{2n}\mathbf{G}_{l,k}>1\\
 0 & \sum_{l=1}^{2n}\mathbf{G}_{l,k}\le1
 \end{cases}
 \]
@@ -363,27 +363,33 @@ Furthermore, this measure is particularly sensitive for measuring relatedness.
 \end_layout
 
 \begin_layout Standard
-Consider a coefficient of kinship, 
-\begin_inset Formula $\Phi>0$
+Consider a coefficient of kinship between two individuals 
+\begin_inset Formula $i,j$
+\end_inset
+
+, 
+\begin_inset Formula $\Phi_{i,j}>0$
 \end_inset
 
 ,
 \begin_inset Formula 
 \begin{align}
-E\left(s_{i,j}|\Phi,\mbox{No other structure}\right) & =\frac{\sum_{k=1}^{N}w_{k}\left(\Phi+\left(1-\Phi\right)\frac{1}{w_{k}}\right)}{\sum_{k=1}^{N}I\left[\sum_{l=1}^{2n}\mathbf{G}_{l,k}>1\right]}\nonumber \\
- & =1+\Phi\left[\frac{\sum_{k=1}^{N}w_{k}}{\sum_{k=1}^{N}I\left[\sum_{l=1}^{2n}\mathbf{G}_{l,k}>1\right]}-1\right]\label{Expected with kinship}
+E\left(s_{i,j}|\Phi_{i,j},\mbox{No other structure}\right)= & \left(1-\Phi_{i,j}\right)+\Phi\left[p_{k}\frac{{n \choose 2}}{{p_{k}\left(n-2\right)+2 \choose 2}}\right]\nonumber \\
+= & \left(1-\Phi_{i,j}\right)+\Phi\left[p_{k}\frac{n\left(n-1\right)}{\left(p_{k}\left(n-2\right)+2\right)\left(p_{k}\left(n-2\right)+1\right)}\right]\\
+ & \frac{\sum_{k=1}^{N}w_{k}\left(\Phi_{i,j}p_{k}+\left(1-\Phi\right)\frac{1}{w_{k}}\right)}{\sum_{k=1}^{N}I\left[\sum_{l=1}^{2n}\mathbf{G}_{l,k}>1\right]}\\
+ & =1+\Phi_{i,j}\left[\frac{\sum_{k=1}^{N}p_{k}w_{k}}{\sum_{k=1}^{N}I\left[\sum_{l=1}^{2n}\mathbf{G}_{l,k}>1\right]}-1\right]\label{Expected with kinship}
 \end{align}
 
 \end_inset
 
 It can be shown that in the presence of cryptic relatedness, 
-\begin_inset Formula $\Phi>0$
+\begin_inset Formula $\Phi_{i,j}>0$
 \end_inset
 
 , 
 \begin_inset Formula 
 \[
-E\left(s_{i,j}|\Phi>0\right)>1
+E\left(s_{i,j}|\Phi_{i,j}>0\right)>1
 \]
 
 \end_inset
@@ -395,7 +401,7 @@ E\left(s_{i,j}|\Phi>0\right)>1
 And yielding an estimate of this kinship
 \begin_inset Formula 
 \begin{equation}
-\hat{\Phi}=\frac{s_{i,j}-1}{\left[\frac{\sum_{k=1}^{N}w_{k}}{\sum_{k=1}^{N}I\left[\sum_{l=1}^{2n}\mathbf{G}_{l,k}>1\right]}-1\right]}\label{Estimated Kinship}
+\hat{\Phi}=\frac{s_{i,j}-1}{\left[\frac{\sum_{k=1}^{N}p_{k}w_{k}}{\sum_{k=1}^{N}I\left[\sum_{l=1}^{2n}\mathbf{G}_{l,k}>1\right]}-1\right]}\label{Estimated Kinship}
 \end{equation}
 
 \end_inset
@@ -676,7 +682,7 @@ The overlap in these two groups may be due to the fact that the variance
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -2949,181 +2955,6 @@ every
 \end_inset
 
  comparisons)
-\end_layout
-
-\begin_layout Section*
-dddd
-\end_layout
-
-\begin_layout Standard
-The Mathieson paper (Nature Genetics, 2012) proposed a problem wherein the
- case of sharply spatially defined phenotypic risk lead to the inflation
- of association test statistics for rare variants.
- Moreover, this effect was not resolved using existing methods for controlling
- for confounding by population stratification.
- The Listgarten response (Listgarten et al, Nature Genetics 2012) claimed
- to solve this with their novel method LMM-select.
- This method effectively uses a linear mixed model approach but rather than
- use all variants to generate their genetic similarity matrix, selects only
- those which are correlated with phenotype.
- A more recent paper on which Listgarten was an author (Widmer, Further
- Improvements…, Nature 2014), appears to reverse this claim.
- In this paper, Widmer admits one potential improvement, building a GSM
- based on selected SNPs that well predict the phenotype failed rather dramatical
-ly.
- In particular, when population structure, family relatedness, or both were
- present, this approach failed to control for type I error.
- Seemingly indicating that their group’s previous claim was premature.
- However, they claim now that inclusion of principal components as fixed
- effects does properly control for type I error.
- [However, I don’t see it demonstrated in the paper and I remain somewhat
- unclear skeptical about what definition they are using].
- (For example, we are focusing on extreme events, where inflation is only
- measurable at 
-\begin_inset Formula $\approx10^{-6}$
-\end_inset
-
-)
-\end_layout
-
-\begin_layout Standard
-A possible explanations for the test statistic inflation was suspected to
- be primarily due to lack of a precise measure of genetic similarity.
- This was attributed in part due to the fact that linear methods such as
- PCA would have difficulty expressing sharply defined risk regions.
-\end_layout
-
-\begin_layout Standard
-However, we found that test statistic inflation persisted even when controlling
- for the exact regions for which we simulated differential phenotypic risk.
- This demonstrated that although proper estimation of the genetic similarity
- matrix is necessary, it is not sufficient to control type I error.
- As we show here, association tests in the presence of properly controlled
- population stratification exhibit overdispersion due to the existence of
- high leverage individuals after adjusting for confounding.
- 
-\end_layout
-
-\begin_layout Standard
-A consistent estimator of rare-allele association in stratified GWAS We
- developed a statistic which is asymptotically unbiased by calculating the
- variance of the observed squared correlation statistic in the presence
- of differential variance for both spatially-adjusted genotypes and spatially-ad
-justed phenotypes.
- Intuitively, with uniform variance across samples (such as with no population
- stratification) we expect the variance of the correlation to be asymptotically
- 
-\begin_inset Formula $\sqrt{\frac{1}{n}}$
-\end_inset
-
-.
- In this case, we have the Armitage Trend Test statistic- 
-\begin_inset Formula $n\times r^{2}\sim\chi_{1}^{2}$
-\end_inset
-
-.
- However, in the presence of adjusted population stratification the variance
- of the observed correlation is not 
-\begin_inset Formula $\sqrt{\frac{1}{n}}$
-\end_inset
-
-.
- Depending on whether the correlation of the variances of adjusted genotypes
- and adjusted phenotypes are positive or negative we see that the variance
- of the observed correlation is greater than or less than sqrt(1/n), respectivel
-y.
- Insert derivation here
-\end_layout
-
-\begin_layout Standard
-In combination with our estimated test statistic, we propose a method for
- estimating the GSM by using the Jaccard Similarity Index (JSI) for alleles
- which are present in less than 2% of the population.
- Our method is motivated by the plausible expectation that rare alleles
- are more likely to have emerged most recently in human ancestral history
- and thus may be superior differentiators for groups which have a more recent
- ancestral divergence.
- An eigendecomposition of the JSI-GSM can then be used to to identify linear
- predictors of ancestry in a manner similar to Principal Components Analysis.
-\end_layout
-
-\begin_layout Standard
-Jaccard Index vs Variance-Covariance approach.
- Use of Jaccard similarity for rare alleles only in estimating GSM outperformed
- the standard variance covariance approach.
-\end_layout
-
-\begin_layout Standard
-Computation of the JSI for all pairs is computationally faster than the
- more commonly used variance-covariance method typically employed for PCA
- (maybe the same speed?)
-\end_layout
-
-\begin_layout Standard
-Use of JSI provides clearer separation of closely related subpopulations
- The ability to separate distinct subpopulations with a recent shared ancestry,
- such as Spanish (IBS) and Italians (TSI), is a desirable goal in GWAS.
- Even with 
-\begin_inset Formula $F_{ST}$
-\end_inset
-
- values smaller than 
-\begin_inset Formula $.001$
-\end_inset
-
-, there is a clear bias when performing GWAS on non-genetic outcomes correlated
- with phenotype.
- The ability to separate closely related populations was found to be a function
- of the allele frequency interval.
-\end_layout
-
-\begin_layout Standard
-Separation of Sri Lankan and Indian populations using the Jaccard Similarity
- and based on a global allele frequency of <0.4% (top) compared to a global
- allele frequency of ~15% (bottom)
-\end_layout
-
-\begin_layout Standard
-The plot above shows the relative ability to separate two closely related
- populations based on the allele frequency used.
- We see a monotonically decreasing separation score as more common alleles
- are used indicating that the ancestry informativeness peaks when utilizing
- the rarest loci.
- We find that the estimated ratio of mean within-group JSI to between group
- JSI is maximized by excluding all but those alleles with <.04% MAF and that
- inclusion of higher frequency alleles reduces our ability to differentiate
- low Fst populations.
- Additionally, we find that although rare alleles may outperform more common
- alleles for closely related populations the use of a higher cutoff for
- more distant populations may be appropriate.
- This could be attributed to a relatively greater sensitivity to quality
- control issues for groups which already have a clear genetic separation
- at higher allele frequencies.
- The plot below demonstrates the increased efficacy of less common alleles
- in separating Yoruban persons (YRI) from those populations from other continent
-al origins.
- The Jaccard ratio drops at the lowest allele frequency interval, possibly
- due to the presence of randomly miscalled genotypes.
-\end_layout
-
-\begin_layout Section*
-Simulations
-\end_layout
-
-\begin_layout Standard
-We used real genotype data and simulated non-genetic phenotypes based on
- reported population membership in the 1000 Genomes Project.
- ...describe details of simulations...
-\end_layout
-
-\begin_layout Standard
-estimator is consistent estimator is biased estimator is superior to rare-PCA
- -how to quantify?
-\end_layout
-
-\begin_layout Standard
-Argue: is estimator superior to usual PCA? estimator is equivalent to subpopulat
-ion label?
 \end_layout
 
 \begin_layout Standard

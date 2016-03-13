@@ -254,7 +254,7 @@ where
 \begin_inset Formula 
 \[
 w_{k}=\begin{cases}
-\frac{{\sum_{l=1}^{2n}\mathbf{G}_{l,k} \choose 2}}{{2n \choose 2}} & \sum_{l=1}^{2n}\mathbf{G}_{l,k}>1\\
+\frac{{2n \choose 2}}{{\sum_{l=1}^{2n}\mathbf{G}_{l,k} \choose 2}} & \sum_{l=1}^{2n}\mathbf{G}_{l,k}>1\\
 0 & \sum_{l=1}^{2n}\mathbf{G}_{l,k}\le1
 \end{cases}
 \]
@@ -363,27 +363,33 @@ Furthermore, this measure is particularly sensitive for measuring relatedness.
 \end_layout
 
 \begin_layout Standard
-Consider a coefficient of kinship, 
-\begin_inset Formula $\Phi>0$
+Consider a coefficient of kinship between two individuals 
+\begin_inset Formula $i,j$
+\end_inset
+
+, 
+\begin_inset Formula $\Phi_{i,j}>0$
 \end_inset
 
 ,
 \begin_inset Formula 
 \begin{align}
-E\left(s_{i,j}|\Phi,\mbox{No other structure}\right) & =\frac{\sum_{k=1}^{N}w_{k}\left(\Phi+\left(1-\Phi\right)\frac{1}{w_{k}}\right)}{\sum_{k=1}^{N}I\left[\sum_{l=1}^{2n}\mathbf{G}_{l,k}>1\right]}\nonumber \\
- & =1+\Phi\left[\frac{\sum_{k=1}^{N}w_{k}}{\sum_{k=1}^{N}I\left[\sum_{l=1}^{2n}\mathbf{G}_{l,k}>1\right]}-1\right]\label{Expected with kinship}
+E\left(s_{i,j}|\Phi_{i,j},\mbox{No other structure}\right)= & \left(1-\Phi_{i,j}\right)+\Phi\left[p_{k}\frac{{n \choose 2}}{{p_{k}\left(n-2\right)+2 \choose 2}}\right]\nonumber \\
+= & \frac{\sum_{k=1}^{N}\left(1-\Phi_{i,j}\right)+\Phi\left[p_{k}\frac{n\left(n-1\right)}{\left(p_{k}\left(n-2\right)+2\right)\left(p_{k}\left(n-2\right)+1\right)}\right]}{\sum_{k=1}^{N}I\left[\sum_{l=1}^{2n}\mathbf{G}_{l,k}>1\right]}\\
+ & \frac{\sum_{k=1}^{N}w_{k}\left(\Phi_{i,j}p_{k}+\left(1-\Phi\right)\frac{1}{w_{k}}\right)}{\sum_{k=1}^{N}I\left[\sum_{l=1}^{2n}\mathbf{G}_{l,k}>1\right]}\\
+ & =1+\Phi_{i,j}\left[\frac{\sum_{k=1}^{N}p_{k}w_{k}}{\sum_{k=1}^{N}I\left[\sum_{l=1}^{2n}\mathbf{G}_{l,k}>1\right]}-1\right]\label{Expected with kinship}
 \end{align}
 
 \end_inset
 
 It can be shown that in the presence of cryptic relatedness, 
-\begin_inset Formula $\Phi>0$
+\begin_inset Formula $\Phi_{i,j}>0$
 \end_inset
 
 , 
 \begin_inset Formula 
 \[
-E\left(s_{i,j}|\Phi>0\right)>1
+E\left(s_{i,j}|\Phi_{i,j}>0\right)>1
 \]
 
 \end_inset
@@ -395,7 +401,7 @@ E\left(s_{i,j}|\Phi>0\right)>1
 And yielding an estimate of this kinship
 \begin_inset Formula 
 \begin{equation}
-\hat{\Phi}=\frac{s_{i,j}-1}{\left[\frac{\sum_{k=1}^{N}w_{k}}{\sum_{k=1}^{N}I\left[\sum_{l=1}^{2n}\mathbf{G}_{l,k}>1\right]}-1\right]}\label{Estimated Kinship}
+\hat{\Phi}=\frac{s_{i,j}-1}{\left[\frac{\sum_{k=1}^{N}p_{k}w_{k}}{\sum_{k=1}^{N}I\left[\sum_{l=1}^{2n}\mathbf{G}_{l,k}>1\right]}-1\right]}\label{Estimated Kinship}
 \end{equation}
 
 \end_inset
@@ -676,7 +682,7 @@ The overlap in these two groups may be due to the fact that the variance
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -2949,10 +2955,6 @@ every
 \end_inset
 
  comparisons)
-\end_layout
-
-\begin_layout Section*
-
 \end_layout
 
 \begin_layout Standard
