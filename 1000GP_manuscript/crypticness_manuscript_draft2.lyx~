@@ -200,7 +200,7 @@ Exploiting the relative value of rare alleles is fundamental to our method,
 \end_layout
 
 \begin_layout Standard
-For a matrix of 
+Consider a matrix of 
 \begin_inset Formula $n$
 \end_inset
 
@@ -216,7 +216,21 @@ For a matrix of
 \begin_inset Formula $\mathbf{G}_{2n\times N}$
 \end_inset
 
-, we define the similarity between two haploid genomes, 
+.
+ 
+\begin_inset Formula $\mathbf{G}$
+\end_inset
+
+ is a binary matrix with value 
+\begin_inset Formula $1$
+\end_inset
+
+ indicating the presence of the minor allele and 
+\begin_inset Formula $0$
+\end_inset
+
+ indicating the major allele.
+ We define the similarity between two haploid genomes, 
 \begin_inset Formula $s_{i,j}$
 \end_inset
 
@@ -261,7 +275,7 @@ w_{k}=\begin{cases}
 
 \end_inset
 
-
+And in a homogeneous population we have
 \family default
 \series default
 \shape default
@@ -276,7 +290,7 @@ w_{k}=\begin{cases}
 
 \begin_inset Formula 
 \begin{align*}
-E\left(s_{i,j}|\mbox{No structure}\right) & =1
+E\left(s_{i,j}\right) & =1
 \end{align*}
 
 \end_inset
@@ -285,7 +299,7 @@ E\left(s_{i,j}|\mbox{No structure}\right) & =1
 \end_layout
 
 \begin_layout Standard
-It therefore follows from the central limit theroem that in the absence
+It therefore follows from the Central Limit Theroem that in the absence
  of populations structure, cryptic relatedness and dependence between loci
  (such as linkage disequilibrium) the distribution of the test statistic,
  
@@ -304,10 +318,10 @@ Where
 \begin_inset Formula $\sigma^{2}$
 \end_inset
 
- is estimated by 
+ is estimated by the maximum likelihood estimator 
 \begin_inset Formula 
 \begin{equation}
-\hat{\sigma^{2}}=\hat{Var}\left(s_{i,j}|\mbox{No structure}\right)=\frac{\sum_{k=1}^{N}\hat{p}_{k}^{2}\left(1-\hat{p}_{k}^{2}\right)w_{k,i,j}^{2}}{\left(\sum_{k=1}^{N}I\left[\sum_{l=1}^{2n}\mathbf{G}_{l,k}>1\right]\right)^{2}}\label{eq: variance equation}
+\hat{\sigma^{2}}=\hat{Var}\left(s_{i,j}\right)=\frac{\sum_{k=1}^{N}\hat{p}_{k}^{2}\left(1-\hat{p}_{k}^{2}\right)w_{k,i,j}^{2}}{\left(\sum_{k=1}^{N}I\left[\sum_{l=1}^{2n}\mathbf{G}_{l,k}>1\right]\right)^{2}}\label{eq: variance equation}
 \end{equation}
 
 \end_inset
@@ -325,14 +339,14 @@ This provides an easily interpreted statistical test for evaluating possible
 Furthermore, this measure is particularly sensitive for measuring relatedness.
  Intuitively, we can imagine two subjects which have a kinship coefficient,
  
-\begin_inset Formula $\Phi$
+\begin_inset Formula $\phi$
 \end_inset
 
 , indicating a probability of a randomly chosen allele in each person being
  identical by descent (IBD).
  For an allele which belongs to the one person, the probability of it belonging
  to the related person is 
-\begin_inset Formula $\Phi+\left(1-\Phi\right)\times p$
+\begin_inset Formula $\phi+\left(1-\phi\right)\times p$
 \end_inset
 
 , where 
@@ -345,16 +359,16 @@ Furthermore, this measure is particularly sensitive for measuring relatedness.
 \end_inset
 
  is small compared to 
-\begin_inset Formula $\Phi$
+\begin_inset Formula $\phi$
 \end_inset
 
 , there will be a much larger relative difference in the probability of
  shared alleles among related individuals (
-\begin_inset Formula $\Phi>0$
+\begin_inset Formula $\phi>0$
 \end_inset
 
 ) compared to unrelated individuals (
-\begin_inset Formula $\Phi=0$
+\begin_inset Formula $\phi=0$
 \end_inset
 
 ).
@@ -368,40 +382,73 @@ Consider a coefficient of kinship between two individuals
 \end_inset
 
 , 
-\begin_inset Formula $\Phi_{i,j}>0$
+\begin_inset Formula $\phi_{i,j}>0$
 \end_inset
 
-,
+ with no other population structure present in the data.
+ For an individual variant, 
+\begin_inset Formula $k$
+\end_inset
+
+, with sufficient allele frequency, the expected contribution to the statistic
+ for an allele from each individual, 
+\begin_inset Formula $s_{i_{1},j_{1}}$
+\end_inset
+
+ is
+\begin_inset Formula 
+\[
+E\left(s_{i_{1},j_{1},k}|\phi_{i,j}\right)=\left(1-\phi_{i,j}\right)+\phi_{i,j}\left[p_{k}\frac{{2n \choose 2}}{{p_{k}\left(2n-2\right)+2 \choose 2}}\right]
+\]
+
+\end_inset
+
+and the expectation for the similarity score between those haploid genomes
+ is
 \begin_inset Formula 
 \begin{align}
-E\left(s_{i,j}|\Phi_{i,j},\mbox{No other structure}\right)= & \left(1-\Phi_{i,j}\right)+\Phi\left[p_{k}\frac{{n \choose 2}}{{p_{k}\left(n-2\right)+2 \choose 2}}\right]\nonumber \\
-= & \left(1-\Phi_{i,j}\right)+\Phi\left[p_{k}\frac{n\left(n-1\right)}{\left(p_{k}\left(n-2\right)+2\right)\left(p_{k}\left(n-2\right)+1\right)}\right]\\
- & \frac{\sum_{k=1}^{N}w_{k}\left(\Phi_{i,j}p_{k}+\left(1-\Phi\right)\frac{1}{w_{k}}\right)}{\sum_{k=1}^{N}I\left[\sum_{l=1}^{2n}\mathbf{G}_{l,k}>1\right]}\\
- & =1+\Phi_{i,j}\left[\frac{\sum_{k=1}^{N}p_{k}w_{k}}{\sum_{k=1}^{N}I\left[\sum_{l=1}^{2n}\mathbf{G}_{l,k}>1\right]}-1\right]\label{Expected with kinship}
+E\left(s_{i_{1},j_{1},k}|\phi_{i,j}\right)= & \frac{\sum_{k=1}^{N}I\left[\sum_{l=1}^{2n}\mathbf{G}_{l,k}>1\right]\left[\left(1-\phi_{i,j}\right)+\phi_{i,j}\left[p_{k}\frac{2n\left(2n-1\right)}{\left(p_{k}\left(2n-2\right)+2\right)\left(p_{k}\left(2n-2\right)+1\right)}\right]\right]}{\sum_{k=1}^{N}I\left[\sum_{l=1}^{2n}\mathbf{G}_{l,k}>1\right]}\label{eq: Expected with kinship}
 \end{align}
 
 \end_inset
 
-It can be shown that in the presence of cryptic relatedness, 
-\begin_inset Formula $\Phi_{i,j}>0$
+It can easily be shown that in the presence of cryptic relatedness, 
+\begin_inset Formula $\phi_{i,j}>0$
 \end_inset
 
 , 
 \begin_inset Formula 
 \[
-E\left(s_{i,j}|\Phi_{i,j}>0\right)>1
+E\left(s_{i_{1},j_{1}}|\phi_{i,j}>0\right)>1
 \]
 
 \end_inset
 
+With 
+\begin_inset Formula $\sum_{i=1}^{2n}\mathbf{G}_{i,k}$
+\end_inset
 
+ as the maximum likelihood estimator for 
+\begin_inset Formula $p_{k}n$
+\end_inset
+
+, by the invariance principle, 
+\begin_inset Formula $w_{k}$
+\end_inset
+
+ is a consistent estimator for 
+\begin_inset Formula $\frac{{2n \choose 2}}{{p_{k}\left(2n-2\right)+2 \choose 2}}$
+\end_inset
+
+.
+ 
 \end_layout
 
 \begin_layout Standard
-And yielding an estimate of this kinship
+This yields a maximum likelihood estimate of this kinship defined as 
 \begin_inset Formula 
 \begin{equation}
-\hat{\Phi}=\frac{s_{i,j}-1}{\left[\frac{\sum_{k=1}^{N}p_{k}w_{k}}{\sum_{k=1}^{N}I\left[\sum_{l=1}^{2n}\mathbf{G}_{l,k}>1\right]}-1\right]}\label{Estimated Kinship}
+\hat{\phi}=\frac{s_{i,j}-1}{\left[\frac{\sum_{k=1}^{N}\hat{p_{k}}w_{k}}{\sum_{k=1}^{N}I\left[\sum_{l=1}^{2n}\mathbf{G}_{l,k}>1\right]}-1\right]}\label{Estimated Kinship}
 \end{equation}
 
 \end_inset
@@ -410,13 +457,13 @@ And yielding an estimate of this kinship
 \end_layout
 
 \begin_layout Standard
-For example, in an otherwise homogeneous population of unrelated individuals
- an uncle-nephew relationship 
-\begin_inset Formula $\left(\Phi=.125\right)$
+For example, in an otherwise homogeneous study group of unrelated individuals
+ a pair of cousins 
+\begin_inset Formula $\left(\phi=.0625\right)$
 \end_inset
 
 , with 
-\begin_inset Formula $MAF\sim Uniform\left(.01,.1\right)$
+\begin_inset Formula $MAF\sim Uniform\left(.02,.1\right)$
 \end_inset
 
  we can directly calculate the expectation of their similarity statistic,
@@ -427,7 +474,7 @@ For example, in an otherwise homogeneous population of unrelated individuals
  
 \begin_inset Formula 
 \[
-E\left(s_{i,j}|\Phi=.125,\mbox{No other structure}\right)\approx2.9
+E\left(s_{i,j}|\phi=.0625,\mbox{No other structure}\right)\approx2.19
 \]
 
 \end_inset
@@ -505,12 +552,113 @@ and assuming independence of each individual's haploid genomes, such as
  in the absence of inbreeding,
 \begin_inset Formula 
 \[
-\hat{Var}\left(s_{diploid,i,j}|\mbox{No structure}\right)=\frac{\hat{Var}\left(s_{haploid,i,j}|\mbox{No structure}\right)}{4}
+\hat{Var}\left(s_{i,j}^{\left(diploid\right)}\right)=\frac{\hat{Var}\left(s_{i,j}^{\left(haploid\right)}\right)}{4}=\hat{\sigma^{2}}_{i,j}
+\]
+
+\end_inset
+
+Which yields the asymptotic result
+\begin_inset Formula 
+\[
+s_{i,j}\sim N\left(\mu_{i,j},\hat{\sigma^{2}}_{i,j}\right)
+\]
+
+\end_inset
+
+We can test the null hypothesis that population structure does not exist
+ and all subjects are unrelated, with respect to the alternative that at
+ least one pair of individuals is related.
+ 
+\begin_inset Formula 
+\[
+H_{0}:\mu_{i,j}=1\forall i,j\in1\dots n
 \]
 
 \end_inset
 
 
+\begin_inset Formula 
+\[
+H_{A}:\exists i,j\in1\dots n|\mu_{i,j}\ne1
+\]
+
+\end_inset
+
+In a homogeneous dataset lacking relatedness, we consider each of the 
+\begin_inset Formula ${n \choose 2}$
+\end_inset
+
+ comparisons to be independent.
+ To achieve a familywise error rate 
+\begin_inset Formula $\alpha$
+\end_inset
+
+, we use the Šidák procedure 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cite{vsidak1967rectangular}
+\end_layout
+
+\end_inset
+
+ or the approximately equivalent Bonferroni procedure.
+ We reject the null at the 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ level when we obtain similarity scores in the rejection region 
+\begin_inset Formula 
+\[
+R:max\left(s_{i,j}\right)>1-probit\left(\frac{\alpha}{{n \choose 2}}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The properties of this similarity measure lend themselves toward straightforward
+ power calculations.
+ It is often of interest to consider some coefficient of relatedness, 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ that is acceptable for a study.
+ Setting a 
+\begin_inset Formula $\phi\ge\gamma$
+\end_inset
+
+ allows for the calculation of the probability of obtaining a pair of samples
+ inside the rejection region given two unacceptably closely related individuals.
+\begin_inset Formula 
+\[
+P\left(Reject\, H_{0}|\phi_{i,j}=\gamma\right)=\alpha+\left(1-\alpha\right)\left(1-\Phi\left(\frac{\mu_{i,j}-1}{\sqrt{\hat{\sigma^{2}}_{i,j}}}\right)\right)
+\]
+
+\end_inset
+
+Where 
+\begin_inset Formula $\Phi\left(x\right)$
+\end_inset
+
+ is the cumulative distribution function for a standard normal random variable.
+\end_layout
+
+\begin_layout Standard
+It would be of interest in any study seeking to qunatitatively demonstrate
+ the homogeneity of participants to produce this statistic which can demonstrate
+ that a lack of homogeneity would have been found with low probability given
+ the presence of some specified degree of relatedness, 
+\begin_inset Formula $\gamma$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Section*
@@ -539,9 +687,35 @@ These populations were not identified to have cryptic relatedness or had
  cryptic relatedness removed 
 \series bold
 [citation difficult (pptx file posted online KGP website) ftp://ftp.1000genomes.eb
-i.ac.uk/vol1/ftp/phase1/analysis_results/supporting/cryptic_relation_analysis/Neme
-sh_crypticrelatedness_20120213.pptx]
+i.ac.uk/vol1/ftp/phase1/
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+analysis_results/supporting/cryptic_relation_analysis/
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Nemesh_crypticrelatedness_20120213.pptx]
 \series default
+.
+ However, subsequent analyses have discovered numerous inferred relationships
+ closer than first cousins 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cite{gazal2015high}
+\end_layout
+
+\end_inset
+
 .
 \end_layout
 
@@ -549,9 +723,14 @@ sh_crypticrelatedness_20120213.pptx]
 Phase 3 of the 1000 Genomes Project contains approximately 2504 individuals
  with a combined total of 88 million variants.
  To test our method, we sampled 80,000 variants uniformly spaced in the
- dataset in order to limit the impact of linkage disequilibrium.
- Our method was then run on each of the 26 populations in the study as well
- as on 5 super populations and the study as a whole.
+ dataset 
+\series bold
+[This is a methodological weakness, IMO]
+\series default
+ in order to limit the impact of linkage disequilibrium and ensure independence
+ of variants.
+ Our method was then run on each of the 26 populations in the study which
+ were derived from 5 super populations sampled across the globe.
 \end_layout
 
 \begin_layout Standard
@@ -624,15 +803,11 @@ We defined the presence of cryptic relatedness as those individual pairs
 \begin_inset Formula $\alpha=.01$
 \end_inset
 
- and were estimated to have a coefficient of relatedness greater than 
-\begin_inset Formula $.01$
+ and were estimated to have a coefficient of relatedness 
+\begin_inset Formula $\phi>.0625$
 \end_inset
 
- (for reference, 
-\begin_inset Formula $\Phi=0.0156$
-\end_inset
-
- corresponds to second cousins) .
+, which corresponds to first cousins.
  By this measure, cryptic relatedness was discovered in 6 of the 26 populations
  using this method.
  
@@ -664,25 +839,106 @@ The overlap in these two groups may be due to the fact that the variance
 
 .
  Using the formula above, we estimate this relationship to be 
-\begin_inset Formula $\hat{\Phi}=.0206$
+\begin_inset Formula $\hat{\phi}=.27$
 \end_inset
 
-, suggesting that those individuals are more closely related than second
- cousins.
- The closest two individuals of the same population were found in the STU
- population.
- HG03889 and HG03783 were estimated to have a kinship coefficient 
-\begin_inset Formula $\hat{\Phi}=.252$
+, suggesting that those individuals are first degree relatives.
+ Two pairs of individuals in the STU population- (HG03899/HG03733 and HG03754/HG
+03750) were both estimated to have a kinship coefficient 
+\begin_inset Formula $\hat{\phi}\approx.25$
 \end_inset
 
-, indicating a relatedness substantially closer than second cousins.
+, similarly indicating a relatedness of the first degree.
+\end_layout
+
+\begin_layout Standard
+Interestingly, we found a pair of individuals HG03998 from the STU population
+ and HG03873 from the ITU population which exhibited strikingly high relatedness.
+ The plot below
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "ITU with HG03998"
+
+\end_inset
+
+ was generated by placing HG03998 into the ITU population and running our
+ analysis on that population.
+ Given an individual who belongs to a separate population from all others
+ in a dataset would be expected to produce similarity scores less than 1.
+ However, the similarity between HG03998 and HG03873 was found to be 
+\begin_inset Formula $s=3.9$
+\end_inset
+
+ significant at 
+\begin_inset Formula $p<10^{-30}$
+\end_inset
+
+ with an estimated relatedness 
+\begin_inset Formula $\hat{\phi}>.25$
+\end_inset
+
+, suggesting that these individuals are full siblings despite belonging
+ to different population groups.
+ Both populations were sampled from locations in the United Kingdom, increasing
+ the possibility that one these individuals was mislabeled in the data.
 \end_layout
 
 \begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/dan/1000GP/plots/s_distributions/ITU_with_HG03998.pdf
+	width 40col%
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Distribution of 
+\begin_inset Formula $s$
+\end_inset
+
+ statistic for population Indian Telugu from the UK (ITU) with individual
+ HG03998 added, who is believed to be related to HG03873, despite being
+ labeled in the Sri Lankan Tamil from the UK (STU) population.
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "ITU with HG03998"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
 
 \begin_layout Plain Layout
 
@@ -940,6 +1196,13 @@ Distribution of similarity coefficients for each of the 26 populations in
  STU, PUR) or systematic right skew (e.g.
  MXL, PEL)
 \end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "All s plots"
 
 \end_inset
 
@@ -2163,7 +2426,7 @@ name "population_table"
 \end_layout
 
 \begin_layout Section*
-Population detection in 1000 Genomes Project
+Population structure detection in 1000 Genomes Project
 \end_layout
 
 \begin_layout Standard
@@ -2337,7 +2600,7 @@ Interestingly, we found a strong case for cryptic relatedness between three
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 

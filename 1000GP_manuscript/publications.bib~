@@ -165,3 +165,23 @@
   year={2014},
   publisher={Public Library of Science}
 }
+@article{stevens2011inference,
+  title={Inference of relationships in population data using identity-by-descent and identity-by-state},
+  author={Stevens, Eric L and Heckenberg, Greg and Roberson, Elisha DO and Baugher, Joseph D and Downey, Thomas J and Pevsner, Jonathan},
+  journal={PLoS Genet},
+  volume={7},
+  number={9},
+  pages={e1002287},
+  year={2011},
+  publisher={Public Library of Science}
+}
+@article{vsidak1967rectangular,
+  title={Rectangular confidence regions for the means of multivariate normal distributions},
+  author={{\v{S}}id{\'a}k, Zbyn{\v{e}}k},
+  journal={Journal of the American Statistical Association},
+  volume={62},
+  number={318},
+  pages={626--633},
+  year={1967},
+  publisher={Taylor \& Francis Group}
+}
