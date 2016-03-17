@@ -1,5 +1,5 @@
-#LyX 2.0 created this file. For more info see http://www.lyx.org/
-\lyxformat 413
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
 \begin_document
 \begin_header
 \textclass article
@@ -18,13 +18,13 @@
 \font_roman default
 \font_sans default
 \font_typewriter default
+\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
-
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -35,15 +35,24 @@
 \use_hyperref false
 \papersize default
 \use_geometry false
-\use_amsmath 1
-\use_esint 1
-\use_mhchem 1
-\use_mathdots 1
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
 \cite_engine basic
+\cite_engine_type default
+\biblio_style plain
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\justification true
 \use_refstyle 1
 \index Index
 \shortcut idx
@@ -638,7 +647,7 @@ The properties of this similarity measure lend themselves toward straightforward
  inside the rejection region given two unacceptably closely related individuals.
 \begin_inset Formula 
 \[
-P\left(Reject\, H_{0}|\phi_{i,j}=\gamma\right)=\alpha+\left(1-\alpha\right)\left(1-\Phi\left(\frac{\mu_{i,j}-1}{\sqrt{\hat{\sigma^{2}}_{i,j}}}\right)\right)
+P\left(Reject\,H_{0}|\phi_{i,j}=\gamma\right)=\alpha+\left(1-\alpha\right)\left(1-\Phi\left(\frac{\mu_{i,j}-1}{\sqrt{\hat{\sigma^{2}}_{i,j}}}\right)\right)
 \]
 
 \end_inset
@@ -666,7 +675,7 @@ Identification of relatedness in 1000GP data
 \end_layout
 
 \begin_layout Standard
-We applied our method to data from the 1000 Genomes Project 
+We applied our method to data from the 1000 Genomes Project (TGP) 
 \begin_inset ERT
 status open
 
@@ -717,20 +726,21 @@ cite{gazal2015high}
 \end_inset
 
 .
+ 
 \end_layout
 
 \begin_layout Standard
 Phase 3 of the 1000 Genomes Project contains approximately 2504 individuals
- with a combined total of 88 million variants.
- To test our method, we sampled 80,000 variants uniformly spaced in the
- dataset 
-\series bold
-[This is a methodological weakness, IMO]
-\series default
- in order to limit the impact of linkage disequilibrium and ensure independence
- of variants.
- Our method was then run on each of the 26 populations in the study which
- were derived from 5 super populations sampled across the globe.
+ with a combined total of approximately 88 million variants.
+ To test our method, we divided the data into blocks of 100 variants and
+ selected only one loci from each block in order to limit the impact of
+ linkage disequilibrium and promote the independence of measurements.
+ The selected variant within each block was selected based on the smallest
+ minor allele frequency observed which was larger than our cutoff of 2%.
+ This yeilded approximately 800,000 variants for each of the 26 populations
+ in the TGP.
+ Our method was then run on each of these separately to test for heterogeneity
+ and relatedness within population groups.
 \end_layout
 
 \begin_layout Standard
@@ -739,6 +749,13 @@ We discovered that there was great variation in the presence of cryptic
  Under the assumptions that each study contained a homogeneous population
  of unrelated individuals, only a handful of groups contained neither large
  outliers nor heavily inflated numbers of significant results.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "population_table"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -895,13 +912,77 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
+	filename /home/dan/1000GP/plots/s_distributions/EstimatedCoKvsGazal.pdf
+	width 80page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/dan/1000GP/plots/s_distributions/filtered99_TGP2261_LD10/pValueForPop.pdf
+	width 80col%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
 	filename /home/dan/1000GP/plots/s_distributions/ITU_with_HG03998.pdf
 	width 40col%
 
 \end_inset
 
 
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 Distribution of 
@@ -1174,7 +1255,7 @@ Distribution of similarity statistic within population subgroups from 1000
 \end_inset
 
 
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 Distribution of similarity coefficients for each of the 26 populations in
@@ -1212,6 +1293,283 @@ name "All s plots"
 \end_inset
 
 
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Distribution of similarity statistic within population subgroups from 1000
+ Genomes Project after removal or related individuals
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/dan/1000GP/plots/s_distributions/filtered99_TGP2261_LD10/ACBdiploid.pdf
+	lyxscale 20
+	width 10page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename /home/dan/1000GP/plots/s_distributions/filtered99_TGP2261_LD10/ASWdiploid.pdf
+	lyxscale 20
+	width 10page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename /home/dan/1000GP/plots/s_distributions/filtered99_TGP2261_LD10/BEBdiploid.pdf
+	lyxscale 20
+	width 10page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename /home/dan/1000GP/plots/s_distributions/filtered99_TGP2261_LD10/CDXdiploid.pdf
+	lyxscale 20
+	width 10page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/dan/1000GP/plots/s_distributions/filtered99_TGP2261_LD10/CEUdiploid.pdf
+	lyxscale 20
+	width 10page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename /home/dan/1000GP/plots/s_distributions/filtered99_TGP2261_LD10/CHBdiploid.pdf
+	lyxscale 20
+	width 10page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename /home/dan/1000GP/plots/s_distributions/filtered99_TGP2261_LD10/CHSdiploid.pdf
+	lyxscale 20
+	width 10page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename /home/dan/1000GP/plots/s_distributions/filtered99_TGP2261_LD10/CLMdiploid.pdf
+	lyxscale 20
+	width 10page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/dan/1000GP/plots/s_distributions/filtered99_TGP2261_LD10/ESNdiploid.pdf
+	lyxscale 20
+	width 10page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename /home/dan/1000GP/plots/s_distributions/filtered99_TGP2261_LD10/FINdiploid.pdf
+	lyxscale 20
+	width 10page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename /home/dan/1000GP/plots/s_distributions/filtered99_TGP2261_LD10/GBRdiploid.pdf
+	lyxscale 20
+	width 10page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename /home/dan/1000GP/plots/s_distributions/filtered99_TGP2261_LD10/GIHdiploid.pdf
+	lyxscale 20
+	width 10page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/dan/1000GP/plots/s_distributions/filtered99_TGP2261_LD10/GWDdiploid.pdf
+	lyxscale 20
+	width 10page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename /home/dan/1000GP/plots/s_distributions/filtered99_TGP2261_LD10/IBSdiploid.pdf
+	lyxscale 20
+	width 10page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename /home/dan/1000GP/plots/s_distributions/filtered99_TGP2261_LD10/ITUdiploid.pdf
+	lyxscale 20
+	width 10page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename /home/dan/1000GP/plots/s_distributions/filtered99_TGP2261_LD10/JPTdiploid.pdf
+	lyxscale 20
+	width 10page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/dan/1000GP/plots/s_distributions/filtered99_TGP2261_LD10/KHVdiploid.pdf
+	lyxscale 20
+	width 10page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename /home/dan/1000GP/plots/s_distributions/filtered99_TGP2261_LD10/LWKdiploid.pdf
+	lyxscale 20
+	width 10page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename /home/dan/1000GP/plots/s_distributions/filtered99_TGP2261_LD10/MSLdiploid.pdf
+	lyxscale 20
+	width 10page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename /home/dan/1000GP/plots/s_distributions/filtered99_TGP2261_LD10/MXLdiploid.pdf
+	lyxscale 20
+	width 10page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/dan/1000GP/plots/s_distributions/filtered99_TGP2261_LD10/PELdiploid.pdf
+	lyxscale 20
+	width 10page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename /home/dan/1000GP/plots/s_distributions/filtered99_TGP2261_LD10/PJLdiploid.pdf
+	lyxscale 20
+	width 10page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename /home/dan/1000GP/plots/s_distributions/filtered99_TGP2261_LD10/PURdiploid.pdf
+	lyxscale 20
+	width 10page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename /home/dan/1000GP/plots/s_distributions/filtered99_TGP2261_LD10/STUdiploid.pdf
+	lyxscale 20
+	width 10page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/dan/1000GP/plots/s_distributions/filtered99_TGP2261_LD10/TSIdiploid.pdf
+	lyxscale 20
+	width 10page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename /home/dan/1000GP/plots/s_distributions/filtered99_TGP2261_LD10/YRIdiploid.pdf
+	lyxscale 20
+	width 10page%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Distribution of similarity coefficients for each of the 26 populations in
+ the 1000 Genomes Project.
+ Homogeneous populations lacking cryptic relatedness should be expected
+ to exhibit distributions centered around 1 with no outliers.
+ The red dotted vertical line on each plot indicates the family-wise
+\begin_inset Formula $\alpha=.05$
+\end_inset
+
+ level cutoff for 
+\begin_inset Formula ${n \choose 2}$
+\end_inset
+
+ comparisons.
+ Many of the population groups do demonstrate the null behavior (e.g.
+ JPT, KHV, FIN)- however, a number of populations show the presence of extreme
+ outliers (e.g.
+ STU, PUR) or systematic right skew (e.g.
+ MXL, PEL)
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "All s plots-1"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \begin_inset Float table
 wide false
 sideways false
@@ -1220,11 +1578,11 @@ status open
 \begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="27" columns="4">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -2349,7 +2707,7 @@ Yes
 \end_inset
 
 
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 
@@ -2366,7 +2724,7 @@ Presence of population structure and cryptic relatedness detected in each
  Cryptic relatedness was defined as those populations containing at least
  one pair of individuals with an estimated kinship coefficient greater than
  
-\begin_inset Formula $.01$
+\begin_inset Formula $.1$
 \end_inset
 
  and statistically significant 
@@ -2540,7 +2898,7 @@ C
 \end_inset
 
 
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 Heatmap of GSM generated by our method (A) and variance-covariance (B) using
@@ -2674,7 +3032,7 @@ C
 [Rerun this figure on whole dataset]
 \series default
 
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 
@@ -2762,7 +3120,7 @@ B
 \end_inset
 
 
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 (
@@ -2876,7 +3234,7 @@ status open
 \end_inset
 
 
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 Figures...
@@ -2933,10 +3291,10 @@ Ratio of within-group mean distance to out-of group mean distance:
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="9" columns="3">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
