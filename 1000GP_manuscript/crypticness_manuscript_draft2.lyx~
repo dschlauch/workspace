@@ -693,7 +693,7 @@ cite{10002015global, 10002012integrated}
 
 \begin_layout Standard
 These populations were not identified to have cryptic relatedness or had
- cryptic relatedness removed 
+ known cryptic relatedness removed 
 \series bold
 [citation difficult (pptx file posted online KGP website) ftp://ftp.1000genomes.eb
 i.ac.uk/vol1/ftp/phase1/
@@ -762,6 +762,11 @@ reference "population_table"
 We defined the presence of population structure as applying to those populations
  which had a greater than expected number of similarity scores below the
  mean.
+ By definition, the mean of each study is 
+\begin_inset Formula $\mu=1$
+\end_inset
+
+.
  We performed a standard one-sided binomial test with 
 \begin_inset Formula $p=0.5$
 \end_inset
@@ -771,14 +776,14 @@ We defined the presence of population structure as applying to those populations
 \end_inset
 
  cutoffs of 
-\begin_inset Formula $.01$
+\begin_inset Formula $.05$
 \end_inset
 
  and 
-\begin_inset Formula $.001$
+\begin_inset Formula $.01$
 \end_inset
 
-
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "population_table"
@@ -898,6 +903,13 @@ reference "ITU with HG03998"
  to different population groups.
  Both populations were sampled from locations in the United Kingdom, increasing
  the possibility that one these individuals was mislabeled in the data.
+\end_layout
+
+\begin_layout Standard
+Gazal et al propose a subset of the TGP which removes individuals from 227
+ related pairs such that no two individuals are as related as cousins or
+ closer.
+ 
 \end_layout
 
 \begin_layout Standard
