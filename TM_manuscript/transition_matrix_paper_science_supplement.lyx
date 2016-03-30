@@ -1,8 +1,12 @@
-#LyX 2.0 created this file. For more info see http://www.lyx.org/
-\lyxformat 413
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
 \begin_document
 \begin_header
 \textclass article
+\begin_preamble
+\usepackage{inputenc}
+\usepackage{authblk}
+\end_preamble
 \use_default_options true
 \maintain_unincluded_children false
 \language english
@@ -12,31 +16,41 @@
 \font_roman default
 \font_sans default
 \font_typewriter default
+\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
-
 \graphics default
 \default_output_format default
 \output_sync 0
 \bibtex_command default
 \index_command default
 \paperfontsize default
+\spacing single
 \use_hyperref false
 \papersize default
 \use_geometry false
-\use_amsmath 1
-\use_esint 1
-\use_mhchem 1
-\use_mathdots 1
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
 \cite_engine basic
+\cite_engine_type default
+\biblio_style plain
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\justification true
 \use_refstyle 1
 \index Index
 \shortcut idx
@@ -59,17 +73,668 @@
 
 \begin_body
 
+\begin_layout Title
+
+\series bold
+Supplementary Materials for
+\series default
+ 
+\begin_inset Newline newline
+\end_inset
+
+Estimating Drivers Cell State Transitions using Gene Regulatory Network
+ Models
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+author[1]{Daniel Schlauch} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+author[2,3]{Kimberly Glass} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+author[1,3]{John Quackenbush} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+affil[1]{Department of Biostatistics and Computational Biology, Dana-Farber
+ Cancer Institute and Department of Biostatistics, Harvard TH Chan School
+ of Public Health, Boston, MA 02115}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+affil[2]{Channing Division of Network Medicine, Brigham and Women's Hospital,
+ Boston, MA 02115}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+affil[3]{Department of Medicine, Harvard Medical School, Boston, MA 02115}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+date{}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Part*
-Supplemental Methods
+This PDF file includes:
+\end_layout
+
+\begin_layout Itemize
+Materials and Methods 
+\end_layout
+
+\begin_layout Itemize
+Supplementary Text 
+\end_layout
+
+\begin_layout Itemize
+Figs.
+ S1 to Sx 
+\end_layout
+
+\begin_layout Itemize
+Tables S1 to Sx 
 \end_layout
 
 \begin_layout Standard
-The computations in this paper were run on the Odyssey cluster supported
- by the FAS Division of Science, Research Computing Group at Harvard University.
+\begin_inset Newpage newpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section*
-Transition Analysis
+Materials and Methods 
+\end_layout
+
+\begin_layout Subsection*
+
+\bar under
+Data Collection and Processing
+\end_layout
+
+\begin_layout Standard
+Transcription Factors (TF) data was Gene expression data for each of the
+ four COPD datasets was
+\end_layout
+
+\begin_layout Subsection*
+
+\bar under
+Common network inference methods do not produce reproducible results in
+ COPD
+\end_layout
+
+\begin_layout Standard
+We evaluated the standard tools for COPD case-control studies at the network
+ level by observing the agreement in differential network inference (NI)
+ across studies.
+ We utilizing four studies - Chronic Obstructive Pulmonary Disease (COPD)-
+ Evaluation of COPD Longitudinally to Identify Predictive Surrogate Endpoints
+ (ECLIPSE)
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cite{vestbo2008evaluation}
+\end_layout
+
+\end_inset
+
+, the COPDGene study 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cite{pillai2009genome}
+\end_layout
+
+\end_inset
+
+, Lung Genomics Research Consortium (LGRC) 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cite{lgrc}
+\end_layout
+
+\end_inset
+
+ and Lung Tissue Chronic Obstructive Pulmonary Disease (LTCOPD) 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cite{ltcopd}
+\end_layout
+
+\end_inset
+
+.
+ Our goal was to determine the ability of commonly used NI methods to find
+ reproducible results across studies.
+ Methods tested included Context Likelihood of Relatedness (CLR), Algorithm
+ for the Reconstruction of Gene Regulatory Networks (ARACNE), and Weighted
+ Gene Correlation Network Analysis (WGCNA).
+ We computed differential edgeweights across cases and controls using each
+ of the NI methods.
+ Next, we plotted the differential edgeweights for each pairwise combination
+ of studies [Supplemental Figure X].
+ We found no meaningful correlation for edgeweight differences between 
+\emph on
+any
+\emph default
+ two studies using 
+\emph on
+any
+\emph default
+ of the three methods.
+ 
+\end_layout
+
+\begin_layout Standard
+We conclude that identifying differences in COPD case-control studies using
+ existing methods for NI do not generate reproducible results.
+\end_layout
+
+\begin_layout Subsection*
+
+\bar under
+Inferring Gene Regulatory Networks
+\end_layout
+
+\begin_layout Standard
+In 2013, we described PANDA
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\backslash
+cite{glass2013passing}
+\end_layout
+
+\end_inset
+
+, a method
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\backslash
+cite{olsen2014inference}
+\end_layout
+
+\end_inset
+
+ for estimating gene regulatory networks that uses “message passing” 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\backslash
+cite{frey2007clustering}
+\end_layout
+
+\end_inset
+
+ to integrate multiple types of genomic data.
+ PANDA begins with a prior regulatory network based on mapping transcription
+ factor motifs to a reference genome and integrates other sources of data,
+ such as protein-protein interaction and gene expression profiles, to estimate
+ individual sample networks.
+ While PANDA has proven to be very useful in a number of applications
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\backslash
+cite{lao2015genome,glass2015network,glass2014sexually}
+\end_layout
+
+\end_inset
+
+, its iterative approach to edge-weight optimization limits its utility
+ in situations requiring a large number of network bootstrap estimations.
+ To address this limitation, we developed an approach which considers the
+ available evidence of an edge for each possible TF-gene pair.
+ This evidence can be divided into two components, referred to here as direct
+ and indirect.
+ Consider the edge between a TF and a gene, referred to here as 
+\begin_inset Formula $TF_{i}$
+\end_inset
+
+ and 
+\begin_inset Formula $g_{j}$
+\end_inset
+
+, respectively.
+ The direct evidence, 
+\begin_inset Formula $d_{i,j}$
+\end_inset
+
+, consists of the squared conditional correlation of the 
+\begin_inset Formula $g_{i}$
+\end_inset
+
+ and 
+\begin_inset Formula $g_{j}$
+\end_inset
+
+ given all other regulators of 
+\begin_inset Formula $g_{i}$
+\end_inset
+
+.
+ Where 
+\begin_inset Formula $g_{i}$
+\end_inset
+
+ is the gene which encodes 
+\begin_inset Formula $TF_{i}$
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+d_{i,j}=cor\left(g_{i},g_{j}|\left\{ g_{k,-j}:k\ne j,k\in\mathbf{TF}\right\} \right)^{2}
+\]
+
+\end_inset
+
+ Naturally, the use of direct evidence inadequately captures regulatory
+ relationships due to the impacts of technical noise and numerous biological
+ external factors such as stable or transient protein-protein interactions,
+ post-translational modifications, etc.
+ which may confound or modify a regulatory effect.
+ These sources of confounding and variability in the expression pattern
+ of a gene coding a TF may obscure the effects it has on all of its target
+ genes.
+ Therefore it is of value if we can complement our estimate of the likelihood
+ of a regulatory mechanism by aggregating the information from the gene
+ expression patterns of all suspected targets of transcription factors.
+ PANDA achieves its superior performance in part by convergence towards
+ “agreement”, whereby large collections of gene expression patterns must
+ agree with the proposed regulatory structure in order to claim an interaction.
+ Similarly, we look for agreement between the gene expression patterns of
+ large sets of co-targeted genes.
+ We refer to this feature as indirect evidence and can achieve this by again
+ utilizing our set of regulatory priors.
+ In this portion of the analysis we suspend the recognition of a TF as a
+ member of the gene list and instead consider each of the 
+\begin_inset Formula $m$
+\end_inset
+
+ TFs to be binary classifications across the entire gene list.
+ Class labels are determined by the presence or absence of a sequence binding
+ motif for that TF in the vicinity of the gene.
+\end_layout
+
+\begin_layout Standard
+The indirect evidence between the two nodes, 
+\begin_inset Formula $\theta_{i,j}$
+\end_inset
+
+, represents the fitted probability that 
+\begin_inset Formula $g_{i}$
+\end_inset
+
+ belongs to the class of genes targeted by 
+\begin_inset Formula $TF_{j}$
+\end_inset
+
+.
+ 
+\begin_inset Formula $g_{i}$
+\end_inset
+
+ is considered to be a new observation placed into the 
+\emph on
+n
+\emph default
+-dimensional space separated by transcription factor targets and non-targets.
+ To divide up the space, we use a logistic regression on the gene expression
+ data with outcome taken to be the existence or non-existence of a known
+ sequence motif for 
+\begin_inset Formula $TF_{j}$
+\end_inset
+
+ upstream of 
+\begin_inset Formula $g_{i}$
+\end_inset
+
+.
+ 
+\begin_inset Formula 
+\[
+logit\left(E\left[M_{j}\right]\right)=\beta_{0}+\beta_{1}g_{\left(1\right)}+\dots+\beta_{N}g_{\left(N\right)}
+\]
+
+\end_inset
+
+where the response 
+\begin_inset Formula $M_{j}$
+\end_inset
+
+ is a binary vector of length 
+\begin_inset Formula $n$
+\end_inset
+
+ indicating the of the presence of a sequence motif for transcription factor
+ 
+\begin_inset Formula $j$
+\end_inset
+
+ in the vicinity of each of the 
+\begin_inset Formula $n$
+\end_inset
+
+ genes.
+ And where 
+\begin_inset Formula $g_{\left(k\right)}$
+\end_inset
+
+ is a vector of length 
+\begin_inset Formula $n$
+\end_inset
+
+ specifying the gene expression for sample 
+\begin_inset Formula $k$
+\end_inset
+
+ over 
+\begin_inset Formula $n$
+\end_inset
+
+ genes.
+ 
+\end_layout
+
+\begin_layout Standard
+For some TF-gene pair, the fitted values for each 
+\begin_inset Formula $TF_{j}-g_{i}$
+\end_inset
+
+ pair define the 
+\begin_inset Quotes eld
+\end_inset
+
+indirect
+\begin_inset Quotes erd
+\end_inset
+
+ evidence 
+\begin_inset Formula $\theta_{j,i}$
+\end_inset
+
+.
+\begin_inset Formula 
+\[
+\hat{\theta}_{j,i}=\frac{1}{1+e^{\beta_{0}+\beta_{1}g_{i,\left(1\right)}+\dots+\beta_{k}g_{i,\left(k\right)}}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+By scoring each gene according to the strength of indirect evidence for
+ a regulatory response to each of the TFs, we can combine this with the
+ direct evidence of regulation (squared conditional correlation of expression
+ for 
+\begin_inset Formula $g_{i}$
+\end_inset
+
+ and 
+\begin_inset Formula $TF_{j}$
+\end_inset
+
+).
+ The appropriate manner in which to combine direct and indirect evidence
+ remains an open question.
+ Though both measures are bounded by [0,1] their interpretation is quite
+ different.
+ The direct evidence can be considered in terms of it's conditional gene
+ expression 
+\begin_inset Formula $R^{2}$
+\end_inset
+
+ between nodes, while the indirect evidence is interpreted as a probability.
+ We use a non-parametric approach to combine evidence.
+ The targets of each TF are then ranked and combined as a weighted sum,
+ 
+\begin_inset Formula $w_{i}=\left(1-\alpha\right)\left[rank\left(d_{i}\right)\right]+\alpha\left[rank\left(e_{i}\right)\right]$
+\end_inset
+
+,
+\begin_inset Formula $i\in\left\{ 1,\dots,n\right\} $
+\end_inset
+
+.
+ Our choice of the weight, 
+\begin_inset Formula $\alpha$
+\end_inset
+
+, here is based on empirical evaluation, and perhaps not surprisingly, is
+ loosely correlated with organism complexity.
+ In validation sets from Yeast, the optimal alpha was observed near 
+\begin_inset Formula $\alpha=.9$
+\end_inset
+
+ while simpler E.
+ coli datasets saw an optimal value of 
+\begin_inset Formula $\alpha=.6$
+\end_inset
+
+ and an in silico dataset, optimal 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ was achieved at 
+\begin_inset Formula $\alpha<.5$
+\end_inset
+
+ This naturally reflects the fact that the increased complexity of the network
+ necessitates the use of larger scale agreement between genes, rather than
+ a reliance on pairwise correlations between potentially noisier and more
+ complex expression patterns.
+ 
+\end_layout
+
+\begin_layout Subsection*
+
+\bar under
+Network edges are recovered in In Silico, E.
+ coli and Yeast (
+\emph on
+Saccharomyces cerevisiae
+\emph default
+)
+\end_layout
+
+\begin_layout Standard
+A common challenge in gene regulatory network inference is the difficulty
+ of validating identified networks against a known, reliable gold standard.
+ A number of validation methods have been used for in vivo samples, including
+ ChIP-seq, ChIP-chip.
+ Knockdowns have also been used in cell lines and have been shown to be
+ effective at predicting in vivo responses 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cite{olsen2014inference}
+\end_layout
+
+\end_inset
+
+.
+ Additionally, in silico methods have been used which simulate gene expression
+ datasets based on a predefined set of regulatory mechanisms.
+\end_layout
+
+\begin_layout Standard
+To test our methods, we used four test datasets of increasing biological
+ complexity- (1) in silico, (2) E.
+ coli, and (3) Yeast with simulated motif priors and (4) Yeast with biological
+ motif priors.
+ Data from (4) was collected from 
+\emph on
+Saccharomyces cerevisiae
+\emph default
+ with TF knock-out and stress conditions 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cite{harbison2004transcriptional}
+\end_layout
+
+\end_inset
+
+.
+ Data from the first three sources was obtained from the publicly available
+ DREAM5 challenge
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cite{marbach2012wisdom}
+\end_layout
+
+\end_inset
+
+.
+ This challenge asked contestants to infer gene networks from expression
+ data alone, using a gold standard for evalution.
+ Instead, we started with the gold standard and swapped a number of edges
+ to create the type I and type II error rates consistent with Yeast motif
+ priors and evaluated the performance of MONSTER to refine its predictions
+ of the true gold standard.
+ The estimated edges in MONSTER utilizing the gene expression data were
+ demonstrated to be superior to those of the edge prior alone.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/DREAM5a_all.png
+	width 40col%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/DREAM5c_all.png
+	width 40col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/DREAM5d_all.png
+	width 40col%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/Yeast_all.png
+	width 40col%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+ROC curves for (1) in silico, (2) E.
+ coli, (3) Yeast, demonstrating at least comparable prediction performance
+ for both MONSTER and PANDA in refining edges beyond what is obtained using
+ sequence motif priors.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+
+\bar under
+Computation of MONSTER’s transition matrix
 \end_layout
 
 \begin_layout Standard
@@ -83,8 +748,8 @@ A primary purpose of reconstructing GRNs is the understanding of the biological
  and PANDA, but these methods rely more heavily on the static sequence motif
  data rather than gene expression data collected across groups, such as
  in a case-control study.
- Both methods, along with BERE, use gene expression data as a refinement
- of the more accurate motif priors.
+ Both methods, along with MONSTER's network inference approach, use gene
+ expression data as a refinement of the more accurate motif priors.
  It is therefore a side effect that any GRN inference method that relies
  on motifs directly for edgeweight calculation will be susceptible to having
  the bulk of its predictive power stripped when making comparisons between
@@ -151,7 +816,7 @@ Where
 \end_inset
 
  is the number of transcription factors and also the column rank of 
-\begin_inset Formula $\mathbf{A},\mathbf{B},\mathbf{T}\, and\,\mathbf{E}$
+\begin_inset Formula $\mathbf{A},\mathbf{B},\mathbf{T}\,and\,\mathbf{E}$
 \end_inset
 
 .
@@ -228,12 +893,12 @@ This can be solved with normal equations,
 \begin_inset Formula 
 \begin{eqnarray*}
 \mathbf{\tau}_{i} & = & \left(\mathbf{A}^{T}\mathbf{A}\right)^{-1}\mathbf{A}^{T}\mathbf{b}_{i}\\
-\mathbf{T} & = & \left[\tau_{1},\tau_{2},\dots,\tau_{n}\right]
+\mathbf{T} & = & \left[\tau_{1},\tau_{2},\dots,\tau_{m}\right]
 \end{eqnarray*}
 
 \end_inset
 
-Which produces the least square estimate.
+Which produces the least squares estimate.
  I.e.
  loss function 
 \begin_inset Formula $L\left(\mathbf{T}\right)=\sum_{gene=1}^{N}||\mathbf{B}_{gene}-\mathbf{A}_{gene}\mathbf{T}||^{2}$
@@ -271,7 +936,7 @@ key "tibshirani1996regression"
 \begin_inset Formula 
 \[
 \mathbf{Q}_{i,j}=\begin{cases}
-1 & for\, i=j\ne k\\
+1 & for\,i=j\ne k\\
 0 & elsewhere
 \end{cases}
 \]
@@ -311,8 +976,8 @@ This example illustrates a key feature of this method.
 \uwave off
 \noun off
 \color none
-that the transition matrix is a data reduction method that reduces the case-cont
-rol network transformation from a set of 
+that the transition matrix reduces the case-control network transformation
+ from a set of 
 \begin_inset Formula $2\times p\times m$
 \end_inset
 
@@ -360,8 +1025,10 @@ mass
 ns of a network transition.
 \end_layout
 
-\begin_layout Section*
-Transition Matrix Analysis
+\begin_layout Subsection*
+
+\bar under
+Evaluating the Transition Matrix
 \end_layout
 
 \begin_layout Standard
@@ -397,7 +1064,7 @@ rary in nature by capturing only the edgeweight signal for which there is
  have fewer prior regulatory targets.
  From a statistical perspective, TFs with relatively more targets are able
  to generate more stable targeted expression patterns, which leads to more
- consistent estimates in “agreement” algorithms such as PANDA and BERE.
+ consistent estimates in “agreement” algorithms such as PANDA.
  From a biological perspective, increased motif presence may indicate that
  the TFs are more likely to be ubiquitous housekeeping proteins that do
  not meaningfully alter their involvement between cases and controls.
@@ -449,7 +1116,7 @@ status open
 \end_inset
 
 
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 
@@ -457,9 +1124,9 @@ status open
 Overview of Transition Matrix analysis workflow.
 
 \series default
- (1) BERE is applied separately to subsets of the gene expression data including
- the cases group, the controls group and 1000 permutations of the cases
- and controls labels.
+ (1) Network inference is computed separately to subsets of the gene expression
+ data including the cases group, the controls group and 1000 permutations
+ of the cases and controls labels.
  (2) Transition matrix is estimated between the cases and controls and each
  of the pair or permuted 
 \begin_inset Quotes eld
@@ -490,9 +1157,16 @@ controls
 
 \end_layout
 
-\begin_layout Section*
-TM significantly improves TF-TF edge estimation from simulated gene expression
- data 
+\begin_layout Subsection*
+
+\bar under
+MONSTER significantly improves TF-TF edge estimation from 
+\emph on
+in silico
+\emph default
+ gene expression data
+\bar default
+ 
 \end_layout
 
 \begin_layout Standard
@@ -552,9 +1226,9 @@ cite{glass2013passing}
 
 .
  We note that the two simulated regulatory priors have AUC-ROC of .570 and
- .547, which feeds the BERE and PANDA algorithms with priors which are substantia
-lly less predictive than sequence motif priors commonly used for network
- inference methods.
+ .547, which feeds the MONSTER and PANDA algorithms with priors which are
+ substantially less predictive than sequence motif priors commonly used
+ for network inference methods.
 \end_layout
 
 \begin_layout Standard
@@ -700,12 +1374,12 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Tabular
-<lyxtabular version="3" rows="13" columns="4">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<lyxtabular version="3" rows="11" columns="4">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell multicolumn="1" alignment="center" valignment="top" usebox="none">
 \begin_inset Text
@@ -1436,7 +2110,7 @@ PANDA*
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1457,7 +2131,7 @@ PANDA**
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1478,7 +2152,7 @@ PANDA**
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1499,7 +2173,7 @@ PANDA**
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1521,112 +2195,12 @@ PANDA**
 \end_inset
 </cell>
 </row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-BERE*
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-.813
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-BERE**
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-.697
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
 </lyxtabular>
 
 \end_inset
 
 
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 
@@ -1675,411 +2249,9 @@ status open
 
 \end_layout
 
-\begin_layout Section*
-BERE: A regression-based approach to modeling gene regulatory networks 
-\end_layout
+\begin_layout Subsection*
 
-\begin_layout Standard
-In 2013, we described PANDA
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-~
-\backslash
-cite{glass2013passing}
-\end_layout
-
-\end_inset
-
-, a method
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-~
-\backslash
-cite{olsen2014inference}
-\end_layout
-
-\end_inset
-
- for estimating gene regulatory networks that uses “message passing” 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-~
-\backslash
-cite{frey2007clustering}
-\end_layout
-
-\end_inset
-
- to integrate multiple types of genomic data.
- PANDA begins with a prior regulatory network based on mapping transcription
- factor motifs to a reference genome and integrates other sources of data,
- such as protein-protein interaction and gene expression profiles, to estimate
- individual sample networks.
- While PANDA has proven to be very useful in a number of applications
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-~
-\backslash
-cite{lao2015genome,glass2015network,glass2014sexually}
-\end_layout
-
-\end_inset
-
-, its iterative approach to edge-weight optimization limits its utility
- in situations requiring a large number of network bootstrap estimations.
- To address this limitation, we developed BERE, Bipartite Edge Reconstruction
- from Expression.
- BERE approaches the network inference problem by considering the available
- evidence of an edge for each possible TF-gene pair.
- This evidence can be divided into two components, referred to here as direct
- and indirect.
- Consider the edge between a TF and a gene, referred to here as 
-\begin_inset Formula $TF_{i}$
-\end_inset
-
- and 
-\begin_inset Formula $g_{j}$
-\end_inset
-
-, respectively.
- The direct evidence, 
-\begin_inset Formula $d_{i,j}$
-\end_inset
-
-, consists of the squared conditional correlation of the 
-\begin_inset Formula $g_{i}$
-\end_inset
-
- and 
-\begin_inset Formula $g_{j}$
-\end_inset
-
- given all other regulators of 
-\begin_inset Formula $g_{i}$
-\end_inset
-
-.
- Where 
-\begin_inset Formula $g_{i}$
-\end_inset
-
- is the gene which encodes 
-\begin_inset Formula $TF_{i}$
-\end_inset
-
- 
-\begin_inset Formula 
-\[
-d_{i,j}=cor\left(g_{i},g_{j}|\left\{ g_{k,-j}:k\ne j,k\in\mathbf{TF}\right\} \right)^{2}
-\]
-
-\end_inset
-
- Naturally, the use of direct evidence inadequately captures regulatory
- relationships due to the impacts of technical noise and numerous biological
- external factors such as stable or transient protein-protein interactions,
- post-translational modifications, etc.
- which may confound or modify a regulatory effect.
- These sources of confounding and variability in the expression pattern
- of a gene coding a TF may obscure the effects it has on all of its target
- genes.
- Therefore it is of value if we can complement our estimate of the likelihood
- of a regulatory mechanism by aggregating the information from the gene
- expression patterns of all suspected targets of transcription factors.
- PANDA achieves its superior performance in part by convergence towards
- “agreement”, whereby large collections of gene expression patterns must
- agree with the proposed regulatory structure in order to claim an interaction.
- Similarly, BERE looks for agreement between the gene expression patterns
- of large sets of co-targeted genes.
- We refer to this feature as indirect evidence and can achieve this by again
- utilizing our set of regulatory priors.
- In this portion of the analysis we suspend the recognition of a TF as a
- member of the gene list and instead consider each of the m TFs to be binary
- classifications across the entire gene list.
- Class labels are determined by the presence or absence of a sequence binding
- motif for that TF in the vicinity of the gene.
-\end_layout
-
-\begin_layout Standard
-The indirect evidence between the two nodes, 
-\begin_inset Formula $e_{i,j}$
-\end_inset
-
-, represents the fitted probability that 
-\begin_inset Formula $g_{i}$
-\end_inset
-
- belongs to the class of genes targeted by 
-\begin_inset Formula $TF_{j}$
-\end_inset
-
-.
- 
-\begin_inset Formula $g_{i}$
-\end_inset
-
- is considered to be a new observation placed into the 
-\begin_inset Formula $n-$
-\end_inset
-
-dimensional space separated by transcription factor targets and non-targets.
- To divide up the space, BERE uses a regularized logistic regression on
- the gene expression data with the training set taken to be all genes and
- the training labels taken to be the existence or non-existence of a known
- sequence motif for 
-\begin_inset Formula $TF_{j}$
-\end_inset
-
- upstream of 
-\begin_inset Formula $g_{i}$
-\end_inset
-
-.
- The penalized model matrix comes from the recognition that correlations
- between co-regulated genes will be most strong when the 
-\begin_inset Formula $TF_{j}$
-\end_inset
-
- is most prevalent.
- We therefore use the abundance of 
-\begin_inset Formula $TF_{j}$
-\end_inset
-
- to weight the penalized model matrix, providing increased sensitivity for
- detecting coexpression for those samples in which we most expect it to
- occur.
- To build each of our classifiers we use the 
-\begin_inset Formula $L2$
-\end_inset
-
- regularization with the penalized model matrix, 
-\begin_inset Formula $\mathbf{Q}$
-\end_inset
-
-, a diagonal matrix with weights equal to the the inverse expression value
- of the transcription factor.
- Effectively, we maximize the penalized logistic likelihood function 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-\sum_{i=1}^{n}log\left[exp\left(\mathbf{\beta^{\prime}x_{i}}\right)^{Y_{i}}\left\{ 1-exp\left(\mathbf{\beta^{\prime}x_{i}}\right)\right\} ^{1-Y_{i}}\right]-\lambda\mathbf{\beta^{\prime}Q\beta}
-\]
-
-\end_inset
-
-This computation is run using the R package “penalized”, with the penalty
- term lambda estimated via default 5 fold cross validation.
-\end_layout
-
-\begin_layout Standard
-By scoring each gene according to the strength of indirect evidence for
- a regulatory response to each of the TFs, we can combine this with the
- direct evidence of regulation (squared conditional correlation of expression
- for genei and 
-\begin_inset Formula $TF_{i}$
-\end_inset
-
-).
- The appropriate manner in which to combine direct and indirect evidence
- remains an open question.
- Though both measures are bounded by [0,1] their interpretation is quite
- different.
- The direct evidence can be considered in terms of it's conditional gene
- expression 
-\begin_inset Formula $R^{2}$
-\end_inset
-
- between nodes, while the indirect evidence is interpreted as a probability.
- We use a non-parametric approach to combine evidence.
- The targets of each TF are then ranked and combined as a weighted sum,
- 
-\begin_inset Formula $w_{i}=\left(1-\alpha\right)\left[rank\left(d_{i}\right)\right]+\alpha\left[rank\left(e_{i}\right)\right]$
-\end_inset
-
-,
-\begin_inset Formula $i\in\left\{ 1,\dots,n\right\} $
-\end_inset
-
-.
- Our choice of the weight, 
-\begin_inset Formula $\alpha$
-\end_inset
-
-, here is based on empirical evaluation, and perhaps not surprisingly, is
- loosely correlated with organism complexity.
- In validation sets from Yeast, the optimal alpha was observed near 
-\begin_inset Formula $\alpha=.9$
-\end_inset
-
- while simpler E.
- coli datasets saw an optimal value of 
-\begin_inset Formula $\alpha=.6$
-\end_inset
-
- and an in silico dataset, optimality was achieved at 
-\begin_inset Formula $\alpha<.5$
-\end_inset
-
- This naturally reflects the fact that the increased complexity of the network
- necessitates the use of larger scale agreement between genes, rather than
- a reliance on pairwise correlations between potentially noisier and more
- complex expression patterns.
- 
-\end_layout
-
-\begin_layout Section*
-BERE recovers regulatory edges in In Silico, E.
- coli and Yeast (
-\emph on
-Saccharomyces cerevisiae
-\emph default
-)
-\end_layout
-
-\begin_layout Standard
-A common challenge in gene regulatory network inference is the difficulty
- of validating identified networks against a known, reliable gold standard.
- A number of validation methods have been used for in vivo samples, including
- ChIP-seq, ChIP-chip.
- Knockdowns have also been used in cell lines and have been shown to be
- effective at predicting in vivo responses 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-cite{olsen2014inference}
-\end_layout
-
-\end_inset
-
-.
- Additionally, in silico methods have been used which simulate gene expression
- datasets based on a predefined set of regulatory mechanisms.
-\end_layout
-
-\begin_layout Standard
-To test our methods, we used four test datasets of increasing biological
- complexity- (1) in silico, (2) E.
- coli, and (3) Yeast with simulated motif priors and (4) Yeast with biological
- motif priors.
- Data from (4) was collected from 
-\emph on
-Saccharomyces cerevisiae
-\emph default
- with TF knock-out and stress conditions 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-cite{harbison2004transcriptional}
-\end_layout
-
-\end_inset
-
-.
- Data from the first three sources was obtained from the publicly available
- DREAM5 challenge
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-cite{marbach2012wisdom}
-\end_layout
-
-\end_inset
-
-.
- This challenge asked contestants to infer gene networks from expression
- data alone, using a gold standard for evalution.
- Instead, we started with the gold standard and swapped a number of edges
- to create the type I and type II error rates consistent with Yeast motif
- priors and evaluated the performance of BERE to refine its predictions
- of the true gold standard.
- The estimated edges in BERE utilizing the gene expression data were demonstrate
-d to be superior to those of the edge prior alone.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename figures/DREAM5a_all.png
-	width 40col%
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename figures/DREAM5c_all.png
-	width 40col%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename figures/DREAM5d_all.png
-	width 40col%
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename figures/Yeast_all.png
-	width 40col%
-
-\end_inset
-
-
-\begin_inset Caption
-
-\begin_layout Plain Layout
-ROC curves for (1) in silico, (2) E.
- coli, (3) Yeast, demonstrating at least comparable prediction performance
- for both BERE and PANDA in refining edges beyond what is obtained using
- sequence motif priors.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section*
+\bar under
 Transition matrix finds significant protein-protein interaction
 \end_layout
 
@@ -2161,7 +2333,7 @@ status open
 \end_inset
 
 
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 ROC curve for prediction of PPI based on a transition from Smoker control
@@ -2179,7 +2351,9 @@ ROC curve for prediction of PPI based on a transition from Smoker control
 
 \end_layout
 
-\begin_layout Section*
+\begin_layout Subsection*
+
+\bar under
 Impact of homogeneity of cases and controls on statistical inference
 \end_layout
 
@@ -2207,8 +2381,8 @@ any
 To explore, we sampled 100 cases and 100 controls.
  Within both cases and controls, we split each into two groups, denoted
  Cases_A, Cases_B, Controls_A, Controls_B, each of size 50.
- We performed BERE network inference on each group and ran the transition
- matrix for each pairwise network transition.
+ We performed network inference on each group and ran the transition matrix
+ for each pairwise network transition.
  The null networks were generated via a heterogeneous sampling without replaceme
 nt of 50 samples for the null cases and null controls.
 \end_layout
@@ -2238,7 +2412,9 @@ Cases_B, Controls_A
  relative to heterogeneous null networks.
 \end_layout
 
-\begin_layout Section*
+\begin_layout Subsection*
+
+\bar under
 Efficiency of estimation
 \end_layout
 
@@ -2542,24 +2718,24 @@ tiny
 \begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="23" columns="17">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
@@ -10629,7 +10805,7 @@ status open
 \end_inset
 
 
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 
