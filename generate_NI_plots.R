@@ -1,4 +1,5 @@
 library(ggplot2)
+library(data.table)
 setwd('~')
 outputDir <- "NI_only_0001"
 
@@ -17,24 +18,49 @@ generateNIDifferencePlot <- function(datasetA, datasetB, niMethod, imageType=png
   datasetBControls <- datasetBControls[matchedTFs,matchedGenes]
   
   
-  df <- data.frame(dataA=c(datasetACases)-c(datasetAControls), dataB=c(datasetBCases)-c(datasetBControls))
-  spearCor <- cor(df[,1],df[,2],method="spearman")
-  corText <- paste0("r[s]==",round(spearCor,4))
-  print(spearCor)
-  imageType(file.path(outputDir,"plots",paste(datasetA, datasetB, niMethod, 'edgeweight_difference_comparison.png', sep="_")))
-  plot <- ggplot(df, aes(x=dataA, y=dataB)) +
-    geom_point(size=.1, alpha=.1) + xlab(datasetA) + ylab(datasetB) + ggtitle(paste0(niMethod, " edge weight differences (", datasetA," vs ", datasetB, ")")) + theme_classic()+
-    annotate("text", x=Inf, y=-Inf, hjust=1, , vjust=-1, label=corText, parse=TRUE, size=8)
-  print(plot)
-  dev.off()
+  df <- data.frame(dataA=c(datasetACases)-c(datasetAControls), dataB=c(datasetBCases)-c(datasetBControls), studyA=datasetA, studyB=datasetB, method=niMethod)
+#   spearCor <- cor(df[,1],df[,2],method="spearman")
+#   corText <- paste0("r[s]==",round(spearCor,4))
+#   print(spearCor)
+#   imageType(file.path(outputDir,"plots",paste(datasetA, datasetB, niMethod, 'edgeweight_difference_comparison.png', sep="_")))
+#   plot <- ggplot(df, aes(x=dataA, y=dataB)) +
+#     geom_point(size=.1, alpha=.1) + xlab(datasetA) + ylab(datasetB) + ggtitle(paste0(niMethod, " edge weight differences (", datasetA," vs ", datasetB, ")")) + theme_classic()+
+#     annotate("text", x=Inf, y=-Inf, hjust=1, , vjust=-1, label=corText, parse=TRUE, size=8)
+#   print(plot)
+#   dev.off()
+  df
 }
 
-studies <- c("ECLIPSE", "COPDGENE", "LGRC","LTCOPD")
-niMethods <- c("ARACNE")
-apply(combn(studies,2), 2, function(x){
+studies <- c("ECLIPSE", "COPDGENE", "LGRC", "LTCOPD")
+niMethods <- c("WGCNA","CLR","bere","ARACNE")
+resultsList <- apply(combn(studies,2), 2, function(x){
   print(x)  
-  sapply(niMethods, function(meth) generateNIDifferencePlot(x[1],x[2],meth) )
-  print("done")
+  do.call(rbind, lapply(niMethods, function(meth) generateNIDifferencePlot(x[1],x[2],meth) ))
+})
+combinedDT <- data.table(do.call(rbind, resultsList))
+saveRDS(combinedDT,file.path(outputDir,"allStudiesNIResults.rds"))
+# combinedDT <- readRDS(file.path(outputDir,"allStudiesNIResults.rds"))
+
+studyCorrelations <- data.frame(t(apply(combn(studies,2), 2, function(x){
+    sapply(niMethods, function(niMethod){
+        includerows <- combinedDT$studyA==x[1] & combinedDT$studyB==x[2] & combinedDT$method==niMethod
+        dt <- subset(combinedDT, includerows)
+        c(x[1],x[2], paste0("r=",round(cor(dt[,dataA],dt[,dataB]),4)),niMethod)
+    })
+})))
+colnames(studyCorrelations) <- c("studyA","studyB","corText")
+# remove points for plotting purposes
+combinedDTFiltered <- combinedDT[c(rep(F,9),T)]
+
+lapply(niMethods, function(niMethod){
+  png(file.path(outputDir,"plots",paste("all_studies", niMethod, 'edgeweight_difference_comparison.png', sep="_")),height=1200,width=1200)
+  plot <- ggplot(subset(combinedDTFiltered,method==niMethod), aes(x=dataA, y=dataB)) + facet_grid(studyA ~ studyB) +
+    geom_point(size=.1, alpha=1, col="blue") + 
+    ggtitle(paste0(niMethod, " edge weight differences between pairs of studies")) + 
+    theme_bw() + theme(plot.title = element_text(size=25, face="bold")) + 
+    geom_text(data = studyCorrelations, aes(x=min(subset(combinedDTFiltered,method==niMethod)[,dataA]),y=max(min(subset(combinedDTFiltered,method==niMethod)[,dataB])),label =corText), size=10,hjust=0,vjust=0) 
+  print(plot)
+  dev.off()
 })
 
 # generateNIDifferencePlot("ECLIPSE","COPDGENE","bere",png)
