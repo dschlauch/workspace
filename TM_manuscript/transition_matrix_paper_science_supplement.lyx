@@ -179,17 +179,6 @@ Materials and Methods
 \begin_layout Subsection*
 
 \bar under
-Data Collection and Processing
-\end_layout
-
-\begin_layout Standard
-Transcription Factors (TF) data was Gene expression data for each of the
- four COPD datasets was
-\end_layout
-
-\begin_layout Subsection*
-
-\bar under
 Common network inference methods do not produce reproducible results in
  COPD
 \end_layout
@@ -369,10 +358,6 @@ name "Supplement NI edgeweight plots"
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Plain Layout
 
 \end_layout
 
@@ -788,15 +773,24 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+
+\series bold
+A
+\series default
+
 \begin_inset Graphics
-	filename figures/DREAM5a_all.png
+	filename figures/DREAM5a_all.pdf
 	width 40col%
 
 \end_inset
 
 
+\series bold
+B
+\series default
+
 \begin_inset Graphics
-	filename figures/DREAM5c_all.png
+	filename figures/DREAM5c_all.pdf
 	width 40col%
 
 \end_inset
@@ -805,15 +799,24 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
+
+\series bold
+C
+\series default
+
 \begin_inset Graphics
-	filename figures/DREAM5d_all.png
+	filename figures/DREAM5d_all.pdf
 	width 40col%
 
 \end_inset
 
 
+\series bold
+D
+\series default
+
 \begin_inset Graphics
-	filename figures/Yeast_all.png
+	filename figures/Yeast_all.pdf
 	width 40col%
 
 \end_inset
@@ -822,10 +825,21 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-ROC curves for (1) in silico, (2) E.
- coli, (3) Yeast, demonstrating at least comparable prediction performance
- for both MONSTER and PANDA in refining edges beyond what is obtained using
- sequence motif priors.
+Receiver-Operator Characteristic curves for three DREAM 5 datasets (A) in
+ silico, (B) E.
+ coli, (C) Saccharomyces cerevisiae, and an (D)independent Saccharomyces
+ cerevisiae dataset.
+ The initial prior network in each of the DREAM 5 datasets was taken from
+ the gold standard, with error introduced (both type I and type II) bringing
+ the area under the ROC curve to 
+\begin_inset Formula $\approx0.70$
+\end_inset
+
+.
+ In the Saccharomyces cerevisiae, sequence motifs were used as the prior
+ with CHiP-chip binding sites used as the gold standard.
+ In each of these tests, measureable improvement in performance of MONSTER's
+ network inference method over the prior network is observed.
 \end_layout
 
 \end_inset
@@ -1217,7 +1231,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename figures/workflow_diagram.png
-	lyxscale 20
+	lyxscale 40
 	width 80col%
 
 \end_inset
@@ -2805,7 +2819,6 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-
 Top significantly differentially involved transcription factors
 \end_layout
 
@@ -9032,10 +9045,7 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-
-Differential gene expression for significantly involved transcription factors
-\lang english
-.
+Differential gene expression for significantly involved transcription factors.
 \end_layout
 
 \begin_layout Plain Layout
@@ -13411,6 +13421,41 @@ cite{ritchie2015limma}
  factors do not exhibit gene expression differentiation, highlighting the
  ability of MONSTER to identify key features distinguising phenotypes which
  are not detectable via gene expression analysis.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/Venn.tiff
+	lyxscale 10
+	width 40col%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\series bold
+Differentially involved transcription factors were found in agreement across
+ datasets
+\series default
+.
+ Five TFs were discovered in the top 20 in each of the four studies.
+ An additional 21 TFs were found in the top 20 TFs of at least two studies.
 \end_layout
 
 \end_inset

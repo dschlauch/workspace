@@ -120,37 +120,44 @@ ggplot(data=plotDF,aes(x=obsSsodm, y=negLogZPValues, label=labels, size=100)) + 
   scale_colour_gradientn("LIMMA sig",colours=c("blue","white","red"))
 dev.off()
 
-pdf(file.path(outputDir,paste('dTFI vs LIMMA',analysisCode,'.pdf', sep="")), width=9, height=8)
-ggplot(data=plotDF, aes(x=limmanegLogPValues, y=negLogZPValues)) + geom_point(aes(col=logfoldchangeTF), size=5, alpha=.6) +
+dTFI_LIMMA_gg <- ggplot(data=plotDF, aes(x=limmanegLogPValues, y=negLogZPValues)) + geom_point(aes(col=logfoldchangeTF), size=5, alpha=.6) +
   geom_text_repel(data=plotDF[labels!="",], aes(limmanegLogPValues, negLogZPValues, label=labels)) + 
   ylab("Differential TF Involvement, -log(p-value)") + xlab("Differential Expression,  LIMMA -log(p-value)") + 
-  ggtitle("Differential Involvement vs Differential Expression (ECLIPSE)") +
+  ggtitle(expression(atop("Differential Involvement vs Differential Expression (ECLIPSE)", atop(italic("Smoker Controls to COPD Patients"), ""))))+
   theme_classic() + scale_colour_continuous(limits=c(-max(abs(logfoldchangeTF)),max(abs(logfoldchangeTF))), name="log(fold-change)", low = "red", high = "blue") +
-  theme(plot.title = element_text(size=20,hjust=0))
+  theme(plot.title = element_text(size=25,hjust=.5))
+
+pdf(file.path(outputDir,paste('dTFI vs LIMMA',analysisCode,'.pdf', sep="")), width=9, height=8)
+print(dTFI_LIMMA_gg)
 dev.off()
 
 png(file.path(outputDir,paste('dTFI vs LIMMA',analysisCode,'.png', sep="")), width=900, height=800)
-ggplot(data=plotDF, aes(x=limmanegLogPValues, y=negLogZPValues)) + geom_point(aes(col=logfoldchangeTF), size=5, alpha=.6) +
-  geom_text_repel(data=plotDF[labels!="",], aes(limmanegLogPValues, negLogZPValues, label=labels)) + 
-  ylab("Differential TF Involvement, -log(p-value)") + xlab("Differential Expression,  LIMMA -log(p-value)") + 
-  ggtitle("Differential Involvement vs Differential Expression (ECLIPSE)") +
-  theme_classic() + scale_colour_continuous(limits=c(-max(abs(logfoldchangeTF)),max(abs(logfoldchangeTF))), name="log(fold-change)", low = "red", high = "blue") +
-  theme(plot.title = element_text(size=20,hjust=0))
+print(dTFI_LIMMA_gg)
 dev.off()
+
 # Generate heatmap
 x <- transMatrices[[1]]
 mdf <- melt(x)
-
+mdf[,2] <- factor(mdf[,2],levels=sort(levels(mdf[,2]), decreasing=T))
 # Heatmap
 p1 <- ggplot(mdf, aes(x=Var1, y=Var2)) +
   geom_tile(aes(fill=value)) + scale_fill_gradient2(name = "dTFI") + theme_bw() + 
   theme(axis.text.y = element_text(size=3), axis.text.x = element_text(size=3,angle = 90, hjust = 1)) + 
-  xlab("Transcription Factors") + ylab("Transcription Factors") + ggtitle("ECLIPSE Transtion Matrix")
+  xlab("Transcription Factors") + ylab("Transcription Factors") + ggtitle("ECLIPSE Transition Matrix")
 
 pdf(file.path(outputDir,paste('TM_heatmap.pdf', sep="")), width=9, height=8)
 print(p1)
 dev.off()
 
+png(file.path(outputDir,paste('TM_heatmap.png', sep="")), width=800, height=800)
+p1 <- ggplot(mdf, aes(x=Var1, y=Var2)) +
+  geom_tile(aes(fill=value)) + scale_fill_gradient2(name = "dTFI") + theme_bw() + 
+  theme(axis.ticks = element_blank(), axis.text.y = element_blank(), axis.text.x = element_blank(), plot.title=element_text(family="Times", face="bold", size=40)) + 
+  xlab("Transcription Factors") + ylab("Transcription Factors") + 
+  ggtitle(expression(atop("ECLIPSE Transition Matrix", atop(italic("Smoker Controls to COPD Patients"), ""))))
+
+print(p1)
+dev.off()
 # periodically save workspace
 # save.image(file=file.path(outputDir,paste("activeImage",analysisCode,".RData",sep="")))
 

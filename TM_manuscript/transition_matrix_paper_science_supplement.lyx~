@@ -179,17 +179,6 @@ Materials and Methods
 \begin_layout Subsection*
 
 \bar under
-Data Collection and Processing
-\end_layout
-
-\begin_layout Standard
-Transcription Factors (TF) data was Gene expression data for each of the
- four COPD datasets was
-\end_layout
-
-\begin_layout Subsection*
-
-\bar under
 Common network inference methods do not produce reproducible results in
  COPD
 \end_layout
@@ -369,10 +358,6 @@ name "Supplement NI edgeweight plots"
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Plain Layout
 
 \end_layout
 
@@ -788,15 +773,24 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+
+\series bold
+A
+\series default
+
 \begin_inset Graphics
-	filename figures/DREAM5a_all.png
+	filename figures/DREAM5a_all.pdf
 	width 40col%
 
 \end_inset
 
 
+\series bold
+B
+\series default
+
 \begin_inset Graphics
-	filename figures/DREAM5c_all.png
+	filename figures/DREAM5c_all.pdf
 	width 40col%
 
 \end_inset
@@ -805,15 +799,24 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
+
+\series bold
+C
+\series default
+
 \begin_inset Graphics
-	filename figures/DREAM5d_all.png
+	filename figures/DREAM5d_all.pdf
 	width 40col%
 
 \end_inset
 
 
+\series bold
+D
+\series default
+
 \begin_inset Graphics
-	filename figures/Yeast_all.png
+	filename figures/Yeast_all.pdf
 	width 40col%
 
 \end_inset
@@ -822,10 +825,21 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-ROC curves for (1) in silico, (2) E.
- coli, (3) Yeast, demonstrating at least comparable prediction performance
- for both MONSTER and PANDA in refining edges beyond what is obtained using
- sequence motif priors.
+Receiver-Operator Characteristic curves for three DREAM 5 datasets (A) in
+ silico, (B) E.
+ coli, (C) Saccharomyces cerevisiae, and an (D)independent Saccharomyces
+ cerevisiae dataset.
+ The initial prior network in each of the DREAM 5 datasets was taken from
+ the gold standard, with error introduced (both type I and type II) bringing
+ the area under the ROC curve to 
+\begin_inset Formula $\approx0.70$
+\end_inset
+
+.
+ In the Saccharomyces cerevisiae, sequence motifs were used as the prior
+ with CHiP-chip binding sites used as the gold standard.
+ In each of these tests, measureable improvement in performance of MONSTER's
+ network inference method over the prior network is observed.
 \end_layout
 
 \end_inset
@@ -1217,7 +1231,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename figures/workflow_diagram.png
-	lyxscale 20
+	lyxscale 40
 	width 80col%
 
 \end_inset
@@ -2799,209 +2813,12 @@ In practice, we typically have a large number of genes,
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{table}[] 
-\backslash
-centering 
-\backslash
-label{my-label} 
-\backslash
-tiny 
-\backslash
-begin{tabular}{lllllllllllllllll}        & 
-\backslash
-multicolumn{4}{l}{ECLIPSE}           & 
-\backslash
-multicolumn{4}{l}{COPDGene}          & 
-\backslash
-multicolumn{4}{l}{LGRC}              & 
-\backslash
-multicolumn{4}{l}{LTCOPD}            
-\backslash
-
-\backslash
- TF     & dTFI  & rank & FDR            & LIMMA & dTFI  & rank & FDR   
-         & LIMMA & dTFI  & rank & FDR            & LIMMA & dTFI  & rank
- & FDR            & LIMMA 
-\backslash
-
-\backslash
- SP2    & .0314 & 1    & .0357          & .1756 & .0100 & 9    & .6812      
-    & .6517 & .0213 & 6    & .3752          & .0075 & .0176 & 2    & .7438   
-       & .0009 
-\backslash
-
-\backslash
- E2F4   & .0236 & 2    & 
-\backslash
-textless.0001 & .3913 & .0143 & 3    & 
-\backslash
-textless.0001 & .9367 & .0160 & 14   & .037           & .0878 & .0148 & 7    &
- 
-\backslash
-textless.0001 & .8232 
-\backslash
-
-\backslash
- SP1    & .0230 & 3    & .1551          & .3634 & .0089 & 18   & .7721      
-    & .0838 & .0179 & 10   & .3594          & .4242 & .0169 & 4    & .5516   
-       & .9759 
-\backslash
-
-\backslash
- ZNF263 & .0226 & 4    & .311           & .9834 & .0089 & 16   & .3372      
-    & .0028 & .0177 & 11   & .7716          & .0271 & .0152 & 6    & .927    
-       & .1859 
-\backslash
-
-\backslash
- EGR1   & .0224 & 5    & .1242          & .4379 & .0079 & 23   & .7597      
-    & .8540 & .0124 & 28   & .6892          & .7979 & .0152 & 5    & .5305   
-       & .0378 
-\backslash
-
-\backslash
- NRF1   & .0196 & 6    & 
-\backslash
-textless.0001 & .0966 & .0115 & 5    & .0304          & .0045 & .0122 & 30   &
- 
-\backslash
-textless.0001 & .2974 & .0139 & 11   & .0558          & .3418 
-\backslash
-
-\backslash
- GABPA  & .0185 & 7    & 
-\backslash
-textless.0001 & .4650 & .0157 & 2    & 
-\backslash
-textless.0001 & .5138 & .0176 & 12   & 
-\backslash
-textless.0001 & .3868 & .0097 & 32   & .0853          & .5771 
-\backslash
-
-\backslash
- ELK1   & .0177 & 8    & 
-\backslash
-textless.0001 & .0913 & .0174 & 1    & 
-\backslash
-textless.0001 & .9010 & .0151 & 17   & 
-\backslash
-textless.0001 & .7968 & .0083 & 40   & .2099          & .0005 
-\backslash
-
-\backslash
- ZFX    & .0175 & 9    & 
-\backslash
-textless.0001 & .8253 & .0076 & 24   & .8366          & .5795 & .0103 & 40   &
- .4348          & .0474 & .0132 & 16   & .2739          & .1572 
-\backslash
-
-\backslash
- KLF4   & .0173 & 10   & .1025          & .1915 & .0072 & 28   & .8142      
-    & .0025 & .0143 & 21   & .2312          & .0526 & .0119 & 20   & .5516   
-       & .1159 
-\backslash
-
-\backslash
- ESR1   & .0169 & 11   & .0357          & .9598 & .0106 & 7    & .0941      
-    & .5853 & .0127 & 27   & .0888          & .7246 & .0176 & 3    & 
-\backslash
-textless.0001 & .3477 
-\backslash
-
-\backslash
- ELK4   & .0168 & 12   & 
-\backslash
-textless.0001 & .0001 & .0125 & 4    & 
-\backslash
-textless.0001 & .8057 & .0152 & 16   & 
-\backslash
-textless.0001 & .0183 & .0086 & 39   & .1318          & .7314 
-\backslash
-
-\backslash
- TFAP2C & .0139 & 17   & .0656          & .2318 & .0114 & 6    & .0941      
-    & .9574 & .0148 & 19   & .037           & .5853 & .0121 & 19   & .2099   
-       & .6754 
-\backslash
-
-\backslash
- PLAG1  & .0124 & 21   & .263           & .0384 & .0092 & 15   & .4136      
-    & .0008 & .0219 & 5    & 
-\backslash
-textless.0001 & .0371 & .0146 & 8    & .1554          & .9523 
-\backslash
-
-\backslash
- FOXQ1  & .0115 & 28   & .9318          & .4543 & .0099 & 10   & .7905      
-    & .5314 & .0209 & 7    & .2846          & .0503 & .0107 & 27   & .927    
-       & .5340 
-\backslash
-
-\backslash
- FOSL1  & .0082 & 57   & .9175          & .5850 & .0061 & 41   & .6166      
-    & .6995 & .0220 & 4    & .037           & .8708 & .0131 & 17   & .3496   
-       & .3686 
-\backslash
-
-\backslash
- NFIL3  & .0077 & 62   & .2365          & .0404 & .0067 & 33   & .0304      
-    & .1191 & .0264 & 1    & .4669          & .7605 & .0209 & 1    & .7121   
-       & .8650 
-\backslash
-
-\backslash
- FOS    & .0068 & 73   & .9175          & .5156 & .0057 & 48   & .5212      
-    & .6668 & .0198 & 9    & .037           & .9500 & .0112 & 24   & .5139   
-       & .7891 
-\backslash
-
-\backslash
- JUNB   & .0067 & 77   & .9318          & .0197 & .0059 & 43   & .6392      
-    & .9526 & .0236 & 2    & 
-\backslash
-textless.0001 & .3996 & .0146 & 9    & .2299          & .6077 
-\backslash
-
-\backslash
- RFX1   & .0019 & 159  & .3532          & .0361 & .0009 & 164  & 
-\backslash
-textless.0001 & .0885 & .0233 & 3    & 
-\backslash
-textless.0001 & .0175 & .0070 & 48   & .3496          & .8285 
-\backslash
-
-\backslash
- RFX2   & .0019 & 158  & .4041          & .0109 & .0012 & 163  & .0482      
-    & .0059 & .0200 & 8    & 
-\backslash
-textless.0001 & .0004 & .0049 & 81   & .6245          & .1345 
-\backslash
-end{tabular} 
-\backslash
-end{table}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-asdasd
 \begin_inset Float table
 wide false
 sideways false
 status open
 
 \begin_layout Plain Layout
-
 Top significantly differentially involved transcription factors
 \end_layout
 
@@ -9228,10 +9045,7 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-
-Differential gene expression for significantly involved transcription factors
-\lang english
-.
+Differential gene expression for significantly involved transcription factors.
 \end_layout
 
 \begin_layout Plain Layout
@@ -13607,6 +13421,41 @@ cite{ritchie2015limma}
  factors do not exhibit gene expression differentiation, highlighting the
  ability of MONSTER to identify key features distinguising phenotypes which
  are not detectable via gene expression analysis.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/Venn.tiff
+	lyxscale 10
+	width 40col%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\series bold
+Differentially involved transcription factors were found in agreement across
+ datasets
+\series default
+.
+ Five TFs were discovered in the top 20 in each of the four studies.
+ An additional 21 TFs were found in the top 20 TFs of at least two studies.
 \end_layout
 
 \end_inset

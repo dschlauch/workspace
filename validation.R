@@ -64,7 +64,7 @@ validateMethodsOnDataset <- function(dataset){
     datalist <- list("Gold Standard"=goldStandard[,3],
 #                      "Degree-only"=degreeMelt[,3],
 #                      "PANDA"=pandaMelt[,3],
-                    "BERE"=bereMelt[,3],
+                    "MONSTER"=bereMelt[,3],
 #                     "LDA BERE"=ldabereMelt[,3],
 #                     "Full BERE 1"=fullbereMelt1[,3],
 #                     "Full BERE 2"=fullbereMelt2[,3],
@@ -78,13 +78,13 @@ validateMethodsOnDataset <- function(dataset){
                     "Motifs"=motifs[,3])
     TFsubset <- goldStandard[,1] %in% unique(goldStandard[,1])[6]
     
-    png(filename=paste("./TM_manuscript/figures/",dataset,"_all.png",sep=""))
+    pdf(paste("./TM_manuscript/figures/",dataset,"_all.pdf",sep=""))
     plotROC(datalist, "all", organism=dataset, goldStandard)
     dev.off()
-    png(filename=paste("./TM_manuscript/figures/",dataset,"_motif.png",sep=""))
+    pdf(paste("./TM_manuscript/figures/",dataset,"_motif.pdf",sep=""))
     plotROC(datalist, "motif", organism=dataset, goldStandard)
     dev.off()
-    png(filename=paste("./TM_manuscript/figures/",dataset,"_nonmotif.png",sep=""))
+    pdf(paste("./TM_manuscript/figures/",dataset,"_nonmotif.pdf",sep=""))
     plotROC(datalist, "nonmotif", organism=dataset, goldStandard)
     dev.off()
 }
@@ -113,7 +113,17 @@ plotROC <- function(datalist, includeSubset="all", organism="", goldStandard=NA,
         list("roc.methodPred"=roc.methodPred, "auc.methodPred"=auc.methodPred)
     })
     names(plotList) <- methods
-    plot(plotList[["BERE"]][["roc.methodPred"]], main=paste(organism, "-", includeSubset, "motifs","ROC"), col = 1, lwd=3)
+    rocTitle <- ""
+    if (organism=="Yeast"){
+      rocTitle<-"Saccharomyces cerevisiae"
+    } else if (organism=="DREAM5a"){
+      rocTitle<-"DREAM 5 - In Silico"
+    } else if (organism=="DREAM5c"){
+      rocTitle<-"DREAM 5 - Escherichia coli"
+    } else if (organism=="DREAM5d"){
+      rocTitle<-"DREAM 5 - Saccharomyces cerevisiae"
+    } 
+    plot(plotList[["MONSTER"]][["roc.methodPred"]], main=paste(rocTitle), col = 1, lwd=3)
     mapply(function(x,index){
         lines(plotList[[x]][["roc.methodPred"]]@x.values[[1]], plotList[[x]][["roc.methodPred"]]@y.values[[1]], col = (index), lwd=3)
     }, methods, 1:length(methods))

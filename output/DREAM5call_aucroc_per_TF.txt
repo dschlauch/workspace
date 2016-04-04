@@ -1,4 +1,4 @@
 "x"
 "" "Average within TF ROC, weighted by gold standard hits - DREAM5c all"
-"BERE" "0.785287589564247"
-"Motifs" "0.70210054753777"
+"MONSTER" "0.793277170151714"
+"Motifs" "0.704505070003826"

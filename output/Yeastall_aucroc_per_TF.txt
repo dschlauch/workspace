@@ -1,4 +1,4 @@
 "x"
 "" "Average within TF ROC, weighted by gold standard hits - Yeast all"
-"BERE" "0.728500815052968"
+"MONSTER" "0.728500815052968"
 "Motifs" "0.676757244584778"
