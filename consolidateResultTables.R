@@ -48,14 +48,17 @@ makeComparisonPlot <- function(pair, plotTopNTFs=15, filterColIndices = c(8,18,2
   p.value <- cor.test(merged.data.frame[[paste(analysisNames[pair[1]], metric, sep="_")]], merged.data.frame[[paste(analysisNames[pair[2]], metric, sep="_")]], use="complete.obs", method="spearman")$p.value
   pValueText <- ifelse (p.value<1e-16,"p<1e-16",paste0("p=",as.character(p.value)))
   
-  corText <- paste0("r[s]==",round(corValue,3),"~\n(",pValueText,")") 
+  corText <- paste0("bold(r[s]==",round(corValue,3),"~\n(",pValueText,"))") 
   plot1 <- ggplot(merged.data.frame, aes_string(paste(analysisNames[pair[1]], metric, sep="_"),paste(analysisNames[pair[2]], metric, sep="_"), label="labels"))
-  plot1 <- plot1 + geom_point(colour="blue",alpha=.5, size=4) + xlab(displayNames[pair[1]]) + ylab(displayNames[pair[2]]) + 
-    geom_text(vjust=0) + annotate("text", x = Inf, y = -Inf, hjust=1, vjust=-1, label = corText, parse = TRUE, size = 8)+    
+  plot1 <- plot1 + geom_point(colour="blue",alpha=.5, size=4) + 
+    xlab(displayNames[pair[1]]) + ylab(displayNames[pair[2]]) + 
+    geom_text_repel(data=merged.data.frame[merged.data.frame$labels!="",], size = 8) +
+    annotate("text", x = Inf, y = -Inf, hjust=1, vjust=0, label = corText, parse = TRUE, size = 10, fontface="bold.italic")+    
     scale_x_continuous(limits=xlimits, expand = c(0, 0)) +
     scale_y_continuous(limits=ylimits, expand = c(0, 0)) + 
-    theme_classic()
-  ggMarginal(plot1)
+    theme_classic() + theme(axis.title=element_text(size=22))
+  plot1
+  #   ggMarginal(plot1)
 }
 
 # Create the 4 comparison plots for ECLIPSE, LGRC, COPDGene, LTCOPD and combine them
@@ -77,16 +80,16 @@ generatePlots <- function(metric, filterColIndices){
   pdf(paste0(outputDir, metric, '_comparison_same_tissue.pdf'), width=16, height=9)
   suppressWarnings(grid.arrange(plot1, plot2, ncol=2, top=textGrob("Comparison of Differential TF Involvement Across Studies of Same Tissue", gp=gpar(fontsize=30))))
   dev.off()
-  png(paste0(outputDir, metric, '_comparison_same_tissue.png'), width=1600, height=900)
+  png(paste0(outputDir, metric, '_comparison_same_tissue.png'), width=1200, height=675)
   suppressWarnings(grid.arrange(plot1, plot2, ncol=2, top=textGrob("Comparison of Differential TF Involvement Across Studies of Same Tissue", gp=gpar(fontsize=30))))
   dev.off()
   pdf(paste0(outputDir, metric, '_comparison_diff_tissue.pdf'), width=16,height=12)
   suppressWarnings(grid.arrange(plot3, plot4, plot5, plot6, ncol=2, top=textGrob("Comparison of Differential TF Involvement Across Studies of Different Tissues", gp=gpar(fontsize=30)),
-                                left = textGrob("Lung Tissue", rot = 90, vjust = 1, gp=gpar(fontsize=20)), bottom = textGrob("Blood", gp=gpar(fontsize=20))))
+                                left = textGrob("Lung Tissue", rot = 90, vjust = 1, gp=gpar(fontsize=30)), bottom = textGrob("Blood", gp=gpar(fontsize=30))))
   dev.off()
-  png(paste0(outputDir, metric, '_comparison_diff_tissue.png'), width=1600,height=900)
+  png(paste0(outputDir, metric, '_comparison_diff_tissue.png'), width=1200, height=900)
   suppressWarnings(grid.arrange(plot3, plot4, plot5, plot6, ncol=2, top=textGrob("Comparison of Differential TF Involvement Across Studies of Different Tissues", gp=gpar(fontsize=30)),
-                                left = textGrob("Lung Tissue", rot = 90, vjust = 1, gp=gpar(fontsize=20)), bottom = textGrob("Blood", gp=gpar(fontsize=20))))
+                                left = textGrob("Lung Tissue", rot = 90, vjust = 1, gp=gpar(fontsize=30)), bottom = textGrob("Blood", gp=gpar(fontsize=30))))
   dev.off()
   
   topTFlist <- lapply(filterColIndices, function(i){

@@ -203,10 +203,36 @@ We classify cells by based on their tissue of origin and their particular
  we can classify different cell-types by their active gene regulatory networks
  and that, consequently, transitions between cellular states can be modeled
  by changes in these underlying regulatory networks.
- Here we describe MONSTER, MOdeling Network State Transitions from Expression
- and Regulatory data, a regression-based method for inferring transcription
- factor drivers of cell state conditions at the gene regulatory network
- level.
+ Here we describe 
+\series bold
+MONSTER
+\series default
+, 
+\series bold
+MO
+\series default
+deling 
+\series bold
+N
+\series default
+etwork 
+\series bold
+S
+\series default
+tate 
+\series bold
+T
+\series default
+ransitions from 
+\series bold
+E
+\series default
+xpression and 
+\series bold
+R
+\series default
+egulatory data, a regression-based method for inferring transcription factor
+ drivers of cell state conditions at the gene regulatory network level.
  As a demonstration, we apply MONSTER to four different COPD-studies to
  identify transcription factors that alter the network structure as cell
  states changes toward the disease-state.
@@ -438,7 +464,7 @@ d to solving
 \end_layout
 
 \begin_layout Section*
-MONSTER: inferring state-specific gene regulatory networks, modeling the
+MONSTER: Inferring state-specific gene regulatory networks, modeling the
  state transition matrix, and computing the transcription factor involvement
 \end_layout
 
@@ -1014,14 +1040,14 @@ l gene expression analysis or conventional comparative network inference
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
 \series bold
 A
 \begin_inset Graphics
-	filename figures/TM_heatmap.png
+	filename figures/TM_heatmap.pdf
 	lyxscale 30
 	width 50col%
 
@@ -1228,7 +1254,7 @@ status collapsed
 
 \series bold
 \begin_inset Graphics
-	filename figures/dTFIvsLIMMA.pdf
+	filename figures/dTFI vs LIMMA55557.pdf
 	lyxscale 40
 	width 50col%
 

@@ -8,70 +8,6 @@ sPlot <- ssodm.plot(transMatrices[[1]], transMatrices[-1], rescale=T,plot.title=
 print(sPlot)
 dev.off()
 
-# This is for converting TF IDs to their gene names
-
-# transMatrices <- lapply(transMatrices, function(x){
-#     rownames(x) <- mappings[match(rownames(x), mappings[,1]),2]
-#     colnames(x) <- mappings[match(colnames(x), mappings[,1]),2]
-#     x
-# })
-
-# Top TFs
-#highlight.tfs <- c("E2F4","NRF1","GABPA","ELK1","ELK4","E2F1","ZBTB33","ELF1","ZFX")
-
-# #####################################################
-# ### Gene Analysis
-# #####################################################
-# # Calculate the transformation matrix for the observed data
-# tm.observed.genes <- transformation.matrix(dataset$casesNetwork, dataset$controlsNetwork,remove.diagonal=T,method="old",by.tfs=T,standardize=F)
-# 
-# 
-# # Calculate the transformation matrix for the null data
-# tm.null.genes <- lapply(null.networks, function(x){
-#   transformation.matrix(x[[1]],x[[2]],method="old",standardize=F)
-# })
-# 
-# # Do the sum of sq ODM plot versus null
-# ssodm.plot(tm.observed, tm.null,plot.title="SSODM observed and null, COPD subjects vs Smoker control (R)")
-# ssodm.plot(tm.observed, tm.null, rescale=T, plot.title="SSODM observed and null, COPD subjects vs Smoker control (R)",highlight.tfs = c("ELK1","E2F4"))
-
-
-
-######################################################
-##  Running null networks with improved algorithm  ###
-##                 2/25/15      END                ###
-######################################################
-# 
-# 
-# cppFunction('NumericMatrix correl(NumericMatrix x) {
-#   int nrow = x.nrow(), ncol = x.ncol();
-#   NumericMatrix resultMatrix(nrow,nrow);
-#   for (int i = 0; i < nrow; i++) {
-#     for (int j = i; j < nrow; j++) {
-#       double sumproduct = 0;
-#       for (int k = 0; k < ncol; k++){
-#         sumproduct+=x(i,k)*x(j,k);
-#       }
-#       resultMatrix(i,j) = sumproduct/(nrow-1);
-#       resultMatrix(j,i) = sumproduct/(nrow-1);
-#     }
-#   }
-#   return resultMatrix;
-# }')
-# 
-# cppFunction('double squarert(double x){
-#   return sqrt(x);
-#             }')
-# set.seed(1014)
-# randmat <- t(matrix(rnorm(30000*50), 50))
-# t(apply(randmat, 1, function(x)(x-mean(x))/(sd(x))))
-# 
-# system.time(correl(t(apply(randmat, 1, function(x)(x-mean(x))/(sd(x))))))
-# system.time(cor(t(randmat)))
-# #>  [1] 458 558 488 458 536 537 488 491 508 528
-# rowSumsC(x)
-# #>  [1] 458 558 488 458 536 537 488 491 508 528
-# 
 
 ## Gene expression analysis
 design <- model.matrix(~factor(casesFilter))
@@ -98,7 +34,7 @@ negLogPValues <- -log(dTFI_pVals)
 negLogPValues[negLogPValues==Inf] <- 35
 negLogZPValues[negLogZPValues==Inf] <- 35
 labels <- names(obsSsodm)
-labels[rank(-negLogPValues)>20 & rank(-obsSsodm)>20]<-""
+labels[rank(-negLogZPValues)>20 & rank(-limmanegLogPValues)>20]<-""
 
 dTFI_fdr   <- p.adjust(dTFI_pVals, method = 'fdr')
 logfoldchangeTF <- logfoldchange[names(dTFI_pVals)]
@@ -120,14 +56,15 @@ ggplot(data=plotDF,aes(x=obsSsodm, y=negLogZPValues, label=labels, size=100)) + 
   scale_colour_gradientn("LIMMA sig",colours=c("blue","white","red"))
 dev.off()
 
-dTFI_LIMMA_gg <- ggplot(data=plotDF, aes(x=limmanegLogPValues, y=negLogZPValues)) + geom_point(aes(col=logfoldchangeTF), size=5, alpha=.6) +
-  geom_text_repel(data=plotDF[labels!="",], aes(limmanegLogPValues, negLogZPValues, label=labels)) + 
+dTFI_LIMMA_gg <- ggplot(data=plotDF, aes(x=limmanegLogPValues, y=negLogZPValues)) + geom_point(aes(col=logfoldchangeTF), size=7, alpha=.8) +
+  geom_text_repel(data=plotDF[labels!="",], aes(limmanegLogPValues, negLogZPValues, label=labels), size = 10,) + 
   ylab("Differential TF Involvement, -log(p-value)") + xlab("Differential Expression,  LIMMA -log(p-value)") + 
   ggtitle(expression(atop("Differential Involvement vs Differential Expression (ECLIPSE)", atop(italic("Smoker Controls to COPD Patients"), ""))))+
-  theme_classic() + scale_colour_continuous(limits=c(-max(abs(logfoldchangeTF)),max(abs(logfoldchangeTF))), name="log(fold-change)", low = "red", high = "blue") +
-  theme(plot.title = element_text(size=25,hjust=.5))
+  scale_colour_gradient2(limits=c(-max(abs(logfoldchangeTF))/4,max(abs(logfoldchangeTF))/4), name="log(fold-change)", low = "blue", high = "yellow", mid="black") +
+  theme_classic() + 
+  theme(plot.title = element_text(size=25,hjust=.5), axis.title=element_text(size=22), legend.text=element_text(size=20), legend.title=element_text(size=20))
 
-pdf(file.path(outputDir,paste('dTFI vs LIMMA',analysisCode,'.pdf', sep="")), width=9, height=8)
+pdf(file.path(outputDir,paste('dTFI vs LIMMA',analysisCode,'.pdf', sep="")), width=12, height=12)
 print(dTFI_LIMMA_gg)
 dev.off()
 
@@ -149,13 +86,17 @@ pdf(file.path(outputDir,paste('TM_heatmap.pdf', sep="")), width=9, height=8)
 print(p1)
 dev.off()
 
-png(file.path(outputDir,paste('TM_heatmap.png', sep="")), width=800, height=800)
+# For the paper with no labels
 p1 <- ggplot(mdf, aes(x=Var1, y=Var2)) +
-  geom_tile(aes(fill=value)) + scale_fill_gradient2(name = "dTFI") + theme_bw() + 
-  theme(axis.ticks = element_blank(), axis.text.y = element_blank(), axis.text.x = element_blank(), plot.title=element_text(family="Times", face="bold", size=40)) + 
-  xlab("Transcription Factors") + ylab("Transcription Factors") + 
+  geom_tile(aes(fill=value)) + 
+  xlab("Transcription Factors") + ylab("Transcription Factors") + scale_fill_gradient2(name = "dTFI") + 
+  theme_bw() + theme(axis.ticks = element_blank(), axis.title=element_text(size=25), legend.title=element_text(size=20), axis.text.y = element_blank(), axis.text.x = element_blank(), plot.title=element_text(family="Times", face="bold", size=40)) + 
   ggtitle(expression(atop("ECLIPSE Transition Matrix", atop(italic("Smoker Controls to COPD Patients"), ""))))
 
+png(file.path(outputDir,paste('TM_heatmap.png', sep="")), width=800, height=800)
+print(p1)
+dev.off()
+pdf(file.path(outputDir,paste('TM_heatmap.pdf', sep="")), width=8, height=8)
 print(p1)
 dev.off()
 # periodically save workspace
