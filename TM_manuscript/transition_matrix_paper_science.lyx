@@ -138,7 +138,7 @@
 \begin_body
 
 \begin_layout Title
-Estimating Drivers Cell State Transitions using Gene Regulatory Network
+Estimating Drivers of Cell State Transitions using Gene Regulatory Network
  Models
 \begin_inset ERT
 status open
@@ -614,7 +614,7 @@ Combining these scores for the direct evidence and indirect evidence between
 
 \begin_layout Standard
 This straightforward and computationally fast algorithm finds validated
- edges in In Silico, E.
+ regulatory edges in In Silico, E.
  coli and Yeast (Saccharomyces cerevisiae) datasets (see supplementary materials
  and methods).
 \end_layout
@@ -873,166 +873,13 @@ For each study, we applied MONSTER to identify the differential transcription
  the top five ECLIPSE results were among the top seven in the LTCOPD results.
  This agreement is quite striking considering that the there was almost
  no correlation in the edge weight differences across these same studies.
- There was significant agreement for each pairwise combination of studies
- (pairwise Kolmogorov-Smirnov test, p<.001) [See supplementary results].
+ There was significant correlation for each pairwise combination of studies
  
-\end_layout
-
-\begin_layout Standard
-Overall, we found a strong correlation in transcription factors identified
- as significantly differentially involved across case/control (Figure 3A-3B).
- It is reassuring that agreement is more strongly achieved between studies
- of the same tissue origin than across tissues.
- Each of the four studies was most closely correlated with studies of the
- same tissue.
- However it is quite notable that the we do see much of the same dTFI signal
- across studies involving different tissue types.
- Gene regulatory networks derived from gene expression data are notoriously
- difficult to replicate across studies and it is of great interest that
- we have identified suspected mechanisms which are correlated not only across
- studies but across tissues as well.
-\end_layout
-
-\begin_layout Standard
-If we focus specifically on the transcription factors found by all studies
- [supplemental table 2, supplemental figure 5], we find interesting things.
- E2F4, found to be significant in all studies, is a transcriptional repressor
- crucial to cell cycle and tumor suppression.
- Increasing evidence has emerged linking the pathogenesis of COPD and lung
- cancer 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "guzman2012analysis"
-
-\end_inset
-
-
-\begin_inset CommandInset citation
-LatexCommand cite
-key "durham2015relationship"
-
-\end_inset
-
- including a substantially increased incidence of cancer in those with COPD
- 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "de2015lung"
-
-\end_inset
-
-.
- Differential involvement of a tumor suppressor transcription factor is
- consistent with this research.
- Additionally, SP1 and SP2 were among the highest effect sizes observed
- in the four studies (although significance was reduced due to greater dTFI
- variance)[supplemental table 2].
- Both of these proteins have been found to form complexes with the E2F family
- 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "rotheneder1999transcription,karlseder1996interaction"
-
-\end_inset
-
-.
- Furthermore, E2F4 has been found to bind with EGR-1 (a top 5 hit in ECLIPSE
- and LTCOPD) in response to stress (such as smoke) 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "chen2008egr"
-
+\begin_inset Formula $\left(p<1e-15\right)$
 \end_inset
 
 .
  
-\end_layout
-
-\begin_layout Standard
-New research has identified mitochondrial mechanisms associated with COPD
- progression 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "cloonan2016mitochondrial,puente2009abnormal"
-
-\end_inset
-
-.
- It is therefore noteworthy that the most highly significant transcription
- factors in the ECLIPSE study were found to be NRF1 and GABPA (FDR<.001).
- Both of these transcription factors were found to be significant at at
- least FDR<0.1 in each of the four studies and FDR<0.001 in the LGRC study.
- NRF1 has been established as a regulator of cell growth, respiration and
- mitochondrial function.
- GABPA has similarly been linked to nuclear control of mitochondrial function
- and shares a subunit with nuclear respiratory factor 2 gene, possibly indicatin
-g a role in cytochrome oxidase expression, a process linked to COPD progression
- 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "sauleda1998cytochrome"
-
-\end_inset
-
-[Yang M, 2010].
-\end_layout
-
-\begin_layout Standard
-Of further interest is the particular transcription factors transcription
- factors which are differentially observed across studies.
- For example, ESR1, the gene encoding estrogen receptor alpha (
-\begin_inset Formula $ES-\alpha$
-\end_inset
-
-), is likely to behave differently in males compared with females.
- We found that this transcription factor TF is significantly differentially
- involved in the COPDGene study - identified as the 4th most differentially
- involved TF, but not the ECLIPSE study.
- Accordingly, the COPDGene study had a greater gender disparity than the
- ECLIPSE study.
-\end_layout
-
-\begin_layout Standard
-Consistency across in dTFI results was not universal for all transcription
- factors.
- Many differences exist for each of the four studies including microarray
- platform, study demographics, location, time and tissue.
- For example, in the LGRC dataset, we discovered a differential targeting
- pattern involving the transcription factors transcription factors RFX1
- and RFX2.
- Both of these transcription factors transcription factors were highly statistic
-ally significant (FDR<.0001) and ranked as the top two results in the LGRC
- study.
- However, their signal was muted in the ECLIPSE and COPDGene studies, neither
- of which identified these transcription factors transcription factors as
- drivers of the Smoker Control to COPD transition.
- Significant transcription factors are attributed to differences in the
- case/control differences, subjecting the results to possible confounding.
- This highlights the importance of utilizing case control designs which
- are properly matched along known covariates.
-\end_layout
-
-\begin_layout Standard
-Although our hypotheses is that transcription factors that alter their targets
- (and therefore have high dTFI scores) are drivers of changes in phenotypic
- state, many of the transcription factors that we identified are not themselves
- differentially expressed in comparing control and COPD populations (Figure
- 4).
- This suggests that there may be other mechanisms, including epigenetic
- and protein interaction factors, affecting the structure of gene regulatory
- networks and that the master regulators of phenotypic state change may
- have differentiated targeting behavior in patients in the COPD group compared
- to the control group.
-\end_layout
-
-\begin_layout Standard
-These results demonstrate the scientific value of MONSTER.
- Numerous biologically sensible results were found across several independent
- studies.
- The reproducibility of the top transcription factor hits is compelling.
- We demonstrate that these findings would not have been possible via differentia
-l gene expression analysis or conventional comparative network inference
- methods.
 \end_layout
 
 \begin_layout Standard
@@ -1047,8 +894,8 @@ status open
 \series bold
 A
 \begin_inset Graphics
-	filename figures/TM_heatmap.pdf
-	lyxscale 30
+	filename figures/TM_heatmap_ECLIPSE.tiff
+	lyxscale 5
 	width 50col%
 
 \end_inset
@@ -1057,8 +904,8 @@ B
 \series default
 
 \begin_inset Graphics
-	filename figures/Transition_plot.pdf
-	lyxscale 20
+	filename figures/Transition_plotECLIPSE.tiff
+	lyxscale 5
 	width 50col%
 
 \end_inset
@@ -1071,8 +918,8 @@ B
 \series bold
 C
 \begin_inset Graphics
-	filename figures/SSODMplot_scaled.pdf
-	lyxscale 40
+	filename figures/SSODMplot_scaledECLIPSE.tiff
+	lyxscale 5
 	width 100col%
 
 \end_inset
@@ -1096,7 +943,8 @@ A
 \series default
  Heatmap depicting the transition matrix from smoker controls to COPD in
  ECLIPSE.
- For the purposes of visualization, the diagonal is not displayed.
+ For the purposes of visualization, the magnitude of the diagonal is not
+ displayed.
  
 \series bold
 B
@@ -1187,38 +1035,26 @@ B
 \begin_layout Plain Layout
 
 \series bold
-Comparison of dTFI for 166 TFs across four independent studies in two tissues
+Strong reproducibility in top differential transcription factor involvement
+ found in case-control COPD studies
 \series default
 .
- ECLIPSE and COPGene data were obtained via PBMC and LGRC and LTCOPD were
+ ECLIPSE and COPDGene data were obtained via PBMC and LGRC and LTCOPD were
  obtained via lung tissue.
- Results for two studies with gene expression data obtained from the same
- source (
+ Results for studies with gene expression data obtained from the same-tissue
+ (
 \series bold
 A
 \series default
-), PBMC (left) and lung tissue (right) show strong concordance with a high
- degree of agreement, particularly for top hits.
- Spearman correlation for each of these tissue types was 
-\begin_inset Formula $r_{s}=.87$
-\end_inset
-
- and 
-\begin_inset Formula $r_{s}=.71$
-\end_inset
-
-, respectively.
- Correlations for across tissue study comparisons (
+), PBMC (left) and lung tissue (right) each demonstrate very high spearman
+ correlation of differential involvement.
+ Correlations for the across-tissue study comparisons (
 \series bold
 B
 \series default
-)
-\series bold
- 
-\series default
-demonstrated a weaker, but still measureable agreement.
+) demonstrated a weaker, but still meaningful agreement.
  Each of the four studies was most consistent with the study of the same
- tissue type as its own.
+ tissue type.
 \end_layout
 
 \end_inset
@@ -1245,6 +1081,189 @@ label{fig:compare}
 \end_layout
 
 \begin_layout Standard
+Overall, we found a strong correlation in transcription factors identified
+ as significantly differentially involved across case/control (Figure 3A-3B).
+ It is reassuring that agreement is more strongly achieved between studies
+ of the same tissue origin than across tissues.
+ Each of the four studies was most closely correlated with studies of the
+ same tissue.
+ However it is quite notable that the we do see much of the same dTFI signal
+ across studies involving different tissue types.
+ Gene regulatory networks derived from gene expression data are notoriously
+ difficult to replicate across studies and it is of great interest that
+ we have identified suspected mechanisms which are correlated not only across
+ studies but across tissues as well.
+\end_layout
+
+\begin_layout Standard
+If we focus specifically on the transcription factors found by all studies
+ [supplemental table 2, supplemental figure 5], we find interesting things.
+ E2F4, found to be significant in all studies, is a transcriptional repressor
+ crucial to cell cycle and tumor suppression.
+ Increasing evidence has emerged linking the pathogenesis of COPD and lung
+ cancer 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "guzman2012analysis"
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "durham2015relationship"
+
+\end_inset
+
+ including a substantially increased incidence of cancer in those with COPD
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "de2015lung"
+
+\end_inset
+
+.
+ Differential involvement of a tumor suppressor transcription factor is
+ consistent with this research.
+ Additionally, SP1 and SP2 were among the highest effect sizes observed
+ in the four studies (although significance was reduced due to greater dTFI
+ variance for those transcription factors)[supplemental table 2].
+ Both of these proteins have been found to form complexes with the E2F family
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "rotheneder1999transcription,karlseder1996interaction"
+
+\end_inset
+
+ and may play a key role in the alteration of E2F4 targeting behavior that
+ we are observing in these studies.
+ Furthermore, E2F4 has been found to bind with EGR-1 (a top 5 hit in ECLIPSE
+ and LTCOPD) in response to stress, specifically exposure to smoke 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "chen2008egr"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Additionally, new research has identified mitochondrial mechanisms associated
+ with COPD progression 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "cloonan2016mitochondrial,puente2009abnormal"
+
+\end_inset
+
+.
+ It is therefore noteworthy that the most highly significant transcription
+ factors in the ECLIPSE study were found to be NRF1 and GABPA (FDR<.001).
+ Both of these transcription factors were also found to be significant at
+ at least FDR<0.1 in each of the four studies and FDR<0.001 in the LGRC study.
+ NRF1 has been established as a regulator of cell growth, respiration and
+ mitochondrial function
+\series bold
+[REF]
+\series default
+.
+ GABPA has similarly been linked to nuclear control of mitochondrial function
+ and shares a subunit with nuclear respiratory factor 2 gene (NRF1), possibly
+ indicating a role in cytochrome oxidase expression, a process linked to
+ COPD progression 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "sauleda1998cytochrome"
+
+\end_inset
+
+.
+ Furthermore, it is established that GABPA interacts with SP1 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "galvagni2001sp1"
+
+\end_inset
+
+ providing additional evidence that a new mechanism is at play here among
+ these common players.
+ 
+\end_layout
+
+\begin_layout Standard
+Of further interest is the particular transcription factors transcription
+ factors which are differentially observed across studies.
+ For example, ESR1, the gene encoding estrogen receptor alpha (
+\begin_inset Formula $ES-\alpha$
+\end_inset
+
+), is likely to behave differently in males compared with females.
+ We found that this transcription factor is significantly differentially
+ involved in the COPDGene study - identified as the 
+\begin_inset Formula $4^{th}$
+\end_inset
+
+ most differentially involved TF, but not in the ECLIPSE study.
+ Accordingly, the COPDGene study had a greater gender disparity than the
+ ECLIPSE study.
+ MONSTER is not intended to distinguish between causal effects and confounding
+ effects, relying on effective study design to isolate the interpretation
+ of its results.
+ 
+\end_layout
+
+\begin_layout Standard
+Consistency across in dTFI results was not universal for all transcription
+ factors.
+ While each of the four groups separated cases and controls based on COPD
+ diagnosis vs.
+ smoking non-COPD patients, many differences exist for each of the four
+ studies including microarray platform, study demographics, location, time
+ and tissue.
+ For example, in the LGRC dataset, we discovered a differential targeting
+ pattern involving the transcription factors transcription factors RFX1
+ and RFX2 [supplemental table 2].
+ Both of these transcription factors transcription factors were highly statistic
+ally significant (FDR<.0001) and ranked as the top two results in the LGRC
+ study.
+ However, their signal was muted in the ECLIPSE and COPDGene studies, neither
+ of which identified these transcription factors transcription factors as
+ drivers of the Smoker Control to COPD transition.
+ We emphasize that significant transcription factors are attributed to differenc
+es in the case/control differences, subjecting the results to possible confoundi
+ng.
+ This highlights the importance of utilizing case control designs which
+ are properly matched along known covariates.
+\end_layout
+
+\begin_layout Standard
+Although our hypotheses is that transcription factors that alter their targets
+ (and therefore have high dTFI scores) are drivers of changes in phenotypic
+ state, many of the transcription factors that we identified are not themselves
+ differentially expressed in comparing control and COPD populations (Figure
+ 4).
+ This suggests that there may be other mechanisms, including epigenetic
+ and protein interaction factors, affecting the structure of gene regulatory
+ networks and that the master regulators of phenotypic state change may
+ have differentiated targeting behavior in patients in the COPD group compared
+ to the control group.
+\end_layout
+
+\begin_layout Standard
+These results demonstrate the scientific value of MONSTER.
+ Numerous biologically sensible results were found across several independent
+ studies.
+ The reproducibility of the top transcription factor hits is compelling.
+ We demonstrate that these findings would not have been possible via differentia
+l gene expression analysis or conventional comparative network inference
+ methods.
+\end_layout
+
+\begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
@@ -1254,8 +1273,8 @@ status collapsed
 
 \series bold
 \begin_inset Graphics
-	filename figures/dTFI vs LIMMA55557.pdf
-	lyxscale 40
+	filename figures/dTFI vs LIMMA ECLIPSE.tiff
+	lyxscale 10
 	width 50col%
 
 \end_inset

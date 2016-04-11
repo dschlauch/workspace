@@ -206,6 +206,78 @@ Materials and Methods
 \begin_layout Subsection*
 
 \bar under
+Data Collection and Generation
+\end_layout
+
+\begin_layout Standard
+Gene expression data was obtained by from ECLIPSE, COPDGene, LGRC, and LTCOPD...
+\end_layout
+
+\begin_layout Standard
+Regulatory priors were created by using position weight matrices for 205
+ transcription factor motifs obtained from the JASPAR 2014 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cite{mathelier2013jaspar}
+\end_layout
+
+\end_inset
+
+ and running Haystack
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cite{pinello2014analysis}
+\end_layout
+
+\end_inset
+
+ to scan the hg19 genome for occurrences of these motifs.
+ Sequences were identified as hits for a transcription factor if they satisfied
+ the significance threshold of 
+\begin_inset Formula $p<10^{-5}$
+\end_inset
+
+.
+ We then linked motifs to genes under the guidelines a motifs is a possible
+ transcription factor binding sites for a particular gene if that motif
+ is located within 750 base pairs downstream or within 250 base pairs upstream
+ of a gene's promoter.
+ We applied HOMER 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cite{heinz2010simple}
+\end_layout
+
+\end_inset
+
+ to identify motifs that met this criteria.
+ 
+\end_layout
+
+\begin_layout Standard
+Next, we identified transcription factors for which we had gene expression
+ data across all four studies, removing those with missing data.
+ Finally, we were left with 
+\end_layout
+
+\begin_layout Subsection*
+
+\bar under
 Common network inference methods do not produce reproducible results in
  COPD
 \end_layout
@@ -214,61 +286,7 @@ Common network inference methods do not produce reproducible results in
 We evaluated the standard tools for COPD case-control studies at the network
  level by observing the agreement in differential network inference (NI)
  across studies.
- We utilizing four studies - Chronic Obstructive Pulmonary Disease (COPD)-
- Evaluation of COPD Longitudinally to Identify Predictive Surrogate Endpoints
- (ECLIPSE)
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-cite{vestbo2008evaluation}
-\end_layout
-
-\end_inset
-
-, the COPDGene study 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-cite{pillai2009genome}
-\end_layout
-
-\end_inset
-
-, Lung Genomics Research Consortium (LGRC) 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-cite{lgrc}
-\end_layout
-
-\end_inset
-
- and Lung Tissue Chronic Obstructive Pulmonary Disease (LTCOPD) 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-cite{ltcopd}
-\end_layout
-
-\end_inset
-
-.
+ We utilizing the four studies - ECLIPSE, COPDGene, LGRC, and LTCOPD.
  Our goal was to determine the ability of commonly used NI methods to find
  reproducible results across studies.
  We tested the methods Algorithm for the Reconstruction of Gene Regulatory
@@ -298,38 +316,6 @@ any
 \end_layout
 
 \begin_layout Standard
-
-\series bold
-A
-\series default
-
-\begin_inset Graphics
-	filename figures/all_studies_ARACNE_edgeweight_difference_comparison.png
-	lyxscale 30
-	width 100col%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-B
-\series default
-
-\begin_inset Graphics
-	filename figures/all_studies_CLR_edgeweight_difference_comparison.png
-	lyxscale 30
-	width 100col%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 \begin_inset Float figure
 placement H
 wide false
@@ -339,13 +325,53 @@ status open
 \begin_layout Plain Layout
 
 \series bold
+A
+\series default
+
+\begin_inset Graphics
+	filename figures/all_studies_ARACNE_edgeweight_difference_comparison.tiff
+	lyxscale 30
+	width 45col%
+
+\end_inset
+
+
+\series bold
+B
+\series default
+
+\begin_inset Graphics
+	filename figures/all_studies_CLR_edgeweight_difference_comparison.tiff
+	lyxscale 30
+	width 45col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
 C
 \series default
 
 \begin_inset Graphics
-	filename figures/all_studies_WGCNA_edgeweight_difference_comparison.png
+	filename figures/all_studies_WGCNA_edgeweight_difference_comparison.tiff
 	lyxscale 30
-	width 100col%
+	width 45col%
+
+\end_inset
+
+
+\series bold
+D
+\series default
+
+\begin_inset Graphics
+	filename figures/all_studies_MONSTER_edgeweight_difference_comparison.tiff
+	lyxscale 30
+	width 45col%
 
 \end_inset
 
@@ -353,27 +379,36 @@ C
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
+
+\series bold
 Edgeweight differences between cases and controls do not correlate across
  studies.
+
+\series default
  Using three commonly used network inference methods from gene expression
  data, network inference was performed separately on cases and controls.
- Here, the case-control difference is compared across studies of COPD.
- The methods tested were Algorithm for the Reconstruction of Gene Regulatory
- Networks (ARACNE) (
+ Here, the case-control difference is compared across four independent studies
+ of COPD.
+ The methods tested were 
 \series bold
 A
 \series default
-), Context Likelihood of Relatedness (CLR) (
+ Algorithm for the Reconstruction of Gene Regulatory Networks (ARACNE),
+ 
 \series bold
 B
 \series default
-), and Weighted Gene Correlation Network Analysis (WGCNA) (
+ Context Likelihood of Relatedness (CLR), 
 \series bold
 C
 \series default
-).
+ Weighted Gene Correlation Network Analysis (WGCNA), and 
+\series bold
+D
+\series default
+ MONSTER.
  No detectable agreement between studies exist were found, regardless of
- tissue type.
+ network inference method or tissue type.
 \end_layout
 
 \end_inset
@@ -1257,7 +1292,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename figures/workflow_diagram.png
+	filename figures/workflow_diagram.pdf
 	lyxscale 40
 	width 80col%
 
@@ -2494,6 +2529,294 @@ ROC curve for prediction of PPI based on a transition from Smoker control
 
 \end_inset
 
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+
+\bar under
+Results for MONSTER analysis on four COPD studies
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+
+\series bold
+A
+\begin_inset Graphics
+	filename figures/TM_heatmap_ECLIPSE.tiff
+	lyxscale 5
+	width 20col%
+
+\end_inset
+
+B
+\series default
+
+\begin_inset Graphics
+	filename figures/Transition_plotECLIPSE.tiff
+	lyxscale 5
+	width 25col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+C
+\begin_inset Graphics
+	filename figures/SSODMplot_scaledECLIPSE.tiff
+	lyxscale 5
+	width 45col%
+
+\end_inset
+
+
+\series default
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\series bold
+ECLIPSE
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+
+\series bold
+A
+\begin_inset Graphics
+	filename figures/TM_heatmap_COPDGene.tiff
+	lyxscale 5
+	width 20col%
+
+\end_inset
+
+B
+\series default
+
+\begin_inset Graphics
+	filename figures/Transition_plotCOPDGene.tiff
+	lyxscale 5
+	width 25col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+C
+\begin_inset Graphics
+	filename figures/SSODMplot_scaledCOPDGene.tiff
+	lyxscale 5
+	width 45col%
+
+\end_inset
+
+
+\series default
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\series bold
+COPDGENE
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align left
+
+\series bold
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+
+\series bold
+A
+\begin_inset Graphics
+	filename figures/TM_heatmap_LGRC.tiff
+	lyxscale 5
+	width 20col%
+
+\end_inset
+
+B
+\series default
+
+\begin_inset Graphics
+	filename figures/Transition_plotLGRC.tiff
+	lyxscale 5
+	width 25col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+C
+\begin_inset Graphics
+	filename figures/SSODMplot_scaledLGRC.tiff
+	lyxscale 5
+	width 45col%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\series bold
+LGRC
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align left
+
+\series bold
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+
+\series bold
+A
+\begin_inset Graphics
+	filename figures/TM_heatmap_LTCOPD.tiff
+	lyxscale 5
+	width 20col%
+
+\end_inset
+
+B
+\series default
+
+\begin_inset Graphics
+	filename figures/Transition_plotLTCOPD.tiff
+	lyxscale 5
+	width 25col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+C
+\begin_inset Graphics
+	filename figures/SSODMplot_scaledLTCOPD.tiff
+	lyxscale 5
+	width 45col%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\series bold
+LTCOPD
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\series bold
+MONSTER analysis results for 4 studies (ECLIPSE reproduced in main text)
+ 
+\series default
+See Figure 2 in main text for plot descriptions.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
 
 \end_layout
 
