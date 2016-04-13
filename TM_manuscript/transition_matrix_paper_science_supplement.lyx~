@@ -248,9 +248,9 @@ cite{pinello2014analysis}
 \end_inset
 
 .
- We then linked motifs to genes under the guidelines that motifs are possible
- transcription factor binding sites for a particular gene if the motif is
- located within 750 base pairs downstream or within 250 base pairs upstream
+ We then linked motifs to genes under the guidelines a motifs is a possible
+ transcription factor binding sites for a particular gene if that motif
+ is located within 750 base pairs downstream or within 250 base pairs upstream
  of a gene's promoter.
  We applied HOMER 
 \begin_inset ERT
@@ -265,7 +265,7 @@ cite{heinz2010simple}
 
 \end_inset
 
- to perform this mapping.
+ to identify motifs that met this criteria.
  
 \end_layout
 

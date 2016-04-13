@@ -2915,8 +2915,7 @@ name "population_table"
 \end_layout
 
 \begin_layout Section*
-Population structure detection in 1000 Genomes Project [Not sure where the
- rest of this fits in]
+Population structure detection in 1000 Genomes Project
 \end_layout
 
 \begin_layout Standard
@@ -3090,7 +3089,7 @@ Interestingly, we found a strong case for cryptic relatedness between three
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
