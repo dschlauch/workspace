@@ -1,6 +1,6 @@
 # Specify study and motif in command line or before sourcing
 # study <- "LGRC"
-# study <- "COPDGene"
+# study <- "COPDGENE"
 # study <- "LTCOPD"
 # study <- "ECLIPSE"
 # 

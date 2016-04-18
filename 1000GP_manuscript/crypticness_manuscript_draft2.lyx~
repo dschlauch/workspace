@@ -1421,7 +1421,7 @@ name "All s plots"
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -1701,7 +1701,7 @@ name "All s plots-1"
 \begin_inset Float table
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Tabular
@@ -2915,8 +2915,7 @@ name "population_table"
 \end_layout
 
 \begin_layout Section*
-Population structure detection in 1000 Genomes Project [Not sure where the
- rest of this fits in]
+Population structure detection in 1000 Genomes Project
 \end_layout
 
 \begin_layout Standard
@@ -2947,6 +2946,60 @@ is applied for identifying the components of largest variation which ideally
 \series default
 , failing to fully utilize the fact that the overall allele frequency is
  informative of the value of each variant.
+ We can similarly use the GSM defined as the pairwise similarity between
+ all samples to feed the eigendecomposition and achieve highly similar results
+ [figure] depicting the two dimensional linear migrations of ancient human
+ history.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/PCA_all.pdf
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\series bold
+Principal Components Analysis of all samples in 1000 Genomes Project 
+\series default
+using GSM computed using our method (left) and variance-covariance (right)
+ yield similar projections which elucidate the migratory patterns of early
+ humans.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Despite a focus on separating recently related populations, our method is
+ effective at partitioning samples of more distant common ancestry as well.
+ However, the approach we describe here outperforms PCA when the task involves
+ separating individuals of recent ancestry.
+\end_layout
+
+\begin_layout Standard
+We choose a set of closely related populations from the 1000 Genomes Project
+ in order to demonstrate this performance.
+ The population pairs STU and ITU, and IBS and TSI we among the most closely
+ related populations and represent two pairs of groups which are geographically
+ near and have common ancestry dating back fewer than X years [citation].
 \end_layout
 
 \begin_layout Standard
@@ -2989,7 +3042,7 @@ Both methods performed well at separating the five superpopulations, but
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -2998,7 +3051,7 @@ A
 \series default
 
 \begin_inset Graphics
-	filename /home/dan/gd/Harvard/Research/R_workspace/Slides/pasted14.png
+	filename figures/GSM.png
 	width 50col%
 
 \end_inset
@@ -3090,7 +3143,7 @@ Interestingly, we found a strong case for cryptic relatedness between three
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
