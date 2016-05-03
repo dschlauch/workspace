@@ -4,3 +4,5 @@
 *.RData
 *.rdata
 .Rproj.user
+TM_manuscript/figures/*
+1000GP_manuscript/figures/*

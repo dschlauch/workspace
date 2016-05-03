@@ -5,7 +5,6 @@ print(sPlot)
 dev.off()
 
 sPlot <- ssodm.plot(transMatrices[[1]], transMatrices[-1], rescale=T,plot.title="")#, plot.title=paste("SSODM observed and null, ",casesString," vs ",controlsString,' : ', networkInferenceName, ' : ', analysisName, sep=""))
-
 cairo_pdf(file.path(outputDir,paste0('SSODMplot_scaled',analysisCode,'.pdf')), width=24)
 print(sPlot)
 dev.off()
@@ -40,14 +39,14 @@ negLogPValues <- -log(dTFI_pVals)
 negLogPValues[negLogPValues==Inf] <- 35
 negLogZPValues[negLogZPValues==Inf] <- 35
 labels <- names(obsSsodm)
-labels[rank(-negLogZPValues)>20 & rank(-limmanegLogPValues)>20]<-""
+labels[rank(-negLogZPValues)>10 & rank(-limmanegLogPValues)>10]<-""
 
 dTFI_fdr   <- p.adjust(dTFI_pVals, method = 'fdr')
 logfoldchangeTF <- logfoldchange[names(dTFI_pVals)]
 limma_pVals <- diff.exp.res$p.value[names(dTFI_pVals),2]
 limma_fdr <- p.adjust(limma_pVals, method = 'fdr')
 limmanegLogPValues <- -log(limma_pVals)
-limmanegLogPValues[limmanegLogPValues>10]<-10 # for visual purposes
+limmanegLogPValues[limmanegLogPValues>12]<-12 # for visual purposes
 resultTable <- cbind(obsSsodm,dTFI_pVals, dTFI_normalized_scores, dTFI_fdr, logfoldchangeTF, limmanegLogPValues)
 resultTable <- resultTable[order(dTFI_pVals),]
 
@@ -62,13 +61,16 @@ ggplot(data=plotDF,aes(x=obsSsodm, y=negLogZPValues, label=labels, size=100)) + 
   scale_colour_gradientn("LIMMA sig",colours=c("blue","white","red"))
 dev.off()
 
-dTFI_LIMMA_gg <- ggplot(data=plotDF, aes(x=limmanegLogPValues, y=negLogZPValues)) + geom_point(aes(col=logfoldchangeTF), size=7, alpha=.8) +
+dTFI_LIMMA_gg <- ggplot(data=plotDF, aes(x=limmanegLogPValues, y=negLogZPValues)) + 
+  geom_point(aes(col=logfoldchangeTF), size=7, alpha=.8) +
+  geom_point(shape = 1,size = 7,colour = "black") +
   geom_text_repel(data=plotDF[labels!="",], aes(limmanegLogPValues, negLogZPValues, label=labels), size = 10,) + 
   ylab("Differential TF Involvement, -log(p-value)") + xlab("Differential Expression,  LIMMA -log(p-value)") + 
-  ggtitle(expression(atop("Differential Involvement vs Differential Expression (ECLIPSE)", atop(italic("Smoker Controls to COPD Patients"), ""))))+
-  scale_colour_gradient2(limits=c(-max(abs(logfoldchangeTF))/4,max(abs(logfoldchangeTF))/4), name="log(fold-change)", low = "blue", high = "yellow", mid="black") +
+  labs(title=paste0("Differential Involvement vs Differential Expression \n(Smoker Controls to COPD Patients ",analysisCode,")")) +
+  scale_colour_gradient2(limits=c(-max(abs(logfoldchangeTF))/4,max(abs(logfoldchangeTF))/4), oob = scales::squish, name="log(FC)", low = "blue", high = "yellow", mid="white") +
   theme_classic() + 
-  theme(plot.title = element_text(size=25,hjust=.5), axis.title=element_text(size=22), legend.text=element_text(size=20), legend.title=element_text(size=20))
+  theme(plot.title = element_text(size=25,hjust=.5), axis.text=element_text(size=18), axis.title=element_text(size=22), 
+        legend.text=element_text(size=30), legend.title=element_text(size=30), legend.key.size=unit(.7,"in"))
 
 cairo_pdf(file.path(outputDir,paste('dTFI vs LIMMA ',analysisCode,'.pdf', sep="")), width=12, height=12)
 print(dTFI_LIMMA_gg)
@@ -100,7 +102,12 @@ mdf[,2] <- factor(mdf[,2],levels=sort(levels(mdf[,2]), decreasing=T))
 p1 <- ggplot(mdf, aes(x=Var1, y=Var2)) +
   geom_tile(aes(fill=value)) + 
   xlab("Transcription Factors") + ylab("Transcription Factors") + scale_fill_gradient2(name = "dTFI") + 
-  theme_bw() + theme(axis.ticks = element_blank(), axis.title=element_text(size=25), legend.title=element_text(size=20), axis.text.y = element_blank(), axis.text.x = element_blank(), plot.title=element_text(family="Times", face="bold", size=40)) + 
+  theme_bw() + 
+  theme(axis.ticks = element_blank(), 
+        axis.title=element_text(size=25), 
+        legend.title=element_text(size=20), legend.text=element_text(size=20), legend.key.size=unit(.7,"in"), 
+        axis.text.y = element_blank(), axis.text.x = element_blank(), 
+        plot.title=element_text(family="Times", face="bold", size=40)) + 
   ggtitle(expression(atop("Transition Matrix", atop(italic("Smoker Controls to COPD Patients"), ""))))
 
 png(file.path(outputDir,paste0('TM_heatmap_',analysisCode,'.png')), width=800, height=800)

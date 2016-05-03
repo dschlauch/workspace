@@ -159,7 +159,7 @@ The fundamental assumption in standard genetic association analysis is that
 \end_layout
 
 \begin_layout Standard
-The first method is to compute an Eigenvalue decomposition of the matrix
+The first method is to compute an eigenvalue decomposition of the matrix
  and to include the eigenvectors that explain the most variation as covariates
  in the association analysis.
  An alternative approach is to incorporate the estimated dependence structure
@@ -173,8 +173,8 @@ The first method is to compute an Eigenvalue decomposition of the matrix
 \end_layout
 
 \begin_layout Standard
-However, both approaches perform benefit if, prior to the analysis, study
- subjects whose genetic profile is very different from the other study subjects,
+However, both approaches benefit if, prior to the analysis, study subjects
+ whose genetic profile is very different from the other study subjects,
  e.g.
  “genetic outliers”, are removed from the data set.
  The standard practice is currently to examine the Eigenvalue plots visually
@@ -189,9 +189,10 @@ However, both approaches perform benefit if, prior to the analysis, study
 In this communication, we propose a formal statistical test that assesses
  whether two study subjects come from the same population and whether they
  are unrelated.
- The test statistic is based on the Jaccard Index and its distribution can
- be derived under the null-hypothesis which makes computationally fast,
- enabling the application to whole-genome sequencing data.
+ The test statistic is based on the a weighted form of the Jaccard Index
+ and its distribution can be derived under the null-hypothesis which makes
+ computationally fast, enabling the application to whole-genome sequencing
+ data.
  Our measure has clearly defined properties which can be used to test for
  homogeneity in a population and in particular identify individuals who
  are likely be related in a study population.
@@ -429,7 +430,7 @@ E\left(s_{i_{1},j_{1}}|\phi_{i,j}\right)= & \frac{\sum_{k=1}^{N}I\left[\sum_{l=1
 
 \end_inset
 
-It can easily be shown that in the presence of cryptic relatedness, 
+It can be shown that in the presence of cryptic relatedness, 
 \begin_inset Formula $\phi_{i,j}>0$
 \end_inset
 
@@ -679,7 +680,7 @@ It would be of interest in any study seeking to qunatitatively demonstrate
 \end_layout
 
 \begin_layout Section*
-Identification of relatedness in 1000GP data
+Identification of relatedness and structure in 1000GP data
 \end_layout
 
 \begin_layout Standard
@@ -750,6 +751,34 @@ Phase 3 of the 1000 Genomes Project contains approximately 2504 individuals
  in the TGP.
  Our method was then run on each of these populations separately to test
  for heterogeneity and relatedness within population groups.
+\end_layout
+
+\begin_layout Standard
+We first computed the genetic similarity matrix across all 5 super populations
+ and compared it to the variance-covariance matrix commonly used in PCA
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ref{fig:heatmaps}
+\end_layout
+
+\end_inset
+
+.
+ Additionally, we performed an eigenvalue decomposition of the GSMs and
+ plotted the samples on the first two components, showing highly similar
+ results for our method compared with standard principal components analysis.
+ We found that despite the focus on less frequent alleles that is inherent
+ to our approach, we were able to easily partition the data by super population,
+ suggesting that our metric may be effectively used in computing a genetic
+ similarity matrix even for distantly related populations which do not require
+ the prioritization of less frequent alleles.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -856,7 +885,8 @@ We defined the presence of cryptic relatedness as those individual pairs
 \begin_inset Formula $\left(.2<\hat{\phi_{i,j}}<.3\right)$
 \end_inset
 
-, a set which corresponds identically with the conclusions of Gazal et al.
+, a set of pairings which corresponds identically with the conclusions of
+ Gazal et al.
 \end_layout
 
 \begin_layout Standard
@@ -869,7 +899,7 @@ ons which contain identified structure.
  However, in populations which do not exhibit detectable structure, we still
  find many instances of related individuals in this study.
  For example, two individuals from the ACB population (African Caribbeans
- in Barbados) had a 
+ in Barbados) produced a 
 \begin_inset Formula $s_{i,j}$
 \end_inset
 
@@ -900,8 +930,10 @@ ons which contain identified structure.
 \end_layout
 
 \begin_layout Standard
-Interestingly, we found a pair of individuals HG03998 from the STU population
- and HG03873 from the ITU population which exhibited strikingly high relatedness.
+Interestingly, not all related pairs belonged to the same population groups.
+ We additionally discovered a pair of individuals HG03998 from the STU populatio
+n and HG03873 from the ITU population which exhibited strikingly high relatednes
+s.
  The plot below
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -950,8 +982,8 @@ Nine populations which had been identified as violating homogeneity
 \begin_inset Formula $\left(\alpha=.01\right)$
 \end_inset
 
- in the full TGP dataset were identified as homogeneous after removal of
- suspected related pairs.
+ in the full TGP dataset were no longer identified as violating homogeneity
+ after removal of suspected related pairs.
  However, seven populations, including each of the ad-mixed American groups,
  continued to violate homogeneity even after the attempts to limit the impact
  of cryptic relatedness.
@@ -968,7 +1000,7 @@ reference "Structure pvals"
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -1032,7 +1064,7 @@ B
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -1094,7 +1126,7 @@ name "Structure pvals"
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
@@ -1141,7 +1173,7 @@ name "ITU with HG03998"
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -2946,10 +2978,26 @@ is applied for identifying the components of largest variation which ideally
 \series default
 , failing to fully utilize the fact that the overall allele frequency is
  informative of the value of each variant.
- We can similarly use the GSM defined as the pairwise similarity between
+ 
+\end_layout
+
+\begin_layout Standard
+We can similarly use the GSM defined as the pairwise similarity between
  all samples to feed the eigendecomposition and achieve highly similar results
- [figure] depicting the two dimensional linear migrations of ancient human
- history.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ref{fig:PCA_plots}
+\end_layout
+
+\end_inset
+
+ depicting the two dimensional linear migrations of ancient human history.
 \end_layout
 
 \begin_layout Standard
@@ -2976,6 +3024,19 @@ Principal Components Analysis of all samples in 1000 Genomes Project
 using GSM computed using our method (left) and variance-covariance (right)
  yield similar projections which elucidate the migratory patterns of early
  humans.
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+label{fig:PCA_plots}
 \end_layout
 
 \end_inset
@@ -3043,7 +3104,7 @@ Both methods performed well at separating the five superpopulations, but
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -3053,17 +3114,7 @@ A
 
 \begin_inset Graphics
 	filename figures/GSM.png
-	width 50col%
-
-\end_inset
-
-
-\series bold
-B
-\series default
-
-\begin_inset Graphics
-	filename /home/dan/gd/Harvard/Research/R_workspace/Slides/pasted15.png
+	lyxscale 50
 	width 50col%
 
 \end_inset
@@ -3078,7 +3129,7 @@ C
 \series default
 
 \begin_inset Graphics
-	filename /home/dan/gd/Harvard/Research/R_workspace/Slides/pasted5.png
+	filename figures/PCA_all.pdf
 	width 100col%
 
 \end_inset

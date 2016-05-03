@@ -6,6 +6,15 @@
 \begin_preamble
 \usepackage{inputenc}
 \usepackage{authblk}
+\author[1,2]{Daniel Schlauch} 
+\author[2,3]{Kimberly Glass}
+\author[2]{Craig P. Hersh}
+\author[2,4]{Edwin K. Silverman}
+\author[1,3]{John Quackenbush}
+\affil[1]{Department of Biostatistics and Computational Biology, Dana-Farber Cancer Institute and Department of Biostatistics, Harvard TH Chan School of Public Health, Boston, MA 02115}
+\affil[2]{Channing Division of Network Medicine, Brigham and Women's Hospital, Boston, MA 02115}
+\affil[3]{Department of Medicine, Harvard Medical School, Boston, MA 02115}
+\affil[4]{Pulmonary and Critical Care Division, Brigham and Women's Hospital and Harvard Medical School, Boston, USA}
 % Use only LaTeX2e, calling the article.cls class and 12-point type.
 
 
@@ -140,63 +149,12 @@
 \begin_layout Title
 Estimating Drivers of Cell State Transitions using Gene Regulatory Network
  Models
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-author[1]{Daniel Schlauch} 
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-author[2,3]{Kimberly Glass} 
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-author[1,3]{John Quackenbush} 
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-affil[1]{Department of Biostatistics and Computational Biology, Dana-Farber
- Cancer Institute and Department of Biostatistics, Harvard TH Chan School
- of Public Health, Boston, MA 02115}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-affil[2]{Channing Division of Network Medicine, Brigham and Women's Hospital,
- Boston, MA 02115}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-affil[3]{Department of Medicine, Harvard Medical School, Boston, MA 02115}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Abstract
-We classify cells by based on their tissue of origin and their particular
+Cells are classified by based on their tissue of origin and their particular
  role within that tissue.
- Similarly, we often associate cellular state with patterns in gene expression.
+ Specific cellular states are associated with patterns in gene expression.
  These states are plastic, changing during development, or in the transition
  from health to disease.
  One relatively simple extension of this framework is to recognize that
@@ -233,13 +191,14 @@ R
 \series default
 egulatory data, a regression-based method for inferring transcription factor
  drivers of cell state conditions at the gene regulatory network level.
- As a demonstration, we apply MONSTER to four different COPD-studies to
- identify transcription factors that alter the network structure as cell
- states changes toward the disease-state.
+ As a demonstration, we apply MONSTER to four different studies of chronic
+ obstructive pulmonary disease to identify transcription factors that alter
+ the network structure as cell states changes toward the disease-state.
  Our results demonstrate the ability to find strong signals that persists
  across studies and tissues of the same disease and which are not detectable
  using conventional analysis methods based on differential expression.
- 
+ An R package implementing the MONSTER algorithm is available at github.com/dschl
+auch/MONSTER.
 \end_layout
 
 \begin_layout Section*
@@ -344,7 +303,7 @@ In this model, the diagonal elements of
 placement h
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -360,8 +319,8 @@ status collapsed
 \begin_layout Plain Layout
 
 \series bold
-Overview of the Transition Matrix approach, as applied to the transition
- between smokers and those suffering from COPD.
+Overview of the MONSTER approach, as applied to the transition between smokers
+ and those suffering from chronic obstructive pulmonary disease (COPD).
 
 \series default
  MONSTER’s approach seeks to find the 
@@ -471,8 +430,8 @@ MONSTER: Inferring state-specific gene regulatory networks, modeling the
 \begin_layout Standard
 Before estimating the transition matrix, we must first estimate a gene regulator
 y starting point for each state.
- While there have been many methods developed to estimate such networks
- [REFS], we have found PANDA 
+ While there have been many methods developed to infer such networks [REFS],
+ we have found the bipartite framework used in PANDA 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "glass2013passing"
@@ -775,6 +734,13 @@ e Pulmonary Disease (COPD): Evaluation of COPD Longitudinally to Identify
  Predictive Surrogate Endpoints (ECLIPSE) 
 \begin_inset CommandInset citation
 LatexCommand cite
+key "singh2014altered"
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
 key "vestbo2008evaluation"
 
 \end_inset
@@ -795,13 +761,26 @@ ref{fig:ECLIPSE_results}
 ) , the COPDGene study 
 \begin_inset CommandInset citation
 LatexCommand cite
+key "bahr2013peripheral"
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
 key "pillai2009genome"
 
 \end_inset
 
- (Supplemental Data), Lung Genomics Research Consortium (LGRC) [lgrc](Supplement
-al Data) and Lung Tissue Chronic Obstructive Pulmonary Disease (LTCOPD)
- [ltcopd] (Supplemental Data).
+ (Supplemental Data), Lung Genomics Research Consortium (LGRC) 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "lgrc"
+
+\end_inset
+
+(Supplemental Data) and Lung Tissue Chronic Obstructive Pulmonary Disease
+ (LTCOPD) [ltcopd] (Supplemental Data).
  Each study included gene expression data from patients with COPD and a
  matched set of smoker controls.
  The tissue used in the ECLIPSE and COPDGene study was peripheral blood
@@ -892,34 +871,8 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-A
 \begin_inset Graphics
-	filename figures/TM_heatmap_ECLIPSE.tiff
-	lyxscale 30
-	width 50col%
-
-\end_inset
-
-B
-\series default
-
-\begin_inset Graphics
-	filename figures/Transition_plotECLIPSE.tiff
-	lyxscale 20
-	width 50col%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\series bold
-C
-\begin_inset Graphics
-	filename figures/SSODMplot_scaledECLIPSE.tiff
-	lyxscale 40
+	filename figures/figure2-crop.pdf
 	width 100col%
 
 \end_inset
@@ -933,8 +886,7 @@ C
 \begin_layout Plain Layout
 
 \series bold
-Differential transcription factor involvement (dTFI) calculated in the ECLIPSE
- study.
+MONSTER analysis results in the ECLIPSE study.
 
 \series default
  
@@ -995,34 +947,12 @@ label{fig:ECLIPSE_results}
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
-
-\series bold
-A
-\series default
-
 \begin_inset Graphics
-	filename figures/Magnitude_comparison_same_tissue.pdf
-	lyxscale 40
-	width 60col%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\series bold
-B
-\series default
-
-\begin_inset Graphics
-	filename figures/Magnitude_comparison_diff_tissue.pdf
-	lyxscale 40
-	width 60col%
+	filename figures/figure3-crop.pdf
+	width 100col%
 
 \end_inset
 
@@ -1099,7 +1029,14 @@ Overall, we found a strong correlation in transcription factors identified
 If we focus specifically on the transcription factors found by all studies
  [supplemental table 2, supplemental figure 5], we find interesting things.
  E2F4, found to be significant in all studies, is a transcriptional repressor
- crucial to cell cycle and tumor suppression.
+ important in airway development 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "danielian2007e2f4"
+
+\end_inset
+
+ and tumor suppression.
  Increasing evidence has emerged linking the pathogenesis of COPD and lung
  cancer 
 \begin_inset CommandInset citation
@@ -1128,7 +1065,7 @@ key "de2015lung"
  consistent with this research.
  Additionally, SP1 and SP2 were among the highest effect sizes observed
  in the four studies (although significance was reduced due to greater dTFI
- variance for those transcription factors)[supplemental table 2].
+ variance for those transcription factors) [supplemental table 2].
  Both of these proteins have been found to form complexes with the E2F family
  
 \begin_inset CommandInset citation
@@ -1139,8 +1076,18 @@ key "rotheneder1999transcription,karlseder1996interaction"
 
  and may play a key role in the alteration of E2F4 targeting behavior that
  we are observing in these studies.
- Furthermore, E2F4 has been found to bind with EGR-1 (a top 5 hit in ECLIPSE
- and LTCOPD) in response to stress, specifically exposure to smoke 
+ An additional member of the Sp transcription factor family, Sp3, has been
+ shown to regulate HHIP, a known COPD susceptibility gene 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "zhou2012identification"
+
+\end_inset
+
+.
+ Furthermore, E2F4 has been found to form a complex with EGR-1 (a top 5
+ hit in ECLIPSE and LTCOPD) in response smoke exposure, which may lead to
+ autophagy and apoptosis, which may lead to development of emphysema 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "chen2008egr"
@@ -1165,11 +1112,14 @@ key "cloonan2016mitochondrial,puente2009abnormal"
  factors in the ECLIPSE study were found to be NRF1 and GABPA (FDR<.001).
  Both of these transcription factors were also found to be significant at
  at least FDR<0.1 in each of the four studies and FDR<0.001 in the LGRC study.
- NRF1 has been established as a regulator of cell growth, respiration and
- mitochondrial function
-\series bold
-[REF]
-\series default
+ NRF1 regulates the expression of nuclear encoded mitochondrial proteins.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "gopalakrishnan1995structure"
+
+\end_inset
+
 .
  GABPA has similarly been linked to nuclear control of mitochondrial function
  and shares a subunit with nuclear respiratory factor 2 gene (NRF1), possibly
@@ -1195,25 +1145,69 @@ key "galvagni2001sp1"
 \end_layout
 
 \begin_layout Standard
-Of further interest is the particular transcription factors transcription
- factors which are differentially observed across studies.
- For example, ESR1, the gene encoding estrogen receptor alpha (
-\begin_inset Formula $ES-\alpha$
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\begin_inset Graphics
+	filename figures/figure4.pdf
+	lyxscale 10
+	width 50col%
+
 \end_inset
 
-), is likely to behave differently in males compared with females.
- We found that this transcription factor is significantly differentially
- involved in the COPDGene study - identified as the 
-\begin_inset Formula $4^{th}$
+
+\series default
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\series bold
+Differentially involved transcription factors are not necessarily differentially
+ expressed.
+
+\series default
+ MONSTER commonly finds transcription factors which are differentially involved
+ but are expressed at similar levels across cases and controls.
+ Likewise, differential expression does not indicate differential involvement
+ in MONSTER.
+ For those transcription factors which are differentially involved, but
+ not differentially expressed, the change in involvement suggests behavioral
+ alterations at a post-transcriptional stage.
+ Importantly, the results found in this scenario could not have been identified
+ using conventional differential expression methods.
+ See supplement for equivalent plots from COPDGene, LGRC, and LTCOPD studies.
+\end_layout
+
 \end_inset
 
- most differentially involved TF, but not in the ECLIPSE study.
- Accordingly, the COPDGene study had a greater gender disparity than the
- ECLIPSE study.
- MONSTER is not intended to distinguish between causal effects and confounding
- effects, relying on effective study design to isolate the interpretation
- of its results.
- 
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+label{fig:expression}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1244,8 +1238,20 @@ ng.
 Although our hypotheses is that transcription factors that alter their targets
  (and therefore have high dTFI scores) are drivers of changes in phenotypic
  state, many of the transcription factors that we identified are not themselves
- differentially expressed in comparing control and COPD populations (Figure
- 4).
+ differentially expressed in comparing control and COPD populations (
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ref{fig:expression}
+\end_layout
+
+\end_inset
+
+).
  This suggests that there may be other mechanisms, including epigenetic
  and protein interaction factors, affecting the structure of gene regulatory
  networks and that the master regulators of phenotypic state change may
@@ -1261,53 +1267,6 @@ These results demonstrate the scientific value of MONSTER.
  We demonstrate that these findings would not have been possible via differentia
 l gene expression analysis or conventional comparative network inference
  methods.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-
-\series bold
-\begin_inset Graphics
-	filename figures/dTFI vs LIMMAECLIPSE.tiff
-	lyxscale 40
-	width 50col%
-
-\end_inset
-
-
-\series default
-
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-
-\series bold
-Comparison of significant results for TF differential involvement vs differentia
-l expression in ECLIPSE.
-
-\series default
- TFs which are differentially involved are not necessarily differentially
- expressed, and vice versa.
- Many TFs can be observed which have significantly different targeting patterns,
- but which are not statistically significantly differentially expressed.
- This suggests that our method finds transcription factors which are differentia
-lly affected at a post-transcriptional stage.
- 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard

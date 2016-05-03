@@ -424,3 +424,73 @@
   year={2014},
   publisher={National Acad Sciences}
 }
+@article{heinz2010simple,
+  title={Simple combinations of lineage-determining transcription factors prime cis-regulatory elements required for macrophage and B cell identities},
+  author={Heinz, Sven and Benner, Christopher and Spann, Nathanael and Bertolino, Eric and Lin, Yin C and Laslo, Peter and Cheng, Jason X and Murre, Cornelis and Singh, Harinder and Glass, Christopher K},
+  journal={Molecular cell},
+  volume={38},
+  number={4},
+  pages={576--589},
+  year={2010},
+  publisher={Elsevier}
+}
+@article{singh2014altered,
+  title={Altered gene expression in blood and sputum in COPD frequent exacerbators in the ECLIPSE cohort},
+  author={Singh, Dave and Fox, Steven M and Tal-Singer, Ruth and Bates, Stewart and Riley, John H and Celli, Bartolome},
+  journal={PloS one},
+  volume={9},
+  number={9},
+  pages={e107381},
+  year={2014},
+  publisher={Public Library of Science}
+}
+@article{bahr2013peripheral,
+  title={Peripheral blood mononuclear cell gene expression in chronic obstructive pulmonary disease},
+  author={Bahr, Timothy M and Hughes, Grant J and Armstrong, Michael and Reisdorph, Rick and Coldren, Christopher D and Edwards, Michael G and Schnell, Christina and Kedl, Ross and LaFlamme, Daniel J and Reisdorph, Nichole and others},
+  journal={American journal of respiratory cell and molecular biology},
+  volume={49},
+  number={2},
+  pages={316--323},
+  year={2013},
+  publisher={Am Thoracic Soc}
+}
+@article{danielian2007e2f4,
+  title={E2f4 is required for normal development of the airway epithelium},
+  author={Danielian, Paul S and Kim, Carla F Bender and Caron, Alicia M and Vasile, Eliza and Bronson, Roderick T and Lees, Jacqueline A},
+  journal={Developmental biology},
+  volume={305},
+  number={2},
+  pages={564--576},
+  year={2007},
+  publisher={Elsevier}
+}
+@article{zhou2012identification,
+  title={Identification of a chronic obstructive pulmonary disease genetic determinant that regulates HHIP},
+  author={Zhou, Xiaobo and Baron, Rebecca M and Hardin, Megan and Cho, Michael H and Zielinski, Jan and Hawrylkiewicz, Iwona and Sliwinski, Pawel and Hersh, Craig P and Mancini, John D and Lu, Ke and others},
+  journal={Human molecular genetics},
+  volume={21},
+  number={6},
+  pages={1325--1335},
+  year={2012},
+  publisher={Oxford Univ Press}
+}
+@article{gopalakrishnan1995structure,
+  title={Structure, expression, and chromosomal assignment of the human gene encoding nuclear respiratory factor 1},
+  author={Gopalakrishnan, Lekha and Scarpulla, Richard C},
+  journal={Journal of Biological Chemistry},
+  volume={270},
+  number={30},
+  pages={18019--18025},
+  year={1995},
+  publisher={ASBMB}
+}
+@article{hill2012bayesian,
+  title={Bayesian inference of signaling network topology in a cancer cell line},
+  author={Hill, Steven M and Lu, Yiling and Molina, Jennifer and Heiser, Laura M and Spellman, Paul T and Speed, Terence P and Gray, Joe W and Mills, Gordon B and Mukherjee, Sach},
+  journal={Bioinformatics},
+  volume={28},
+  number={21},
+  pages={2804--2810},
+  year={2012},
+  publisher={Oxford Univ Press}
+}

@@ -39,7 +39,7 @@ merged.data.frame = Reduce(function(...) merge(..., by=1,all=T), resultTables)
 merged.data.frame <- merged.data.frame[order(merged.data.frame[,2]),]
 
 # Function for generation of a plot based on an index pair
-makeComparisonPlot <- function(pair, plotTopNTFs=15, filterColIndices = c(8,18,28,38), metric="Magnitude", xlimits=c(0,.0325), ylimits=c(0,.0325)){
+makeComparisonPlot <- function(pair, plotTopNTFs=8, filterColIndices = c(8,18,28,38), metric="Magnitude", xlimits=c(0,.0325), ylimits=c(0,.0325)){
   # Include labels for any TFs that are in the top 15 of any list
   includedLabels <- apply(merged.data.frame[,filterColIndices[pair]],1,function(...) suppressWarnings(min(...,na.rm=T))) < plotTopNTFs
   merged.data.frame$labels <- as.character(merged.data.frame[,1])
@@ -56,7 +56,7 @@ makeComparisonPlot <- function(pair, plotTopNTFs=15, filterColIndices = c(8,18,2
     annotate("text", x = Inf, y = -Inf, hjust=1, vjust=0, label = corText, parse = TRUE, size = 10, fontface="bold.italic")+    
     scale_x_continuous(limits=xlimits, expand = c(0, 0)) +
     scale_y_continuous(limits=ylimits, expand = c(0, 0)) + 
-    theme_classic() + theme(axis.title=element_text(size=22))
+    theme_classic() + theme(axis.title=element_text(size=22), axis.text=element_text(size=18))
   plot1
   #   ggMarginal(plot1)
 }
