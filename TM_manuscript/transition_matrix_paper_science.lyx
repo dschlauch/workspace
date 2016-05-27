@@ -520,7 +520,15 @@ Simultaneously, for each phenotypic state, we fit a logistic regression
 \begin_layout Standard
 \begin_inset Formula 
 \[
-logit(M_{i})=\beta_{0}+\beta_{1}g_{(1)}+\dots+\beta_{N}g_{(N)}
+logit(M_{i})=\beta_{0}+\beta_{1}g^{(1)}+\dots+\beta_{N}g^{(N)}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+e_{i,j}=\frac{\beta_{0}+\beta_{1}g^{\left(1\right)}+\cdots+\beta_{N}g^{\left(N\right)}}{1+\beta_{0}+\beta_{1}g^{\left(1\right)}+\cdots+\beta_{N}g^{\left(N\right)}}
 \]
 
 \end_inset
@@ -878,7 +886,7 @@ status open
 
 \series bold
 \begin_inset Graphics
-	filename figures/figure2-crop.pdf
+	filename figures/figure2.pdf
 	width 100col%
 
 \end_inset
@@ -957,7 +965,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename figures/figure3-crop.pdf
+	filename figures/figure3.pdf
 	width 100col%
 
 \end_inset
@@ -991,6 +999,11 @@ B
 ) demonstrated a weaker, but still meaningful agreement.
  Each of the four studies was most consistent with the study of the same
  tissue type.
+ (
+\series bold
+C
+\series default
+)
 \end_layout
 
 \end_inset

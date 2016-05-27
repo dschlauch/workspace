@@ -6,6 +6,15 @@
 \begin_preamble
 \usepackage{inputenc}
 \usepackage{authblk}
+\author[1,2]{Daniel Schlauch} 
+\author[2,3]{Kimberly Glass}
+\author[2]{Craig P. Hersh}
+\author[2,4]{Edwin K. Silverman}
+\author[1,3]{John Quackenbush}
+\affil[1]{Department of Biostatistics and Computational Biology, Dana-Farber Cancer Institute and Department of Biostatistics, Harvard TH Chan School of Public Health, Boston, MA 02115}
+\affil[2]{Channing Division of Network Medicine, Brigham and Women's Hospital, Boston, MA 02115}
+\affil[3]{Department of Medicine, Harvard Medical School, Boston, MA 02115}
+\affil[4]{Pulmonary and Critical Care Division, Brigham and Women's Hospital and Harvard Medical School, Boston, USA}
 \end_preamble
 \use_default_options true
 \maintain_unincluded_children false
@@ -84,64 +93,6 @@ Supplementary Materials for
 
 Estimating Drivers Cell State Transitions using Gene Regulatory Network
  Models
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-author[1]{Daniel Schlauch} 
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-author[2,3]{Kimberly Glass} 
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-author[1,3]{John Quackenbush} 
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-affil[1]{Department of Biostatistics and Computational Biology, Dana-Farber
- Cancer Institute and Department of Biostatistics, Harvard TH Chan School
- of Public Health, Boston, MA 02115}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-affil[2]{Channing Division of Network Medicine, Brigham and Women's Hospital,
- Boston, MA 02115}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-affil[3]{Department of Medicine, Harvard Medical School, Boston, MA 02115}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-date{}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Part*
@@ -2712,42 +2663,13 @@ status open
 
 \series bold
 \begin_inset Graphics
-	filename figures/figure4ECLIPSE.pdf
+	filename figures/dTFIvsLIMMAall.pdf
 	lyxscale 10
-	width 40col%
+	width 100col%
 
 \end_inset
 
  
-\begin_inset Graphics
-	filename figures/figure4COPDGene.pdf
-	lyxscale 10
-	width 40col%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\series bold
-\begin_inset Graphics
-	filename figures/figure4LGRC.pdf
-	lyxscale 10
-	width 40col%
-
-\end_inset
-
- 
-\begin_inset Graphics
-	filename figures/figure4LTCOPD.pdf
-	lyxscale 10
-	width 40col%
-
-\end_inset
-
-
 \series default
 
 \begin_inset Caption Standard

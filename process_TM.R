@@ -5,7 +5,7 @@ print(sPlot)
 dev.off()
 
 sPlot <- ssodm.plot(transMatrices[[1]], transMatrices[-1], rescale=T,plot.title="")#, plot.title=paste("SSODM observed and null, ",casesString," vs ",controlsString,' : ', networkInferenceName, ' : ', analysisName, sep=""))
-cairo_pdf(file.path(outputDir,paste0('SSODMplot_scaled',analysisCode,'.pdf')), width=24)
+cairo_pdf(file.path(outputDir,paste0('SSODMplot_scaled',analysisCode,'.pdf')), width=28, height=8)
 print(sPlot)
 dev.off()
 
@@ -69,7 +69,7 @@ dTFI_LIMMA_gg <- ggplot(data=plotDF, aes(x=limmanegLogPValues, y=negLogZPValues)
   labs(title=paste0("Differential Involvement vs Differential Expression \n(Smoker Controls to COPD Patients ",analysisCode,")")) +
   scale_colour_gradient2(limits=c(-max(abs(logfoldchangeTF))/4,max(abs(logfoldchangeTF))/4), oob = scales::squish, name="log(FC)", low = "blue", high = "yellow", mid="white") +
   theme_classic() + 
-  theme(plot.title = element_text(size=25,hjust=.5), axis.text=element_text(size=18), axis.title=element_text(size=22), 
+  theme(plot.title = element_text(size=25,hjust=.5), axis.text=element_text(size=22), axis.title=element_text(size=28), 
         legend.text=element_text(size=30), legend.title=element_text(size=30), legend.key.size=unit(.7,"in"))
 
 cairo_pdf(file.path(outputDir,paste('dTFI vs LIMMA ',analysisCode,'.pdf', sep="")), width=12, height=12)
@@ -101,10 +101,10 @@ mdf[,2] <- factor(mdf[,2],levels=sort(levels(mdf[,2]), decreasing=T))
 # For the paper with no labels
 p1 <- ggplot(mdf, aes(x=Var1, y=Var2)) +
   geom_tile(aes(fill=value)) + 
-  xlab("Transcription Factors") + ylab("Transcription Factors") + scale_fill_gradient2(name = "dTFI") + 
+  xlab("Transcription Factors") + ylab("Transcription Factors") + scale_fill_gradient2(name = "Transition") + 
   theme_bw() + 
   theme(axis.ticks = element_blank(), 
-        axis.title=element_text(size=25), 
+        axis.title=element_text(size=28), 
         legend.title=element_text(size=20), legend.text=element_text(size=20), legend.key.size=unit(.7,"in"), 
         axis.text.y = element_blank(), axis.text.x = element_blank(), 
         plot.title=element_text(family="Times", face="bold", size=40)) + 

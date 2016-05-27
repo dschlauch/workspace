@@ -14,7 +14,7 @@ library(VennDiagram)
 analysisNames <- c("ECLIPSE_combined_runs","COPDGene_combined_runs", "LGRC_combined_runs","LTCOPD_combined_runs")
 displayNames <- c("ECLIPSE","COPDGene","LGRC","LTCOPD")
 baseDir <- "~/gd/Harvard/Research/TM_outputs/JASPAR2014/BERE/"
-outputDir <- './'
+# outputDir <- './'
 setwd(baseDir)
 # Find the files for comparison
 # Read them in.
@@ -41,7 +41,7 @@ merged.data.frame <- merged.data.frame[order(merged.data.frame[,2]),]
 # Function for generation of a plot based on an index pair
 makeComparisonPlot <- function(pair, plotTopNTFs=8, filterColIndices = c(8,18,28,38), metric="Magnitude", xlimits=c(0,.0325), ylimits=c(0,.0325)){
   # Include labels for any TFs that are in the top 15 of any list
-  includedLabels <- apply(merged.data.frame[,filterColIndices[pair]],1,function(...) suppressWarnings(min(...,na.rm=T))) < plotTopNTFs
+  includedLabels <- apply(merged.data.frame[,filterColIndices[pair]],1,function(...) suppressWarnings(min(...,na.rm=T))) <= plotTopNTFs
   merged.data.frame$labels <- as.character(merged.data.frame[,1])
   merged.data.frame$labels[!includedLabels] <- ""
   corValue <- cor(merged.data.frame[[paste(analysisNames[pair[1]], metric, sep="_")]], merged.data.frame[[paste(analysisNames[pair[2]], metric, sep="_")]], use="complete.obs", method="spearman")
@@ -56,7 +56,7 @@ makeComparisonPlot <- function(pair, plotTopNTFs=8, filterColIndices = c(8,18,28
     annotate("text", x = Inf, y = -Inf, hjust=1, vjust=0, label = corText, parse = TRUE, size = 10, fontface="bold.italic")+    
     scale_x_continuous(limits=xlimits, expand = c(0, 0)) +
     scale_y_continuous(limits=ylimits, expand = c(0, 0)) + 
-    theme_classic() + theme(axis.title=element_text(size=22), axis.text=element_text(size=18))
+    theme_classic() + theme(axis.title=element_text(size=28), axis.text=element_text(size=22))
   plot1
   #   ggMarginal(plot1)
 }
@@ -78,28 +78,33 @@ generatePlots <- function(metric, filterColIndices){
   
   # Generate the pdfs for the above plots
   pdf(paste0(outputDir, metric, '_comparison_same_tissue.pdf'), width=16, height=9)
-  suppressWarnings(grid.arrange(plot1, plot2, ncol=2, top=textGrob("Comparison of Differential TF Involvement Across Studies of Same Tissue", gp=gpar(fontsize=30))))
+  suppressWarnings(grid.arrange(plot1, plot2, ncol=2, top=textGrob("Comparison of Differential TF Involvement Across Studies of Same Tissue",  gp=gpar(fontsize=30))))
   dev.off()
   png(paste0(outputDir, metric, '_comparison_same_tissue.png'), width=1200, height=675)
-  suppressWarnings(grid.arrange(plot1, plot2, ncol=2, top=textGrob("Comparison of Differential TF Involvement Across Studies of Same Tissue", gp=gpar(fontsize=30))))
+  suppressWarnings(grid.arrange(plot1, plot2, ncol=2, top=textGrob("Comparison of Differential TF Involvement Across Studies of Same Tissue",  gp=gpar(fontsize=30))))
   dev.off()
   pdf(paste0(outputDir, metric, '_comparison_diff_tissue.pdf'), width=16,height=12)
-  suppressWarnings(grid.arrange(plot3, plot4, plot5, plot6, ncol=2, top=textGrob("Comparison of Differential TF Involvement Across Studies of Different Tissues", gp=gpar(fontsize=30)),
-                                left = textGrob("Lung Tissue", rot = 90, vjust = 1, gp=gpar(fontsize=30)), bottom = textGrob("Blood", gp=gpar(fontsize=30))))
+  suppressWarnings(grid.arrange(plot3, plot4, plot5, plot6, ncol=2, top=textGrob("Comparison of Differential TF Involvement Across Studies of Different Tissues",  gp=gpar(fontsize=30)),
+                                left = textGrob("Lung Tissue", rot = 90, hjust=.4, vjust = .5, gp=gpar(fontsize=50)), bottom = textGrob("Blood", gp=gpar(fontsize=50))))
   dev.off()
   png(paste0(outputDir, metric, '_comparison_diff_tissue.png'), width=1200, height=900)
-  suppressWarnings(grid.arrange(plot3, plot4, plot5, plot6, ncol=2, top=textGrob("Comparison of Differential TF Involvement Across Studies of Different Tissues", gp=gpar(fontsize=30)),
-                                left = textGrob("Lung Tissue", rot = 90, vjust = 1, gp=gpar(fontsize=30)), bottom = textGrob("Blood", gp=gpar(fontsize=30))))
+  suppressWarnings(grid.arrange(plot3, plot4, plot5, plot6, ncol=2, top=textGrob("Comparison of Differential TF Involvement Across Studies of Different Tissues",  gp=gpar(fontsize=30)),
+                                left = textGrob("Lung Tissue", rot = 90, hjust=.4, vjust = .5, gp=gpar(fontsize=50)), bottom = textGrob("Blood", gp=gpar(fontsize=50))))
   dev.off()
   
   topTFlist <- lapply(filterColIndices, function(i){
     merged.data.frame[merged.data.frame[,i] %in% 1:20,1]
   })
   names(topTFlist) <- displayNames
+  tfHistList <- do.call(cbind,lapply(topTFlist, function(x){levels(x)%in%as.character(x)}))
+  tfNames<-levels(topTFlist[[1]])
+  rownames(tfHistList) <- tfNames
+  tfNames[colSums(apply(tfHistList,1,function(x){x==c(F,F,F,F)}))==4]
+  
   venn.diagram(x = topTFlist,
                filename = "Venn.tiff",height = 2000, width = 3000,
                col = "transparent", fill = c("green","yellow","darkorchid1","lightblue"),
-               alpha = 0.50, label.col = rep("white",15), cex = 1.5, fontfamily = "serif", fontface = "bold",
+               alpha = 0.50, label.col = rep("black",15), cex = 1.5, fontfamily = "serif", fontface = "bold",
                cat.col = rep("black",4), cat.cex = 1.5,
                cat.pos = 0, cat.dist = 0.07, cat.fontfamily = "serif", rotation.degree = 0,
                margin = 0.2, main="Top 20 differentially involved TFs in each COPD Study",main.pos= c(0.5, .9),main.cex = 1.4)

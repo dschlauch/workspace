@@ -430,8 +430,14 @@ MONSTER: Inferring state-specific gene regulatory networks, modeling the
 \begin_layout Standard
 Before estimating the transition matrix, we must first estimate a gene regulator
 y starting point for each state.
- While there have been many methods developed to infer such networks [REFS],
- we have found the bipartite framework used in PANDA 
+ While there have been many methods developed to infer such networks 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "hill2012bayesian,glass2014sexually,glass2015network,eduati2012integrating,chen2009input,molinelli2013perturbation,saez2011comparing"
+
+\end_inset
+
+, we have found the bipartite framework used in PANDA 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "glass2013passing"
@@ -872,7 +878,7 @@ status open
 
 \series bold
 \begin_inset Graphics
-	filename figures/figure2-crop.pdf
+	filename figures/figure2.pdf
 	width 100col%
 
 \end_inset
@@ -951,7 +957,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename figures/figure3-crop.pdf
+	filename figures/figure3.pdf
 	width 100col%
 
 \end_inset
@@ -985,6 +991,11 @@ B
 ) demonstrated a weaker, but still meaningful agreement.
  Each of the four studies was most consistent with the study of the same
  tissue type.
+ (
+\series bold
+C
+\series default
+)
 \end_layout
 
 \end_inset

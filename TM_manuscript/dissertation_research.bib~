@@ -494,3 +494,102 @@
   year={2012},
   publisher={Oxford Univ Press}
 }
+@article{saez2011comparing,
+  title={Comparing signaling networks between normal and transformed hepatocytes using discrete logical models},
+  author={Saez-Rodriguez, Julio and Alexopoulos, Leonidas G and Zhang, MingSheng and Morris, Melody K and Lauffenburger, Douglas A and Sorger, Peter K},
+  journal={Cancer research},
+  volume={71},
+  number={16},
+  pages={5400--5411},
+  year={2011},
+  publisher={AACR}
+}
+@article{molinelli2013perturbation,
+  title={Perturbation biology: inferring signaling networks in cellular systems},
+  author={Molinelli, Evan J and Korkut, Anil and Wang, Weiqing and Miller, Martin L and Gauthier, Nicholas P and Jing, Xiaohong and Kaushik, Poorvi and He, Qin and Mills, Gordon and Solit, David B and others},
+  journal={PLoS Comput Biol},
+  volume={9},
+  number={12},
+  pages={e1003290},
+  year={2013},
+  publisher={Public Library of Science}
+}
+@article{chen2009input,
+  title={Input--output behavior of ErbB signaling pathways as revealed by a mass action model trained against dynamic data},
+  author={Chen, William W and Schoeberl, Birgit and Jasper, Paul J and Niepel, Mario and Nielsen, Ulrik B and Lauffenburger, Douglas A and Sorger, Peter K},
+  journal={Molecular systems biology},
+  volume={5},
+  number={1},
+  year={2009},
+  publisher={Wiley Online Library}
+}
+@article{eduati2012integrating,
+  title={Integrating literature-constrained and data-driven inference of signalling networks},
+  author={Eduati, Federica and De Las Rivas, Javier and Di Camillo, Barbara and Toffolo, Gianna and Saez-Rodriguez, Julio},
+  journal={Bioinformatics},
+  volume={28},
+  number={18},
+  pages={2311--2317},
+  year={2012},
+  publisher={Oxford Univ Press}
+}
+@article{choksi2014switching,
+  title={Switching on cilia: transcriptional networks regulating ciliogenesis},
+  author={Choksi, Semil P and Lauter, Gilbert and Swoboda, Peter and Roy, Sudipto},
+  journal={Development},
+  volume={141},
+  number={7},
+  pages={1427--1441},
+  year={2014},
+  publisher={The Company of Biologists Limited}
+}
+@article{hessel2014intraflagellar,
+  title={Intraflagellar transport gene expression associated with short cilia in smoking and COPD},
+  author={Hessel, Justina and Heldrich, Jonna and Fuller, Jennifer and Staudt, Michelle R and Radisch, Sharon and Hollmann, Charleen and Harvey, Ben-Gary and Kaner, Robert J and Salit, Jacqueline and Yee-Levin, Jenny and others},
+  journal={PloS one},
+  volume={9},
+  number={1},
+  pages={e85453},
+  year={2014},
+  publisher={Public Library of Science}
+}
+@article{hogg2004pathophysiology,
+  title={Pathophysiology of airflow limitation in chronic obstructive pulmonary disease},
+  author={Hogg, James C},
+  journal={The Lancet},
+  volume={364},
+  number={9435},
+  pages={709--721},
+  year={2004},
+  publisher={Elsevier}
+}
+@article{fahy2010airway,
+  title={Airway mucus function and dysfunction},
+  author={Fahy, John V and Dickey, Burton F},
+  journal={New England Journal of Medicine},
+  volume={363},
+  number={23},
+  pages={2233--2247},
+  year={2010},
+  publisher={Mass Medical Soc}
+}
+@article{sirbu2010comparison,
+  title={Comparison of evolutionary algorithms in gene regulatory network model inference},
+  author={S{\^\i}rbu, Alina and Ruskin, Heather J and Crane, Martin},
+  journal={BMC bioinformatics},
+  volume={11},
+  number={1},
+  pages={1},
+  year={2010},
+  publisher={BioMed Central}
+}
+@article{boucherat2016bridging,
+  title={Bridging Lung Development with Chronic Obstructive Pulmonary Disease. Relevance of Developmental Pathways in Chronic Obstructive Pulmonary Disease Pathogenesis},
+  author={Boucherat O, Morissette MC, Provencher S, Bonnet S, Maltais F},
+  journal={American Journal of Respiratory and Critical Care Medicine},
+  volume={193},
+  number={1},
+  pages={362--75},
+  year={2016},
+  publisher={American Thoracic Society - AJRCCM}
+}

@@ -72,11 +72,11 @@ system('pdfcrop figure3.pdf figure3.pdf')
 system('pdfcrop "dTFI\ vs\ LIMMA\ ECLIPSE.pdf" figure4.pdf')
 
 
-# Create tiffs for google docs --------------------------------------------
+# Create pngs for google docs --------------------------------------------
 
-system('convert -density 600 figure2.pdf figure2.png')
-system('convert -density 600 figure3.pdf -resize 50% figure3.png')
-system('convert -density 600 figure4.pdf -resize 50% figure4.png')
+system('convert -density 1200 figure2.pdf figure2.png')
+system('convert -density 1200 figure3.pdf -resize 50% figure3.png')
+system('convert -density 1200 figure4.pdf -resize 50% figure4.png')
 
 
 # Supplement --------------------------------------------------------------

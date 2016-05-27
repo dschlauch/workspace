@@ -204,11 +204,13 @@ Methods
 \end_layout
 
 \begin_layout Standard
-Exploiting the relative value of rare alleles is fundamental to our method,
+Exploiting the information in rare variants is fundamental to our method,
  which uses an intuitive, computationally straightforward approach towards
- identfying similarity between two individuals.
- Effectively, we give a larger weight to a genotype which is common to two
- individuals if the allele frequency is low among the rest of the population.
+ identifying similarity between two study subjects.
+ Motivated by the rational that the allele frequency distributions of RVs
+ can provide a high resolution picture of population admixture, we give
+ a larger weight to a genotype which is common to two individuals if the
+ allele frequency is low among the rest of the population.
 \end_layout
 
 \begin_layout Standard
@@ -242,7 +244,7 @@ Consider a matrix of
 \end_inset
 
  indicating the major allele.
- We define the similarity between two haploid genomes, 
+ We define the similarity index between two haploid genomes, 
 \begin_inset Formula $s_{i,j}$
 \end_inset
 
@@ -287,7 +289,8 @@ w_{k}=\begin{cases}
 
 \end_inset
 
-And in a homogeneous population we have
+In the absence of population structure, i.e.
+ homogeneous population we have
 \family default
 \series default
 \shape default
@@ -311,9 +314,9 @@ E\left(s_{i,j}\right) & =1
 \end_layout
 
 \begin_layout Standard
-It therefore follows from the Central Limit Theroem that in the absence
+It therefore follows from the Central Limit Theorem that in the absence
  of populations structure, cryptic relatedness and dependence between loci
- (such as linkage disequilibrium) the distribution of the test statistic,
+ (such as linkage disequilibrium) the distribution of the similarity index,
  
 \begin_inset Formula $s_{i,j}$
 \end_inset
@@ -326,14 +329,14 @@ s_{i,j}\sim N\left(1,\sigma^{2}\right)
 
 \end_inset
 
-Where 
-\begin_inset Formula $\sigma^{2}$
+Where the variance of 
+\begin_inset Formula $s_{ij}$
 \end_inset
 
- is estimated by 
+ can be estimated by 
 \begin_inset Formula 
 \begin{equation}
-\hat{\sigma^{2}}=\hat{Var}\left(s_{i,j}\right)=\frac{\sum_{k=1}^{N}\left(w_{k}-1\right)}{\left(\sum_{k=1}^{N}I\left[\sum_{l=1}^{2n}\mathbf{G}_{l,k}>1\right]\right)^{2}}\label{eq: variance equation}
+\hat{\sigma_{i,j}^{2}}=\hat{Var}\left(s_{i,j}\right)=\frac{\sum_{k=1}^{N}\left(w_{k}-1\right)}{\left(\sum_{k=1}^{N}I\left[\sum_{l=1}^{2n}\mathbf{G}_{l,k}>1\right]\right)^{2}}\label{eq: variance equation}
 \end{equation}
 
 \end_inset
@@ -342,7 +345,11 @@ Where
 \end_layout
 
 \begin_layout Standard
-This provides an easily interpreted statistical test for evaluating possible
+The similarity index 
+\begin_inset Formula $s_{i,j}$
+\end_inset
+
+ provides an easily interpreted statistical test for evaluating possible
  relatedness between individuals in a purportedly homogeous dataset of unrelated
  individuals.
  Note that this formulation is independent of the samples 
@@ -354,7 +361,7 @@ This provides an easily interpreted statistical test for evaluating possible
 \end_layout
 
 \begin_layout Standard
-Furthermore, this measure is particularly sensitive for measuring relatedness.
+Furthermore, the measure is particularly powerful for measuring relatedness.
  Intuitively, we can imagine two subjects which have a kinship coefficient,
  
 \begin_inset Formula $\phi$
@@ -363,7 +370,11 @@ Furthermore, this measure is particularly sensitive for measuring relatedness.
 , indicating a probability of a randomly chosen allele in each person being
  identical by descent (IBD).
  For an allele which belongs to the one person, the probability of it belonging
- to the related person is 
+ to a related person with kinship coefficient 
+\begin_inset Formula $\phi$
+\end_inset
+
+ is 
 \begin_inset Formula $\phi+\left(1-\phi\right)\times p$
 \end_inset
 
@@ -680,7 +691,7 @@ It would be of interest in any study seeking to quantitatively demonstrate
 \end_layout
 
 \begin_layout Section*
-Simulations demonstrate power to detect heterogeneity
+Simulations demonstrate power to detect heterogeneity and speed of method
 \end_layout
 
 \begin_layout Standard
@@ -833,6 +844,165 @@ Simulated QQ plots for homogeneous populations in the absence of cryptic
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+Of additional interest is the computation time of our method in comparison
+ to other similarity metrics.
+ Commonly, in PCA, a decomposition of the correlation matrix is used.
+ We compared our method in terms of computation time of generating a correlation
+ matrix.
+ We simulated a study of 100,000 variants across 
+\begin_inset Formula $n$
+\end_inset
+
+ individuals and ran an R implementation of our method against the default
+ implementation of correlation in R, 
+\series bold
+cor()
+\series default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="3">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+n
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Our Method
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Correlation
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+500
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+7.514s
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+13.267s
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1000
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+20.011s
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+51.460s
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2000
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+73.566s
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+202.640s
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Using a [My Computer Specs, R 3.2.3], we found a that our method ran faster
+ than 
+\series bold
+cor
+\series default
+ in R.
 \end_layout
 
 \begin_layout Section*
@@ -1046,8 +1216,8 @@ We defined the presence of cryptic relatedness as those individual pairs
 \end_layout
 
 \begin_layout Standard
-Statistical inference on our kinship estimate is made under the assumption
- of homogeneity of the background study population.
+Inference on our kinship estimate is made under the assumption of homogeneity
+ of the background study population.
  Identified significant relatedness may be due to the fact that the variance
  is inflated in the presence of population structure.
  So it is incomplete to identify cryptic relatedness in this manner in popultati
@@ -1067,11 +1237,7 @@ ons which contain identified structure.
 \begin_inset Formula $\left(p<10^{-30}\right)$
 \end_inset
 
-, whereas no other pairing exceeded the family-wise cutoff of 1.3 
-\begin_inset Formula $\left(p=.0002\right)$
-\end_inset
-
-.
+, whereas no other pairing exceeded the family-wise cutoff of 1.3.
  Using the formula above, we estimate this relationship to be 
 \begin_inset Formula $\hat{\phi}=.27$
 \end_inset
@@ -3225,12 +3391,9 @@ We used the 1000 Genomes Project data to compare the GSMs obtained via the
  conventional variance-covariance matrix step and the use of our method.
  We evaluated the ability of each method to separate the same quantity of
  data into the 5 superpopulations and 26 populations.
- Using approximately 80,000
-\series bold
- [Adjust for filtered]
-\series default
- variants, we generated the two GSMs and plotted the similarity matrices,
- ordered by hierarchical clustering with average linkage (Figure 
+ Using approximately 80,000 variants, we generated the two GSMs and plotted
+ the similarity matrices, ordered by hierarchical clustering with average
+ linkage (Figure 
 \begin_inset ERT
 status open
 
@@ -3340,18 +3503,43 @@ ly those of recent ancestry.
 \end_layout
 
 \begin_layout Standard
-Interestingly, we found a strong case for cryptic relatedness between three
- pairs of individuals, one pair of which (HG03998 and HG03873) spanned the
- two populations.
- Considering that both groups were sampled in the UK, this suggests a distant
- genetic relationship is possible from members of different population groups.
+The origins of two populations are geographically near and can trace their
+ cultural divergence back several thousand years [Citation].
+ We found that the initially, the greatest axes of variation separated only
+ a handful of the individuals from the rest of the group, strongly suggesting
+ cryptic relatedness and further highlighting the need for identification
+ of related pairs, especially in recently diverged populations.
+ Figure 9A compares our method with that of a correlation based Principal
+ Components Analysis.
+ Unsurprisingly, it is clear that our method assigns greater weight for
+ separating the suspected related pairs from the rest of the pack.
+ Still, the separation of the two populations is clearer in our method compared
+ to PCA.
 \end_layout
 
 \begin_layout Standard
+Next, we removed individuals found to be related, including HG03998 from
+ the STU population and HG03873 from the ITU population.
+ We found that removal of these genetic outliers improved the ability both
+ our method and PCA to separate the two populations.
+ However, the separation remains clearer with the use of our method (Figure
+ 9B).
+\end_layout
+
+\begin_layout Standard
+The reasoning behind the superior performance in fine scale population stratific
+ation is due to the focus on rarer alleles.
+ Rare alleles tend to be less stable over generations and are therefore
+ more likely to have arisen recently.
+ It stands to reason that these alleles would therefore be the most informative
+ of recently related populations.
+\end_layout
+
+\begin_layout Section*
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -3368,61 +3556,8 @@ A
 \end_inset
 
 
-\end_layout
-
-\begin_layout Plain Layout
-
 \series bold
 B
-\series default
-
-\begin_inset Graphics
-	filename /home/dan/gd/Harvard/Research/R_workspace/Slides/pasted30.png
-	width 40col%
-	height 20pheight%
-	keepAspectRatio
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\series bold
-C
-\series default
-
-\begin_inset Graphics
-	filename /home/dan/1000GP/plots/hcl_ ITU vs STU/P0-0.4.png
-	width 40col%
-	height 20pheight%
-	keepAspectRatio
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\series bold
-C
-\series default
-
-\begin_inset Graphics
-	filename figures/ITU_STUdiploid.tiff
-	width 60col%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\series bold
-[Rerun this figure on whole dataset]
 \series default
 
 \begin_inset Caption Standard
@@ -3443,17 +3578,11 @@ A
 \series default
 ) despite the fact that our method appears to have expended a greater proportion
  of the variance explanation on identification of related individuals.
- Hierarchical clustering using the GSM as a similarity matrix (
+ After removal of individuals determined to be related (
 \series bold
 B
 \series default
-) was unable to clearly visually distinguish between ITU and STU, but use
- of our method provided much clearer results (
-\series bold
-C
-\series default
-).
- 
+), we see further improvement in the subpopulation separation.
 \end_layout
 
 \end_inset
@@ -3476,7 +3605,21 @@ label{fig:heatmaps}
 
 \end_inset
 
+Discussion
+\end_layout
 
+\begin_layout Standard
+Conclusions: The ability to identify genetic outliers has well-established
+ utility in genome-wide association studies...
+\end_layout
+
+\begin_layout Standard
+This method can be allied to verify that assumed homogeneous studies are
+ in fact homogeneous
+\end_layout
+
+\begin_layout Standard
+Limitations: Assumes LD, limiting power by requiring LD pruning
 \end_layout
 
 \begin_layout Standard
