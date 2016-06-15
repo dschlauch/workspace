@@ -1,0 +1,174 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\usepackage{inputenc}
+\usepackage{authblk}
+\author[1,2]{Daniel Schlauch} 
+\author[2,3]{Kimberly Glass}
+\author[2]{Craig P. Hersh}
+\author[2,4]{Edwin K. Silverman}
+\author[1,3]{John Quackenbush}
+\affil[1]{Department of Biostatistics and Computational Biology, Dana-Farber Cancer Institute and Department of Biostatistics, Harvard TH Chan School of Public Health, Boston, MA 02115}
+\affil[2]{Channing Division of Network Medicine, Brigham and Women's Hospital, Boston, MA 02115}
+\affil[3]{Department of Medicine, Harvard Medical School, Boston, MA 02115}
+\affil[4]{Pulmonary and Critical Care Division, Brigham and Women's Hospital and Harvard Medical School, Boston, USA}
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+
+\series bold
+Supplementary Materials for
+\series default
+ 
+\begin_inset Newline newline
+\end_inset
+
+On the detection of genetic heterogeneity in whole-genome sequencing studies:
+ A statistical test for the identification of “genetic outliers” due to
+ population sub-structure or cryptic relationships
+\end_layout
+
+\begin_layout Part*
+This PDF file includes:
+\end_layout
+
+\begin_layout Itemize
+Materials and Methods 
+\end_layout
+
+\begin_layout Itemize
+Supplementary Text 
+\end_layout
+
+\begin_layout Itemize
+Figs.
+ S1 to S6
+\end_layout
+
+\begin_layout Itemize
+Tables S1, S2 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+figurename}{Supplemental Figure}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+tablename}{Supplemental Table}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+\begin_inset Formula 
+\begin{align*}
+Var\left(s_{i,j}\right) & =Var\left(\frac{\sum_{k=1}^{N}w_{k}\mathbf{G}_{i,k}\mathbf{G}_{j,k}}{\sum_{k=1}^{N}I\left[\sum_{l=1}^{2n}\mathbf{G}_{l,k}>1\right]}\right)\\
+ & =\left(\sum_{k=1}^{N}I\left[\sum_{l=1}^{2n}\mathbf{G}_{l,k}>1\right]\right)^{2}Var\left(\sum_{k=1}^{N}w_{k}\mathbf{G}_{i,k}\mathbf{G}_{j,k}\right)\\
+ & =\left(\sum_{k=1}^{N}I\left[\sum_{l=1}^{2n}\mathbf{G}_{l,k}>1\right]\right)^{2}\sum_{k=1}^{N}Var\left(w_{k}\mathbf{G}_{i,k}\mathbf{G}_{j,k}\right)\\
+ & =\left(\sum_{k=1}^{N}I\left[\sum_{l=1}^{2n}\mathbf{G}_{l,k}>1\right]\right)^{2}\sum_{k=1}^{N}w_{k}^{2}Var\left(\mathbf{G}_{i,k}\mathbf{G}_{j,k}\right)\\
+ & =\left(\sum_{k=1}^{N}I\left[\sum_{l=1}^{2n}\mathbf{G}_{l,k}>1\right]\right)^{2}\sum_{k=1}^{N}w_{k}^{2}P\left[\mathbf{G}_{i,k}\mathbf{G}_{j,k}=1\right]\left(1-P\left[\mathbf{G}_{i,k}\mathbf{G}_{j,k}=1\right]\right)\\
+ & =\left(\sum_{k=1}^{N}I\left[\sum_{l=1}^{2n}\mathbf{G}_{l,k}>1\right]\right)^{2}\sum_{k=1}^{N}w_{k}^{2}\frac{1}{w_{k}}\left(1-\frac{1}{w_{k}}\right)\\
+ & =\frac{\sum_{k=1}^{N}\left(w_{k}-1\right)}{\left(\sum_{k=1}^{N}I\left[\sum_{l=1}^{2n}\mathbf{G}_{l,k}>1\right]\right)^{2}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

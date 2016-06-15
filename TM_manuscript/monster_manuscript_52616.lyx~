@@ -329,9 +329,10 @@ Overview of the MONSTER approach, as applied to the transition between smokers
  between the initial and final biological conditions.
  Subjects are first divided into two groups based on whether they have COPD
  or are smokers that have not yet developed clinical COPD.
- Network inference is then performed separately on each and a transition
- matrix is computed which characterizes the conversion from the consensus
- Smokers Network to the COPD Network.
+ Network inference is then performed separately on each group, yielding
+ a bipartite adjacency matrix connecting transcription factors to genes.
+ Finally, a transition matrix is computed which characterizes the conversion
+ from the consensus Smokers Network to the COPD Network.
  
 \end_layout
 
@@ -466,7 +467,7 @@ efficient, classification-based network inference method that uses common
 
 \begin_layout Standard
 This approach is motivated by the simple concept that genes that are affected
- by a common transcription factor and will exhibit expression patterns that
+ by a common transcription factor will exhibit expression patterns that
  correlate.
  To begin, we calculate the direct evidence for a regulatory interaction
  between a transcription factor and gene, which we define as the squared
@@ -526,7 +527,7 @@ ty of each gene, indexed
 \begin_inset Formula $j$
 \end_inset
 
-, based the expression pattern across the 
+, based on the expression pattern across the 
 \begin_inset Formula $N$
 \end_inset
 
@@ -671,7 +672,7 @@ ion factor, indexed
 \begin_inset Formula $i$
 \end_inset
 
-, in a network based on all of the the edge-weights in the baseline phenotype
+, in a network based on all of the edge-weights in the baseline phenotype
  network.
 \end_layout
 
@@ -1097,7 +1098,7 @@ key "zhou2012identification"
 \end_inset
 
 .
- Both of SP1 and SP2 have been found to form complexes with the E2F family
+ Both SP1 and SP2 have been found to form complexes with the E2F family
  
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -1135,8 +1136,15 @@ key "cloonan2016mitochondrial"
  These TFs had highly significant differential TF involvement (FDR<0.1) in
  all four studies.
  NRF1 regulates the expression of nuclear encoded mitochondrial proteins
- (7629110).
- GABPA, also known as human nuclear respiratory factor-2 subunit alpha,
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "gopalakrishnan1995structure"
+
+\end_inset
+
+.
+ GABPA, also known as humanx nuclear respiratory factor-2 subunit alpha,
  may have a similar role in nuclear control of mitochondrial gene expression].
  Furthermore, GABPA interacts with SP1 
 \begin_inset CommandInset citation
@@ -1227,7 +1235,7 @@ Overall, we found a strong correlation across studies in transcription factors
  identified as significantly differentially involved (Figure 3A-3B).
  It is reassuring that we find the strongest agreement when comparing studies
  that assayed similar tissues.
- However the fact that the we see similar dTFI signal across studies involving
+ However the fact that we see similar dTFI signal across studies involving
  different tissue types is also of note.
  Gene regulatory networks derived from gene expression data are notoriously
  difficult to replicate across studies 
@@ -1371,14 +1379,65 @@ ly expressed in these studies.
  the COPD group compared to the control group.
 \end_layout
 
+\begin_layout Section*
+Discussion
+\end_layout
+
 \begin_layout Standard
-These results demonstrate the scientific value of MONSTER.
- Numerous biologically established results were found across several independent
+One of the fundamental problems is biology is modeling the transition between
+ biological states such as that which occurs during development or as a
+ healthy tissue transforms into a disease state.
+ As our ability to generate large-scale, integrative multi-omic datasets
+ has grown, there has been an increased interest in using those data to
+ infer gene regulatory networks to model fundamental biological processes.
+ While there have been many network inference (NI) methods published, each
+ of which uses a different approach to estimating the “strength” of interactions
+ between genes (or between transcription factors and their targets), they
+ all suffer from the same fundamental limitation.
+ Every method relies on estimating weights that represent the likelihood
+ of an interaction between two genes to identify “real” (high confidence)
+ edges.
+\end_layout
+
+\begin_layout Standard
+With MONSTER we acknowledge uncertainty in individual regulatory edgeweights
+ and instead focus on transcription factor drivers.
+ The effects of these drivers are more readily apparent when taken over
+ the entirety of the gene regulatory network.
+ This effectively shines a spotlight on a reduced search space and thus
+ contributes to the strength of the findings and reproducibility across
  studies.
- The reproducibility of the top transcription factor is compelling.
- We demonstrate that these findings would not have been possible via differentia
-l gene expression analysis or conventional comparative network inference
- methods.
+\end_layout
+
+\begin_layout Standard
+The application of MONSTER to the four studies of COPD demonstrate the scientifi
+c value of the method.
+ Numerous transcription factors that have been biologically implicated in
+ COPD were found in agreement across the independent studies.
+ We also demonstrate the utility of MONSTER by showing that these transcription
+ factors would not have been detected via differential gene expression analysis
+ or conventional comparative network inference methods.
+\end_layout
+
+\begin_layout Standard
+Although we apply MONSTER to a set of case-control studies, the method is
+ not limited to such applications.
+ Our method is suitable in identifying drivers of state change in any context
+ involving a comparison of gene expression assays with regulatory data.
+ Given the general nature of the method, MONSTER has the ability to shed
+ light on possible biological mechanisms for cell state change that might
+ otherwise have been undetected in the gene expression data across a wide
+ range of applications.
+\end_layout
+
+\begin_layout Section*
+Acknowledgements
+\end_layout
+
+\begin_layout Standard
+This project has been supported by R01 HL089438, R01 HL111759 and P01 HL105339.
+ The funders had no role in study design, data collection and analysis,
+ decision to publish, or preparation of the manuscript.
 \end_layout
 
 \begin_layout Standard

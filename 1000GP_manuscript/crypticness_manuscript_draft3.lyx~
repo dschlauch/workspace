@@ -1,7 +1,9 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
 \begin_document
 \begin_header
+\save_transient_properties true
+\origin unavailable
 \textclass article
 \begin_preamble
 \usepackage{cite}
@@ -16,16 +18,16 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -137,16 +139,37 @@ Introduction
 \begin_layout Standard
 The fundamental assumption in standard genetic association analysis is that
  the study subjects are independent and that, at each locus, the allele
- frequency is identical across study subjects.
+ frequency is identical across study subjects
+\begin_inset CommandInset citation
+LatexCommand cite
+key "choi2009case,purcell2007plink,yang2010common"
+
+\end_inset
+
+.
  In the presence of population heterogeneity, e.g.
  population substructure or cryptic relatedness, these assumptions are violated.
  It can introduce confounding into the analysis and lead to biased results,
  e.g.
- false positive findings.
+ false positive findings
+\begin_inset CommandInset citation
+LatexCommand cite
+key "price2006principal,kang2010variance,ptak2002evidence,voight2005confounding"
+
+\end_inset
+
+.
  Given the generality of the problem, it has been the focus of methodology
  research for a long time.
  For candidate gene studies and later genome-wide association studies (GWAS),
- genomic control was developed.
+ genomic control was developed
+\begin_inset CommandInset citation
+LatexCommand cite
+key "devlin2001genomic,bacanu2002association"
+
+\end_inset
+
+.
  The approach adjusts the association test statistics at the loci of interest
  by an inflation factor that is estimated at a set of known null-loci.
  With the arrival of GWAS data, it became possible to estimate the genetic
@@ -161,13 +184,27 @@ The fundamental assumption in standard genetic association analysis is that
 \begin_layout Standard
 The first method is to compute an eigenvalue decomposition of the matrix
  and to include the eigenvectors that explain the most variation as covariates
- in the association analysis.
+ in the association analysis
+\begin_inset CommandInset citation
+LatexCommand cite
+key "price2006principal,price2010new"
+
+\end_inset
+
+.
  An alternative approach is to incorporate the estimated dependence structure
  of the study subjects directly into a generalized linear model and account
- so directly for the dependence at the model-level.
+ so directly for the dependence at the model-level
+\begin_inset CommandInset citation
+LatexCommand cite
+key "listgarten2012improved,lippert2011fast,zhang2010mixed"
+
+\end_inset
+
+.
  Both approaches have proven to work well in numerous applications.
  While the first approach is computationally fast and easy to implement,
- the direct modelling of the dependence structure between study subjects
+ the direct modeling of the dependence structure between study subjects
  can be more efficient.
  
 \end_layout
@@ -178,7 +215,7 @@ However, both approaches benefit if, prior to the analysis, study subjects
  e.g.
  “genetic outliers”, are removed from the data set.
  The standard practice is currently to examine the Eigenvalue plots visually
- and to identify outliers by personal judgement on how far study subjects
+ and to identify outliers by personal judgment on how far study subjects
  are from the “clouds” of study subjects.
  As typically up to 10 Eigenvectors have to be considered, this process
  of identifying outliers can become a complicated and subjective procedure.
@@ -186,17 +223,52 @@ However, both approaches benefit if, prior to the analysis, study subjects
 \end_layout
 
 \begin_layout Standard
+Many methods for exist for inferring relatedness which make the strong assumptio
+n of population homogeneity
+\begin_inset CommandInset citation
+LatexCommand cite
+key "purcell2007plink,yang2010common,kang2010variance,choi2009case"
+
+\end_inset
+
+.
+ These methods have been shown to be biased in the context of population
+ heterogeneity 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "manichaikul2010robust"
+
+\end_inset
+
+.
+ More recently, methods have been developed recently which attempt to estimate
+ relatedness with population structure 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "thornton2012estimating,manichaikul2010robust"
+
+\end_inset
+
+.
+ These developments improve the ability to detect existing pedigrees, which
+ can aid in the removal of individuals who violate homogeneity.
+ However, there is currently no quantitative measure of homogeneity which
+ can be used to test a dataset prior to the application of GWAS.
+\end_layout
+
+\begin_layout Standard
 In this communication, we propose a formal statistical test that assesses
  whether two study subjects come from the same population and whether they
  are unrelated.
- The test statistic is based on the a weighted form of the Jaccard Index
- and its distribution can be derived under the null-hypothesis which makes
- computationally fast, enabling the application to whole-genome sequencing
- data.
+ The test statistic is based on the an adaptation of the Jaccard Index which
+ utilizes the idea that variants are differentially informative of relatedness
+ based on their allele frequency.
+ Furthermore, its distribution can be derived under the null-hypothesis
+ which makes it computationally fast, enabling the application to whole-genome
+ sequencing data.
  Our measure has clearly defined properties which can be used to test for
  homogeneity in a population and in particular identify individuals who
  are likely be related in a study population.
- 
 \end_layout
 
 \begin_layout Section*
@@ -204,13 +276,32 @@ Methods
 \end_layout
 
 \begin_layout Standard
-Exploiting the information in rare variants is fundamental to our method,
- which uses an intuitive, computationally straightforward approach towards
- identifying similarity between two study subjects.
- Motivated by the rational that the allele frequency distributions of RVs
- can provide a high resolution picture of population admixture, we give
- a larger weight to a genotype which is common to two individuals if the
- allele frequency is low among the rest of the population.
+Exploiting the information in rare variants (RVs), such as one with minor
+ allele frequency (MAF) 
+\begin_inset Formula $<1\%$
+\end_inset
+
+, is fundamental to our method.
+ A RV tends to be less stable than common variants and thus is more likely
+ to have arisen recently.
+ Allele frequencies have been shown to differentially confound association
+ studies in part due to the localized nature of RVs
+\begin_inset CommandInset citation
+LatexCommand cite
+key "mathieson2012differential"
+
+\end_inset
+
+.
+ Motivated by this rationale, we developed a method that utilizes the differenti
+al informativeness of variants by allele frequency to increase the power
+ to provide a high resolution picture of population structure.
+ Our approach uses an intuitive, computationally straightforward approach
+ towards identifying similarity between two study subjects.
+\end_layout
+
+\begin_layout Subsection*
+Similarity measure among haploid genomes
 \end_layout
 
 \begin_layout Standard
@@ -315,7 +406,7 @@ E\left(s_{i,j}\right) & =1
 
 \begin_layout Standard
 It therefore follows from the Central Limit Theorem that in the absence
- of populations structure, cryptic relatedness and dependence between loci
+ of population structure, cryptic relatedness and dependence between loci
  (such as linkage disequilibrium) the distribution of the similarity index,
  
 \begin_inset Formula $s_{i,j}$
@@ -324,7 +415,7 @@ It therefore follows from the Central Limit Theorem that in the absence
  is Gaussian.
 \begin_inset Formula 
 \[
-s_{i,j}\sim N\left(1,\sigma^{2}\right)
+s_{i,j}\sim N\left(1,\sigma_{i,j}^{2}\right)
 \]
 
 \end_inset
@@ -350,14 +441,191 @@ The similarity index
 \end_inset
 
  provides an easily interpreted statistical test for evaluating possible
- relatedness between individuals in a purportedly homogeous dataset of unrelated
- individuals.
+ relatedness between individuals in a purportedly homogeneous dataset of
+ unrelated individuals.
  Note that this formulation is independent of the samples 
 \begin_inset Formula $i,j$
 \end_inset
 
  and depends only on the allele counts for each variant across the study
  group.
+\end_layout
+
+\begin_layout Subsection*
+Similarity measure among diploid genomes
+\end_layout
+
+\begin_layout Standard
+This approach is easily generalized to the diploid scenario.
+ A diploid similarity score, 
+\begin_inset Formula $s_{diploid}$
+\end_inset
+
+, is obtained by averaging each of the four pairwise haploid 
+\begin_inset Formula $s_{haploid}$
+\end_inset
+
+ scores between each person's two haploid genotypes.
+ For 
+\begin_inset Formula $n$
+\end_inset
+
+ individuals, 
+\begin_inset Formula $2n$
+\end_inset
+
+ genotypes per loci, the similarity between individuals 
+\begin_inset Formula $i$
+\end_inset
+
+ and 
+\begin_inset Formula $j$
+\end_inset
+
+ is defined as
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+s_{i,j}^{\left(diploid\right)}=\frac{\sum_{k=1}^{N}\left[w_{k}\mathbf{G}_{i_{1},k}\mathbf{G}_{j_{1},k}+w_{k}\mathbf{G}_{i_{1},k}\mathbf{G}_{j_{2},k}+w_{k}\mathbf{G}_{i_{2},k}\mathbf{G}_{j_{1},k}+w_{k}\mathbf{G}_{i_{2},k}\mathbf{G}_{j_{2},k}\right]/4}{\sum_{k=1}^{N}I\left[\left(\sum_{l=1}^{n}\left[\mathbf{G}_{l_{1},k}+\mathbf{G}_{l_{2},k}\right]\right)>1\right]}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\mathbf{G}_{i_{2},k}$
+\end_inset
+
+ refers to the 
+\begin_inset Formula $2^{nd}$
+\end_inset
+
+ genotype of individual 
+\begin_inset Formula $i$
+\end_inset
+
+ at locus 
+\begin_inset Formula $k$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Here it becomes clear that the method can be applied to phased and unphased
+ data alike.
+ For an unphased data matrix 
+\begin_inset Formula $\mathbf{H}_{n\times N}$
+\end_inset
+
+, where 
+\begin_inset Formula $\mathbf{H}$
+\end_inset
+
+ contains the number of minor alleles, 
+\begin_inset Formula $\left\{ 0,1,2\right\} $
+\end_inset
+
+, for a subject at a particular variant.
+ 
+\begin_inset Formula 
+\[
+s_{i,j}^{\left(diploid\right)}=\frac{\sum_{k=1}^{N}\left[w_{k}\mathbf{H}_{i,k}\mathbf{H}_{j,k}\right]/4}{\sum_{k=1}^{N}I\left[\left(\sum_{l=1}^{n}\mathbf{H}_{l,k}\right)>1\right]}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This formulation will have the same mean
+\begin_inset Formula 
+\[
+E\left[s_{i,j}^{\left(diploid\right)}\right]=1
+\]
+
+\end_inset
+
+and assuming independence of each individual's haploid genomes, such as
+ in the absence of inbreeding,
+\begin_inset Formula 
+\[
+\hat{Var}\left(s_{i,j}^{\left(diploid\right)}\right)=\frac{\hat{Var}\left(s_{i,j}^{\left(haploid\right)}\right)}{4}=\hat{\sigma^{2}}_{i,j}
+\]
+
+\end_inset
+
+Which yields the asymptotic result
+\begin_inset Formula 
+\[
+s_{i,j}\sim N\left(\mu_{i,j},\hat{\sigma^{2}}_{i,j}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Test of Heterogeneity
+\end_layout
+
+\begin_layout Standard
+We can test the null hypothesis that population structure does not exist
+ and all subjects are unrelated, with respect to the alternative that at
+ least one pair of individuals is related.
+ 
+\begin_inset Formula 
+\[
+H_{0}:\mu_{i,j}=1\forall i,j\in1\dots n
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+H_{A}:\exists i,j\in1\dots n|\mu_{i,j}\ne1
+\]
+
+\end_inset
+
+In a homogeneous dataset lacking relatedness, we consider each of the 
+\begin_inset Formula ${n \choose 2}$
+\end_inset
+
+ comparisons to be independent.
+ To achieve a family-wise error rate 
+\begin_inset Formula $\alpha$
+\end_inset
+
+, we use the Šidák procedure 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "vsidak1967rectangular"
+
+\end_inset
+
+ or the approximately equivalent Bonferroni procedure.
+ We reject the null at the 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ level when we obtain similarity scores in the rejection region 
+\begin_inset Formula 
+\[
+R:max\left(s_{i,j}\right)>1-probit\left(\frac{\alpha}{{n \choose 2}}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Estimating cryptic relatedness
 \end_layout
 
 \begin_layout Standard
@@ -441,7 +709,7 @@ E\left(s_{i_{1},j_{1}}|\phi_{i,j}\right)= & \frac{\sum_{k=1}^{N}I\left[\sum_{l=1
 
 \end_inset
 
-It can be shown that in the presence of cryptic relatedness, 
+It can be seen that in the presence of cryptic relatedness, 
 \begin_inset Formula $\phi_{i,j}>0$
 \end_inset
 
@@ -477,8 +745,20 @@ With
 This yields a maximum likelihood estimate of this kinship defined as 
 \begin_inset Formula 
 \begin{equation}
-\hat{\phi}=\frac{s_{i,j}-1}{\left[\frac{\sum_{k=1}^{N}\hat{p_{k}}w_{k}}{\sum_{k=1}^{N}I\left[\sum_{l=1}^{2n}\mathbf{G}_{l,k}>1\right]}-1\right]}\label{Estimated Kinship}
+\hat{\phi}_{i,j}=\frac{s_{i,j}-1}{\left[\frac{\sum_{k=1}^{N}\hat{p_{k}}w_{k}}{\sum_{k=1}^{N}I\left[\sum_{l=1}^{2n}\mathbf{G}_{l,k}>1\right]}-1\right]}\label{Estimated Kinship}
 \end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+with 
+\begin_inset Formula 
+\[
+\hat{Var}\left(\hat{\phi}_{i,j}\right)=\frac{\hat{\sigma_{i,j}^{2}}}{\left[\frac{\sum_{k=1}^{N}\hat{p_{k}}w_{k}}{\sum_{k=1}^{N}I\left[\sum_{l=1}^{2n}\mathbf{G}_{l,k}>1\right]}-1\right]^{2}}
+\]
 
 \end_inset
 
@@ -511,144 +791,8 @@ E\left(s_{i,j}|\phi=.0625,\mbox{No other structure}\right)\approx2.19
 
 \end_layout
 
-\begin_layout Standard
-This approach is easily generalized to the diploid scenario.
- A diploid similarity score, 
-\begin_inset Formula $s_{diploid}$
-\end_inset
-
-, is obtained by averaging each of the four pairwise haploid 
-\begin_inset Formula $s_{haploid}$
-\end_inset
-
- scores between each person's two haploid genotypes.
- For 
-\begin_inset Formula $N$
-\end_inset
-
- individuals, 
-\begin_inset Formula $2N$
-\end_inset
-
- genotypes per loci, the similarity between individuals 
-\begin_inset Formula $i$
-\end_inset
-
- and 
-\begin_inset Formula $j$
-\end_inset
-
- is defined as
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-s_{diploid,i,j}=\frac{\sum_{k=1}^{N}\left[w_{k}\mathbf{G}_{i_{1},k}\mathbf{G}_{j_{1},k}+w_{k}\mathbf{G}_{i_{1},k}\mathbf{G}_{j_{2},k}+w_{k}\mathbf{G}_{i_{2},k}\mathbf{G}_{j_{1},k}+w_{k}\mathbf{G}_{i_{2},k}\mathbf{G}_{j_{2},k}\right]/4}{\sum_{k=1}^{2N}I\left[\sum_{l=1}^{2n}\mathbf{G}_{l,k}>1\right]}
-\]
-
-\end_inset
-
-where 
-\begin_inset Formula $\mathbf{G}_{i_{2},k}$
-\end_inset
-
- refers to the 
-\begin_inset Formula $2^{nd}$
-\end_inset
-
- genotype of individual 
-\begin_inset Formula $i$
-\end_inset
-
- at locus 
-\begin_inset Formula $k$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-This formulation will have the same mean
-\begin_inset Formula 
-\[
-E\left[s_{diploid,i,j}\right]=1
-\]
-
-\end_inset
-
-and assuming independence of each individual's haploid genomes, such as
- in the absence of inbreeding,
-\begin_inset Formula 
-\[
-\hat{Var}\left(s_{i,j}^{\left(diploid\right)}\right)=\frac{\hat{Var}\left(s_{i,j}^{\left(haploid\right)}\right)}{4}=\hat{\sigma^{2}}_{i,j}
-\]
-
-\end_inset
-
-Which yields the asymptotic result
-\begin_inset Formula 
-\[
-s_{i,j}\sim N\left(\mu_{i,j},\hat{\sigma^{2}}_{i,j}\right)
-\]
-
-\end_inset
-
-We can test the null hypothesis that population structure does not exist
- and all subjects are unrelated, with respect to the alternative that at
- least one pair of individuals is related.
- 
-\begin_inset Formula 
-\[
-H_{0}:\mu_{i,j}=1\forall i,j\in1\dots n
-\]
-
-\end_inset
-
-
-\begin_inset Formula 
-\[
-H_{A}:\exists i,j\in1\dots n|\mu_{i,j}\ne1
-\]
-
-\end_inset
-
-In a homogeneous dataset lacking relatedness, we consider each of the 
-\begin_inset Formula ${n \choose 2}$
-\end_inset
-
- comparisons to be independent.
- To achieve a familywise error rate 
-\begin_inset Formula $\alpha$
-\end_inset
-
-, we use the Šidák procedure 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-cite{vsidak1967rectangular}
-\end_layout
-
-\end_inset
-
- or the approximately equivalent Bonferroni procedure.
- We reject the null at the 
-\begin_inset Formula $\alpha$
-\end_inset
-
- level when we obtain similarity scores in the rejection region 
-\begin_inset Formula 
-\[
-R:max\left(s_{i,j}\right)>1-probit\left(\frac{\alpha}{{n \choose 2}}\right)
-\]
-
-\end_inset
-
-
+\begin_layout Subsection*
+Statistical power to detect outliers
 \end_layout
 
 \begin_layout Standard
@@ -667,7 +811,7 @@ The properties of this similarity measure lend themselves toward straightforward
  inside the rejection region given two unacceptably closely related individuals.
 \begin_inset Formula 
 \begin{equation}
-P\left(Reject\,H_{0}|\phi_{i,j}=\gamma\right)=\alpha+\left(1-\alpha\right)\left(1-\Phi\left(\frac{\mu_{i,j}-1}{\sqrt{\hat{\sigma^{2}}_{i,j}}}\right)\right)
+P\left(Reject\,H_{0}|\phi_{i,j}=\gamma\right)=\alpha+\left(1-\alpha\right)\left(1-\Phi\left(\frac{\mu_{i,j}-1}{\sqrt{\hat{\sigma^{2}}_{i,j}}}\right)\right)\label{eq:Power}
 \end{equation}
 
 \end_inset
@@ -677,6 +821,10 @@ Where
 \end_inset
 
  is the cumulative distribution function for a standard normal random variable.
+ Also note that this power is computed under the assumption of homogeneity,
+ which will yield a conservative estimate of probability of rejection.
+ The presence of unknown population structure will necessarily increase
+ the power of the test.
 \end_layout
 
 \begin_layout Standard
@@ -783,7 +931,14 @@ For each coefficient of kinship we simulated 1,000 studies containing 301
  is preserved.
  We then compared the proportion of simulated studies which were found to
  have significantly related pairs to the analytically derived probability
- of type II error.
+ of type II error 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:Power"
+
+\end_inset
+
+.
  
 \end_layout
 
@@ -792,23 +947,6 @@ For each coefficient of kinship we simulated 1,000 studies containing 301
 wide false
 sideways false
 status open
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename /home/dan/1000GP/plots/simulatedQQ.pdf
-	width 45col%
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename /home/dan/1000GP/plots/simulatedQQ_related.pdf
-	width 45col%
-
-\end_inset
-
-
-\end_layout
 
 \begin_layout Plain Layout
 \begin_inset Graphics
@@ -824,12 +962,15 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Simulated QQ plots for homogeneous populations in the absence of cryptic
- relatedness (left) and in the presence of a single 
-\begin_inset Formula $\phi=.0625$
+The probability of failing to reject the null hypothesis given a simulated
+ set of 301 homogeneous individuals containing a single related pair with
+ coefficient of kinship, 
+\begin_inset Formula $\phi$
 \end_inset
 
- pairing (right)
+.
+ The simulated probability of Type II error aligns with the analytically
+ derived expectation demonstrating a the clearly defined power of the method.
 \end_layout
 
 \end_inset
@@ -867,7 +1008,7 @@ cor()
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="3">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -997,8 +1138,8 @@ Correlation
 \end_layout
 
 \begin_layout Standard
-Using a [My Computer Specs, R 3.2.3], we found a that our method ran faster
- than 
+Using a computer with Intel(R) Core(TM) i7-3630QM CPU @ 2.40GHz, and R 3.2.3,
+ we found a that our method ran faster than 
 \series bold
 cor
 \series default
@@ -1011,15 +1152,9 @@ Identification of relatedness and structure in 1000GP data
 
 \begin_layout Standard
 We applied our method to data from the 1000 Genomes Project (TGP) 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-cite{10002015global, 10002012integrated}
-\end_layout
+\begin_inset CommandInset citation
+LatexCommand cite
+key "10002012integrated,10002015global"
 
 \end_inset
 
@@ -1030,39 +1165,22 @@ cite{10002015global, 10002012integrated}
 \begin_layout Standard
 These populations were not identified by the TGP to have cryptic relatedness
  or had known cryptic relatedness removed 
-\series bold
-[citation difficult (pptx file posted online KGP website) ftp://ftp.1000genomes.eb
-i.ac.uk/vol1/ftp/phase1/
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-analysis_results/supporting/cryptic_relation_analysis/
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-Nemesh_crypticrelatedness_20120213.pptx]
-\series default
-.
- However, subsequent analyses have discovered numerous inferred relationships
- closer than first cousins 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-cite{gazal2015high}
-\end_layout
+\begin_inset CommandInset citation
+LatexCommand cite
+key "1000GPcrypticppt"
 
 \end_inset
 
 .
- 
+ However, subsequent analyses have discovered numerous inferred relationships
+ closer than first cousins 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "gazal2015high,al2015inference,fedorova2016atlas"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -1775,7 +1893,7 @@ name "All s plots"
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -2055,12 +2173,12 @@ name "All s plots-1"
 \begin_inset Float table
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="27" columns="4">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -3215,8 +3333,6 @@ Presence of population structure and cryptic relatedness detected in each
 
  after multiple testing correction.
  
-\series bold
-[Note: this table needs to be re-updated with latest runs and definitions]
 \end_layout
 
 \end_inset
@@ -3275,100 +3391,34 @@ Population structure detection in 1000 Genomes Project
 \begin_layout Standard
 There are many methods for detecting population structure.
  Most commonly, Principal Components Analysis 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-cite{price2006principal,price2010new}
-\end_layout
+\begin_inset CommandInset citation
+LatexCommand cite
+key "price2006principal,price2010new"
 
 \end_inset
 
-is applied for identifying the components of largest variation which ideally
+ is applied for identifying the components of largest variation which ideally
  corresponds to the population structure.
  This procedure first involves the calculation of a genetic similarity matrix
  (GSM) via the correlation between all samples, which is commonly followed
  by an eigendecomposition of that matrix.
  There are a number of limitations to this straightforward approach, one
  of which is that the calculation of a variance-covariance matrix equally
- weights the impact of all loci 
-\series bold
-[unless standardized by rows?]
-\series default
-, failing to fully utilize the fact that the overall allele frequency is
- informative of the value of each variant.
- 
+ weights the impact of all loci, failing to fully utilize the fact that
+ the overall allele frequency is informative of the value of each variant.
 \end_layout
 
 \begin_layout Standard
 We can similarly use the GSM defined as the pairwise similarity between
  all samples to feed the eigendecomposition and achieve highly similar results
  
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-ref{fig:PCA_plots}
-\end_layout
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "heatmaps"
 
 \end_inset
 
  depicting the two dimensional linear migrations of ancient human history.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename figures/PCA_all.pdf
-	width 100col%
-
-\end_inset
-
-
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-
-\series bold
-Principal Components Analysis of all samples in 1000 Genomes Project 
-\series default
-using GSM computed using our method (left) and variance-covariance (right)
- yield similar projections which elucidate the migratory patterns of early
- humans.
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-label{fig:PCA_plots}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -3394,15 +3444,9 @@ We used the 1000 Genomes Project data to compare the GSMs obtained via the
  Using approximately 80,000 variants, we generated the two GSMs and plotted
  the similarity matrices, ordered by hierarchical clustering with average
  linkage (Figure 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-ref{fig:heatmaps}
-\end_layout
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "heatmaps"
 
 \end_inset
 
@@ -3423,7 +3467,7 @@ Both methods performed well at separating the five superpopulations, but
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -3434,7 +3478,7 @@ A
 \begin_inset Graphics
 	filename figures/GSM.png
 	lyxscale 50
-	width 50col%
+	width 90col%
 
 \end_inset
 
@@ -3444,7 +3488,7 @@ A
 \begin_layout Plain Layout
 
 \series bold
-C
+B
 \series default
 
 \begin_inset Graphics
@@ -3457,27 +3501,31 @@ C
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Heatmap of GSM generated by our method (A) and variance-covariance (B) using
- 80,000 uniformly spaced variants.
- Samples have been ordered by hierarchical clustering (dendrogram not shown).
+Population structure in 2504 samples from 1000 Genomes Project.
+ (
+\series bold
+A
+\series default
+) Heatmap of the GSM generated by our method using 80,000 uniformly spaced
+ variants.
  The vertical colorbar indicates membership in one of the five superpopulations,
  while the horizontal colorbar indicates membership in one of the 26 populations.
- (C) Projecting each individual onto the top two eigenvectors resulted in
- a similar 2-dimensional distribution of global ancestry
+ (
+\series bold
+B
+\series default
+) Projecting each individual onto the top two eigenvectors resulted in a
+ similar 2-dimensional distribution of global ancestry.
+ Both our method and PCA show similar projections which elucidate the migratory
+ patterns of early humans.
 \end_layout
 
 \end_inset
 
 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-label{fig:heatmaps}
-\end_layout
+\begin_inset CommandInset label
+LatexCommand label
+name "heatmaps"
 
 \end_inset
 
@@ -3522,31 +3570,34 @@ Next, we removed individuals found to be related, including HG03998 from
  the STU population and HG03873 from the ITU population.
  We found that removal of these genetic outliers improved the ability both
  our method and PCA to separate the two populations.
- However, the separation remains clearer with the use of our method (Figure
- 9B).
+ However, the separation remains clearer with the use of our method (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "ITUvsSTU"
+
+\end_inset
+
+).
 \end_layout
 
 \begin_layout Standard
 The reasoning behind the superior performance in fine scale population stratific
 ation is due to the focus on rarer alleles.
- Rare alleles tend to be less stable over generations and are therefore
- more likely to have arisen recently.
+ Rare alleles tend to be less stable over generations and become fixed at
+ 0% with high probability.
+ Therefore, rare alleles that are observed are more likely to have arisen
+ recently.
  It stands to reason that these alleles would therefore be the most informative
  of recently related populations.
 \end_layout
 
-\begin_layout Section*
+\begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
-
-\series bold
-A
-\series default
-
 \begin_inset Graphics
 	filename /home/dan/gd/Harvard/Research/R_workspace/Slides/pasted23.png
 	width 60col%
@@ -3555,10 +3606,6 @@ A
 
 \end_inset
 
-
-\series bold
-B
-\series default
 
 \begin_inset Caption Standard
 
@@ -3588,15 +3635,9 @@ B
 \end_inset
 
 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-label{fig:heatmaps}
-\end_layout
+\begin_inset CommandInset label
+LatexCommand label
+name "ITUvsSTU"
 
 \end_inset
 
@@ -3605,21 +3646,43 @@ label{fig:heatmaps}
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Section*
 Discussion
 \end_layout
 
 \begin_layout Standard
-Conclusions: The ability to identify genetic outliers has well-established
- utility in genome-wide association studies...
+The ability to identify genetic outliers has well-established utility in
+ genome-wide association studies.
+ Many existing methods for identification of genetic associations are predicated
+ on the assumptions that population homogeneity holds in the study.
+ Checking for violations of these assumptions typically involves a qualitative
+ assessment without any specific concern for effect size and power.
+ Our method provides an approach for quantitatively assess homogeneity and
+ a formal test for the identification of cryptic relatedness and population
+ stratification.
 \end_layout
 
 \begin_layout Standard
-This method can be allied to verify that assumed homogeneous studies are
- in fact homogeneous
+Several limitations exist with our approach.
+ First, the method assumes that the variants are independent.
+ We satisfy this assumption by performing LD sampling, but in doing so limit
+ the number of informative markers to less than 100k, potentially omitting
+ much of our data and reducing our power to detect heterogeneity.
+ Furthermore, one's choice of LD sampling method will necessarily impact
+ the performance of the method.
+ Additionally, with respect to the detection of population structure, we
+ cannot design a uniformly most powerful test for structure due to the complex
+ nature in which structure can exist.
 \end_layout
 
 \begin_layout Standard
-Limitations: Assumes LD, limiting power by requiring LD pruning
+In spite of these limitations, our method provides formal, interpretable
+ tool which is computationally fast and straightforward to implement which
+ can test a critical assumption in a wide range of genome wide association
+ studies.
 \end_layout
 
 \begin_layout Standard

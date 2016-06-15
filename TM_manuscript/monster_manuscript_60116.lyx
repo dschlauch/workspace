@@ -307,7 +307,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename figures/figure1c.pdf
-	width 80col%
+	width 60col%
 
 \end_inset
 

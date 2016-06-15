@@ -1,9 +1,7 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
 \begin_document
 \begin_header
-\save_transient_properties true
-\origin unavailable
 \textclass article
 \begin_preamble
 \usepackage{cite}
@@ -18,16 +16,16 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman "default" "default"
-\font_sans "default" "default"
-\font_typewriter "default" "default"
-\font_math "auto" "auto"
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100 100
-\font_tt_scale 100 100
+\font_sf_scale 100
+\font_tt_scale 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -125,13 +123,11 @@ In order to minimize the effects of genetic confounding on the analysis
  population substructure.
  The approach is computationally fast, enabling the application to whole-genome
  sequencing data, and straightforward to implement.
- Simulation studies illustrate the overall performance of our approach.
- In an application to the 1,000 genome projects, we outline an analysis/cleaning
- pipeline that utilizes our approach to formally assess whether study subjects
- are related and whether population substructure is present.
- In the analysis of 1,000 Genome Project, our approach revealed studies
- subjects that are most likely related, but have passed so far standard
+ In an application to the 1,000 genome projects, our approach identifies
+ studies subjects that are most likely related, but have passed so far standard
  qc-filters.
+ Simulation studies illustrate the overall performance of our approach.
+ 
 \end_layout
 
 \begin_layout Section*
@@ -206,7 +202,7 @@ key "listgarten2012improved,lippert2011fast,zhang2010mixed"
 .
  Both approaches have proven to work well in numerous applications.
  While the first approach is computationally fast and easy to implement,
- the direct modeling of the dependence structure between study subjects
+ the direct modelling of the dependence structure between study subjects
  can be more efficient.
  
 \end_layout
@@ -217,7 +213,7 @@ However, both approaches benefit if, prior to the analysis, study subjects
  e.g.
  “genetic outliers”, are removed from the data set.
  The standard practice is currently to examine the Eigenvalue plots visually
- and to identify outliers by personal judgment on how far study subjects
+ and to identify outliers by personal judgement on how far study subjects
  are from the “clouds” of study subjects.
  As typically up to 10 Eigenvectors have to be considered, this process
  of identifying outliers can become a complicated and subjective procedure.
@@ -262,7 +258,7 @@ key "thornton2012estimating,manichaikul2010robust"
 In this communication, we propose a formal statistical test that assesses
  whether two study subjects come from the same population and whether they
  are unrelated.
- The test statistic is based on an adaptation of the Jaccard Index which
+ The test statistic is based on the an adaptation of the Jaccard Index which
  utilizes the idea that variants are differentially informative of relatedness
  based on their allele frequency.
  Furthermore, its distribution can be derived under the null-hypothesis
@@ -271,11 +267,6 @@ In this communication, we propose a formal statistical test that assesses
  Our measure has clearly defined properties which can be used to test for
  homogeneity in a population and in particular identify individuals who
  are likely be related in a study population.
- Applications to the 1,000 Genome Project suggests that our approach is
- better suited to detect sub-populations than genetic variance/covariance
- approach.
- This is most likely attributable to the emphasis of our approach on small
- allele frequencies.
 \end_layout
 
 \begin_layout Section*
@@ -284,25 +275,27 @@ Methods
 
 \begin_layout Standard
 Exploiting the information in rare variants (RVs), such as one with minor
- allele frequency (MAF) < 1%, is fundamental to our method, as our approach
- utilizes the features of RVs that they are typically more recent than common
- variants and that many of them are population/family specific.
- Since allele frequencies can differentially confound association studies
- 
+ allele fequency (MAF) 
+\begin_inset Formula $<1\%$
+\end_inset
+
+, is fundamental to our method.
+ A RV tends to be less stable than common variants and thus is more likely
+ to have arisen recently.
+ Allele frequencies have been shown to differentially confound association
+ studies in part due to the localized nature of RVs
 \begin_inset CommandInset citation
 LatexCommand cite
 key "mathieson2012differential"
 
 \end_inset
 
-, we developed a method that utilizes the differential informativeness of
- variants by allele frequency to obtain a high resolution picture of population
- structure and protect the association study against bias due to genetic
- confounding.
+.
+ Motivated by this rationale, we developed a method that utilizes the differenti
+al informativeness of variants by allele frequency to increase the power
+ to provide a high resolution picture of population structure.
  Our approach uses an intuitive, computationally straightforward approach
- towards identifying similarity between two study subjects which is also
- directly linked to the kinship coefficient.
- 
+ towards identifying similarity between two study subjects.
 \end_layout
 
 \begin_layout Subsection*
@@ -446,8 +439,8 @@ The similarity index
 \end_inset
 
  provides an easily interpreted statistical test for evaluating possible
- relatedness between individuals in a purportedly homogeneous dataset of
- unrelated individuals.
+ relatedness between individuals in a purportedly homogeous dataset of unrelated
+ individuals.
  Note that this formulation is independent of the samples 
 \begin_inset Formula $i,j$
 \end_inset
@@ -602,7 +595,7 @@ In a homogeneous dataset lacking relatedness, we consider each of the
 \end_inset
 
  comparisons to be independent.
- To achieve a family-wise error rate 
+ To achieve a familywise error rate 
 \begin_inset Formula $\alpha$
 \end_inset
 
@@ -1013,7 +1006,7 @@ cor()
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="3">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -2183,7 +2176,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="27" columns="4">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
