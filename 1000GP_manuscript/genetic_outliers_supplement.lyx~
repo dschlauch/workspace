@@ -9,14 +9,11 @@
 \usepackage{inputenc}
 \usepackage{authblk}
 \author[1,2]{Daniel Schlauch} 
-\author[2,3]{Kimberly Glass}
-\author[2]{Craig P. Hersh}
-\author[2,4]{Edwin K. Silverman}
-\author[1,3]{John Quackenbush}
-\affil[1]{Department of Biostatistics and Computational Biology, Dana-Farber Cancer Institute and Department of Biostatistics, Harvard TH Chan School of Public Health, Boston, MA 02115}
-\affil[2]{Channing Division of Network Medicine, Brigham and Women's Hospital, Boston, MA 02115}
-\affil[3]{Department of Medicine, Harvard Medical School, Boston, MA 02115}
-\affil[4]{Pulmonary and Critical Care Division, Brigham and Women's Hospital and Harvard Medical School, Boston, USA}
+\author[3]{Heide Fier}
+\author[1,2]{Christoph Lange}
+\affil[1]{Department of Biostatistics, Harvard TH Chan School of Public Health, Boston, MA 02115}
+\affil[2]{Department of Biostatistics and Computational Biology, Dana-Farber Cancer Institute, Boston, MA 02115}
+\affil[3]{Institute of Genomic Mathematics, University of Bonn, Bonn, Germany}
 \end_preamble
 \use_default_options true
 \maintain_unincluded_children false
@@ -43,7 +40,7 @@
 \spacing single
 \use_hyperref false
 \papersize default
-\use_geometry false
+\use_geometry true
 \use_package amsmath 1
 \use_package amssymb 1
 \use_package cancel 1
@@ -98,59 +95,37 @@ On the detection of genetic heterogeneity in whole-genome sequencing studies:
  population sub-structure or cryptic relationships
 \end_layout
 
-\begin_layout Part*
-This PDF file includes:
+\begin_layout Section
+Supplementary Methods
 \end_layout
 
-\begin_layout Itemize
-Materials and Methods 
-\end_layout
-
-\begin_layout Itemize
-Supplementary Text 
-\end_layout
-
-\begin_layout Itemize
-Figs.
- S1 to S6
-\end_layout
-
-\begin_layout Itemize
-Tables S1, S2 
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-renewcommand{
-\backslash
-figurename}{Supplemental Figure}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-renewcommand{
-\backslash
-tablename}{Supplemental Table}
-\end_layout
-
+\begin_layout Subsection
+Variance of 
+\begin_inset Formula $\hat{s}$
 \end_inset
 
 
 \end_layout
 
 \begin_layout Standard
-\begin_inset Newpage newpage
+The variance of 
+\begin_inset Formula $\hat{s}_{ij}$
 \end_inset
 
+ can be estimated by 
+\begin_inset Formula 
+\[
+\hat{\sigma_{i,j}^{2}}=\hat{Var}\left(s_{i,j}\right)=\frac{\sum_{k=1}^{N}\left(w_{k}-1\right)}{\left(\sum_{k=1}^{N}I\left[\sum_{l=1}^{2n}\mathbf{G}_{l,k}>1\right]\right)^{2}}
+\]
 
+\end_inset
+
+This formulation is independent of the samples 
+\begin_inset Formula $i,j$
+\end_inset
+
+ and depends only on the allele counts for each variant across the study
+ group.
 \end_layout
 
 \begin_layout Standard
@@ -170,9 +145,404 @@ Var\left(s_{i,j}\right) & =Var\left(\frac{\sum_{k=1}^{N}w_{k}\mathbf{G}_{i,k}\ma
 
 \end_layout
 
+\begin_layout Subsection
+Linkage Disequilibrium Pruning
+\end_layout
+
 \begin_layout Standard
-\begin_inset ERT
+Phase 3 of the 1000 Genomes Project contains 2504 individuals with a combined
+ total of over 80 million variants.
+ Assumptions of STEGO include the independence of variants, which may be
+ violated in the presence of Linkage Disequilibrium (LD).
+ Our method focuses variants with low minor allele frequency, which are
+ less susceptible to high 
+\begin_inset Formula $R^{2}$
+\end_inset
+
+ between loci.
+ However, to help reduce the impact of correlated variants, we filtered
+ the data such that the impact of LD was limited.
+ Prior to analysis, we divided the data into blocks of 800 consecutive variants
+ and selected only one locus from each block.
+ The selected variant within each block was chosen based on the smallest
+ minor allele frequency observed which was larger than our cutoff of 1%.
+ We chose this somewhat arbitrary cutoff as a compromise between our desire
+ to focus on rare alleles and the recognition that QC concerns may become
+ an increasingly valid concern at the lowest allele frequencies.
+ We recommend the use of a cutoff which balances the value of rare variants
+ with the confidence in the technology used to obtain the data.
+ 
+\end_layout
+
+\begin_layout Standard
+Furthermore, evidence supports the presence of long-range LD, long stretches
+ along chromosomes which have relatively highly correlated variants.
+ Twenty-four such features have been documented in Price et al [18] and
+ to address this we simply excluded these regions from our analysis.
+\end_layout
+
+\begin_layout Standard
+This filtering yielded approximately 100,000 variants for each of the 26
+ populations in the TGP.
+ 
+\end_layout
+
+\begin_layout Section
+Supplementary Figures
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
 status open
+
+\begin_layout Plain Layout
+
+\series bold
+Distribution of similarity statistic within population subgroups from 1000
+ Genomes Project after removal of related individuals
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/PostFilter/ACBdiploid.pdf
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/PostFilter/ASWdiploid.pdf
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/PostFilter/BEBdiploid.pdf
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/PostFilter/CDXdiploid.pdf
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/PostFilter/CEUdiploid.pdf
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/PostFilter/CHBdiploid.pdf
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/PostFilter/CHSdiploid.pdf
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/PostFilter/CLMdiploid.pdf
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/PostFilter/ESNdiploid.pdf
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/PostFilter/FINdiploid.pdf
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/PostFilter/GBRdiploid.pdf
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/PostFilter/GIHdiploid.pdf
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/PostFilter/GWDdiploid.pdf
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/PostFilter/IBSdiploid.pdf
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/PostFilter/ITUdiploid.pdf
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/PostFilter/JPTdiploid.pdf
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/PostFilter/KHVdiploid.pdf
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/PostFilter/LWKdiploid.pdf
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/PostFilter/MSLdiploid.pdf
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/PostFilter/MXLdiploid.pdf
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/PostFilter/PELdiploid.pdf
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/PostFilter/PJLdiploid.pdf
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/PostFilter/PURdiploid.pdf
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/PostFilter/STUdiploid.pdf
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/PostFilter/TSIdiploid.pdf
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/PostFilter/YRIdiploid.pdf
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Distribution of similarity coefficients for each of the 26 populations in
+ the 1000 Genomes Project after the removal of suspected related individuals.
+ Homogeneous populations lacking cryptic relatedness should be expected
+ to exhibit distributions centered around 1 with no outliers.
+ A heterogeneous population is expected to exhibit a normal distribution
+ centered around 1.
+ Non-normal distributions such as right-skewed (e.g.
+ PUR, PEL, CLM) or bimodal are indicative of population structure.
+ The red dotted vertical line on each plot indicates the family-wise
+\begin_inset Formula $\alpha=.01$
+\end_inset
+
+ level cutoff for 
+\begin_inset Formula ${n \choose 2}$
+\end_inset
+
+ comparisons.
+ The most significant related pair is labeled for each population with the
+ estimated kinship for that pairing indicated in blue.
+ The p-value for the KS test for homogeneity is reported for each population.
+ Outliers in the absence of non-normally distributed statistics are an indicatio
+n of relatedness among pairs of individuals.
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "All s plots-1"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/dan/1000GP/plots/pairwise_variances.png
+	width 100col%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+The eigendecomposition of the STEGO matrix separates individuals of populations
+ belonging to the same continent with greater efficiency than PCA.
+ In 43 of 57 possible within-continent population pairs, STEGO had super
+ separation of populations.
+ Separation was measured as the ratio of within population variance to total
+ variance along the first 3 eigenvectors for STEGO and PCA.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename pasted2.png
+	width 100col%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Despite a clear trend of superior performance with STEGO, notable exceptions
+ occur.
+ For example, by this measure, the populations GBR and CEU were more clearly
+ divided by PCA (Right, ) than by STEGO (Left).
+ Closer inspection revealed that the first eigenvector from STEGO isolates
+ 11 samples exclusively from the GBR population.
+ It is not readily apparent what features of the data are being captured
+ here or the relative value of those features (this may be a result of populatio
+n structure, relatedness, batch effect, etc.).
+ But it is notable that all 11 samples came from the same population in
+ the 1000 Genomes Project.
+ It is reasonable to infer that this subset of samples is scientifically
+ relevant.
+ It most likely contains a disproportionate number of co-occurences of rare
+ variants, which were not observed separately by PCA.
+\end_layout
+
+\end_inset
+
+
+\end_layout
 
 \begin_layout Plain Layout
 

@@ -1,7 +1,9 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
 \begin_document
 \begin_header
+\save_transient_properties true
+\origin unavailable
 \textclass article
 \begin_preamble
 \usepackage{inputenc}
@@ -86,16 +88,16 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -893,10 +895,17 @@ key "lgrc"
 
 \end_inset
 
- and Lung Tissue Chronic Obstructive Pulmonary Disease (LTCOPD) [ltcopd].
+ and Lung Tissue from Channing Division of Network Medicine (LT-CDNM) 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "qiu2015network"
+
+\end_inset
+
+.
  The tissues assayed in ECLIPSE and COPDGene were whole blood and peripheral
  blood mononuclear cells (PBMCs), respectively, while homogenized lung tissue
- was sampled for LGRC and LTCOPD.
+ was sampled for LGRC and LT-CDNM.
  
 \end_layout
 
@@ -978,7 +987,7 @@ reference "eq:dTFI"
  factors in the ECLIPSE and COPDGene studies, we found 7 in common.
  Furthermore, three of these seven transcription factors (GABPA, ELK4, ELK1)
  also appeared as significant in the LGRC results with FDR<0.01 and each
- of the top five ECLIPSE results were among the top seven in the LTCOPD
+ of the top five ECLIPSE results were among the top seven in the LT-CDNM
  results (Supplementary Table S2, Supplementary Figure S5).
  This agreement is quite striking considering that the there was almost
  no correlation in the edge-weight differences across these same studies.
@@ -1108,7 +1117,7 @@ key "rotheneder1999transcription,karlseder1996interaction"
 
  and may play a key role in the alteration of E2F4 targeting behavior.
  Furthermore, E2F4 has been found to form a complex with EGR-1 (a highly
- significant transcription factor in ECLIPSE and LTCOPD) in response smoke
+ significant transcription factor in ECLIPSE and LT-CDNM) in response smoke
  exposure, which may lead to autophagy, apoptosis and subsequently to developmen
 t of emphysema 
 \begin_inset CommandInset citation
@@ -1184,7 +1193,7 @@ Strong reproducibility in top differential transcription factor involvement
 \series default
 .
  ECLIPSE and COPDGene data were obtained from whole-blood and PBMC while
- the gene expression data in LGRC and LTCOPD were assayed in lung tissue.
+ the gene expression data in LGRC and LT-CDNM were assayed in lung tissue.
  
 \series bold
 A

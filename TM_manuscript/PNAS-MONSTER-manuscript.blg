@@ -1,0 +1,49 @@
+This is BibTeX, Version 0.99d (TeX Live 2013/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: PNAS-MONSTER-manuscript.aux
+The style file: pnas2011.bst
+Database file #1: dissertation_research.bib
+Warning--empty author in lgrc
+Warning--empty journal in lgrc
+You've used 32 entries,
+            1797 wiz_defined-function locations,
+            673 strings with 12346 characters,
+and the built_in function-call counts, 7187 in all, are:
+= -- 615
+> -- 284
+< -- 1
++ -- 92
+- -- 60
+* -- 659
+:= -- 1091
+add.period$ -- 64
+call.type$ -- 32
+change.case$ -- 32
+chr.to.int$ -- 0
+cite$ -- 34
+duplicate$ -- 332
+empty$ -- 711
+format.name$ -- 60
+if$ -- 1533
+int.to.chr$ -- 0
+int.to.str$ -- 32
+missing$ -- 32
+newline$ -- 131
+num.names$ -- 31
+pop$ -- 41
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 156
+stack$ -- 0
+substring$ -- 652
+swap$ -- 77
+text.length$ -- 1
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 2
+while$ -- 77
+width$ -- 34
+write$ -- 320
+(There were 2 warnings)

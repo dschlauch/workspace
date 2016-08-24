@@ -1,7 +1,9 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
 \begin_document
 \begin_header
+\save_transient_properties true
+\origin unavailable
 \textclass article
 \begin_preamble
 \usepackage{inputenc}
@@ -22,16 +24,16 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -161,8 +163,54 @@ Data Collection and Generation
 \end_layout
 
 \begin_layout Standard
-Gene expression data from ECLIPSE, COPDGene, LGRC, and LTCOPD...
- [Kimbie description]
+Gene expression data from the ECLIPSE study was collected from 220 patients
+ classified as smoker controls (84) or COPD (136).
+ Blood samples from each individual were profiled on profiled using Affymetrix
+ HGU 133 plus2 microarrays.
+ CEL data files from these assays were RMA-normalized
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cite{irizarry2003exploration}
+\end_layout
+
+\end_inset
+
+ in R using the BioConductor package 'affy'
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cite{gautier2004affy}
+\end_layout
+
+\end_inset
+
+.
+ Array probes were collapsed to 18895 Entrez-gene IDs using a custom CDF
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cite{dai2005evolving}
+\end_layout
+
+\end_inset
+
+.
+ Finally, 1553 genes which were not matched with our motif scan (see below)
+ were filtered out, yielding a final count of 17342 genes for which we had
+ gene expression measurements.
 \end_layout
 
 \begin_layout Standard
@@ -1518,7 +1566,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="11" columns="4">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -3039,7 +3087,7 @@ tiny
 \begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="23" columns="13">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -9269,7 +9317,7 @@ tiny
 \begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="23" columns="9">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">

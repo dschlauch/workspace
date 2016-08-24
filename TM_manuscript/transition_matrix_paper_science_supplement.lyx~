@@ -1,7 +1,9 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
 \begin_document
 \begin_header
+\save_transient_properties true
+\origin unavailable
 \textclass article
 \begin_preamble
 \usepackage{inputenc}
@@ -22,16 +24,16 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -161,8 +163,36 @@ Data Collection and Generation
 \end_layout
 
 \begin_layout Standard
-Gene expression data from ECLIPSE, COPDGene, LGRC, and LTCOPD...
- [Kimbie description]
+Gene expression data from the ECLIPSE study was collected from 220 patients
+ classified as smoker controls (84) or COPD (136).
+ Blood samples from each individual were profiled on profiled using Affymetrix
+ HGU 133 plus2 microarrays.
+ CEL data files from these assays were RMA-normalized
+\begin_inset CommandInset citation
+LatexCommand cite
+key "irizarry2003exploration"
+
+\end_inset
+
+ in R using the BioConductor package 'affy'
+\begin_inset CommandInset citation
+LatexCommand cite
+key "gautier2004affy"
+
+\end_inset
+
+.
+ Array probes were collapsed to 18895 Entrez-gene IDs using a custom CDF
+\begin_inset CommandInset citation
+LatexCommand cite
+key "dai2005evolving"
+
+\end_inset
+
+.
+ Finally, 1553 genes which were not matched with our motif scan (see below)
+ were filtered out, yielding a final count of 17342 genes for which we had
+ gene expression measurements.
 \end_layout
 
 \begin_layout Standard
@@ -251,9 +281,9 @@ We evaluated the standard tools for COPD case-control studies at the network
  We tested the methods Algorithm for the Reconstruction of Gene Regulatory
  Networks (ARACNE), Context Likelihood of Relatedness (CLR), and Weighted
  Gene Correlation Network Analysis (WGCNA).
- We computed differential edgeweights across cases and controls using each
+ We computed differential edge-weights across cases and controls using each
  of the NI methods.
- Next, we plotted the differential edgeweights for each pairwise combination
+ Next, we plotted the differential edge-weights for each pairwise combination
  of studies [
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -262,7 +292,8 @@ reference "Supplement NI edgeweight plots"
 \end_inset
 
 ].
- We found no meaningful correlation for edgeweight differences between 
+ We found no meaningful correlation for edge-weight differences between
+ 
 \emph on
 any
 \emph default
@@ -340,7 +371,7 @@ D
 \begin_layout Plain Layout
 
 \series bold
-Edgeweight differences between cases and controls do not correlate across
+edge-weight differences between cases and controls do not correlate across
  studies.
 
 \series default
@@ -893,7 +924,7 @@ A primary purpose of reconstructing GRNs is the understanding of the biological
  Both methods, along with MONSTER's network inference approach, use gene
  expression data as a refinement of the more accurate motif priors.
  It is therefore a side effect that any GRN inference method that relies
- on motifs directly for edgeweight calculation will be susceptible to having
+ on motifs directly for edge-weight calculation will be susceptible to having
  the bulk of its predictive power stripped when making comparisons between
  networks.
  Consequently, it is of critical importance to choose a network inference
@@ -903,12 +934,12 @@ A primary purpose of reconstructing GRNs is the understanding of the biological
 
 \begin_layout Standard
 The task of identifying meaningful network transitions then becomes an evaluatio
-n of the relative refinement of edgeweights.
+n of the relative refinement of edge-weights.
  Since the majority of the predictive power for each edge is contained in
- the motif contribution, we are left with relative edgeweight refinement
+ the motif contribution, we are left with relative edge-weight refinement
  that have a low signal, high noise.
  In other words, we have a very large number of individually unreliable
- edgeweights.
+ edge-weights.
  In effort to extract the maximum effect, we seek to combine the information
  contained in each edge via a novel dimension reduction approach.
 \end_layout
@@ -1198,8 +1229,8 @@ s_{j}=\frac{\sum_{i=1}^{m}I\left(i\ne j\right)\tau_{i,j}^{2}}{\sum_{i=1}^{m}\tau
 \end_inset
 
  seeks to elucidate transitions which are systematic, informative, and non-arbit
-rary in nature by capturing only the edgeweight signal for which there is
- an attributable regulatory pattern.
+rary in nature by capturing only the edge-weight signal for which there
+ is an attributable regulatory pattern.
  The distribution of this statistic under the null has a mean and standard
  deviation which depend on the motif structure.
  In particular, both mean and standard deviation are increased for TFs which
@@ -1328,8 +1359,8 @@ To evaluate the ability of our method to recover edges between transcription
 
  genes.
  A state transition was generated by sampling 100 TF-TF pairs and adjusting
- the edgeweight at the corresponding point on the true cases adjacency matrix,
- 
+ the edge-weight at the corresponding point on the true cases adjacency
+ matrix, 
 \begin_inset Formula $M_{1\left(p\times q\right)}$
 \end_inset
 
@@ -1468,15 +1499,15 @@ cite{glass2013passing}
 \begin_layout Standard
 We applied the transition matrix with default parameters on each case-control
  pair of networks.
- For comparison, we estimated the difference from case to control in edgeweights
- derived from the direct edge prediction using each network inference method.
+ For comparison, we estimated the difference from case to control in edge-weight
+s derived from the direct edge prediction using each network inference method.
  The predictions for the TM approach and the direct approach were evaluated
  by the area-under-the-curve of the receiver-operator-characteristic (AUCROC)
  with the true transition adjustments taken as the gold standard.
  For each of the network inference methods tested, we found substantial
  improvement in the predicted transitions over the direct network inference
  method.
- In many cases, the edgeweight difference (column 2) was not statistically
+ In many cases, the edge-weight difference (column 2) was not statistically
  significant for predicting transitions, but when the TM was applied (column
  3) a strong predictive signal appeared.
  In other cases, an existing signal was observed using the direct approach,
@@ -1517,7 +1548,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="11" columns="4">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -1527,7 +1558,7 @@ status open
 \begin_inset Text
 
 \begin_layout Plain Layout
-AUC-ROC for Edgeweight differences vs Transition Matrix using various NI
+AUC-ROC for edge-weight differences vs Transition Matrix using various NI
  methods
 \end_layout
 
@@ -1590,7 +1621,7 @@ Network AUC
 \begin_layout Plain Layout
 
 \series bold
-Edgeweight 
+edge-weight 
 \end_layout
 
 \end_inset
@@ -2345,8 +2376,8 @@ PANDA**
 \begin_layout Plain Layout
 
 \series bold
-Comparison of edgeweight difference to Transition Matrix in simulated case-contr
-ol gene expression
+Comparison of edge-weight difference to Transition Matrix in simulated case-cont
+rol gene expression
 \series default
 .
  Several network inference methods were run on our 
@@ -2359,7 +2390,7 @@ c (AUC-ROC) was performed for each method averaged across cases and controls.
  For PANDA* and PANDA**, which additionally utilizes motif prior information,
  motif priors with AUC-ROC of .570 and .547 were used.
  The naive TF-TF transitions were calculated as the difference in TF-TF
- edgeweight between cases and controls.
+ edge-weight between cases and controls.
  The transition matrix TF-TF transitions used the absolute transition matrix
  values.
  
@@ -3038,7 +3069,7 @@ tiny
 \begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="23" columns="13">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -9268,7 +9299,7 @@ tiny
 \begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="23" columns="9">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">

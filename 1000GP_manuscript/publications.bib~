@@ -299,7 +299,7 @@
   note = {Accessed: 2016-06-06}
 }
 @article{al2015inference,
-  title={Inference of distant genetic relations in humans using “1000 Genomes”},
+  title={Inference of distant genetic relations in humans using '1000 Genomes'},
   author={Al-Khudhair, Ahmed and Qiu, Shuhao and Wyse, Meghan and Chowdhury, Shilpi and Cheng, Xi and Bekbolsynov, Dulat and Saha-Mandal, Arnab and Dutta, Rajib and Fedorova, Larisa and Fedorov, Alexei},
   journal={Genome biology and evolution},
   volume={7},
@@ -317,4 +317,34 @@
   pages={777--790},
   year={2016},
   publisher={Oxford University Press}
+}
+@article{prokopenko2016utilizing,
+  title={Utilizing the Jaccard index to reveal population stratification in sequencing data: a simulation study and an application to the 1000 Genomes Project},
+  author={Prokopenko, Dmitry and Hecker, Julian and Silverman, Edwin K and Pagano, Marcello and N{\"o}then, Markus M and Dina, Christian and Lange, Christoph and Fier, Heide Loehlein},
+  journal={Bioinformatics},
+  volume={32},
+  number={9},
+  pages={1366--1372},
+  year={2016},
+  publisher={Oxford Univ Press}
+}
+@article{boehnke1997accurate,
+  title={Accurate inference of relationships in sib-pair linkage studies},
+  author={Boehnke, Michael and Cox, Nancy J},
+  journal={The American Journal of Human Genetics},
+  volume={61},
+  number={2},
+  pages={423--429},
+  year={1997},
+  publisher={Elsevier}
+}
+@article{epstein2000improved,
+  title={Improved inference of relationship for pairs of individuals},
+  author={Epstein, Michael P and Duren, William L and Boehnke, Michael},
+  journal={The American Journal of Human Genetics},
+  volume={67},
+  number={5},
+  pages={1219--1231},
+  year={2000},
+  publisher={Elsevier}
 }
