@@ -165,4 +165,93 @@ Hogg JC (2004) Pathophysiology of airflow limitation in chronic obstructive
 Fahy JV, Dickey BF (2010) Airway mucus function and dysfunction.
 \newblock {\em New England Journal of Medicine} 363(23):2233--2247.
 
+\bibitem{irizarry2003exploration}
+Irizarry RA et~al. (2003) Exploration, normalization, and summaries of high
+  density oligonucleotide array probe level data.
+\newblock {\em Biostatistics} 4(2):249--264.
+
+\bibitem{gautier2004affy}
+Gautier L, Cope L, Bolstad BM, Irizarry RA (2004) affy-analysis of affymetrix
+  genechip data at the probe level.
+\newblock {\em Bioinformatics} 20(3):307--315.
+
+\bibitem{dai2005evolving}
+Dai M et~al. (2005) Evolving gene/transcript definitions significantly alter
+  the interpretation of genechip data.
+\newblock {\em Nucleic acids research} 33(20):e175--e175.
+
+\bibitem{mathelier2013jaspar}
+Mathelier A et~al. (2013) Jaspar 2014: an extensively expanded and updated
+  open-access database of transcription factor binding profiles.
+\newblock {\em Nucleic acids research} p. gkt997.
+
+\bibitem{pinello2014analysis}
+Pinello L, Xu J, Orkin SH, Yuan GC (2014) Analysis of chromatin-state
+  plasticity identifies cell-type--specific regulators of h3k27me3 patterns.
+\newblock {\em Proceedings of the National Academy of Sciences}
+  111(3):E344--E353.
+
+\bibitem{heinz2010simple}
+Heinz S et~al. (2010) Simple combinations of lineage-determining transcription
+  factors prime cis-regulatory elements required for macrophage and b cell
+  identities.
+\newblock {\em Molecular cell} 38(4):576--589.
+
+\bibitem{olsen2014inference}
+Olsen C et~al. (2014) Inference and validation of predictive gene networks from
+  biomedical literature and gene expression data.
+\newblock {\em Genomics} 103(5):329--336.
+
+\bibitem{frey2007clustering}
+Frey BJ, Dueck D (2007) Clustering by passing messages between data points.
+\newblock {\em science} 315(5814):972--976.
+
+\bibitem{lao2015haploinsufficiency}
+Lao T et~al. (2015) Haploinsufficiency of hedgehog interacting protein causes
+  increased emphysema induced by cigarette smoke through network rewiring.
+\newblock {\em Genome medicine} 7(1):1.
+
+\bibitem{harbison2004transcriptional}
+Harbison CT et~al. (2004) Transcriptional regulatory code of a eukaryotic
+  genome.
+\newblock {\em Nature} 431(7004):99--104.
+
+\bibitem{marbach2012wisdom}
+Marbach D et~al. (2012) Wisdom of crowds for robust gene network inference.
+\newblock {\em Nature methods} 9(8):796--804.
+
+\bibitem{tibshirani1996regression}
+Tibshirani R (1996) Regression shrinkage and selection via the lasso.
+\newblock {\em Journal of the Royal Statistical Society. Series B
+  (Methodological)} pp. 267--288.
+
+\bibitem{Langfelder2008WGCNA}
+Langfelder P, Horvath S (2008) Wgcna: an r package for weighted correlation
+  network analysis.
+\newblock {\em BMC Bioinformatics} (1):559.
+
+\bibitem{Langfelder2008FastR}
+Langfelder P, Horvath S (2012) Fast {R} functions for robust correlations and
+  hierarchical clustering.
+\newblock {\em Journal of Statistical Software} 46(11):1--17.
+
+\bibitem{ravasz2002hierarchical}
+Ravasz E, Somera AL, Mongru DA, Oltvai ZN, Barab{\'a}si AL (2002) Hierarchical
+  organization of modularity in metabolic networks.
+\newblock {\em science} 297(5586):1551--1555.
+
+\bibitem{levine2003transcription}
+Levine M, Tjian R (2003) Transcription regulation and animal diversity.
+\newblock {\em Nature} 424(6945):147--151.
+
+\bibitem{ravasi2010atlas}
+Ravasi T et~al. (2010) An atlas of combinatorial transcriptional regulation in
+  mouse and man.
+\newblock {\em Cell} 140(5):744--752.
+
+\bibitem{ritchie2015limma}
+Ritchie ME et~al. (2015) limma powers differential expression analyses for
+  rna-sequencing and microarray studies.
+\newblock {\em Nucleic acids research} p. gkv007.
+
 \end{thebibliography}

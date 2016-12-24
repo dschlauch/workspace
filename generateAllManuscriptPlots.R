@@ -33,11 +33,11 @@ source("~/gd/Harvard/Research/R_workspace/process_TM.R")
 supDTFIvsEXPdf <- rbind(supDTFIvsEXPdf,cbind(plotDF, study="LGRC"))
 
 
-load("~/gd/Harvard/Research/TM_outputs/JASPAR2014/BERE/LTCOPD_combined_runs/activeImage.RData")
+load("~/gd/Harvard/Research/TM_outputs/JASPAR2014/BERE/LTCDNM_combined_runs/activeImage.RData")
 outputDir <- "~/gd/Harvard/Research/R_workspace/TM_manuscript/figures/"
-analysisCode <- "LTCOPD"
+analysisCode <- "LTCDNM"
 source("~/gd/Harvard/Research/R_workspace/process_TM.R")
-supDTFIvsEXPdf <- rbind(supDTFIvsEXPdf,cbind(plotDF, study="LTCOPD"))
+supDTFIvsEXPdf <- rbind(supDTFIvsEXPdf,cbind(plotDF, study="LTCDNM"))
 
 
 dTFI_LIMMA_all <- ggplot(data=supDTFIvsEXPdf, aes(x=limmanegLogPValues, y=negLogZPValues)) + facet_wrap( ~ study, ncol=2) + 
@@ -84,14 +84,20 @@ system('convert -density 1200 figure4.pdf -resize 50% figure4.png')
 system('pdflatex figure2ECLIPSE.tex')
 system('pdflatex figure2COPDGene.tex')
 system('pdflatex figure2LGRC.tex')
-system('pdflatex figure2LTCOPD.tex')
+system('pdflatex figure2LTCDNM.tex')
 system('pdfcrop figure2ECLIPSE.pdf figure2ECLIPSE.pdf')
 system('pdfcrop figure2COPDGene.pdf figure2COPDGene.pdf')
 system('pdfcrop figure2LGRC.pdf figure2LGRC.pdf')
-system('pdfcrop figure2LTCOPD.pdf figure2LTCOPD.pdf')
+system('pdfcrop figure2LTCDNM.pdf figure2LTCDNM.pdf')
 
 system('pdfcrop "dTFI\ vs\ LIMMA\ ECLIPSE.pdf" figure4ECLIPSE.pdf')
 system('pdfcrop "dTFI\ vs\ LIMMA\ COPDGene.pdf" figure4COPDGene.pdf')
 system('pdfcrop "dTFI\ vs\ LIMMA\ LGRC.pdf" figure4LGRC.pdf')
-system('pdfcrop "dTFI\ vs\ LIMMA\ LTCOPD.pdf" figure4LTCOPD.pdf')
+system('pdfcrop "dTFI\ vs\ LIMMA\ LTCDNM.pdf" figure4LTCDNM.pdf')
 
+system('convert -density 600 figure2ECLIPSE.pdf -quality 100 figure2ECLIPSE.png')
+system('convert -density 600 figure2COPDGene.pdf -quality 100 figure2COPDGene.png')
+system('convert -density 600 figure2LGRC.pdf -quality 100 figure2LGRC.png')
+system('convert -density 600 figure2LTCDNM.pdf -quality 100 figure2LTCDNM.png')
+
+system('pdfcrop Supplement_figure4_combiner.pdf Supplement_figure4.pdf')

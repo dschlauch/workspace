@@ -70,6 +70,8 @@ dTFI_LIMMA_gg <- ggplot(data=plotDF, aes(x=limmanegLogPValues, y=negLogZPValues)
   scale_colour_gradient2(limits=c(-max(abs(logfoldchangeTF))/4,max(abs(logfoldchangeTF))/4), oob = scales::squish, name="log(FC)", low = "blue", high = "yellow", mid="white") +
   theme_classic() + 
   theme(plot.title = element_text(size=25,hjust=.5), axis.text=element_text(size=22), axis.title=element_text(size=28), 
+        axis.line.x = element_line(color="black", size = 1),
+        axis.line.y = element_line(color="black", size = 1),
         legend.text=element_text(size=30), legend.title=element_text(size=30), legend.key.size=unit(.7,"in"))
 
 cairo_pdf(file.path(outputDir,paste('dTFI vs LIMMA ',analysisCode,'.pdf', sep="")), width=12, height=12)

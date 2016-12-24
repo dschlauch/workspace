@@ -63,3 +63,33 @@ foreach(i=studies,.packages=c("bereR","nettools")) %dopar% {
 }
 print(Sys.time()-strt)
 stopCluster(cl)
+
+
+
+#### Running better WGCNA
+library(WGCNA)
+load("~/NI_only_0001/COPDGENE_JASPAR2014_bere.RData")
+
+dissTOMCases=TOMdist(abs(cor(t(dataset$exp[c(T,F),casesFilter]),use="p"))^6)
+dissTOMControls=TOMdist(abs(cor(t(dataset$exp[c(T,F),controlsFilter]),use="p"))^6)
+copdgeneDif <- dissTOMCases-dissTOMControls
+rownames(copdgeneDif) <- rownames(dataset$exp)[c(T,F)]
+colnames(copdgeneDif) <- rownames(dataset$exp)[c(T,F)]
+
+load("~/NI_only_0001/ECLIPSE_JASPAR2014_MONSTER.RData")
+
+dissTOMCases=TOMdist(abs(cor(t(dataset$exp[c(T,F),casesFilter]),use="p"))^6)
+dissTOMControls=TOMdist(abs(cor(t(dataset$exp[c(T,F),controlsFilter]),use="p"))^6)
+eclipseDif <- dissTOMCases-dissTOMControls
+rownames(eclipseDif) <- rownames(dataset$exp)[c(T,F)]
+colnames(eclipseDif) <- rownames(dataset$exp)[c(T,F)]
+
+intersectGenes <- intersect(rownames(eclipseDif),rownames(copdgeneDif))
+eclipseDif <- eclipseDif[intersectGenes,intersectGenes]
+copdgeneDif <- copdgeneDif[intersectGenes,intersectGenes]
+
+
+library(ggplot2)
+df <- data.frame(copdgene=c(copdgeneDif[1:100,1:100]),eclipse=c(eclipseDif[1:100,1:100]))
+ggplot(df,aes(x=copdgene,y=eclipse)) + geom_point(alpha=.1) + theme_bw() + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())
+

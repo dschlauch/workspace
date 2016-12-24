@@ -118,6 +118,35 @@ stego
 \end_layout
 
 \begin_layout Section*
+Author Summary
+\end_layout
+
+\begin_layout Standard
+In analyses of genetic data, it is critical to have a precise understanding
+ of the relationships between individuals in the study including identification
+ of individuals who are related as well as complex structure arising from
+ differing ancestral histories.
+ Incomplete information on these features may confound association studies,
+ leading to both increased Type I and Type II errors.
+ Many methods have been developed to address these problems, but do not
+ specifically utilize each variant's allele frequency as an informative
+ value.
+ As sequencing technology becomes more available, the information captured
+ in rarer alleles allows us a more precise measure of the relationships
+ between individuals.
+ Here, we present a formal statistical measure of similarity in the context
+ of genetic studies which has far reaching utility in quantifying population
+ homogeneity and adjustment in association analyses.
+ We demonstrate that our approach can be used to detect such features as
+ population structure and cryptic relatedness in a powerful and statistically
+ rigorous manner.
+ These claims are tested using data from all 26 populations in the 1000
+ Genomes Project, which revealed previously undocumented differing levels
+ of genetic heterogeneity and cryptic relatedness across the groups.
+ 
+\end_layout
+
+\begin_layout Section*
 Introduction
 \end_layout
 
@@ -504,6 +533,17 @@ This approach is easily generalized to the diploid scenario.
 \begin_inset Formula 
 \[
 s_{i,j}^{\left(diploid\right)}=\frac{\sum_{k=1}^{N}\left[w_{k}\mathbf{G}_{i_{1},k}\mathbf{G}_{j_{1},k}+w_{k}\mathbf{G}_{i_{1},k}\mathbf{G}_{j_{2},k}+w_{k}\mathbf{G}_{i_{2},k}\mathbf{G}_{j_{1},k}+w_{k}\mathbf{G}_{i_{2},k}\mathbf{G}_{j_{2},k}\right]/4}{\sum_{k=1}^{N}I\left[\left(\sum_{l=1}^{n}\left[\mathbf{G}_{l_{1},k}+\mathbf{G}_{l_{2},k}\right]\right)>1\right]}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+s_{i,j}^{\left(diploid\right)}=\frac{\sum_{k=1}^{N}\sum_{l=1}^{2}\sum_{m=1}^{2}\left[w_{k}\mathbf{G}_{i_{l},k}\mathbf{G}_{j_{m},k}\right]/4}{\sum_{k=1}^{N}I\left[\left(\sum_{l=1}^{n}\left[\mathbf{G}_{l_{1},k}+\mathbf{G}_{l_{2},k}\right]\right)>1\right]}
 \]
 
 \end_inset
@@ -1006,7 +1046,7 @@ Of additional interest is the computation time of STEGO in comparison to
  We compared our method in terms of computation time of generating a correlation
  matrix.
  We simulated a study of 1,000,000 phased variants across 
-\begin_inset Formula $n$
+\begin_inset Formula $N$
 \end_inset
 
  individuals and ran an R implementation of STEGO against the default implementa
@@ -1036,7 +1076,7 @@ princomp()
 \begin_layout Plain Layout
 
 \emph on
-n
+N
 \end_layout
 
 \end_inset
@@ -3982,7 +4022,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename pasted1.png
+	filename figures/PCA_ITU_STU.png
 	width 80col%
 
 \end_inset

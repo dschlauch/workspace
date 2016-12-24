@@ -168,24 +168,42 @@ Gene expression data from the ECLIPSE study was collected from 220 patients
  Blood samples from each individual were profiled on profiled using Affymetrix
  HGU 133 plus2 microarrays.
  CEL data files from these assays were RMA-normalized
-\begin_inset CommandInset citation
-LatexCommand cite
-key "irizarry2003exploration"
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cite{irizarry2003exploration}
+\end_layout
 
 \end_inset
 
  in R using the BioConductor package 'affy'
-\begin_inset CommandInset citation
-LatexCommand cite
-key "gautier2004affy"
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cite{gautier2004affy}
+\end_layout
 
 \end_inset
 
 .
  Array probes were collapsed to 18895 Entrez-gene IDs using a custom CDF
-\begin_inset CommandInset citation
-LatexCommand cite
-key "dai2005evolving"
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cite{dai2005evolving}
+\end_layout
 
 \end_inset
 
@@ -231,10 +249,10 @@ cite{pinello2014analysis}
 \end_inset
 
 .
- We then linked motifs to genes under the guidelines that a motifs is a
- possible transcription factor binding sites for a particular gene if that
- motif is located within 750 base pairs downstream or within 250 base pairs
- upstream of a gene's promoter.
+ We then linked motifs to genes under the guidelines that a motif is a possible
+ transcription factor binding site for a particular gene if that motif is
+ located within 750 base pairs downstream or within 250 base pairs upstream
+ of a gene's promoter.
  We applied HOMER (http://homer.salk.edu/homer/ngs/index.html) 
 \begin_inset ERT
 status open
@@ -257,7 +275,7 @@ Next, for each study, we identified transcription factors for which we had
  gene expression data, removing those regulatory edges that lacked corresponding
  expression values.
  Consequently, our motif prior consisted of 164, 164, 148, and 145 transcription
- factors in ECLIPSE, COPDGene, LGRC, and LTCOPD, respectively.
+ factors in ECLIPSE, COPDGene, LGRC, and LTCDNM, respectively.
  MONSTER was run separately on each of these studies.
  Comparisons of differential transcription factor involvement across studies
  were performed on the 143 transcription factors which were common to all
@@ -275,7 +293,7 @@ Common network inference methods do not produce reproducible results in
 We evaluated the standard tools for COPD case-control studies at the network
  level by observing the agreement in differential network inference (NI)
  across studies.
- We utilizing the four studies - ECLIPSE, COPDGene, LGRC, and LTCOPD.
+ We utilizing the four studies - ECLIPSE, COPDGene, LGRC, and LTCDNM.
  Our goal was to determine the ability of commonly used NI methods to find
  reproducible results across studies.
  We tested the methods Algorithm for the Reconstruction of Gene Regulatory
@@ -527,7 +545,11 @@ cite{lao2015genome,glass2015network,glass2014sexually}
 \begin_inset Formula $TF_{i}$
 \end_inset
 
- 
+ and 
+\begin_inset Formula $\mathbf{TF}$
+\end_inset
+
+ is the set of all TF genes,
 \begin_inset Formula 
 \[
 d_{i,j}=cor\left(g_{i},g_{j}|\left\{ g_{k,-j}:k\ne j,k\in\mathbf{TF}\right\} \right)^{2}
@@ -535,7 +557,14 @@ d_{i,j}=cor\left(g_{i},g_{j}|\left\{ g_{k,-j}:k\ne j,k\in\mathbf{TF}\right\} \ri
 
 \end_inset
 
- Naturally, the use of direct evidence inadequately captures regulatory
+
+\end_layout
+
+\begin_layout Standard
+In other words, we consider the coexpression of genes for transcription
+ factors with all other genes, conditional on the expression of the genes
+ for other transcription factors.
+ Naturally, the use of direct evidence alone inadequately captures regulatory
  relationships due to the impacts of technical noise and numerous biological
  external factors such as stable or transient protein-protein interactions,
  post-translational modifications, etc.
@@ -592,7 +621,7 @@ n
 \begin_inset Formula $TF_{j}$
 \end_inset
 
- upstream of 
+ in the vicinity of 
 \begin_inset Formula $g_{i}$
 \end_inset
 
@@ -600,7 +629,7 @@ n
  
 \begin_inset Formula 
 \[
-logit\left(E\left[M_{j}\right]\right)=\beta_{0}+\beta_{1}g_{\left(1\right)}+\dots+\beta_{N}g_{\left(N\right)}
+logit\left(E\left[M_{j}\right]\right)=\beta_{0}+\beta_{1}g_{\left(1\right)}+\dots+\beta_{N}g_{\left(n\right)}
 \]
 
 \end_inset
@@ -809,7 +838,7 @@ cite{marbach2012wisdom}
 
 .
  This challenge asked contestants to infer gene networks from expression
- data alone, using a gold standard for evalution.
+ data alone, using a gold standard for evaluation.
  Instead, we started with the gold standard and swapped a number of edges
  to create the type I and type II error rates consistent with Yeast motif
  priors and evaluated the performance of MONSTER to refine its predictions
@@ -890,7 +919,7 @@ Receiver-Operator Characteristic curves for three DREAM 5 datasets (A) in
 .
  In the Saccharomyces cerevisiae, sequence motifs were used as the prior
  with CHiP-chip binding sites used as the gold standard.
- In each of these tests, measureable improvement in performance of MONSTER's
+ In each of these tests, measurable improvement in performance of MONSTER's
  network inference method over the prior network is observed.
 \end_layout
 
@@ -1205,7 +1234,7 @@ Evaluating the Transition Matrix
 \end_layout
 
 \begin_layout Standard
-Many mechanisms which may be differentially present, such as RNA degredation,
+Many mechanisms which may be differentially present, such as RNA degradation,
  post-translational modification, protein-level interactions and epigenetic
  alterations have the ability to impact downstream targeting without impacting
  the expression level of the TF itself.
@@ -1615,18 +1644,18 @@ Network AUC
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell multirow="3" alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 
 \series bold
-edge-weight 
+edge-weight differences
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell multirow="3" alignment="center" valignment="middle" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1657,18 +1686,16 @@ MONSTER
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell multirow="4" alignment="center" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 
-\series bold
-differences
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+<cell multirow="4" alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2517,161 +2544,50 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset Float figure
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-
-\series bold
 \begin_inset Graphics
-	filename figures/figure2ECLIPSE.pdf
-	width 49col%
+	filename figures/Supplement_figure4.pdf
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\series bold
+MONSTER analysis results for 3 studies (ECLIPSE study is found in Fig.
+ 2) A 
 \series default
-
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-
-\series bold
-ECLIPSE
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Float figure
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-
-\series bold
-\begin_inset Graphics
-	filename figures/figure2COPDGene.pdf
-	width 49col%
-
-\end_inset
-
-
-\series default
-
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-
-\series bold
-COPDGENE
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\align left
-
-\series bold
-\begin_inset Float figure
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-
-\series bold
-\begin_inset Graphics
-	filename figures/figure2LGRC.pdf
-	width 49col%
-
-\end_inset
-
-
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-
-\series bold
-LGRC
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\align left
-
-\series bold
-\begin_inset Float figure
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-
-\series bold
-\begin_inset Graphics
-	filename figures/figure2LTCOPD.pdf
-	width 49col%
-
-\end_inset
-
-
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-
-\series bold
-LTCOPD
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-
-\series bold
-MONSTER analysis results for 4 studies (ECLIPSE reproduced in main text)
+Heatmap depicting the transition matrix calculated from smoker controls
+ to COPD cases by applying MONSTER to three independent COPD studies.
+ For the purposes of visualization, the magnitude of the diagonal is set
+ to zero.
  
+\series bold
+B
 \series default
-See Figure 2 in main text for plot descriptions.
+ A network visualization of the strongest 100 transitions identified based
+ on the transition matrix shown in 
+\series bold
+A
+\series default
+.
+ Arrows indicate a change in edges from a transcription factor in the Smoker-Con
+trol network to resemble those of a transcription factor in the COPD network.
+ Edges are sized according to the magnitude of the transition and nodes
+ (TFs) are sized by the dTFI for that TF.
+ The gain of targeting features is indicated by the color blue while the
+ loss of features is indicated by red.
+ 
+\series bold
+C
+\series default
+ The dTFI score from MONSTER (red) and the background null distribution
+ of dTFI values (blue) as estimated by 1000 random sample permutations of
+ the data.
 \end_layout
 
 \end_inset
@@ -2756,8 +2672,9 @@ Efficiency of estimation
 \end_layout
 
 \begin_layout Standard
-Here we demonstrate that MONSTER is more efficient at estimating state transitio
-ns than di
+We demonstrate that MONSTER is more efficient at estimating state transitions
+ than directly comparing the results of coexpression networks under the
+ following assumptions.
 \end_layout
 
 \begin_layout Standard
@@ -2835,7 +2752,7 @@ In investigating gene regulation, many network inference methods are constructed
 \end_inset
 
  matrix of TF-TF effects.
- We show that our method vastly ourperforms commonly used network inference
+ We show that our method vastly outperforms commonly used network inference
  methods in estimating these specific effects.
 \end_layout
 
@@ -2871,25 +2788,18 @@ Using a univariate coexpression calculation (the basis for Pearson networks
 \begin_inset Formula $\delta$
 \end_inset
 
- can be calculated:
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
--\rho_{A}<\delta<\rho_{A},\delta+\rho_{A}\le1
-\]
-
+ can be calculated for 
+\begin_inset Formula $-\rho_{A}<\delta<\rho_{A},\delta+\rho_{A}\le1$
 \end_inset
 
-
+:
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{eqnarray*}
-Var\left(\hat{\rho}_{i,j,A}-\hat{\rho}_{i,j,B}\right) & = & Var\left(\hat{\delta}_{cor}\right)\\
- &  & Var\left(\hat{\rho}_{i,j,A}\right)+Var\left(\hat{\rho}_{i,j,B}\right)\\
+Var\left(\hat{\delta}_{cor}\right) & = & Var\left(\hat{\rho}_{i,j,A}-\hat{\rho}_{i,j,B}\right)\\
+ & = & Var\left(\hat{\rho}_{i,j,A}\right)+Var\left(\hat{\rho}_{i,j,B}\right)\\
  & = & \frac{1-\rho_{i,j,A}^{2}}{n_{A}-2}+\frac{1-\rho_{i,j,B}^{2}}{n_{B}-2}\\
  & = & \frac{1}{n_{A}-2}+\frac{1}{n_{B}-2}-\frac{\rho_{i,j,A}^{2}}{n_{A}-2}-\frac{\rho_{i,j,B}^{2}}{n_{B}-2}
 \end{eqnarray*}
@@ -3178,7 +3088,7 @@ LGRC
 \begin_inset Text
 
 \begin_layout Plain Layout
-LTCOPD
+LTCDNM
 \end_layout
 
 \end_inset
@@ -9377,7 +9287,7 @@ LGRC
 \begin_inset Text
 
 \begin_layout Plain Layout
-LTCOPD
+LTCDNM
 \end_layout
 
 \end_inset
@@ -13649,7 +13559,7 @@ cite{ritchie2015limma}
 .
  Notably, a substantial number of differentially involved transcription
  factors do not exhibit gene expression differentiation, highlighting the
- ability of MONSTER to identify key features distinguising phenotypes which
+ ability of MONSTER to identify key features distinguishing phenotypes which
  are not detectable via gene expression analysis.
 \end_layout
 

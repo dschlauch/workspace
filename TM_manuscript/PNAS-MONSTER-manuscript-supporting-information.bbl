@@ -1,0 +1,257 @@
+\begin{thebibliography}{10}
+
+\bibitem{hill2012bayesian}
+Hill SM et~al. (2012) Bayesian inference of signaling network topology in a
+  cancer cell line.
+\newblock {\em Bioinformatics} 28(21):2804--2810.
+
+\bibitem{glass2014sexually}
+Glass K et~al. (2014) Sexually-dimorphic targeting of functionally-related
+  genes in copd.
+\newblock {\em BMC systems biology} 8(1):118.
+
+\bibitem{glass2015network}
+Glass K, Quackenbush J, Spentzos D, Haibe-Kains B, Yuan GC (2015) A network
+  model for angiogenesis in ovarian cancer.
+\newblock {\em BMC bioinformatics} 16(1):115.
+
+\bibitem{eduati2012integrating}
+Eduati F, De~Las~Rivas J, Di~Camillo B, Toffolo G, Saez-Rodriguez J (2012)
+  Integrating literature-constrained and data-driven inference of signalling
+  networks.
+\newblock {\em Bioinformatics} 28(18):2311--2317.
+
+\bibitem{chen2009input}
+Chen WW et~al. (2009) Input--output behavior of erbb signaling pathways as
+  revealed by a mass action model trained against dynamic data.
+\newblock {\em Molecular systems biology} 5(1).
+
+\bibitem{molinelli2013perturbation}
+Molinelli EJ et~al. (2013) Perturbation biology: inferring signaling networks
+  in cellular systems.
+\newblock {\em PLoS Comput Biol} 9(12):e1003290.
+
+\bibitem{saez2011comparing}
+Saez-Rodriguez J et~al. (2011) Comparing signaling networks between normal and
+  transformed hepatocytes using discrete logical models.
+\newblock {\em Cancer research} 71(16):5400--5411.
+
+\bibitem{glass2013passing}
+Glass K, Huttenhower C, Quackenbush J, Yuan GC (2013) Passing messages between
+  biological networks to refine predicted interactions.
+\newblock {\em PloS one} 8(5):e64832.
+
+\bibitem{singh2014altered}
+Singh D et~al. (2014) Altered gene expression in blood and sputum in copd
+  frequent exacerbators in the eclipse cohort.
+\newblock {\em PloS one} 9(9):e107381.
+
+\bibitem{vestbo2008evaluation}
+Vestbo J et~al. (2008) Evaluation of copd longitudinally to identify predictive
+  surrogate end-points (eclipse).
+\newblock {\em European Respiratory Journal} 31(4):869--873.
+
+\bibitem{regan2011genetic}
+Regan EA et~al. (2011) Genetic epidemiology of copd (copdgene) study design.
+\newblock {\em COPD: Journal of Chronic Obstructive Pulmonary Disease}
+  7(1):32--43.
+
+\bibitem{bahr2013peripheral}
+Bahr TM et~al. (2013) Peripheral blood mononuclear cell gene expression in
+  chronic obstructive pulmonary disease.
+\newblock {\em American journal of respiratory cell and molecular biology}
+  49(2):316--323.
+
+\bibitem{pillai2009genome}
+Pillai SG et~al. (2009) A genome-wide association study in chronic obstructive
+  pulmonary disease (copd): identification of two major susceptibility loci.
+\newblock {\em PLoS Genet} 5(3):e1000421.
+
+\bibitem{lgrc}
+(year?) Lung genomics research consortium (lgrc).
+\newblock Accessed: 2016-02-02.
+
+\bibitem{qiu2015network}
+Qiu W et~al. (2015) Network analysis of gene expression in severe copd lung
+  tissue samples in {\em A30. BIG DATA: HARVESTING FRUITS FROM COPD AND LUNG
+  CANCER}.
+\newblock (Am Thoracic Soc), pp. A1253--A1253.
+
+\bibitem{margolin2006aracne}
+Margolin AA et~al. (2006) Aracne: an algorithm for the reconstruction of gene
+  regulatory networks in a mammalian cellular context.
+\newblock {\em BMC bioinformatics} 7(Suppl 1):S7.
+
+\bibitem{faith2007large}
+Faith JJ et~al. (2007) Large-scale mapping and validation of escherichia coli
+  transcriptional regulation from a compendium of expression profiles.
+\newblock {\em PLoS Biol} 5(1):e8.
+
+\bibitem{zhang2005general}
+Zhang B, Horvath S (2005) A general framework for weighted gene co-expression
+  network analysis.
+\newblock {\em Statistical applications in genetics and molecular biology}
+  4(1).
+
+\bibitem{danielian2007e2f4}
+Danielian PS et~al. (2007) E2f4 is required for normal development of the
+  airway epithelium.
+\newblock {\em Developmental biology} 305(2):564--576.
+
+\bibitem{boucherat2016bridging}
+Boucherat O, Morissette M, Provencher S, Bonnet S, F M (2016) Bridging lung
+  development with chronic obstructive pulmonary disease. relevance of
+  developmental pathways in chronic obstructive pulmonary disease pathogenesis.
+\newblock {\em American Journal of Respiratory and Critical Care Medicine}
+  193(4):362--75.
+
+\bibitem{zhou2012identification}
+Zhou X et~al. (2012) Identification of a chronic obstructive pulmonary disease
+  genetic determinant that regulates hhip.
+\newblock {\em Human molecular genetics} 21(6):1325--1335.
+
+\bibitem{rotheneder1999transcription}
+Rotheneder H, Geymayer S, Haidweger E (1999) Transcription factors of the sp1
+  family: interaction with e2f and regulation of the murine thymidine kinase
+  promoter.
+\newblock {\em Journal of molecular biology} 293(5):1005--1015.
+
+\bibitem{karlseder1996interaction}
+Karlseder J, Rotheneder H, Wintersberger E (1996) Interaction of sp1 with the
+  growth-and cell cycle-regulated transcription factor e2f.
+\newblock {\em Molecular and cellular biology} 16(4):1659--1667.
+
+\bibitem{chen2008egr}
+Chen ZH et~al. (2008) Egr-1 regulates autophagy in cigarette smoke-induced
+  chronic obstructive pulmonary disease.
+\newblock {\em PloS one} 3(10):e3316.
+
+\bibitem{cloonan2016mitochondrial}
+Cloonan SM et~al. (2016) Mitochondrial iron chelation ameliorates cigarette
+  smoke-induced bronchitis and emphysema in mice.
+\newblock {\em Nature medicine}.
+
+\bibitem{gopalakrishnan1995structure}
+Gopalakrishnan L, Scarpulla RC (1995) Structure, expression, and chromosomal
+  assignment of the human gene encoding nuclear respiratory factor 1.
+\newblock {\em Journal of Biological Chemistry} 270(30):18019--18025.
+
+\bibitem{galvagni2001sp1}
+Galvagni F, Capo S, Oliviero S (2001) Sp1 and sp3 physically interact and
+  co-operate with gabp for the activation of the utrophin promoter.
+\newblock {\em Journal of molecular biology} 306(5):985--996.
+
+\bibitem{sirbu2010comparison}
+S{\^\i}rbu A, Ruskin HJ, Crane M (2010) Comparison of evolutionary algorithms
+  in gene regulatory network model inference.
+\newblock {\em BMC bioinformatics} 11(1):1.
+
+\bibitem{choksi2014switching}
+Choksi SP, Lauter G, Swoboda P, Roy S (2014) Switching on cilia:
+  transcriptional networks regulating ciliogenesis.
+\newblock {\em Development} 141(7):1427--1441.
+
+\bibitem{hessel2014intraflagellar}
+Hessel J et~al. (2014) Intraflagellar transport gene expression associated with
+  short cilia in smoking and copd.
+\newblock {\em PloS one} 9(1):e85453.
+
+\bibitem{hogg2004pathophysiology}
+Hogg JC (2004) Pathophysiology of airflow limitation in chronic obstructive
+  pulmonary disease.
+\newblock {\em The Lancet} 364(9435):709--721.
+
+\bibitem{fahy2010airway}
+Fahy JV, Dickey BF (2010) Airway mucus function and dysfunction.
+\newblock {\em New England Journal of Medicine} 363(23):2233--2247.
+
+\bibitem{irizarry2003exploration}
+Irizarry RA et~al. (2003) Exploration, normalization, and summaries of high
+  density oligonucleotide array probe level data.
+\newblock {\em Biostatistics} 4(2):249--264.
+
+\bibitem{gautier2004affy}
+Gautier L, Cope L, Bolstad BM, Irizarry RA (2004) affy-analysis of affymetrix
+  genechip data at the probe level.
+\newblock {\em Bioinformatics} 20(3):307--315.
+
+\bibitem{dai2005evolving}
+Dai M et~al. (2005) Evolving gene/transcript definitions significantly alter
+  the interpretation of genechip data.
+\newblock {\em Nucleic acids research} 33(20):e175--e175.
+
+\bibitem{mathelier2013jaspar}
+Mathelier A et~al. (2013) Jaspar 2014: an extensively expanded and updated
+  open-access database of transcription factor binding profiles.
+\newblock {\em Nucleic acids research} p. gkt997.
+
+\bibitem{pinello2014analysis}
+Pinello L, Xu J, Orkin SH, Yuan GC (2014) Analysis of chromatin-state
+  plasticity identifies cell-type--specific regulators of h3k27me3 patterns.
+\newblock {\em Proceedings of the National Academy of Sciences}
+  111(3):E344--E353.
+
+\bibitem{heinz2010simple}
+Heinz S et~al. (2010) Simple combinations of lineage-determining transcription
+  factors prime cis-regulatory elements required for macrophage and b cell
+  identities.
+\newblock {\em Molecular cell} 38(4):576--589.
+
+\bibitem{olsen2014inference}
+Olsen C et~al. (2014) Inference and validation of predictive gene networks from
+  biomedical literature and gene expression data.
+\newblock {\em Genomics} 103(5):329--336.
+
+\bibitem{frey2007clustering}
+Frey BJ, Dueck D (2007) Clustering by passing messages between data points.
+\newblock {\em science} 315(5814):972--976.
+
+\bibitem{lao2015haploinsufficiency}
+Lao T et~al. (2015) Haploinsufficiency of hedgehog interacting protein causes
+  increased emphysema induced by cigarette smoke through network rewiring.
+\newblock {\em Genome medicine} 7(1):1.
+
+\bibitem{harbison2004transcriptional}
+Harbison CT et~al. (2004) Transcriptional regulatory code of a eukaryotic
+  genome.
+\newblock {\em Nature} 431(7004):99--104.
+
+\bibitem{marbach2012wisdom}
+Marbach D et~al. (2012) Wisdom of crowds for robust gene network inference.
+\newblock {\em Nature methods} 9(8):796--804.
+
+\bibitem{tibshirani1996regression}
+Tibshirani R (1996) Regression shrinkage and selection via the lasso.
+\newblock {\em Journal of the Royal Statistical Society. Series B
+  (Methodological)} pp. 267--288.
+
+\bibitem{Langfelder2008WGCNA}
+Langfelder P, Horvath S (2008) Wgcna: an r package for weighted correlation
+  network analysis.
+\newblock {\em BMC Bioinformatics} (1):559.
+
+\bibitem{Langfelder2008FastR}
+Langfelder P, Horvath S (2012) Fast {R} functions for robust correlations and
+  hierarchical clustering.
+\newblock {\em Journal of Statistical Software} 46(11):1--17.
+
+\bibitem{ravasz2002hierarchical}
+Ravasz E, Somera AL, Mongru DA, Oltvai ZN, Barab{\'a}si AL (2002) Hierarchical
+  organization of modularity in metabolic networks.
+\newblock {\em science} 297(5586):1551--1555.
+
+\bibitem{levine2003transcription}
+Levine M, Tjian R (2003) Transcription regulation and animal diversity.
+\newblock {\em Nature} 424(6945):147--151.
+
+\bibitem{ravasi2010atlas}
+Ravasi T et~al. (2010) An atlas of combinatorial transcriptional regulation in
+  mouse and man.
+\newblock {\em Cell} 140(5):744--752.
+
+\bibitem{ritchie2015limma}
+Ritchie ME et~al. (2015) limma powers differential expression analyses for
+  rna-sequencing and microarray studies.
+\newblock {\em Nucleic acids research} p. gkv007.
+
+\end{thebibliography}

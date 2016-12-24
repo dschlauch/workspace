@@ -1,4 +1,4 @@
-%% LyX 2.2.0 created this file.  For more info, see http://www.lyx.org/.
+%% LyX 2.2.1 created this file.  For more info, see http://www.lyx.org/.
 %% Do not edit unless you really know what you are doing.
 \documentclass[english]{article}
 \usepackage[T1]{fontenc}
@@ -30,9 +30,6 @@
 \affil[3]{Department of Medicine, Harvard Medical School, Boston, MA 02115}
 \affil[4]{Pulmonary and Critical Care Division, Brigham and Women's Hospital and Harvard Medical School, Boston, USA}
 
-\@ifundefined{showcaptionsetup}{}{%
- \PassOptionsToPackage{caption=false}{subfig}}
-\usepackage{subfig}
 \makeatother
 
 \usepackage{babel}
@@ -85,7 +82,7 @@ Next, for each study, we identified transcription factors for which
 we had gene expression data, removing those regulatory edges that
 lacked corresponding expression values. Consequently, our motif prior
 consisted of 164, 164, 148, and 145 transcription factors in ECLIPSE,
-COPDGene, LGRC, and LTCOPD, respectively. MONSTER was run separately
+COPDGene, LGRC, and LTCDNM, respectively. MONSTER was run separately
 on each of these studies. Comparisons of differential transcription
 factor involvement across studies were performed on the 143 transcription
 factors which were common to all four studies (Figure 3).
@@ -96,7 +93,7 @@ results in COPD}}
 We evaluated the standard tools for COPD case-control studies at the
 network level by observing the agreement in differential network inference
 (NI) across studies. We utilizing the four studies - ECLIPSE, COPDGene,
-LGRC, and LTCOPD. Our goal was to determine the ability of commonly
+LGRC, and LTCDNM. Our goal was to determine the ability of commonly
 used NI methods to find reproducible results across studies. We tested
 the methods Algorithm for the Reconstruction of Gene Regulatory Networks
 (ARACNE), Context Likelihood of Relatedness (CLR), and Weighted Gene
@@ -130,7 +127,7 @@ using existing methods for NI do not generate reproducible results.
 
 In 2013, we described PANDA~\cite{glass2013passing}, a method~\cite{olsen2014inference}
 for estimating gene regulatory networks that uses \textquotedblleft message
-passing\textquotedblright  ~\cite{frey2007clustering} to integrate
+passing\textquotedblright ï¿½~\cite{frey2007clustering} to integrate
 multiple types of genomic data. PANDA begins with a prior regulatory
 network based on mapping transcription factor motifs to a reference
 genome and integrates other sources of data, such as protein-protein
@@ -486,8 +483,8 @@ the relative change in relationship between the TFs.
 \multicolumn{4}{c}{AUC-ROC for edge-weight differences vs Transition Matrix using various
 NI methods}\tabularnewline
 \hline 
-\multirow{2}{*}{\textbf{NI Method}} & \multirow{2}{*}{\textbf{Network AUC}} & \textbf{edge-weight } & \textbf{MONSTER}\tabularnewline
- &  & \textbf{differences} & \tabularnewline
+\multirow{2}{*}{\textbf{NI Method}} & \multirow{2}{*}{\textbf{Network AUC}} & \multirow{2}{*}{\textbf{edge-weight differences}} & \multirow{2}{*}{\textbf{MONSTER}}\tabularnewline
+ &  &  & \tabularnewline
 \hline 
 Pearson & .704 & .510 (p=.72) & .802 (p<.0001)\tabularnewline
 \hline 
@@ -564,17 +561,22 @@ Notably, MONSTER was able to extract a small but significant protein
 interaction signal from highly obfuscated data.
 
 \begin{figure}
-\subfloat[\textbf{ECLIPSE}]{\textbf{\includegraphics[width=0.49\columnwidth]{figures/figure2ECLIPSE}}}
+\includegraphics{figures/Supplement_figure4}
 
-\subfloat[\textbf{COPDGENE}]{\textbf{\includegraphics[width=0.49\columnwidth]{figures/figure2COPDGene}}}
-\begin{raggedright}
-\textbf{}\subfloat[\textbf{LGRC}]{\textbf{\includegraphics[width=0.49\columnwidth]{figures/figure2LGRC}}}
-\par\end{raggedright}
-\begin{raggedright}
-\textbf{}\subfloat[\textbf{LTCOPD}]{\textbf{\includegraphics[width=0.49\columnwidth]{figures/figure2LTCOPD}}}
-\par\end{raggedright}
-\caption{\textbf{MONSTER analysis results for 4 studies (ECLIPSE reproduced
-in main text) }See Figure 2 in main text for plot descriptions.}
+\caption{\textbf{MONSTER analysis results for 3 studies (ECLIPSE study is found
+in Fig. 2) A }Heatmap depicting the transition matrix calculated from
+smoker controls to COPD cases by applying MONSTER to three independent
+COPD studies. For the purposes of visualization, the magnitude of
+the diagonal is set to zero. \textbf{B} A network visualization of
+the strongest 100 transitions identified based on the transition matrix
+shown in \textbf{A}. Arrows indicate a change in edges from a transcription
+factor in the Smoker-Control network to resemble those of a transcription
+factor in the COPD network. Edges are sized according to the magnitude
+of the transition and nodes (TFs) are sized by the dTFI for that TF.
+The gain of targeting features is indicated by the color blue while
+the loss of features is indicated by red. \textbf{C} The dTFI score
+from MONSTER (red) and the background null distribution of dTFI values
+(blue) as estimated by 1000 random sample permutations of the data.}
 \end{figure}
 
 \begin{figure}
@@ -685,7 +687,7 @@ factors
 
 \begin{tabular}{|c||c|c|c||c|c|c||c|c|c||c|c|c|}
 \cline{2-13} 
-\multicolumn{1}{c|}{} & \multicolumn{3}{c||}{ECLIPSE} & \multicolumn{3}{c||}{COPDGene} & \multicolumn{3}{c||}{LGRC} & \multicolumn{3}{c|}{LTCOPD}\tabularnewline
+\multicolumn{1}{c|}{} & \multicolumn{3}{c||}{ECLIPSE} & \multicolumn{3}{c||}{COPDGene} & \multicolumn{3}{c||}{LGRC} & \multicolumn{3}{c|}{LTCDNM}\tabularnewline
 \hline 
 TF & dTFI & rank & FDR & dTFI & rank & FDR & dTFI & rank & FDR & dTFI & rank & FDR\tabularnewline
 \hline 
@@ -741,7 +743,7 @@ transcription factors.
 
 \begin{tabular}{|c||c|c||c|c||c|c||c|c|}
 \cline{2-9} 
-\multicolumn{1}{c|}{} & \multicolumn{2}{c||}{ECLIPSE} & \multicolumn{2}{c||}{COPDGene} & \multicolumn{2}{c||}{LGRC} & \multicolumn{2}{c|}{LTCOPD}\tabularnewline
+\multicolumn{1}{c|}{} & \multicolumn{2}{c||}{ECLIPSE} & \multicolumn{2}{c||}{COPDGene} & \multicolumn{2}{c||}{LGRC} & \multicolumn{2}{c|}{LTCDNM}\tabularnewline
 \hline 
 TF & dTFI rank & LIMMA p & dTFI rank & LIMMA p & dTFI rank & LIMMA p & dTFI rank & LIMMA p\tabularnewline
 \hline 

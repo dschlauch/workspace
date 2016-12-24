@@ -3,6 +3,7 @@
 % Note that the use of elements such as single-column equations
 % may affect the guide line number alignment. 
 
+\usepackage{multirow}
 \templatetype{pnasresearcharticle} % Choose template 
 % {pnasresearcharticle} = Template for a two-column research article
 % {pnasmathematics} = Template for a one-column mathematics article
@@ -27,7 +28,7 @@ Network Models}
 \leadauthor{Schlauch} 
 
 % Please add here a significance statement to explain the relevance of your work
-\significancestatement{Authors must submit a 120-word maximum statement about the significance of their research paper written at a level understandable to an undergraduate educated scientist outside their field of speciality. The primary goal of the Significance Statement is to explain the relevance of the work in broad context to a broad readership. The Significance Statement appears in the paper itself and is required for all research papers.}
+\significancestatement{Understanding how transcription factors - proteins which bind to DNA - regulate gene expression pattern is a goal of gene regulatory network inference.  There are many existing methods for inferring these types of networks, but biological networks are extraordinarily complex and all methods inevitably leave a great deal of uncertainty in the individual edges they predict.  This makes it challenging to make sense of these graphs, particularly when the goal is to compare two inferred networks in hopes of identifying key mechanistic differences.  The method we present here, MONSTER, is a novel approach towards defining the changes in networks via key transcription factors which drive the change in a consistent manner. We apply our method to a set of four independent studies of Chronic Obstructive Pulmonary Disease and demonstrate strong agreement in implicated transcription factor drivers of disease.}
 
 % Please include corresponding author, author contribution and author declaration information
 \authorcontributions{ DS, KG, and JQ designed research; DS performed method development and application; DS, KG, CPH, EKS and JQ interpreted results;  DS, KG, CPH, EKS and JQ wrote the paper.}
@@ -35,7 +36,7 @@ Network Models}
 \correspondingauthor{\textsuperscript{2}To whom correspondence should be addressed. E-mail: author.two\@email.com}
 
 % Keywords are not mandatory, but authors are strongly encouraged to provide them. If provided, please include two to five keywords, separated by the pipe symbol, e.g:
-\keywords{Keyword 1 $|$ Keyword 2 $|$ Keyword 3 $|$ ...} 
+\keywords{Gene Regulatory Network Inference $|$ Chronic Obstructive Pulmonary Disease $|$ Genomics} 
 
 \begin{abstract}
 Specific cellular states are often associated with distinct gene expression
@@ -526,50 +527,6 @@ expression assays with regulatory data. Given the general nature of
 the method, MONSTER has the ability to shed light on possible biological
 mechanisms for cell state change that might otherwise have been undetected
 in the gene expression data across a wide range of applications.
-
-\subsection*{Supporting Information (SI)}
-
-The main text of the paper must stand on its own without the SI. Refer to SI in the manuscript at an appropriate point in the text. Number supporting figures and tables starting with S1, S2, etc. Authors are limited to no more than 10 SI files, not including movie files. Authors who place detailed materials and methods in SI must provide sufficient detail in the main text methods to enable a reader to follow the logic of the procedures and results and also must reference the online methods. If a paper is fundamentally a study of a new method or technique, then the methods must be described completely in the main text. Because PNAS edits SI and composes it into a single PDF, authors must provide the following file formats only.
-
-\subsubsection*{SI Text}
-
-Supply Word, RTF, or LaTeX files (LaTeX files must be accompanied by a PDF with the same file name for visual reference).
-
-\subsubsection*{SI Figures}
-
-Provide a brief legend for each supporting figure after the supporting text. Provide figure images in TIFF, EPS, high-resolution PDF, JPEG, or GIF format; figures may not be embedded in manuscript text. When saving TIFF files, use only LZW compression; do not use JPEG compression. Do not save figure numbers, legends, or author names as part of the image. Composite figures must be pre-assembled.
-
-\subsubsection*{3D Figures}
-
-Supply a composable U3D or PRC file so that it may be edited and composed. Authors may submit a PDF file but please note it will be published in raw format and will not be edited or composed.
-
-\subsubsection*{SI Tables}
-
-Supply Word, RTF, or LaTeX files (LaTeX files must be accompanied by a PDF with the same file name for visual reference); include only one table per file. Do not use tabs or spaces to separate columns in Word tables.
-
-\subsubsection*{SI Datasets} 
-
-Supply Excel (.xls), RTF, or PDF files. This file type will be published in raw format and will not be edited or composed. 
-
-\subsubsection*{SI Movies}
-
-Supply Audio Video Interleave (avi), Quicktime (mov), Windows Media (wmv), animated GIF (gif), or MPEG files and submit a brief legend for each movie in a Word or RTF file. All movies should be submitted at the desired reproduction size and length. Movies should be no more than 10 MB in size. 
-
-\subsubsection*{Still images}
-
-Authors must provide a still image from each video file. Supply TIFF, EPS, high-resolution PDF, JPEG, or GIF files. 
-
-\subsubsection*{Appendices}
-
-PNAS prefers that authors submit individual source files to ensure readability. If this is not possible, supply a single PDF file that contains all of the SI associated with the paper. This file type will be published in raw format and will not be edited or composed.
-
-\matmethods{Please describe your materials and methods here. This can be more than one paragraph, and may contain subsections and equations as required. Authors should include a statement in the methods section describing how readers will be able to access the data in the paper.  
-
-\subsection*{Subsection for Method}
-Example text for subsection.
-}
-
-\showmatmethods % Display the Materials and Methods section
 
 \acknow{The project described was supported by Award Number R01 HL089897 and
 Award Number R01 HL089856 from the National Heart, Lung, and Blood

@@ -1,0 +1,882 @@
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.3.28)  6 DEC 2016 15:14
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**crypticness_manuscript_draft5.tex
+(./crypticness_manuscript_draft5.tex
+LaTeX2e <2011/06/27>
+Babel <3.9h> and hyphenation patterns for 4 languages loaded.
+(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/size10.clo
+File: size10.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/t1enc.def
+File: t1enc.def 2005/09/27 v1.99g Standard LaTeX file
+LaTeX Font Info:    Redeclaring font encoding T1 on input line 43.
+))
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
+Package: inputenc 2008/03/30 v1.1d Input encoding file
+\inpenc@prehook=\toks14
+\inpenc@posthook=\toks15
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/latin9.def
+File: latin9.def 2008/03/30 v1.1d Input encoding file
+))
+(/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
+Package: geometry 2010/09/12 v5.6 Page Geometry
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks16
+)
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in PDF mode is detected.
+)
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifvtex.sty
+Package: ifvtex 2010/03/01 v1.5 Detect VTeX and its facilities (HO)
+Package ifvtex Info: VTeX not detected.
+)
+(/usr/share/texlive/texmf-dist/tex/generic/ifxetex/ifxetex.sty
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+\Gm@cnth=\count87
+\Gm@cntv=\count88
+\c@Gm@tempcnt=\count89
+\Gm@bindingoffset=\dimen103
+\Gm@wd@mp=\dimen104
+\Gm@odd@mp=\dimen105
+\Gm@even@mp=\dimen106
+\Gm@layoutwidth=\dimen107
+\Gm@layoutheight=\dimen108
+\Gm@layouthoffset=\dimen109
+\Gm@layoutvoffset=\dimen110
+\Gm@dimlist=\toks17
+)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/array.sty
+Package: array 2008/09/09 v2.4c Tabular extension package (FMi)
+\col@sep=\dimen111
+\extrarowheight=\dimen112
+\NC@list=\toks18
+\extratabsurround=\skip43
+\backup@length=\skip44
+)
+(/usr/share/texlive/texmf-dist/tex/latex/multirow/multirow.sty
+\bigstrutjot=\dimen113
+)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2013/01/14 v2.14 AMS math features
+\@mathmargin=\skip45
+
+For additional information on amsmath, use the `?' option.
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2000/06/29 v2.01
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0
+\@emptytoks=\toks19
+\ex@=\dimen114
+))
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d
+\pmbraise@=\dimen115
+)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 1999/12/14 v2.01 operator names
+)
+\inf@bad=\count90
+LaTeX Info: Redefining \frac on input line 210.
+\uproot@=\count91
+\leftroot@=\count92
+LaTeX Info: Redefining \overline on input line 306.
+\classnum@=\count93
+\DOTSCASE@=\count94
+LaTeX Info: Redefining \ldots on input line 378.
+LaTeX Info: Redefining \dots on input line 381.
+LaTeX Info: Redefining \cdots on input line 466.
+\Mathstrutbox@=\box26
+\strutbox@=\box27
+\big@size=\dimen116
+LaTeX Font Info:    Redeclaring font encoding OML on input line 566.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
+\macc@depth=\count95
+\c@MaxMatrixCols=\count96
+\dotsspace@=\muskip10
+\c@parentequation=\count97
+\dspbrk@lvl=\count98
+\tag@help=\toks20
+\row@=\count99
+\column@=\count100
+\maxfields@=\count101
+\andhelp@=\toks21
+\eqnshift@=\dimen117
+\alignsep@=\dimen118
+\tagshift@=\dimen119
+\tagwidth@=\dimen120
+\totwidth@=\dimen121
+\lineht@=\dimen122
+\@envbody=\toks22
+\multlinegap=\skip46
+\multlinetaggap=\skip47
+\mathdisplay@stack=\toks23
+LaTeX Info: Redefining \[ on input line 2665.
+LaTeX Info: Redefining \] on input line 2666.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/graphics.cfg
+File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
+)
+Package graphics Info: Driver file: pdftex.def on input line 91.
+
+(/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
+File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+)
+\Gread@gobject=\count102
+))
+\Gin@req@height=\dimen123
+\Gin@req@width=\dimen124
+)
+(/usr/share/texlive/texmf-dist/tex/latex/cite/cite.sty
+LaTeX Info: Redefining \cite on input line 302.
+LaTeX Info: Redefining \nocite on input line 373.
+Package: cite 2010/09/10  v 5.3
+)
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/t1enc.def
+File: t1enc.def 2005/09/27 v1.99g Standard LaTeX file
+LaTeX Font Info:    Redeclaring font encoding T1 on input line 43.
+))
+(/usr/share/texlive/texmf-dist/tex/latex/base/authblk.sty
+Package: authblk 2001/02/27 1.3 (PWD)
+\affilsep=\skip48
+\@affilsep=\skip49
+\c@Maxaffil=\count103
+\c@authors=\count104
+\c@affil=\count105
+)
+(/usr/share/texmf/tex/latex/lm/lmodern.sty
+Package: lmodern 2009/10/30 v1.6 Latin Modern Fonts
+LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
+(Font)                  OT1/cmr/m/n --> OT1/lmr/m/n on input line 22.
+LaTeX Font Info:    Overwriting symbol font `letters' in version `normal'
+(Font)                  OML/cmm/m/it --> OML/lmm/m/it on input line 23.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `normal'
+(Font)                  OMS/cmsy/m/n --> OMS/lmsy/m/n on input line 24.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
+(Font)                  OMX/cmex/m/n --> OMX/lmex/m/n on input line 25.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
+(Font)                  OT1/cmr/bx/n --> OT1/lmr/bx/n on input line 26.
+LaTeX Font Info:    Overwriting symbol font `letters' in version `bold'
+(Font)                  OML/cmm/b/it --> OML/lmm/b/it on input line 27.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
+(Font)                  OMS/cmsy/b/n --> OMS/lmsy/b/n on input line 28.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
+(Font)                  OMX/cmex/m/n --> OMX/lmex/m/n on input line 29.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
+(Font)                  OT1/cmr/bx/n --> OT1/lmr/bx/n on input line 31.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
+(Font)                  OT1/cmss/m/n --> OT1/lmss/m/n on input line 32.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
+(Font)                  OT1/cmr/m/it --> OT1/lmr/m/it on input line 33.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
+(Font)                  OT1/cmtt/m/n --> OT1/lmtt/m/n on input line 34.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
+(Font)                  OT1/cmr/bx/n --> OT1/lmr/bx/n on input line 35.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
+(Font)                  OT1/cmss/bx/n --> OT1/lmss/bx/n on input line 36.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
+(Font)                  OT1/cmr/bx/it --> OT1/lmr/bx/it on input line 37.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
+(Font)                  OT1/cmtt/m/n --> OT1/lmtt/m/n on input line 38.
+)
+(/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty
+Package: babel 2013/12/03 3.9h The Babel package
+
+(/usr/share/texlive/texmf-dist/tex/generic/babel-english/english.ldf
+Language: english 2012/08/20 v3.3p English support from the babel system
+
+(/usr/share/texlive/texmf-dist/tex/generic/babel/babel.def
+File: babel.def 2013/12/03 3.9h Babel common definitions
+\babel@savecnt=\count106
+\U@D=\dimen125
+)
+\l@canadian = a dialect from \language\l@american 
+\l@australian = a dialect from \language\l@british 
+\l@newzealand = a dialect from \language\l@british 
+))
+(./crypticness_manuscript_draft5.aux)
+\openout1 = `crypticness_manuscript_draft5.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Try loading font information for T1+lmr on input line 35.
+ (/usr/share/texmf/tex/latex/lm/t1lmr.fd
+File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: <default>
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(92.14519pt, 430.00462pt, 92.14519pt)
+* v-part:(T,H,B)=(95.39737pt, 556.47656pt, 143.09605pt)
+* \paperwidth=614.295pt
+* \paperheight=794.96999pt
+* \textwidth=430.00462pt
+* \textheight=556.47656pt
+* \oddsidemargin=19.8752pt
+* \evensidemargin=19.8752pt
+* \topmargin=-13.87262pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=10.0pt
+* \footskip=30.0pt
+* \marginparwidth=65.0pt
+* \marginparsep=11.0pt
+* \columnsep=10.0pt
+* \skip\footins=9.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count107
+\scratchdimen=\dimen126
+\scratchbox=\box28
+\nofMPsegments=\count108
+\nofMParguments=\count109
+\everyMPshowfont=\toks24
+\MPscratchCnt=\count110
+\MPscratchDim=\dimen127
+\MPnumerator=\count111
+\makeMPintoPDFobject=\count112
+\everyMPtoPDFconversion=\toks25
+) (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifluatex.sty
+Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
+
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/grfext.sty
+Package: grfext 2010/08/19 v1.1 Manage graphics extensions (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
+Package: kvdefinekeys 2011/04/07 v1.3 Define keys (HO)
+))
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+Package: kvsetkeys 2012/04/25 v1.16 Key value parser (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+Package: etexcmds 2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+)))
+Package grfext Info: Graphics extension search list:
+(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 452.
+
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+LaTeX Font Info:    Try loading font information for OT1+lmr on input line 41.
+
+(/usr/share/texmf/tex/latex/lm/ot1lmr.fd
+File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    Try loading font information for OML+lmm on input line 41.
+
+(/usr/share/texmf/tex/latex/lm/omllmm.fd
+File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 41.
+
+
+(/usr/share/texmf/tex/latex/lm/omslmsy.fd
+File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    Try loading font information for OMX+lmex on input line 41.
+
+
+(/usr/share/texmf/tex/latex/lm/omxlmex.fd
+File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <12> on input line 41.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <8> on input line 41.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <6> on input line 41.
+ [1
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+
+LaTeX Warning: Citation `choi2009case' on page 2 undefined on input line 90.
+
+
+LaTeX Warning: Citation `purcell2007plink' on page 2 undefined on input line 90
+.
+
+
+LaTeX Warning: Citation `yang2010common' on page 2 undefined on input line 90.
+
+
+LaTeX Warning: Citation `price2006principal' on page 2 undefined on input line 
+94.
+
+
+LaTeX Warning: Citation `kang2010variance' on page 2 undefined on input line 94
+.
+
+
+LaTeX Warning: Citation `ptak2002evidence' on page 2 undefined on input line 94
+.
+
+
+LaTeX Warning: Citation `voight2005confounding' on page 2 undefined on input li
+ne 94.
+
+
+LaTeX Warning: Citation `devlin2001genomic' on page 2 undefined on input line 9
+7.
+
+
+LaTeX Warning: Citation `bacanu2002association' on page 2 undefined on input li
+ne 97.
+
+
+LaTeX Warning: Citation `price2006principal' on page 2 undefined on input line 
+110.
+
+
+LaTeX Warning: Citation `price2010new' on page 2 undefined on input line 110.
+
+
+LaTeX Warning: Citation `listgarten2012improved' on page 2 undefined on input l
+ine 113.
+
+
+LaTeX Warning: Citation `lippert2011fast' on page 2 undefined on input line 113
+.
+
+
+LaTeX Warning: Citation `zhang2010mixed' on page 2 undefined on input line 113.
+
+
+
+LaTeX Warning: Citation `purcell2007plink' on page 2 undefined on input line 13
+0.
+
+
+LaTeX Warning: Citation `yang2010common' on page 2 undefined on input line 130.
+
+
+
+LaTeX Warning: Citation `kang2010variance' on page 2 undefined on input line 13
+0.
+
+
+LaTeX Warning: Citation `choi2009case' on page 2 undefined on input line 130.
+
+
+LaTeX Warning: Citation `manichaikul2010robust' on page 2 undefined on input li
+ne 132.
+
+
+LaTeX Warning: Citation `thornton2012estimating' on page 2 undefined on input l
+ine 134.
+
+
+LaTeX Warning: Citation `manichaikul2010robust' on page 2 undefined on input li
+ne 134.
+
+
+LaTeX Warning: Citation `prokopenko2016utilizing' on page 2 undefined on input 
+line 147.
+
+[2]
+
+LaTeX Warning: Citation `mathieson2012differential' on page 3 undefined on inpu
+t line 165.
+
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10> on input line 175.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <7> on input line 175.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <5> on input line 175.
+
+Package amsmath Warning: Foreign command \atopwithdelims;
+(amsmath)                \frac or \genfrac should be used instead
+(amsmath)                 on input line 189.
+
+[3] [4]
+
+LaTeX Warning: Citation `vsidak1967rectangular' on page 5 undefined on input li
+ne 273.
+
+[5]
+Overfull \hbox (12.24466pt too wide) in paragraph at lines 368--368
+[]\T1/lmr/bx/n/12 Simulations demon-strate power to de-tect het-ero-gene-ity an
+d speed of method 
+ []
+
+[6] </home/dan/1000GP/plots/powerCurve.pdf, id=42, 722.7pt x 505.89pt>
+File: /home/dan/1000GP/plots/powerCurve.pdf Graphic file (type pdf)
+
+<use /home/dan/1000GP/plots/powerCurve.pdf>
+Package pdftex.def Info: /home/dan/1000GP/plots/powerCurve.pdf used on input li
+ne 406.
+(pdftex.def)             Requested size: 215.0023pt x 150.5022pt.
+ [7 </home/dan/1000GP/plots/powerCurve.pdf>]
+
+LaTeX Warning: Citation `10002012integrated' on page 8 undefined on input line 
+445.
+
+
+LaTeX Warning: Citation `10002015global' on page 8 undefined on input line 445.
+
+
+
+LaTeX Warning: Citation `1000GPcrypticppt' on page 8 undefined on input line 45
+0.
+
+
+LaTeX Warning: Citation `gazal2015high' on page 8 undefined on input line 452.
+
+
+LaTeX Warning: Citation `al2015inference' on page 8 undefined on input line 452
+.
+
+
+LaTeX Warning: Citation `fedorova2016atlas' on page 8 undefined on input line 4
+52.
+
+
+LaTeX Warning: Citation `price2008long' on page 8 undefined on input line 457.
+
+
+LaTeX Warning: Citation `gazal2015high' on page 8 undefined on input line 488.
+
+[8]
+
+LaTeX Warning: Citation `boehnke1997accurate' on page 9 undefined on input line
+ 528.
+
+
+LaTeX Warning: Citation `epstein2000improved' on page 9 undefined on input line
+ 528.
+
+
+LaTeX Warning: Citation `gazal2015high' on page 9 undefined on input line 530.
+
+<figures/PreFilter/pValueForPop.pdf, id=61, 578.16pt x 578.16pt>
+File: figures/PreFilter/pValueForPop.pdf Graphic file (type pdf)
+
+<use figures/PreFilter/pValueForPop.pdf>
+Package pdftex.def Info: figures/PreFilter/pValueForPop.pdf used on input line 
+550.
+(pdftex.def)             Requested size: 215.0023pt x 215.00095pt.
+
+<figures/PostFilter/pValueForPop.pdf, id=62, 578.16pt x 578.16pt>
+File: figures/PostFilter/pValueForPop.pdf Graphic file (type pdf)
+
+<use figures/PostFilter/pValueForPop.pdf>
+Package pdftex.def Info: figures/PostFilter/pValueForPop.pdf used on input line
+ 550.
+(pdftex.def)             Requested size: 215.0023pt x 215.00095pt.
+
+Overfull \hbox (16.87447pt too wide) in paragraph at lines 550--555
+[]\T1/lmr/bx/n/10 A[]B[] 
+ []
+
+<figures/ITU_with_HG03998.pdf, id=63, 505.89pt x 505.89pt>
+File: figures/ITU_with_HG03998.pdf Graphic file (type pdf)
+
+<use figures/ITU_with_HG03998.pdf>
+Package pdftex.def Info: figures/ITU_with_HG03998.pdf used on input line 560.
+(pdftex.def)             Requested size: 171.99922pt x 172.00032pt.
+
+<figures/PreFilter/ACBdiploid.pdf, id=64, 289.08pt x 289.08pt>
+File: figures/PreFilter/ACBdiploid.pdf Graphic file (type pdf)
+
+<use figures/PreFilter/ACBdiploid.pdf>
+Package pdftex.def Info: figures/PreFilter/ACBdiploid.pdf used on input line 57
+4.
+(pdftex.def)             Requested size: 73.71239pt x 73.7122pt.
+
+<figures/PreFilter/ASWdiploid.pdf, id=65, 289.08pt x 289.08pt>
+File: figures/PreFilter/ASWdiploid.pdf Graphic file (type pdf)
+
+<use figures/PreFilter/ASWdiploid.pdf>
+Package pdftex.def Info: figures/PreFilter/ASWdiploid.pdf used on input line 57
+4.
+(pdftex.def)             Requested size: 73.71239pt x 73.7122pt.
+
+<figures/PreFilter/BEBdiploid.pdf, id=66, 289.08pt x 289.08pt>
+File: figures/PreFilter/BEBdiploid.pdf Graphic file (type pdf)
+
+<use figures/PreFilter/BEBdiploid.pdf>
+Package pdftex.def Info: figures/PreFilter/BEBdiploid.pdf used on input line 57
+4.
+(pdftex.def)             Requested size: 73.71239pt x 73.7122pt.
+
+<figures/PreFilter/CDXdiploid.pdf, id=67, 289.08pt x 289.08pt>
+File: figures/PreFilter/CDXdiploid.pdf Graphic file (type pdf)
+
+<use figures/PreFilter/CDXdiploid.pdf>
+Package pdftex.def Info: figures/PreFilter/CDXdiploid.pdf used on input line 57
+4.
+(pdftex.def)             Requested size: 73.71239pt x 73.7122pt.
+
+<figures/PreFilter/CEUdiploid.pdf, id=68, 289.08pt x 289.08pt>
+File: figures/PreFilter/CEUdiploid.pdf Graphic file (type pdf)
+
+<use figures/PreFilter/CEUdiploid.pdf>
+Package pdftex.def Info: figures/PreFilter/CEUdiploid.pdf used on input line 57
+4.
+(pdftex.def)             Requested size: 73.71239pt x 73.7122pt.
+
+<figures/PreFilter/CHBdiploid.pdf, id=69, 289.08pt x 289.08pt>
+File: figures/PreFilter/CHBdiploid.pdf Graphic file (type pdf)
+
+<use figures/PreFilter/CHBdiploid.pdf>
+Package pdftex.def Info: figures/PreFilter/CHBdiploid.pdf used on input line 57
+4.
+(pdftex.def)             Requested size: 73.71239pt x 73.7122pt.
+
+Overfull \hbox (12.2697pt too wide) in paragraph at lines 574--575
+[][][][][][][] 
+ []
+
+<figures/PreFilter/CHSdiploid.pdf, id=70, 289.08pt x 289.08pt>
+File: figures/PreFilter/CHSdiploid.pdf Graphic file (type pdf)
+
+<use figures/PreFilter/CHSdiploid.pdf>
+Package pdftex.def Info: figures/PreFilter/CHSdiploid.pdf used on input line 57
+6.
+(pdftex.def)             Requested size: 73.71239pt x 73.7122pt.
+
+<figures/PreFilter/CLMdiploid.pdf, id=71, 289.08pt x 289.08pt>
+File: figures/PreFilter/CLMdiploid.pdf Graphic file (type pdf)
+
+<use figures/PreFilter/CLMdiploid.pdf>
+Package pdftex.def Info: figures/PreFilter/CLMdiploid.pdf used on input line 57
+6.
+(pdftex.def)             Requested size: 73.71239pt x 73.7122pt.
+
+<figures/PreFilter/ESNdiploid.pdf, id=72, 289.08pt x 289.08pt>
+File: figures/PreFilter/ESNdiploid.pdf Graphic file (type pdf)
+
+<use figures/PreFilter/ESNdiploid.pdf>
+Package pdftex.def Info: figures/PreFilter/ESNdiploid.pdf used on input line 57
+6.
+(pdftex.def)             Requested size: 73.71239pt x 73.7122pt.
+
+<figures/PreFilter/FINdiploid.pdf, id=73, 289.08pt x 289.08pt>
+File: figures/PreFilter/FINdiploid.pdf Graphic file (type pdf)
+
+<use figures/PreFilter/FINdiploid.pdf>
+Package pdftex.def Info: figures/PreFilter/FINdiploid.pdf used on input line 57
+6.
+(pdftex.def)             Requested size: 73.71239pt x 73.7122pt.
+
+<figures/PreFilter/GBRdiploid.pdf, id=74, 289.08pt x 289.08pt>
+File: figures/PreFilter/GBRdiploid.pdf Graphic file (type pdf)
+
+<use figures/PreFilter/GBRdiploid.pdf>
+Package pdftex.def Info: figures/PreFilter/GBRdiploid.pdf used on input line 57
+6.
+(pdftex.def)             Requested size: 73.71239pt x 73.7122pt.
+
+<figures/PreFilter/GIHdiploid.pdf, id=75, 289.08pt x 289.08pt>
+File: figures/PreFilter/GIHdiploid.pdf Graphic file (type pdf)
+
+<use figures/PreFilter/GIHdiploid.pdf>
+Package pdftex.def Info: figures/PreFilter/GIHdiploid.pdf used on input line 57
+6.
+(pdftex.def)             Requested size: 73.71239pt x 73.7122pt.
+
+Overfull \hbox (12.2697pt too wide) in paragraph at lines 576--577
+[][][][][][][] 
+ []
+
+<figures/PreFilter/GWDdiploid.pdf, id=76, 289.08pt x 289.08pt>
+File: figures/PreFilter/GWDdiploid.pdf Graphic file (type pdf)
+
+<use figures/PreFilter/GWDdiploid.pdf>
+Package pdftex.def Info: figures/PreFilter/GWDdiploid.pdf used on input line 57
+8.
+(pdftex.def)             Requested size: 73.71239pt x 73.7122pt.
+
+<figures/PreFilter/IBSdiploid.pdf, id=77, 289.08pt x 289.08pt>
+File: figures/PreFilter/IBSdiploid.pdf Graphic file (type pdf)
+
+<use figures/PreFilter/IBSdiploid.pdf>
+Package pdftex.def Info: figures/PreFilter/IBSdiploid.pdf used on input line 57
+8.
+(pdftex.def)             Requested size: 73.71239pt x 73.7122pt.
+
+<figures/PreFilter/ITUdiploid.pdf, id=78, 289.08pt x 289.08pt>
+File: figures/PreFilter/ITUdiploid.pdf Graphic file (type pdf)
+
+<use figures/PreFilter/ITUdiploid.pdf>
+Package pdftex.def Info: figures/PreFilter/ITUdiploid.pdf used on input line 57
+8.
+(pdftex.def)             Requested size: 73.71239pt x 73.7122pt.
+
+<figures/PreFilter/JPTdiploid.pdf, id=79, 289.08pt x 289.08pt>
+File: figures/PreFilter/JPTdiploid.pdf Graphic file (type pdf)
+
+<use figures/PreFilter/JPTdiploid.pdf>
+Package pdftex.def Info: figures/PreFilter/JPTdiploid.pdf used on input line 57
+8.
+(pdftex.def)             Requested size: 73.71239pt x 73.7122pt.
+
+<figures/PreFilter/KHVdiploid.pdf, id=80, 289.08pt x 289.08pt>
+File: figures/PreFilter/KHVdiploid.pdf Graphic file (type pdf)
+
+<use figures/PreFilter/KHVdiploid.pdf>
+Package pdftex.def Info: figures/PreFilter/KHVdiploid.pdf used on input line 57
+8.
+(pdftex.def)             Requested size: 73.71239pt x 73.7122pt.
+
+<figures/PreFilter/LWKdiploid.pdf, id=81, 289.08pt x 289.08pt>
+File: figures/PreFilter/LWKdiploid.pdf Graphic file (type pdf)
+
+<use figures/PreFilter/LWKdiploid.pdf>
+Package pdftex.def Info: figures/PreFilter/LWKdiploid.pdf used on input line 57
+8.
+(pdftex.def)             Requested size: 73.71239pt x 73.7122pt.
+
+Overfull \hbox (12.2697pt too wide) in paragraph at lines 578--579
+[][][][][][][] 
+ []
+
+<figures/PreFilter/MSLdiploid.pdf, id=82, 289.08pt x 289.08pt>
+File: figures/PreFilter/MSLdiploid.pdf Graphic file (type pdf)
+
+<use figures/PreFilter/MSLdiploid.pdf>
+Package pdftex.def Info: figures/PreFilter/MSLdiploid.pdf used on input line 58
+0.
+(pdftex.def)             Requested size: 73.71239pt x 73.7122pt.
+
+<figures/PreFilter/MXLdiploid.pdf, id=83, 289.08pt x 289.08pt>
+File: figures/PreFilter/MXLdiploid.pdf Graphic file (type pdf)
+
+<use figures/PreFilter/MXLdiploid.pdf>
+Package pdftex.def Info: figures/PreFilter/MXLdiploid.pdf used on input line 58
+0.
+(pdftex.def)             Requested size: 73.71239pt x 73.7122pt.
+
+<figures/PreFilter/PELdiploid.pdf, id=84, 289.08pt x 289.08pt>
+File: figures/PreFilter/PELdiploid.pdf Graphic file (type pdf)
+
+<use figures/PreFilter/PELdiploid.pdf>
+Package pdftex.def Info: figures/PreFilter/PELdiploid.pdf used on input line 58
+0.
+(pdftex.def)             Requested size: 73.71239pt x 73.7122pt.
+
+<figures/PreFilter/PJLdiploid.pdf, id=85, 289.08pt x 289.08pt>
+File: figures/PreFilter/PJLdiploid.pdf Graphic file (type pdf)
+
+<use figures/PreFilter/PJLdiploid.pdf>
+Package pdftex.def Info: figures/PreFilter/PJLdiploid.pdf used on input line 58
+0.
+(pdftex.def)             Requested size: 73.71239pt x 73.7122pt.
+
+<figures/PreFilter/PURdiploid.pdf, id=86, 289.08pt x 289.08pt>
+File: figures/PreFilter/PURdiploid.pdf Graphic file (type pdf)
+
+<use figures/PreFilter/PURdiploid.pdf>
+Package pdftex.def Info: figures/PreFilter/PURdiploid.pdf used on input line 58
+0.
+(pdftex.def)             Requested size: 73.71239pt x 73.7122pt.
+
+<figures/PreFilter/STUdiploid.pdf, id=87, 289.08pt x 289.08pt>
+File: figures/PreFilter/STUdiploid.pdf Graphic file (type pdf)
+
+<use figures/PreFilter/STUdiploid.pdf>
+Package pdftex.def Info: figures/PreFilter/STUdiploid.pdf used on input line 58
+0.
+(pdftex.def)             Requested size: 73.71239pt x 73.7122pt.
+
+Overfull \hbox (12.2697pt too wide) in paragraph at lines 580--581
+[][][][][][][] 
+ []
+
+<figures/PreFilter/TSIdiploid.pdf, id=88, 289.08pt x 289.08pt>
+File: figures/PreFilter/TSIdiploid.pdf Graphic file (type pdf)
+
+<use figures/PreFilter/TSIdiploid.pdf>
+Package pdftex.def Info: figures/PreFilter/TSIdiploid.pdf used on input line 58
+2.
+(pdftex.def)             Requested size: 73.71239pt x 73.7122pt.
+
+<figures/PreFilter/YRIdiploid.pdf, id=89, 289.08pt x 289.08pt>
+File: figures/PreFilter/YRIdiploid.pdf Graphic file (type pdf)
+
+<use figures/PreFilter/YRIdiploid.pdf>
+Package pdftex.def Info: figures/PreFilter/YRIdiploid.pdf used on input line 58
+2.
+(pdftex.def)             Requested size: 73.71239pt x 73.7122pt.
+
+
+LaTeX Warning: Citation `price2006principal' on page 9 undefined on input line 
+672.
+
+
+LaTeX Warning: Citation `price2010new' on page 9 undefined on input line 672.
+
+
+LaTeX Warning: Citation `prokopenko2016utilizing' on page 9 undefined on input 
+line 682.
+
+[9] [10 <./figures/PreFilter/pValueForPop.pdf> <./figures/PostFilter/pValueForP
+op.pdf> <./figures/ITU_with_HG03998.pdf>] [11 <./figures/PreFilter/ACBdiploid.p
+df> <./figures/PreFilter/ASWdiploid.pdf> <./figures/PreFilter/BEBdiploid.pdf> <
+./figures/PreFilter/CDXdiploid.pdf> <./figures/PreFilter/CEUdiploid.pdf> <./fig
+ures/PreFilter/CHBdiploid.pdf> <./figures/PreFilter/CHSdiploid.pdf> <./figures/
+PreFilter/CLMdiploid.pdf> <./figures/PreFilter/ESNdiploid.pdf> <./figures/PreFi
+lter/FINdiploid.pdf> <./figures/PreFilter/GBRdiploid.pdf> <./figures/PreFilter/
+GIHdiploid.pdf> <./figures/PreFilter/GWDdiploid.pdf> <./figures/PreFilter/IBSdi
+ploid.pdf> <./figures/PreFilter/ITUdiploid.pdf> <./figures/PreFilter/JPTdiploid
+.pdf> <./figures/PreFilter/KHVdiploid.pdf> <./figures/PreFilter/LWKdiploid.pdf>
+ <./figures/PreFilter/MSLdiploid.pdf> <./figures/PreFilter/MXLdiploid.pdf> <./f
+igures/PreFilter/PELdiploid.pdf> <./figures/PreFilter/PJLdiploid.pdf> <./figure
+s/PreFilter/PURdiploid.pdf> <./figures/PreFilter/STUdiploid.pdf> <./figures/Pre
+Filter/TSIdiploid.pdf> <./figures/PreFilter/YRIdiploid.pdf>] [12]
+<figures/GSM.png, id=277, 1405.25pt x 1204.5pt>
+File: figures/GSM.png Graphic file (type png)
+ <use figures/GSM.png>
+Package pdftex.def Info: figures/GSM.png used on input line 706.
+(pdftex.def)             Requested size: 387.00153pt x 331.7072pt.
+
+<figures/PCA_all.pdf, id=278, 722.7pt x 361.35pt>
+File: figures/PCA_all.pdf Graphic file (type pdf)
+ <use figures/PCA_all.pdf>
+Package pdftex.def Info: figures/PCA_all.pdf used on input line 708.
+(pdftex.def)             Requested size: 430.00462pt x 215.00316pt.
+
+Overfull \hbox (8.18048pt too wide) in paragraph at lines 708--715
+[]\T1/lmr/bx/n/10 B[] 
+ []
+
+
+LaTeX Warning: Float too large for page by 75.17822pt on input line 717.
+
+<figures/PCA_ITU_STU.png, id=279, 666.26057pt x 367.54457pt>
+File: figures/PCA_ITU_STU.png Graphic file (type png)
+
+<use figures/PCA_ITU_STU.png>
+Package pdftex.def Info: figures/PCA_ITU_STU.png used on input line 750.
+(pdftex.def)             Requested size: 344.005pt x 189.77267pt.
+
+No file crypticness_manuscript_draft5.bbl.
+[13] [14 <./figures/GSM.png (PNG copy)> <./figures/PCA_all.pdf>] [15 <./figures
+/PCA_ITU_STU.png>] (./crypticness_manuscript_draft5.aux)
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 3756 strings out of 494985
+ 53889 string characters out of 6180356
+ 130663 words of memory out of 5000000
+ 6843 multiletter control sequences out of 15000+600000
+ 69277 words of font info for 48 fonts, out of 8000000 for 9000
+ 36 hyphenation exceptions out of 8191
+ 38i,9n,23p,921b,267s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dv
+ips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share
+/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm
+-mathex.enc}</usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texm
+f/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx
+5.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx7.pfb></usr/share/texmf/fonts
+/type1/public/lm/lmbx9.pfb></usr/share/texmf/fonts/type1/public/lm/lmex10.pfb><
+/usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1
+/public/lm/lmmi5.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi7.pfb></usr/sh
+are/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/
+lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr17.pfb></usr/share/texm
+f/fonts/type1/public/lm/lmr5.pfb></usr/share/texmf/fonts/type1/public/lm/lmr7.p
+fb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/typ
+e1/public/lm/lmr9.pfb></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/
+share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/publ
+ic/lm/lmsy5.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy7.pfb>
+Output written on crypticness_manuscript_draft5.pdf (15 pages, 1616511 bytes).
+PDF statistics:
+ 370 PDF objects out of 1000 (max. 8388607)
+ 266 compressed objects within 3 object streams
+ 0 named destinations out of 1000 (max. 500000)
+ 166 words of extra memory for PDF output out of 10000 (max. 10000000)
+

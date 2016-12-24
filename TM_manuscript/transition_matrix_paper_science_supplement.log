@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.3.28)  16 MAY 2016 15:03
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.3.28)  26 AUG 2016 15:36
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -30,233 +30,14 @@ Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
 File: t1enc.def 2005/09/27 v1.99g Standard LaTeX file
 LaTeX Font Info:    Redeclaring font encoding T1 on input line 43.
 ))
-(/usr/share/texlive/texmf-dist/tex/lualatex/luainputenc/luainputenc.sty
-Package: luainputenc 2010/11/19 v0.973 inputenc package for LuaTeX
-
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifluatex.sty
-Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
-Package ifluatex Info: LuaTeX not detected.
-)
-(/usr/share/texlive/texmf-dist/tex/generic/ifxetex/ifxetex.sty
-Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
-)
 (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
 Package: inputenc 2008/03/30 v1.1d Input encoding file
 \inpenc@prehook=\toks14
 \inpenc@posthook=\toks15
 
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
-Now handling font encoding OML ...
-... no UTF-8 mapping file for font encoding OML
-Now handling font encoding T1 ...
-... processing UTF-8 mapping file for font encoding T1
-
-(/usr/share/texlive/texmf-dist/tex/latex/base/t1enc.dfu
-File: t1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
-   defining Unicode char U+00A1 (decimal 161)
-   defining Unicode char U+00A3 (decimal 163)
-   defining Unicode char U+00AB (decimal 171)
-   defining Unicode char U+00BB (decimal 187)
-   defining Unicode char U+00BF (decimal 191)
-   defining Unicode char U+00C0 (decimal 192)
-   defining Unicode char U+00C1 (decimal 193)
-   defining Unicode char U+00C2 (decimal 194)
-   defining Unicode char U+00C3 (decimal 195)
-   defining Unicode char U+00C4 (decimal 196)
-   defining Unicode char U+00C5 (decimal 197)
-   defining Unicode char U+00C6 (decimal 198)
-   defining Unicode char U+00C7 (decimal 199)
-   defining Unicode char U+00C8 (decimal 200)
-   defining Unicode char U+00C9 (decimal 201)
-   defining Unicode char U+00CA (decimal 202)
-   defining Unicode char U+00CB (decimal 203)
-   defining Unicode char U+00CC (decimal 204)
-   defining Unicode char U+00CD (decimal 205)
-   defining Unicode char U+00CE (decimal 206)
-   defining Unicode char U+00CF (decimal 207)
-   defining Unicode char U+00D0 (decimal 208)
-   defining Unicode char U+00D1 (decimal 209)
-   defining Unicode char U+00D2 (decimal 210)
-   defining Unicode char U+00D3 (decimal 211)
-   defining Unicode char U+00D4 (decimal 212)
-   defining Unicode char U+00D5 (decimal 213)
-   defining Unicode char U+00D6 (decimal 214)
-   defining Unicode char U+00D8 (decimal 216)
-   defining Unicode char U+00D9 (decimal 217)
-   defining Unicode char U+00DA (decimal 218)
-   defining Unicode char U+00DB (decimal 219)
-   defining Unicode char U+00DC (decimal 220)
-   defining Unicode char U+00DD (decimal 221)
-   defining Unicode char U+00DE (decimal 222)
-   defining Unicode char U+00DF (decimal 223)
-   defining Unicode char U+00E0 (decimal 224)
-   defining Unicode char U+00E1 (decimal 225)
-   defining Unicode char U+00E2 (decimal 226)
-   defining Unicode char U+00E3 (decimal 227)
-   defining Unicode char U+00E4 (decimal 228)
-   defining Unicode char U+00E5 (decimal 229)
-   defining Unicode char U+00E6 (decimal 230)
-   defining Unicode char U+00E7 (decimal 231)
-   defining Unicode char U+00E8 (decimal 232)
-   defining Unicode char U+00E9 (decimal 233)
-   defining Unicode char U+00EA (decimal 234)
-   defining Unicode char U+00EB (decimal 235)
-   defining Unicode char U+00EC (decimal 236)
-   defining Unicode char U+00ED (decimal 237)
-   defining Unicode char U+00EE (decimal 238)
-   defining Unicode char U+00EF (decimal 239)
-   defining Unicode char U+00F0 (decimal 240)
-   defining Unicode char U+00F1 (decimal 241)
-   defining Unicode char U+00F2 (decimal 242)
-   defining Unicode char U+00F3 (decimal 243)
-   defining Unicode char U+00F4 (decimal 244)
-   defining Unicode char U+00F5 (decimal 245)
-   defining Unicode char U+00F6 (decimal 246)
-   defining Unicode char U+00F8 (decimal 248)
-   defining Unicode char U+00F9 (decimal 249)
-   defining Unicode char U+00FA (decimal 250)
-   defining Unicode char U+00FB (decimal 251)
-   defining Unicode char U+00FC (decimal 252)
-   defining Unicode char U+00FD (decimal 253)
-   defining Unicode char U+00FE (decimal 254)
-   defining Unicode char U+00FF (decimal 255)
-   defining Unicode char U+0102 (decimal 258)
-   defining Unicode char U+0103 (decimal 259)
-   defining Unicode char U+0104 (decimal 260)
-   defining Unicode char U+0105 (decimal 261)
-   defining Unicode char U+0106 (decimal 262)
-   defining Unicode char U+0107 (decimal 263)
-   defining Unicode char U+010C (decimal 268)
-   defining Unicode char U+010D (decimal 269)
-   defining Unicode char U+010E (decimal 270)
-   defining Unicode char U+010F (decimal 271)
-   defining Unicode char U+0110 (decimal 272)
-   defining Unicode char U+0111 (decimal 273)
-   defining Unicode char U+0118 (decimal 280)
-   defining Unicode char U+0119 (decimal 281)
-   defining Unicode char U+011A (decimal 282)
-   defining Unicode char U+011B (decimal 283)
-   defining Unicode char U+011E (decimal 286)
-   defining Unicode char U+011F (decimal 287)
-   defining Unicode char U+0130 (decimal 304)
-   defining Unicode char U+0131 (decimal 305)
-   defining Unicode char U+0132 (decimal 306)
-   defining Unicode char U+0133 (decimal 307)
-   defining Unicode char U+0139 (decimal 313)
-   defining Unicode char U+013A (decimal 314)
-   defining Unicode char U+013D (decimal 317)
-   defining Unicode char U+013E (decimal 318)
-   defining Unicode char U+0141 (decimal 321)
-   defining Unicode char U+0142 (decimal 322)
-   defining Unicode char U+0143 (decimal 323)
-   defining Unicode char U+0144 (decimal 324)
-   defining Unicode char U+0147 (decimal 327)
-   defining Unicode char U+0148 (decimal 328)
-   defining Unicode char U+014A (decimal 330)
-   defining Unicode char U+014B (decimal 331)
-   defining Unicode char U+0150 (decimal 336)
-   defining Unicode char U+0151 (decimal 337)
-   defining Unicode char U+0152 (decimal 338)
-   defining Unicode char U+0153 (decimal 339)
-   defining Unicode char U+0154 (decimal 340)
-   defining Unicode char U+0155 (decimal 341)
-   defining Unicode char U+0158 (decimal 344)
-   defining Unicode char U+0159 (decimal 345)
-   defining Unicode char U+015A (decimal 346)
-   defining Unicode char U+015B (decimal 347)
-   defining Unicode char U+015E (decimal 350)
-   defining Unicode char U+015F (decimal 351)
-   defining Unicode char U+0160 (decimal 352)
-   defining Unicode char U+0161 (decimal 353)
-   defining Unicode char U+0162 (decimal 354)
-   defining Unicode char U+0163 (decimal 355)
-   defining Unicode char U+0164 (decimal 356)
-   defining Unicode char U+0165 (decimal 357)
-   defining Unicode char U+016E (decimal 366)
-   defining Unicode char U+016F (decimal 367)
-   defining Unicode char U+0170 (decimal 368)
-   defining Unicode char U+0171 (decimal 369)
-   defining Unicode char U+0178 (decimal 376)
-   defining Unicode char U+0179 (decimal 377)
-   defining Unicode char U+017A (decimal 378)
-   defining Unicode char U+017B (decimal 379)
-   defining Unicode char U+017C (decimal 380)
-   defining Unicode char U+017D (decimal 381)
-   defining Unicode char U+017E (decimal 382)
-   defining Unicode char U+200C (decimal 8204)
-   defining Unicode char U+2013 (decimal 8211)
-   defining Unicode char U+2014 (decimal 8212)
-   defining Unicode char U+2018 (decimal 8216)
-   defining Unicode char U+2019 (decimal 8217)
-   defining Unicode char U+201A (decimal 8218)
-   defining Unicode char U+201C (decimal 8220)
-   defining Unicode char U+201D (decimal 8221)
-   defining Unicode char U+201E (decimal 8222)
-   defining Unicode char U+2030 (decimal 8240)
-   defining Unicode char U+2031 (decimal 8241)
-   defining Unicode char U+2039 (decimal 8249)
-   defining Unicode char U+203A (decimal 8250)
-   defining Unicode char U+2423 (decimal 9251)
-)
-Now handling font encoding OT1 ...
-... processing UTF-8 mapping file for font encoding OT1
-
-(/usr/share/texlive/texmf-dist/tex/latex/base/ot1enc.dfu
-File: ot1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
-   defining Unicode char U+00A1 (decimal 161)
-   defining Unicode char U+00A3 (decimal 163)
-   defining Unicode char U+00B8 (decimal 184)
-   defining Unicode char U+00BF (decimal 191)
-   defining Unicode char U+00C5 (decimal 197)
-   defining Unicode char U+00C6 (decimal 198)
-   defining Unicode char U+00D8 (decimal 216)
-   defining Unicode char U+00DF (decimal 223)
-   defining Unicode char U+00E6 (decimal 230)
-   defining Unicode char U+00EC (decimal 236)
-   defining Unicode char U+00ED (decimal 237)
-   defining Unicode char U+00EE (decimal 238)
-   defining Unicode char U+00EF (decimal 239)
-   defining Unicode char U+00F8 (decimal 248)
-   defining Unicode char U+0131 (decimal 305)
-   defining Unicode char U+0141 (decimal 321)
-   defining Unicode char U+0142 (decimal 322)
-   defining Unicode char U+0152 (decimal 338)
-   defining Unicode char U+0153 (decimal 339)
-   defining Unicode char U+2013 (decimal 8211)
-   defining Unicode char U+2014 (decimal 8212)
-   defining Unicode char U+2018 (decimal 8216)
-   defining Unicode char U+2019 (decimal 8217)
-   defining Unicode char U+201C (decimal 8220)
-   defining Unicode char U+201D (decimal 8221)
-)
-Now handling font encoding OMS ...
-... processing UTF-8 mapping file for font encoding OMS
-
-(/usr/share/texlive/texmf-dist/tex/latex/base/omsenc.dfu
-File: omsenc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
-   defining Unicode char U+00A7 (decimal 167)
-   defining Unicode char U+00B6 (decimal 182)
-   defining Unicode char U+00B7 (decimal 183)
-   defining Unicode char U+2020 (decimal 8224)
-   defining Unicode char U+2021 (decimal 8225)
-   defining Unicode char U+2022 (decimal 8226)
-)
-Now handling font encoding OMX ...
-... no UTF-8 mapping file for font encoding OMX
-Now handling font encoding U ...
-... no UTF-8 mapping file for font encoding U
-   defining Unicode char U+00A9 (decimal 169)
-   defining Unicode char U+00AA (decimal 170)
-   defining Unicode char U+00AE (decimal 174)
-   defining Unicode char U+00BA (decimal 186)
-   defining Unicode char U+02C6 (decimal 710)
-   defining Unicode char U+02DC (decimal 732)
-   defining Unicode char U+200C (decimal 8204)
-   defining Unicode char U+2026 (decimal 8230)
-   defining Unicode char U+2122 (decimal 8482)
-   defining Unicode char U+2423 (decimal 9251)
-)))
+(/usr/share/texlive/texmf-dist/tex/latex/base/latin9.def
+File: latin9.def 2008/03/30 v1.1d Input encoding file
+))
 (/usr/share/texlive/texmf-dist/tex/latex/tools/array.sty
 Package: array 2008/09/09 v2.4c Tabular extension package (FMi)
 \col@sep=\dimen103
@@ -386,40 +167,6 @@ Package: authblk 2001/02/27 1.3 (PWD)
 \c@authors=\count103
 \c@affil=\count104
 )
-(/usr/share/texlive/texmf-dist/tex/latex/subfig/subfig.sty
-Package: subfig 2005/06/28 ver: 1.3 subfig package
-
-(/usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty
-Package: caption 2013/05/02 v3.3-89 Customizing captions (AR)
-
-(/usr/share/texlive/texmf-dist/tex/latex/caption/caption3.sty
-Package: caption3 2013/05/02 v1.6-88 caption3 kernel (AR)
-Package caption3 Info: TeX engine: e-TeX on input line 57.
-\captionmargin=\dimen120
-\captionmargin@=\dimen121
-\captionwidth=\dimen122
-\caption@tempdima=\dimen123
-\caption@indent=\dimen124
-\caption@parindent=\dimen125
-\caption@hangindent=\dimen126
-)
-\c@ContinuedFloat=\count105
-Package caption Info: float package is loaded.
-)
-\c@KVtest=\count106
-\sf@farskip=\skip51
-\sf@captopadj=\dimen127
-\sf@capskip=\skip52
-\sf@nearskip=\skip53
-\c@subfigure=\count107
-\c@subfigure@save=\count108
-\c@lofdepth=\count109
-\c@subtable=\count110
-\c@subtable@save=\count111
-\c@lotdepth=\count112
-\sf@top=\skip54
-\sf@bottom=\skip55
-)
 (/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty
 Package: babel 2013/12/03 3.9h The Babel package
 
@@ -428,45 +175,50 @@ Language: english 2012/08/20 v3.3p English support from the babel system
 
 (/usr/share/texlive/texmf-dist/tex/generic/babel/babel.def
 File: babel.def 2013/12/03 3.9h Babel common definitions
-\babel@savecnt=\count113
-\U@D=\dimen128
+\babel@savecnt=\count105
+\U@D=\dimen120
 )
 \l@canadian = a dialect from \language\l@american 
 \l@australian = a dialect from \language\l@british 
 \l@newzealand = a dialect from \language\l@british 
 ))
-No file transition_matrix_paper_science_supplement.aux.
+(./transition_matrix_paper_science_supplement.aux)
 \openout1 = `transition_matrix_paper_science_supplement.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count114
-\scratchdimen=\dimen129
+\scratchcounter=\count106
+\scratchdimen=\dimen121
 \scratchbox=\box33
-\nofMPsegments=\count115
-\nofMParguments=\count116
+\nofMPsegments=\count107
+\nofMParguments=\count108
 \everyMPshowfont=\toks26
-\MPscratchCnt=\count117
-\MPscratchDim=\dimen130
-\MPnumerator=\count118
-\makeMPintoPDFobject=\count119
+\MPscratchCnt=\count109
+\MPscratchDim=\dimen122
+\MPnumerator=\count110
+\makeMPintoPDFobject=\count111
 \everyMPtoPDFconversion=\toks27
 ) (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
 )
 
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifluatex.sty
+Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+)
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifpdf.sty
 Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
 Package ifpdf Info: pdfTeX in PDF mode is detected.
@@ -507,45 +259,50 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-Package caption Info: Begin \AtBeginDocument code.
-Package caption Info: subfig package v1.3 is loaded.
-Package caption Info: End \AtBeginDocument code.
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 44.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 45.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 44.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 45.
  [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
 
+LaTeX Warning: Citation `irizarry2003exploration' on page 2 undefined on input 
+line 62.
+
+
+LaTeX Warning: Citation `gautier2004affy' on page 2 undefined on input line 63.
+
+
+
+LaTeX Warning: Citation `dai2005evolving' on page 2 undefined on input line 65.
+
+
+
 LaTeX Warning: Citation `mathelier2013jaspar' on page 2 undefined on input line
- 65.
+ 71.
 
 
 LaTeX Warning: Citation `pinello2014analysis' on page 2 undefined on input line
- 65.
+ 71.
 
 
-LaTeX Warning: Citation `heinz2010simple' on page 2 undefined on input line 73.
+LaTeX Warning: Citation `heinz2010simple' on page 2 undefined on input line 79.
 
 
 
-Overfull \hbox (33.98969pt too wide) in paragraph at lines 63--74
+Overfull \hbox (33.98969pt too wide) in paragraph at lines 69--80
 \T1/cmr/m/n/10 tran-scrip-tion fac-tor mo-tifs ob-tained from JAS-PAR 2014 http
 ://jaspar2014.genereg.net/,
  []
 
 
-Overfull \hbox (34.45436pt too wide) in paragraph at lines 86--86
+Overfull \hbox (34.45436pt too wide) in paragraph at lines 91--91
 []|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []
  []
-
-
-LaTeX Warning: Reference `Supplement NI edgeweight plots' on page 2 undefined o
-n input line 98.
 
 
 <figures/all_studies_ARACNE_edgeweight_difference_comparison.png, id=13, 361.35
@@ -555,7 +312,7 @@ ile (type png)
 
 <use figures/all_studies_ARACNE_edgeweight_difference_comparison.png>
 Package pdftex.def Info: figures/all_studies_ARACNE_edgeweight_difference_compa
-rison.png used on input line 103.
+rison.png used on input line 108.
 (pdftex.def)             Requested size: 155.24895pt x 155.25066pt.
 
 <figures/all_studies_CLR_edgeweight_difference_comparison.png, id=14, 361.35pt 
@@ -564,7 +321,7 @@ File: figures/all_studies_CLR_edgeweight_difference_comparison.png Graphic file
  (type png)
  <use figures/all_studies_CLR_edgeweight_difference_comparison.png>
 Package pdftex.def Info: figures/all_studies_CLR_edgeweight_difference_comparis
-on.png used on input line 103.
+on.png used on input line 108.
 (pdftex.def)             Requested size: 155.24895pt x 155.25066pt.
 
 <figures/all_studies_WGCNA_edgeweight_difference_comparison.png, id=15, 361.35p
@@ -574,7 +331,7 @@ le (type png)
 
 <use figures/all_studies_WGCNA_edgeweight_difference_comparison.png>
 Package pdftex.def Info: figures/all_studies_WGCNA_edgeweight_difference_compar
-ison.png used on input line 105.
+ison.png used on input line 110.
 (pdftex.def)             Requested size: 155.24895pt x 155.25066pt.
 
 <figures/all_studies_MONSTER_edgeweight_difference_comparison.png, id=16, 361.3
@@ -584,31 +341,31 @@ file (type png)
 
 <use figures/all_studies_MONSTER_edgeweight_difference_comparison.png>
 Package pdftex.def Info: figures/all_studies_MONSTER_edgeweight_difference_comp
-arison.png used on input line 105.
+arison.png used on input line 110.
 (pdftex.def)             Requested size: 155.24895pt x 155.25066pt.
  [2]
 
 LaTeX Warning: Citation `glass2013passing' on page 3 undefined on input line 12
-5.
+8.
 
 
 LaTeX Warning: Citation `olsen2014inference' on page 3 undefined on input line 
-125.
+128.
 
 
 LaTeX Warning: Citation `frey2007clustering' on page 3 undefined on input line 
-126.
+130.
 
 
-LaTeX Warning: Citation `lao2015genome' on page 3 undefined on input line 132.
+LaTeX Warning: Citation `lao2015genome' on page 3 undefined on input line 136.
 
 
 LaTeX Warning: Citation `glass2015network' on page 3 undefined on input line 13
-2.
+6.
 
 
 LaTeX Warning: Citation `glass2014sexually' on page 3 undefined on input line 1
-32.
+36.
 
 [3 <./figures/all_studies_ARACNE_edgeweight_difference_comparison.png> <./figur
 es/all_studies_CLR_edgeweight_difference_comparison.png> <./figures/all_studies
@@ -616,41 +373,41 @@ _WGCNA_edgeweight_difference_comparison.png> <./figures/all_studies_MONSTER_edg
 eweight_difference_comparison.png>] [4]
 
 LaTeX Warning: Citation `olsen2014inference' on page 5 undefined on input line 
-222.
+224.
 
 
 LaTeX Warning: Citation `harbison2004transcriptional' on page 5 undefined on in
-put line 230.
+put line 232.
 
 
 LaTeX Warning: Citation `marbach2012wisdom' on page 5 undefined on input line 2
-32.
+34.
 
 <figures/DREAM5a_all.png, id=36, 481.8pt x 481.8pt>
 File: figures/DREAM5a_all.png Graphic file (type png)
 
 <use figures/DREAM5a_all.png>
-Package pdftex.def Info: figures/DREAM5a_all.png used on input line 242.
+Package pdftex.def Info: figures/DREAM5a_all.png used on input line 244.
 (pdftex.def)             Requested size: 137.9979pt x 137.99812pt.
 
 <figures/DREAM5c_all.png, id=37, 481.8pt x 481.8pt>
 File: figures/DREAM5c_all.png Graphic file (type png)
 
 <use figures/DREAM5c_all.png>
-Package pdftex.def Info: figures/DREAM5c_all.png used on input line 242.
+Package pdftex.def Info: figures/DREAM5c_all.png used on input line 244.
 (pdftex.def)             Requested size: 137.9979pt x 137.99812pt.
 
 <figures/DREAM5d_all.png, id=38, 481.8pt x 481.8pt>
 File: figures/DREAM5d_all.png Graphic file (type png)
 
 <use figures/DREAM5d_all.png>
-Package pdftex.def Info: figures/DREAM5d_all.png used on input line 244.
+Package pdftex.def Info: figures/DREAM5d_all.png used on input line 246.
 (pdftex.def)             Requested size: 137.9979pt x 137.99812pt.
 
 <figures/Yeast_all.png, id=39, 481.8pt x 481.8pt>
 File: figures/Yeast_all.png Graphic file (type png)
  <use figures/Yeast_all.png>
-Package pdftex.def Info: figures/Yeast_all.png used on input line 244.
+Package pdftex.def Info: figures/Yeast_all.png used on input line 246.
 (pdftex.def)             Requested size: 137.9979pt x 137.99812pt.
 
 [5] [6 <./figures/DREAM5a_all.png (PNG copy)> <./figures/DREAM5c_all.png (PNG c
@@ -671,165 +428,130 @@ n/10 B[] \OMS/cmsy/m/n/10 ^^@
 File: figures/workflow_diagram.png Graphic file (type png)
 
 <use figures/workflow_diagram.png>
-Package pdftex.def Info: figures/workflow_diagram.png used on input line 417.
+Package pdftex.def Info: figures/workflow_diagram.png used on input line 415.
 (pdftex.def)             Requested size: 276.00105pt x 206.88pt.
 
 
 LaTeX Warning: Citation `glass2013passing' on page 9 undefined on input line 44
-4.
+1.
 
 
 LaTeX Warning: Citation `Langfelder2008WGCNA' on page 9 undefined on input line
- 454.
+ 451.
 
 
 LaTeX Warning: Citation `Langfelder2008FastR' on page 9 undefined on input line
- 454.
+ 451.
 
 
 LaTeX Warning: Citation `ravasz2002hierarchical' on page 9 undefined on input l
-ine 455.
+ine 452.
 
 
 LaTeX Warning: Citation `margolin2006aracne' on page 9 undefined on input line 
-456.
+453.
 
 
-LaTeX Warning: Citation `faith2007large' on page 9 undefined on input line 457.
+LaTeX Warning: Citation `faith2007large' on page 9 undefined on input line 454.
 
 
 
 LaTeX Warning: Citation `glass2013passing' on page 9 undefined on input line 45
-8.
+5.
 
 [9] [10 <./figures/workflow_diagram.png>]
-Overfull \hbox (41.96399pt too wide) in paragraph at lines 485--517
+Overfull \hbox (41.96399pt too wide) in paragraph at lines 482--514
 [][] 
  []
 
 
 LaTeX Warning: Citation `levine2003transcription' on page 11 undefined on input
- line 534.
+ line 529.
 
 
 LaTeX Warning: Citation `ravasi2010atlas' on page 11 undefined on input line 53
-8.
+3.
 
-[11] <figures/figure2ECLIPSE.pdf, id=70, 327.2225pt x 245.91875pt>
-File: figures/figure2ECLIPSE.pdf Graphic file (type pdf)
+[11] <figures/Supplement_figure4.pdf, id=70, 211.79124pt x 516.93124pt>
+File: figures/Supplement_figure4.pdf Graphic file (type pdf)
 
-<use figures/figure2ECLIPSE.pdf>
-Package pdftex.def Info: figures/figure2ECLIPSE.pdf used on input line 569.
-(pdftex.def)             Requested size: 169.0519pt x 127.0492pt.
+<use figures/Supplement_figure4.pdf>
+Package pdftex.def Info: figures/Supplement_figure4.pdf used on input line 564.
 
-<figures/figure2COPDGene.pdf, id=71, 327.2225pt x 245.91875pt>
-File: figures/figure2COPDGene.pdf Graphic file (type pdf)
-
-<use figures/figure2COPDGene.pdf>
-Package pdftex.def Info: figures/figure2COPDGene.pdf used on input line 571.
-(pdftex.def)             Requested size: 169.0519pt x 127.0492pt.
-
-<figures/figure2LGRC.pdf, id=72, 327.2225pt x 245.91875pt>
-File: figures/figure2LGRC.pdf Graphic file (type pdf)
-
-<use figures/figure2LGRC.pdf>
-Package pdftex.def Info: figures/figure2LGRC.pdf used on input line 574.
-(pdftex.def)             Requested size: 169.0519pt x 127.0492pt.
-
-<figures/figure2LTCOPD.pdf, id=73, 327.2225pt x 245.91875pt>
-File: figures/figure2LTCOPD.pdf Graphic file (type pdf)
-
-<use figures/figure2LTCOPD.pdf>
-Package pdftex.def Info: figures/figure2LTCOPD.pdf used on input line 578.
-(pdftex.def)             Requested size: 169.0519pt x 127.0492pt.
+(pdftex.def)             Requested size: 211.79073pt x 516.92998pt.
 
 
-LaTeX Warning: Float too large for page by 91.19672pt on input line 583.
+LaTeX Warning: Float too large for page by 135.42937pt on input line 580.
 
-<figures/dTFIvsLIMMAall.pdf, id=74, 1734.48pt x 1734.48pt>
+<figures/dTFIvsLIMMAall.pdf, id=71, 1734.48pt x 1734.48pt>
 File: figures/dTFIvsLIMMAall.pdf Graphic file (type pdf)
 
 <use figures/dTFIvsLIMMAall.pdf>
-Package pdftex.def Info: figures/dTFIvsLIMMAall.pdf used on input line 588.
+Package pdftex.def Info: figures/dTFIvsLIMMAall.pdf used on input line 584.
 (pdftex.def)             Requested size: 345.0pt x 344.9843pt.
- [12] [13 <./figures/figure2ECLIPSE.pdf> <./figures/figure2COPDGene.pdf
-
-pdfTeX warning: pdflatex (file ./figures/figure2COPDGene.pdf): PDF inclusion: m
-ultiple pdfs with page group included in a single page
-> <./figures/figure2LGRC.pdf
-
-pdfTeX warning: pdflatex (file ./figures/figure2LGRC.pdf): PDF inclusion: multi
-ple pdfs with page group included in a single page
-> <./figures/figure2LTCOPD.pdf
-
-pdfTeX warning: pdflatex (file ./figures/figure2LTCOPD.pdf): PDF inclusion: mul
-tiple pdfs with page group included in a single page
->] [14 <./figures/dTFIvsLIMMAall.pdf>]
-Overfull \hbox (25.63498pt too wide) in alignment at lines 660--669
+ [12] [13 <./figures/Supplement_figure4.pdf>]
+[14 <./figures/dTFIvsLIMMAall.pdf>]
+Overfull \hbox (25.63498pt too wide) in alignment at lines 653--662
  [][][] []
  []
 
 [15]
-Overfull \hbox (51.47127pt too wide) in paragraph at lines 695--745
+Overfull \hbox (51.47127pt too wide) in paragraph at lines 688--738
 [][] 
  []
 
 
-Overfull \hbox (45.22182pt too wide) in paragraph at lines 751--811
+Overfull \hbox (45.22182pt too wide) in paragraph at lines 744--804
 [][] 
  []
 
 
 LaTeX Warning: Citation `ritchie2015limma' on page 16 undefined on input line 8
-11.
+04.
 
 
 LaTeX Warning: Citation `ritchie2015limma' on page 16 undefined on input line 8
-11.
+04.
 
 No file transition_matrix_paper_science_supplement.bbl.
 [16] [17] (./transition_matrix_paper_science_supplement.aux)
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
  ) 
 Here is how much of TeX's memory you used:
- 4498 strings out of 494985
- 65136 string characters out of 6180356
- 160773 words of memory out of 5000000
- 7606 multiletter control sequences out of 15000+600000
- 19945 words of font info for 47 fonts, out of 8000000 for 9000
+ 3116 strings out of 494985
+ 41890 string characters out of 6180356
+ 135516 words of memory out of 5000000
+ 6253 multiletter control sequences out of 15000+600000
+ 19169 words of font info for 46 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 44i,11n,47p,980b,393s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 38i,11n,24p,1137b,288s stack positions out of 5000i,500n,10000p,200000b,80000s
  </home/dan/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0500.600pk> </home/dan
-/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx0800.600pk> </home/dan/.texmf-var/f
-onts/pk/ljfour/jknappen/ec/ecbi1200.600pk> </home/dan/.texmf-var/fonts/pk/ljfou
-r/jknappen/ec/ecti1000.600pk> </home/dan/.texmf-var/fonts/pk/ljfour/jknappen/ec
-/ecbx1000.600pk> </home/dan/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.600
-pk> </home/dan/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk> </home/da
-n/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1000.600pk> </home/dan/.texmf-var/
-fonts/pk/ljfour/jknappen/ec/ecbx2074.600pk> </home/dan/.texmf-var/fonts/pk/ljfo
-ur/jknappen/ec/ecrm0800.600pk> </home/dan/.texmf-var/fonts/pk/ljfour/jknappen/e
-c/ecrm1200.600pk> </home/dan/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1728.60
-0pk> </home/dan/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1728.600pk></usr/sha
-re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/tex
-live/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
-c/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-sy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pf
-b></usr/share/texmf/fonts/type1/public/tex-gyre/qhvr.pfb>
-Output written on transition_matrix_paper_science_supplement.pdf (17 pages, 157
-60277 bytes).
+/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbi1200.600pk> </home/dan/.texmf-var/f
+onts/pk/ljfour/jknappen/ec/ecti1000.600pk> </home/dan/.texmf-var/fonts/pk/ljfou
+r/jknappen/ec/ecbx1000.600pk> </home/dan/.texmf-var/fonts/pk/ljfour/jknappen/ec
+/ecbx1200.600pk> </home/dan/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600
+pk> </home/dan/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1000.600pk> </home/da
+n/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx2074.600pk> </home/dan/.texmf-var/
+fonts/pk/ljfour/jknappen/ec/ecrm0800.600pk> </home/dan/.texmf-var/fonts/pk/ljfo
+ur/jknappen/ec/ecrm1200.600pk> </home/dan/.texmf-var/fonts/pk/ljfour/jknappen/e
+c/ecrm1728.600pk> </home/dan/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1728.60
+0pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></
+usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/sh
+are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/te
+xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/font
+s/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmsy7.pfb></usr/share/texmf/fonts/type1/public/tex-gyre/qhvr.pfb>
+Output written on transition_matrix_paper_science_supplement.pdf (17 pages, 460
+6249 bytes).
 PDF statistics:
- 690 PDF objects out of 1000 (max. 8388607)
- 212 compressed objects within 3 object streams
+ 573 PDF objects out of 1000 (max. 8388607)
+ 139 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 71 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 56 words of extra memory for PDF output out of 10000 (max. 10000000)
 

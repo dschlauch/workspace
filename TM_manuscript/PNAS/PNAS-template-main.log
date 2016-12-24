@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.3.28)  22 AUG 2016 17:12
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.3.28)  26 AUG 2016 12:39
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1826,7 +1826,7 @@ Package epstopdf Info: Source file: <frog.eps>
 (epstopdf)                    date: 2016-08-22 20:06:02
 (epstopdf)                    size: 45880 bytes
 (epstopdf)             Output file: <frog-eps-converted-to.pdf>
-(epstopdf)                    date: 2016-08-22 16:05:52
+(epstopdf)                    date: 2016-08-22 17:12:08
 (epstopdf)                    size: 66757 bytes
 (epstopdf)             Command: <repstopdf --outfile=frog-eps-converted-to.pdf 
 frog.eps>
@@ -1835,7 +1835,7 @@ runsystem(repstopdf --outfile=frog-eps-converted-to.pdf frog.eps)...executed sa
 fely (allowed).
 
 Package epstopdf Info: Result file: <frog-eps-converted-to.pdf>
-(epstopdf)                    date: 2016-08-22 17:12:08
+(epstopdf)                    date: 2016-08-26 12:39:29
 (epstopdf)                    size: 66757 bytes.
 <frog-eps-converted-to.pdf, id=11, 749.80125pt x 742.775pt>
 File: frog-eps-converted-to.pdf Graphic file (type pdf)

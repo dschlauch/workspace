@@ -11,8 +11,8 @@ library(VennDiagram)
 
 # Specify the analysis folders and display names for the analyses
 # analysisNames <- c("ECLIPSE_bere_bare_55557","COPDGene_bere_70856", "LGRC_bere_56432","LTCOPD_bere_bare_92540")
-analysisNames <- c("ECLIPSE_combined_runs","COPDGene_combined_runs", "LGRC_combined_runs","LTCOPD_combined_runs")
-displayNames <- c("ECLIPSE","COPDGene","LGRC","LTCOPD")
+analysisNames <- c("ECLIPSE_combined_runs","COPDGene_combined_runs", "LGRC_combined_runs","LTCDNM_combined_runs")
+displayNames <- c("ECLIPSE","COPDGene","LGRC","LTCDNM")
 baseDir <- "~/gd/Harvard/Research/TM_outputs/JASPAR2014/BERE/"
 # outputDir <- './'
 setwd(baseDir)
@@ -56,7 +56,11 @@ makeComparisonPlot <- function(pair, plotTopNTFs=8, filterColIndices = c(8,18,28
     annotate("text", x = Inf, y = -Inf, hjust=1, vjust=0, label = corText, parse = TRUE, size = 10, fontface="bold.italic")+    
     scale_x_continuous(limits=xlimits, expand = c(0, 0)) +
     scale_y_continuous(limits=ylimits, expand = c(0, 0)) + 
-    theme_classic() + theme(axis.title=element_text(size=28), axis.text=element_text(size=22))
+    
+    theme_classic() + theme(axis.title=element_text(size=28), axis.text=element_text(size=22),
+                            axis.line.x = element_line(color="black", size = 1),
+                            axis.line.y = element_line(color="black", size = 1)
+    )
   plot1
   #   ggMarginal(plot1)
 }
@@ -111,7 +115,7 @@ generatePlots <- function(metric, filterColIndices){
 }
 metric <- "negLogPValues"
 # metric <- "Magnitude"
-generatePlots("negLogPValues",filterColIndices = c(8,18,28,38))
+# generatePlots("negLogPValues",filterColIndices = c(8,18,28,38))
 generatePlots("Magnitude", filterColIndices = c(9,19,29,39))
 
 # Create table

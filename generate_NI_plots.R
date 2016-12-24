@@ -22,7 +22,7 @@ generateNIDifferencePlot <- function(datasetA, datasetB, niMethod, imageType=png
   df
 }
 
-studies <- c("ECLIPSE", "COPDGENE", "LGRC", "LTCOPD")
+studies <- c("ECLIPSE", "COPDGENE", "LGRC", "LTCDNM")
 niMethods <- c("WGCNA","CLR","MONSTER","ARACNE")
 resultsList <- lapply(niMethods, function(meth){
   data.table(do.call(rbind, apply(combn(studies,2), 2, function(x){
@@ -46,15 +46,19 @@ studyCorrelations[['method']] <- rep(niMethods,each=6)
 resultsList <- lapply(resultsList, function(x){x[c(rep(F,9),T)]})
 studyCorrelations[[1]] <- factor(studyCorrelations[[1]], levels=studies)
 studyCorrelations[[2]] <- factor(studyCorrelations[[2]], levels=studies)
+
+# Change WGCNA to Pearson 11/12/16
+methodNames <- c("Pearson","CLR","MONSTER","ARACNE")
+
 lapply(seq_along(niMethods), function(i){
   resultsList[[i]][['studyA']] <- factor(resultsList[[i]][['studyA']], levels=studies)
   resultsList[[i]][['studyB']] <- factor(resultsList[[i]][['studyB']], levels=studies)
-  tiff(file.path(outputDir,"plots",paste("all_studies", niMethods[i], 'edgeweight_difference_comparison.tiff', sep="_")),height=2000,width=2000, units = "px", res = 400)
+  png(file.path(outputDir,"plots",paste("all_studies", methodNames[i], 'edgeweight_difference_comparison.png', sep="_")),height=2000,width=2000, units = "px", res = 400)
   plot <- ggplot(resultsList[[i]], aes(x=dataA, y=dataB)) + facet_grid(studyA ~ studyB) +
     geom_point(size=.1, alpha=.6, col="blue") + 
-    ggtitle(paste(niMethods[i], "edge weight differences between pairs of studies")) + 
+    ggtitle(paste(methodNames[i], "edge weight differences between pairs of studies")) + 
     theme_bw() + theme(plot.title = element_text(size=11, face="bold")) + 
-    xlab("") + ylab("") +
+    xlab("") + ylab("") + scale_x_continuous(labels = function (x) round(x,1)) +
     geom_text(data=studyCorrelations[method==niMethods[i]], aes(x=min(resultsList[[i]][,dataA]),y=max(min(resultsList[[i]][,dataB])),label=corText), size=3,hjust=0,vjust=0) 
   print(plot)
   dev.off()

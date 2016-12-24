@@ -5,45 +5,46 @@ The style file: pnas2011.bst
 Database file #1: dissertation_research.bib
 Warning--empty author in lgrc
 Warning--empty journal in lgrc
-You've used 32 entries,
+Warning--there's a number but no volume in Langfelder2008WGCNA
+You've used 50 entries,
             1797 wiz_defined-function locations,
-            673 strings with 12346 characters,
-and the built_in function-call counts, 7187 in all, are:
-= -- 615
-> -- 284
-< -- 1
-+ -- 92
-- -- 60
-* -- 659
-:= -- 1091
-add.period$ -- 64
-call.type$ -- 32
-change.case$ -- 32
+            779 strings with 16995 characters,
+and the built_in function-call counts, 11490 in all, are:
+= -- 1010
+> -- 437
+< -- 4
++ -- 142
+- -- 92
+* -- 1023
+:= -- 1713
+add.period$ -- 100
+call.type$ -- 50
+change.case$ -- 50
 chr.to.int$ -- 0
-cite$ -- 34
-duplicate$ -- 332
-empty$ -- 711
-format.name$ -- 60
-if$ -- 1533
+cite$ -- 53
+duplicate$ -- 547
+empty$ -- 1120
+format.name$ -- 92
+if$ -- 2474
 int.to.chr$ -- 0
-int.to.str$ -- 32
-missing$ -- 32
-newline$ -- 131
-num.names$ -- 31
-pop$ -- 41
+int.to.str$ -- 50
+missing$ -- 50
+newline$ -- 203
+num.names$ -- 49
+pop$ -- 68
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 156
+skip$ -- 276
 stack$ -- 0
-substring$ -- 652
-swap$ -- 77
-text.length$ -- 1
+substring$ -- 1051
+swap$ -- 148
+text.length$ -- 4
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
-warning$ -- 2
-while$ -- 77
-width$ -- 34
-write$ -- 320
-(There were 2 warnings)
+warning$ -- 3
+while$ -- 128
+width$ -- 52
+write$ -- 500
+(There were 3 warnings)
