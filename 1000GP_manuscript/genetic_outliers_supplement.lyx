@@ -6307,11 +6307,11 @@ Phase 3 of the 1000 Genomes Project contains 2504 individuals with a combined
  Prior to analysis, we divided the data into blocks of 800 consecutive variants
  and selected only one locus from each block.
  The selected variant within each block was chosen based on the smallest
- minor allele frequency observed which was larger than our cutoff of 1%
- (see Supplemental Materials 1.5).
- We chose this somewhat arbitrary cutoff as a compromise between our desire
- to focus on rare alleles and the recognition that QC concerns may become
- an increasingly valid concern at the lowest allele frequencies.
+ minor allele frequency observed which was larger than our cutoff of 1%.
+ We chose this cutoff as a balance between our interest in focusing on lower
+ frequency alleles and the recognition that QC concerns may become an increasing
+ly valid concern at the lowest allele frequencies (see Supplemental Materials
+ 1.6).
  We recommend the use of a cutoff which balances the value of rare variants
  with the confidence in the technology used to obtain the data.
  This filtering yielded approximately 100,000 variants for each of the 26
@@ -6326,28 +6326,9 @@ STEGO algorithm computation time
 \begin_layout Standard
 Of interest is the computation time of STEGO in comparison to other similarity
  metrics.
- In Principal Components Analysis, a decomposition of the correlation or
- covariance matrix is used.
- We compared our method in terms of computation time of generating a correlation
- matrix.
- We simulated a study of 
-\begin_inset Formula $p=100,000$
-\end_inset
-
- phased variants across 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-$N$
-\end_layout
-
-\end_inset
-
- individuals and ran an R implementation of STEGO against the base implementatio
-n of correlation and Principal Components analysis in R with default parameters,
- 
+ Principal Components Analysis can be performed in multiple ways, including
+ a decomposition of the correlation or covariance matrix and a singular
+ value decomposition, implemented in base R as the functions 
 \begin_inset ERT
 status open
 
@@ -6355,7 +6336,7 @@ status open
 
 
 \backslash
-textbf{cor()}
+textbf{prcomp()}
 \end_layout
 
 \end_inset
@@ -6374,6 +6355,52 @@ textbf{princomp()}
 \end_inset
 
 , respectively.
+ We compared our method in terms of computation time of generating a correlation
+ matrix.
+ We simulated a study of 
+\begin_inset Formula $p=100,000$
+\end_inset
+
+ phased variants across 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$N$
+\end_layout
+
+\end_inset
+
+ individuals and ran an R implementation of STEGO against the base implementatio
+n of correlation, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{cor()}
+\end_layout
+
+\end_inset
+
+ and the two Principal Components analysis methods with default parameters
+ (Supplemental Figure 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ref{comp_time}
+\end_layout
+
+\end_inset
+
+).
  An R script implementing this simulation is available at 
 \begin_inset ERT
 status open
@@ -6416,20 +6443,7 @@ textbf{princomp}
 \end_inset
 
 ) in R.
- Supplemental Figure 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-ref{comp_time}
-\end_layout
-
-\end_inset
-
- summarizes the results of this comparison.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -6531,11 +6545,256 @@ reference "YRIvsX"
  
 \end_layout
 
+\begin_layout Subsection
+Simulations demonstrate sensitivity STEGO to subtle population stratification
+\end_layout
+
+\begin_layout Standard
+We compared the GSM derived from STEGO against a GSM obtained via normalized
+ variance-covariance, such as that used in EIGENSTRAT's implementation of
+ PCA 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "price2006principal"
+
+\end_inset
+
+.
+ We first generated an ancestral allele frequency distribution for 20k variants,
+ each as an observation from an 
+\begin_inset Formula $exponential\left(\lambda=.05\right)$
+\end_inset
+
+ distribution.
+ Next, two descendant allele frequencies were obtained by applying a small
+ deviation from the ancestral allele frequency of 
+\begin_inset Formula $Uniform\left(-0.003,0.003\right)$
+\end_inset
+
+.
+ The purpose was to create a very subtle genetic drift loosely representing
+ a relatively short timeframe of breeding isolation for each population.
+ We chose the size of small allele frequency deviation as one which pushes
+ the limits of standard approaches to detect.
+ The 1000 simulated individuals were sampled independently from the descendant
+ allele frequencies (500 from each population), and GSMs were generated
+ as described above.
+\end_layout
+
+\begin_layout Standard
+The results from this straightforward simulation support our intuition regarding
+ rare variants (Supplemental Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "simulatedPCP"
+
+\end_inset
+
+).
+ Owing to the fact that co-occurrence of rare variants is more informative
+ of shared population membership than co-occurrence of common variants,
+ we see that STEGO outperforms standard PCA in this scenario.
+ In this plot, using the top two eigenvectors shown, the ratio of within-populat
+ion variance to total variance is .81 for STEGO.
+ For variance-covariance, this ratio is .99, as this standard method was
+ ineffective at picking up virtually any signal.
+ At this level of subtle population stratification and using only 20k variants,
+ we do not observe any meaningful separation between the two groups using
+ PCA.
+ Conversely, STEGO clearly demonstrates a tendency to distinguish the groups
+ along the first principal component.
+ The source code for this simulation is available at 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+url{https://github.com/dschlauch/Genetic-Outliers/blob/master/simulated_stego_var
+cov.R}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Simulations demonstrate power to detect heterogeneity
+\end_layout
+
+\begin_layout Standard
+We ran STEGO on simulated genotypes derived from a homogeneous dataset containin
+g varying degrees of relatedness.
+ A homogenized version of a real dataset was generated by randomly resampling
+ each variant across all samples.
+ This eliminates correlations between individuals and variants, preserving
+ only the allele frequency distribution.
+ To test the power of our method to identify relatedness we generated an
+ additional sample, 
+\begin_inset Formula $S_{N+1}$
+\end_inset
+
+ which was related to an arbitrarily chosen individual, 
+\begin_inset Formula $S_{N}$
+\end_inset
+
+, in the homogenized dataset.
+ The genotype for 
+\begin_inset Formula $S_{N+1}$
+\end_inset
+
+ was generated by assigning one of their values for each allele to be the
+ same as one of the alleles of 
+\begin_inset Formula $S_{N}$
+\end_inset
+
+ with probability 
+\begin_inset Formula $4\phi$
+\end_inset
+
+ and assigning the other to be a randomly chosen allele across all samples.
+ With probability 
+\begin_inset Formula $1-4\phi$
+\end_inset
+
+, both haplotypes for 
+\begin_inset Formula $S_{N+1}$
+\end_inset
+
+ were selected randomly from the homogenized data.
+\end_layout
+
+\begin_layout Standard
+For variant 
+\begin_inset Formula $i$
+\end_inset
+
+, allele 
+\begin_inset Formula $j$
+\end_inset
+
+, the genotype at 
+\begin_inset Formula $S_{N+1,i,j}$
+\end_inset
+
+ is given as
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+[ S_{N+1,i,j}=
+\backslash
+begin{cases} S_{N,i,1} & 
+\backslash
+mbox{with probability }
+\backslash
+phi+
+\backslash
+frac{1-2
+\backslash
+phi}{2N}
+\backslash
+
+\backslash
+ S_{N,i,2} & 
+\backslash
+mbox{with probability }
+\backslash
+phi+
+\backslash
+frac{1-2
+\backslash
+phi}{2N}
+\backslash
+
+\backslash
+ S_{1,i,1} & 
+\backslash
+mbox{with probability }
+\backslash
+frac{1-2
+\backslash
+phi}{2N}
+\backslash
+
+\backslash
+ 
+\backslash
+vdots & 
+\backslash
+vdots
+\backslash
+
+\backslash
+ S_{N-1,i,2} & 
+\backslash
+mbox{with probability }
+\backslash
+frac{1-2
+\backslash
+phi}{2N} 
+\backslash
+end{cases} 
+\backslash
+] 
+\end_layout
+
+\end_inset
+
+For each coefficient of kinship we simulated 1,000 studies containing 301
+ individuals across 100,000 variants in the above manner to evaluate the
+ power of STEGO.
+ Each simulated study contained only a single related pair with relatedness,
+ 
+\begin_inset Formula $\phi$
+\end_inset
+
+, among an otherwise homogeneous dataset.
+ We demonstrate that under the null hypothesis, 
+\begin_inset Formula $H_{0}:\phi=0$
+\end_inset
+
+, the family-wise type I error rate, 
+\begin_inset Formula $\alpha=.05$
+\end_inset
+
+ is preserved.
+ We then compared the proportion of simulated studies which were found to
+ have significantly related pairs to the analytically derived probability
+ of type II error.
+ Figure 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ref{fig:power_curve}
+\end_layout
+
+\end_inset
+
+ demonstrates that our findings that computed Type II error aligns to the
+ formula in Equation 7.
+ Further investigation into the computational complexity of our method show
+ that our method does not sacrifice speed compared to standard PCA (see
+ Supplemental Materials 1.7).
+\end_layout
+
 \begin_layout Standard
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
 bibfiles "publications"
-options "plainnat"
+options "plain"
 
 \end_inset
 
@@ -6831,9 +7090,15 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+
+\series bold
+A
+\series default
+
 \begin_inset Graphics
-	filename /home/dan/1000GP/plots/pairwise_variances.png
-	width 100col%
+	filename figures/GSM_trim.png
+	lyxscale 50
+	width 75col%
 
 \end_inset
 
@@ -6841,17 +7106,45 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
+
+\series bold
+B
+\series default
+
+\begin_inset Graphics
+	filename figures/PCA_all.pdf
+	width 80col%
+
+\end_inset
+
+
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-The eigendecomposition of the STEGO matrix separates individuals of populations
- belonging to the same continent with greater efficiency than PCA.
- In 43 of 57 possible within-continent population pairs, STEGO had super
- separation of populations.
- Separation was measured as the ratio of within population variance to total
- variance along the first 3 eigenvectors for STEGO and PCA.
- 
+Population structure in 2504 samples from 1000 Genomes Project.
+ (
+\series bold
+A
+\series default
+) Heatmap of the GSM generated by STEGO using 80,000 LD-sampled variants.
+ The vertical colorbar indicates membership in one of the five superpopulations,
+ while the horizontal colorbar indicates membership in one of the 26 populations.
+ (
+\series bold
+B
+\series default
+) Projecting each individual onto the top two eigenvectors resulted in a
+ similar 2-dimensional distribution of global ancestry.
+ Both STEGO and PCA show similar projections which elucidate the migratory
+ patterns of early humans.
 \end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig: heatmaps"
 
 \end_inset
 
@@ -6861,9 +7154,6 @@ The eigendecomposition of the STEGO matrix separates individuals of populations
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
@@ -7060,7 +7350,8 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-Running time of STEGO is compared to the default implementations of 
+Average running time of STEGO is compared to the default implementations
+ of 
 \begin_inset ERT
 status open
 
@@ -7089,6 +7380,17 @@ textbf{princomp()}
  in R.
 
 \series default
+ For each sample size on the x-axis, 100,000 variants were randomly generated
+ across the samples.
+ R functions for STEGO, correlation, and two implementations of PCA (
+\series bold
+prcomp 
+\series default
+and 
+\series bold
+princomp
+\series default
+) were run 10 times on each simulated dataset.
  Each of these methods has asymptotic computational complexity of 
 \begin_inset ERT
 status open
@@ -7133,6 +7435,89 @@ status open
 
 \backslash
 label{comp_time}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/dan/1000GP/simulated_PCP_plots.pdf
+	width 60col%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Principal Component plots for two methods for generating the genetic similarity
+ matrix.
+ On the left, the GSM is generated via STEGO and on the right the GSM uses
+ the normalized covariance matrix.
+ The STEGO method makes more efficient use of the more ancestry informative
+ rare variants, providing a higher resolution separation of our two closely
+ related populations.
+ Across the first two components the ratio of within-population variance
+ to total variance for STEGO vs variance-covariance is .81 and .99, respectively.
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "simulatedPCP"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figure1.pdf
+	width 100col%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+The probability of rejecting the null hypothesis given a simulated set of
+ 301 homogeneous individuals containing a single related pair with coefficient
+ of kinship, 
+\begin_inset Formula $\phi$
+\end_inset
+
+.
+ The simulated power curve aligns with the analytically derived expectation
+ demonstrating the clearly defined power of the method.
 \end_layout
 
 \end_inset
