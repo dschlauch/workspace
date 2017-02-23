@@ -1,0 +1,61 @@
+This is BibTeX, Version 0.99d (TeX Live 2013/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: dissertation.aux
+A level-1 auxiliary file: chapters/introduction.aux
+A level-1 auxiliary file: chapters/chapter1.aux
+A level-1 auxiliary file: chapters/chapter2.aux
+A level-1 auxiliary file: chapters/chapter3.aux
+A level-1 auxiliary file: chapters/conclusion.aux
+A level-1 auxiliary file: chapters/appendixA.aux
+The style file: apalike2.bst
+A level-1 auxiliary file: endmatter/colophon.aux
+Illegal, another \bibstyle command---line 78 of file dissertation.aux
+ : \bibstyle
+ :          {apalike}
+I'm skipping whatever remains of this command
+Database file #1: references.bib
+Warning--to sort, need author or key in lgrc
+Warning--empty author in lgrc
+Warning--empty journal in lgrc
+You've used 48 entries,
+            2229 wiz_defined-function locations,
+            817 strings with 16503 characters,
+and the built_in function-call counts, 24818 in all, are:
+= -- 2279
+> -- 1613
+< -- 12
++ -- 598
+- -- 590
+* -- 2451
+:= -- 4387
+add.period$ -- 145
+call.type$ -- 48
+change.case$ -- 520
+chr.to.int$ -- 48
+cite$ -- 52
+duplicate$ -- 705
+empty$ -- 1398
+format.name$ -- 649
+if$ -- 4647
+int.to.chr$ -- 1
+int.to.str$ -- 0
+missing$ -- 46
+newline$ -- 243
+num.names$ -- 141
+pop$ -- 437
+preamble$ -- 1
+purify$ -- 522
+quote$ -- 0
+skip$ -- 550
+stack$ -- 0
+substring$ -- 1568
+swap$ -- 84
+text.length$ -- 3
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 288
+warning$ -- 3
+while$ -- 167
+width$ -- 0
+write$ -- 622
+(There was 1 error message)
