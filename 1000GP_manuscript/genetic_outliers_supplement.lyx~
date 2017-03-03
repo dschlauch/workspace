@@ -6770,21 +6770,8 @@ For each coefficient of kinship we simulated 1,000 studies containing 301
  We then compared the proportion of simulated studies which were found to
  have significantly related pairs to the analytically derived probability
  of type II error.
- Figure 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-ref{fig:power_curve}
-\end_layout
-
-\end_inset
-
- demonstrates that our findings that computed Type II error aligns to the
- formula in Equation 7.
+ Supplemental Figure 8 demonstrates that our findings that computed Type
+ II error aligns to the formula in Equation 7.
  Further investigation into the computational complexity of our method show
  that our method does not sacrifice speed compared to standard PCA (see
  Supplemental Materials 1.7).
@@ -6803,6 +6790,731 @@ options "plain"
 
 \begin_layout Section
 Supplementary Figures and Tables
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Distribution of similarity statistic within population subgroups from 1000
+ Genomes Project after removal of related individuals
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/PostFilter/ACBdiploid.pdf
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/PostFilter/ASWdiploid.pdf
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/PostFilter/BEBdiploid.pdf
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/PostFilter/CDXdiploid.pdf
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/PostFilter/CEUdiploid.pdf
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/PostFilter/CHBdiploid.pdf
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/PostFilter/CHSdiploid.pdf
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/PostFilter/CLMdiploid.pdf
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/PostFilter/ESNdiploid.pdf
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/PostFilter/FINdiploid.pdf
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/PostFilter/GBRdiploid.pdf
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/PostFilter/GIHdiploid.pdf
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/PostFilter/GWDdiploid.pdf
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/PostFilter/IBSdiploid.pdf
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/PostFilter/ITUdiploid.pdf
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/PostFilter/JPTdiploid.pdf
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/PostFilter/KHVdiploid.pdf
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/PostFilter/LWKdiploid.pdf
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/PostFilter/MSLdiploid.pdf
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/PostFilter/MXLdiploid.pdf
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/PostFilter/PELdiploid.pdf
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/PostFilter/PJLdiploid.pdf
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/PostFilter/PURdiploid.pdf
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/PostFilter/STUdiploid.pdf
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/PostFilter/TSIdiploid.pdf
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/PostFilter/YRIdiploid.pdf
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Distribution of similarity coefficients for each of the 26 populations in
+ the 1000 Genomes Project after the removal of suspected related individuals.
+ Homogeneous populations lacking cryptic relatedness should be expected
+ to exhibit distributions centered around 1 with no outliers.
+ A heterogeneous population is expected to exhibit a normal distribution
+ centered around 1.
+ Non-normal distributions such as right-skewed (e.g.
+ PUR, PEL, CLM) or bimodal are indicative of population structure.
+ The red dotted vertical line on each plot indicates the family-wise
+\begin_inset Formula $\alpha=.01$
+\end_inset
+
+ level cutoff for 
+\begin_inset Formula ${n \choose 2}$
+\end_inset
+
+ comparisons.
+ The most significant related pair is labeled for each population with the
+ estimated kinship for that pairing indicated in blue.
+ The p-value for the KS test for homogeneity is reported for each population.
+ Outliers in the absence of non-normally distributed statistics are an indicatio
+n of relatedness among pairs of individuals.
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "All s plots-1"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+A
+\series default
+
+\begin_inset Graphics
+	filename figures/GSM_trim.png
+	lyxscale 50
+	width 75col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+B
+\series default
+
+\begin_inset Graphics
+	filename figures/PCA_all.pdf
+	width 80col%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Population structure in 2504 samples from 1000 Genomes Project.
+ (
+\series bold
+A
+\series default
+) Heatmap of the GSM generated by STEGO using 80,000 LD-sampled variants.
+ The vertical colorbar indicates membership in one of the five superpopulations,
+ while the horizontal colorbar indicates membership in one of the 26 populations.
+ (
+\series bold
+B
+\series default
+) Projecting each individual onto the top two eigenvectors resulted in a
+ similar 2-dimensional distribution of global ancestry.
+ Both STEGO and PCA show similar projections which elucidate the migratory
+ patterns of early humans.
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig: heatmaps"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename pasted2.png
+	width 100col%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Despite a clear trend of superior performance with STEGO, notable exceptions
+ occur.
+ For example, by this measure, the populations GBR and CEU were more clearly
+ divided by PCA (Right) than by STEGO (Left).
+ Closer inspection revealed that the first eigenvector from STEGO isolates
+ 11 samples exclusively from the GBR population.
+ It is not readily apparent what features of the data are being captured
+ here or the relative value of those features (this may be a result of populatio
+n structure, relatedness, batch effect, etc.).
+ But it is notable that all 11 samples came from the same population in
+ the 1000 Genomes Project.
+ It is reasonable to infer that this subset of samples is scientifically
+ relevant.
+ It most likely contains a disproportionate number of co-occurences of rare
+ variants, which were not observed separately by PCA.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+resizebox{
+\backslash
+columnwidth}{!}{%
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/dan/1000GP/supplemental_figure_wk.eps
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+The weight factor, 
+\begin_inset Formula $w_{k}$
+\end_inset
+
+, is shown here as a function of the minor allele count in an example of
+ 100 individuals (200 alleles) for each locus, 
+\begin_inset Formula $k$
+\end_inset
+
+.
+ 
+\begin_inset Formula $w_{k}$
+\end_inset
+
+ is monotonically decreasing for minor allele counts greater than 
+\begin_inset Formula $1$
+\end_inset
+
+, lending greater power to lower frequency variants.
+  Typically, there will be a minimum minor allele count such that the largest
+ values for 
+\begin_inset Formula $w_{k}$
+\end_inset
+
+are never obtained in practice
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/dan/1000GP/plots/YRIvsAll_continent_color_interval.png
+	width 100col%
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "YRIvsX"
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\series bold
+Lower frequency alleles are more informative of ancestry.
+ 
+\series default
+For the Yoruban population (YRI), this plot compares the average unweighted
+ Jaccard Index between individuals within group the to individuals in all
+ other populations of the 1000 Genomes Project.
+ When filtering by each minor allele frequency, we observe that low frequency
+ alleles create the strongest separation between populations.
+ This trend holds true for all but the lowest interval (0-0.4% MAF), likely
+ owing to a tradeoff between rare variant informativeness and quality control
+ reliability.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/dan/1000GP/average_timing_comparison.pdf
+	width 100col%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\series bold
+Average running time of STEGO is compared to the default implementations
+ of 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{cor()}
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{princomp()}
+\end_layout
+
+\end_inset
+
+ in R.
+
+\series default
+ For each sample size on the x-axis, 100,000 variants were randomly generated
+ across the samples.
+ R functions for STEGO, correlation, and two implementations of PCA (
+\series bold
+prcomp 
+\series default
+and 
+\series bold
+princomp
+\series default
+) were run 10 times on each simulated dataset.
+ Each of these methods has asymptotic computational complexity of 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$
+\backslash
+mathcal{O}(pN^{2})$
+\end_layout
+
+\end_inset
+
+, and we observe a consistent speed improvement of approximately 3x for
+ STEGO compared to 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{princomp()}
+\end_layout
+
+\end_inset
+
+.
+ This improvement scales linearly with increased number of variants, which
+ is most appealing for large whole genome sequencing studies involving thousands
+ of subjects and millions of variants.
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+label{comp_time}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/dan/1000GP/simulated_PCP_plots.pdf
+	width 60col%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Principal Component plots for two methods for generating the genetic similarity
+ matrix.
+ On the left, the GSM is generated via STEGO and on the right the GSM uses
+ the normalized covariance matrix.
+ The STEGO method makes more efficient use of the more ancestry informative
+ rare variants, providing a higher resolution separation of our two closely
+ related populations.
+ Across the first two components the ratio of within-population variance
+ to total variance for STEGO vs variance-covariance is .81 and .99, respectively.
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "simulatedPCP"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figure1.pdf
+	width 100col%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+The probability of rejecting the null hypothesis given a simulated set of
+ 301 homogeneous individuals containing a single related pair with coefficient
+ of kinship, 
+\begin_inset Formula $\phi$
+\end_inset
+
+.
+ The simulated power curve aligns with the analytically derived expectation
+ demonstrating the clearly defined power of the method.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -8673,731 +9385,6 @@ Presence of population structure and cryptic relatedness detected in each
 \begin_inset CommandInset label
 LatexCommand label
 name "population_table"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-Distribution of similarity statistic within population subgroups from 1000
- Genomes Project after removal of related individuals
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename figures/PostFilter/ACBdiploid.pdf
-	lyxscale 20
-	width 12page%
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename figures/PostFilter/ASWdiploid.pdf
-	lyxscale 20
-	width 12page%
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename figures/PostFilter/BEBdiploid.pdf
-	lyxscale 20
-	width 12page%
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename figures/PostFilter/CDXdiploid.pdf
-	lyxscale 20
-	width 12page%
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename figures/PostFilter/CEUdiploid.pdf
-	lyxscale 20
-	width 12page%
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename figures/PostFilter/CHBdiploid.pdf
-	lyxscale 20
-	width 12page%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename figures/PostFilter/CHSdiploid.pdf
-	lyxscale 20
-	width 12page%
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename figures/PostFilter/CLMdiploid.pdf
-	lyxscale 20
-	width 12page%
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename figures/PostFilter/ESNdiploid.pdf
-	lyxscale 20
-	width 12page%
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename figures/PostFilter/FINdiploid.pdf
-	lyxscale 20
-	width 12page%
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename figures/PostFilter/GBRdiploid.pdf
-	lyxscale 20
-	width 12page%
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename figures/PostFilter/GIHdiploid.pdf
-	lyxscale 20
-	width 12page%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename figures/PostFilter/GWDdiploid.pdf
-	lyxscale 20
-	width 12page%
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename figures/PostFilter/IBSdiploid.pdf
-	lyxscale 20
-	width 12page%
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename figures/PostFilter/ITUdiploid.pdf
-	lyxscale 20
-	width 12page%
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename figures/PostFilter/JPTdiploid.pdf
-	lyxscale 20
-	width 12page%
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename figures/PostFilter/KHVdiploid.pdf
-	lyxscale 20
-	width 12page%
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename figures/PostFilter/LWKdiploid.pdf
-	lyxscale 20
-	width 12page%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename figures/PostFilter/MSLdiploid.pdf
-	lyxscale 20
-	width 12page%
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename figures/PostFilter/MXLdiploid.pdf
-	lyxscale 20
-	width 12page%
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename figures/PostFilter/PELdiploid.pdf
-	lyxscale 20
-	width 12page%
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename figures/PostFilter/PJLdiploid.pdf
-	lyxscale 20
-	width 12page%
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename figures/PostFilter/PURdiploid.pdf
-	lyxscale 20
-	width 12page%
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename figures/PostFilter/STUdiploid.pdf
-	lyxscale 20
-	width 12page%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename figures/PostFilter/TSIdiploid.pdf
-	lyxscale 20
-	width 12page%
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename figures/PostFilter/YRIdiploid.pdf
-	lyxscale 20
-	width 12page%
-
-\end_inset
-
-
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Distribution of similarity coefficients for each of the 26 populations in
- the 1000 Genomes Project after the removal of suspected related individuals.
- Homogeneous populations lacking cryptic relatedness should be expected
- to exhibit distributions centered around 1 with no outliers.
- A heterogeneous population is expected to exhibit a normal distribution
- centered around 1.
- Non-normal distributions such as right-skewed (e.g.
- PUR, PEL, CLM) or bimodal are indicative of population structure.
- The red dotted vertical line on each plot indicates the family-wise
-\begin_inset Formula $\alpha=.01$
-\end_inset
-
- level cutoff for 
-\begin_inset Formula ${n \choose 2}$
-\end_inset
-
- comparisons.
- The most significant related pair is labeled for each population with the
- estimated kinship for that pairing indicated in blue.
- The p-value for the KS test for homogeneity is reported for each population.
- Outliers in the absence of non-normally distributed statistics are an indicatio
-n of relatedness among pairs of individuals.
-\end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "All s plots-1"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-A
-\series default
-
-\begin_inset Graphics
-	filename figures/GSM_trim.png
-	lyxscale 50
-	width 75col%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\series bold
-B
-\series default
-
-\begin_inset Graphics
-	filename figures/PCA_all.pdf
-	width 80col%
-
-\end_inset
-
-
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Population structure in 2504 samples from 1000 Genomes Project.
- (
-\series bold
-A
-\series default
-) Heatmap of the GSM generated by STEGO using 80,000 LD-sampled variants.
- The vertical colorbar indicates membership in one of the five superpopulations,
- while the horizontal colorbar indicates membership in one of the 26 populations.
- (
-\series bold
-B
-\series default
-) Projecting each individual onto the top two eigenvectors resulted in a
- similar 2-dimensional distribution of global ancestry.
- Both STEGO and PCA show similar projections which elucidate the migratory
- patterns of early humans.
-\end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "fig: heatmaps"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename pasted2.png
-	width 100col%
-
-\end_inset
-
-
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Despite a clear trend of superior performance with STEGO, notable exceptions
- occur.
- For example, by this measure, the populations GBR and CEU were more clearly
- divided by PCA (Right) than by STEGO (Left).
- Closer inspection revealed that the first eigenvector from STEGO isolates
- 11 samples exclusively from the GBR population.
- It is not readily apparent what features of the data are being captured
- here or the relative value of those features (this may be a result of populatio
-n structure, relatedness, batch effect, etc.).
- But it is notable that all 11 samples came from the same population in
- the 1000 Genomes Project.
- It is reasonable to infer that this subset of samples is scientifically
- relevant.
- It most likely contains a disproportionate number of co-occurences of rare
- variants, which were not observed separately by PCA.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
- 
-\backslash
-resizebox{
-\backslash
-columnwidth}{!}{%
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename /home/dan/1000GP/supplemental_figure_wk.eps
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-The weight factor, 
-\begin_inset Formula $w_{k}$
-\end_inset
-
-, is shown here as a function of the minor allele count in an example of
- 100 individuals (200 alleles) for each locus, 
-\begin_inset Formula $k$
-\end_inset
-
-.
- 
-\begin_inset Formula $w_{k}$
-\end_inset
-
- is monotonically decreasing for minor allele counts greater than 
-\begin_inset Formula $1$
-\end_inset
-
-, lending greater power to lower frequency variants.
-  Typically, there will be a minimum minor allele count such that the largest
- values for 
-\begin_inset Formula $w_{k}$
-\end_inset
-
-are never obtained in practice
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename /home/dan/1000GP/plots/YRIvsAll_continent_color_interval.png
-	width 100col%
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "YRIvsX"
-
-\end_inset
-
-
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-
-\series bold
-Lower frequency alleles are more informative of ancestry.
- 
-\series default
-For the Yoruban population (YRI), this plot compares the average unweighted
- Jaccard Index between individuals within group the to individuals in all
- other populations of the 1000 Genomes Project.
- When filtering by each minor allele frequency, we observe that low frequency
- alleles create the strongest separation between populations.
- This trend holds true for all but the lowest interval (0-0.4% MAF), likely
- owing to a tradeoff between rare variant informativeness and quality control
- reliability.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename /home/dan/1000GP/average_timing_comparison.pdf
-	width 100col%
-
-\end_inset
-
-
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-
-\series bold
-Average running time of STEGO is compared to the default implementations
- of 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-textbf{cor()}
-\end_layout
-
-\end_inset
-
- and 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-textbf{princomp()}
-\end_layout
-
-\end_inset
-
- in R.
-
-\series default
- For each sample size on the x-axis, 100,000 variants were randomly generated
- across the samples.
- R functions for STEGO, correlation, and two implementations of PCA (
-\series bold
-prcomp 
-\series default
-and 
-\series bold
-princomp
-\series default
-) were run 10 times on each simulated dataset.
- Each of these methods has asymptotic computational complexity of 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-$
-\backslash
-mathcal{O}(pN^{2})$
-\end_layout
-
-\end_inset
-
-, and we observe a consistent speed improvement of approximately 3x for
- STEGO compared to 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-textbf{princomp()}
-\end_layout
-
-\end_inset
-
-.
- This improvement scales linearly with increased number of variants, which
- is most appealing for large whole genome sequencing studies involving thousands
- of subjects and millions of variants.
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-label{comp_time}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename /home/dan/1000GP/simulated_PCP_plots.pdf
-	width 60col%
-
-\end_inset
-
-
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Principal Component plots for two methods for generating the genetic similarity
- matrix.
- On the left, the GSM is generated via STEGO and on the right the GSM uses
- the normalized covariance matrix.
- The STEGO method makes more efficient use of the more ancestry informative
- rare variants, providing a higher resolution separation of our two closely
- related populations.
- Across the first two components the ratio of within-population variance
- to total variance for STEGO vs variance-covariance is .81 and .99, respectively.
-\end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "simulatedPCP"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename figure1.pdf
-	width 100col%
-
-\end_inset
-
-
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-The probability of rejecting the null hypothesis given a simulated set of
- 301 homogeneous individuals containing a single related pair with coefficient
- of kinship, 
-\begin_inset Formula $\phi$
-\end_inset
-
-.
- The simulated power curve aligns with the analytically derived expectation
- demonstrating the clearly defined power of the method.
-\end_layout
 
 \end_inset
 

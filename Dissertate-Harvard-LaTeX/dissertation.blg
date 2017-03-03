@@ -17,45 +17,45 @@ Database file #1: references.bib
 Warning--to sort, need author or key in lgrc
 Warning--empty author in lgrc
 Warning--empty journal in lgrc
-You've used 48 entries,
+You've used 78 entries,
             2229 wiz_defined-function locations,
-            817 strings with 16503 characters,
-and the built_in function-call counts, 24818 in all, are:
-= -- 2279
-> -- 1613
-< -- 12
-+ -- 598
-- -- 590
-* -- 2451
-:= -- 4387
-add.period$ -- 145
-call.type$ -- 48
-change.case$ -- 520
-chr.to.int$ -- 48
-cite$ -- 52
-duplicate$ -- 705
-empty$ -- 1398
-format.name$ -- 649
-if$ -- 4647
+            970 strings with 22738 characters,
+and the built_in function-call counts, 39344 in all, are:
+= -- 3661
+> -- 2467
+< -- 21
++ -- 908
+- -- 896
+* -- 3864
+:= -- 6946
+add.period$ -- 236
+call.type$ -- 78
+change.case$ -- 816
+chr.to.int$ -- 78
+cite$ -- 82
+duplicate$ -- 1132
+empty$ -- 2256
+format.name$ -- 997
+if$ -- 7380
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 46
-newline$ -- 243
-num.names$ -- 141
-pop$ -- 437
+missing$ -- 75
+newline$ -- 394
+num.names$ -- 231
+pop$ -- 667
 preamble$ -- 1
-purify$ -- 522
+purify$ -- 818
 quote$ -- 0
-skip$ -- 550
+skip$ -- 882
 stack$ -- 0
-substring$ -- 1568
-swap$ -- 84
-text.length$ -- 3
+substring$ -- 2565
+swap$ -- 126
+text.length$ -- 4
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 288
+type$ -- 468
 warning$ -- 3
-while$ -- 167
+while$ -- 278
 width$ -- 0
-write$ -- 622
+write$ -- 1013
 (There was 1 error message)

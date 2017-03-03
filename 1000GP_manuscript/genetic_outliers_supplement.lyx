@@ -10,12 +10,13 @@
 \usepackage{authblk}
 \usepackage{url}
 \usepackage{ulem}
-\author[1,2]{Daniel Schlauch} 
-\author[3]{Heide Fier}
-\author[1,2]{Christoph Lange}
+\author[1,2,4]{Daniel Schlauch} 
+\author[1,3]{Heide Fier}
+\author[1,4]{Christoph Lange}
 \affil[1]{Department of Biostatistics, Harvard TH Chan School of Public Health, Boston, MA 02115}
 \affil[2]{Department of Biostatistics and Computational Biology, Dana-Farber Cancer Institute, Boston, MA 02115}
 \affil[3]{Institute of Genomic Mathematics, University of Bonn, Bonn, Germany}
+\affil[4]{Channing Division of Network Medicine,  Brigham and Women's Hospital, 181 Longwood Ave; CL-3; Boston, MA 02115}
 \end_preamble
 \use_default_options true
 \maintain_unincluded_children false
@@ -6770,21 +6771,8 @@ For each coefficient of kinship we simulated 1,000 studies containing 301
  We then compared the proportion of simulated studies which were found to
  have significantly related pairs to the analytically derived probability
  of type II error.
- Figure 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-ref{fig:power_curve}
-\end_layout
-
-\end_inset
-
- demonstrates that our findings that computed Type II error aligns to the
- formula in Equation 7.
+ Supplemental Figure 8 demonstrates that our findings that computed Type
+ II error aligns to the formula in Equation 7.
  Further investigation into the computational complexity of our method show
  that our method does not sacrifice speed compared to standard PCA (see
  Supplemental Materials 1.7).

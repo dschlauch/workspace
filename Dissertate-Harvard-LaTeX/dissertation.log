@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.1415926-2.5-0.9999.3 (TeX Live 2013/Debian) (format=xelatex 2017.2.23)  23 FEB 2017 17:55
+This is XeTeX, Version 3.1415926-2.5-0.9999.3 (TeX Live 2013/Debian) (format=xelatex 2017.2.23)  24 FEB 2017 10:41
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1342,6 +1342,12 @@ Overfull \hbox (10.578pt too wide) in paragraph at lines 2--2
 ions Using Gene Regulatory 
  []
 
+
+Overfull \hbox (8.19pt too wide) in paragraph at lines 3--3
+ [][] [][][]\EU1/EBGaramond(2)/m/sc/12 Identification of genetic outliers due t
+o sub-structure and cryptic 
+ []
+
 )
 \tf@toc=\write4
 \openout4 = `dissertation.toc'.
@@ -1640,7 +1646,7 @@ Package microtype Info: Character `−' is missing
 (microtype)             in font `\EU1/EBGaramond(2)/m/n/8'.
 (microtype)             Ignoring protrusion settings for this character.
 
-Overfull \hbox (79.16621pt too wide) in paragraph at lines 36--37
+Overfull \hbox (81.67021pt too wide) in paragraph at lines 36--37
 \EU1/EBGaramond(2)/bx/n/10.95 tion weight matrices for 205 transcription factor
  motifs obtained from JASPAR 2014 (http://jaspar2014.genereg.net/),$[]$ 
  []
@@ -1844,7 +1850,216 @@ Chapter 2.
 
 
 
-]) [46]
+] [46] [47] [48]
+
+Package amsmath Warning: Foreign command \atopwithdelims;
+(amsmath)                \frac or \genfrac should be used instead
+(amsmath)                 on input line 116.
+
+[49]
+LaTeX Font Info:    Font shape `EU1/EBGaramond(4)/m/it' will be
+(Font)              scaled to size 10.95pt on input line 137.
+ [50] [51] [52] [53] [54] [55]
+.................................................
+. fontspec info: "defining-font"
+. 
+. Font family 'EBGaramond(4)' created for font 'EB Garamond' with options
+. [Numbers=OldStyle, Ligatures={Common, TeX}, Scale=1.0,RawFeature=+tnum].
+. 
+. This font family consists of the following shapes:
+.................................................
+ [56]
+.................................................
+. fontspec info: "defining-font"
+. 
+. Font family 'EBGaramond(4)' created for font 'EB Garamond' with options
+. [Numbers=OldStyle, Ligatures={Common, TeX}, Scale=1.0,RawFeature=+tnum].
+. 
+. This font family consists of the following shapes:
+.................................................
+LaTeX Font Info:    Font shape `EU1/EBGaramond(4)/bx/n' will be
+(Font)              scaled to size 10.95pt on input line 402.
+
+Overfull \hbox (12.01305pt too wide) in paragraph at lines 355--403
+[][]  
+ []
+
+[57] [58] [59] [60]
+Overfull \hbox (64.3244pt too wide) in paragraph at lines 453--453
+[]  
+ []
+
+[61] [62]
+
+Package natbib Warning: Citation `holmes2007fast' on page 63 undefined on input
+ line 502.
+
+
+Package caption Warning: \label without proper \caption on input line 934.
+See the caption package documentation for explanation.
+
+
+LaTeX Warning: Reference `YRIvsX' on page 63 undefined on input line 520.
+
+[63]
+Overfull \hbox (21.55951pt too wide) in paragraph at lines 529--529
+ |[]\EU1/EBGaramond(2)/m/sc/12 Simulations demonstrate sensitivity STEGO to sub
+tle population strat-
+ []
+
+
+Overfull \hbox (30.81677pt too wide) in paragraph at lines 531--545
+\EU1/EBGaramond(2)/bx/n/10.95 ancestral allele frequency distribution for 20k v
+ariants, each as an observation from an $[][][][][][][][][][][] []$ 
+ []
+
+[64] [65] [66] [67] [68] [69]
+File: ./figures/figure1_bw.eps Graphic file (type eps)
+ <./figures/figure1_bw.eps>
+Overfull \hbox (24.09pt too wide) in paragraph at lines 707--718
+ [][] 
+ []
+
+LaTeX Font Info:    Font shape `EU1/EBGaramond(4)/m/n' will be
+(Font)              scaled to size 10.0pt on input line 718.
+LaTeX Font Info:    Font shape `EU1/EBGaramond(4)/m/it' will be
+(Font)              scaled to size 10.0pt on input line 718.
+LaTeX Font Info:    Font shape `EU1/LatoRegular(0)/m/n' will be
+(Font)              scaled to size 4.0474pt on input line 718.
+File: ./figures/figure2_bw.eps Graphic file (type eps)
+<./figures/figure2_bw.eps>
+File: ./figures/figure3.eps Graphic file (type eps)
+ <./figures/figure3.eps> [70] [71] [72] [73]
+File: ./figures/figure4_bw.eps Graphic file (type eps)
+
+<./figures/figure4_bw.eps> [74] [75]
+File: ./figures/figure5.eps Graphic file (type eps)
+ <./figures/figure5.eps> [76] [77]
+Underfull \hbox (badness 10000) in paragraph at lines 865--866
+[]\EU1/EBGaramond(2)/bx/n/12 Distribution of similarity statistic within popula
+tion subgroups from 1000 Genomes
+ []
+
+File: figures/PostFilter/ACBdiploid.pdf Graphic file (type QTm)
+<use  "figures/PostFilter/ACBdiploid.pdf" >
+File: figures/PostFilter/ASWdiploid.pdf Graphic file (type QTm)
+
+<use  "figures/PostFilter/ASWdiploid.pdf" >
+File: figures/PostFilter/BEBdiploid.pdf Graphic file (type QTm)
+
+<use  "figures/PostFilter/BEBdiploid.pdf" >
+File: figures/PostFilter/CDXdiploid.pdf Graphic file (type QTm)
+
+<use  "figures/PostFilter/CDXdiploid.pdf" >
+File: figures/PostFilter/CEUdiploid.pdf Graphic file (type QTm)
+
+<use  "figures/PostFilter/CEUdiploid.pdf" >
+File: figures/PostFilter/CHBdiploid.pdf Graphic file (type QTm)
+
+<use  "figures/PostFilter/CHBdiploid.pdf" >
+Overfull \hbox (26.72183pt too wide) in paragraph at lines 867--868
+[][][][][][][] 
+ []
+
+File: figures/PostFilter/CHSdiploid.pdf Graphic file (type QTm)
+<use  "figures/PostFilter/CHSdiploid.pdf" >
+File: figures/PostFilter/CLMdiploid.pdf Graphic file (type QTm)
+
+<use  "figures/PostFilter/CLMdiploid.pdf" >
+File: figures/PostFilter/ESNdiploid.pdf Graphic file (type QTm)
+
+<use  "figures/PostFilter/ESNdiploid.pdf" >
+File: figures/PostFilter/FINdiploid.pdf Graphic file (type QTm)
+
+<use  "figures/PostFilter/FINdiploid.pdf" >
+File: figures/PostFilter/GBRdiploid.pdf Graphic file (type QTm)
+
+<use  "figures/PostFilter/GBRdiploid.pdf" >
+File: figures/PostFilter/GIHdiploid.pdf Graphic file (type QTm)
+
+<use  "figures/PostFilter/GIHdiploid.pdf" >
+Overfull \hbox (26.72183pt too wide) in paragraph at lines 869--870
+[][][][][][][] 
+ []
+
+File: figures/PostFilter/GWDdiploid.pdf Graphic file (type QTm)
+<use  "figures/PostFilter/GWDdiploid.pdf" >
+File: figures/PostFilter/IBSdiploid.pdf Graphic file (type QTm)
+
+<use  "figures/PostFilter/IBSdiploid.pdf" >
+File: figures/PostFilter/ITUdiploid.pdf Graphic file (type QTm)
+
+<use  "figures/PostFilter/ITUdiploid.pdf" >
+File: figures/PostFilter/JPTdiploid.pdf Graphic file (type QTm)
+
+<use  "figures/PostFilter/JPTdiploid.pdf" >
+File: figures/PostFilter/KHVdiploid.pdf Graphic file (type QTm)
+
+<use  "figures/PostFilter/KHVdiploid.pdf" >
+File: figures/PostFilter/LWKdiploid.pdf Graphic file (type QTm)
+
+<use  "figures/PostFilter/LWKdiploid.pdf" >
+Overfull \hbox (26.72183pt too wide) in paragraph at lines 871--872
+[][][][][][][] 
+ []
+
+File: figures/PostFilter/MSLdiploid.pdf Graphic file (type QTm)
+<use  "figures/PostFilter/MSLdiploid.pdf" >
+File: figures/PostFilter/MXLdiploid.pdf Graphic file (type QTm)
+
+<use  "figures/PostFilter/MXLdiploid.pdf" >
+File: figures/PostFilter/PELdiploid.pdf Graphic file (type QTm)
+
+<use  "figures/PostFilter/PELdiploid.pdf" >
+File: figures/PostFilter/PJLdiploid.pdf Graphic file (type QTm)
+
+<use  "figures/PostFilter/PJLdiploid.pdf" >
+File: figures/PostFilter/PURdiploid.pdf Graphic file (type QTm)
+
+<use  "figures/PostFilter/PURdiploid.pdf" >
+File: figures/PostFilter/STUdiploid.pdf Graphic file (type QTm)
+
+<use  "figures/PostFilter/STUdiploid.pdf" >
+Overfull \hbox (26.72183pt too wide) in paragraph at lines 873--874
+[][][][][][][] 
+ []
+
+File: figures/PostFilter/TSIdiploid.pdf Graphic file (type QTm)
+<use  "figures/PostFilter/TSIdiploid.pdf" >
+File: figures/PostFilter/YRIdiploid.pdf Graphic file (type QTm)
+
+<use  "figures/PostFilter/YRIdiploid.pdf" >
+File: figures/GSM_trim.png Graphic file (type QTm)
+ <use  "figures/GSM_trim.png" >
+File: figures/PCA_all.pdf Graphic file (type QTm)
+
+<use  "figures/PCA_all.pdf" >
+File: ./figures/PCA_CEU_GBR.png Graphic file (type QTm)
+ <use  "./figures/PCA_CEU_GBR.png" >
+File: /home/dan/1000GP/supplemental_figure_wk.pdf Graphic file (type QTm)
+
+<use  "/home/dan/1000GP/supplemental_figure_wk.pdf" >
+File: /home/dan/1000GP/plots/YRIvsAll_continent_color_interval.png Graphic file
+ (type QTm)
+
+<use  "/home/dan/1000GP/plots/YRIvsAll_continent_color_interval.png" >
+File: /home/dan/1000GP/average_timing_comparison.pdf Graphic file (type QTm)
+
+<use  "/home/dan/1000GP/average_timing_comparison.pdf" >
+File: /home/dan/1000GP/simulated_PCP_plots.pdf Graphic file (type QTm)
+
+<use  "/home/dan/1000GP/simulated_PCP_plots.pdf" >
+File: ./figures/power_curve.eps Graphic file (type eps)
+ <./figures/power_curve.eps>
+.................................................
+. fontspec info: "defining-font"
+. 
+. Font family 'EBGaramond(4)' created for font 'EB Garamond' with options
+. [Numbers=OldStyle, Ligatures={Common, TeX}, Scale=1.0,RawFeature=+tnum].
+. 
+. This font family consists of the following shapes:
+.................................................
+) [78] [79] [80] [81] [82] [83] [84] [85] [86] [87]
 \openout2 = `chapters/chapter3.aux'.
 
  (./chapters/chapter3.tex
@@ -1866,7 +2081,7 @@ stas,
  []
 
 Chapter 3.
-) [47
+) [88
 
 
 
@@ -1875,25 +2090,25 @@ Chapter 3.
 
  (./chapters/conclusion.tex
 Chapter 4.
-[48
+[89
 
 
 
-]) [49]
+]) [90]
 \openout2 = `chapters/appendixA.aux'.
 
  (./chapters/appendixA.tex
 Appendix A.
-) [50
+) [91
 
 
 
-] [51] (./endmatter/personalize.tex) (./dissertation.bbl [52
+] [92] (./endmatter/personalize.tex) (./dissertation.bbl [93
 
 
 
-] [53]
-[54] [55]) [56]
+] [94]
+[95] [96] [97] [98] [99]) [100]
 \openout2 = `endmatter/colophon.aux'.
 
  (./endmatter/colophon.tex
@@ -1975,15 +2190,17 @@ Underfull \hbox (badness 10000) in paragraph at lines 16--16
 \EU1/EBGaramond(2)/bx/n/10.95 from its lead author, Jordan Suchow, at [][]su-
  []
 
-) [57
+) [101
 
 ]
+
+Package natbib Warning: There were undefined citations.
+
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 46.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 46.
- (./dissertation.aux (./chapters/introduction.aux)
-(./chapters/chapter1.aux) (./chapters/chapter2.aux) (./chapters/chapter3.aux)
-(./chapters/conclusion.aux) (./chapters/appendixA.aux)
-(./endmatter/colophon.aux))
+(./dissertation.aux (./chapters/introduction.aux) (./chapters/chapter1.aux)
+(./chapters/chapter2.aux) (./chapters/chapter3.aux) (./chapters/conclusion.aux)
+(./chapters/appendixA.aux) (./endmatter/colophon.aux))
 Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 46.
 Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 46.
 
@@ -1991,16 +2208,19 @@ Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 46.
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 
+LaTeX Warning: There were undefined references.
+
+
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 26939 strings out of 493918
- 491803 string characters out of 6150563
- 680063 words of memory out of 5000000
- 29717 multiletter control sequences out of 15000+600000
- 16878 words of font info for 125 fonts, out of 8000000 for 9000
+ 27171 strings out of 493918
+ 497984 string characters out of 6150563
+ 687905 words of memory out of 5000000
+ 29895 multiletter control sequences out of 15000+600000
+ 16974 words of font info for 137 fonts, out of 8000000 for 9000
  1144 hyphenation exceptions out of 8191
- 60i,12n,94p,10510b,566s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 60i,12n,94p,10510b,634s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on dissertation.pdf (63 pages).
+Output written on dissertation.pdf (107 pages).

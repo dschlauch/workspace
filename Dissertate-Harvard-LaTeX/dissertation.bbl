@@ -5,6 +5,19 @@
 \newblock Lung genomics research consortium (lgrc).
 \newblock Accessed: 2016-02-02.
 
+\bibitem[Al-Khudhair et~al., 2015]{al2015inference}
+Al-Khudhair, A., Qiu, S., Wyse, M., Chowdhury, S., Cheng, X., Bekbolsynov, D.,
+  Saha-Mandal, A., Dutta, R., Fedorova, L., \& Fedorov, A. (2015).
+\newblock Inference of distant genetic relations in humans using '1000
+  genomes'.
+\newblock {\em Genome biology and evolution}, 7(2), 481--492.
+
+\bibitem[Bacanu et~al., 2002]{bacanu2002association}
+Bacanu, S.-A., Devlin, B., \& Roeder, K. (2002).
+\newblock Association studies for quantitative traits in structured
+  populations.
+\newblock {\em Genetic epidemiology}, 22(1), 78--93.
+
 \bibitem[Bahr et~al., 2013]{bahr2013peripheral}
 Bahr, T.~M., Hughes, G.~J., Armstrong, M., Reisdorph, R., Coldren, C.~D.,
   Edwards, M.~G., Schnell, C., Kedl, R., LaFlamme, D.~J., Reisdorph, N., et~al.
@@ -14,6 +27,11 @@ Bahr, T.~M., Hughes, G.~J., Armstrong, M., Reisdorph, R., Coldren, C.~D.,
 \newblock {\em American journal of respiratory cell and molecular biology},
   49(2), 316--323.
 
+\bibitem[Boehnke \& Cox, 1997]{boehnke1997accurate}
+Boehnke, M. \& Cox, N.~J. (1997).
+\newblock Accurate inference of relationships in sib-pair linkage studies.
+\newblock {\em The American Journal of Human Genetics}, 61(2), 423--429.
+
 \bibitem[Boucherat et~al., 2016]{boucherat2016bridging}
 Boucherat, O., Morissette, M., Provencher, S., Bonnet, S., \& F, M. (2016).
 \newblock Bridging lung development with chronic obstructive pulmonary disease.
@@ -21,6 +39,13 @@ Boucherat, O., Morissette, M., Provencher, S., Bonnet, S., \& F, M. (2016).
   pathogenesis.
 \newblock {\em American Journal of Respiratory and Critical Care Medicine},
   193(4), 362--75.
+
+\bibitem[Chen et~al., 2013]{chen2013improved}
+Chen, C.-Y., Pollack, S., Hunter, D.~J., Hirschhorn, J.~N., Kraft, P., \&
+  Price, A.~L. (2013).
+\newblock Improved ancestry inference using weights from external reference
+  panels.
+\newblock {\em Bioinformatics}, (pp.\ btt144).
 
 \bibitem[Chen et~al., 2009]{chen2009input}
 Chen, W.~W., Schoeberl, B., Jasper, P.~J., Niepel, M., Nielsen, U.~B.,
@@ -37,6 +62,12 @@ Chen, Z.-H., Kim, H.~P., Sciurba, F.~C., Lee, S.-J., Feghali-Bostwick, C.,
   obstructive pulmonary disease.
 \newblock {\em PloS one}, 3(10), e3316.
 
+\bibitem[Choi et~al., 2009]{choi2009case}
+Choi, Y., Wijsman, E.~M., \& Weir, B.~S. (2009).
+\newblock Case-control association testing in the presence of unknown
+  relationships.
+\newblock {\em Genetic epidemiology}, 33(8), 668--678.
+
 \bibitem[Choksi et~al., 2014]{choksi2014switching}
 Choksi, S.~P., Lauter, G., Swoboda, P., \& Roy, S. (2014).
 \newblock Switching on cilia: transcriptional networks regulating ciliogenesis.
@@ -49,6 +80,16 @@ Cloonan, S.~M., Glass, K., Laucho-Contreras, M.~E., Bhashyam, A.~R., Cervo, M.,
 \newblock Mitochondrial iron chelation ameliorates cigarette smoke-induced
   bronchitis and emphysema in mice.
 \newblock {\em Nature medicine}.
+
+\bibitem[Consortium et~al., 2012]{10002012integrated}
+Consortium, . G.~P. et~al. (2012).
+\newblock An integrated map of genetic variation from 1,092 human genomes.
+\newblock {\em Nature}, 491(7422), 56--65.
+
+\bibitem[Consortium et~al., 2015]{10002015global}
+Consortium, . G.~P. et~al. (2015).
+\newblock A global reference for human genetic variation.
+\newblock {\em Nature}, 526(7571), 68--74.
 
 \bibitem[Dai et~al., 2005]{dai2005evolving}
 Dai, M., Wang, P., Boyd, A.~D., Kostov, G., Athey, B., Jones, E.~G., Bunney,
@@ -63,6 +104,11 @@ Danielian, P.~S., Kim, C. F.~B., Caron, A.~M., Vasile, E., Bronson, R.~T., \&
 \newblock E2f4 is required for normal development of the airway epithelium.
 \newblock {\em Developmental biology}, 305(2), 564--576.
 
+\bibitem[Devlin et~al., 2001]{devlin2001genomic}
+Devlin, B., Roeder, K., \& Wasserman, L. (2001).
+\newblock Genomic control, a new approach to genetic-based association studies.
+\newblock {\em Theoretical population biology}, 60(3), 155--166.
+
 \bibitem[Du~P, 2007]{lumi}
 Du~P, Kibbe~WA, L.~S. (2007).
 \newblock {\em Using lumi, a package processing Illumina Microarray}.
@@ -75,6 +121,11 @@ Eduati, F., De~Las~Rivas, J., Di~Camillo, B., Toffolo, G., \& Saez-Rodriguez,
   signalling networks.
 \newblock {\em Bioinformatics}, 28(18), 2311--2317.
 
+\bibitem[Epstein et~al., 2000]{epstein2000improved}
+Epstein, M.~P., Duren, W.~L., \& Boehnke, M. (2000).
+\newblock Improved inference of relationship for pairs of individuals.
+\newblock {\em The American Journal of Human Genetics}, 67(5), 1219--1231.
+
 \bibitem[Fahy \& Dickey, 2010]{fahy2010airway}
 Fahy, J.~V. \& Dickey, B.~F. (2010).
 \newblock Airway mucus function and dysfunction.
@@ -86,6 +137,11 @@ Faith, J.~J., Hayete, B., Thaden, J.~T., Mogno, I., Wierzbowski, J., Cottarel,
 \newblock Large-scale mapping and validation of escherichia coli
   transcriptional regulation from a compendium of expression profiles.
 \newblock {\em PLoS Biol}, 5(1), e8.
+
+\bibitem[Fedorova et~al., 2016]{fedorova2016atlas}
+Fedorova, L., Qiu, S., Dutta, R., \& Fedorov, A. (2016).
+\newblock Atlas of cryptic genetic relatedness among 1000 human genomes.
+\newblock {\em Genome biology and evolution}, 8(3), 777--790.
 
 \bibitem[Filosi et~al., 2014]{nettools}
 Filosi, M., Visintainer, R., \& Riccadonna, S. (2014).
@@ -102,6 +158,12 @@ Galvagni, F., Capo, S., \& Oliviero, S. (2001).
 Gautier, L., Cope, L., Bolstad, B.~M., \& Irizarry, R.~A. (2004).
 \newblock affy-analysis of affymetrix genechip data at the probe level.
 \newblock {\em Bioinformatics}, 20(3), 307--315.
+
+\bibitem[Gazal et~al., 2015]{gazal2015high}
+Gazal, S., Sahbatou, M., Babron, M.-C., G{\'e}nin, E., \& Leutenegger, A.-L.
+  (2015).
+\newblock High level of inbreeding in final phase of 1000 genomes project.
+\newblock {\em Scientific reports}, 5.
 
 \bibitem[Glass et~al., 2013]{glass2013passing}
 Glass, K., Huttenhower, C., Quackenbush, J., \& Yuan, G.-C. (2013).
@@ -167,6 +229,13 @@ Johnson, W.~E., Li, C., \& Rabinovic, A. (2007).
   bayes methods.
 \newblock {\em Biostatistics}, 8(1), 118--127.
 
+\bibitem[Kang et~al., 2010]{kang2010variance}
+Kang, H.~M., Sul, J.~H., Service, S.~K., Zaitlen, N.~A., Kong, S.-y., Freimer,
+  N.~B., Sabatti, C., Eskin, E., et~al. (2010).
+\newblock Variance component model to account for sample structure in
+  genome-wide association studies.
+\newblock {\em Nature genetics}, 42(4), 348--354.
+
 \bibitem[Karlseder et~al., 1996]{karlseder1996interaction}
 Karlseder, J., Rotheneder, H., \& Wintersberger, E. (1996).
 \newblock Interaction of sp1 with the growth-and cell cycle-regulated
@@ -189,6 +258,24 @@ Levine, M. \& Tjian, R. (2003).
 \newblock Transcription regulation and animal diversity.
 \newblock {\em Nature}, 424(6945), 147--151.
 
+\bibitem[Lippert et~al., 2011]{lippert2011fast}
+Lippert, C., Listgarten, J., Liu, Y., Kadie, C.~M., Davidson, R.~I., \&
+  Heckerman, D. (2011).
+\newblock Fast linear mixed models for genome-wide association studies.
+\newblock {\em Nature methods}, 8(10), 833--835.
+
+\bibitem[Listgarten et~al., 2012]{listgarten2012improved}
+Listgarten, J., Lippert, C., Kadie, C.~M., Davidson, R.~I., Eskin, E., \&
+  Heckerman, D. (2012).
+\newblock Improved linear mixed models for genome-wide association studies.
+\newblock {\em Nature methods}, 9(6), 525--526.
+
+\bibitem[Manichaikul et~al., 2010]{manichaikul2010robust}
+Manichaikul, A., Mychaleckyj, J.~C., Rich, S.~S., Daly, K., Sale, M., \& Chen,
+  W.-M. (2010).
+\newblock Robust relationship inference in genome-wide association studies.
+\newblock {\em Bioinformatics}, 26(22), 2867--2873.
+
 \bibitem[Marbach et~al., 2012]{marbach2012wisdom}
 Marbach, D., Costello, J.~C., K{\"u}ffner, R., Vega, N.~M., Prill, R.~J.,
   Camacho, D.~M., Allison, K.~R., Kellis, M., Collins, J.~J., Stolovitzky, G.,
@@ -210,12 +297,30 @@ Mathelier, A., Zhao, X., Zhang, A.~W., Parcy, F., Worsley-Hunt, R., Arenillas,
   of transcription factor binding profiles.
 \newblock {\em Nucleic acids research}, (pp.\ gkt997).
 
+\bibitem[Mathieson \& McVean, 2012]{mathieson2012differential}
+Mathieson, I. \& McVean, G. (2012).
+\newblock Differential confounding of rare and common variants in spatially
+  structured populations.
+\newblock {\em Nature genetics}, 44(3), 243--246.
+
 \bibitem[Molinelli et~al., 2013]{molinelli2013perturbation}
 Molinelli, E.~J., Korkut, A., Wang, W., Miller, M.~L., Gauthier, N.~P., Jing,
   X., Kaushik, P., He, Q., Mills, G., Solit, D.~B., et~al. (2013).
 \newblock Perturbation biology: inferring signaling networks in cellular
   systems.
 \newblock {\em PLoS Comput Biol}, 9(12), e1003290.
+
+\bibitem[Nemesh \& McCarroll, 2012]{1000GPcrypticppt}
+Nemesh, J. \& McCarroll, S. (2012).
+\newblock Addressing cryptic relatedness in candidate samples for 1kg.
+\newblock ftp://ftp.1000genomes.ebi.ac.uk/ vol1/ftp/phase1/analysis\_results/
+  supporting/cryptic\_relation\_analysis.
+\newblock Accessed: 2016-06-06.
+
+\bibitem[Patterson et~al., 2006]{patterson2006population}
+Patterson, N., Price, A.~L., \& Reich, D. (2006).
+\newblock Population structure and eigenanalysis.
+\newblock {\em PLoS genet}, 2(12), e190.
 
 \bibitem[Pillai et~al., 2009]{pillai2009genome}
 Pillai, S.~G., Ge, D., Zhu, G., Kong, X., Shianna, K.~V., Need, A.~C., Feng,
@@ -230,6 +335,46 @@ Pinello, L., Xu, J., Orkin, S.~H., \& Yuan, G.-C. (2014).
   regulators of h3k27me3 patterns.
 \newblock {\em Proceedings of the National Academy of Sciences}, 111(3),
   E344--E353.
+
+\bibitem[Price et~al., 2006]{price2006principal}
+Price, A.~L., Patterson, N.~J., Plenge, R.~M., Weinblatt, M.~E., Shadick,
+  N.~A., \& Reich, D. (2006).
+\newblock Principal components analysis corrects for stratification in
+  genome-wide association studies.
+\newblock {\em Nature genetics}, 38(8), 904--909.
+
+\bibitem[Price et~al., 2008]{price2008long}
+Price, A.~L., Weale, M.~E., Patterson, N., Myers, S.~R., Need, A.~C., Shianna,
+  K.~V., Ge, D., Rotter, J.~I., Torres, E., Taylor, K.~D., et~al. (2008).
+\newblock Long-range ld can confound genome scans in admixed populations.
+\newblock {\em The American Journal of Human Genetics}, 83(1), 132--135.
+
+\bibitem[Price et~al., 2010]{price2010new}
+Price, A.~L., Zaitlen, N.~A., Reich, D., \& Patterson, N. (2010).
+\newblock New approaches to population stratification in genome-wide
+  association studies.
+\newblock {\em Nature Reviews Genetics}, 11(7), 459--463.
+
+\bibitem[Prokopenko et~al., 2016]{prokopenko2016utilizing}
+Prokopenko, D., Hecker, J., Silverman, E.~K., Pagano, M., N{\"o}then, M.~M.,
+  Dina, C., Lange, C., \& Fier, H.~L. (2016).
+\newblock Utilizing the jaccard index to reveal population stratification in
+  sequencing data: a simulation study and an application to the 1000 genomes
+  project.
+\newblock {\em Bioinformatics}, 32(9), 1366--1372.
+
+\bibitem[Ptak \& Przeworski, 2002]{ptak2002evidence}
+Ptak, S.~E. \& Przeworski, M. (2002).
+\newblock Evidence for population growth in humans is confounded by fine-scale
+  population structure.
+\newblock {\em Trends in Genetics}, 18(11), 559--563.
+
+\bibitem[Purcell et~al., 2007]{purcell2007plink}
+Purcell, S., Neale, B., Todd-Brown, K., Thomas, L., Ferreira, M.~A., Bender,
+  D., Maller, J., Sklar, P., De~Bakker, P.~I., Daly, M.~J., et~al. (2007).
+\newblock Plink: a tool set for whole-genome association and population-based
+  linkage analyses.
+\newblock {\em The American Journal of Human Genetics}, 81(3), 559--575.
 
 \bibitem[Qiu et~al., 2015]{qiu2015network}
 Qiu, W., DeMeo, D.~L., Houston, I., Pinto-Plata, V.~M., Celli, B.~R.,
@@ -274,6 +419,13 @@ Saez-Rodriguez, J., Alexopoulos, L.~G., Zhang, M., Morris, M.~K.,
   hepatocytes using discrete logical models.
 \newblock {\em Cancer research}, 71(16), 5400--5411.
 
+\bibitem[{\v{S}}id{\'a}k, 1967]{vsidak1967rectangular}
+{\v{S}}id{\'a}k, Z. (1967).
+\newblock Rectangular confidence regions for the means of multivariate normal
+  distributions.
+\newblock {\em Journal of the American Statistical Association}, 62(318),
+  626--633.
+
 \bibitem[Singh et~al., 2014]{singh2014altered}
 Singh, D., Fox, S.~M., Tal-Singer, R., Bates, S., Riley, J.~H., \& Celli, B.
   (2014).
@@ -286,6 +438,12 @@ S{\^\i}rbu, A., Ruskin, H.~J., \& Crane, M. (2010).
 \newblock Comparison of evolutionary algorithms in gene regulatory network
   model inference.
 \newblock {\em BMC bioinformatics}, 11(1), 1.
+
+\bibitem[Thornton et~al., 2012]{thornton2012estimating}
+Thornton, T., Tang, H., Hoffmann, T.~J., Ochs-Balcom, H.~M., Caan, B.~J., \&
+  Risch, N. (2012).
+\newblock Estimating kinship in admixed populations.
+\newblock {\em The American Journal of Human Genetics}, 91(1), 122--138.
 
 \bibitem[Tibshirani, 1996]{tibshirani1996regression}
 Tibshirani, R. (1996).
@@ -300,11 +458,37 @@ Vestbo, J., Anderson, W., Coxson, H.~O., Crim, C., Dawber, F., Edwards, L.,
   end-points (eclipse).
 \newblock {\em European Respiratory Journal}, 31(4), 869--873.
 
+\bibitem[Voight \& Pritchard, 2005]{voight2005confounding}
+Voight, B.~F. \& Pritchard, J.~K. (2005).
+\newblock Confounding from cryptic relatedness in case-control association
+  studies.
+\newblock {\em PLoS Genet}, 1(3), e32.
+
+\bibitem[Wang et~al., 2003]{wang2003evaluating}
+Wang, J., Tsang, W.~W., \& Marsaglia, G. (2003).
+\newblock Evaluating kolmogorov's distribution.
+\newblock {\em Journal of Statistical Software}, 8(18).
+
+\bibitem[Yang et~al., 2010]{yang2010common}
+Yang, J., Benyamin, B., McEvoy, B.~P., Gordon, S., Henders, A.~K., Nyholt,
+  D.~R., Madden, P.~A., Heath, A.~C., Martin, N.~G., Montgomery, G.~W., et~al.
+  (2010).
+\newblock Common snps explain a large proportion of the heritability for human
+  height.
+\newblock {\em Nature genetics}, 42(7), 565--569.
+
 \bibitem[Zhang \& Horvath, 2005]{zhang2005general}
 Zhang, B. \& Horvath, S. (2005).
 \newblock A general framework for weighted gene co-expression network analysis.
 \newblock {\em Statistical applications in genetics and molecular biology},
   4(1).
+
+\bibitem[Zhang et~al., 2010]{zhang2010mixed}
+Zhang, Z., Ersoz, E., Lai, C.-Q., Todhunter, R.~J., Tiwari, H.~K., Gore, M.~A.,
+  Bradbury, P.~J., Yu, J., Arnett, D.~K., Ordovas, J.~M., et~al. (2010).
+\newblock Mixed linear model approach adapted for genome-wide association
+  studies.
+\newblock {\em Nature genetics}, 42(4), 355--360.
 
 \bibitem[Zhou et~al., 2012]{zhou2012identification}
 Zhou, X., Baron, R.~M., Hardin, M., Cho, M.~H., Zielinski, J., Hawrylkiewicz,
