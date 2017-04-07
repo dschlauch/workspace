@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.1415926-2.5-0.9999.3 (TeX Live 2013/Debian) (format=xelatex 2017.2.23)  6 APR 2017 22:12
+This is XeTeX, Version 3.1415926-2.5-0.9999.3 (TeX Live 2013/Debian) (format=xelatex 2017.2.23)  7 APR 2017 18:19
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -955,7 +955,7 @@ File: se-ascii-print.def 2011/12/02 v1.10 stringenc: Printable ASCII characters
 )
 [1
 
-] [2] (./frontmatter/abstract.tex [3]) [4]
+] [2] (./frontmatter/abstract.tex [3]) [4] [5]
 LaTeX Font Info:    Try loading font information for T1+pag on input line 13.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pag.fd
@@ -1011,11 +1011,11 @@ e coex-
 \tf@toc=\write4
 \openout4 = `dissertation.toc'.
 
- [5
+ [6
 
-] (./frontmatter/thanks.tex) [6
+] (./frontmatter/thanks.tex) [7
 
-] [7] (./frontmatter/authorlist.tex
+] [8] (./frontmatter/authorlist.tex
 Overfull \hbox (1.7455pt too wide) in paragraph at lines 7--7
 []\EU1/lmr/m/n/10.95 Daniel Schlauch$[]$, Kimberly Glass$[]$, Craig P. Hersh$[]
 $, Edwin K. Silverman$[]$, 
@@ -1027,15 +1027,15 @@ Overfull \hbox (4.43993pt too wide) in paragraph at lines 20--20
 $[]$, John Quackenbush$[]$  
  []
 
-) [1] (./dissertation.lof
+) [9
+
+] (./dissertation.lof
 Underfull \hbox (badness 10000) in paragraph at lines 13--13
  [][] [][][]\EU1/lmr/m/n/10.95 Differentially transcription factor involvement 
 vs differential gene expres- 
  []
 
-[2
 
-]
 Overfull \hbox (1.79926pt too wide) in paragraph at lines 26--26
  [][] [][][]\EU1/lmr/m/n/10.95 Simulated Principal Component plots for two meth
 ods for generating the 
@@ -1051,7 +1051,9 @@ l coexpression in ENCODE
 \tf@lof=\write5
 \openout5 = `dissertation.lof'.
 
- [3] (./dissertation.lot
+ [10
+
+] (./dissertation.lot
 Overfull \hbox (1.91971pt too wide) in paragraph at lines 6--6
  [][] [][][]\EU1/lmr/m/n/10.95 Presence of population structure and cryptic rel
 atedness detected in each 
@@ -1061,17 +1063,17 @@ atedness detected in each
 \tf@lot=\write6
 \openout6 = `dissertation.lot'.
 
- [4
+ [11
 
 ]
 \openout2 = `chapters/introduction.aux'.
 
  (./chapters/introduction.tex
 Chapter 1.
-) [5
+[1
 
 
-]
+] [2] [3]) [4] [5]
 \openout2 = `chapters/chapter1.aux'.
 
  (./chapters/chapter1.tex
@@ -1583,17 +1585,17 @@ Chapter 5.
 
 
 
-] (./endmatter/personalize.tex) (./dissertation.bbl [127
+] [127] (./endmatter/personalize.tex) (./dissertation.bbl [128
 
 
 
-] [128]
+] [129]
 Underfull \hbox (badness 1194) in paragraph at lines 145--149
 []\EU1/lmr/m/n/10.95 de la Fuente, A. (2010).  From ’differential expression’to
  ’differential 
  []
 
-[129] [130] [131] [132] [133]
+[130] [131] [132] [133] [134]
 Underfull \hbox (badness 3039) in paragraph at lines 469--474
 []\EU1/lmr/m/n/10.95 Nemesh, J. & McCarroll, S. (2012).  Addressing cryptic rel
 ated- 
@@ -1605,29 +1607,26 @@ Underfull \hbox (badness 1270) in paragraph at lines 469--474
 i.ac.uk/ 
  []
 
-[134] [135] [136] [137])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 47.
- [138]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 47.
+[135] [136] [137] [138])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 48.
+ [139]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 48.
  (./dissertation.aux (./chapters/introduction.aux) (./chapters/chapter1.aux) (.
 /chapters/chapter2.aux) (./chapters/chapter3.aux) (./chapters/conclusion.aux))
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 47.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 47.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 48.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 48.
 
 
 LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  ) 
 Here is how much of TeX's memory you used:
  26869 strings out of 493918
  485082 string characters out of 6150563
- 634211 words of memory out of 5000000
- 29702 multiletter control sequences out of 15000+600000
+ 634298 words of memory out of 5000000
+ 29703 multiletter control sequences out of 15000+600000
  19656 words of font info for 87 fonts, out of 8000000 for 9000
  1144 hyphenation exceptions out of 8191
  60i,12n,94p,10503b,696s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on dissertation.pdf (145 pages).
+Output written on dissertation.pdf (150 pages).

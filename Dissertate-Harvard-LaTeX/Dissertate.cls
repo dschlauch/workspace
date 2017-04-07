@@ -212,6 +212,13 @@
 	% \listoffigures % optional
 	%\dedicationpage
 	\acknowledgments
+	
+	\authorlist
+ 	\listoffigures
+ 	\listoftables
+ 	
+ 	\newpage
+	\pagenumbering{arabic}
 }
 
 \renewcommand{\maketitle}{
@@ -221,7 +228,9 @@
 	\vspace*{\fill}
 	\vspace{100pt}
 	\begin{center}
+	\linespread{1.6}
 	\Huge \textcolor{SchoolColor}{\thetitle} \normalsize \\
+	\linespread{1}
 	\vspace{100pt}
 	\textsc{a dissertation presented \\ by\\
 	\theauthor\\ to\\ The Department of \@department\\
@@ -290,10 +299,19 @@
     	\input{frontmatter/thanks}
     \end{spacing}
 	\vspace*{\fill} \newpage
-	\setcounter{page}{1}
-	\pagenumbering{arabic}
+%	\setcounter{page}{1}
+%	\pagenumbering{arabic}
 }
-
+\newcommand{\authorlist}{
+	\chapter*{Author List}
+	\noindent
+    \begin{spacing}{\dnormalspacing}
+    	\input{frontmatter/authorlist}
+    \end{spacing}
+	\vspace*{\fill} \newpage
+%	\setcounter{page}{1}
+%	\pagenumbering{arabic}
+}
 
 \renewcommand{\backmatter}{
 %    \begin{appendices}

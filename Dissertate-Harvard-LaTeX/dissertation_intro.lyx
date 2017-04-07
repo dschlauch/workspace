@@ -73,9 +73,41 @@
 \begin_layout Standard
 The development of high-throughput technologies over the last two decades
  has brought significant promise towards understanding biology and has shed
- light on the progression of human disease.
- But, as our ability to collect data has increased, so too have the statistical
- and computational challenges that accompany biological questions.
+ light on the genomic involvement in the progression of human disease.
+ Microarray and sequencing technologies has allowed us to interrogate many
+ different types of biological problems at the molecular level, including
+ the study of the genome, the transcriptome, the epigenome and much more
+ and dramatically reduced cost.
+ For example, RNA-Seq is commonly used to measure the abundance of RNA (often
+ selected for mRNA) in a biological sample with the hope that relative the
+ quantities of RNA mapping to particular genes will help explain the phenotypic
+ differences we observe at a higher level.
+ But, as this ability to collect data has increased, so too have the statistical
+, biological and computational challenges that accompany related questions.
+ It is clear that most phenotypic differentiation is not attributable to
+ single units (genes or variants, for example) responsible for high level
+ function.
+ Instead, we observe that cell states are more adequately described with
+ models that include numerous interacting features.
+ We are interested in hidden structures within the data that can tell us
+ more about these systems than the sum of individual components of the data.
+ However, this underlying framework may represent many types of hidden systems,
+ depending on the particular data.
+ In some cases, this structure is important to understanding the mechanisms
+ which drive disease, but other times that structure arises from other variables
+, such as batch effect and population stratification, that may confound
+ analyses.
+ It is critical to find and address these artifacts where possible, as failing
+ to do so leads to inflated rates of false positives.
+\end_layout
+
+\begin_layout Standard
+In the case of gene expression studies, significant work has been undertaken
+ describing states with gene networks.
+ Specifically, if these models describe direct regulatory function we refer
+ to them as Gene Regulatory Networks (GRN) and if they more generally imply
+ ``guilt-by-association'' coexpression in an undirected graph, we call them
+ Gene Coexpression Networks (GCN).
  This has lead to a growth in our understanding of biological function along
  with an appreciation for the complexity of molecular pathways and the biologica
 l processes that accompany them.
@@ -83,13 +115,22 @@ l processes that accompany them.
 \end_layout
 
 \begin_layout Standard
-It is due to this complexity that determining the targets of transcription
- factors (TFs) in a gene regulatory network (GRN) is challenging.
- This problem is further exacerbated when attempting to uncover context
- specific network structure.
- Our goals can be divided into two distinct parts, (1) the construction
- of gene regulatory networks and (2) the analysis of the structural changes
- between those networks.
+It is due to this intricacy that determining the targets of transcription
+ factors in a gene regulatory network is challenging.
+ It is often not the raw abundance of a gene that we are concerned with
+ - it is the manner in which that gene's expression pattern matches others
+ that provide clues to its biological function.
+ With this in mind there is much focus on genes that have expression patterns
+ associated with one another.
+ This dependency, often measured with a simple statistic such as Pearson
+ correlation, may imply a direct or indirect interaction between genes,
+ such as a regulatory mechanism or a membership in a common cellular pathway.
+ In constructing networks, typically nodes are defined as genes or transcription
+ factors while edges may be interpreted as describing a wide range of possible
+ biological and/or statistical interactions.
+ In a case-control context, our goals can be divided into two distinct parts,
+ (1) the construction of gene regulatory networks and (2) the analysis of
+ the structural changes between those networks.
  Due to the complexity of the underlying networks and the high dimensionality
  of typical datasets, these challenges remain open problems.
  In this dissertation we the explore novel methods developed for gaining
@@ -110,11 +151,7 @@ s, for the inference of biological networks is an active field of study.
  the gene expression data as independent samples from a multivariate normal
  distribution with the standardized variance-covariance matrix derived from
  the network adjacency matrix, which defines the edges between each pairwise
- combination of 
-\begin_inset Formula $p$
-\end_inset
-
- genes.
+ combination of p genes.
  We can then interpret the presence or absence of an edge as the dependence
  or independence of the two genes conditional on all others.
  This adjacency matrix may be estimated in many ways, such as with a direct
@@ -124,21 +161,7 @@ s, for the inference of biological networks is an active field of study.
  vertex is larger (much larger!) than the number of samples.
  Many methods have been developed to address this issue, often by introducing
  a prior belief that the overwhelming majority of possible edges do not
- exist
-\begin_inset CommandInset citation
-LatexCommand cite
-key "tibshirani1996regression"
-
-\end_inset
-
-
-\begin_inset CommandInset citation
-LatexCommand cite
-key "haury2012tigress"
-
-\end_inset
-
-.
+ exist.
  This sparsity constraint has been exploited by employing a number of statistica
 l tools such as feature selection methods and penalized regression.
  Often for interpretive and visual purposes, these results are dichotomized
@@ -152,48 +175,20 @@ The growth of complementary data sources has allowed for the bolstering
  of numerous published network inference methods.
  A semi-supervised learning method, SEREND, was developed to incorporate
  Transcription factor-DNA information, including sequence binding motifs
- in network reconstruction
-\begin_inset CommandInset citation
-LatexCommand cite
-key "ernst2008semi"
-
-\end_inset
-
-.
+ in network reconstruction[ernst2008semi].
  This method dramatically improved prediction of TF regulatory targets as
  measured by ChIP-chip data in E.
  coli.
  Another approach to inferring networks was presented by Glass et al, PANDA,
  by modeling the regulatory network as a bipartite graph with pairwise connectio
 ns existing in three distinct sets, (1) within the set of known TFs, (2)
- within the set of genes, and (3) between TFs and genes
-\begin_inset CommandInset citation
-LatexCommand cite
-key "glass2013passing"
-
-\end_inset
-
-.
+ within the set of genes, and (3) between TFs and genes[glass2013passing].
  The algorithm finds convergence in the flow of information from the TF
  layer of the network through the gene layer via concepts of responsibility
  and availability.
  This method was a demonstrated to be an additional improvement over SEREND
  in predicting gene regulatory networks in Yeast and has been used to infer
- networks in ovarian cancer 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "glass2015network"
-
-\end_inset
-
- and COPD
-\begin_inset CommandInset citation
-LatexCommand cite
-key "glass2014sexually"
-
-\end_inset
-
-.
+ networks in ovarian cancer [glass2015network] and COPD[glass2014sexually].
 \end_layout
 
 \begin_layout Standard

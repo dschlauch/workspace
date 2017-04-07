@@ -1,4 +1,4 @@
-\contentsline {chapter}{\numberline {1}Introduction}{5}{chapter.1}
+\contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}
 \contentsline {chapter}{\numberline {2}Estimating Drivers of Cell State Transitions Using Gene Regulatory Network Models}{6}{chapter.2}
 \contentsline {section}{\numberline {2.1}Introduction}{7}{section.2.1}
 \contentsline {section}{\numberline {2.2}Methods}{11}{section.2.2}
@@ -36,4 +36,4 @@
 \contentsline {subsection}{\numberline {4.3.2}ComBat-corrected expression data still contains batch-associated coexpression in ENCODE}{117}{subsection.4.3.2}
 \contentsline {subsection}{\numberline {4.3.3}{[}NAME{]} allows for separation of covariate specific modules with WGCNA in COPDGene study}{122}{subsection.4.3.3}
 \contentsline {chapter}{\numberline {5}Conclusion}{126}{chapter.5}
-\contentsline {chapter}{References}{138}{chapter*.37}
+\contentsline {chapter}{References}{139}{chapter*.38}
