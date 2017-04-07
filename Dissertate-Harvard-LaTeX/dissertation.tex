@@ -4,8 +4,6 @@
 
 \documentclass{Dissertate}
 
-\usepackage{amsmath}
-\usepackage{multirow}
 
 \begin{document}
 % the front matter
@@ -17,14 +15,17 @@
 % \abstractpage
 % \tableofcontents
 % %\authorlist
-% \listoffigures
+
+\input{frontmatter/authorlist}
+ \listoffigures
+ \listoftables
 % \dedicationpage
 % \acknowledgments
 
 % \doublespacing
 
 % include each chapter...
-\setcounter{chapter}{-1}  % start chapter numbering at 0
+\setcounter{chapter}{0}  % start chapter numbering at 1
 \include{chapters/introduction}
 \include{chapters/chapter1}
 \include{chapters/chapter2}

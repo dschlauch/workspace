@@ -1,10 +1,5 @@
 \begin{thebibliography}{}
 
-\bibitem[lgr, 2015]{lgrc}
- (2015).
-\newblock Lung genomics research consortium (lgrc).
-\newblock Accessed: 2016-02-02.
-
 \bibitem[Al-Khudhair et~al., 2015]{al2015inference}
 Al-Khudhair, A., Qiu, S., Wyse, M., Chowdhury, S., Cheng, X., Bekbolsynov, D.,
   Saha-Mandal, A., Dutta, R., Fedorova, L., \& Fedorov, A. (2015).
@@ -27,6 +22,23 @@ Bahr, T.~M., Hughes, G.~J., Armstrong, M., Reisdorph, R., Coldren, C.~D.,
 \newblock {\em American journal of respiratory cell and molecular biology},
   49(2), 316--323.
 
+\bibitem[Banerjee et~al., 2008]{banerjee2008model}
+Banerjee, O., Ghaoui, L.~E., \& d'Aspremont, A. (2008).
+\newblock Model selection through sparse maximum likelihood estimation for
+  multivariate gaussian or binary data.
+\newblock {\em Journal of Machine learning research}, 9(Mar), 485--516.
+
+\bibitem[Benito et~al., 2004]{benito2004adjustment}
+Benito, M., Parker, J., Du, Q., Wu, J., Xiang, D., Perou, C.~M., \& Marron,
+  J.~S. (2004).
+\newblock Adjustment of systematic microarray data biases.
+\newblock {\em Bioinformatics}, 20(1), 105--114.
+
+\bibitem[Bien et~al., 2011]{bien2011sparse}
+Bien, J., Tibshirani, R.~J., et~al. (2011).
+\newblock Sparse estimation of a covariance matrix.
+\newblock {\em Biometrika}, 98(4), 807.
+
 \bibitem[Boehnke \& Cox, 1997]{boehnke1997accurate}
 Boehnke, M. \& Cox, N.~J. (1997).
 \newblock Accurate inference of relationships in sib-pair linkage studies.
@@ -39,6 +51,13 @@ Boucherat, O., Morissette, M., Provencher, S., Bonnet, S., \& F, M. (2016).
   pathogenesis.
 \newblock {\em American Journal of Respiratory and Critical Care Medicine},
   193(4), 362--75.
+
+\bibitem[Chen et~al., 2011]{chen2011removing}
+Chen, C., Grennan, K., Badner, J., Zhang, D., Gershon, E., Jin, L., \& Liu, C.
+  (2011).
+\newblock Removing batch effects in analysis of expression microarray data: an
+  evaluation of six batch adjustment methods.
+\newblock {\em PloS one}, 6(2), e17238.
 
 \bibitem[Chen et~al., 2013]{chen2013improved}
 Chen, C.-Y., Pollack, S., Hunter, D.~J., Hirschhorn, J.~N., Kraft, P., \&
@@ -62,6 +81,12 @@ Chen, Z.-H., Kim, H.~P., Sciurba, F.~C., Lee, S.-J., Feghali-Bostwick, C.,
   obstructive pulmonary disease.
 \newblock {\em PloS one}, 3(10), e3316.
 
+\bibitem[Choi et~al., 2005]{choi2005differential}
+Choi, J.~K., Yu, U., Yoo, O.~J., \& Kim, S. (2005).
+\newblock Differential coexpression analysis using microarray data and its
+  application to human cancer.
+\newblock {\em Bioinformatics}, 21(24), 4348--4355.
+
 \bibitem[Choi et~al., 2009]{choi2009case}
 Choi, Y., Wijsman, E.~M., \& Weir, B.~S. (2009).
 \newblock Case-control association testing in the presence of unknown
@@ -73,6 +98,11 @@ Choksi, S.~P., Lauter, G., Swoboda, P., \& Roy, S. (2014).
 \newblock Switching on cilia: transcriptional networks regulating ciliogenesis.
 \newblock {\em Development}, 141(7), 1427--1441.
 
+\bibitem[Cloonan \& Choi, 2016]{cloonan2016mitochondria}
+Cloonan, S.~M. \& Choi, A.~M. (2016).
+\newblock Mitochondria in lung disease.
+\newblock {\em Journal of Clinical Investigation}, 126(3), 809.
+
 \bibitem[Cloonan et~al., 2016]{cloonan2016mitochondrial}
 Cloonan, S.~M., Glass, K., Laucho-Contreras, M.~E., Bhashyam, A.~R., Cervo, M.,
   Pab{\'o}n, M.~A., Konrad, C., Polverino, F., Siempos, I.~I., Perez, E.,
@@ -80,6 +110,13 @@ Cloonan, S.~M., Glass, K., Laucho-Contreras, M.~E., Bhashyam, A.~R., Cervo, M.,
 \newblock Mitochondrial iron chelation ameliorates cigarette smoke-induced
   bronchitis and emphysema in mice.
 \newblock {\em Nature medicine}.
+
+\bibitem[Conesa et~al., 2016]{conesa2016survey}
+Conesa, A., Madrigal, P., Tarazona, S., Gomez-Cabrero, D., Cervera, A.,
+  McPherson, A., Szcze{\'s}niak, M.~W., Gaffney, D.~J., Elo, L.~L., Zhang, X.,
+  et~al. (2016).
+\newblock A survey of best practices for rna-seq data analysis.
+\newblock {\em Genome biology}, 17(1), 13.
 
 \bibitem[Consortium et~al., 2012]{10002012integrated}
 Consortium, . G.~P. et~al. (2012).
@@ -103,6 +140,12 @@ Danielian, P.~S., Kim, C. F.~B., Caron, A.~M., Vasile, E., Bronson, R.~T., \&
   Lees, J.~A. (2007).
 \newblock E2f4 is required for normal development of the airway epithelium.
 \newblock {\em Developmental biology}, 305(2), 564--576.
+
+\bibitem[de~la Fuente, 2010]{de2010differential}
+de~la Fuente, A. (2010).
+\newblock From 'differential expression'to 'differential
+  networking'--identification of dysfunctional regulatory networks in diseases.
+\newblock {\em Trends in genetics}, 26(7), 326--333.
 
 \bibitem[Devlin et~al., 2001]{devlin2001genomic}
 Devlin, B., Roeder, K., \& Wasserman, L. (2001).
@@ -138,6 +181,12 @@ Faith, J.~J., Hayete, B., Thaden, J.~T., Mogno, I., Wierzbowski, J., Cottarel,
   transcriptional regulation from a compendium of expression profiles.
 \newblock {\em PLoS Biol}, 5(1), e8.
 
+\bibitem[Fare et~al., 2003]{fare2003effects}
+Fare, T.~L., Coffey, E.~M., Dai, H., He, Y.~D., Kessler, D.~A., Kilian, K.~A.,
+  Koch, J.~E., LeProust, E., Marton, M.~J., Meyer, M.~R., et~al. (2003).
+\newblock Effects of atmospheric ozone on microarray data quality.
+\newblock {\em ANALYTICAL CHEMISTRY-WASHINGTON DC-}, 75(17), 4672--4675.
+
 \bibitem[Fedorova et~al., 2016]{fedorova2016atlas}
 Fedorova, L., Qiu, S., Dutta, R., \& Fedorov, A. (2016).
 \newblock Atlas of cryptic genetic relatedness among 1000 human genomes.
@@ -147,6 +196,23 @@ Fedorova, L., Qiu, S., Dutta, R., \& Fedorov, A. (2016).
 Filosi, M., Visintainer, R., \& Riccadonna, S. (2014).
 \newblock {\em nettools: A Network Comparison Framework}.
 \newblock R package version 1.0.1.
+
+\bibitem[Friedman et~al., 2008]{friedman2008sparse}
+Friedman, J., Hastie, T., \& Tibshirani, R. (2008).
+\newblock Sparse inverse covariance estimation with the graphical lasso.
+\newblock {\em Biostatistics}, 9(3), 432--441.
+
+\bibitem[Fukushima, 2013]{fukushima2013diffcorr}
+Fukushima, A. (2013).
+\newblock Diffcorr: an r package to analyze and visualize differential
+  correlations in biological networks.
+\newblock {\em Gene}, 518(1), 209--214.
+
+\bibitem[Furlotte et~al., 2011]{furlotte2011mixed}
+Furlotte, N.~A., Kang, H.~M., Ye, C., \& Eskin, E. (2011).
+\newblock Mixed-model coexpression: calculating gene coexpression while
+  accounting for expression heterogeneity.
+\newblock {\em Bioinformatics}, 27(13), i288--i294.
 
 \bibitem[Galvagni et~al., 2001]{galvagni2001sp1}
 Galvagni, F., Capo, S., \& Oliviero, S. (2001).
@@ -164,6 +230,11 @@ Gazal, S., Sahbatou, M., Babron, M.-C., G{\'e}nin, E., \& Leutenegger, A.-L.
   (2015).
 \newblock High level of inbreeding in final phase of 1000 genomes project.
 \newblock {\em Scientific reports}, 5.
+
+\bibitem[genomics~research consortium, 2015]{lgrc}
+genomics~research consortium, L. (2015).
+\newblock Lung genomics research consortium (lgrc).
+\newblock Accessed: 2016-02-02.
 
 \bibitem[Glass et~al., 2013]{glass2013passing}
 Glass, K., Huttenhower, C., Quackenbush, J., \& Yuan, G.-C. (2013).
@@ -210,11 +281,34 @@ Hill, S.~M., Lu, Y., Molina, J., Heiser, L.~M., Spellman, P.~T., Speed, T.~P.,
   line.
 \newblock {\em Bioinformatics}, 28(21), 2804--2810.
 
+\bibitem[Hoff \& Niu, 2012]{hoff2012covariance}
+Hoff, P.~D. \& Niu, X. (2012).
+\newblock A covariance regression model.
+\newblock {\em Statistica Sinica}, (pp.\ 729--753).
+
 \bibitem[Hogg, 2004]{hogg2004pathophysiology}
 Hogg, J.~C. (2004).
 \newblock Pathophysiology of airflow limitation in chronic obstructive
   pulmonary disease.
 \newblock {\em The Lancet}, 364(9435), 709--721.
+
+\bibitem[Holmes et~al., 2007]{holmes2007fast}
+Holmes, M., Gray, A., \& Isbell, C. (2007).
+\newblock Fast svd for large-scale matrices.
+\newblock In {\em Workshop on Efficient Machine Learning at NIPS}, volume~58
+  (pp.\ 249--252).
+
+\bibitem[Huang et~al., 2009a]{huang2009bioinformatics}
+Huang, D.~W., Sherman, B.~T., \& Lempicki, R.~A. (2009a).
+\newblock Bioinformatics enrichment tools: paths toward the comprehensive
+  functional analysis of large gene lists.
+\newblock {\em Nucleic acids research}, 37(1), 1--13.
+
+\bibitem[Huang et~al., 2009b]{huang2009systematic}
+Huang, D.~W., Sherman, B.~T., \& Lempicki, R.~A. (2009b).
+\newblock Systematic and integrative analysis of large gene lists using david
+  bioinformatics resources.
+\newblock {\em Nature protocols}, 4(1), 44--57.
 
 \bibitem[Irizarry et~al., 2003]{irizarry2003exploration}
 Irizarry, R.~A., Hobbs, B., Collin, F., Beazer-Barclay, Y.~D., Antonellis,
@@ -242,21 +336,62 @@ Karlseder, J., Rotheneder, H., \& Wintersberger, E. (1996).
   transcription factor e2f.
 \newblock {\em Molecular and cellular biology}, 16(4), 1659--1667.
 
-\bibitem[Langfelder \& Horvath, 2008]{Langfelder2008WGCNA}
-Langfelder, P. \& Horvath, S. (2008).
+\bibitem[Lander, 1999]{lander1999array}
+Lander, E.~S. (1999).
+\newblock Array of hope.
+\newblock {\em Nature genetics}, 21, 3--4.
+
+\bibitem[Langfelder \& Horvath, 2008a]{Langfelder2008WGCNA}
+Langfelder, P. \& Horvath, S. (2008a).
 \newblock Wgcna: an r package for weighted correlation network analysis.
 \newblock {\em BMC bioinformatics}, 9(1), 1.
 
-\bibitem[Langfelder \& Horvath, 2012]{Langfelder2008FastR}
-Langfelder, P. \& Horvath, S. (2012).
+\bibitem[Langfelder \& Horvath, 2008b]{wgcna1}
+Langfelder, P. \& Horvath, S. (2008b).
+\newblock Wgcna: an r package for weighted correlation network analysis.
+\newblock {\em BMC Bioinformatics}, (1), 559.
+
+\bibitem[Langfelder \& Horvath, 2012a]{Langfelder2008FastR}
+Langfelder, P. \& Horvath, S. (2012a).
 \newblock Fast {R} functions for robust correlations and hierarchical
   clustering.
 \newblock {\em Journal of Statistical Software}, 46(11), 1--17.
+
+\bibitem[Langfelder \& Horvath, 2012b]{wgcna2}
+Langfelder, P. \& Horvath, S. (2012b).
+\newblock Fast {R} functions for robust correlations and hierarchical
+  clustering.
+\newblock {\em Journal of Statistical Software}, 46(11), 1--17.
+
+\bibitem[Langmead et~al., 2009]{langmead2009ultrafast}
+Langmead, B., Trapnell, C., Pop, M., \& Salzberg, S.~L. (2009).
+\newblock Ultrafast and memory-efficient alignment of short dna sequences to
+  the human genome.
+\newblock {\em Genome biology}, 10(3), R25.
+
+\bibitem[Leek et~al., 2010]{leek2010tackling}
+Leek, J.~T., Scharpf, R.~B., Bravo, H.~C., Simcha, D., Langmead, B., Johnson,
+  W.~E., Geman, D., Baggerly, K., \& Irizarry, R.~A. (2010).
+\newblock Tackling the widespread and critical impact of batch effects in
+  high-throughput data.
+\newblock {\em Nature Reviews Genetics}, 11(10), 733--739.
+
+\bibitem[Leek \& Storey, 2007]{leek2007capturing}
+Leek, J.~T. \& Storey, J.~D. (2007).
+\newblock Capturing heterogeneity in gene expression studies by surrogate
+  variable analysis.
+\newblock {\em PLoS Genet}, 3(9), e161.
 
 \bibitem[Levine \& Tjian, 2003]{levine2003transcription}
 Levine, M. \& Tjian, R. (2003).
 \newblock Transcription regulation and animal diversity.
 \newblock {\em Nature}, 424(6945), 147--151.
+
+\bibitem[Liao et~al., 2014]{liao2014featurecounts}
+Liao, Y., Smyth, G.~K., \& Shi, W. (2014).
+\newblock featurecounts: an efficient general purpose program for assigning
+  sequence reads to genomic features.
+\newblock {\em Bioinformatics}, 30(7), 923--930.
 
 \bibitem[Lippert et~al., 2011]{lippert2011fast}
 Lippert, C., Listgarten, J., Liu, Y., Kadie, C.~M., Davidson, R.~I., \&
@@ -303,6 +438,11 @@ Mathieson, I. \& McVean, G. (2012).
   structured populations.
 \newblock {\em Nature genetics}, 44(3), 243--246.
 
+\bibitem[Meinshausen \& B{\"u}hlmann, 2006]{meinshausen2006high}
+Meinshausen, N. \& B{\"u}hlmann, P. (2006).
+\newblock High-dimensional graphs and variable selection with the lasso.
+\newblock {\em The annals of statistics}, (pp.\ 1436--1462).
+
 \bibitem[Molinelli et~al., 2013]{molinelli2013perturbation}
 Molinelli, E.~J., Korkut, A., Wang, W., Miller, M.~L., Gauthier, N.~P., Jing,
   X., Kaushik, P., He, Q., Mills, G., Solit, D.~B., et~al. (2013).
@@ -310,12 +450,33 @@ Molinelli, E.~J., Korkut, A., Wang, W., Miller, M.~L., Gauthier, N.~P., Jing,
   systems.
 \newblock {\em PLoS Comput Biol}, 9(12), e1003290.
 
+\bibitem[Morrow et~al., 2015]{morrow2015identifying}
+Morrow, J.~D., Qiu, W., Chhabra, D., Rennard, S.~I., Belloni, P., Belousov, A.,
+  Pillai, S.~G., \& Hersh, C.~P. (2015).
+\newblock Identifying a gene expression signature of frequent copd
+  exacerbations in peripheral blood using network methods.
+\newblock {\em BMC medical genomics}, 8(1), 1.
+
+\bibitem[Morrow et~al., 2017]{morrow2017functional}
+Morrow, J.~D., Zhou, X., Lao, T., Jiang, Z., DeMeo, D.~L., Cho, M.~H., Qiu, W.,
+  Cloonan, S., Pinto-Plata, V., Celli, B., et~al. (2017).
+\newblock Functional interactors of three genome-wide association study genes
+  are differentially expressed in severe chronic obstructive pulmonary disease
+  lung tissue.
+\newblock {\em Scientific Reports}, 7.
+
 \bibitem[Nemesh \& McCarroll, 2012]{1000GPcrypticppt}
 Nemesh, J. \& McCarroll, S. (2012).
 \newblock Addressing cryptic relatedness in candidate samples for 1kg.
 \newblock ftp://ftp.1000genomes.ebi.ac.uk/ vol1/ftp/phase1/analysis\_results/
   supporting/cryptic\_relation\_analysis.
 \newblock Accessed: 2016-06-06.
+
+\bibitem[Nygaard et~al., 2016]{nygaard2016methods}
+Nygaard, V., R{\o}dland, E.~A., \& Hovig, E. (2016).
+\newblock Methods that remove batch effects while retaining group differences
+  may lead to exaggerated confidence in downstream analyses.
+\newblock {\em Biostatistics}, 17(1), 29--39.
 
 \bibitem[Patterson et~al., 2006]{patterson2006population}
 Patterson, N., Price, A.~L., \& Reich, D. (2006).
@@ -419,6 +580,19 @@ Saez-Rodriguez, J., Alexopoulos, L.~G., Zhang, M., Morris, M.~K.,
   hepatocytes using discrete logical models.
 \newblock {\em Cancer research}, 71(16), 5400--5411.
 
+\bibitem[Scherer, 2009]{scherer2009batch}
+Scherer, A. (2009).
+\newblock {\em Batch effects and noise in microarray experiments: sources and
+  solutions}, volume 868.
+\newblock John Wiley \& Sons.
+
+\bibitem[Schlauch et~al., 2016]{schlauch2016estimating}
+Schlauch, D., Glass, K., Hersh, C.~P., Silverman, E.~K., \& Quackenbush, J.
+  (2016).
+\newblock Estimating drivers of cell state transitions using gene regulatory
+  network models.
+\newblock {\em bioRxiv}, (pp.\ 089003).
+
 \bibitem[{\v{S}}id{\'a}k, 1967]{vsidak1967rectangular}
 {\v{S}}id{\'a}k, Z. (1967).
 \newblock Rectangular confidence regions for the means of multivariate normal
@@ -438,6 +612,23 @@ S{\^\i}rbu, A., Ruskin, H.~J., \& Crane, M. (2010).
 \newblock Comparison of evolutionary algorithms in gene regulatory network
   model inference.
 \newblock {\em BMC bioinformatics}, 11(1), 1.
+
+\bibitem[Siska \& Kechris, 2017]{siska2017differential}
+Siska, C. \& Kechris, K. (2017).
+\newblock Differential correlation for sequencing data.
+\newblock {\em BMC Research Notes}, 10(1), 54.
+
+\bibitem[Southworth et~al., 2009]{southworth2009aging}
+Southworth, L.~K., Owen, A.~B., \& Kim, S.~K. (2009).
+\newblock Aging mice show a decreasing correlation of gene expression within
+  genetic modules.
+\newblock {\em PLoS Genet}, 5(12), e1000776.
+
+\bibitem[Tesson et~al., 2010]{tesson2010diffcoex}
+Tesson, B.~M., Breitling, R., \& Jansen, R.~C. (2010).
+\newblock Diffcoex: a simple and sensitive method to find differentially
+  coexpressed gene modules.
+\newblock {\em BMC bioinformatics}, 11(1), 497.
 
 \bibitem[Thornton et~al., 2012]{thornton2012estimating}
 Thornton, T., Tang, H., Hoffmann, T.~J., Ochs-Balcom, H.~M., Caan, B.~J., \&
@@ -476,6 +667,11 @@ Yang, J., Benyamin, B., McEvoy, B.~P., Gordon, S., Henders, A.~K., Nyholt,
 \newblock Common snps explain a large proportion of the heritability for human
   height.
 \newblock {\em Nature genetics}, 42(7), 565--569.
+
+\bibitem[Yuan \& Lin, 2007]{yuan2007model}
+Yuan, M. \& Lin, Y. (2007).
+\newblock Model selection and estimation in the gaussian graphical model.
+\newblock {\em Biometrika}, (pp.\ 19--35).
 
 \bibitem[Zhang \& Horvath, 2005]{zhang2005general}
 Zhang, B. \& Horvath, S. (2005).

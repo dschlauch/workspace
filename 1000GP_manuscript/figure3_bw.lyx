@@ -88,7 +88,7 @@ A
 
 \begin_inset Graphics
 	filename /home/dan/1000GP/plots/s_distributions/filtered40_LD10/pValueForPop_bw.pdf
-	height 30pheight%
+	height 25pheight%
 
 \end_inset
 
@@ -99,7 +99,7 @@ B
 
 \begin_inset Graphics
 	filename /home/dan/1000GP/plots/s_distributions/filtered40_TGP2261_LD10/pValueForPop_bw.pdf
-	height 30pheight%
+	height 25pheight%
 
 \end_inset
 

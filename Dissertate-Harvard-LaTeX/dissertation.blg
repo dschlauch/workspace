@@ -6,56 +6,78 @@ A level-1 auxiliary file: chapters/chapter1.aux
 A level-1 auxiliary file: chapters/chapter2.aux
 A level-1 auxiliary file: chapters/chapter3.aux
 A level-1 auxiliary file: chapters/conclusion.aux
-A level-1 auxiliary file: chapters/appendixA.aux
 The style file: apalike2.bst
 A level-1 auxiliary file: endmatter/colophon.aux
-Illegal, another \bibstyle command---line 78 of file dissertation.aux
+Illegal, another \bibstyle command---line 140 of file dissertation.aux
  : \bibstyle
  :          {apalike}
 I'm skipping whatever remains of this command
 Database file #1: references.bib
-Warning--to sort, need author or key in lgrc
-Warning--empty author in lgrc
+Repeated entry---line 1097 of file references.bib
+ : @article{johnson2007adjusting
+ :                              ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 1364 of file references.bib
+ : @article{singh2014altered
+ :                          ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 1374 of file references.bib
+ : @article{gautier2004affy
+ :                         ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 1384 of file references.bib
+ : @article{dai2005evolving
+ :                         ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 1395 of file references.bib
+ : @article{irizarry2003exploration
+ :                                 ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 1443 of file references.bib
+ : @article{cloonan2016mitochondrial
+ :                                  ,
+I'm skipping whatever remains of this entry
 Warning--empty journal in lgrc
-You've used 78 entries,
+Warning--there's a number but no volume in wgcna1
+You've used 111 entries,
             2229 wiz_defined-function locations,
-            970 strings with 22738 characters,
-and the built_in function-call counts, 39344 in all, are:
-= -- 3661
-> -- 2467
-< -- 21
-+ -- 908
-- -- 896
-* -- 3864
-:= -- 6946
-add.period$ -- 236
-call.type$ -- 78
-change.case$ -- 816
-chr.to.int$ -- 78
-cite$ -- 82
-duplicate$ -- 1132
-empty$ -- 2256
-format.name$ -- 997
-if$ -- 7380
-int.to.chr$ -- 1
+            1125 strings with 28714 characters,
+and the built_in function-call counts, 54285 in all, are:
+= -- 5097
+> -- 3224
+< -- 41
++ -- 1179
+- -- 1160
+* -- 5232
+:= -- 9545
+add.period$ -- 335
+call.type$ -- 111
+change.case$ -- 1108
+chr.to.int$ -- 108
+cite$ -- 113
+duplicate$ -- 1646
+empty$ -- 3204
+format.name$ -- 1311
+if$ -- 10264
+int.to.chr$ -- 4
 int.to.str$ -- 0
-missing$ -- 75
-newline$ -- 394
-num.names$ -- 231
-pop$ -- 667
+missing$ -- 109
+newline$ -- 559
+num.names$ -- 333
+pop$ -- 899
 preamble$ -- 1
-purify$ -- 818
+purify$ -- 1111
 quote$ -- 0
-skip$ -- 882
+skip$ -- 1291
 stack$ -- 0
-substring$ -- 2565
-swap$ -- 126
-text.length$ -- 4
+substring$ -- 3569
+swap$ -- 210
+text.length$ -- 11
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 468
-warning$ -- 3
-while$ -- 278
+type$ -- 664
+warning$ -- 2
+while$ -- 400
 width$ -- 0
-write$ -- 1013
-(There was 1 error message)
+write$ -- 1444
+(There were 7 error messages)

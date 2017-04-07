@@ -1,7 +1,7 @@
 seqres <- read.table("~/gd/Harvard/BST283/BST283_Hw1/var_file_problem_1.txt", header=T)
 
 
-e_i <- .001
+e_i <- .0001
 theta_t <- 6.3
 
 seqres$t_af <- seqres$t_alt_count/(seqres$t_ref_count+seqres$t_alt_count)

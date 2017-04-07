@@ -1,0 +1,217 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+The development of high-throughput technologies over the last two decades
+ has brought significant promise towards understanding biology and has shed
+ light on the progression of human disease.
+ But, as our ability to collect data has increased, so too have the statistical
+ and computational challenges that accompany biological questions.
+ Our understanding has grown along with our appreciation for the complexity
+ of molecular pathways and the biological processes that accompany them.
+ 
+\end_layout
+
+\begin_layout Standard
+It is due to this complexity that determining the targets of transcription
+ factors (TFs) in a gene regulatory network (GRN) is challenging.
+ This problem is further exacerbated when attempting to uncover context
+ specific network structure.
+ Our goals can be divided into two distinct parts, (1) the construction
+ of gene regulatory networks and (2) the analysis of the structural changes
+ between those networks.
+ Due to the complexity of the underlying networks and the high dimensionality
+ of typical datasets, these challenges remain open problems.
+ In this dissertation we the explore novel methods developed for gaining
+ insight into network transformations between cases and controls in a complex
+ disease.
+\end_layout
+
+\begin_layout Standard
+The use of the use of high-throughput assays, such as gene expression microarray
+s, for the inference of biological networks is an active field of study.
+ Of common interest is the estimation of the set of interactions between
+ the set nodes of a graph, referred to as edges and vertices, respectively.
+ Typically, these vertices represent the measured genes or a subset thereof
+ in an organism.
+ The interpretation of the edges covers a wide range of possible biological
+ and statistical interactions.
+ A widely used model is the Gaussian Graphical Model, which seeks to fit
+ the gene expression data as independent samples from a multivariate normal
+ distribution with the standardized variance-covariance matrix derived from
+ the network adjacency matrix, which defines the edges between each pairwise
+ combination of 
+\begin_inset Formula $p$
+\end_inset
+
+ genes.
+ We can then interpret the presence or absence of an edge as the dependence
+ or independence of the two genes conditional on all others.
+ This adjacency matrix may be estimated in many ways, such as with a direct
+ maximum likelihood estimation or fitting a regression model.
+ However, a significant impediment to inferring network structure is the
+ high-dimensionality of the data such that the number of edges for each
+ vertex is larger (much larger!) than the number of samples.
+ Many methods have been developed to address this issue, often by introducing
+ a prior belief that the overwhelming majority of possible edges do not
+ exist
+\begin_inset CommandInset citation
+LatexCommand cite
+key "tibshirani1996regression"
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "haury2012tigress"
+
+\end_inset
+
+.
+ This sparsity constraint has been exploited by employing a number of statistica
+l tools such as feature selection methods and penalized regression.
+ Often for interpretive and visual purposes, these results are dichotomized
+ to yield a present/absent indication of interaction between nodes potentially
+ losing valuable information for the strength in information and degree
+ of uncertainty for inferred edges.
+\end_layout
+
+\begin_layout Standard
+The growth of complementary data sources has allowed for the bolstering
+ of numerous published network inference methods.
+ A semi-supervised learning method, SEREND, was developed to incorporate
+ Transcription factor-DNA information, including sequence binding motifs
+ in network reconstruction
+\begin_inset CommandInset citation
+LatexCommand cite
+key "ernst2008semi"
+
+\end_inset
+
+.
+ This method dramatically improved prediction of TF regulatory targets as
+ measured by ChIP-chip data in E.
+ coli.
+ Another approach to inferring networks was presented by Glass et al, PANDA,
+ by modeling the regulatory network as a bipartite graph with pairwise connectio
+ns existing in three distinct sets, (1) within the set of known TFs, (2)
+ within the set of genes, and (3) between TFs and genes
+\begin_inset CommandInset citation
+LatexCommand cite
+key "glass2013passing"
+
+\end_inset
+
+.
+ The algorithm finds convergence in the flow of information from the TF
+ layer of the network through the gene layer via concepts of responsibility
+ and availability.
+ This method was a demonstrated to be an additional improvement over SEREND
+ in predicting gene regulatory networks in Yeast and has been used to infer
+ networks in ovarian cancer 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "glass2015network"
+
+\end_inset
+
+ and COPD
+\begin_inset CommandInset citation
+LatexCommand cite
+key "glass2014sexually"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Biological states are characterized by distinct patterns of gene expression
+ that reflect each phenotype's active cellular processes.
+ Driving these phenotypes are gene regulatory networks in which transcriptions
+ factors control when and to what degree individual genes are expressed.
+ Phenotypic transitions, such as those that occur when disease arises from
+ healthy tissue, are associated with changes in these networks.
+ MONSTER is a new approach to understanding these transitions.
+ MONSTER models phenotypic-specific regulatory networks and then estimates
+ a ``transition matrix'' that converts one state to another.
+ By examining the properties of the transition matrix, we can gain insight
+ into regulatory changes associated with phenotypic state transition.
+ We demonstrate the power of MONSTER by applying it to data from four independen
+t studies of chronic obstructive pulmonary disease and find a robust set
+ of transcription factors that help explain the development of the disease.
+ 
+\end_layout
+
+\end_body
+\end_document

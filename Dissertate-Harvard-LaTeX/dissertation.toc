@@ -1,26 +1,39 @@
-\contentsline {chapter}{\numberline {0}Introduction}{1}{chapter.0}
-\contentsline {chapter}{\numberline {1}Estimating Drivers of Cell State Transitions Using Gene Regulatory Network Models}{3}{chapter.1}
-\contentsline {chapter}{\numberline {2}Identification of genetic outliers due to sub-structure and cryptic relationships}{45}{chapter.2}
-\contentsline {section}{\numberline {2.1}Introduction}{46}{section.2.1}
-\contentsline {section}{\numberline {2.2}Methods}{49}{section.2.2}
-\contentsline {subsection}{\numberline {2.2.1}Similarity measure among haploid genomes}{49}{subsection.2.2.1}
-\contentsline {subsection}{\numberline {2.2.2}Similarity measure among diploid genomes}{51}{subsection.2.2.2}
-\contentsline {subsection}{\numberline {2.2.3}Tests of Heterogeneity}{52}{subsection.2.2.3}
-\contentsline {subsection}{\numberline {2.2.4}Estimating cryptic relatedness}{53}{subsection.2.2.4}
-\contentsline {subsection}{\numberline {2.2.5}Statistical power to detect outliers}{55}{subsection.2.2.5}
-\contentsline {subsection}{\numberline {2.2.6}Example of $\mathaccentV {hat}05E{s}_{i,j}$ computation}{56}{subsection.2.2.6}
-\contentsline {subsection}{\numberline {2.2.7}Expectation of $s_{i,j}$}{59}{subsection.2.2.7}
-\contentsline {subsection}{\numberline {2.2.8}Variance of $s_{i,j}$}{61}{subsection.2.2.8}
-\contentsline {subsection}{\numberline {2.2.9}Linkage Disequilibrium Pruning}{62}{subsection.2.2.9}
-\contentsline {subsection}{\numberline {2.2.10}STEGO algorithm computation time}{62}{subsection.2.2.10}
-\contentsline {subsection}{\numberline {2.2.11}Ancestry informativeness by allele frequency}{63}{subsection.2.2.11}
-\contentsline {subsection}{\numberline {2.2.12}Simulations demonstrate sensitivity STEGO to subtle population stratification}{64}{subsection.2.2.12}
-\contentsline {subsection}{\numberline {2.2.13}Simulations demonstrate power to detect heterogeneity}{65}{subsection.2.2.13}
-\contentsline {section}{\numberline {2.3}Results}{67}{section.2.3}
-\contentsline {subsection}{\numberline {2.3.1}Identification of relatedness and structure in 1000GP data}{67}{subsection.2.3.1}
-\contentsline {subsection}{\numberline {2.3.2}Population differentiation in 1000 Genomes Project}{70}{subsection.2.3.2}
-\contentsline {section}{\numberline {2.4}Discussion}{76}{section.2.4}
-\contentsline {chapter}{\numberline {3}Consectetuer adipiscing elit}{88}{chapter.3}
-\contentsline {chapter}{\numberline {4}Conclusion}{89}{chapter.4}
-\contentsline {chapter}{Appendix \numberline {A}Some extra stuff}{91}{Appendix.1.A}
-\contentsline {chapter}{References}{100}{chapter*.31}
+\contentsline {chapter}{\numberline {1}Introduction}{5}{chapter.1}
+\contentsline {chapter}{\numberline {2}Estimating Drivers of Cell State Transitions Using Gene Regulatory Network Models}{6}{chapter.2}
+\contentsline {section}{\numberline {2.1}Introduction}{7}{section.2.1}
+\contentsline {section}{\numberline {2.2}Methods}{11}{section.2.2}
+\contentsline {section}{\numberline {2.3}Results}{25}{section.2.3}
+\contentsline {section}{\numberline {2.4}Discussion}{42}{section.2.4}
+\contentsline {chapter}{\numberline {3}Identification of genetic outliers due to sub-structure and cryptic relationships}{51}{chapter.3}
+\contentsline {section}{\numberline {3.1}Introduction}{52}{section.3.1}
+\contentsline {section}{\numberline {3.2}Methods}{55}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Similarity measure among haploid genomes}{56}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}Similarity measure among diploid genomes}{57}{subsection.3.2.2}
+\contentsline {subsection}{\numberline {3.2.3}Tests of Heterogeneity}{59}{subsection.3.2.3}
+\contentsline {subsection}{\numberline {3.2.4}Estimating cryptic relatedness}{60}{subsection.3.2.4}
+\contentsline {subsection}{\numberline {3.2.5}Statistical power to detect outliers}{62}{subsection.3.2.5}
+\contentsline {subsection}{\numberline {3.2.6}Example of $\mathaccentV {hat}05E{s}_{i,j}$ computation}{63}{subsection.3.2.6}
+\contentsline {subsection}{\numberline {3.2.7}Expectation of $s_{i,j}$}{66}{subsection.3.2.7}
+\contentsline {subsection}{\numberline {3.2.8}Variance of $s_{i,j}$}{68}{subsection.3.2.8}
+\contentsline {subsection}{\numberline {3.2.9}Linkage Disequilibrium Pruning}{69}{subsection.3.2.9}
+\contentsline {subsection}{\numberline {3.2.10}STEGO algorithm computation time}{69}{subsection.3.2.10}
+\contentsline {subsection}{\numberline {3.2.11}Ancestry informativeness by allele frequency}{71}{subsection.3.2.11}
+\contentsline {subsection}{\numberline {3.2.12}Simulations demonstrate sensitivity STEGO to subtle population stratification}{72}{subsection.3.2.12}
+\contentsline {subsection}{\numberline {3.2.13}Simulations demonstrate power to detect heterogeneity}{73}{subsection.3.2.13}
+\contentsline {section}{\numberline {3.3}Results}{75}{section.3.3}
+\contentsline {subsection}{\numberline {3.3.1}Identification of relatedness and structure in 1000GP data}{75}{subsection.3.3.1}
+\contentsline {subsection}{\numberline {3.3.2}Population differentiation in 1000 Genomes Project}{81}{subsection.3.3.2}
+\contentsline {section}{\numberline {3.4}Discussion}{85}{section.3.4}
+\contentsline {chapter}{\numberline {4}Batch effect on covariance structure confounds gene coexpression}{97}{chapter.4}
+\contentsline {section}{\numberline {4.1}Introduction}{98}{section.4.1}
+\contentsline {section}{\numberline {4.2}Methods}{106}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Approach}{106}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}Likelihood function}{111}{subsection.4.2.2}
+\contentsline {subsection}{\numberline {4.2.3}Estimator}{112}{subsection.4.2.3}
+\contentsline {subsection}{\numberline {4.2.4}Corrected covariance matrix}{114}{subsection.4.2.4}
+\contentsline {section}{\numberline {4.3}Results}{115}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}\emph {In Silico} analysis}{115}{subsection.4.3.1}
+\contentsline {subsection}{\numberline {4.3.2}ComBat-corrected expression data still contains batch-associated coexpression in ENCODE}{117}{subsection.4.3.2}
+\contentsline {subsection}{\numberline {4.3.3}{[}NAME{]} allows for separation of covariate specific modules with WGCNA in COPDGene study}{122}{subsection.4.3.3}
+\contentsline {chapter}{\numberline {5}Conclusion}{126}{chapter.5}
+\contentsline {chapter}{References}{138}{chapter*.37}

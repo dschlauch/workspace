@@ -1,3 +1,11 @@
+@inproceedings{holmes2007fast,
+  title={Fast SVD for large-scale matrices},
+  author={Holmes, Michael and Gray, Alexander and Isbell, Charles},
+  booktitle={Workshop on Efficient Machine Learning at NIPS},
+  volume={58},
+  pages={249--252},
+  year={2007}
+}
 @article{park2009chip,
   title={ChIP--seq: advantages and challenges of a maturing technology},
   author={Park, Peter J},
@@ -686,4 +694,765 @@
 	year = {2014},
 	note = {R package version 1.0.1},
 	url = {https://CRAN.R-project.org/package=nettools},
+}
+@article{voight2005confounding,
+  title={Confounding from cryptic relatedness in case-control association studies},
+  author={Voight, Benjamin F and Pritchard, Jonathan K},
+  journal={PLoS Genet},
+  volume={1},
+  number={3},
+  pages={e32},
+  year={2005}
+}
+@article{ptak2002evidence,
+  title={Evidence for population growth in humans is confounded by fine-scale population structure},
+  author={Ptak, Susan E and Przeworski, Molly},
+  journal={Trends in Genetics},
+  volume={18},
+  number={11},
+  pages={559--563},
+  year={2002},
+  publisher={Elsevier}
+}
+@article{price2010new,
+  title={New approaches to population stratification in genome-wide association studies},
+  author={Price, Alkes L and Zaitlen, Noah A and Reich, David and Patterson, Nick},
+  journal={Nature Reviews Genetics},
+  volume={11},
+  number={7},
+  pages={459--463},
+  year={2010},
+  publisher={Nature Publishing Group}
+}
+@article{price2006principal,
+  title={Principal components analysis corrects for stratification in genome-wide association studies},
+  author={Price, Alkes L and Patterson, Nick J and Plenge, Robert M and Weinblatt, Michael E and Shadick, Nancy A and Reich, David},
+  journal={Nature genetics},
+  volume={38},
+  number={8},
+  pages={904--909},
+  year={2006},
+  publisher={Nature Publishing Group}
+}
+@article{kang2010variance,
+  title={Variance component model to account for sample structure in genome-wide association studies},
+  author={Kang, Hyun Min and Sul, Jae Hoon and Service, Susan K and Zaitlen, Noah A and Kong, Sit-yee and Freimer, Nelson B and Sabatti, Chiara and Eskin, Eleazar and others},
+  journal={Nature genetics},
+  volume={42},
+  number={4},
+  pages={348--354},
+  year={2010},
+  publisher={Nature Publishing Group}
+}
+@article{listgarten2012improved,
+  title={Improved linear mixed models for genome-wide association studies},
+  author={Listgarten, Jennifer and Lippert, Christoph and Kadie, Carl M and Davidson, Robert I and Eskin, Eleazar and Heckerman, David},
+  journal={Nature methods},
+  volume={9},
+  number={6},
+  pages={525--526},
+  year={2012},
+  publisher={Nature Publishing Group}
+}
+@article{zhou2012genome,
+  title={Genome-wide efficient mixed-model analysis for association studies},
+  author={Zhou, Xiang and Stephens, Matthew},
+  journal={Nature genetics},
+  volume={44},
+  number={7},
+  pages={821--824},
+  year={2012},
+  publisher={Nature Publishing Group}
+}
+@article{yang2014advantages,
+  title={Advantages and pitfalls in the application of mixed-model association methods},
+  author={Yang, Jian and Zaitlen, Noah A and Goddard, Michael E and Visscher, Peter M and Price, Alkes L},
+  journal={Nature genetics},
+  volume={46},
+  number={2},
+  pages={100--106},
+  year={2014},
+  publisher={Nature Publishing Group}
+}
+@article{pritchard2000association,
+  title={Association mapping in structured populations},
+  author={Pritchard, Jonathan K and Stephens, Matthew and Rosenberg, Noah A and Donnelly, Peter},
+  journal={The American Journal of Human Genetics},
+  volume={67},
+  number={1},
+  pages={170--181},
+  year={2000},
+  publisher={Elsevier}
+}
+@article{roeder2009searching,
+  title={Searching for disease susceptibility variants in structured populations},
+  author={Roeder, Kathryn and Luca, Diana},
+  journal={Genomics},
+  volume={93},
+  number={1},
+  pages={1--4},
+  year={2009},
+  publisher={Elsevier}
+}
+@article{mathieson2012differential,
+  title={Differential confounding of rare and common variants in spatially structured populations},
+  author={Mathieson, Iain and McVean, Gil},
+  journal={Nature genetics},
+  volume={44},
+  number={3},
+  pages={243--246},
+  year={2012},
+  publisher={Nature Publishing Group}
+}
+@article{10002015global,
+  title={A global reference for human genetic variation},
+  author={1000 Genomes Project Consortium and others},
+  journal={Nature},
+  volume={526},
+  number={7571},
+  pages={68--74},
+  year={2015},
+  publisher={Nature Publishing Group}
+}
+@article{mathieson2014demography,
+  title={Demography and the age of rare variants},
+  author={Mathieson, Iain and McVean, Gil},
+  journal={PLoS Genet},
+  volume={10},
+  number={8},
+  pages={e1004528},
+  year={2014},
+  publisher={Public Library of Science}
+}
+@article{10002012integrated,
+  title={An integrated map of genetic variation from 1,092 human genomes},
+  author={1000 Genomes Project Consortium and others},
+  journal={Nature},
+  volume={491},
+  number={7422},
+  pages={56--65},
+  year={2012},
+  publisher={Nature Publishing Group}
+}
+@article{sun2012identifying,
+  title={Identifying cryptic relationships},
+  author={Sun, Lei and Dimitromanolakis, Apostolos},
+  journal={Statistical Human Genetics: Methods and Protocols},
+  pages={47--57},
+  year={2012},
+  publisher={Springer}
+}
+@article{li2014relationship,
+  title={Relationship estimation from whole-genome sequence data},
+  author={Li, Hong and Glusman, Gustavo and Hu, Hao and Caballero, Juan and Hubley, Robert and Witherspoon, David and Guthery, Stephen L and Mauldin, Denise E and Jorde, Lynn B and Hood, Leroy and others},
+  journal={PLoS Genet},
+  volume={10},
+  number={1},
+  pages={e1004144},
+  year={2014},
+  publisher={Public Library of Science}
+}
+@article{stevens2011inference,
+  title={Inference of relationships in population data using identity-by-descent and identity-by-state},
+  author={Stevens, Eric L and Heckenberg, Greg and Roberson, Elisha DO and Baugher, Joseph D and Downey, Thomas J and Pevsner, Jonathan},
+  journal={PLoS Genet},
+  volume={7},
+  number={9},
+  pages={e1002287},
+  year={2011},
+  publisher={Public Library of Science}
+}
+@article{vsidak1967rectangular,
+  title={Rectangular confidence regions for the means of multivariate normal distributions},
+  author={{\v{S}}id{\'a}k, Zbyn{\v{e}}k},
+  journal={Journal of the American Statistical Association},
+  volume={62},
+  number={318},
+  pages={626--633},
+  year={1967},
+  publisher={Taylor \& Francis Group}
+}
+@article{gazal2015high,
+  title={High level of inbreeding in final phase of 1000 Genomes Project},
+  author={Gazal, Steven and Sahbatou, Mourad and Babron, Marie-Claude and G{\'e}nin, Emmanuelle and Leutenegger, Anne-Louise},
+  journal={Scientific reports},
+  volume={5},
+  year={2015},
+  publisher={Nature Publishing Group}
+}
+@article{purcell2007plink,
+  title={PLINK: a tool set for whole-genome association and population-based linkage analyses},
+  author={Purcell, Shaun and Neale, Benjamin and Todd-Brown, Kathe and Thomas, Lori and Ferreira, Manuel AR and Bender, David and Maller, Julian and Sklar, Pamela and De Bakker, Paul IW and Daly, Mark J and others},
+  journal={The American Journal of Human Genetics},
+  volume={81},
+  number={3},
+  pages={559--575},
+  year={2007},
+  publisher={Elsevier}
+}
+@article{thornton2007case,
+  title={Case-control association testing with related individuals: a more powerful quasi-likelihood score test},
+  author={Thornton, Timothy and McPeek, Mary Sara},
+  journal={The American Journal of Human Genetics},
+  volume={81},
+  number={2},
+  pages={321--337},
+  year={2007},
+  publisher={Elsevier}
+}
+@article{thornton2012estimating,
+  title={Estimating kinship in admixed populations},
+  author={Thornton, Timothy and Tang, Hua and Hoffmann, Thomas J and Ochs-Balcom, Heather M and Caan, Bette J and Risch, Neil},
+  journal={The American Journal of Human Genetics},
+  volume={91},
+  number={1},
+  pages={122--138},
+  year={2012},
+  publisher={Elsevier}
+}
+@article{devlin2001genomic,
+  title={Genomic control, a new approach to genetic-based association studies},
+  author={Devlin, B and Roeder, Kathryn and Wasserman, Larry},
+  journal={Theoretical population biology},
+  volume={60},
+  number={3},
+  pages={155--166},
+  year={2001},
+  publisher={Elsevier}
+}
+@article{bacanu2002association,
+  title={Association studies for quantitative traits in structured populations},
+  author={Bacanu, Silviu-Alin and Devlin, Bernie and Roeder, Kathryn},
+  journal={Genetic epidemiology},
+  volume={22},
+  number={1},
+  pages={78--93},
+  year={2002},
+  publisher={Wiley Online Library}
+}
+@article{lippert2011fast,
+  title={FaST linear mixed models for genome-wide association studies},
+  author={Lippert, Christoph and Listgarten, Jennifer and Liu, Ying and Kadie, Carl M and Davidson, Robert I and Heckerman, David},
+  journal={Nature methods},
+  volume={8},
+  number={10},
+  pages={833--835},
+  year={2011},
+  publisher={Nature Publishing Group}
+}
+@article{zhang2010mixed,
+  title={Mixed linear model approach adapted for genome-wide association studies},
+  author={Zhang, Zhiwu and Ersoz, Elhan and Lai, Chao-Qiang and Todhunter, Rory J and Tiwari, Hemant K and Gore, Michael A and Bradbury, Peter J and Yu, Jianming and Arnett, Donna K and Ordovas, Jose M and others},
+  journal={Nature genetics},
+  volume={42},
+  number={4},
+  pages={355--360},
+  year={2010},
+  publisher={Nature Publishing Group}
+}
+@article{choi2009case,
+  title={Case-control association testing in the presence of unknown relationships},
+  author={Choi, Yoonha and Wijsman, Ellen M and Weir, Bruce S},
+  journal={Genetic epidemiology},
+  volume={33},
+  number={8},
+  pages={668--678},
+  year={2009},
+  publisher={Wiley Online Library}
+}
+@article{yang2010common,
+  title={Common SNPs explain a large proportion of the heritability for human height},
+  author={Yang, Jian and Benyamin, Beben and McEvoy, Brian P and Gordon, Scott and Henders, Anjali K and Nyholt, Dale R and Madden, Pamela A and Heath, Andrew C and Martin, Nicholas G and Montgomery, Grant W and others},
+  journal={Nature genetics},
+  volume={42},
+  number={7},
+  pages={565--569},
+  year={2010},
+  publisher={Nature Publishing Group}
+}
+@article{manichaikul2010robust,
+  title={Robust relationship inference in genome-wide association studies},
+  author={Manichaikul, Ani and Mychaleckyj, Josyf C and Rich, Stephen S and Daly, Kathy and Sale, Mich{\`e}le and Chen, Wei-Min},
+  journal={Bioinformatics},
+  volume={26},
+  number={22},
+  pages={2867--2873},
+  year={2010},
+  publisher={Oxford Univ Press}
+}
+@article{abecasis2001grr,
+  title={GRR: graphical representation of relationship errors},
+  author={Abecasis, Goncalo R. and Cherny, Stacey S. and Cookson, WOC and Cardon, Lon R.},
+  journal={Bioinformatics},
+  volume={17},
+  number={8},
+  pages={742--743},
+  year={2001}
+}
+@misc{1000GPcrypticppt,
+  title = {Addressing cryptic relatedness in candidate samples for 1KG},
+  author={Nemesh, James and McCarroll, Steve},	
+  year={2012},
+  howpublished = {ftp://ftp.1000genomes.ebi.ac.uk/ vol1/ftp/phase1/analysis\_results/ supporting/cryptic\_relation\_analysis},
+  note = {Accessed: 2016-06-06}
+}
+@article{al2015inference,
+  title={Inference of distant genetic relations in humans using '1000 Genomes'},
+  author={Al-Khudhair, Ahmed and Qiu, Shuhao and Wyse, Meghan and Chowdhury, Shilpi and Cheng, Xi and Bekbolsynov, Dulat and Saha-Mandal, Arnab and Dutta, Rajib and Fedorova, Larisa and Fedorov, Alexei},
+  journal={Genome biology and evolution},
+  volume={7},
+  number={2},
+  pages={481--492},
+  year={2015},
+  publisher={Oxford University Press}
+}
+@article{fedorova2016atlas,
+  title={Atlas of Cryptic Genetic Relatedness Among 1000 Human Genomes},
+  author={Fedorova, Larisa and Qiu, Shuhao and Dutta, Rajib and Fedorov, Alexei},
+  journal={Genome biology and evolution},
+  volume={8},
+  number={3},
+  pages={777--790},
+  year={2016},
+  publisher={Oxford University Press}
+}
+@article{prokopenko2016utilizing,
+  title={Utilizing the Jaccard index to reveal population stratification in sequencing data: a simulation study and an application to the 1000 Genomes Project},
+  author={Prokopenko, Dmitry and Hecker, Julian and Silverman, Edwin K and Pagano, Marcello and N{\"o}then, Markus M and Dina, Christian and Lange, Christoph and Fier, Heide Loehlein},
+  journal={Bioinformatics},
+  volume={32},
+  number={9},
+  pages={1366--1372},
+  year={2016},
+  publisher={Oxford Univ Press}
+}
+@article{boehnke1997accurate,
+  title={Accurate inference of relationships in sib-pair linkage studies},
+  author={Boehnke, Michael and Cox, Nancy J},
+  journal={The American Journal of Human Genetics},
+  volume={61},
+  number={2},
+  pages={423--429},
+  year={1997},
+  publisher={Elsevier}
+}
+@article{epstein2000improved,
+  title={Improved inference of relationship for pairs of individuals},
+  author={Epstein, Michael P and Duren, William L and Boehnke, Michael},
+  journal={The American Journal of Human Genetics},
+  volume={67},
+  number={5},
+  pages={1219--1231},
+  year={2000},
+  publisher={Elsevier}
+}
+@article{price2008long,
+  title={Long-range LD can confound genome scans in admixed populations},
+  author={Price, Alkes L and Weale, Michael E and Patterson, Nick and Myers, Simon R and Need, Anna C and Shianna, Kevin V and Ge, Dongliang and Rotter, Jerome I and Torres, Esther and Taylor, Kent D and others},
+  journal={The American Journal of Human Genetics},
+  volume={83},
+  number={1},
+  pages={132--135},
+  year={2008},
+  publisher={Cell Press}
+}
+@article{wang2003evaluating,
+  title={Evaluating Kolmogorov's distribution},
+  author={Wang, Jingbo and Tsang, Wai Wan and Marsaglia, George},
+  journal={Journal of Statistical Software},
+  volume={8},
+  number={18},
+  year={2003},
+  publisher={American Statistical Association}
+}
+@article{patterson2006population,
+  title={Population structure and eigenanalysis},
+  author={Patterson, Nick and Price, Alkes L and Reich, David},
+  journal={PLoS genet},
+  volume={2},
+  number={12},
+  pages={e190},
+  year={2006},
+  publisher={Public Library of Science}
+}
+@article{chen2013improved,
+  title={Improved ancestry inference using weights from external reference panels},
+  author={Chen, Chia-Yen and Pollack, Samuela and Hunter, David J and Hirschhorn, Joel N and Kraft, Peter and Price, Alkes L},
+  journal={Bioinformatics},
+  pages={btt144},
+  year={2013},
+  publisher={Oxford Univ Press}
+}
+@article{chen2011removing,
+  title={Removing batch effects in analysis of expression microarray data: an evaluation of six batch adjustment methods},
+  author={Chen, Chao and Grennan, Kay and Badner, Judith and Zhang, Dandan and Gershon, Elliot and Jin, Li and Liu, Chunyu},
+  journal={PloS one},
+  volume={6},
+  number={2},
+  pages={e17238},
+  year={2011},
+  publisher={Public Library of Science}
+}
+@article{johnson2007adjusting,
+  title={Adjusting batch effects in microarray expression data using empirical Bayes methods},
+  author={Johnson, W Evan and Li, Cheng and Rabinovic, Ariel},
+  journal={Biostatistics},
+  volume={8},
+  number={1},
+  pages={118--127},
+  year={2007},
+  publisher={Biometrika Trust}
+}
+@article{siska2017differential,
+  title={Differential correlation for sequencing data},
+  author={Siska, Charlotte and Kechris, Katerina},
+  journal={BMC Research Notes},
+  volume={10},
+  number={1},
+  pages={54},
+  year={2017},
+  publisher={BioMed Central}
+}
+@article{benito2004adjustment,
+  title={Adjustment of systematic microarray data biases},
+  author={Benito, Monica and Parker, Joel and Du, Quan and Wu, Junyuan and Xiang, Dong and Perou, Charles M and Marron, James Stephen},
+  journal={Bioinformatics},
+  volume={20},
+  number={1},
+  pages={105--114},
+  year={2004},
+  publisher={Oxford Univ Press}
+}
+@article{leek2007capturing,
+  title={Capturing heterogeneity in gene expression studies by surrogate variable analysis},
+  author={Leek, Jeffrey T and Storey, John D},
+  journal={PLoS Genet},
+  volume={3},
+  number={9},
+  pages={e161},
+  year={2007},
+  publisher={Public Library of Science}
+}
+@article{furlotte2011mixed,
+  title={Mixed-model coexpression: calculating gene coexpression while accounting for expression heterogeneity},
+  author={Furlotte, Nicholas A and Kang, Hyun Min and Ye, Chun and Eskin, Eleazar},
+  journal={Bioinformatics},
+  volume={27},
+  number={13},
+  pages={i288--i294},
+  year={2011},
+  publisher={Oxford Univ Press}
+}
+@article{bien2011sparse,
+  title={Sparse estimation of a covariance matrix},
+  author={Bien, Jacob and Tibshirani, Robert J and others},
+  journal={Biometrika},
+  volume={98},
+  number={4},
+  pages={807},
+  year={2011}
+}
+@article{de2010differential,
+  title={From 'differential expression'to 'differential networking'--identification of dysfunctional regulatory networks in diseases},
+  author={de la Fuente, Alberto},
+  journal={Trends in genetics},
+  volume={26},
+  number={7},
+  pages={326--333},
+  year={2010},
+  publisher={Elsevier}
+}
+@article{langmead2009ultrafast,
+  title={Ultrafast and memory-efficient alignment of short DNA sequences to the human genome},
+  author={Langmead, Ben and Trapnell, Cole and Pop, Mihai and Salzberg, Steven L},
+  journal={Genome biology},
+  volume={10},
+  number={3},
+  pages={R25},
+  year={2009},
+  publisher={BioMed Central}
+}
+@article{liao2014featurecounts,
+  title={featureCounts: an efficient general purpose program for assigning sequence reads to genomic features},
+  author={Liao, Yang and Smyth, Gordon K and Shi, Wei},
+  journal={Bioinformatics},
+  volume={30},
+  number={7},
+  pages={923--930},
+  year={2014},
+  publisher={Oxford Univ Press}
+}
+@article{nygaard2016methods,
+  title={Methods that remove batch effects while retaining group differences may lead to exaggerated confidence in downstream analyses},
+  author={Nygaard, Vegard and R{\o}dland, Einar Andreas and Hovig, Eivind},
+  journal={Biostatistics},
+  volume={17},
+  number={1},
+  pages={29--39},
+  year={2016},
+  publisher={Biometrika Trust}
+}
+@article{luo2010comparison,
+  title={A comparison of batch effect removal methods for enhancement of prediction performance using MAQC-II microarray gene expression data},
+  author={Luo, J and Schumacher, M and Scherer, A and Sanoudou, D and Megherbi, D and Davison, T and Shi, T and Tong, W and Shi, L and Hong, H and others},
+  journal={The pharmacogenomics journal},
+  volume={10},
+  number={4},
+  pages={278--291},
+  year={2010},
+  publisher={Nature Publishing Group}
+}
+@article{leek2010tackling,
+  title={Tackling the widespread and critical impact of batch effects in high-throughput data},
+  author={Leek, Jeffrey T and Scharpf, Robert B and Bravo, H{\'e}ctor Corrada and Simcha, David and Langmead, Benjamin and Johnson, W Evan and Geman, Donald and Baggerly, Keith and Irizarry, Rafael A},
+  journal={Nature Reviews Genetics},
+  volume={11},
+  number={10},
+  pages={733--739},
+  year={2010},
+  publisher={Nature Publishing Group}
+}
+@article{lander1999array,
+  title={Array of hope},
+  author={Lander, Eric S},
+  journal={Nature genetics},
+  volume={21},
+  pages={3--4},
+  year={1999},
+  publisher={Nature Publishing Group}
+}
+@article{conesa2016survey,
+  title={A survey of best practices for RNA-seq data analysis},
+  author={Conesa, Ana and Madrigal, Pedro and Tarazona, Sonia and Gomez-Cabrero, David and Cervera, Alejandra and McPherson, Andrew and Szcze{\'s}niak, Micha{\l} Wojciech and Gaffney, Daniel J and Elo, Laura L and Zhang, Xuegong and others},
+  journal={Genome biology},
+  volume={17},
+  number={1},
+  pages={13},
+  year={2016},
+  publisher={BioMed Central}
+}
+@article{fare2003effects,
+  title={Effects of atmospheric ozone on microarray data quality},
+  author={Fare, Thomas L and Coffey, Ernest M and Dai, Hongyue and He, Yudong D and Kessler, Deborah A and Kilian, Kristopher A and Koch, John E and LeProust, Eric and Marton, Matthew J and Meyer, Michael R and others},
+  journal={ANALYTICAL CHEMISTRY-WASHINGTON DC-},
+  volume={75},
+  number={17},
+  pages={4672--4675},
+  year={2003},
+  publisher={ACS AMERICAN CHEMICAL SOCIETY}
+}
+@book{scherer2009batch,
+  title={Batch effects and noise in microarray experiments: sources and solutions},
+  author={Scherer, Andreas},
+  volume={868},
+  year={2009},
+  publisher={John Wiley \& Sons}
+}
+@article{choi2005differential,
+  title={Differential coexpression analysis using microarray data and its application to human cancer},
+  author={Choi, Jung Kyoon and Yu, Ungsik and Yoo, Ook Joon and Kim, Sangsoo},
+  journal={Bioinformatics},
+  volume={21},
+  number={24},
+  pages={4348--4355},
+  year={2005},
+  publisher={Oxford Univ Press}
+}
+@article{fukushima2013diffcorr,
+  title={DiffCorr: an R package to analyze and visualize differential correlations in biological networks},
+  author={Fukushima, Atsushi},
+  journal={Gene},
+  volume={518},
+  number={1},
+  pages={209--214},
+  year={2013},
+  publisher={Elsevier}
+}
+@article{tesson2010diffcoex,
+  title={DiffCoEx: a simple and sensitive method to find differentially coexpressed gene modules},
+  author={Tesson, Bruno M and Breitling, Rainer and Jansen, Ritsert C},
+  journal={BMC bioinformatics},
+  volume={11},
+  number={1},
+  pages={497},
+  year={2010},
+  publisher={BioMed Central}
+}
+@Article{wgcna1,
+	author = {Peter Langfelder and Steve Horvath},
+	title = {WGCNA: an R package for weighted correlation network
+	analysis},
+	journal = {BMC Bioinformatics},
+	year = {2008},
+	number = {1},
+	pages = {559},
+	pubmedid = {19114008},
+}
+@Article{wgcna2,
+	title = {Fast {R} Functions for Robust Correlations and
+	Hierarchical Clustering},
+	author = {Peter Langfelder and Steve Horvath},
+	journal = {Journal of Statistical Software},
+	year = {2012},
+	volume = {46},
+	number = {11},
+	pages = {1--17},
+	url = {http://www.jstatsoft.org/v46/i11/},
+}
+@article{southworth2009aging,
+  title={Aging mice show a decreasing correlation of gene expression within genetic modules},
+  author={Southworth, Lucinda K and Owen, Art B and Kim, Stuart K},
+  journal={PLoS Genet},
+  volume={5},
+  number={12},
+  pages={e1000776},
+  year={2009},
+  publisher={Public Library of Science}
+}
+@article{hoff2012covariance,
+  title={A covariance regression model},
+  author={Hoff, Peter D and Niu, Xiaoyue},
+  journal={Statistica Sinica},
+  pages={729--753},
+  year={2012},
+  publisher={JSTOR}
+}
+@article{meinshausen2006high,
+  title={High-dimensional graphs and variable selection with the lasso},
+  author={Meinshausen, Nicolai and B{\"u}hlmann, Peter},
+  journal={The annals of statistics},
+  pages={1436--1462},
+  year={2006},
+  publisher={JSTOR}
+}
+@article{banerjee2008model,
+  title={Model selection through sparse maximum likelihood estimation for multivariate gaussian or binary data},
+  author={Banerjee, Onureena and Ghaoui, Laurent El and d'Aspremont, Alexandre},
+  journal={Journal of Machine learning research},
+  volume={9},
+  number={Mar},
+  pages={485--516},
+  year={2008}
+}
+@article{friedman2008sparse,
+  title={Sparse inverse covariance estimation with the graphical lasso},
+  author={Friedman, Jerome and Hastie, Trevor and Tibshirani, Robert},
+  journal={Biostatistics},
+  volume={9},
+  number={3},
+  pages={432--441},
+  year={2008},
+  publisher={Biometrika Trust}
+}
+@article{yuan2007model,
+  title={Model selection and estimation in the Gaussian graphical model},
+  author={Yuan, Ming and Lin, Yi},
+  journal={Biometrika},
+  pages={19--35},
+  year={2007},
+  publisher={JSTOR}
+}
+@article{schlauch2016estimating,
+  title={Estimating Drivers of Cell State Transitions Using Gene Regulatory Network Models},
+  author={Schlauch, Daniel and Glass, Kimberly and Hersh, Craig P and Silverman, Edwin K and Quackenbush, John},
+  journal={bioRxiv},
+  pages={089003},
+  year={2016},
+  publisher={Cold Spring Harbor Labs Journals}
+}
+@article{singh2014altered,
+  title={Altered gene expression in blood and sputum in COPD frequent exacerbators in the ECLIPSE cohort},
+  author={Singh, Dave and Fox, Steven M and Tal-Singer, Ruth and Bates, Stewart and Riley, John H and Celli, Bartolome},
+  journal={PloS one},
+  volume={9},
+  number={9},
+  pages={e107381},
+  year={2014},
+  publisher={Public Library of Science}
+}
+@article{gautier2004affy,
+  title={affy-analysis of Affymetrix GeneChip data at the probe level},
+  author={Gautier, Laurent and Cope, Leslie and Bolstad, Benjamin M and Irizarry, Rafael A},
+  journal={Bioinformatics},
+  volume={20},
+  number={3},
+  pages={307--315},
+  year={2004},
+  publisher={Oxford Univ Press}
+}
+@article{dai2005evolving,
+  title={Evolving gene/transcript definitions significantly alter the interpretation of GeneChip data},
+  author={Dai, Manhong and Wang, Pinglang and Boyd, Andrew D and Kostov, Georgi and Athey, Brian and Jones, Edward G and Bunney, William E and Myers, Richard M and Speed, Terry P and Akil, Huda and others},
+  journal={Nucleic acids research},
+  volume={33},
+  number={20},
+  pages={e175--e175},
+  year={2005},
+  publisher={Oxford Univ Press}
+}
+
+@article{irizarry2003exploration,
+  title={Exploration, normalization, and summaries of high density oligonucleotide array probe level data},
+  author={Irizarry, Rafael A and Hobbs, Bridget and Collin, Francois and Beazer-Barclay, Yasmin D and Antonellis, Kristen J and Scherf, Uwe and Speed, Terence P},
+  journal={Biostatistics},
+  volume={4},
+  number={2},
+  pages={249--264},
+  year={2003},
+  publisher={Biometrika Trust}
+}
+@article{morrow2015identifying,
+  title={Identifying a gene expression signature of frequent COPD exacerbations in peripheral blood using network methods},
+  author={Morrow, Jarrett D and Qiu, Weiliang and Chhabra, Divya and Rennard, Stephen I and Belloni, Paula and Belousov, Anton and Pillai, Sreekumar G and Hersh, Craig P},
+  journal={BMC medical genomics},
+  volume={8},
+  number={1},
+  pages={1},
+  year={2015},
+  publisher={BioMed Central}
+}
+@article{morrow2017functional,
+  title={Functional interactors of three genome-wide association study genes are differentially expressed in severe chronic obstructive pulmonary disease lung tissue},
+  author={Morrow, Jarrett D and Zhou, Xiaobo and Lao, Taotao and Jiang, Zhiqiang and DeMeo, Dawn L and Cho, Michael H and Qiu, Weiliang and Cloonan, Suzanne and Pinto-Plata, Victor and Celli, Bartholome and others},
+  journal={Scientific Reports},
+  volume={7},
+  year={2017},
+  publisher={Nature Publishing Group}
+}
+@article{huang2009systematic,
+  title={Systematic and integrative analysis of large gene lists using DAVID bioinformatics resources},
+  author={Huang, Da Wei and Sherman, Brad T and Lempicki, Richard A},
+  journal={Nature protocols},
+  volume={4},
+  number={1},
+  pages={44--57},
+  year={2009},
+  publisher={Nature Publishing Group}
+}
+@article{huang2009bioinformatics,
+  title={Bioinformatics enrichment tools: paths toward the comprehensive functional analysis of large gene lists},
+  author={Huang, Da Wei and Sherman, Brad T and Lempicki, Richard A},
+  journal={Nucleic acids research},
+  volume={37},
+  number={1},
+  pages={1--13},
+  year={2009},
+  publisher={Oxford Univ Press}
+}
+@article{cloonan2016mitochondrial,
+  title={Mitochondrial iron chelation ameliorates cigarette smoke-induced bronchitis and emphysema in mice},
+  author={Cloonan, Suzanne M and Glass, Kimberly and Laucho-Contreras, Maria E and Bhashyam, Abhiram R and Cervo, Morgan and Pab{\'o}n, Maria A and Konrad, Csaba and Polverino, Francesca and Siempos, Ilias I and Perez, Elizabeth and others},
+  journal={Nature medicine},
+  year={2016},
+  publisher={Nature Publishing Group}
+}
+@article{cloonan2016mitochondria,
+  title={Mitochondria in lung disease},
+  author={Cloonan, Suzanne M and Choi, Augustine MK},
+  journal={Journal of Clinical Investigation},
+  volume={126},
+  number={3},
+  pages={809},
+  year={2016},
+  publisher={American Society for Clinical Investigation}
 }

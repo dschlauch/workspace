@@ -17,6 +17,7 @@
 % Options
 %
 \RequirePackage{etoolbox}
+\RequirePackage{authblk}
 
 % Line spacing: dsingle/ddouble
 %   Whether to use single- or doublespacing.
@@ -73,21 +74,24 @@
 \RequirePackage{verbatim}
 
 % Fonts.
+
+\usepackage{amsmath}
+\usepackage{multirow}
 \RequirePackage{color}
 \RequirePackage{xcolor}
 \usepackage{hyperref}
 \RequirePackage{url}
 \RequirePackage{amssymb}
 \RequirePackage{mathspec}
-\setmathsfont(Digits,Latin,Greek)[Numbers={Proportional}]{EB Garamond}
-\setmathrm{EB Garamond}
+%\setmathsfont(Digits,Latin,Greek)[Numbers={Proportional}]{EB Garamond}
+%\setmathrm{EB Garamond}
 \AtBeginEnvironment{tabular}{\addfontfeature{RawFeature=+tnum}}
 \widowpenalty=300
 \clubpenalty=300
-\setromanfont[Numbers=OldStyle, Ligatures={Common, TeX}, Scale=1.0]{EB Garamond}
-\newfontfamily{\smallcaps}[RawFeature={+c2sc,+scmp}]{EB Garamond}
-\setsansfont[Scale=MatchLowercase, BoldFont={Lato Bold}]{Lato Regular}
-\setmonofont[Scale=MatchLowercase]{Source Code Pro}
+%\setromanfont[Numbers=OldStyle, Ligatures={Common, TeX}, Scale=1.0]{EB Garamond}
+%\newfontfamily{\smallcaps}[RawFeature={+c2sc,+scmp}]{EB Garamond}
+%\setsansfont[Scale=MatchLowercase, BoldFont={Lato Bold}]{Lato Regular}
+%\setmonofont[Scale=MatchLowercase]{Source Code Pro}
 \RequirePackage[labelfont={bf,sf,footnotesize,singlespacing},
                 textfont={sf,footnotesize,singlespacing},
                 justification={justified,RaggedRight},
@@ -122,8 +126,8 @@
 \renewcommand\bibname{References}
 \RequirePackage[super,comma,numbers]{natbib}
 \renewcommand{\bibnumfmt}[1]{[#1]}
-\RequirePackage[palatino]{quotchap}
-\renewcommand*{\chapterheadstartvskip}{\vspace*{-0.5\baselineskip}}
+\RequirePackage[avantgarde]{quotchap}
+\renewcommand*{\chapterheadstartvskip}{\vspace*{-3\baselineskip}}
 \renewcommand*{\chapterheadendvskip}{\vspace{1.3\baselineskip}}
 
 % An environment for paragraph-style section.
@@ -206,7 +210,7 @@
 	\abstractpage
     \contentspage
 	% \listoffigures % optional
-	\dedicationpage
+	%\dedicationpage
 	\acknowledgments
 }
 
@@ -292,15 +296,15 @@
 
 
 \renewcommand{\backmatter}{
-    \begin{appendices}
-        \include{chapters/appendixA}
-    \end{appendices}
+%    \begin{appendices}
+%        \include{chapters/appendixA}
+%    \end{appendices}
     \input{endmatter/personalize}
     \clearpage
     \begin{spacing}{\dcompressedspacing}
         \bibliography{references}
         \addcontentsline{toc}{chapter}{References}
         \bibliographystyle{apalike2}
-        \include{endmatter/colophon}
+%        \include{endmatter/colophon}
     \end{spacing}
 }

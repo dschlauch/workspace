@@ -1,0 +1,34 @@
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Overview of the MONSTER approach}}{10}{figure.caption.5}
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Overview of MONSTER analysis workflow}}{23}{figure.caption.6}
+\contentsline {figure}{\numberline {2.3}{\ignorespaces MONSTER analysis results in the ECLIPSE study}}{28}{figure.caption.7}
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Reproducibility in top differential transcription factor involvement}}{30}{figure.caption.8}
+\contentsline {figure}{\numberline {2.5}{\ignorespaces Differentially involved vs differentially expressed transcription factors}}{33}{figure.caption.9}
+\contentsline {figure}{\numberline {2.6}{\ignorespaces ROC curves for network inference in three DREAM 5 data sets}}{36}{figure.caption.10}
+\contentsline {figure}{\numberline {2.7}{\ignorespaces Edge weight differences between cases and controls across studies}}{40}{figure.caption.12}
+\contentsline {figure}{\numberline {2.8}{\ignorespaces MONSTER analysis results for COPDGENE study}}{43}{figure.caption.13}
+\contentsline {figure}{\numberline {2.9}{\ignorespaces MONSTER analysis results for LGRC study}}{44}{figure.caption.14}
+\contentsline {figure}{\numberline {2.10}{\ignorespaces MONSTER analysis results for LTCDNM study}}{45}{figure.caption.15}
+\contentsline {figure}{\numberline {2.11}{\ignorespaces Differentially transcription factor involvement vs differential gene expression in four studies of COPD}}{46}{figure.caption.16}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Distribution of similarity coefficients in the 1000 Genomes Project}}{79}{figure.caption.18}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces $s$ statistics for population Indian Telugu from the UK with HG03998}}{80}{figure.caption.19}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Significance of population heterogeneity in 26 populations of the TGP}}{81}{figure.caption.20}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Eigendecomposition separation using STEGO matrix and covariance}}{83}{figure.caption.21}
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Separation of ITU vs STU comparison of methods}}{85}{figure.caption.22}
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Similarity coefficients for each population in the 1000 Genomes Project}}{88}{figure.caption.23}
+\contentsline {figure}{\numberline {3.7}{\ignorespaces Population structure within populations of 1000 Genomes Project.}}{89}{figure.caption.24}
+\contentsline {figure}{\numberline {3.8}{\ignorespaces Similarity coefficients for populations GBR and CEU}}{90}{figure.caption.25}
+\contentsline {figure}{\numberline {3.9}{\ignorespaces Distribution of weight factor}}{91}{figure.caption.26}
+\contentsline {figure}{\numberline {3.10}{\ignorespaces Allele informativeness by minor frequency}}{92}{figure.caption.27}
+\contentsline {figure}{\numberline {3.11}{\ignorespaces Running time comparison of STEGO , \textbf {cor()} and \textbf {princomp()} in R}}{93}{figure.caption.28}
+\contentsline {figure}{\numberline {3.12}{\ignorespaces Simulated Principal Component plots for two methods for generating the genetic similarity matrix}}{94}{figure.caption.29}
+\contentsline {figure}{\numberline {3.13}{\ignorespaces Power curve for detection of related pair}}{95}{figure.caption.30}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Toy demonstration of impact of batch correction on coexpression}}{105}{figure.caption.32}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Workflow of {[}NAME{]}}}{108}{figure.caption.33}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Eigenvector plots showing separation of modular structure}}{118}{figure.caption.34}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Comparison of methods for differential coexpression estimates}}{119}{figure.caption.35}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Differential expression and absolute differential coexpression in ENCODE data with batch correction}}{121}{figure.caption.36}
+\addvspace {10\p@ }
