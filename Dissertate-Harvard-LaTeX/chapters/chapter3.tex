@@ -7,27 +7,9 @@ Eliminate all other factors, and the one which remains must be the truth.
 \chapter{Batch effect on covariance structure confounds gene coexpression}
 
 \newthought{Systemic biases}
-associated with multiple batches of gene expression
-experiments have been known to confound results in differential gene
-expression analyses and numerous methods have been developed over
-the past 10 years that address this phenomenon. Commonly, these approaches
-adjust expression values such that the mean and variance of each gene
-is conditionally independent of a set of batch covariates. However,
-methods published to date have not addressed the potential for differential
-coexpression across batches. While this is of lesser concern in the
-context of standard differential gene expression, analyses that utilize
-a gene coexpression or correlation matrix will continue to see confounding
-due to batch effect even when applied to a properly batch-corrected
-gene expression matrix. In this article, we demonstrate the persistence
-of confounding at the covariance level after standard batch correction
-using simulation studies and real biological examples. We present
-an approach for computing a corrected gene expression coexpression
-matrix, called {[}NAME{]}, based on estimation of the conditional
-covariance matrix. {[}NAME{]} estimates a reduced set of parameters
-that express the coexpression as a function of the sample covariates
-and can be used to control for continuous and categorical confounders.
-The method is computationally fast, and makes use of the inherently
-modular structure of features commonly found in genomic analyses.
+ associated with gene expression experiments, batch effects, have been known to induce spurious associations and  confound differential gene expression (DE) results. Commonly, to address the effects of batch on DE, methods have been developed to adjust expression values such that the mean and variance of each gene is conditionally independent of a set of batch covariates. To date, these methods have not addressed the potential for differential coexpression (DC) across confounders. While this is of lesser concern in the context of DE, analyses that utilize a gene coexpression or correlation matrix will continue to see confounding due to batch effects even when applying standard batch correction techniques. 
+
+In this article, we demonstrate the persistence of confounding at the covariance level after standard batch correction using simulation and biological examples. We present an approach for computing a corrected gene coexpression matrix, called Coexpression Model Analysis (CMA), based on the estimation of a conditional covariance matrix. CMA estimates a reduced set of parameters that express the coexpression as a function of the sample covariates and can be used to control for continuous and categorical covariates. The method is computationally fast, and makes use of the inherently modular structure of features commonly found in genomic analyses.
 
 \section{Introduction}
 
@@ -37,8 +19,7 @@ allow for the measurement of tens of thousands of gene expression
 patterns at once, giving us a window into the molecular activity of
 living cells. But as promising as these data generation methods are,
 the deluge of data that has arisen from these tools has revealed an
-extraordinarily level of complexity in linking the information at
-the gene level to the higher level observations of phenotypes.
+extraordinarily level of complexity inherent to cells.  Muddying the links between the information detected at the gene level to the higher level observations of phenotypes.
 
 Plummeting costs have lead to increased accessibility of high-throughput
 genomic assays and with that we gain ability to investigate numerous
@@ -56,7 +37,7 @@ reduce the probability of false positive results.
 
 In the context of gene expression studies, the measurement of biological
 sources of variation RNA abundance are typically of interest. Commonly,
-observed variation is often the result of technical artifacts that
+observed variation is the result of technical artifacts that
 may confound associations between experimental groups and gene expression
 \cite{leek2010tackling,lander1999array}. 
 
@@ -65,9 +46,9 @@ obvious, such as the array platform or the experimental reagents used,
 but others may be more unexpected. Timing, ozone\cite{fare2003effects},
 technician and lab humidity have all been identified as sources of
 unwanted variation and undoubtedly many other sources remain undiscovered\cite{scherer2009batch}.
-In other words, variation attributed to batch is unavoidable. Ideally,
+In other words, variation attributed to batch is virtually unavoidable. Ideally,
 experimental design will allow for single-batch experiments to be
-performed, but experiments may be too large for this to be practical.
+performed, but studies may be too large for this to be practical.
 Randomized batch assignment is recommended as an experimental design\cite{conesa2016survey},
 but many investigations involve the use of publicly available data
 (e.g. Gene Expression Omnibus, Genomics Data Commons) for which no
@@ -104,11 +85,11 @@ uses a combination of measured covariates and singular value decomposition
 to identify unknown sources of variation. These variables are estimated
 and their effects regressed out of the gene expression matrix. These
 approaches amount to a location-scale adjustment that is critical
-for promoting the conditional independence of gene expression. For
+for promoting the conditional independence of gene expression with batch. For
 the purposes of differential gene expression analysis, this approach
-is effective for both microarrays and RNA-seq data \cite{conesa2016survey}.
+is reasonably effective for both microarrays and RNA-seq data \cite{conesa2016survey}.
 
-However, as our understanding of genomics grows, we recognize that
+However, as our understanding of genomics grew, we recognized that
 finding differentially expressed genes do not give a complete picture
 of relationship between the transcriptome and phenotype. Cellular
 states involve the complex combination of numerous biological processes
@@ -118,32 +99,31 @@ gene coexpression, the degree to which the expression between two
 gene is correlated, to gain an understanding of the network biology
 where simple differential gene expression falls short. Analogous to
 differential expression and complementary to network inference, we
-are naturally interested in differential coexpression - the difference
-in gene correlation across experimental conditions.
+are interested in differential coexpression - the change
+in gene correlation across experimental conditions \cite{fuller2007weighted}.
 
 The difference between differential coexpression analysis and differential
 expression is that we focus on the pairwise joint distribution of
 genes as opposed to the marginal distribution of each gene. Essentially,
 we assume that genes that are functionally related will exhibit a
 correlated expression pattern across a set of experimental conditions
-or samples. A significant association may indicate a potential functional
+or samples - a "guilt by association" premise. Significant association between groups of genes may indicate a common functional
 interaction. With this in mind, a natural goal is the identification
 of those genes that are differentially correlated. Gene pairs or gene
-sets that gain or lose a common expression pattern in differing experimental
+sets that gain or lose their common expression pattern across experimental
 conditions may implicate the biological pathways or functional mechanisms
 that drive a particular phenotypic change.
 
 Many methods have been proposed in for differential coexpression analysis,
-most commonly in the field of gene network inference. Many of these
-proposed algorithms start with the computation of a correlation matrix
-from the gene expression data\cite{tesson2010diffcoex,wgcna1,wgcna2,glass2013passing,southworth2009aging,choi2005differential,siska2017differential}.
+most commonly in the context of gene network inference\cite{hsu2015functional}. Often, these
+proposed algorithms start with the computation of correlation matrices
+from the gene expression data\cite{tesson2010diffcoex,wgcna1,wgcna2,glass2013passing,southworth2009aging,choi2005differential,siska2017differential,yu2011link,amar2013dissection}.  
 There is an assumption, often implicit, that the gene expression data
 lacks heterogeneity or has heterogeneity sufficiently corrected. The
 biases that persist in the coexpression matrix when homogeneity is
 violated are rarely discussed or considered in the literature. Each
-of the methods in the field would benefit from an estimated coexpression
-matrix that has had the impact of batch effect reduced compared to
-a standard Pearson correlation matrix.
+of the methods that use correlation matrices would benefit from estimated coexpression that has had the impact of batch effect reduced compared to
+a Pearson correlation alone.
 
 In estimating coexpression matrices, standard batch correction is
 critical \cite{furlotte2011mixed}, but not sufficient. Location-scale
@@ -152,7 +132,7 @@ This will inevitably lead to highly significant, but biologically
 meaningless associations between large volumes of genes. Though the
 common batch correction practices help mitigate this problem, they
 fail to remove the impact of the type of batch effect that causes
-differential coexpression patterns among gene. Current methods treat
+differential coexpression patterns among genes in the absence of differential expression. Current methods treat
 batch effect as acting on the marginal distribution of each gene and
 ignore the possibility of changes to joint distributions. While some
 impact on the joint distribution is addressed by removing the impact
@@ -164,12 +144,11 @@ For example, different experimental protocols across batches may induce
 a coexpression difference by preferentially sampling cells with certain
 active biological pathways for cell cycle or stress response. But
 even simpler, batch effect for coexpression may be introduced merely
-by differential biological variability. To illustrate this, recognize
-that correlation is roughly interpreted as the square root of proportion
-of variability explained by true expression (as opposed to other sources
-of error). Then two genes which are functionally related will only
-be detected as such if the biological variability is equal between
-batches. Subtle differences in protocol that lead to differences in
+by differential biological variability. To illustrate this, recall
+that correlation is roughly interpreted as the square root of the proportion
+of total variability explained by true relationship between the genes (as opposed to other sources
+of error and variance). Then two genes which are functionally related will only
+be detected as such if there exists meaningful biological variability in both batches. For example, if the two genes are consistently in the same expression state across samples, their correlation will be near zero despite their interaction.  Greater variability in one batch compared to another will lead to differences in ability to capture coexpression. Subtle differences in protocol that lead to differences in
 biological variability can not be removed with standard batch correction
 methods.
 
@@ -209,21 +188,25 @@ no method currently available returns a corrected coexpression matrix
 rather than a corrected expression matrix.
 
 While the impact of ignoring pairwise interactions may be negligible
-for simple differential gene expression analyses, coexpression patterns
+for simple differential gene expression analyses, it is the differential coexpression patterns, rather than differential expression, that
 are widely considered in the field of network inference\cite{de2010differential,chen2011removing,fukushima2013diffcorr}.
 The impact of confounding due to differential coexpression in batches
-remains unexamined.
+remains critically unexamined.
 
 In order to solve this problem, we need to create a model that describes
 the coexpression matrix as a function of the experimental conditions
 and batches. Classical regression models predict the expectation of
-a response variable, but in coexpression analyses, we are interested
-in the covariance. Some work has recently been published on this subject\cite{hoff2012covariance},
+a response variable as a function of a set of predictors, but in coexpression analyses, we are interested
+in the covariance. Some work has recently been published on the subject of modeling the covariance matrix\cite{hoff2012covariance,zou2016covariance},
 but little has been studied in high dimensional or biological settings. 
 
-This problem faces at least two major challenges. The first problem
-is that it requires the estimation of a very large number of parameters.
-Given $p$ genes, there are ${p \choose 2}$ pairwise correlations,
+Estimating the coexpression matrix faces at least two major challenges. The first problem
+is that in the case of numerous batches or
+continuous covariates, it may not be possible to estimate a coexpression
+matrix using the sample covariance matrix form, $\frac{1}{n}\sum_{i=1}^{n}\left(X_{i}-\bar{X}\right)\left(X_{i}-\bar{X}\right)^{T}$,
+where $X_{i}$ is the set of all gene expression values for sample
+$i$. Another issue is that it requires the estimation of a very large number of parameters.
+Given $p$ genes, there are $\binom{p}{2}$ pairwise correlations,
 and each of these must be a function of the number of covariates.
 For most high throughput gene expression studies where $N\ll p$,
 we want to limit this parameter space in some way. Previous work has
@@ -232,14 +215,10 @@ studies\cite{schlauch2016estimating} likely owing to the high number
 of parameters to estimate in noisy data. Recent work has allowed for
 the imposition of sparsity on the gene covariance matrix \cite{bien2011sparse}
 or precision matrix \cite{friedman2008sparse}, but the complexity
-of biological systems make sparsity an imperfect choice and computationally
-burdensome to implement. Second, in the case of numerous batches or
-continuous covariates, it may not be possible to estimate a coexpression
-matrix using the sample covariance matrix form, $\frac{1}{n}\sum_{i=1}^{n}\left(X_{i}-\bar{X}\right)\left(X_{i}-\bar{X}\right)^{T}$,
-where $X_{i}$ is the set of all gene expression values for sample
-$i$. 
+of biological systems make sparsity an unreasonable choice and computationally
+burdensome to implement. 
 
-In the method we describe here, {[}NAME{]}, we reduce the parameter
+In the method we describe here, CMA, we reduce the parameter
 space by exploiting the modular nature of gene expression, estimating
 only $N$ variables for each covariate, with each weight corresponding
 to a eigenvector. This collects the information from many similarly
@@ -256,7 +235,7 @@ covariates into the adjustment model.
 In this manuscript we present a method for estimating the coexpression
 matrix by modeling the matrix as a function of the largest components
 of variation. Critical to our approach is the idea that although there
-are ${p \choose 2}$ pairwise gene-gene relationships, the true biology
+are $\binom{p}{2}$ pairwise gene-gene relationships, the true biology
 can be predominantly explained by a much smaller set of variance components.
 One way to identify these components is to compute the eigendecomposition
 of the gene correlation matrix. We can then write the coexpression
@@ -266,7 +245,7 @@ a set of parameter estimates from which we can compute corrected coexpression
 estimates.
 
 \begin{figure}
-\includegraphics[width=1\columnwidth]{figures/overview2}\caption[Workflow of {[}NAME{]}]{\textbf{Workflow of {[}NAME{]}}. {[}NAME{]} begins with a raw or normalized
+\includegraphics[width=1\columnwidth]{figures/overview2}\caption[Workflow of CMA]{\textbf{Workflow of CMA}. CMA begins with a raw or normalized
 gene expression dataset. (1) Standard batch correction (ComBat) is
 applied to remove location-scale batch effect. (2) The overall coexpression
 matrix is calculated. (3) An eigendecomposition of the overall coexpression
@@ -311,7 +290,7 @@ $s_{jk}=\frac{1}{N-1}\sum_{i=1}^{N}(G_{ij}-\bar{G_{\cdot j}})(G_{ik}-\bar{G_{\cd
 However, as is typical in high-throughput settings, $p\gg N$, producing
 an estimated covariance matrix $p\times p$ with column rank $\le N$.
 
-To address this \textquotedbl{}curse of dimensionality\textquotedbl{},
+To address this ``curse of dimensionality'',
 numerous methods have been proposed. One might use a series of LASSO
 regressions to estimate parameters in the inverse covariance matrix
 \cite{meinshausen2006high}, or perform penalized maximum likelihood
@@ -466,7 +445,53 @@ where $\mathbf{v}=\left(0,1,0,\dots0\right)_{q}$
 
 \section{Results}
 
-\subsection{\emph{In Silico} analysis}
+\subsection{Simulations demonstrate residual coexpression batch effect after
+ComBat}
+
+To illustrate the presence of batch effect in purportedly corrected
+gene expression data, we performed an extremely simple simulation
+to capture the effect. We simply took a gene expression dataset of
+100 samples and selected 1000 genes at random to be in batch 1 and
+labeled them \textit{New Gene 1, \dots, New Gene 1000}. We sampled
+another set of 1000 genes and assigned them to batch 2, and added
+that data to \textit{New Gene 1, \dots, New Gene 1000}. In essence,
+for each ``simulated'' gene, there were 200 total expression observations
+- 100 from one gene and 100 from a separate gene. Naturally, there
+was substantial association with batch across the dataset. This is
+seen in the highly significant differential expression across batches.
+We also compared the differential coexpression across batches by plotting
+the distribution of differential coexpression estimates between batch1
+and batch 2. We compared this distribution to that of two randomly
+assigned groups to show that the absolute differential coexpression
+was much greater across batches.
+
+We then applied ComBat to the data, removing the effect of the batch
+assignment and performed the above assessments again. As expected,
+the differentially expressed genes virtually disappeared. Interestingly,
+the differential coexpression was only mildly reduced. Substantially
+more gene-pairs were highly coexpressed across batch-groups than across
+random-groups. This simple demonstration illustrates both the value
+of ComBat in addressing location-scale batch effect and the need for
+methods which address batch structure.
+
+\begin{figure}
+\textbf{A}\includegraphics[width=0.9\columnwidth]{figures/demo_diffexpress}
+
+\textbf{B}\includegraphics[width=0.9\columnwidth]{figures/demo_diff_coex_density}
+\caption[Simulations demonstrate batch correction on differential expression and coexpression]{\textbf{Simulations demonstrate batch correction on differential expression and coexpression.} The impact of ComBat on differential expression relative to differential
+coexpression was evaluated using an illustrative example. A dataset
+was generated for 1000 genes using real data, but with batch effect
+induced via the replacement of half of each gene's expression values.
+This rewiring created substantial differential expression and coexpression,
+but only the differential expression was addressed completely with
+ComBat, highlighting the need for additional methods to address this
+problem.}
+
+\label{demo_plots}
+
+\end{figure}
+
+\subsection{Improved coexpression estimates in \emph{In Silico} analysis}
 
 We performed a simulation study to determine the relative performance
 of our method in identifying differential coexpression in the presence
@@ -517,7 +542,7 @@ corresponding to the case-control variable successfully finds the
 eigenvectors which best describe the genes differentially coexpressed
 across cases/controls.
 
-We evaluated the ability of {[}NAME{]} to capture case-control differential
+We evaluated the ability of CMA to capture case-control differential
 coexpression relative to batch coexpression and background coexpression
 (Figure \ref{fig:insilico_results}). For 4,000 genes there are 7,998,000
 pairwise coexpression estimates of which 319,600 (4\%) are considered
@@ -526,7 +551,7 @@ case-control gene-pairs, and 159,600 (2\%) are considered batch.
 \begin{figure}
 \begin{center}
 \includegraphics[width=1\columnwidth]{figures/EigenvectorPlots.png}
-\end{center}\caption[Eigenvector plots showing separation of modular structure]{Eigenvector plots. {[}NAME{]} is designed to estimate sample specific
+\end{center}\caption[Eigenvector plots showing separation of modular structure]{\textbf{Eigenvector plots show separation of modular structure.} CMA is designed to estimate sample specific
 coexpression as a function of the sample covariates and the overall
 coexpression eigenvectors. \textbf{(A)} Here we see the top six eigenvectors
 plotted for all 4000 genes. Each point is colored according to that
@@ -540,21 +565,23 @@ Note that eigenvectors 5 and 6 have notable non-zero pseudo-eigenvalues
 corresponding to case-control parameter.}
 \label{fig:Eigenvector_plots}
 \end{figure}
+
+
 \begin{figure}
 \begin{center}
-\includegraphics[width=.5\columnwidth]{figures/NaiveDensity.png}
-\includegraphics[width=.5\columnwidth]{figures/ourMethodDensity.png}
+\includegraphics[width=.45\columnwidth]{figures/NaiveDensity.png}
+\includegraphics[width=.45\columnwidth]{figures/OursVsNaive.png}
 \\
-\includegraphics[width=.5\columnwidth]{figures/OursVsNaive.png}
-\includegraphics[width=.5\columnwidth]{figures/OursVsOthersROC.png}
-\end{center}\caption[Comparison of methods for differential coexpression estimates]{\emph{In Silico} Results. Fitted differential coexpression scores
-for standard differential coexpression (upper left) vs {[}NAME{]}
+\includegraphics[width=.45\columnwidth]{figures/ourMethodDensity.png}
+\includegraphics[width=.45\columnwidth]{figures/OursVsOthersROC.png}
+\end{center}\caption[Comparison of methods for differential coexpression estimates]{\textbf{Comparison of methods for differential coexpression estimates in \emph{In Silico} data.} Fitted differential coexpression scores
+for standard differential coexpression (upper left) vs CMA
 (upper right) separated by true relationship. Pearson difference failed
 to generate much power to predict true coexpression compared to background
 and found batch effect at approximately the same rate as true effect.
-{[}NAME{]} found true effects at vastly superior rates compared to
+CMA found true effects at vastly superior rates compared to
 both background and batch effect. The predicted scores of non-background
-genes for Pearson difference (x-axis) vs {[}NAME{]} (y-axis) demonstrate
+genes for Pearson difference (x-axis) vs CMA (y-axis) demonstrate
 improved ability to separate case-control effects (orange) from batch
 effects (black). ROC curves show the relative performance in identifying
 case-control genes compared to background genes (left) and batch genes
@@ -627,32 +654,23 @@ show that batch-associated differential coexpression remains uncorrected.}
 \end{figure}
 
 
-\subsection{{[}NAME{]} allows for separation of covariate specific modules with
+\subsection{CMA allows for separation of covariate specific modules with
 WGCNA in COPDGene study}
 
 Weighted Gene Coexpression Network Analysis (WGCNA) is one of the
 most popular network reconstruction methods in use today \cite{wgcna1},
-with 1730 citations as of March 31, 2017. It's use continues to grow
+with 1730 citations as of March 31, 2017. Its use continues to grow
 with 140 citations in the first 3 months of 2017. Like many other
 methods in the field, WGCNA begins with a standard Pearson correlation
 matrix of gene expression data. We were interested in whether the
-use of {[}NAME{]} could provide covariate-specific differential coexpression
+use of CMA could provide covariate-specific differential coexpression
 estimates that could integrate with WGCNA to find functionally relevant
 coexpression modules. While our method is motivated by the idea of
 removing batch, it is general enough to be applied to any confounding
-variable. In this application, we chose to treat sex as a confounder
-because it is clearly labeled, dichotomous, and likely to impart some
-coexpression bias on the study due to sexual dimorphism.
+variable. In this application, we chose to treat three clinical covariates as confounders - sex, age and pack-years. 
 
-Gene expression data from the ECLIPSE study (GSE54837)\cite{singh2014altered}
-was collected using blood samples from 226 subjects classified as
-non-smokers (6), smoker controls (84) or COPD (136). Blood samples
-from each individual were profiled using Affymetrix Human Genome U133
-Plus 2.0 microarrays. CEL data files from these assays were RMA-normalized\cite{irizarry2003exploration}
-in R using the BioConductor package 'affy' \cite{gautier2004affy}.
-Array probes were collapsed to 19,765 Entrez-gene IDs using a custom
-CDF\cite{dai2005evolving} and the 220 samples for COPD or smoker
-control subjects were retained for analysis. 
+Gene expression data from the COPDGene study (GSE42057)~\cite{bahr2013peripheral,regan2011genetic}
+was collected from blood samples obtained from 136 subjects classified as smoker controls (42) or COPD (94) and profiled on  Affymetrix Human Genome U133 Plus 2.0  microarrays. CEL data files from these microarray assays were RMA-normalized using the 'affy' package and array probes were collapsed to Entrez-gene IDs using a custom CDF\cite{dai2005evolving}, yielding 18,960 genes.
 
 Previous work applying WGCNA to this data has identified network modules
 associated with COPD diagnosis\cite{morrow2015identifying,morrow2017functional}.
@@ -677,21 +695,43 @@ which are not differentially expressed. In any scenario where we wish
 to consider differential coexpression as a potential driver of disease
 needs to consider these concepts.
 
-We applied {[}NAME{]} to the COPDGene data and included Sex as a covariate
-in the model. 
+Using a model similar to the one described by Morrow et al \cite{morrow2017functional}, we applied CMA to the COPDGene data and included Sex, Age at enrollment, and smoking history (measured in pack-years) as a covariates in the model.
 
-The sex distribution for cases and controls in this study were uneven,
+The distribution for each of these covariates were uneven across cases and controls in this study,
 potentially leading to confounded results. Using Equation \ref{eq:parameter_interpretation}
 we generated $p\times p$ matrix interpreted as the differential correlation
-for the case-control partition, holding sex constant. We applied a
+for the case-control partition, holding the other variables constant. We applied a
 soft thresholding power of 6 and computed the topological overlap
-matrix, as described in \cite{wgcna1}. Modules generated were analyzed
-for functional enrichment using DAVID\cite{huang2009bioinformatics,huang2009systematic}. 
+matrix, as described in \cite{wgcna1}. Because we use a differential coexpression matrix instead as a similarity matrix, it is expected that the matrix will tend to be sparse compared to the overall coexpression.  Unsurprisingly, this leads to a reduction in the strength of the modularity particularly in the background modules. The gives us the added benefit of being able to identify relatively few top modules and assume that the rest of the genes are not differentially coexpressed. For each of the covariates, including the case-control indicator, we examined the top module generated by analyzing it for functional enrichment using the R package GOstats (1.7.4) \cite{falcon2007using}. 
 
-{[}Edit this after new results come in{]} The top module was found
-to be enriched for mitochondrial translational elongation $\left(\text{adjusted }p=7\times10^{-7}\right)$.
-Recent work has identified several mitochondrial mechanisms for disease
-progression\cite{cloonan2016mitochondrial,cloonan2016mitochondria}.
+As is often a challenge in the field, there is no available benchmark for assessment of coexpression estimates. Instead, it is common to borrow information from the external sources, such as the Gene Ontology (GO) database, to evaluate a method's ability to infer known functional biology from the data.
+
+The top differential coexpression module was found
+to be enriched for many biological processes involving development and morphogenesis, including top hits for anatomical structure development $\left(\text{FDR }=2.6\times10^{-5}\right)$ and anatomical structure morphogenesis $\left(\text{FDR }=1.6\times10^{-4}\right)$ (Table \ref{GO_table}).  The involvement of morphogenesis is identified in numerous studies of COPD and is previously been cited for its involvement in the progression of the disease\cite{morrisey2013molecular,shi2009mechanisms}.  In past studies, many variants associated with COPD have been found at chromosome 4q31, upstream of HHIP (hedgehog-interacting protein) gene\cite{zhou2012identification}.  Notably, the Hedgehog signaling pathway is important for the morphogenesis of the lung \cite{chuang2003feedback}. None of the top GO term hits, including these GO pathways, appeared in the enrichment analysis for the COPD-associated WGCNA modules for the original publication.
+
+\begin{table}
+\centering
+\begin{tabular}{@{}lllll@{}}
+\toprule
+GO Term                                                  & Count & \%   & Enrichment & FDR      \\ \midrule
+anatomical structure development                         & 309   & 0.26 & 1.29       & 2.58E-05 \\
+single-organism developmental process                    & 309   & 0.26 & 1.29       & 2.73E-05 \\
+anatomical structure morphogenesis                       & 168   & 0.14 & 1.46       & 1.60E-04 \\
+single-multicellular organism process                    & 324   & 0.27 & 1.25       & 4.01E-04 \\
+system process                                           & 132   & 0.11 & 1.50       & 1.46E-03 \\
+regulation of cellular process                           & 514   & 0.43 & 1.12       & 5.86E-03 \\
+single organism signaling                                & 328   & 0.28 & 1.21       & 7.89E-03 \\
+regulation of localization                               & 151   & 0.13 & 1.40       & 1.15E-02 \\
+regulation of multicellular organismal process           & 156   & 0.13 & 1.35       & 6.56E-02 \\
+\end{tabular}
+
+\caption[GO enrichment results for COPDGene]{GO categories for differential coexpression in COPDGene identified with CMA found with FDR<0.1.  In contrast with standard WGCNA, our method finds these 9 functional categories, which are independently established in the etiology of COPD.}
+\label{GO_table}
+\end{table}
+
+Even more striking about this differentially coexpressed module is that the top GO pathway - anatomical structure development (GO:0048856) $\left(\text{FDR }=2.6\times10^{-5}\right)$) is the same top pathway identified in a separate study of African-Americans with COPD exacerbations\cite{busch2016differential} using DNA methylation data.  The COPDGene gene expression dataset and the PA-SCOPE methylation dataset are two studies measuring the same disease but with different populations of individuals, in a different location, using different technology to measure different biological features.  It is therefore quite promising that the biological functions observed have strong overlap.
+
+The sex covariate was not significantly (FDR<0.1) associated with any GO categories.
 
 \section*{Discussion}
 
@@ -702,7 +742,7 @@ its presence in real data. Second, we propose a method for estimating
 coexpression matrices in the context of covariates which serve as
 coexpression confounders. 
 
-Incremental improvements in high-throughput data collection have vastly
+Incremental improvements in high-throughput data collection have dramatically
 increased the availability of large scale gene expression data. As
 we dive deeper into this data, we recognize that cellular states are
 rarely driven by the additive impacts of sets of suspect genes. Rather,
@@ -715,5 +755,11 @@ as impactful in differential expression analyses.
 
 We argue that the batch correction methods that are designed for and
 are ubiquitous in differential expression are important, but not sufficient,
-for removing unwanted variation from the data in gene coexpression.
+for removing unwanted variation from the data in gene coexpression.  With respect to differential coexpression by batch, to our knowledge this is the first paper to address this problem.  
+
+Our proposed method uses a regression model for the coexpression matrix and reduces the parameter space by constraining the coexpression by the components of variation contained in the whole data.  Future work may investigate a number of natural extensions of this approach.  For example, we may wish to prespecify the $\mathbf{Q}$ matrix in some form other than the eigenvectors of the coexpression matrix. This may include a priori gene sets of known functional relevance or the eigenvectors of a separate training set.
+
+Our results show successful estimation of coexpression when applied to a simulated dataset in the context of batch effect and identify coexpression modules in a dataset of gene expression from a COPD study that were not otherwise identified using standard WGCNA approach.
+
+
 

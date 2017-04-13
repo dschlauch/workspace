@@ -7,6 +7,12 @@ Al-Khudhair, A., Qiu, S., Wyse, M., Chowdhury, S., Cheng, X., Bekbolsynov, D.,
   genomes'.
 \newblock {\em Genome biology and evolution}, 7(2), 481--492.
 
+\bibitem[Amar et~al., 2013]{amar2013dissection}
+Amar, D., Safer, H., \& Shamir, R. (2013).
+\newblock Dissection of regulatory networks that are altered in disease via
+  differential co-expression.
+\newblock {\em PLoS Comput Biol}, 9(3), e1002955.
+
 \bibitem[Bacanu et~al., 2002]{bacanu2002association}
 Bacanu, S.-A., Devlin, B., \& Roeder, K. (2002).
 \newblock Association studies for quantitative traits in structured
@@ -51,6 +57,12 @@ Boucherat, O., Morissette, M., Provencher, S., Bonnet, S., \& F, M. (2016).
   pathogenesis.
 \newblock {\em American Journal of Respiratory and Critical Care Medicine},
   193(4), 362--75.
+
+\bibitem[Busch et~al., 2016]{busch2016differential}
+Busch, R., Qiu, W., Lasky-Su, J., Morrow, J., Criner, G., \& DeMeo, D. (2016).
+\newblock Differential dna methylation marks and gene comethylation of copd in
+  african-americans with copd exacerbations.
+\newblock {\em Respiratory Research}, 17(1), 143.
 
 \bibitem[Chen et~al., 2011]{chen2011removing}
 Chen, C., Grennan, K., Badner, J., Zhang, D., Gershon, E., Jin, L., \& Liu, C.
@@ -98,10 +110,12 @@ Choksi, S.~P., Lauter, G., Swoboda, P., \& Roy, S. (2014).
 \newblock Switching on cilia: transcriptional networks regulating ciliogenesis.
 \newblock {\em Development}, 141(7), 1427--1441.
 
-\bibitem[Cloonan \& Choi, 2016]{cloonan2016mitochondria}
-Cloonan, S.~M. \& Choi, A.~M. (2016).
-\newblock Mitochondria in lung disease.
-\newblock {\em Journal of Clinical Investigation}, 126(3), 809.
+\bibitem[Chuang et~al., 2003]{chuang2003feedback}
+Chuang, P.-T., Kawcak, T., \& McMahon, A.~P. (2003).
+\newblock Feedback control of mammalian hedgehog signaling by the
+  hedgehog-binding protein, hip1, modulates fgf signaling during branching
+  morphogenesis of the lung.
+\newblock {\em Genes \& development}, 17(3), 342--347.
 
 \bibitem[Cloonan et~al., 2016]{cloonan2016mitochondrial}
 Cloonan, S.~M., Glass, K., Laucho-Contreras, M.~E., Bhashyam, A.~R., Cervo, M.,
@@ -181,6 +195,11 @@ Faith, J.~J., Hayete, B., Thaden, J.~T., Mogno, I., Wierzbowski, J., Cottarel,
   transcriptional regulation from a compendium of expression profiles.
 \newblock {\em PLoS Biol}, 5(1), e8.
 
+\bibitem[Falcon \& Gentleman, 2007]{falcon2007using}
+Falcon, S. \& Gentleman, R. (2007).
+\newblock Using gostats to test gene lists for go term association.
+\newblock {\em Bioinformatics}, 23(2), 257--258.
+
 \bibitem[Fare et~al., 2003]{fare2003effects}
 Fare, T.~L., Coffey, E.~M., Dai, H., He, Y.~D., Kessler, D.~A., Kilian, K.~A.,
   Koch, J.~E., LeProust, E., Marton, M.~J., Meyer, M.~R., et~al. (2003).
@@ -207,6 +226,13 @@ Fukushima, A. (2013).
 \newblock Diffcorr: an r package to analyze and visualize differential
   correlations in biological networks.
 \newblock {\em Gene}, 518(1), 209--214.
+
+\bibitem[Fuller et~al., 2007]{fuller2007weighted}
+Fuller, T.~F., Ghazalpour, A., Aten, J.~E., Drake, T.~A., Lusis, A.~J., \&
+  Horvath, S. (2007).
+\newblock Weighted gene coexpression network analysis strategies applied to
+  mouse weight.
+\newblock {\em Mammalian Genome}, 18(6-7), 463--472.
 
 \bibitem[Furlotte et~al., 2011]{furlotte2011mixed}
 Furlotte, N.~A., Kang, H.~M., Ye, C., \& Eskin, E. (2011).
@@ -298,17 +324,11 @@ Holmes, M., Gray, A., \& Isbell, C. (2007).
 \newblock In {\em Workshop on Efficient Machine Learning at NIPS}, volume~58
   (pp.\ 249--252).
 
-\bibitem[Huang et~al., 2009a]{huang2009bioinformatics}
-Huang, D.~W., Sherman, B.~T., \& Lempicki, R.~A. (2009a).
-\newblock Bioinformatics enrichment tools: paths toward the comprehensive
-  functional analysis of large gene lists.
-\newblock {\em Nucleic acids research}, 37(1), 1--13.
-
-\bibitem[Huang et~al., 2009b]{huang2009systematic}
-Huang, D.~W., Sherman, B.~T., \& Lempicki, R.~A. (2009b).
-\newblock Systematic and integrative analysis of large gene lists using david
-  bioinformatics resources.
-\newblock {\em Nature protocols}, 4(1), 44--57.
+\bibitem[Hsu et~al., 2015]{hsu2015functional}
+Hsu, C.-L., Juan, H.-F., \& Huang, H.-C. (2015).
+\newblock Functional analysis and characterization of differential coexpression
+  networks.
+\newblock {\em Scientific reports}, 5, 13295.
 
 \bibitem[Irizarry et~al., 2003]{irizarry2003exploration}
 Irizarry, R.~A., Hobbs, B., Collin, F., Beazer-Barclay, Y.~D., Antonellis,
@@ -449,6 +469,13 @@ Molinelli, E.~J., Korkut, A., Wang, W., Miller, M.~L., Gauthier, N.~P., Jing,
 \newblock Perturbation biology: inferring signaling networks in cellular
   systems.
 \newblock {\em PLoS Comput Biol}, 9(12), e1003290.
+
+\bibitem[Morrisey et~al., 2013]{morrisey2013molecular}
+Morrisey, E.~E., Cardoso, W.~V., Lane, R.~H., Rabinovitch, M., Abman, S.~H.,
+  Ai, X., Albertine, K.~H., Bland, R.~D., Chapman, H.~A., Checkley, W., et~al.
+  (2013).
+\newblock Molecular determinants of lung development.
+\newblock {\em Annals of the American Thoracic Society}, 10(2), S12--S16.
 
 \bibitem[Morrow et~al., 2015]{morrow2015identifying}
 Morrow, J.~D., Qiu, W., Chhabra, D., Rennard, S.~I., Belloni, P., Belousov, A.,
@@ -593,6 +620,12 @@ Schlauch, D., Glass, K., Hersh, C.~P., Silverman, E.~K., \& Quackenbush, J.
   network models.
 \newblock {\em bioRxiv}, (pp.\ 089003).
 
+\bibitem[Shi et~al., 2009]{shi2009mechanisms}
+Shi, W., Chen, F., \& Cardoso, W.~V. (2009).
+\newblock Mechanisms of lung development: contribution to adult lung disease
+  and relevance to chronic obstructive pulmonary disease.
+\newblock {\em Proceedings of the American Thoracic Society}, 6(7), 558--563.
+
 \bibitem[{\v{S}}id{\'a}k, 1967]{vsidak1967rectangular}
 {\v{S}}id{\'a}k, Z. (1967).
 \newblock Rectangular confidence regions for the means of multivariate normal
@@ -668,6 +701,12 @@ Yang, J., Benyamin, B., McEvoy, B.~P., Gordon, S., Henders, A.~K., Nyholt,
   height.
 \newblock {\em Nature genetics}, 42(7), 565--569.
 
+\bibitem[Yu et~al., 2011]{yu2011link}
+Yu, H., Liu, B.-H., Ye, Z.-Q., Li, C., Li, Y.-X., \& Li, Y.-Y. (2011).
+\newblock Link-based quantitative methods to identify differentially
+  coexpressed genes and gene pairs.
+\newblock {\em BMC bioinformatics}, 12(1), 315.
+
 \bibitem[Yuan \& Lin, 2007]{yuan2007model}
 Yuan, M. \& Lin, Y. (2007).
 \newblock Model selection and estimation in the gaussian graphical model.
@@ -692,5 +731,11 @@ Zhou, X., Baron, R.~M., Hardin, M., Cho, M.~H., Zielinski, J., Hawrylkiewicz,
 \newblock Identification of a chronic obstructive pulmonary disease genetic
   determinant that regulates hhip.
 \newblock {\em Human molecular genetics}, 21(6), 1325--1335.
+
+\bibitem[Zou et~al., 2016]{zou2016covariance}
+Zou, T., Lan, W., Wang, H., \& Tsai, C.-L. (2016).
+\newblock Covariance regression analysis.
+\newblock {\em Journal of the American Statistical Association},
+  (just-accepted), 1--44.
 
 \end{thebibliography}

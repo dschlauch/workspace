@@ -7,77 +7,53 @@ A level-1 auxiliary file: chapters/chapter2.aux
 A level-1 auxiliary file: chapters/chapter3.aux
 A level-1 auxiliary file: chapters/conclusion.aux
 The style file: apalike2.bst
-A level-1 auxiliary file: endmatter/colophon.aux
-Illegal, another \bibstyle command---line 140 of file dissertation.aux
+Illegal, another \bibstyle command---line 145 of file dissertation.aux
  : \bibstyle
  :          {apalike}
 I'm skipping whatever remains of this command
 Database file #1: references.bib
-Repeated entry---line 1097 of file references.bib
- : @article{johnson2007adjusting
- :                              ,
-I'm skipping whatever remains of this entry
-Repeated entry---line 1364 of file references.bib
- : @article{singh2014altered
- :                          ,
-I'm skipping whatever remains of this entry
-Repeated entry---line 1374 of file references.bib
- : @article{gautier2004affy
- :                         ,
-I'm skipping whatever remains of this entry
-Repeated entry---line 1384 of file references.bib
- : @article{dai2005evolving
- :                         ,
-I'm skipping whatever remains of this entry
-Repeated entry---line 1395 of file references.bib
- : @article{irizarry2003exploration
- :                                 ,
-I'm skipping whatever remains of this entry
-Repeated entry---line 1443 of file references.bib
- : @article{cloonan2016mitochondrial
- :                                  ,
-I'm skipping whatever remains of this entry
 Warning--empty journal in lgrc
 Warning--there's a number but no volume in wgcna1
-You've used 111 entries,
+Warning--there's a number but no volume in zou2016covariance
+You've used 118 entries,
             2229 wiz_defined-function locations,
-            1125 strings with 28714 characters,
-and the built_in function-call counts, 54285 in all, are:
-= -- 5097
-> -- 3224
+            1157 strings with 30307 characters,
+and the built_in function-call counts, 57774 in all, are:
+= -- 5419
+> -- 3440
 < -- 41
-+ -- 1179
-- -- 1160
-* -- 5232
-:= -- 9545
-add.period$ -- 335
-call.type$ -- 111
-change.case$ -- 1108
-chr.to.int$ -- 108
-cite$ -- 113
-duplicate$ -- 1646
-empty$ -- 3204
-format.name$ -- 1311
-if$ -- 10264
-int.to.chr$ -- 4
++ -- 1256
+- -- 1238
+* -- 5582
+:= -- 10165
+add.period$ -- 356
+call.type$ -- 118
+change.case$ -- 1181
+chr.to.int$ -- 116
+cite$ -- 121
+duplicate$ -- 1744
+empty$ -- 3410
+format.name$ -- 1396
+if$ -- 10915
+int.to.chr$ -- 3
 int.to.str$ -- 0
-missing$ -- 109
-newline$ -- 559
-num.names$ -- 333
-pop$ -- 899
+missing$ -- 116
+newline$ -- 594
+num.names$ -- 354
+pop$ -- 959
 preamble$ -- 1
-purify$ -- 1111
+purify$ -- 1184
 quote$ -- 0
-skip$ -- 1291
+skip$ -- 1361
 stack$ -- 0
-substring$ -- 3569
-swap$ -- 210
+substring$ -- 3807
+swap$ -- 217
 text.length$ -- 11
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 664
-warning$ -- 2
-while$ -- 400
+type$ -- 706
+warning$ -- 3
+while$ -- 425
 width$ -- 0
-write$ -- 1444
-(There were 7 error messages)
+write$ -- 1535
+(There was 1 error message)

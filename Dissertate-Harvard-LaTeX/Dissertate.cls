@@ -18,6 +18,7 @@
 %
 \RequirePackage{etoolbox}
 \RequirePackage{authblk}
+\RequirePackage{booktabs}
 
 % Line spacing: dsingle/ddouble
 %   Whether to use single- or doublespacing.

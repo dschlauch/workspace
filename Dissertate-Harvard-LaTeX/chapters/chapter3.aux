@@ -1,9 +1,9 @@
 \relax 
 \providecommand\hyper@newdestlabel[2]{}
-\@writefile{toc}{\contentsline {chapter}{\numberline {4}Batch effect on covariance structure confounds gene coexpression}{97}{chapter.4}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {4}Batch effect on covariance structure confounds gene coexpression}{98}{chapter.4}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {4.1}Introduction}{98}{section.4.1}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.1}Introduction}{99}{section.4.1}}
 \citation{leek2010tackling,lander1999array}
 \citation{fare2003effects}
 \citation{scherer2009batch}
@@ -12,53 +12,62 @@
 \citation{johnson2007adjusting}
 \citation{leek2007capturing}
 \citation{conesa2016survey}
-\citation{tesson2010diffcoex,wgcna1,wgcna2,glass2013passing,southworth2009aging,choi2005differential,siska2017differential}
+\citation{fuller2007weighted}
+\citation{hsu2015functional}
+\citation{tesson2010diffcoex,wgcna1,wgcna2,glass2013passing,southworth2009aging,choi2005differential,siska2017differential,yu2011link,amar2013dissection}
 \citation{furlotte2011mixed}
 \citation{de2010differential,chen2011removing,fukushima2013diffcorr}
-\citation{hoff2012covariance}
+\citation{hoff2012covariance,zou2016covariance}
 \citation{schlauch2016estimating}
 \citation{bien2011sparse}
 \citation{friedman2008sparse}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces Toy demonstration of impact of batch correction on coexpression}}{105}{figure.caption.33}}
-\newlabel{simulated_example}{{4.1}{105}{Toy demonstration of impact of batch correction on coexpression}{figure.caption.33}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.2}Methods}{106}{section.4.2}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.1}Approach}{106}{subsection.4.2.1}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces Workflow of {[}NAME{]}}}{108}{figure.caption.34}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces Toy demonstration of impact of batch correction on coexpression}}{106}{figure.caption.33}}
+\newlabel{simulated_example}{{4.1}{106}{Toy demonstration of impact of batch correction on coexpression}{figure.caption.33}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.2}Methods}{108}{section.4.2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.1}Approach}{108}{subsection.4.2.1}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces Workflow of CMA}}{109}{figure.caption.34}}
 \citation{meinshausen2006high}
 \citation{banerjee2008model,yuan2007model,friedman2008sparse}
 \citation{bien2011sparse}
-\newlabel{eq:Lambda_diag}{{4.1}{110}{Approach}{equation.4.2.1}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.2}Likelihood function}{111}{subsection.4.2.2}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.3}Estimator}{112}{subsection.4.2.3}}
-\newlabel{eq:least_squares_zero}{{4.2}{113}{Estimator}{equation.4.2.2}{}}
-\newlabel{eq:estimator}{{4.3}{113}{Estimator}{equation.4.2.3}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.4}Corrected covariance matrix}{114}{subsection.4.2.4}}
-\newlabel{eq:corrected_coexpression}{{4.4}{114}{Corrected covariance matrix}{equation.4.2.4}{}}
-\newlabel{eq:parameter_interpretation}{{4.5}{115}{Corrected covariance matrix}{equation.4.2.5}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.3}Results}{115}{section.4.3}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.1}\emph  {In Silico} analysis}{115}{subsection.4.3.1}}
+\newlabel{eq:Lambda_diag}{{4.1}{112}{Approach}{equation.4.2.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.2}Likelihood function}{112}{subsection.4.2.2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.3}Estimator}{113}{subsection.4.2.3}}
+\newlabel{eq:least_squares_zero}{{4.2}{114}{Estimator}{equation.4.2.2}{}}
+\newlabel{eq:estimator}{{4.3}{114}{Estimator}{equation.4.2.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.4}Corrected covariance matrix}{115}{subsection.4.2.4}}
+\newlabel{eq:corrected_coexpression}{{4.4}{115}{Corrected covariance matrix}{equation.4.2.4}{}}
+\newlabel{eq:parameter_interpretation}{{4.5}{116}{Corrected covariance matrix}{equation.4.2.5}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.3}Results}{116}{section.4.3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.1}Simulations demonstrate residual coexpression batch effect after ComBat}{116}{subsection.4.3.1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.2}Improved coexpression estimates in \emph  {In Silico} analysis}{117}{subsection.4.3.2}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.3}{\ignorespaces Simulations demonstrate batch correction on differential expression and coexpression}}{118}{figure.caption.35}}
+\newlabel{demo_plots}{{4.3}{118}{Simulations demonstrate batch correction on differential expression and coexpression}{figure.caption.35}{}}
 \citation{langmead2009ultrafast}
 \citation{liao2014featurecounts}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.2}ComBat-corrected expression data still contains batch-associated coexpression in ENCODE}{117}{subsection.4.3.2}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.3}{\ignorespaces Eigenvector plots showing separation of modular structure}}{118}{figure.caption.35}}
-\newlabel{fig:Eigenvector_plots}{{4.3}{118}{Eigenvector plots showing separation of modular structure}{figure.caption.35}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.4}{\ignorespaces Comparison of methods for differential coexpression estimates}}{119}{figure.caption.36}}
-\newlabel{fig:insilico_results}{{4.4}{119}{Comparison of methods for differential coexpression estimates}{figure.caption.36}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.3}ComBat-corrected expression data still contains batch-associated coexpression in ENCODE}{120}{subsection.4.3.3}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.4}{\ignorespaces Eigenvector plots showing separation of modular structure}}{121}{figure.caption.36}}
+\newlabel{fig:Eigenvector_plots}{{4.4}{121}{Eigenvector plots showing separation of modular structure}{figure.caption.36}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.5}{\ignorespaces Comparison of methods for differential coexpression estimates}}{122}{figure.caption.37}}
+\newlabel{fig:insilico_results}{{4.5}{122}{Comparison of methods for differential coexpression estimates}{figure.caption.37}{}}
 \citation{wgcna1}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.5}{\ignorespaces Differential expression and absolute differential coexpression in ENCODE data with batch correction}}{121}{figure.caption.37}}
-\newlabel{ENCODE}{{4.5}{121}{Differential expression and absolute differential coexpression in ENCODE data with batch correction}{figure.caption.37}{}}
-\citation{singh2014altered}
-\citation{irizarry2003exploration}
-\citation{gautier2004affy}
+\citation{bahr2013peripheral,regan2011genetic}
 \citation{dai2005evolving}
 \citation{morrow2015identifying,morrow2017functional}
 \citation{leek2007capturing}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.3}{[}NAME{]} allows for separation of covariate specific modules with WGCNA in COPDGene study}{122}{subsection.4.3.3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.4}CMA allows for separation of covariate specific modules with WGCNA in COPDGene study}{124}{subsection.4.3.4}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.6}{\ignorespaces Differential expression and absolute differential coexpression in ENCODE data with batch correction}}{125}{figure.caption.38}}
+\newlabel{ENCODE}{{4.6}{125}{Differential expression and absolute differential coexpression in ENCODE data with batch correction}{figure.caption.38}{}}
+\citation{morrow2017functional}
 \citation{wgcna1}
-\citation{huang2009bioinformatics,huang2009systematic}
-\citation{cloonan2016mitochondrial,cloonan2016mitochondria}
+\citation{falcon2007using}
+\citation{morrisey2013molecular,shi2009mechanisms}
+\citation{zhou2012identification}
+\citation{chuang2003feedback}
+\citation{busch2016differential}
+\@writefile{lot}{\contentsline {table}{\numberline {4.1}{\ignorespaces GO enrichment results for COPDGene}}{128}{table.caption.39}}
+\newlabel{GO_table}{{4.1}{128}{GO enrichment results for COPDGene}{table.caption.39}{}}
 \@setckpt{chapters/chapter3}{
-\setcounter{page}{126}
+\setcounter{page}{131}
 \setcounter{equation}{5}
 \setcounter{enumi}{5}
 \setcounter{enumii}{0}
@@ -69,12 +78,12 @@
 \setcounter{part}{0}
 \setcounter{chapter}{4}
 \setcounter{section}{3}
-\setcounter{subsection}{3}
+\setcounter{subsection}{4}
 \setcounter{subsubsection}{0}
 \setcounter{paragraph}{0}
 \setcounter{subparagraph}{0}
-\setcounter{figure}{5}
-\setcounter{table}{0}
+\setcounter{figure}{6}
+\setcounter{table}{1}
 \setcounter{Maxaffil}{2}
 \setcounter{authors}{2}
 \setcounter{affil}{1}
