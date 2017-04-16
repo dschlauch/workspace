@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.1415926-2.5-0.9999.3 (TeX Live 2013/Debian) (format=xelatex 2017.2.23)  13 APR 2017 17:33
+This is XeTeX, Version 3.1415926-2.5-0.9999.3 (TeX Live 2013/Debian) (format=xelatex 2017.2.23)  14 APR 2017 09:55
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -975,7 +975,7 @@ File: se-ascii-print.def 2011/12/02 v1.10 stringenc: Printable ASCII characters
 )
 [1
 
-] [2] (./frontmatter/abstract.tex [3]) [4] [5]
+] [2] (./frontmatter/abstract.tex [3]) [4]
 LaTeX Font Info:    Try loading font information for T1+pag on input line 13.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pag.fd
@@ -1031,11 +1031,11 @@ e coex-
 \tf@toc=\write4
 \openout4 = `dissertation.toc'.
 
- [6
+ [5
 
-] (./frontmatter/thanks.tex) [7
+] (./frontmatter/thanks.tex) [6
 
-] [8] (./frontmatter/authorlist.tex
+] [7] (./frontmatter/authorlist.tex
 Overfull \hbox (1.7455pt too wide) in paragraph at lines 7--7
 []\EU1/lmr/m/n/10.95 Daniel Schlauch$[]$, Kimberly Glass$[]$, Craig P. Hersh$[]
 $, Edwin K. Silverman$[]$, 
@@ -1047,7 +1047,7 @@ Overfull \hbox (4.43993pt too wide) in paragraph at lines 20--20
 $[]$, John Quackenbush$[]$  
  []
 
-) [9
+) [8
 
 ] (./dissertation.lof
 Underfull \hbox (badness 10000) in paragraph at lines 13--13
@@ -1077,7 +1077,7 @@ l coexpression in ENCODE
 \tf@lof=\write5
 \openout5 = `dissertation.lof'.
 
- [10
+ [9
 
 ] (./dissertation.lot
 Overfull \hbox (1.91971pt too wide) in paragraph at lines 6--6
@@ -1089,7 +1089,7 @@ atedness detected in each
 \tf@lot=\write6
 \openout6 = `dissertation.lot'.
 
- [11
+ [10
 
 ]
 \openout2 = `chapters/introduction.aux'.
@@ -1678,4 +1678,4 @@ Here is how much of TeX's memory you used:
  1144 hyphenation exceptions out of 8191
  60i,12n,94p,10503b,716s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on dissertation.pdf (158 pages).
+Output written on dissertation.pdf (157 pages).
