@@ -53,10 +53,10 @@
 {
   \leavevmode%
   \hbox{%
-  \begin{beamercolorbox}[wd=.25\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+  \begin{beamercolorbox}[wd=.26\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
     \usebeamerfont{author in head/foot}\insertshortauthor
   \end{beamercolorbox}%
-  \begin{beamercolorbox}[wd=.75\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+  \begin{beamercolorbox}[wd=.74\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
     \usebeamerfont{title in head/foot}\insertshorttitle\hspace*{3em}
     \insertframenumber{} / \inserttotalframenumber\hspace*{1ex}
   \end{beamercolorbox}}%
@@ -153,11 +153,7 @@ Daniel Schlauch, PhD Candidate
 \end_layout
 
 \begin_layout Institute
-Department of Biostatistics
-\begin_inset Newline newline
-\end_inset
-
-Harvard School of Public Health
+Department of Biostatistics, Harvard University
 \end_layout
 
 \begin_layout Date
@@ -236,6 +232,633 @@ status open
 
 
 \backslash
+section[]{Introduction}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Hidden signals in high dimensions
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+note[itemize]{ 
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+begin{itemize}
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+item Economics: New technologies have allowed us access to unprecendented
+ data
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+item Microarrays, then seq, allowed us access to numerous fields of 'omics.
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+item Biology isn't simple
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+item But...
+ snapshots of hairballs, which are noisy and convoluted
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+end{itemize}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+noindent
+\backslash
+begin{minipage}{
+\backslash
+dimexpr.55
+\backslash
+textwidth-1em}
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+includegraphics[width=1
+\backslash
+textwidth]{./pasted1.png}
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+hfill
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+tiny{https://www.genome.gov/sequencingcostsdata/}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{minipage}%
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{minipage}{
+\backslash
+dimexpr.52
+\backslash
+textwidth-1em}
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+center{
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+includegraphics[width=.8
+\backslash
+textwidth]<1>{./hairballNetwork.png}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+includegraphics[width=.2
+\backslash
+textwidth]<2>{./hairballNetwork.png}
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+includegraphics[width=.2
+\backslash
+textwidth]<2>{./hairballNetwork.png}
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+includegraphics[width=.2
+\backslash
+textwidth]<2>{./hairballNetwork.png}
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+includegraphics[width=.2
+\backslash
+textwidth]<2>{./hairballNetwork.png}
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+hfill
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+includegraphics[width=.2
+\backslash
+textwidth]<2>{./hairballNetwork.png}
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+includegraphics[width=.2
+\backslash
+textwidth]<2>{./hairballNetwork.png}
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+includegraphics[width=.2
+\backslash
+textwidth]<2>{./hairballNetwork.png}
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+includegraphics[width=.2
+\backslash
+textwidth]<2>{./hairballNetwork.png}
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+hfill
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+includegraphics[width=.2
+\backslash
+textwidth]<2>{./hairballNetwork.png}
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+includegraphics[width=.2
+\backslash
+textwidth]<2>{./hairballNetwork.png}
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+includegraphics[width=.2
+\backslash
+textwidth]<2>{./hairballNetwork.png}
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+includegraphics[width=.2
+\backslash
+textwidth]<2>{./hairballNetwork.png}
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+hfill
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+includegraphics[width=.2
+\backslash
+textwidth]<2>{./hairballNetwork.png}
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+includegraphics[width=.2
+\backslash
+textwidth]<2>{./hairballNetwork.png}
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+includegraphics[width=.2
+\backslash
+textwidth]<2>{./hairballNetwork.png}
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+includegraphics[width=.2
+\backslash
+textwidth]<2>{./hairballNetwork.png}
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{minipage}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Hidden signals in high dimensions
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+note[itemize]{ 
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+begin{itemize}
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+item High Dimensional data
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+item This data has high amounts of technical and biological noise
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+item Single snapshots don't tell the whole picture.
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+item Collection of often heterogenous cells
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+item We often want to understand how features interact and lead to higher
+ level phenotypes
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+item Challenging because structure comes in many forms.
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+end{itemize}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+noindent
+\backslash
+begin{minipage}{
+\backslash
+dimexpr.5
+\backslash
+textwidth-1em}
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+begin{itemize}
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+item Lots of samples across LOTS of features
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+item Single snapshots of complex, fluid, heterogeneous landscapes
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+item Noisy, structured data
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+end{itemize}
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+hfill
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{minipage}%
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{minipage}{
+\backslash
+dimexpr.5
+\backslash
+textwidth-1em}
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+includegraphics[width=
+\backslash
+columnwidth]<1>{./MyStereogram.jpg}
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+includegraphics[width=
+\backslash
+columnwidth]<2>{./magic_eye_fish.jpg}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{minipage}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{.5cm}
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+How do we separate the structure to reveal higher-level components?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+note[itemize]{ 
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+item What's important is understanding that structure can be many things...
+ pathways to cancer, or 
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+item Microarrays, then seq, allowed us access to numerous fields of 'omics.
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+item But...
+ snapshots of hairballs
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
 begin{frame}{Table of Contents}     
 \end_layout
 
@@ -253,6 +876,1549 @@ tableofcontents[hideallsubsections]
 end{frame}
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Identification of Genetic Outliers
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Identifying Genetic Outliers
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Large{
+\backslash
+textbf{Identification of genetic outliers due to sub-structure and cryptic
+ relationships}}
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+normalsize{Daniel Schlauch
+\backslash
+,$^{1,2,4}$, Heide Fier
+\backslash
+,$^{1,3}$ and Christoph Lange
+\backslash
+,$^{1,4}$}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+tiny{$^{1}$Department of Biostatistics, Harvard TH Chan School of Public
+ Health, Boston, MA 02115 
+\backslash
+
+\backslash
+  
+\end_layout
+
+\begin_layout Plain Layout
+
+$^{ 2}$Department of Biostatistics and Computational Biology, Dana-Farber
+ Cancer Institute, Boston, MA 02115 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+$^{ 3}$Institute of Genomic Mathematics, University of Bonn, Bonn, Germany
+ 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+$^{ 4}$Channing Division of Network Medicine, Brigham and Women's Hospital,
+ Boston, MA 02115}
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Background
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Background
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{itemize} 
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+item Individuals may be too similar (due to cryptic relatedness) or too
+ different (due to population structure).
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+item Many methods exist for addressing some of these concerns (e.g.
+ PCA, LMM).
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+item Localized effects and rare variants increase confounding.
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+end{itemize}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{center}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename ../Slides/pasted2.png
+	width 60page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tiny Mathieson, Nature Genetics 2012}
+\backslash
+end{center}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+note[itemize]{ 
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+item Inflation of type I error rate
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Motivation
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+We want to create a similarity measure that...
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{itemize} 
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+item is more sensitive to fine scale population stratification
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+item estimates relatedness
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+item can be used as a formal test for cryptic relatedness
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+item can be used as a formal test for population structure 
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+end{itemize}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Rare variants
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+small{
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+begin{itemize} 
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+item Rare variants less stable.
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+item Rare variants are more likely to have arisen recently in ancestral
+ history.
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+end{itemize}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace{1.6cm}IBS vs TSI 
+\backslash
+hspace{3.5cm} YRI vs all
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename /home/dan/1000GP/plots/IBSvsTSI_JaccardRatio_2.png
+	lyxscale 50
+	width 50col%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename /home/dan/1000GP/plots/YRIvsAll_continent_color_interval_2.png
+	lyxscale 50
+	width 52col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace{2cm}
+\backslash
+tiny{MAF} 
+\backslash
+hspace{4.8cm} 
+\backslash
+tiny{MAF}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+note[itemize]{ 
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+item RVs become fixed at 0
+\backslash
+% with high probability over a relatively short timeframe.
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Similarity measure
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Test Statistic
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+center{STEGO: Similarity Test for Estimating Genetic Outliers}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+s_{i,j}=\frac{\sum_{k=1}^{N}w_{k}\mathbf{G}_{i,k}\mathbf{G}_{j,k}}{\sum_{k=1}^{N}I\left[\sum_{l=1}^{2n}\mathbf{G}_{l,k}>1\right]}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+flushleft{where }
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula 
+\[
+w_{k}=\begin{cases}
+\frac{{2n \choose 2}}{{\sum_{l=1}^{2n}\mathbf{G}_{l,k} \choose 2}} & \sum_{l=1}^{2n}\mathbf{G}_{l,k}>1\\
+0 & \sum_{l=1}^{2n}\mathbf{G}_{l,k}\le1
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Under 
+\begin_inset Formula $H_{0}$
+\end_inset
+
+, homogeneity, 
+\begin_inset Formula 
+\[
+s_{i,j}\sim N\left(1,\sigma_{i,j}^{2}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+note[itemize]{ 
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+item Distribution under the null has expectation 1, and variance is defined
+ ONLY by the allele frequencies
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Tests of Heterogeneity
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\[
+H_{0}:E\left[s_{i,j}\right]=1\forall i,j\in1\dots n
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+H_{A}:\exists i,j\in1\dots n\mid E\left[s_{i,j}\right]\ne1
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Test for cryptic relatedness:
+\begin_inset Formula 
+\[
+R:max\left(s_{i,j}\right)>1-probit\left(\frac{\alpha}{{n \choose 2}}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Test for population structure:
+\begin_inset Formula 
+\[
+K=\sup_{x}\left|F_{s}\left(x\right)-\Phi\left(x\right)\right|
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Results
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Application to 1000 Genomes Project
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename ../1000GP_manuscript/figures/GSM.png
+	lyxscale 50
+	height 75pheight%
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Application to 1000 Genomes Project
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{minipage}{.65
+\backslash
+textwidth}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{center}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../1000GP_manuscript/figures/PCA_all.pdf
+	width 100col%
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{center}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{center}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ITU_STU.png
+	width 100col%
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{center}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{minipage}%
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{minipage}{.35
+\backslash
+textwidth}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+STEGO is comparable to PCA when applied on a global scale.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+But produces superior separation for recently related populations.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{minipage}%
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Application to 1000 Genomes Project
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Distribution of 
+\begin_inset Formula $s$
+\end_inset
+
+ statistics by population
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename ../1000GP_manuscript/figures/PreFilter/ACBdiploid.png
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../1000GP_manuscript/figures/PreFilter/ASWdiploid.png
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../1000GP_manuscript/figures/PreFilter/BEBdiploid.png
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../1000GP_manuscript/figures/PreFilter/CDXdiploid.png
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../1000GP_manuscript/figures/PreFilter/CEUdiploid.png
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../1000GP_manuscript/figures/PreFilter/CHBdiploid.png
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../1000GP_manuscript/figures/PreFilter/CHSdiploid.png
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename ../1000GP_manuscript/figures/PreFilter/CLMdiploid.png
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../1000GP_manuscript/figures/PreFilter/ESNdiploid.png
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../1000GP_manuscript/figures/PreFilter/FINdiploid.png
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../1000GP_manuscript/figures/PreFilter/GBRdiploid.png
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../1000GP_manuscript/figures/PreFilter/GIHdiploid.png
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../1000GP_manuscript/figures/PreFilter/GWDdiploid.png
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../1000GP_manuscript/figures/PreFilter/IBSdiploid.png
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename ../1000GP_manuscript/figures/PreFilter/ITUdiploid.png
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../1000GP_manuscript/figures/PreFilter/JPTdiploid.png
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../1000GP_manuscript/figures/PreFilter/KHVdiploid.png
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../1000GP_manuscript/figures/PreFilter/LWKdiploid.png
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../1000GP_manuscript/figures/PreFilter/MSLdiploid.png
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../1000GP_manuscript/figures/PreFilter/MXLdiploid.png
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../1000GP_manuscript/figures/PreFilter/PELdiploid.png
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename ../1000GP_manuscript/figures/PreFilter/PJLdiploid.png
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../1000GP_manuscript/figures/PreFilter/PURdiploid.png
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../1000GP_manuscript/figures/PreFilter/STUdiploid.png
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../1000GP_manuscript/figures/PreFilter/TSIdiploid.png
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../1000GP_manuscript/figures/PreFilter/YRIdiploid.png
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+note[itemize]{ 
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+item Describe red-line, black line, and labeled pair.
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Application to 1000 Genomes Project
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula $s$
+\end_inset
+
+ statistics by population after removal of related pairs
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename ../1000GP_manuscript/figures/PostFilter/ACBdiploid.png
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../1000GP_manuscript/figures/PostFilter/ASWdiploid.png
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../1000GP_manuscript/figures/PostFilter/BEBdiploid.png
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../1000GP_manuscript/figures/PostFilter/CDXdiploid.png
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../1000GP_manuscript/figures/PostFilter/CEUdiploid.png
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../1000GP_manuscript/figures/PostFilter/CHBdiploid.png
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../1000GP_manuscript/figures/PostFilter/CHSdiploid.png
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename ../1000GP_manuscript/figures/PostFilter/CLMdiploid.png
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../1000GP_manuscript/figures/PostFilter/ESNdiploid.png
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../1000GP_manuscript/figures/PostFilter/FINdiploid.png
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../1000GP_manuscript/figures/PostFilter/GBRdiploid.png
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../1000GP_manuscript/figures/PostFilter/GIHdiploid.png
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../1000GP_manuscript/figures/PostFilter/GWDdiploid.png
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../1000GP_manuscript/figures/PostFilter/IBSdiploid.png
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename ../1000GP_manuscript/figures/PostFilter/ITUdiploid.png
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../1000GP_manuscript/figures/PostFilter/JPTdiploid.png
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../1000GP_manuscript/figures/PostFilter/KHVdiploid.png
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../1000GP_manuscript/figures/PostFilter/LWKdiploid.png
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../1000GP_manuscript/figures/PostFilter/MSLdiploid.png
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../1000GP_manuscript/figures/PostFilter/MXLdiploid.png
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../1000GP_manuscript/figures/PostFilter/PELdiploid.png
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename ../1000GP_manuscript/figures/PostFilter/PJLdiploid.png
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../1000GP_manuscript/figures/PostFilter/PURdiploid.png
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../1000GP_manuscript/figures/PostFilter/STUdiploid.png
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../1000GP_manuscript/figures/PostFilter/TSIdiploid.png
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../1000GP_manuscript/figures/PostFilter/YRIdiploid.png
+	lyxscale 20
+	width 12page%
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Application to 1000 Genomes Project
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{minipage}{.45
+\backslash
+textwidth}
+\end_layout
+
+\begin_layout Plain Layout
+
+Pre-Filter
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{.2cm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename ../1000GP_manuscript/figures/PreFilter/pValueForPop.pdf
+	lyxscale 50
+	width 100col%
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{minipage}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{minipage}{.45
+\backslash
+textwidth}
+\end_layout
+
+\begin_layout Plain Layout
+
+Post-Filter
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{.2cm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename ../1000GP_manuscript/figures/PostFilter/pValueForPop.pdf
+	lyxscale 50
+	width 100col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{minipage}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
 \end_inset
 
 
@@ -364,7 +2530,7 @@ $^{ 3}$Department of Medicine, Harvard Medical School, Boston, MA
 \end_layout
 
 \begin_layout Subsection
-Gene Networks
+Gene Networks and Batch Effect
 \end_layout
 
 \begin_layout Subsubsection
@@ -518,10 +2684,6 @@ end{minipage}
 \end_inset
 
 
-\end_layout
-
-\begin_layout Subsection
-Controlling for Batch Effect
 \end_layout
 
 \begin_layout Subsubsection
@@ -700,10 +2862,6 @@ Methods for Controlling Batch Effect
 
 \begin_deeper
 \begin_layout Standard
-
-\end_layout
-
-\begin_layout Standard
 Location scale model:
 \begin_inset Formula 
 \[
@@ -798,21 +2956,7 @@ note[itemize]{
 
 	
 \backslash
-item point 1 
-\end_layout
-
-\begin_layout Plain Layout
-
-	
-\backslash
-item point 2 
-\end_layout
-
-\begin_layout Plain Layout
-
-	
-\backslash
-item Perfect confounding
+item point 1
 \end_layout
 
 \begin_layout Plain Layout
@@ -1075,7 +3219,7 @@ textwidth}
 
 
 \backslash
-tiny{ENCODE Project:
+textbf{ENCODE Project:}
 \backslash
 
 \backslash
@@ -1088,7 +3232,16 @@ tiny{ENCODE Project:
 \backslash
 
 \backslash
- 126 samples (63 patients RNA-seq'ed at 2 centers)}
+ 126 samples 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+(63 patients each RNA-seq'ed at 2 centers)
 \end_layout
 
 \begin_layout Plain Layout
@@ -1104,116 +3257,6 @@ end{minipage}
 \end_layout
 
 \end_deeper
-\begin_layout Standard
-\begin_inset Separator parbreak
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-Challenges with batch effect on differential coexpression
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{minipage}{.55
-\backslash
-textwidth}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-includegraphics[height=6cm]{../../network_batch/all_studies_WGCNA_edgeweight_differe
-nce_comparison.png}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{minipage}%
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{minipage}{.45
-\backslash
-textwidth}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{itemize}    
-\end_layout
-
-\begin_layout Plain Layout
-
-	
-\backslash
-item Ultra-high dimensionality
-\end_layout
-
-\begin_layout Plain Layout
-
-	
-\backslash
-item Differential coexpression
-\end_layout
-
-\begin_layout Plain Layout
-
-	
-\backslash
-item Modularity
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{itemize}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{minipage}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Frame
-
-\end_layout
-
 \begin_layout Standard
 \begin_inset Separator parbreak
 \end_inset
@@ -1223,10 +3266,6 @@ end{minipage}
 
 \begin_layout Subsection
 Correcting the coexpression matrix
-\end_layout
-
-\begin_layout Subsubsection
-General Idea
 \end_layout
 
 \begin_layout Frame
@@ -1253,6 +3292,17 @@ status open
 
 \begin_layout Plain Layout
 
+Proposed method: 
+\backslash
+textbf{CMA}, Coexpression model adjustment
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
 Motivating concepts:
 \end_layout
 
@@ -1267,21 +3317,14 @@ begin{itemize}
 
 	
 \backslash
-item Provide a regression framework for for the coexpression matrix
+item Provide a regression framework for the coexpression matrix.
 \end_layout
 
 \begin_layout Plain Layout
 
 	
 \backslash
-item Estimate a reduced number of parameters  
-\end_layout
-
-\begin_layout Plain Layout
-
-	
-\backslash
-item Exploit modular nature of gene expression patterns
+item Estimate a reduced number of parameters.
 \end_layout
 
 \begin_layout Plain Layout
@@ -1300,14 +3343,21 @@ vspace*{.3in}
 
 \begin_layout Plain Layout
 
-Our proposal:
+Our approach:
 \end_layout
 
 \begin_layout Plain Layout
 
 
 \backslash
-begin{itemize}    
+begin{itemize}
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+item Exploit modular nature of gene expression patterns.
 \end_layout
 
 \begin_layout Plain Layout
@@ -1349,396 +3399,6 @@ end{itemize}
 status open
 
 \begin_layout Plain Layout
-Model
-\end_layout
-
-\end_inset
-
-
-\begin_inset Separator latexpar
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-Consider a set of 
-\begin_inset Formula $N$
-\end_inset
-
- samples with 
-\begin_inset Formula $q$
-\end_inset
-
- covariates measuring gene expression across 
-\begin_inset Formula $p$
-\end_inset
-
- genes.
- Let 
-\begin_inset Formula $\textbf{x}_{i}=(x_{i1},\dots,x_{iq})$
-\end_inset
-
- denote the covariates for sample 
-\begin_inset Formula $i$
-\end_inset
-
- and let 
-\begin_inset Formula $\textbf{g}_{i}=(g_{i1},\dots,g_{ip})^{T}$
-\end_inset
-
- denote the gene expression values for sample 
-\begin_inset Formula $i$
-\end_inset
-
- for the 
-\begin_inset Formula $p$
-\end_inset
-
- genes.
-\end_layout
-
-\begin_layout Standard
-We can express a model for the gene expression as 
-\begin_inset Formula 
-\[
-\textbf{g}_{i}=\mathbf{\mathbf{\beta}}^{T}\textbf{x}_{i}+\mathbf{\epsilon}_{i}\text{ for }i=1,\dots,N
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-where 
-\begin_inset Formula $\mathbf{\epsilon}_{i}\sim MVN_{p}(\mathbf{0},\Sigma_{i})$
-\end_inset
-
-.
- Notably, the covariance of 
-\begin_inset Formula $\mathbf{\epsilon}_{i}$
-\end_inset
-
- differ according to 
-\begin_inset Formula $i$
-\end_inset
-
-.
-\begin_inset Formula 
-\[
-\Sigma_{i}=\mathbf{Q}\mathbf{D}_{i}\mathbf{Q}^{T}
-\]
-
-\end_inset
-
- where 
-\begin_inset Formula $\mathbf{D}_{i}$
-\end_inset
-
- is a diagonal matrix with diagonal defined as 
-\begin_inset Formula $\mathbf{X}_{i}\Psi_{q\times p}$
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Frame
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Separator parbreak
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-note[itemize]{ 
-\backslash
-item point 1 
-\backslash
-item point 2 }
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsubsection
-Coexpression Correction Method
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-Likelihood Function
-\end_layout
-
-\end_inset
-
-
-\begin_inset Separator latexpar
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-\begin_inset Formula 
-\[
-\mathcal{L}\left(\mu,\Sigma\right)=\prod_{i=1}^{N}\frac{1}{\left(2\pi\right)^{\frac{p}{2}}|\Sigma_{i}|^{\frac{1}{2}}}e^{-\frac{1}{2}\left(\mathbf{G}_{i}-\mu\right)^{T}\Sigma_{i}^{-1}\left(\mathbf{G}_{i}-\mu\right)}
-\]
-
-\end_inset
-
-Where we define 
-\begin_inset Formula $\Sigma_{i}$
-\end_inset
-
-
-\begin_inset Formula 
-\[
-\Sigma_{i}=\mathbf{Q}\mathbf{D}_{i}\mathbf{Q}^{T}
-\]
-
-\end_inset
-
-Where 
-\begin_inset Formula $\mathbf{Q}$
-\end_inset
-
- is a matrix with columns defined as the eigenvectors of the estimated coexpress
-ion matrix, 
-\begin_inset Formula $\mathbf{G}^{*}\mathbf{G}^{*T}/N$
-\end_inset
-
-.
- 
-\end_layout
-
-\end_deeper
-\begin_layout Frame
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Separator parbreak
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-note[itemize]{ 
-\backslash
-item point 1 
-\backslash
-item point 2 }
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-Least Squares Estimator
-\end_layout
-
-\end_inset
-
-
-\begin_inset Separator latexpar
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-To calculate least squares solution, 
-\begin_inset Formula $\hat{\Psi}$
-\end_inset
-
-, we solve separately for each column of 
-\begin_inset Formula $\ensuremath{\mathbf{Q}}$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-and note that the residual matrices should be orthogonal to the hyperplane
- spanned by 
-\begin_inset Formula $X^{T}$
-\end_inset
-
-.
- 
-\end_layout
-
-\begin_layout Standard
-Recall 
-\begin_inset Formula $0=\mathbf{X^{T}\left(Y-X\hat{\beta}\right)}$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{align}
-\mathbf{0}_{q} & =\sum_{i=1}^{N}\mathbf{X}_{i}^{T}\left[\mathbf{Q}_{h}^{T}\left[\mathbf{G}_{i}^{*}\mathbf{G}_{i}^{*T}-\mathbf{Q}_{h}\mathbf{X}_{i}\hat{\Psi}_{h}\mathbf{Q}_{h}^{T}\right]\mathbf{Q}_{h}\right]\label{eq:least_squares_zero}\\
-\hat{\Psi}_{h} & =\left(\mathbf{X}^{T}\mathbf{X}\right)^{-1}\sum_{i=1}^{N}\left[\mathbf{X}_{i}^{T}\mathbf{Q}_{h}^{T}\mathbf{G}_{i}^{*}\mathbf{G}_{i}^{*T}\mathbf{Q}_{h}\right]\label{eq:estimator}
-\end{align}
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-note[itemize]{ 
-\backslash
-item point 1 
-\backslash
-item point 2 }
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-The Corrected Coexpression Matrix
-\end_layout
-
-\end_inset
-
-
-\begin_inset Separator latexpar
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-With the estimates obtained with our method, it is straightforward to see
- how fitted values for the coexpression matrix for each sample or experimental
- condition can be obtained.
- Given an estimate for 
-\begin_inset Formula $\Psi$
-\end_inset
-
-, 
-\begin_inset Formula $\hat{\Psi}$
-\end_inset
-
-, we can now estimate the batch-independent coexpression structure as 
-\begin_inset Formula 
-\[
-\hat{\mathbf{S}}=\mathbf{Q}diag\left(\bar{\mathbf{X}}\hat{\Psi}\right)\mathbf{Q}^{T}\text{ or }\hat{\mathbf{S}}=\sum_{i=1}^{p}\bar{\mathbf{X}}\hat{\Psi}_{i}\mathbf{Q}_{i}\mathbf{Q}_{i}^{T}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-The differential coexpression matrix between two conditions, defined in
- binary as column 2 of 
-\begin_inset Formula $\mathbf{X}$
-\end_inset
-
-, is computed
-\begin_inset Formula 
-\[
-\hat{\mathbf{W}}=\mathbf{Q}diag\left(\hat{\Psi}_{2,\cdot}\right)\mathbf{Q}^{T}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Frame
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Separator parbreak
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-note[itemize]{ 
-\backslash
-item point 1 
-\backslash
-item point 2 }
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
 Example Workflow
 \end_layout
 
@@ -1765,7 +3425,7 @@ begin{center}
 \begin_inset Graphics
 	filename /home/dan/gd/Harvard/Research/network_batch/overview2.pdf
 	lyxscale 30
-	height 60pheight%
+	height 65pheight%
 
 \end_inset
 
@@ -1788,6 +3448,129 @@ end{center}
 \end_deeper
 \begin_layout Standard
 \begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Estimator
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\hat{\Psi}_{\cdot,h} & =\left(\mathbf{X}^{T}\mathbf{X}\right)^{-1}\sum_{i=1}^{N}\left[\mathbf{X}_{i}^{T}\mathbf{Q}_{h}^{T}\mathbf{G}_{i}^{*}\mathbf{G}_{i}^{*T}\mathbf{Q}_{h}\right]
+\end{align*}
+
+\end_inset
+
+where
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\mathbf{G}_{i}^{*}$
+\end_inset
+
+ is the residual gene expression for sample 
+\begin_inset Formula $i$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\mathbf{X}$
+\end_inset
+
+ is the design matrix
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\mathbf{Q}_{h}$
+\end_inset
+
+ is the 
+\begin_inset Formula $h^{th}$
+\end_inset
+
+ eigenvector 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\hat{\Psi}$
+\end_inset
+
+ is a 
+\begin_inset Formula $q\times p$
+\end_inset
+
+ matrix (
+\begin_inset Formula $q=\#covariates+1$
+\end_inset
+
+, 
+\begin_inset Formula $p=\#genes$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Standard
+(See Appendix)
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+note[itemize]{ 
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+item We can use $
+\backslash
+Psi$ in the standard regression way...
+ differential coexpression, fitted coexpression...
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
 \end_inset
 
 
@@ -1961,6 +3744,34 @@ end{minipage}
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+note[itemize]{ 
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+item Describe naive approach
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Frame
 \begin_inset Argument 4
 status open
@@ -2023,7 +3834,7 @@ end{center}
 status open
 
 \begin_layout Plain Layout
-Simulations
+Predicting Case/Control Genes
 \end_layout
 
 \end_inset
@@ -2077,15 +3888,15 @@ rmEffects_400samples_4000genes_5620_larger/ourMethodDensity.png}
 
 \backslash
 includegraphics[height=3cm]{../../network_batch/figures/InSilico_8Error_2Batch_Unifo
-rmEffects_400samples_4000genes_5620_larger/OursVsNaive.png}
+rmEffects_400samples_4000genes_5620_larger/OursVsNaive_2.png}
 \end_layout
 
 \begin_layout Plain Layout
 
 
 \backslash
-includegraphics[height=3cm]{../../network_batch/figures/InSilico_8Error_2Batch_Unifo
-rmEffects_400samples_4000genes_5620_larger/OursVsOthersROC.png}
+includegraphics[height=3.5cm]{../../network_batch/figures/InSilico_8Error_2Batch_Unif
+ormEffects_400samples_4000genes_5620_larger/OursVsOthersROC_2.png}
 \end_layout
 
 \begin_layout Plain Layout
@@ -2136,23 +3947,306 @@ status open
 
 \begin_layout Plain Layout
 
+The COPDGene Study (GSE42057):
+\end_layout
+
+\begin_layout Plain Layout
+
 
 \backslash
-scriptsize{
+begin{itemize}    
 \end_layout
 
 \begin_layout Plain Layout
 
 	
 \backslash
-begin{table} 
+item 136 Individuals
+\end_layout
+
+\begin_layout Plain Layout
+
+	
 \backslash
-centering 
+item Affymetrix Human Genome U133 Plus 2.0 microarrays
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+item 18,960 genes
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+item 42 Smoker Controls, 94 COPD subjects
 \end_layout
 
 \begin_layout Plain Layout
 
 
+\backslash
+end{itemize}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\mathbf{S}\sim COPD+Gender+Age+Packyears
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+note[itemize]{ 
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+item It's difficult to evaluate results...
+ functional enrichment...
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Application to data from COPDGene Study
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+flushleft{
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+begin{table}[]
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+scriptsize{Functional Enrichment in COPD-associated module (Morrow et al.
+ 2015)}
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+tiny{
+\end_layout
+
+\begin_layout Plain Layout
+
+			
+\backslash
+begin{tabular}{lllll}
+\backslash
+toprule 
+\end_layout
+
+\begin_layout Plain Layout
+
+				GO Term                                                  & Genes   &
+ p-value & FDR      
+\backslash
+
+\backslash
+ 
+\backslash
+midrule 
+\end_layout
+
+\begin_layout Plain Layout
+
+			immune response-regulating cell surface receptor & 12 & 3.33E-010 & 7.89E-008
+ 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+			B cell proliferation                                               &
+ 8  & 1.33E-010 & 6.30E-008 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+			antigen receptor-mediated signaling pathway                        &
+ 8  & 9.25E-009 & 1.10E-006 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+			regulation of B cell activation                                    &
+ 7  & 1.44E-008 & 1.37E-006 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+			B cell receptor signaling pathway                                  &
+ 6  & 1.64E-009 & 2.59E-007 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+			regulation of lymphocyte proliferation                             &
+ 6  & 1.20E-005 & 7.34E-004 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+			regulation of mononuclear cell proliferation                       &
+ 6  & 1.24E-005 & 7.34E-004 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+			T cell aggregation                                                 &
+ 6  & 1.19E-003 & 2.89E-002 
+\end_layout
+
+\begin_layout Plain Layout
+
+			
+\backslash
+end{tabular}
+\end_layout
+
+\begin_layout Plain Layout
+
+		}
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+end{table}
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+begin{table}
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+scriptsize{Functional Enrichment in top differentially coexpressed genes
+ from CMA}
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+tiny{
+\end_layout
+
+\begin_layout Plain Layout
+
+			
 \backslash
 begin{tabular}{@{}lllll@{}} 
 \backslash
@@ -2161,7 +4255,7 @@ toprule
 
 \begin_layout Plain Layout
 
-	GO Term                                                  & Count & 
+				GO Term                                                  & 
 \backslash
 %   & Enrichment & FDR      
 \backslash
@@ -2174,8 +4268,8 @@ midrule
 
 \begin_layout Plain Layout
 
-	anatomical structure development                         & 309   & 0.26
- & 1.29       & 2.58E-05 
+				anatomical structure development                         & 0.26 & 1.29
+       & 2.58E-05 
 \backslash
 
 \backslash
@@ -2184,8 +4278,8 @@ midrule
 
 \begin_layout Plain Layout
 
-	single-organism developmental process                    & 309   & 0.26
- & 1.29       & 2.73E-05 
+				single-organism developmental process                    & 0.26 & 1.29
+       & 2.73E-05 
 \backslash
 
 \backslash
@@ -2194,8 +4288,8 @@ midrule
 
 \begin_layout Plain Layout
 
-	anatomical structure morphogenesis                       & 168   & 0.14
- & 1.46       & 1.60E-04 
+				anatomical structure morphogenesis                       & 0.14 & 1.46
+       & 1.60E-04 
 \backslash
 
 \backslash
@@ -2204,8 +4298,8 @@ midrule
 
 \begin_layout Plain Layout
 
-	single-multicellular organism process                    & 324   & 0.27
- & 1.25       & 4.01E-04 
+				single-multicellular organism process                    & 0.27 & 1.25
+       & 4.01E-04 
 \backslash
 
 \backslash
@@ -2214,8 +4308,8 @@ midrule
 
 \begin_layout Plain Layout
 
-	system process                                           & 132   & 0.11
- & 1.50       & 1.46E-03 
+				system process                                           & 0.11 & 1.50
+       & 1.46E-03 
 \backslash
 
 \backslash
@@ -2224,8 +4318,8 @@ midrule
 
 \begin_layout Plain Layout
 
-	regulation of cellular process                           & 514   & 0.43
- & 1.12       & 5.86E-03 
+				regulation of cellular process                           & 0.43 & 1.12
+       & 5.86E-03 
 \backslash
 
 \backslash
@@ -2234,8 +4328,8 @@ midrule
 
 \begin_layout Plain Layout
 
-	single organism signaling                                & 328   & 0.28
- & 1.21       & 7.89E-03 
+				single organism signaling                                & 0.28 & 1.21
+       & 7.89E-03 
 \backslash
 
 \backslash
@@ -2244,8 +4338,8 @@ midrule
 
 \begin_layout Plain Layout
 
-	regulation of localization                               & 151   & 0.13
- & 1.40       & 1.15E-02 
+				regulation of localization                               & 0.13 & 1.40
+       & 1.15E-02 
 \backslash
 
 \backslash
@@ -2254,32 +4348,19 @@ midrule
 
 \begin_layout Plain Layout
 
-	regulation of multicellular organismal process           & 156   & 0.13
- & 1.35       & 6.56E-02 
-\backslash
-
-\backslash
- 
-\end_layout
-
-\begin_layout Plain Layout
-
-
+			
 \backslash
 end{tabular}
 \end_layout
 
 \begin_layout Plain Layout
 
-	
-\backslash
-caption[GO enrichment results for COPDGene]{GO categories for differential
- coexpression in COPDGene identified with CPBA found with FDR<0.1.} 
+		}
 \end_layout
 
 \begin_layout Plain Layout
 
-
+	
 \backslash
 end{table}
 \end_layout
@@ -2287,1705 +4368,6 @@ end{table}
 \begin_layout Plain Layout
 
 }
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-\begin_inset Separator parbreak
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section
-Identification of genetic outliers
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-Identifying Genetic Outliers
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-Large{
-\backslash
-textbf{Identification of genetic outliers due to sub-structure and cryptic
- relationships}}
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-normalsize{Daniel Schlauch
-\backslash
-,$^{1,2,4}$, Heide Fier
-\backslash
-,$^{1,3}$ and Christoph Lange
-\backslash
-,$^{1,4}$}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-tiny{$^{1}$Department of Biostatistics, Harvard TH Chan School of Public
- Health, Boston, MA 02115 
-\backslash
-
-\backslash
-  
-\end_layout
-
-\begin_layout Plain Layout
-
-$^{ 2}$Department of Biostatistics and Computational Biology, Dana-Farber
- Cancer Institute, Boston, MA 02115 
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-$^{ 3}$Institute of Genomic Mathematics, University of Bonn, Bonn, Germany
- 
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-$^{ 4}$Channing Division of Network Medicine, Brigham and Women's Hospital,
- Boston, MA 02115}
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Separator parbreak
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-Background
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-Background
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-tiny{
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{itemize} 
-\end_layout
-
-\begin_layout Plain Layout
-
-		
-\backslash
-item Individuals may be too similar (due to cryptic relatedness) or too
- different (due to population structure).
-\end_layout
-
-\begin_layout Plain Layout
-
-		
-\backslash
-item Both features may lead to spurious results, inflation of type I error.
-\end_layout
-
-\begin_layout Plain Layout
-
-		
-\backslash
-item Many methods exist for addressing some of these concerns (e.g.
- PCA, LMM).
-\end_layout
-
-\begin_layout Plain Layout
-
-		
-\backslash
-item Limitations exist, such as with rare alleles and sharp localized effects,
- or with the assumption of linear or discrete population structure.
-\end_layout
-
-\begin_layout Plain Layout
-
-	
-\backslash
-end{itemize}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{center}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Graphics
-	filename ../Slides/pasted2.png
-	width 40page%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-{
-\backslash
-tiny Mathieson, Nature Genetics 2012}
-\backslash
-end{center}}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-tiny{
-\end_layout
-
-\begin_layout Plain Layout
-
-We want to create a similarity measure that...
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{itemize} 
-\end_layout
-
-\begin_layout Plain Layout
-
-		
-\backslash
-item is more sensitive to fine scale population stratification
-\end_layout
-
-\begin_layout Plain Layout
-
-		
-\backslash
-item can be used as a formal test for cryptic relatedness
-\end_layout
-
-\begin_layout Plain Layout
-
-		
-\backslash
-item can be used as a formal test for population structure 
-\end_layout
-
-\begin_layout Plain Layout
-
-	
-\backslash
-end{itemize}}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-
-\end_layout
-
-\begin_layout Frame
-
-\end_layout
-
-\begin_layout Frame
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Separator parbreak
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-Basis for measure
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-small{
-\end_layout
-
-\begin_layout Plain Layout
-
-	
-\backslash
-begin{itemize} 
-\end_layout
-
-\begin_layout Plain Layout
-
-		
-\backslash
-item Rare variants are recent variants.
-\end_layout
-
-\begin_layout Plain Layout
-
-		
-\backslash
-item In the absense of selection, rare variants become fixed at 0
-\backslash
-% with high probability over a relatively short timeframe.
-\end_layout
-
-\begin_layout Plain Layout
-
-	
-\backslash
-end{itemize}
-\end_layout
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{center}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Graphics
-	filename ../Slides/pasted8.png
-	lyxscale 40
-	width 45page%
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename /home/dan/1000GP/plots/IBSvsTSI_JaccardRatio.png
-	lyxscale 50
-	width 55col%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{center}P[Fixation|n=10000,g=1000,maf=.01]=.678 
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-small{
-\end_layout
-
-\begin_layout Plain Layout
-
-	
-\backslash
-begin{itemize} 
-\end_layout
-
-\begin_layout Plain Layout
-
-		
-\backslash
-item Key Idea: 
-\backslash
-textbf{
-\backslash
-textit{Less}} frequent variants are 
-\backslash
-textbf{
-\backslash
-textit{more}} informative of ancestry.
-\end_layout
-
-\begin_layout Plain Layout
-
-	
-\backslash
-end{itemize}
-\end_layout
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Separator parbreak
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-Similarity measure
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-Test Statistic
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Formula 
-\[
-s_{i,j}=\frac{\sum_{k=1}^{N}w_{k}\mathbf{G}_{i,k}\mathbf{G}_{j,k}}{\sum_{k=1}^{N}I\left[\sum_{l=1}^{2n}\mathbf{G}_{l,k}>1\right]}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-where 
-\end_layout
-
-\begin_layout Frame
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-\begin_inset Formula 
-\[
-w_{k}=\begin{cases}
-\frac{{2n \choose 2}}{{\sum_{l=1}^{2n}\mathbf{G}_{l,k} \choose 2}} & \sum_{l=1}^{2n}\mathbf{G}_{l,k}>1\\
-0 & \sum_{l=1}^{2n}\mathbf{G}_{l,k}\le1
-\end{cases}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Formula 
-\begin{align*}
-E\left[s_{i,j}\right] & =1
-\end{align*}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Separator parbreak
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-Test Statistic
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-In the absence of population structure, cryptic relatedness and dependence
- between loci the distribution of the similarity index, 
-\begin_inset Formula $s_{i,j}$
-\end_inset
-
- 
-\begin_inset Formula 
-\[
-s_{i,j}\sim N\left(1,\sigma_{i,j}^{2}\right)
-\]
-
-\end_inset
-
-Where the variance of 
-\begin_inset Formula $s_{ij}$
-\end_inset
-
- can be estimated by 
-\begin_inset Formula 
-\[
-\hat{\sigma_{i,j}^{2}}=\hat{Var}\left(s_{i,j}\right)=\frac{\sum_{k=1}^{N}\left(w_{k}-1\right)}{\left(\sum_{k=1}^{N}I\left[\sum_{l=1}^{2n}\mathbf{G}_{l,k}>1\right]\right)^{2}}
-\]
-
-\end_inset
-
-
-\begin_inset Formula 
-\[
-s_{i,j}^{\left(diploid\right)}=\frac{\sum_{k=1}^{N}\left[w_{k}\mathbf{H}_{i,k}\mathbf{H}_{j,k}\right]/4}{\sum_{k=1}^{N}I\left[\left(\sum_{l=1}^{n}\mathbf{H}_{l,k}\right)>1\right]}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Separator parbreak
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-Tests of Heterogeneity
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-tiny{}
-\end_layout
-
-\end_inset
-
-
-\begin_inset Formula 
-\[
-\hat{\phi}_{i,j}=\frac{s_{i,j}-1}{\left[\frac{\sum_{k=1}^{N}\hat{p_{k}}w_{k}}{\sum_{k=1}^{N}I\left[\sum_{l=1}^{2n}\mathbf{G}_{l,k}>1\right]}-1\right]}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Formula 
-\[
-R:max\left(s_{i,j}\right)>1-probit\left(\frac{\alpha}{{n \choose 2}}\right)
-\]
-
-\end_inset
-
-
-\begin_inset Formula 
-\[
-P\left(Reject\,H_{0}|\phi_{i,j}=\gamma\right)=\alpha+\left(1-\alpha\right)\left(1-\Phi\left(\frac{\mu_{i,j}-1}{\sqrt{\hat{\sigma^{2}}_{i,j}}}\right)\right)
-\]
-
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{center}
-\end_layout
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename /home/dan/1000GP/plots/powerCurve.pdf
-	width 50col%
-
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{center}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Separator parbreak
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-Tests of Heterogeneity
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Formula 
-\[
-H_{0}:\mu_{i,j}=1\forall i,j\in1\dots n
-\]
-
-\end_inset
-
-
-\begin_inset Formula 
-\[
-H_{A}:\exists i,j\in1\dots n|\mu_{i,j}\ne1
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-Test for population structure:
-\begin_inset Formula 
-\[
-K=\sup_{x}\left|F_{s}\left(x\right)-\Phi\left(x\right)\right|
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-Test for cryptic relatedness:
-\begin_inset Formula 
-\[
-R:max\left(s_{i,j}\right)>1-probit\left(\frac{\alpha}{{n \choose 2}}\right)
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Separator parbreak
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-Results
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-Application to 1000 Genomes Project
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-\begin_inset Graphics
-	filename ../1000GP_manuscript/figures/GSM.png
-	lyxscale 50
-	height 75pheight%
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-\begin_inset Separator parbreak
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-Application to 1000 Genomes Project
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{minipage}{.65
-\backslash
-textwidth}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{center}
-\end_layout
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename ../1000GP_manuscript/figures/PCA_all.pdf
-	width 100col%
-
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{center}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{center}
-\end_layout
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename ITU_STU.png
-	width 100col%
-
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{center}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{minipage}%
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{minipage}{.35
-\backslash
-textwidth}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-STEGO is comparable to PCA when applied on a global scale.
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-
-\backslash
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-But produces superior separation for recently related populations.
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{minipage}%
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-\begin_inset Separator parbreak
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-Application to 1000 Genomes Project
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-Distribution of 
-\begin_inset Formula $s$
-\end_inset
-
- statistics by population
-\end_layout
-
-\begin_layout Standard
-\begin_inset Graphics
-	filename ../1000GP_manuscript/figures/PreFilter/ACBdiploid.pdf
-	lyxscale 20
-	width 12page%
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename ../1000GP_manuscript/figures/PreFilter/ASWdiploid.pdf
-	lyxscale 20
-	width 12page%
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename ../1000GP_manuscript/figures/PreFilter/BEBdiploid.pdf
-	lyxscale 20
-	width 12page%
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename ../1000GP_manuscript/figures/PreFilter/CDXdiploid.pdf
-	lyxscale 20
-	width 12page%
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename ../1000GP_manuscript/figures/PreFilter/CEUdiploid.pdf
-	lyxscale 20
-	width 12page%
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename ../1000GP_manuscript/figures/PreFilter/CHBdiploid.pdf
-	lyxscale 20
-	width 12page%
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename ../1000GP_manuscript/figures/PreFilter/CHSdiploid.pdf
-	lyxscale 20
-	width 12page%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Graphics
-	filename ../1000GP_manuscript/figures/PreFilter/CLMdiploid.pdf
-	lyxscale 20
-	width 12page%
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename ../1000GP_manuscript/figures/PreFilter/ESNdiploid.pdf
-	lyxscale 20
-	width 12page%
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename ../1000GP_manuscript/figures/PreFilter/FINdiploid.pdf
-	lyxscale 20
-	width 12page%
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename ../1000GP_manuscript/figures/PreFilter/GBRdiploid.pdf
-	lyxscale 20
-	width 12page%
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename ../1000GP_manuscript/figures/PreFilter/GIHdiploid.pdf
-	lyxscale 20
-	width 12page%
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename ../1000GP_manuscript/figures/PreFilter/GWDdiploid.pdf
-	lyxscale 20
-	width 12page%
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename ../1000GP_manuscript/figures/PreFilter/IBSdiploid.pdf
-	lyxscale 20
-	width 12page%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Graphics
-	filename ../1000GP_manuscript/figures/PreFilter/ITUdiploid.pdf
-	lyxscale 20
-	width 12page%
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename ../1000GP_manuscript/figures/PreFilter/JPTdiploid.pdf
-	lyxscale 20
-	width 12page%
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename ../1000GP_manuscript/figures/PreFilter/KHVdiploid.pdf
-	lyxscale 20
-	width 12page%
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename ../1000GP_manuscript/figures/PreFilter/LWKdiploid.pdf
-	lyxscale 20
-	width 12page%
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename ../1000GP_manuscript/figures/PreFilter/MSLdiploid.pdf
-	lyxscale 20
-	width 12page%
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename ../1000GP_manuscript/figures/PreFilter/MXLdiploid.pdf
-	lyxscale 20
-	width 12page%
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename ../1000GP_manuscript/figures/PreFilter/PELdiploid.pdf
-	lyxscale 20
-	width 12page%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Graphics
-	filename ../1000GP_manuscript/figures/PreFilter/PJLdiploid.pdf
-	lyxscale 20
-	width 12page%
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename ../1000GP_manuscript/figures/PreFilter/PURdiploid.pdf
-	lyxscale 20
-	width 12page%
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename ../1000GP_manuscript/figures/PreFilter/STUdiploid.pdf
-	lyxscale 20
-	width 12page%
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename ../1000GP_manuscript/figures/PreFilter/TSIdiploid.pdf
-	lyxscale 20
-	width 12page%
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename ../1000GP_manuscript/figures/PreFilter/YRIdiploid.pdf
-	lyxscale 20
-	width 12page%
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-\begin_inset Separator parbreak
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-Application to 1000 Genomes Project
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-\begin_inset Formula $s$
-\end_inset
-
- statistics by population after removal of related pairs
-\end_layout
-
-\begin_layout Standard
-\begin_inset Graphics
-	filename ../1000GP_manuscript/figures/PostFilter/ACBdiploid.pdf
-	lyxscale 20
-	width 12page%
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename ../1000GP_manuscript/figures/PostFilter/ASWdiploid.pdf
-	lyxscale 20
-	width 12page%
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename ../1000GP_manuscript/figures/PostFilter/BEBdiploid.pdf
-	lyxscale 20
-	width 12page%
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename ../1000GP_manuscript/figures/PostFilter/CDXdiploid.pdf
-	lyxscale 20
-	width 12page%
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename ../1000GP_manuscript/figures/PostFilter/CEUdiploid.pdf
-	lyxscale 20
-	width 12page%
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename ../1000GP_manuscript/figures/PostFilter/CHBdiploid.pdf
-	lyxscale 20
-	width 12page%
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename ../1000GP_manuscript/figures/PostFilter/CHSdiploid.pdf
-	lyxscale 20
-	width 12page%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Graphics
-	filename ../1000GP_manuscript/figures/PostFilter/CLMdiploid.pdf
-	lyxscale 20
-	width 12page%
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename ../1000GP_manuscript/figures/PostFilter/ESNdiploid.pdf
-	lyxscale 20
-	width 12page%
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename ../1000GP_manuscript/figures/PostFilter/FINdiploid.pdf
-	lyxscale 20
-	width 12page%
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename ../1000GP_manuscript/figures/PostFilter/GBRdiploid.pdf
-	lyxscale 20
-	width 12page%
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename ../1000GP_manuscript/figures/PostFilter/GIHdiploid.pdf
-	lyxscale 20
-	width 12page%
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename ../1000GP_manuscript/figures/PostFilter/GWDdiploid.pdf
-	lyxscale 20
-	width 12page%
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename ../1000GP_manuscript/figures/PostFilter/IBSdiploid.pdf
-	lyxscale 20
-	width 12page%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Graphics
-	filename ../1000GP_manuscript/figures/PostFilter/ITUdiploid.pdf
-	lyxscale 20
-	width 12page%
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename ../1000GP_manuscript/figures/PostFilter/JPTdiploid.pdf
-	lyxscale 20
-	width 12page%
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename ../1000GP_manuscript/figures/PostFilter/KHVdiploid.pdf
-	lyxscale 20
-	width 12page%
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename ../1000GP_manuscript/figures/PostFilter/LWKdiploid.pdf
-	lyxscale 20
-	width 12page%
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename ../1000GP_manuscript/figures/PostFilter/MSLdiploid.pdf
-	lyxscale 20
-	width 12page%
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename ../1000GP_manuscript/figures/PostFilter/MXLdiploid.pdf
-	lyxscale 20
-	width 12page%
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename ../1000GP_manuscript/figures/PostFilter/PELdiploid.pdf
-	lyxscale 20
-	width 12page%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Graphics
-	filename ../1000GP_manuscript/figures/PostFilter/PJLdiploid.pdf
-	lyxscale 20
-	width 12page%
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename ../1000GP_manuscript/figures/PostFilter/PURdiploid.pdf
-	lyxscale 20
-	width 12page%
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename ../1000GP_manuscript/figures/PostFilter/STUdiploid.pdf
-	lyxscale 20
-	width 12page%
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename ../1000GP_manuscript/figures/PostFilter/TSIdiploid.pdf
-	lyxscale 20
-	width 12page%
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename ../1000GP_manuscript/figures/PostFilter/YRIdiploid.pdf
-	lyxscale 20
-	width 12page%
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-\begin_inset Separator parbreak
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-Application to 1000 Genomes Project
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{minipage}{.35
-\backslash
-textwidth}
-\end_layout
-
-\begin_layout Plain Layout
-
-Original Data
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-vspace*{.3in}
-\end_layout
-
-\begin_layout Plain Layout
-
-After removal of 
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-related pairs
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{minipage}%
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{minipage}{.5
-\backslash
-textwidth}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Graphics
-	filename ../1000GP_manuscript/figures/PreFilter/CHSdiploid.pdf
-	width 23page%
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename ../1000GP_manuscript/figures/PreFilter/GBRdiploid.pdf
-	width 23page%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Graphics
-	filename ../1000GP_manuscript/figures/PostFilter/CHSdiploid.pdf
-	width 23page%
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename ../1000GP_manuscript/figures/PostFilter/GBRdiploid.pdf
-	width 23page%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{minipage}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-\begin_inset Separator parbreak
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-Application to 1000 Genomes Project
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{minipage}{.45
-\backslash
-textwidth}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Graphics
-	filename ../1000GP_manuscript/figures/PreFilter/pValueForPop.pdf
-	lyxscale 50
-	width 100col%
-
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{minipage}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{minipage}{.45
-\backslash
-textwidth}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Graphics
-	filename ../1000GP_manuscript/figures/PostFilter/pValueForPop.pdf
-	lyxscale 50
-	width 100col%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{minipage}
 \end_layout
 
 \end_inset
@@ -4219,8 +4601,8 @@ textwidth}
 
 
 \begin_inset Graphics
-	filename bipartite.png
-	lyxscale 40
+	filename bipartite_2.png
+	lyxscale 20
 	width 25page%
 
 \end_inset
@@ -4245,18 +4627,9 @@ status open
 
 \begin_layout Standard
 \begin_inset Graphics
-	filename example_heatmap.png
-	lyxscale 20
-	width 50col%
-	height 50col%
-
-\end_inset
-
-
-\begin_inset Graphics
 	filename gene_network.png
 	lyxscale 25
-	width 80col%
+	width 100col%
 
 \end_inset
 
@@ -4304,56 +4677,6 @@ status open
 
 \backslash
 note[itemize]{ 
-\backslash
-item point 1 
-\backslash
-item point 2 } 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-Background
-\end_layout
-
-\end_inset
-
-
-\begin_inset Separator latexpar
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-small{
-\end_layout
-
-\begin_layout Plain Layout
-
-Biological Challenges
-\end_layout
-
-\begin_layout Plain Layout
-
-	
-\backslash
-begin{itemize} 
 \end_layout
 
 \begin_layout Plain Layout
@@ -4389,30 +4712,16 @@ item Biological variability can be difficult to induce
 
 \begin_layout Plain Layout
 
-	
+		
 \backslash
-end{itemize}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-onslide<2->Statistical Challenges
-\end_layout
-
-\begin_layout Plain Layout
-
-	
-\backslash
-begin{itemize} 
+item   
 \end_layout
 
 \begin_layout Plain Layout
 
 		
 \backslash
-item  Gene expression measurements are noisy.
+item Gene expression measurements are noisy.
  
 \end_layout
 
@@ -4420,7 +4729,7 @@ item  Gene expression measurements are noisy.
 
 		
 \backslash
-item  Model complexity may require the estimate of too many model parameters.
+item Model complexity may require the estimate of too many model parameters.
  
 \end_layout
 
@@ -4428,7 +4737,7 @@ item  Model complexity may require the estimate of too many model parameters.
 
 		
 \backslash
-item  May be computationally intractable.
+item May be computationally intractable.
  
 \end_layout
 
@@ -4436,15 +4745,8 @@ item  May be computationally intractable.
 
 		
 \backslash
-item  May be statistically undetermined.
+item May be statistically undetermined.
  ``The curse of dimensionality''
-\end_layout
-
-\begin_layout Plain Layout
-
-	
-\backslash
-end{itemize}
 \end_layout
 
 \begin_layout Plain Layout
@@ -4452,14 +4754,6 @@ end{itemize}
 }
 \end_layout
 
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-\begin_inset Separator parbreak
 \end_inset
 
 
@@ -4592,10 +4886,15 @@ center
 
 \begin_layout Standard
 \align left
+Modeling Network State Transitions from Expression and Regulatory data
+\end_layout
+
+\begin_layout Standard
+\align left
 \begin_inset Graphics
 	filename figures/figure1c.pdf
 	lyxscale 40
-	width 55col%
+	width 45col%
 
 \end_inset
 
@@ -4672,68 +4971,6 @@ center
 \end_layout
 
 \begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-Network Inference
-\end_layout
-
-\end_inset
-
-
-\begin_inset Separator latexpar
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-Direct Evidence:
-\begin_inset Formula 
-\[
-d_{i,j}=cor\left(g_{i},g_{j}|\left\{ g_{k,-i}:k\ne i,k\in\mathbf{TF}\right\} \right)^{2}
-\]
-
-\end_inset
-
-Indirect Evidence:
-\begin_inset Formula 
-\[
-logit\left(E\left[M_{i}\right]\right)=\beta_{0}+\beta_{1}g_{\left(1\right)}+\dots+\beta_{N}g_{\left(n\right)}
-\]
-
-\end_inset
-
-
-\begin_inset Formula 
-\[
-e_{i,j}=\frac{1}{1+e^{\beta_{0}+\beta_{1}g_{j,\left(1\right)}+\dots+\beta_{k}g_{j,\left(k\right)}}}
-\]
-
-\end_inset
-
-Edgeweight:
-\begin_inset Formula 
-\[
-w_{i,j}=\left(1-\alpha\right)\left[d_{i,j}\right]+\alpha\left[e_{i,j}\right]
-\]
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Frame
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Separator parbreak
-\end_inset
-
 
 \end_layout
 
@@ -4839,8 +5076,7 @@ status open
 
 
 \backslash
-transdissolve% Weirdly this is for previous slide.
- Dunno why.
+transdissolve
 \end_layout
 
 \end_inset
@@ -4880,9 +5116,7 @@ where $b_{i}$ and $a_{i}$ are column-vectors in $
 \backslash
 mathbf{B}$ and $
 \backslash
-mathbf{A}$ that describe the regulatory targeting of transcription factor
- $i$ in the final and initial networks, respectively.
- 
+mathbf{A}$.
 \end_layout
 
 \begin_layout Plain Layout
@@ -5001,118 +5235,6 @@ Network Transition
 
 \begin_deeper
 \begin_layout Standard
-Regularization:
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-[ 
-\backslash
-mathbf{Q}_{i,j}=
-\backslash
-begin{cases} 1 & for
-\backslash
-,i=j
-\backslash
-ne k
-\backslash
-
-\backslash
- 0 & elsewhere 
-\backslash
-end{cases}, 
-\backslash
-] which results in the minimization of the penalized residual sum of squares
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-[ PRSS
-\backslash
-left(
-\backslash
-boldsymbol{
-\backslash
-mathbf{T}_{
-\backslash
-cdot,k}}
-\backslash
-right)=
-\backslash
-sum_{i=1}^{p}
-\backslash
-left(
-\backslash
-mathbf{B}_{i,k}-
-\backslash
-sum_{j=1}^{m}A_{i,j}
-\backslash
-mathbf{T}_{j,k}
-\backslash
-right)^{2}+
-\backslash
-lambda
-\backslash
-sqrt{
-\backslash
-mathbf{T}_{
-\backslash
-cdot,k}^{
-\backslash
-prime}
-\backslash
-boldsymbol{Q}
-\backslash
-mathbf{T}_{
-\backslash
-cdot,k}} 
-\backslash
-] 
-\end_layout
-
-\begin_layout Plain Layout
-
-An implementation of this extension is available in the R package MONSTER.
- 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-\begin_inset Separator parbreak
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-Network Transition
-\end_layout
-
-\end_inset
-
-
-\begin_inset Separator latexpar
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
 \align center
 \begin_inset Graphics
 	filename workflow_diagram-crop.pdf
@@ -5155,17 +5277,22 @@ Evaluating Transition Matrix
 \begin_deeper
 \begin_layout Standard
 \align center
-\begin_inset Graphics
-	filename dTFI_unsorted.png
-	width 80col%
-
-\end_inset
-
-
 \begin_inset Formula 
 \[
 \hat{dTFI_{j}}=\frac{\sum_{i=1}^{m}I\left(i\ne j\right)\hat{\tau}_{i,j}^{2}}{\sum_{i=1}^{m}\hat{\tau}_{i,j}^{2}}
 \]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename dTFI_unsorted.png
+	width 100col%
+	height 30col%
 
 \end_inset
 
@@ -5236,36 +5363,127 @@ Reproducibility and novel results
 
 \begin_deeper
 \begin_layout Standard
-\align left
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{minipage}{.55
-\backslash
-textwidth}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\align left
+\align center
 \begin_inset Graphics
 	filename figures/dTFIvsLIMMAall.pdf
 	lyxscale 20
-	width 100col%
+	width 60col%
 
 \end_inset
 
 
 \end_layout
 
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+section[]{Conclusions and Future Work}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Conclusions
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{itemize}
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+item Hidden structure is prevalent in high-dimensional data.
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+item Structure may be informative of phenotype or artifactual.
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+item Methods we describe here are designed to identify and estimate structure
+ in high-throughput data, informing our hypotheses and limiting the probability
+ of false positive results.
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{itemize}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Future Work
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Standard
 \align left
 \begin_inset ERT
@@ -5273,859 +5491,189 @@ status open
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{minipage}%
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{minipage}{.45
-\backslash
-textwidth}
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{table}
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-tiny{Differential TF Involvement}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-resizebox{
-\backslash
-linewidth}{!}{%
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{tabular}{|c||c|c|c||c|c|c||c|c|c||c|c|c|}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-cline{2-13} 
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-multicolumn{1}{c|}{} & 
-\backslash
-multicolumn{3}{c||}{ECLIPSE} & 
-\backslash
-multicolumn{3}{c||}{COPDGene} & 
-\backslash
-multicolumn{3}{c||}{LGRC} & 
-\backslash
-multicolumn{3}{c|}{LTCDNM}
-\backslash
-tabularnewline
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-hline 
-\end_layout
-
-\begin_layout Plain Layout
-
-transcription factor & dTFI & rank & FDR & dTFI & rank & FDR & dTFI & rank
- & FDR & dTFI & rank & FDR
-\backslash
-tabularnewline
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-hline 
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-hline 
-\end_layout
-
-\begin_layout Plain Layout
-
-SP2 & .0314 &  1 & .0357 & .0100 &  9 & .6812 & .0213 &  6 & .3752 & .0176 &  2
- & .7438
-\backslash
-tabularnewline
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-hline 
-\end_layout
-
-\begin_layout Plain Layout
-
-E2F4 & .0236 &  2 & <.0001 & .0143 &  3 & <.0001 & .0160 & 14 & .037 & .0148 &
-  7 & <.0001
-\backslash
-tabularnewline
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-hline 
-\end_layout
-
-\begin_layout Plain Layout
-
-SP1 & .0230 &  3 & .1551 & .0089 &  18 & .7721 & .0179 & 10 & .3594 & .0169 & 
- 4 & .5516
-\backslash
-tabularnewline
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-hline 
-\end_layout
-
-\begin_layout Plain Layout
-
-ZNF263 & .0226 &  4 & .311 & .0089 &  16 & .3372 & .0177 & 11 & .7716 & .0152 &
-  6 & .927
-\backslash
-tabularnewline
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-hline 
-\end_layout
-
-\begin_layout Plain Layout
-
-EGR1 & .0224 &  5 & .1242 & .0079 &  23 & .7597 & .0124 & 28 & .6892 & .0152 &
-  5 & .5305
-\backslash
-tabularnewline
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-hline 
-\end_layout
-
-\begin_layout Plain Layout
-
-NRF1 & .0196 &  6 & <.0001 & .0115 &  5 & .0304 & .0122 & 30 & <.0001 & .0139 &
- 11 & .0558
-\backslash
-tabularnewline
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-hline 
-\end_layout
-
-\begin_layout Plain Layout
-
-GABPA & .0185 &  7 & <.0001 & .0157 &  2 & <.0001 & .0176 & 12 & <.0001 & .0097
- & 32 & .0853
-\backslash
-tabularnewline
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-hline 
-\end_layout
-
-\begin_layout Plain Layout
-
-ELK1 & .0177 &  8 & <.0001 & .0174 &  1 & <.0001 & .0151 & 17 & <.0001 & .0083
- & 40 & .2099
-\backslash
-tabularnewline
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-hline 
-\end_layout
-
-\begin_layout Plain Layout
-
-ZFX & .0175 &  9 & <.0001 & .0076 &  24 & .8366 & .0103 & 40 & .4348 & .0132 &
- 16 & .2739
-\backslash
-tabularnewline
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-hline 
-\end_layout
-
-\begin_layout Plain Layout
-
-KLF4 & .0173 &  10 & .1025 & .0072 &  28 & .8142 & .0143 & 21 & .2312 & .0119 &
- 20 & .5516
-\backslash
-tabularnewline
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-hline 
-\end_layout
-
-\begin_layout Plain Layout
-
-ESR1 & .0169 &  11 & .0357 & .0106 &  7 & .0941 & .0127 & 27 & .0888 & .0176 &
-  3 & <.0001
-\backslash
-tabularnewline
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-hline 
-\end_layout
-
-\begin_layout Plain Layout
-
-ELK4 & .0168 &  12 & <.0001 & .0125 &  4 & <.0001 & .0152 & 16 & <.0001 & .0086
- & 39 & .1318
-\backslash
-tabularnewline
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-hline 
-\end_layout
-
-\begin_layout Plain Layout
-
-TFAP2C & .0139 &  17 & .0656 & .0114 &  6 & .0941 & .0148 & 19 & .037 & .0121 &
- 19 & .2099
-\backslash
-tabularnewline
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-hline 
-\end_layout
-
-\begin_layout Plain Layout
-
-PLAG1 & .0124 &  21 & .263 & .0092 &  15 & .4136 & .0219 &  5 & <.0001 & .0146
- &  8 & .1554
-\backslash
-tabularnewline
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-hline 
-\end_layout
-
-\begin_layout Plain Layout
-
-FOXQ1 & .0115 &  28 & .9318 & .0099 &  10 & .7905 & .0209 &  7 & .2846 & .0107
- & 27 & .927
-\backslash
-tabularnewline
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-hline 
-\end_layout
-
-\begin_layout Plain Layout
-
-FOSL1 & .0082 &  57 & .9175 & .0061 &  41 & .6166 & .0220 &  4 & .037 & .0131 &
- 17 & .3496
-\backslash
-tabularnewline
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-hline 
-\end_layout
-
-\begin_layout Plain Layout
-
-NFIL3 & .0077 &  62 & .2365 & .0067 &  33 & .0304 & .0264 &  1 & .4669 & .0209
- &  1 & .7121
-\backslash
-tabularnewline
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-hline 
-\end_layout
-
-\begin_layout Plain Layout
-
-FOS & .0068 &  73 & .9175 & .0057 &  48 & .5212 & .0198 &  9 & .037 & .0112 & 24
- & .5139
-\backslash
-tabularnewline
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-hline 
-\end_layout
-
-\begin_layout Plain Layout
-
-JUNB & .0067 &  77 & .9318 & .0059 &  43 & .6392 & .0236 &  2 & <.0001 & .0146
- &  9 & .2299
-\backslash
-tabularnewline
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-hline 
-\end_layout
-
-\begin_layout Plain Layout
-
-RFX1 & .0019 & 159 & .3532 & .0009 & 164 & <.0001 & .0233 &  3 & <.0001 & .0070
- & 48 & .3496
-\backslash
-tabularnewline
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-hline 
-\end_layout
-
-\begin_layout Plain Layout
-
-RFX2 & .0019 & 158 & .4041 & .0012 & 163 & .0482 & .0200 &  8 & <.0001 & .0049
- & 81 & .6245
-\backslash
-tabularnewline
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-hline 
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{tabular}%
-\end_layout
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-vspace*{.1in}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-tiny{Differential Expression}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-resizebox{
-\backslash
-linewidth}{!}{%
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{tabular}{|c||c|c||c|c||c|c||c|c|}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-cline{2-9} 
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-multicolumn{1}{c|}{} & 
-\backslash
-multicolumn{2}{c||}{ECLIPSE} & 
-\backslash
-multicolumn{2}{c||}{COPDGene} & 
-\backslash
-multicolumn{2}{c||}{LGRC} & 
-\backslash
-multicolumn{2}{c|}{LTCDNM}
-\backslash
-tabularnewline
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-hline 
-\end_layout
-
-\begin_layout Plain Layout
-
-transcription factor & dTFI rank & LIMMA p & dTFI rank & LIMMA p & dTFI
- rank & LIMMA p & dTFI rank & LIMMA p
-\backslash
-tabularnewline
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-hline 
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-hline 
-\end_layout
-
-\begin_layout Plain Layout
-
-SP2 &  1 & .1756 &  9 & .6517 &  6 & .0075 &  2 & .0009
-\backslash
-tabularnewline
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-hline 
-\end_layout
-
-\begin_layout Plain Layout
-
-E2F4 &  2 & .3913 &  3 & .9367 & 14 & .0878 &  7 & .8232
-\backslash
-tabularnewline
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-hline 
-\end_layout
-
-\begin_layout Plain Layout
-
-SP1 &  3 & .3634 &  18 & .0838 & 10 & .4242 &  4 & .9759
-\backslash
-tabularnewline
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-hline 
-\end_layout
-
-\begin_layout Plain Layout
-
-ZNF263 &  4 & .9834 &  16 & .0028 & 11 & .0271 &  6 & .1859
-\backslash
-tabularnewline
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-hline 
-\end_layout
-
-\begin_layout Plain Layout
-
-EGR1 &  5 & .4379 &  23 & .8540 & 28 & .7979 &  5 & .0378
-\backslash
-tabularnewline
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-hline 
-\end_layout
-
-\begin_layout Plain Layout
-
-NRF1 &  6 & .0966 &  5 & .0045 & 30 & .2974 & 11 & .3418
-\backslash
-tabularnewline
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-hline 
-\end_layout
-
-\begin_layout Plain Layout
-
-GABPA &  7 & .4650 &  2 & .5138 & 12 & .3868 & 32 & .5771
-\backslash
-tabularnewline
-\end_layout
-
-\begin_layout Plain Layout
 
-
 \backslash
-hline 
+begin{block}{Identification of Genetic Outliers:}
 \end_layout
 
 \begin_layout Plain Layout
 
-ELK1 &  8 & .0913 &  1 & .9010 & 17 & .7968 & 40 & .0005
+	
 \backslash
-tabularnewline
+begin{itemize}
 \end_layout
 
 \begin_layout Plain Layout
-
 
+		
 \backslash
-hline 
+item Using STEGO in association studies using Linear Mixed Models.
+ Does it reduce false positives and retain power?
 \end_layout
 
 \begin_layout Plain Layout
 
-ZFX &  9 & .8253 &  24 & .5795 & 40 & .0474 & 16 & .1572
+		
 \backslash
-tabularnewline
-\end_layout
-
-\begin_layout Plain Layout
-
-
+item Can STEGO be used to reduce excess Type I error in rare variants (Mathieson
+ 
 \backslash
-hline 
+& McVean)?
 \end_layout
 
 \begin_layout Plain Layout
 
-KLF4 &  10 & .1915 &  28 & .0025 & 21 & .0526 & 20 & .1159
+	
 \backslash
-tabularnewline
+end{itemize}
 \end_layout
 
 \begin_layout Plain Layout
 
 
 \backslash
-hline 
+end{block}
 \end_layout
 
 \begin_layout Plain Layout
 
-ESR1 &  11 & .9598 &  7 & .5853 & 27 & .7246 &  3 & .3477
-\backslash
-tabularnewline
 \end_layout
 
 \begin_layout Plain Layout
 
 
 \backslash
-hline 
+begin{block}{Coexpression Batch Effect:}
 \end_layout
 
 \begin_layout Plain Layout
 
-ELK4 &  12 & .0001 &  4 & .8057 & 16 & .0183 & 39 & .7314
+	
 \backslash
-tabularnewline
+begin{itemize}
 \end_layout
 
 \begin_layout Plain Layout
 
-
+		
 \backslash
-hline 
+item Regularization approaches for estimated eigenvalues.
 \end_layout
 
 \begin_layout Plain Layout
 
-TFAP2C &  17 & .2318 &  6 & .9574 & 19 & .5853 & 19 & .6754
+		
 \backslash
-tabularnewline
+item Alternative sources for eigenvectors (functional categories, external
+ validation sets).
 \end_layout
 
 \begin_layout Plain Layout
-
 
+		
 \backslash
-hline 
+item Significance analysis for  coefficients.
 \end_layout
 
 \begin_layout Plain Layout
 
-PLAG1 &  21 & .0384 &  15 & .0008 &  5 & .0371 &  8 & .9523
+	
 \backslash
-tabularnewline
+end{itemize}
 \end_layout
 
 \begin_layout Plain Layout
-
-
-\backslash
-hline 
-\end_layout
 
-\begin_layout Plain Layout
 
-FOXQ1 &  28 & .4543 &  10 & .5314 &  7 & .0503 & 27 & .5340
 \backslash
-tabularnewline
+end{block}
 \end_layout
-
-\begin_layout Plain Layout
-
 
-\backslash
-hline 
-\end_layout
+\end_inset
 
-\begin_layout Plain Layout
 
-FOSL1 &  57 & .5850 &  41 & .6995 &  4 & .8708 & 17 & .3686
-\backslash
-tabularnewline
 \end_layout
 
-\begin_layout Plain Layout
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
 
 
-\backslash
-hline 
 \end_layout
 
-\begin_layout Plain Layout
-
-NFIL3 &  62 & .0404 &  33 & .1191 &  1 & .7605 &  1 & .8650
-\backslash
-tabularnewline
-\end_layout
+\begin_layout Frame
+\begin_inset Argument 4
+status open
 
 \begin_layout Plain Layout
-
-
-\backslash
-hline 
+Future Work
 \end_layout
 
-\begin_layout Plain Layout
+\end_inset
 
-FOS &  73 & .5156 &  48 & .6668 &  9 & .9500 & 24 & .7891
-\backslash
-tabularnewline
-\end_layout
 
-\begin_layout Plain Layout
+\begin_inset Separator latexpar
+\end_inset
 
 
-\backslash
-hline 
 \end_layout
 
-\begin_layout Plain Layout
-
-JUNB &  77 & .0197 &  43 & .9526 &  2 & .3996 &  9 & .6077
-\backslash
-tabularnewline
-\end_layout
+\begin_deeper
+\begin_layout Standard
+\align left
+\begin_inset ERT
+status open
 
 \begin_layout Plain Layout
 
 
 \backslash
-hline 
+begin{block}{Estimating Network State Transitions:}
 \end_layout
 
 \begin_layout Plain Layout
 
-RFX1 & 159 & .0361 & 164 & .0885 &  3 & .0175 & 48 & .8285
+	
 \backslash
-tabularnewline
+begin{itemize}
 \end_layout
 
 \begin_layout Plain Layout
 
-
-\backslash
-hline 
-\end_layout
-
-\begin_layout Plain Layout
-
-RFX2 & 158 & .0109 & 163 & .0059 &  8 & .0004 & 81 & .1345
+		
 \backslash
-tabularnewline
+item Integrating complimentary data sources into network inference and transitio
+n step.
 \end_layout
 
 \begin_layout Plain Layout
 
-
+		
 \backslash
-hline 
+item Use off-diagonal elements to predict protein-protein interactions for
+ validation.
 \end_layout
 
 \begin_layout Plain Layout
-
 
+		
 \backslash
-end{tabular}%
+item Experimental validation of predictions.
 \end_layout
 
 \begin_layout Plain Layout
 
-}
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
+	
 \backslash
-end{table}
-\end_layout
-
-\begin_layout Plain Layout
-
+end{itemize}
 \end_layout
 
 \begin_layout Plain Layout
 
 
 \backslash
-end{minipage}
+end{block}
 \end_layout
 
 \end_inset
@@ -6151,14 +5699,6 @@ Acknowledgements
 
 \end_inset
 
-
-\begin_inset Separator latexpar
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
 
 \end_layout
 
@@ -6335,13 +5875,6 @@ begin{itemize}
 
 				
 \backslash
-item John Quackenbush
-\end_layout
-
-\begin_layout Plain Layout
-
-				
-\backslash
 item Joe Barry
 \end_layout
 
@@ -6356,7 +5889,7 @@ item Joey Chen
 
 				
 \backslash
-item Maude Fagny
+item Maud Fagny
 \end_layout
 
 \begin_layout Plain Layout
@@ -6405,6 +5938,13 @@ item Heather Selby
 
 				
 \backslash
+item Abhijeet Sonawane
+\end_layout
+
+\begin_layout Plain Layout
+
+				
+\backslash
 item Nicole Trotman
 \end_layout
 
@@ -6440,5 +5980,709 @@ end{minipage}%
 \end_layout
 
 \end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+section[]{Appendix}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+appendix
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{frame}[noframenumbering]{Appendix}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{frame}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 3
+status open
+
+\begin_layout Plain Layout
+noframenumbering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Batch covariance model
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Consider a set of 
+\begin_inset Formula $N$
+\end_inset
+
+ samples with 
+\begin_inset Formula $q$
+\end_inset
+
+ covariates measuring gene expression across 
+\begin_inset Formula $p$
+\end_inset
+
+ genes.
+ Let 
+\begin_inset Formula $\textbf{x}_{i}=(x_{i1},\dots,x_{iq})$
+\end_inset
+
+ denote the covariates for sample 
+\begin_inset Formula $i$
+\end_inset
+
+ and let 
+\begin_inset Formula $\textbf{g}_{i}=(g_{i1},\dots,g_{ip})^{T}$
+\end_inset
+
+ denote the gene expression values for sample 
+\begin_inset Formula $i$
+\end_inset
+
+ for the 
+\begin_inset Formula $p$
+\end_inset
+
+ genes.
+\end_layout
+
+\begin_layout Standard
+We can express a model for the gene expression as 
+\begin_inset Formula 
+\[
+\textbf{g}_{i}=\mathbf{\mathbf{\beta}}^{T}\textbf{x}_{i}+\mathbf{\epsilon}_{i}\text{ for }i=1,\dots,N
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $\mathbf{\epsilon}_{i}\sim MVN_{p}(\mathbf{0},\Sigma_{i})$
+\end_inset
+
+.
+ Notably, the covariance of 
+\begin_inset Formula $\mathbf{\epsilon}_{i}$
+\end_inset
+
+ differ according to 
+\begin_inset Formula $i$
+\end_inset
+
+.
+\begin_inset Formula 
+\[
+\Sigma_{i}=\mathbf{Q}\mathbf{D}_{i}\mathbf{Q}^{T}
+\]
+
+\end_inset
+
+ where 
+\begin_inset Formula $\mathbf{D}_{i}$
+\end_inset
+
+ is a diagonal matrix with diagonal defined as 
+\begin_inset Formula $\mathbf{X}_{i}\Psi_{q\times p}$
+\end_inset
+
+.
+\begin_inset Formula 
+\[
+\mathbf{S}_{i}=\sum_{j=1}^{p}\mathbf{Q}_{j}\mathbf{X}_{i}\Psi_{\cdot j}\mathbf{Q}_{j}^{T}+\mathbf{E}_{i}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 3
+status open
+
+\begin_layout Plain Layout
+noframenumbering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Least Squares Estimator For Batch Correction
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+To calculate least squares solution, 
+\begin_inset Formula $\hat{\Psi}$
+\end_inset
+
+, we solve separately for each column of 
+\begin_inset Formula $\ensuremath{\mathbf{Q}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+and note that the residual matrices should be orthogonal to the hyperplane
+ spanned by 
+\begin_inset Formula $X^{T}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Recall 
+\begin_inset Formula $0=\mathbf{X^{T}\left(Y-X\hat{\beta}\right)}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\mathbf{0}_{q} & =\sum_{i=1}^{N}\mathbf{X}_{i}^{T}\left[\mathbf{Q}_{h}^{T}\left[\mathbf{G}_{i}^{*}\mathbf{G}_{i}^{*T}-\mathbf{Q}_{h}\mathbf{X}_{i}\hat{\Psi}_{h}\mathbf{Q}_{h}^{T}\right]\mathbf{Q}_{h}\right]\\
+\hat{\Psi}_{h} & =\left(\mathbf{X}^{T}\mathbf{X}\right)^{-1}\sum_{i=1}^{N}\left[\mathbf{X}_{i}^{T}\mathbf{Q}_{h}^{T}\mathbf{G}_{i}^{*}\mathbf{G}_{i}^{*T}\mathbf{Q}_{h}\right]
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+note[itemize]{ 
+\backslash
+item point 1 
+\backslash
+item point 2 }
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 3
+status open
+
+\begin_layout Plain Layout
+noframenumbering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+The Corrected Coexpression Matrix
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+With the estimates obtained with our method, it is straightforward to see
+ how fitted values for the coexpression matrix for each sample or experimental
+ condition can be obtained.
+ Given an estimate for 
+\begin_inset Formula $\Psi$
+\end_inset
+
+, 
+\begin_inset Formula $\hat{\Psi}$
+\end_inset
+
+, we can now estimate the batch-independent coexpression structure as 
+\begin_inset Formula 
+\[
+\hat{\mathbf{S}}=\mathbf{Q}diag\left(\bar{\mathbf{X}}\hat{\Psi}\right)\mathbf{Q}^{T}\text{ or }\hat{\mathbf{S}}=\sum_{i=1}^{p}\bar{\mathbf{X}}\hat{\Psi}_{i}\mathbf{Q}_{i}\mathbf{Q}_{i}^{T}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The differential coexpression matrix between two conditions, defined in
+ binary as column 2 of 
+\begin_inset Formula $\mathbf{X}$
+\end_inset
+
+, is computed
+\begin_inset Formula 
+\[
+\hat{\mathbf{W}}=\mathbf{Q}diag\left(\hat{\Psi}_{2,\cdot}\right)\mathbf{Q}^{T}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+note[itemize]{ 
+\backslash
+item point 1 
+\backslash
+item point 2 }
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 3
+status open
+
+\begin_layout Plain Layout
+noframenumbering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Test Statistic
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+In the absence of population structure, cryptic relatedness and dependence
+ between loci the distribution of the similarity index, 
+\begin_inset Formula $s_{i,j}$
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+s_{i,j}\sim N\left(1,\sigma_{i,j}^{2}\right)
+\]
+
+\end_inset
+
+Where the variance of 
+\begin_inset Formula $s_{ij}$
+\end_inset
+
+ can be estimated by 
+\begin_inset Formula 
+\[
+\hat{\sigma_{i,j}^{2}}=\hat{Var}\left(s_{i,j}\right)=\frac{\sum_{k=1}^{N}\left(w_{k}-1\right)}{\left(\sum_{k=1}^{N}I\left[\sum_{l=1}^{2n}\mathbf{G}_{l,k}>1\right]\right)^{2}}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+s_{i,j}^{\left(diploid\right)}=\frac{\sum_{k=1}^{N}\left[w_{k}\mathbf{H}_{i,k}\mathbf{H}_{j,k}\right]/4}{\sum_{k=1}^{N}I\left[\left(\sum_{l=1}^{n}\mathbf{H}_{l,k}\right)>1\right]}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 3
+status open
+
+\begin_layout Plain Layout
+noframenumbering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Estimating relatedness
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\hat{\phi}_{i,j}=\frac{s_{i,j}-1}{\left[\frac{\sum_{k=1}^{N}\hat{p_{k}}w_{k}}{\sum_{k=1}^{N}I\left[\sum_{l=1}^{2n}\mathbf{G}_{l,k}>1\right]}-1\right]}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+R:max\left(s_{i,j}\right)>1-probit\left(\frac{\alpha}{{n \choose 2}}\right)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+P\left(Reject\,H_{0}|\phi_{i,j}=\gamma\right)=\alpha+\left(1-\alpha\right)\left(1-\Phi\left(\frac{\mu_{i,j}-1}{\sqrt{\hat{\sigma^{2}}_{i,j}}}\right)\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 3
+status open
+
+\begin_layout Plain Layout
+noframenumbering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Network Inference
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Direct Evidence:
+\begin_inset Formula 
+\[
+d_{i,j}=cor\left(g_{i},g_{j}|\left\{ g_{k,-i}:k\ne i,k\in\mathbf{TF}\right\} \right)^{2}
+\]
+
+\end_inset
+
+Indirect Evidence:
+\begin_inset Formula 
+\[
+logit\left(E\left[M_{i}\right]\right)=\beta_{0}+\beta_{1}g_{\left(1\right)}+\dots+\beta_{N}g_{\left(n\right)}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+e_{i,j}=\frac{1}{1+e^{\beta_{0}+\beta_{1}g_{j,\left(1\right)}+\dots+\beta_{k}g_{j,\left(k\right)}}}
+\]
+
+\end_inset
+
+Edgeweight:
+\begin_inset Formula 
+\[
+w_{i,j}=\left(1-\alpha\right)\left[d_{i,j}\right]+\alpha\left[e_{i,j}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{frame}[noframenumbering]{Network Transition Regularization}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+[ 
+\backslash
+mathbf{Q}_{i,j}=
+\backslash
+begin{cases} 1 & for
+\backslash
+,i=j
+\backslash
+ne k
+\backslash
+
+\backslash
+ 0 & elsewhere 
+\backslash
+end{cases}, 
+\backslash
+] which results in the minimization of the penalized residual sum of squares
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+[ PRSS
+\backslash
+left(
+\backslash
+boldsymbol{
+\backslash
+mathbf{T}_{
+\backslash
+cdot,k}}
+\backslash
+right)=
+\backslash
+sum_{i=1}^{p}
+\backslash
+left(
+\backslash
+mathbf{B}_{i,k}-
+\backslash
+sum_{j=1}^{m}A_{i,j}
+\backslash
+mathbf{T}_{j,k}
+\backslash
+right)^{2}+
+\backslash
+lambda
+\backslash
+sqrt{
+\backslash
+mathbf{T}_{
+\backslash
+cdot,k}^{
+\backslash
+prime}
+\backslash
+boldsymbol{Q}
+\backslash
+mathbf{T}_{
+\backslash
+cdot,k}} 
+\backslash
+] 
+\end_layout
+
+\begin_layout Plain Layout
+
+An implementation of this extension is available in the R package MONSTER.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{frame}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \end_body
 \end_document
